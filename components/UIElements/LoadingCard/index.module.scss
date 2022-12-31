@@ -1,0 +1,35 @@
+.card {
+  border-radius: 20px !important;
+  transition: transform 0.2s linear !important;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.cardContent {
+  all: unset !important;
+  position: relative !important
+}
+
+.cardMedia {
+  height: 600px;
+}
+
+.cardMediaSkeleton {
+  transform: none !important;
+  border-radius: 0 !important;
+}
+
+.cardTop {
+  top: 0 !important;
+  position: absolute !important;
+}
+
+.skeletonNoTransform {
+  transform: none !important;
+}
+
+.cardFooter {
+  height: 48px;
+}

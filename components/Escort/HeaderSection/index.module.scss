@@ -1,0 +1,17 @@
+.banner {
+  background-size: cover;
+  border-radius: 20px 20px 0 0;
+  position: relative;
+}
+
+.title {
+    font-size: clamp(30px, 5vw, 60px) !important;
+
+    .subtitle {
+        font-size: clamp(20px, 2.5vw, 34px) !important;
+    }
+}
+
+.type {
+    font-size: clamp(14px, 3vw, 24px) !important;
+}

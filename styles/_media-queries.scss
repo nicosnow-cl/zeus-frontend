@@ -1,0 +1,33 @@
+/* mobiles */
+.wrapper {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+/* tablet */
+@media screen and (min-width: 1024px) {
+  .wrapper {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+  }
+}
+
+/* smalls pcs */
+@media screen and (min-width: 1280px) {
+    .wrapper {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        width: 100%;
+    }
+}
+
+/* normal and big pcs */
+@media screen and (min-width: 1920px) {
+    .wrapper {
+        padding-left: 4rem;
+        padding-right: 4rem;
+        width: 1920px;
+    }
+}

@@ -1,0 +1,14 @@
+.storyContainer {
+  max-width: 755px !important;
+  position: relative !important;
+  z-index: 3 !important;
+}
+
+.titleContainer {
+  position: absolute !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+.closeBtn {
+  z-index: 4 !important;
+}

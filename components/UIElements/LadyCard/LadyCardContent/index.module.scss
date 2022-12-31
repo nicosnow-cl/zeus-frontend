@@ -1,0 +1,46 @@
+@import '../../../../styles/_colors';
+
+.ladyCardContentContainer {
+  position: absolute;
+  bottom: 0;
+}
+
+.text {
+  text-shadow: 0 0 3px #000 !important;
+}
+
+.contentContainer {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.descriptionText {
+  font-size: clamp(12px, 1vw, 14px) !important;
+  text-shadow: 0 0 3px #000 !important;
+}
+
+.chipType {
+  position: absolute;
+  right: 0;
+  z-index: 100;
+}
+
+.nationalityText {
+  font-size: 17px !important;
+  text-shadow: 0 0 3px #000 !important;
+}
+
+.chip {
+  font-size: 10px !important;
+}
+
+.typeVip {
+  background-color: rgba($vip-main, 0.6) !important;
+}
+
+.typePremium {
+  background-color: rgba($premium-main, 0.6) !important;
+}
+
+.typeGold {
+  background-color: rgba($gold-main, 0.6) !important;
+}
