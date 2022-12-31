@@ -5,9 +5,10 @@ import { uiActions } from '../../../redux/reducers/ui';
 import IVideo from '../../../interfaces/objects/interface.video';
 import ProfileMedia from '../../UIElements/ProfileMedia';
 import styles from './index.module.scss';
+import IImage from '../../../interfaces/objects/interface.image';
 
 export interface IMediaSetionProps {
-  images: string[];
+  images: IImage[];
   videos: IVideo[];
 }
 
@@ -25,7 +26,7 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
       ))}
 
       {images.map((src, idx) => (
-        <ProfileMedia key={idx} onClick={handleOpenLadyImage} src={src} type={'img'} />
+        <ProfileMedia key={idx} onClick={handleOpenLadyImage} src={src.hq} type={'img'} />
       ))}
     </div>
   );

@@ -26,7 +26,7 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
       >
         <HeaderSection
           age={profile.age}
-          avatarImg={profile.avatarImg}
+          avatarImg={profile.avatarImg.hq}
           bannerImg={profile.bannerImg}
           name={profile.name}
           type={profile.type}

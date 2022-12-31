@@ -92,7 +92,7 @@ const InformationSecion = ({ schedule, services }: IInformationSectionProps) => 
                   </TableCell>
                   <TableCell align="right">
                     <Typography variant="h3" fontSize={18}>
-                      {schedule[key]}
+                      {(schedule as any)[key]}
                     </Typography>
                   </TableCell>
                 </TableRow>

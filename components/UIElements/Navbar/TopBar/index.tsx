@@ -36,40 +36,25 @@ const renderValue = (value: string) => {
 };
 
 const TopBar = ({ backgroundColor }: ITopBarProps) => {
-  const [scrollDir, setScrollDir] = useState<string>('up');
+  const [yOffset, setYOffset] = useState(window.pageYOffset);
+  const [visible, setVisible] = useState(true);
   const city = useSelector((state: RootState): string => state.ui.filters.city);
   const dispatch = useDispatch<AppDispatch>();
 
   const backgroundColorRGB = backgroundColor ? getHexToRgb(backgroundColor).join(', ') : undefined;
 
   useEffect(() => {
-    const threshold = 0;
-    let lastScrollY = window.pageYOffset;
-    let ticking = false;
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  });
 
-    const updateScrollDir = () => {
-      const scrollY = window.pageYOffset;
+  function handleScroll() {
+    const currentYOffset = window.pageYOffset;
+    const visible = yOffset > currentYOffset;
 
-      if (Math.abs(scrollY - lastScrollY) < threshold) {
-        ticking = false;
-        return;
-      }
-      setScrollDir(scrollY > lastScrollY ? 'down' : 'up');
-      lastScrollY = scrollY > 0 ? scrollY : 0;
-      ticking = false;
-    };
-
-    const onScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateScrollDir);
-        ticking = true;
-      }
-    };
-
-    window.addEventListener('scroll', onScroll);
-
-    return () => window.removeEventListener('scroll', onScroll);
-  }, [scrollDir]);
+    setYOffset(currentYOffset);
+    setVisible(visible);
+  }
 
   const handleOpenRegionsModal = () => {
     dispatch(uiActions.handleToggleRegionModal(true));
@@ -80,7 +65,7 @@ const TopBar = ({ backgroundColor }: ITopBarProps) => {
       className={`w-100 d-flex jc-center downbar ${styles.topbar}`}
       style={{
         backgroundColor: `rgba(${backgroundColorRGB}, 0.9)`,
-        height: scrollDir === 'up' ? '35px' : '0px',
+        height: visible ? '35px' : '0px',
       }}
     >
       <div className={`wrapper jc-between ${styles.simpleFilters}`}>
