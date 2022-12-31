@@ -19,6 +19,7 @@ const EscortPage = ({ data }: any) => {
 
 export async function getServerSideProps({ query }: any) {
   const { id } = query;
+  console.log({ id });
 
   const profile = await obtainProfileGet(+id);
 

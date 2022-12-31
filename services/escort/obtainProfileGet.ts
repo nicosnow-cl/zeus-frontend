@@ -4,7 +4,7 @@ const obtainProfileGet = async (id: number): Promise<any> => {
   try {
     return profiles.find((profile: any) => profile.id === id);
   } catch (err: any) {
-    console.error(err);
+    console.log(err);
 
     return null;
   }
