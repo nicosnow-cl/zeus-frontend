@@ -1,14 +1,13 @@
 import type { ReactElement } from 'react';
 
-import EscortSection from '../../components/Escort/EscortSection';
 import profiles from '../../dummy/profiles';
 
 export const getServerSideProps = async () => {
   return { props: { data: profiles[0] } };
 };
 
-const EscortPage = ({ data }: any) => {
-  return <EscortSection profile={data} />;
+const EscortPage = () => {
+  return <h1>asdasdas</h1>;
 };
 
 EscortPage.getLayout = (page: ReactElement) => page;
