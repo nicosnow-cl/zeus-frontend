@@ -8,21 +8,15 @@ import ViewLadyImage from '../../components/UIElements/ViewLadyImage';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
 
 const EscortPage = ({ data }: any) => {
-  return (
-    <MainContainer>
-      <EscortSection profile={data} />
-
-      <ViewLadyImage />
-    </MainContainer>
-  );
+  return <EscortSection profile={data} />;
 };
 
 export async function getServerSideProps({ query }: any) {
   const { id } = query;
-  console.error({ id });
+  console.log({ id });
 
   const profile = await obtainProfileGet(+id);
-  console.error({ profile });
+  console.log({ profile });
 
   return { props: { data: profile || null } };
 }
