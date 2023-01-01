@@ -1,15 +1,15 @@
 import { Box } from '@mui/system';
 import {
-  // Grid,
-  useTheme,
+  Grid,
+  // useTheme,
 } from '@mui/material';
 
-// import ContactSection from '../ContactSection/index';
+import ContactSection from '../ContactSection/index';
 import DescriptionSection from '../DesciptionSection';
 import HeaderSection from '../HeaderSection';
-// import InformationSecion from '../InformationSection';
+import InformationSecion from '../InformationSection';
 import IProfile from '../../../interfaces/states/interface.profile';
-// import MediaSection from '../MediaSection';
+import MediaSection from '../MediaSection';
 
 export interface IEscortSectionProps {
   profile: IProfile;
@@ -41,21 +41,21 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
           nacionality={profile.nationality}
         />
 
-        {/* <ContactSection
+        <ContactSection
           location={profile.location}
           phoneNumber={profile.phoneNumber}
           price={profile.price}
           rrss={profile.rrss}
-        /> */}
+        />
 
-        {/* <Grid container>
+        <Grid container>
           <Grid item xs={12} xl={3}>
             <InformationSecion schedule={profile.schedule} services={profile.services} />
           </Grid>
           <Grid item xs={12} xl={9}>
             <MediaSection images={profile.images} videos={profile.videos} />
           </Grid>
-        </Grid> */}
+        </Grid>
       </Box>
     </div>
   );
