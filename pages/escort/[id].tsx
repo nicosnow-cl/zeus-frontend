@@ -18,12 +18,6 @@ const EscortPage = ({ data }: any) => {
   return <EscortSection profile={data} />;
 };
 
-EscortPage.getLayout = (page: ReactElement) => (
-  <MainContainer>
-    <SimpleNavbar />
-
-    <ContentContainer>{page}</ContentContainer>
-  </MainContainer>
-);
+EscortPage.getLayout = (page: ReactElement) => page;
 
 export default EscortPage;
