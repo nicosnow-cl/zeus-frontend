@@ -10,9 +10,13 @@ import Loader from '../../components/Loader';
 import MainContainer from '../../components/UIElements/MainContainer';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
 
-const LazyNavbar = dynamic(() => import('../../components/UIElements/Navbar'));
+const LazyNavbar = dynamic(() => import('../../components/UIElements/Navbar'), {
+  loading: Loader,
+  ssr: false,
+});
 const LazyMediaDialog = dynamic(() => import('../../components/UIElements/ViewLadyImage'), {
   loading: Loader,
+  ssr: false,
 });
 
 export const getServerSideProps = async ({ query }: any) => {
