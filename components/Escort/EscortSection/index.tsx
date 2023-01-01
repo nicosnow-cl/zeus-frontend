@@ -29,12 +29,12 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
       >
         <HeaderSection
           age={profile.age}
-          avatarImg={profile.avatarImg.hq}
+          avatarImg={profile.avatarImg.lq}
           bannerImg={profile.bannerImg}
           name={profile.name}
           type={profile.type}
         />
-
+        {/* 
         <DescriptionSection
           appareance={profile.appareance}
           description={profile.description}
@@ -55,7 +55,7 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
           <Grid item xs={12} xl={9}>
             <MediaSection images={profile.images} videos={profile.videos} />
           </Grid>
-        </Grid>
+        </Grid> */}
       </Box>
     </div>
   );

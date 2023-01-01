@@ -1,4 +1,5 @@
 import { Divider, Grid, Typography, useTheme } from '@mui/material';
+import Image from 'next/image';
 
 import EscortType from '../../../types/type.escort';
 import SimpleAvatar from '../../UIElements/SimpleAvatar';
@@ -19,8 +20,23 @@ const HeaderSection = ({ age, avatarImg, bannerImg, name, type }: IHeaderSection
     <div>
       <div
         className={`w-100 d-flex fd-column jc-between ${styles.banner}`}
-        style={{ height: 300, backgroundImage: `url(${bannerImg})` }}
-      />
+        style={{
+          height: 300,
+          // backgroundImage: `url(${bannerImg})`
+        }}
+      >
+        <Image
+          alt="banner-img"
+          blurDataURL={
+            'https://www.peacemakersnetwork.org/wp-content/uploads/2019/09/placeholder.jpg'
+          }
+          fill
+          placeholder="blur"
+          quality={50}
+          src={bannerImg}
+          style={{ objectFit: 'cover', borderRadius: '20px 20px 0 0' }}
+        />
+      </div>
 
       <div
       // style={{ backgroundColor: theme.palette.grey[200] }}
@@ -52,7 +68,9 @@ const HeaderSection = ({ age, avatarImg, bannerImg, name, type }: IHeaderSection
               {name}
               <span className={`${styles.subtitle}`}>, {age} años</span>
             </Typography>
+
             <Divider orientation="vertical" sx={{ maxHeight: '65%' }} />
+
             <Typography className={`ml-2 ${styles.type}`} variant="h3">
               Acompañante {type}
             </Typography>

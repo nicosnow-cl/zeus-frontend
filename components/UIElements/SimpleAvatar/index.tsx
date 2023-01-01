@@ -1,14 +1,24 @@
 import Image from 'next/image';
 
 export interface ISimpleAvatarProps {
-  src: string;
   size?: number;
+  src: string;
 }
 
-const AVATAR_SIZE = 300;
+const SimpleAvatar = ({ src, size }: ISimpleAvatarProps) => {
+  const props = size ? { height: size, width: size } : { fill: true };
 
-const SimpleAvatar = ({ src, size = AVATAR_SIZE }: ISimpleAvatarProps) => {
-  return <Image alt={'asdas'} className={'image'} src={src} fill style={{ borderRadius: '50%' }} />;
+  return (
+    <Image
+      alt="avatar-img"
+      blurDataURL={'https://www.peacemakersnetwork.org/wp-content/uploads/2019/09/placeholder.jpg'}
+      placeholder="blur"
+      quality={50}
+      src={src}
+      style={{ borderRadius: '50%' }}
+      {...props}
+    />
+  );
 };
 
 export default SimpleAvatar;
