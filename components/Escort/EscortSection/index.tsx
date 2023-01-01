@@ -6,7 +6,7 @@ import {
 
 // import ContactSection from '../ContactSection/index';
 import DescriptionSection from '../DesciptionSection';
-// import HeaderSection from '../HeaderSection';
+import HeaderSection from '../HeaderSection';
 // import InformationSecion from '../InformationSection';
 import IProfile from '../../../interfaces/states/interface.profile';
 // import MediaSection from '../MediaSection';
@@ -27,13 +27,13 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
           borderRadius: 5,
         }}
       >
-        {/* <HeaderSection
+        <HeaderSection
           age={profile.age}
           avatarImg={profile.avatarImg.hq}
           bannerImg={profile.bannerImg}
           name={profile.name}
           type={profile.type}
-        /> */}
+        />
 
         <DescriptionSection
           appareance={profile.appareance}
