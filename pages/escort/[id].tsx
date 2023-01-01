@@ -7,6 +7,7 @@ import MainContainer from '../../components/UIElements/MainContainer';
 import SimpleNavbar from '../../components/UIElements/SimpleNavbar';
 import ViewLadyImage from '../../components/UIElements/ViewLadyImage';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
+import profiles from '../../dummy/profiles';
 
 const EscortPage = ({ data }: any) => {
   return <EscortSection profile={data} />;
@@ -15,8 +16,7 @@ const EscortPage = ({ data }: any) => {
 export async function getServerSideProps({ req, res, query }: any) {
   const { id } = query;
 
-  const profile = await obtainProfileGetServerless(req, res, +id);
-  console.log({ profile });
+  const profile = profiles.find((profile: any) => profile.id === +id);
 
   return { props: { data: profile || null } };
 }
