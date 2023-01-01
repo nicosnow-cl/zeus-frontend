@@ -16,14 +16,14 @@ export interface IEscortSectionProps {
 }
 
 const EscortSection = ({ profile }: IEscortSectionProps) => {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   return (
     <div style={{ margin: '0 auto' }}>
       <Box
         className={`mt-5 mb-5`}
         sx={{
-          backgroundColor: theme.palette.grey[100],
+          // backgroundColor: theme.palette.grey[100],
           borderRadius: 5,
         }}
       >

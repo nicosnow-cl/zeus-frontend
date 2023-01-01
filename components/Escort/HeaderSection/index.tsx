@@ -13,7 +13,7 @@ export interface IHeaderSectionProps {
 }
 
 const HeaderSection = ({ age, avatarImg, bannerImg, name, type }: IHeaderSectionProps) => {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   return (
     <div>
@@ -22,7 +22,9 @@ const HeaderSection = ({ age, avatarImg, bannerImg, name, type }: IHeaderSection
         style={{ height: 300, backgroundImage: `url(${bannerImg})` }}
       />
 
-      <div style={{ backgroundColor: theme.palette.grey[200] }}>
+      <div
+      // style={{ backgroundColor: theme.palette.grey[200] }}
+      >
         <Grid container spacing={[2, 0]}>
           <Grid
             className={`d-flex jc-center`}
