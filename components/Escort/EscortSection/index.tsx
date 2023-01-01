@@ -27,13 +27,13 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
           borderRadius: 5,
         }}
       >
-        <HeaderSection
+        {/* <HeaderSection
           age={profile.age}
           avatarImg={profile.avatarImg.hq}
           bannerImg={profile.bannerImg}
           name={profile.name}
           type={profile.type}
-        />
+        /> */}
 
         <DescriptionSection
           appareance={profile.appareance}
