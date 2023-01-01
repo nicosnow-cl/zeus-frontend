@@ -1,9 +1,3 @@
-// import { Box } from '@mui/system';
-// import {
-//   Grid,
-//   useTheme,
-// } from '@mui/material';
-
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
@@ -12,7 +6,7 @@ import DescriptionSection from '../DesciptionSection';
 import HeaderSection from '../HeaderSection';
 import InformationSecion from '../InformationSection';
 import IProfile from '../../../interfaces/states/interface.profile';
-// import MediaSection from '../MediaSection';
+import MediaSection from '../MediaSection';
 
 export interface IEscortSectionProps {
   profile: IProfile;
@@ -55,9 +49,9 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
           <Grid item xs={12} xl={3}>
             <InformationSecion schedule={profile.schedule} services={profile.services} />
           </Grid>
-          {/* <Grid item xs={12} xl={9}>
+          <Grid item xs={12} xl={9}>
             <MediaSection images={profile.images} videos={profile.videos} />
-          </Grid> */}
+          </Grid>
         </Grid>
       </Box>
     </div>

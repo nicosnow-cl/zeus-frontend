@@ -1,4 +1,5 @@
-import { CardActionArea, CardMedia } from '@mui/material';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardMedia from '@mui/material/CardMedia';
 
 import getRandomNumber from '../../../utils/getRandomNumber';
 

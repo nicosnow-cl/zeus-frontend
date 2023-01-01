@@ -2,10 +2,10 @@ import { useDispatch } from 'react-redux';
 
 import { AppDispatch } from '../../../redux/store';
 import { uiActions } from '../../../redux/reducers/ui';
+import IImage from '../../../interfaces/objects/interface.image';
 import IVideo from '../../../interfaces/objects/interface.video';
 import ProfileMedia from '../../UIElements/ProfileMedia';
 import styles from './index.module.scss';
-import IImage from '../../../interfaces/objects/interface.image';
 
 export interface IMediaSetionProps {
   images: IImage[];
