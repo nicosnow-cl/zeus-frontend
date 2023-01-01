@@ -4,7 +4,7 @@ import type { ReactElement } from 'react';
 import ContentContainer from '../../components/UIElements/ContentContainer';
 import EscortSection from '../../components/Escort/EscortSection';
 import MainContainer from '../../components/UIElements/MainContainer';
-// import Navbar from '../../components/UIElements/Navbar';
+import Navbar from '../../components/UIElements/Navbar';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
 
 export const getServerSideProps = async ({ query }: any) => {
@@ -21,7 +21,7 @@ const EscortPage = ({ data }: any) => {
 
 EscortPage.getLayout = (page: ReactElement) => (
   <MainContainer>
-    {/* <Navbar /> */}
+    <Navbar />
 
     <ContentContainer>{page}</ContentContainer>
   </MainContainer>
