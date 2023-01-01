@@ -7,7 +7,7 @@
 import Box from '@mui/material/Box';
 
 // import ContactSection from '../ContactSection/index';
-// import DescriptionSection from '../DesciptionSection';
+import DescriptionSection from '../DesciptionSection';
 import HeaderSection from '../HeaderSection';
 // import InformationSecion from '../InformationSection';
 import IProfile from '../../../interfaces/states/interface.profile';
@@ -36,14 +36,14 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
           name={profile.name}
           type={profile.type}
         />
-        {/* 
+
         <DescriptionSection
           appareance={profile.appareance}
           description={profile.description}
           nacionality={profile.nationality}
         />
 
-        <ContactSection
+        {/* <ContactSection
           location={profile.location}
           phoneNumber={profile.phoneNumber}
           price={profile.price}
