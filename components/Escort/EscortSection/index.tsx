@@ -5,11 +5,12 @@
 // } from '@mui/material';
 
 import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 import ContactSection from '../ContactSection/index';
 import DescriptionSection from '../DesciptionSection';
 import HeaderSection from '../HeaderSection';
-// import InformationSecion from '../InformationSection';
+import InformationSecion from '../InformationSection';
 import IProfile from '../../../interfaces/states/interface.profile';
 // import MediaSection from '../MediaSection';
 
@@ -50,14 +51,14 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
           rrss={profile.rrss}
         />
 
-        {/*<Grid container>
+        <Grid container>
           <Grid item xs={12} xl={3}>
             <InformationSecion schedule={profile.schedule} services={profile.services} />
           </Grid>
-          <Grid item xs={12} xl={9}>
+          {/* <Grid item xs={12} xl={9}>
             <MediaSection images={profile.images} videos={profile.videos} />
-          </Grid>
-        </Grid> */}
+          </Grid> */}
+        </Grid>
       </Box>
     </div>
   );

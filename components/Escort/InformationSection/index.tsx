@@ -1,16 +1,13 @@
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  Chip,
-  Typography,
-  useTheme,
-  Table,
-  TableBody,
-  TableRow,
-  TableCell,
-} from '@mui/material';
-import { ExpandMore } from '@mui/icons-material';
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import Chip from '@mui/material/Chip';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableRow from '@mui/material/TableRow';
+import Typography from '@mui/material/Typography';
 
 import ISchedule from '../../../interfaces/objects/interface.schedule';
 
@@ -41,7 +38,7 @@ const getDayName = (day: string) => {
 };
 
 const InformationSecion = ({ schedule, services }: IInformationSectionProps) => {
-  const theme = useTheme();
+  // const theme = useTheme();
 
   return (
     <div className={`p-5 h-100`}>
@@ -63,7 +60,7 @@ const InformationSecion = ({ schedule, services }: IInformationSectionProps) => 
                 className={`mr-2 mb-2`}
                 key={idx}
                 label={service}
-                sx={{ color: theme.palette.secondary.main }}
+                // sx={{ color: theme.palette.secondary.main }}
               />
             ))}
           </div>
