@@ -11,7 +11,7 @@ import Navbar from '../components/UIElements/Navbar';
 import PageFilters from '../components/UIElements/PageFilters';
 import RegionsModal from '../components/UIElements/RegionsModal';
 import StoriesBar from '../components/Home/StoriesBar';
-import ViewLadyImage from '../components/UIElements/ViewLadyImage';
+import MediaDialog from '../components/UIElements/MediaDialog';
 import ViewLadyStory from '../components/UIElements/ViewLadyStory';
 
 const isServer = checkIfIsServer();
@@ -31,7 +31,7 @@ const Home: NextPageWithLayout = () => {
         {!isServer && <RegionsModal />}
         <FiltersModal />
         <LadyProfile />
-        <ViewLadyImage />
+        <MediaDialog />
         <ViewLadyStory />
       </div>
     </div>

@@ -14,7 +14,7 @@ const LazyNavbar = dynamic(() => import('../../components/UIElements/Navbar'), {
   loading: Loader,
   ssr: false,
 });
-const LazyMediaDialog = dynamic(() => import('../../components/UIElements/ViewLadyImage'), {
+const LazyMediaDialog = dynamic(() => import('../../components/UIElements/MediaDialog'), {
   loading: Loader,
   ssr: false,
 });

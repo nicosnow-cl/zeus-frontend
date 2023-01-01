@@ -1,7 +1,10 @@
+// import Image from 'next/image';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import CardActionArea from '@mui/material/CardActionArea';
 import CardMedia from '@mui/material/CardMedia';
 
 import getRandomNumber from '../../../utils/getRandomNumber';
+import SimpleSpinner from '../SimpleSpinner';
 
 export interface IProfileMediaProps {
   height?: number;
@@ -41,26 +44,55 @@ const ERROR_IMAGES = [
   'https://pornstarbyface.com/ImgBase/Galleries/Ally%20Tate/5/10.jpg',
 ];
 
+const handleError = (evt: React.SyntheticEvent<HTMLImageElement, Event>) => {
+  evt.currentTarget.src = ERROR_IMAGES[getRandomNumber(0, ERROR_IMAGES.length - 1)];
+};
+
 const ProfileMedia = ({
   height = DEFAULT_MEDIA_HEIGHT,
   onClick,
   src,
   type,
 }: IProfileMediaProps) => {
-  const handleError = (evt: React.SyntheticEvent<HTMLImageElement, Event>) => {
-    evt.currentTarget.src = ERROR_IMAGES[getRandomNumber(0, ERROR_IMAGES.length - 1)];
-  };
-
   return (
     <CardActionArea sx={{ borderRadius: 3 }} onClick={onClick}>
-      <CardMedia
-        alt="green iguana"
-        component={type}
-        height={`${height}px`}
-        image={src}
-        sx={{ borderRadius: 3, objectFit: 'cover', objectPosition: 'top' }}
-        onError={handleError}
-      />
+      {type === 'video' ? (
+        <CardMedia
+          // alt="green iguana"
+          component={'video'}
+          height={`${height}px`}
+          image={src}
+          sx={{ borderRadius: 3, objectFit: 'cover', objectPosition: 'top' }}
+          // onError={handleError}
+        />
+      ) : (
+        <div style={{ width: '100%', height }}>
+          {/* <Image
+            alt="media-img"
+            fill
+            src={src}
+            style={{ borderRadius: '12px', objectFit: 'cover' }}
+            sizes="100%"
+            onError={handleError}
+          /> */}
+
+          <LazyLoadImage
+            height={'100%'}
+            placeholder={
+              <div
+                className={`d-flex jc-center ai-center`}
+                style={{ width: '100%', height: '100%' }}
+              >
+                <SimpleSpinner />
+              </div>
+            }
+            src={src}
+            style={{ borderRadius: '12px', objectFit: 'cover' }}
+            width={'100%'}
+            onError={handleError}
+          />
+        </div>
+      )}
     </CardActionArea>
   );
 };
