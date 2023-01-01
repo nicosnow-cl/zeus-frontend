@@ -77,7 +77,7 @@ const MediaDialog = () => {
     setMediaIdx(mediaIdx - 1);
   };
 
-  const actualMedia = medias[mediaIdx];
+  const actualMedia: IMedia | null = medias[mediaIdx] || null;
 
   return (
     <Dialog
@@ -125,20 +125,24 @@ const MediaDialog = () => {
           <ArrowBackIos fontSize="large" />
         </IconButton>
 
-        {actualMedia.type === 'img' ? (
-          <div className={`w-100 h-100`} style={{ display: 'grid' }}>
-            <LazyLoadImage
-              src={actualMedia.img?.hq}
-              placeholder={<SimpleSpinner />}
-              onError={handleError}
-              style={{ maxWidth: '100%', maxHeight: '100vh', margin: 'auto' }}
-            />
-          </div>
-        ) : (
-          <div className={`${styles.videoContainer}`}>
-            <Player autoPlay={true} src={actualMedia.video?.mp4} />
-          </div>
-        )}
+        {actualMedia &&
+          {
+            img: (
+              <div className={`w-100 h-100`} style={{ display: 'grid' }}>
+                <LazyLoadImage
+                  src={actualMedia.img?.hq}
+                  placeholder={<SimpleSpinner />}
+                  onError={handleError}
+                  style={{ maxWidth: '100%', maxHeight: '100vh', margin: 'auto' }}
+                />
+              </div>
+            ),
+            video: (
+              <div className={`${styles.videoContainer}`}>
+                <Player autoPlay={true} src={actualMedia.video?.mp4} />
+              </div>
+            ),
+          }[actualMedia.type]}
 
         <IconButton
           color="primary"
