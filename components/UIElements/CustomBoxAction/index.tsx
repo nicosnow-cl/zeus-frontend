@@ -1,7 +1,8 @@
-import { Box } from '@mui/system';
-import { CardActionArea, Typography, useTheme } from '@mui/material';
-import { Check } from '@mui/icons-material';
 import { useState } from 'react';
+import CardActionArea from '@mui/material/CardActionArea';
+import Check from '@mui/icons-material/Check';
+import Typography from '@mui/material/Typography';
+import useTheme from '@mui/material/styles/useTheme';
 
 export interface ICustomBoxActionProps {
   backgroundColor?: string;
@@ -39,9 +40,9 @@ const CustomBoxAction = ({
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
     >
-      <Box
+      <div
         className={`d-flex ai-center`}
-        sx={{
+        style={{
           transition: 'all 0.2s ease-in-out',
           ...(isHover
             ? {
@@ -53,14 +54,14 @@ const CustomBoxAction = ({
         }}
       >
         {icon ? icon : <Check />}
-      </Box>
+      </div>
 
-      <Box>
+      <div>
         <Typography
           className={`ml-2`}
           variant="h3"
           fontSize={20}
-          sx={{
+          style={{
             transition: 'all 0.2s ease-in-out',
             ...(isHover
               ? {
@@ -77,7 +78,7 @@ const CustomBoxAction = ({
         <Typography className={`ml-2`} variant="h2" fontSize={16}>
           {subtitle && subtitle}
         </Typography>
-      </Box>
+      </div>
     </CardActionArea>
   );
 };
