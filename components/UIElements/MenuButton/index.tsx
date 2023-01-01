@@ -1,7 +1,8 @@
-import { Box } from '@mui/system';
-import { IconButton, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import Box from '@mui/system/Box';
+import IconButton from '@mui/material/IconButton';
+import useTheme from '@mui/material/styles/useTheme';
 
 import { IUiState } from '../../../redux/reducers/ui';
 import { RootState } from '../../../redux/store';
@@ -15,10 +16,10 @@ export interface IMenuButtonProps {
   customClasses?: string;
   type?: 'hover' | 'click';
   onClick?: (evt: any) => void;
-  sx: any;
+  style: any;
 }
 
-const MenuButton = ({ customClasses, type = 'hover', onClick, sx }: IMenuButtonProps) => {
+const MenuButton = ({ customClasses, type = 'hover', onClick, style }: IMenuButtonProps) => {
   const { showSidebar } = useSelector((state: RootState): IUiState => state.ui);
   const [checked, setChecked] = useState<boolean>(false);
   const [color, setColor] = useState<string>('');
@@ -42,7 +43,7 @@ const MenuButton = ({ customClasses, type = 'hover', onClick, sx }: IMenuButtonP
         };
 
   return (
-    <Box sx={sx}>
+    <div style={style}>
       <IconButton
         className={`${customClasses}`}
         color="primary"
@@ -51,8 +52,8 @@ const MenuButton = ({ customClasses, type = 'hover', onClick, sx }: IMenuButtonP
         size="large"
         {...menuTrigger}
       >
-        <Box id={`${styles['webapp_cover']}`}>
-          <Box id={`${styles['menu_button']}`}>
+        <div id={`${styles['webapp_cover']}`}>
+          <div id={`${styles['menu_button']}`}>
             <input
               checked={checked || showSidebar}
               id={`${styles['menu_checkbox']}`}
@@ -66,12 +67,12 @@ const MenuButton = ({ customClasses, type = 'hover', onClick, sx }: IMenuButtonP
                 '&:after': { backgroundColor: color },
               }}
             >
-              <Box id={`${styles['menu_text_bar']}`} sx={{ color, backgroundColor: color }} />
+              <div id={`${styles['menu_text_bar']}`} style={{ color, backgroundColor: color }} />
             </Box>
-          </Box>
-        </Box>
+          </div>
+        </div>
       </IconButton>
-    </Box>
+    </div>
   );
 };
 

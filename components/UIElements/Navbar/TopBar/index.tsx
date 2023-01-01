@@ -1,13 +1,3 @@
-// import { Button, MenuItem, Select, IconButton } from '@mui/material';
-// import {
-//   KeyboardArrowDown,
-//   MonetizationOn,
-//   LocationOn,
-//   Female,
-//   Male,
-//   Transgender,
-// } from '@mui/icons-material';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import Button from '@mui/material/Button';

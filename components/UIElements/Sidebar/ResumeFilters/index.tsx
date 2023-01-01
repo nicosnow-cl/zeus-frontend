@@ -1,13 +1,19 @@
-import { Box } from '@mui/system';
 import { Formik } from 'formik';
-import { TextField, Button, Autocomplete, Checkbox, FormControl, Chip } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useEffect, useCallback } from 'react';
+import Autocomplete from '@mui/material/Autocomplete';
+import Box from '@mui/system/Box';
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
+import Chip from '@mui/material/Chip';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
 
 import { AppDispatch, RootState } from '../../../../redux/store';
-import { IUiState, uiActions } from '../../../../redux/reducers/ui';
 import { ladiesAppareance } from '../../../../dummy/ladies-appareance';
 import { ladiesServices } from '../../../../dummy/ladies-services';
+import { uiActions } from '../../../../redux/reducers/ui';
+import IFilters from '../../../../interfaces/states/interface.filters';
 
 const initialFormValues: {
   appareance: { id: number; name: string }[];
@@ -21,11 +27,11 @@ const initialFormValues: {
 
 const ResumeFilters = () => {
   const [formValues, setFormValues] = useState<typeof initialFormValues>(initialFormValues);
-  const { filters } = useSelector((state: RootState): IUiState => state.ui);
+  const userFilters = useSelector((state: RootState): IFilters => state.ui.filters);
   const dispatch = useDispatch<AppDispatch>();
 
   const getUserFilters = useCallback(() => {
-    const { name, services, appareance } = filters;
+    const { name, services, appareance } = userFilters;
 
     const servicesArr = ladiesServices.filter((ladyServices) =>
       services.includes(ladyServices.name),
@@ -39,7 +45,7 @@ const ResumeFilters = () => {
       name,
       services: servicesArr,
     };
-  }, [filters]);
+  }, [userFilters]);
 
   useEffect((): void => setFormValues(getUserFilters()), [getUserFilters]);
 
@@ -57,10 +63,7 @@ const ResumeFilters = () => {
       uiActions.handleApplyFilters({
         appareance: appareanceStrArr,
         name,
-        promotion: filters.promotion,
         services: servicesStrArr,
-        type: filters.type,
-        video: filters.video,
       }),
     );
     dispatch(uiActions.handleToggleSidebar(false));
@@ -84,7 +87,7 @@ const ResumeFilters = () => {
         values,
       }) => (
         <form onSubmit={handleSubmit}>
-          <Box className={`d-flex fd-column`}>
+          <div className={`d-flex fd-column row-gap-3`}>
             <FormControl fullWidth>
               <TextField
                 label={`Nombre`}
@@ -98,62 +101,60 @@ const ResumeFilters = () => {
               />
             </FormControl>
 
-            <Box className={`mt-2`} sx={{ maxWidth: 200 }}>
-              <Autocomplete
-                getOptionLabel={(option) => option.name}
-                isOptionEqualToValue={(option, value) => option.id === value.id}
-                multiple
-                onChange={(evt, value) => setFieldValue('services', value)}
-                options={ladiesServices}
-                renderInput={(params) => (
-                  <TextField {...params} label="Servicios" variant="standard" />
-                )}
-                renderTags={(tagValues, getTagProps) => {
-                  return tagValues.map((option, idx) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <Chip {...getTagProps({ index: idx })} label={option.name} size="small" />
-                  ));
-                }}
-                renderOption={(props, option) => (
-                  <Box component="li" {...props}>
-                    <Checkbox checked={values.services.includes(option)} />
-                    {option.name}
-                  </Box>
-                )}
-                value={values.services}
-              />
-            </Box>
+            <Autocomplete
+              getOptionLabel={(option) => option.name}
+              isOptionEqualToValue={(option, value) => option.id === value.id}
+              multiple
+              onChange={(evt, value) => setFieldValue('services', value)}
+              options={ladiesServices}
+              sx={{ maxWidth: 200 }}
+              renderInput={(params) => (
+                <TextField {...params} label="Servicios" variant="standard" />
+              )}
+              renderTags={(tagValues, getTagProps) => {
+                return tagValues.map((option, idx) => (
+                  // eslint-disable-next-line react/jsx-key
+                  <Chip {...getTagProps({ index: idx })} label={option.name} size="small" />
+                ));
+              }}
+              renderOption={(props, option) => (
+                <Box component="li" {...props}>
+                  <Checkbox checked={values.services.includes(option)} />
+                  {option.name}
+                </Box>
+              )}
+              value={values.services}
+            />
 
-            <Box className={`mt-2`} sx={{ maxWidth: 200 }}>
-              <Autocomplete
-                getOptionLabel={(option) => option.name}
-                isOptionEqualToValue={(option, value) => option.id === value.id}
-                multiple
-                onChange={(evt, value) => setFieldValue('appareance', value)}
-                options={ladiesAppareance}
-                renderInput={(params) => (
-                  <TextField {...params} label="Apariencia" variant="standard" />
-                )}
-                renderTags={(tagValues, getTagProps) => {
-                  return tagValues.map((option, idx) => (
-                    // eslint-disable-next-line react/jsx-key
-                    <Chip {...getTagProps({ index: idx })} label={option.name} size="small" />
-                  ));
-                }}
-                renderOption={(props, option) => (
-                  <Box component="li" {...props}>
-                    <Checkbox checked={values.appareance.includes(option)} />
-                    {option.name}
-                  </Box>
-                )}
-                value={values.appareance}
-              />
-            </Box>
+            <Autocomplete
+              getOptionLabel={(option) => option.name}
+              isOptionEqualToValue={(option, value) => option.id === value.id}
+              multiple
+              onChange={(evt, value) => setFieldValue('appareance', value)}
+              options={ladiesAppareance}
+              sx={{ maxWidth: 200 }}
+              renderInput={(params) => (
+                <TextField {...params} label="Apariencia" variant="standard" />
+              )}
+              renderTags={(tagValues, getTagProps) => {
+                return tagValues.map((option, idx) => (
+                  // eslint-disable-next-line react/jsx-key
+                  <Chip {...getTagProps({ index: idx })} label={option.name} size="small" />
+                ));
+              }}
+              renderOption={(props, option) => (
+                <Box component="li" {...props}>
+                  <Checkbox checked={values.appareance.includes(option)} />
+                  {option.name}
+                </Box>
+              )}
+              value={values.appareance}
+            />
 
             <Button className={`mt-2`} color="secondary" variant="outlined" type="submit">
               Filtrar
             </Button>
-          </Box>
+          </div>
         </form>
       )}
     </Formik>

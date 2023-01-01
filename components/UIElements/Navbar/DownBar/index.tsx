@@ -27,7 +27,7 @@ const DownBar = () => {
     >
       <div className={`wrapper d-flex jc-center`}>
         <Logo navbar={true} backgroundColor={theme.palette.grey[50]} />
-        <MenuButton onClick={handleOpenSidebar} sx={{ marginLeft: 'auto' }} />
+        <MenuButton onClick={handleOpenSidebar} style={{ marginLeft: 'auto' }} />
       </div>
     </div>
   );
