@@ -4,9 +4,9 @@ import {
   useTheme,
 } from '@mui/material';
 
-import ContactSection from '../ContactSection/index';
+// import ContactSection from '../ContactSection/index';
 import DescriptionSection from '../DesciptionSection';
-import HeaderSection from '../HeaderSection';
+// import HeaderSection from '../HeaderSection';
 // import InformationSecion from '../InformationSection';
 import IProfile from '../../../interfaces/states/interface.profile';
 // import MediaSection from '../MediaSection';
@@ -41,12 +41,12 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
           nacionality={profile.nationality}
         />
 
-        <ContactSection
+        {/* <ContactSection
           location={profile.location}
           phoneNumber={profile.phoneNumber}
           price={profile.price}
           rrss={profile.rrss}
-        />
+        /> */}
 
         {/* <Grid container>
           <Grid item xs={12} xl={3}>
