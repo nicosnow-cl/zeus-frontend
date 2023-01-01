@@ -1,4 +1,13 @@
-import { Divider, Grid, Typography, useTheme } from '@mui/material';
+// import {
+//   Divider,
+//   Grid,
+//   Typography,
+//   useTheme
+// } from '@mui/material';
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
+// import useTheme from '@mui/material/styles/useTheme';
 import Image from 'next/image';
 
 import EscortType from '../../../types/type.escort';

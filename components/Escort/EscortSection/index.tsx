@@ -1,15 +1,17 @@
-import { Box } from '@mui/system';
-import {
-  Grid,
-  // useTheme,
-} from '@mui/material';
+// import { Box } from '@mui/system';
+// import {
+//   Grid,
+//   useTheme,
+// } from '@mui/material';
 
-import ContactSection from '../ContactSection/index';
-import DescriptionSection from '../DesciptionSection';
+import Box from '@mui/material/Box';
+
+// import ContactSection from '../ContactSection/index';
+// import DescriptionSection from '../DesciptionSection';
 import HeaderSection from '../HeaderSection';
-import InformationSecion from '../InformationSection';
+// import InformationSecion from '../InformationSection';
 import IProfile from '../../../interfaces/states/interface.profile';
-import MediaSection from '../MediaSection';
+// import MediaSection from '../MediaSection';
 
 export interface IEscortSectionProps {
   profile: IProfile;
