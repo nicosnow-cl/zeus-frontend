@@ -1,5 +1,6 @@
-import { useTheme } from '@mui/material';
+// import { useTheme } from '@mui/material';
 import Head from 'next/head';
+import useTheme from '@mui/material/styles/useTheme';
 
 export interface IMainContainerProps {
   children: React.ReactNode | React.ReactNode[];

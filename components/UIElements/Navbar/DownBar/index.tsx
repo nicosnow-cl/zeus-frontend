@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { useTheme } from '@mui/material';
+import useTheme from '@mui/material/styles/useTheme';
 
 import { AppDispatch } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';

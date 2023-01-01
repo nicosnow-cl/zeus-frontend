@@ -1,9 +1,10 @@
 import type { ReactElement } from 'react';
 
-import EscortSection from '../../components/Escort/EscortSection';
+// import SimpleNavbar from '../../components/UIElements/SimpleNavbar';
 import ContentContainer from '../../components/UIElements/ContentContainer';
+import EscortSection from '../../components/Escort/EscortSection';
 import MainContainer from '../../components/UIElements/MainContainer';
-import SimpleNavbar from '../../components/UIElements/SimpleNavbar';
+import Navbar from '../../components/UIElements/Navbar';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
 
 export const getServerSideProps = async ({ query }: any) => {
@@ -20,7 +21,7 @@ const EscortPage = ({ data }: any) => {
 
 EscortPage.getLayout = (page: ReactElement) => (
   <MainContainer>
-    <SimpleNavbar />
+    <Navbar />
 
     <ContentContainer>{page}</ContentContainer>
   </MainContainer>

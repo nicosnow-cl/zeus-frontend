@@ -1,20 +1,31 @@
-import { Button, MenuItem, Select, IconButton } from '@mui/material';
-import {
-  KeyboardArrowDown,
-  MonetizationOn,
-  LocationOn,
-  Female,
-  Male,
-  Transgender,
-} from '@mui/icons-material';
+// import { Button, MenuItem, Select, IconButton } from '@mui/material';
+// import {
+//   KeyboardArrowDown,
+//   MonetizationOn,
+//   LocationOn,
+//   Female,
+//   Male,
+//   Transgender,
+// } from '@mui/icons-material';
+
 import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import Button from '@mui/material/Button';
+import Female from '@mui/icons-material/Female';
+import IconButton from '@mui/material/IconButton';
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
+import LocationOn from '@mui/icons-material/LocationOn';
+import Male from '@mui/icons-material/Male';
+import MenuItem from '@mui/material/MenuItem';
+import MonetizationOn from '@mui/icons-material/MonetizationOn';
+import Select from '@mui/material/Select';
+import Transgender from '@mui/icons-material/Transgender';
 
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';
 import FakeDropdown from '../../FakeDropdown';
 import getHexToRgb from '../../../../utils/getHexToRgb';
 import styles from './index.module.scss';
-import { useState, useEffect } from 'react';
 
 export interface ITopBarProps {
   backgroundColor?: string;

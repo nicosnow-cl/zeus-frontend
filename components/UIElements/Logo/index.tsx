@@ -1,6 +1,6 @@
-import { FemaleOutlined } from '@mui/icons-material';
-import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import Box from '@mui/system/Box';
+import FemaleOutlined from '@mui/icons-material/FemaleOutlined';
+import Typography from '@mui/material/Typography';
 
 export interface ILogoProps {
   backgroundColor?: string;
