@@ -3,13 +3,13 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
 import homeReducer from './reducers/home';
-import othersReducer from './reducers/others';
 import uiReducer from './reducers/ui';
+import userConfigsReducer from './reducers/userConfigs';
 
 const reducers = combineReducers({
   home: homeReducer,
-  others: othersReducer,
   ui: uiReducer,
+  userConfigs: userConfigsReducer,
 });
 
 const persistedReducer = persistReducer(

@@ -1,10 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+export interface UserConfigsState {
+  show18YearsAdvice: boolean;
+}
+
 const initialState = {
   show18YearsAdvice: true,
 };
 
-const othersReducer = createSlice({
+const userConfigsReducer = createSlice({
   name: 'others',
   initialState,
   reducers: {
@@ -15,5 +19,5 @@ const othersReducer = createSlice({
   extraReducers: (builder): void => {},
 });
 
-export const { actions: othersActions } = othersReducer;
-export default othersReducer.reducer;
+export const { actions: userConfigsActions } = userConfigsReducer;
+export default userConfigsReducer.reducer;
