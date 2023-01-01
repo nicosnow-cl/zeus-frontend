@@ -1,4 +1,3 @@
-import { Box } from '@mui/system';
 import { NextPageWithLayout } from './_app';
 import type { ReactElement } from 'react';
 

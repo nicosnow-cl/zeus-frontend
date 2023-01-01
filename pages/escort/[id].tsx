@@ -1,11 +1,19 @@
+import { NextPageWithLayout } from '../_app';
+import { useSelector } from 'react-redux';
+import dynamic from 'next/dynamic';
 import type { ReactElement } from 'react';
 
-// import SimpleNavbar from '../../components/UIElements/SimpleNavbar';
+import { RootState } from '../../redux/store';
 import ContentContainer from '../../components/UIElements/ContentContainer';
 import EscortSection from '../../components/Escort/EscortSection';
+import Loader from '../../components/Loader';
 import MainContainer from '../../components/UIElements/MainContainer';
-import Navbar from '../../components/UIElements/Navbar';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
+
+const LazyNavbar = dynamic(() => import('../../components/UIElements/Navbar'));
+const LazyMediaDialog = dynamic(() => import('../../components/UIElements/ViewLadyImage'), {
+  loading: Loader,
+});
 
 export const getServerSideProps = async ({ query }: any) => {
   const { id } = query;
@@ -15,13 +23,21 @@ export const getServerSideProps = async ({ query }: any) => {
   return { props: { data: profile || null } };
 };
 
-const EscortPage = ({ data }: any) => {
-  return <EscortSection profile={data} />;
+const EscortPage: NextPageWithLayout = ({ data }: any) => {
+  const showLadyImage = useSelector((state: RootState) => state.ui.showLadyImage);
+
+  return (
+    <>
+      <EscortSection profile={data} />
+
+      {showLadyImage && <LazyMediaDialog />}
+    </>
+  );
 };
 
 EscortPage.getLayout = (page: ReactElement) => (
   <MainContainer>
-    <Navbar />
+    <LazyNavbar />
 
     <ContentContainer>{page}</ContentContainer>
   </MainContainer>
