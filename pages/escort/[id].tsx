@@ -1,5 +1,6 @@
 import type { ReactElement } from 'react';
 
+import { obtainProfileGetServerless } from '../api/obtainProfileServerLess';
 import EscortSection from '../../components/Escort/EscortSection';
 import ContentContainer from '../../components/UIElements/ContentContainer';
 import MainContainer from '../../components/UIElements/MainContainer';
@@ -11,11 +12,10 @@ const EscortPage = ({ data }: any) => {
   return <EscortSection profile={data} />;
 };
 
-export async function getServerSideProps({ query }: any) {
+export async function getServerSideProps({ req, res, query }: any) {
   const { id } = query;
-  console.log({ id });
 
-  const profile = await obtainProfileGet(+id);
+  const profile = await obtainProfileGetServerless(req, res, +id);
   console.log({ profile });
 
   return { props: { data: profile || null } };
