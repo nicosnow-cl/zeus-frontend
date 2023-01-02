@@ -32,7 +32,9 @@ const mapImgVideosToMedia = (videos: IVideo[], images: IImage[]) => {
 const MediaSection = ({ images, videos }: IMediaSetionProps) => {
   const dispatch = useDispatch<AppDispatch>();
 
-  dispatch(homeActions.setMedias(mapImgVideosToMedia(videos, images)));
+  if (images.length || videos.length) {
+    dispatch(homeActions.setMedias(mapImgVideosToMedia(videos, images)));
+  }
 
   const handleOpenLadyImage = () => {
     dispatch(uiActions.handleToggleLadyImage(true));

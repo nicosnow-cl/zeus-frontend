@@ -28,7 +28,7 @@ export const getServerSideProps = async ({ query }: any) => {
 };
 
 const EscortPage: NextPageWithLayout = ({ data }: any) => {
-  const showLadyImage = useSelector((state: RootState) => state.ui.showLadyImage);
+  const showLadyImage = useSelector((state: RootState): boolean => state.ui.showLadyImage);
 
   return (
     <>

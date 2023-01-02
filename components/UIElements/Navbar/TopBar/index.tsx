@@ -16,12 +16,14 @@ import { uiActions } from '../../../../redux/reducers/ui';
 import FakeDropdown from '../../FakeDropdown';
 import getHexToRgb from '../../../../utils/getHexToRgb';
 import styles from './index.module.scss';
+import checkIfIsServer from '../../../../utils/checkIfIsServer';
 
 export interface ITopBarProps {
   backgroundColor?: string;
 }
 
 const genders = ['Mujeres', 'Hombres', 'Trans'];
+const isServer = checkIfIsServer();
 
 const renderValue = (value: string) => {
   switch (value) {
@@ -37,7 +39,7 @@ const renderValue = (value: string) => {
 };
 
 const TopBar = ({ backgroundColor }: ITopBarProps) => {
-  const [yOffset, setYOffset] = useState(window.pageYOffset);
+  const [yOffset, setYOffset] = useState(!isServer ? window.pageYOffset : 0);
   const [visible, setVisible] = useState(true);
   const city = useSelector((state: RootState): string => state.ui.filters.city);
   const dispatch = useDispatch<AppDispatch>();
@@ -45,6 +47,8 @@ const TopBar = ({ backgroundColor }: ITopBarProps) => {
   const backgroundColorRGB = backgroundColor ? getHexToRgb(backgroundColor).join(', ') : undefined;
 
   useEffect(() => {
+    if (isServer) return;
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   });

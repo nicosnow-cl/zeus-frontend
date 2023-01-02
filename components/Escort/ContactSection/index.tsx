@@ -1,13 +1,3 @@
-// import {
-//   AttachMoney,
-//   Instagram,
-//   LocationOn,
-//   PhoneIphone,
-//   WhatsApp,
-//   Facebook,
-//   Twitter,
-// } from '@mui/icons-material';
-
 import AttachMoney from '@mui/icons-material/AttachMoney';
 import Facebook from '@mui/icons-material/Facebook';
 import Instagram from '@mui/icons-material/Instagram';

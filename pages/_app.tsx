@@ -4,8 +4,8 @@ import 'the-new-css-reset/css/reset.css'; // Reset styles
 import { PaletteMode } from '@mui/material/';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import { useMemo, useState } from 'react';
 import { ThemeProvider } from '@mui/material';
+import { useMemo, useState } from 'react';
 import createTheme from '@mui/material/styles/createTheme';
 import NProgress from 'nprogress';
 import Router from 'next/router';

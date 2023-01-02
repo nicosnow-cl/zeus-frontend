@@ -1,26 +1,29 @@
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import useTheme from '@mui/material/styles/useTheme';
+import dynamic from 'next/dynamic';
 
 import ContactSection from '../ContactSection/index';
 import DescriptionSection from '../DesciptionSection';
 import HeaderSection from '../HeaderSection';
 import InformationSecion from '../InformationSection';
 import IProfile from '../../../interfaces/states/interface.profile';
-import MediaSection from '../MediaSection';
+
+const LazyMediaSection = dynamic(() => import('../MediaSection'), { ssr: false });
 
 export interface IEscortSectionProps {
   profile: IProfile;
 }
 
 const EscortSection = ({ profile }: IEscortSectionProps) => {
-  // const theme = useTheme();
+  const theme = useTheme();
 
   return (
     <div style={{ margin: '0 auto' }}>
       <Box
         className={`mt-5 mb-5`}
         sx={{
-          // backgroundColor: theme.palette.grey[100],
+          backgroundColor: theme.palette.grey[100],
           borderRadius: 5,
         }}
       >
@@ -50,7 +53,7 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
             <InformationSecion schedule={profile.schedule} services={profile.services} />
           </Grid>
           <Grid item xs={12} xl={9}>
-            <MediaSection images={profile.images} videos={profile.videos} />
+            <LazyMediaSection images={profile.images} videos={profile.videos} />
           </Grid>
         </Grid>
       </Box>

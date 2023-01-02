@@ -1,13 +1,7 @@
-// import {
-//   Divider,
-//   Grid,
-//   Typography,
-//   useTheme
-// } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-// import useTheme from '@mui/material/styles/useTheme';
+import useTheme from '@mui/material/styles/useTheme';
 import Image from 'next/image';
 
 import EscortType from '../../../types/type.escort';
@@ -23,17 +17,11 @@ export interface IHeaderSectionProps {
 }
 
 const HeaderSection = ({ age, avatarImg, bannerImg, name, type }: IHeaderSectionProps) => {
-  // const theme = useTheme();
+  const theme = useTheme();
 
   return (
     <div>
-      <div
-        className={`w-100 d-flex fd-column jc-between ${styles.banner}`}
-        style={{
-          height: 300,
-          // backgroundImage: `url(${bannerImg})`
-        }}
-      >
+      <div className={`w-100 d-flex fd-column jc-between ${styles.banner}`} style={{ height: 300 }}>
         <Image
           alt="banner-img"
           blurDataURL={
@@ -47,9 +35,7 @@ const HeaderSection = ({ age, avatarImg, bannerImg, name, type }: IHeaderSection
         />
       </div>
 
-      <div
-      // style={{ backgroundColor: theme.palette.grey[200] }}
-      >
+      <div style={{ backgroundColor: theme.palette.grey[200] }}>
         <Grid container spacing={[2, 0]}>
           <Grid
             className={`d-flex jc-center`}
