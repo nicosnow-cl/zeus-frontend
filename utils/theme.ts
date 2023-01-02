@@ -34,7 +34,7 @@ const getTheme = (mode: PaletteMode) => ({
   },
   typography: {
     fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
-    fontSize: 14,
+    fontSize: 12,
     ...(mode === 'light' ? TypographyColorsLight : TypographyColorsDark),
   },
   components: {

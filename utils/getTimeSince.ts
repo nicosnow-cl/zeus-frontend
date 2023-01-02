@@ -14,11 +14,11 @@ const getTimeSince = (current: Date, previous: Date) => {
   } else if (elapsed < msPerDay) {
     return Math.round(elapsed / msPerHour) + ' hrs. atrás';
   } else if (elapsed < msPerMonth) {
-    return 'aproximadamente ' + Math.round(elapsed / msPerDay) + ' días atrás';
+    return 'app. ' + Math.round(elapsed / msPerDay) + ' días atrás';
   } else if (elapsed < msPerYear) {
-    return 'aproximadamente ' + Math.round(elapsed / msPerMonth) + ' meses atrás';
+    return 'app. ' + Math.round(elapsed / msPerMonth) + ' meses atrás';
   } else {
-    return 'aproximadamente ' + Math.round(elapsed / msPerYear) + ' años atrás';
+    return 'app. ' + Math.round(elapsed / msPerYear) + ' años atrás';
   }
 };
 

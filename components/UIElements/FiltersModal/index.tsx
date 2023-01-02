@@ -1,12 +1,13 @@
-import { Dialog, DialogContent } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
 
 import { AppDispatch, RootState } from '../../../redux/store';
-import { IUiState, uiActions } from '../../../redux/reducers/ui';
+import { uiActions } from '../../../redux/reducers/ui';
 import FiltersModalForm from './FiltersModalForm';
 
 const FiltersModal = () => {
-  const { showFiltersModal } = useSelector((state: RootState): IUiState => state.ui);
+  const showFiltersModal = useSelector((state: RootState): boolean => state.ui.showFiltersModal);
   const dispatch = useDispatch<AppDispatch>();
 
   const handleCloseFiltersModal = () => {

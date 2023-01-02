@@ -1,7 +1,7 @@
-import { Grid } from '@mui/material';
 import { useState, useEffect, useRef } from 'react';
-import AnimatedCard from '../../UIElements/AnimatedCard';
+import Grid from '@mui/material/Grid';
 
+import AnimatedCard from '../../UIElements/AnimatedCard';
 import LoadingCard from '../../UIElements/LoadingCard';
 
 export interface ILoadingHomeProps {

@@ -1,28 +1,29 @@
-import {
-  Autocomplete,
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  FormGroup,
-  Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  Switch,
-  TextField,
-  useTheme,
-} from '@mui/material';
-import { Box } from '@mui/system';
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useCallback, useState } from 'react';
+import Autocomplete from '@mui/material/Autocomplete';
+import Box from '@mui/system/Box';
+import Button from '@mui/material/Button';
+import Checkbox from '@mui/material/Checkbox';
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormGroup from '@mui/material/FormGroup';
+import Grid from '@mui/material/Grid';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import Switch from '@mui/material/Switch';
+import TextField from '@mui/material/TextField';
+import useTheme from '@mui/material/styles/useTheme';
 
 import { AppDispatch, RootState } from '../../../../redux/store';
-import { IUiState, uiActions } from '../../../../redux/reducers/ui';
+import { getEscorts } from '../../../../redux/thunks/home/index';
 import { ladiesAppareance } from '../../../../dummy/ladies-appareance';
 import { ladiesServices } from '../../../../dummy/ladies-services';
+import { uiActions } from '../../../../redux/reducers/ui';
+import IFilters from '../../../../interfaces/states/interface.filters';
 import IFiltersForm from '../../../../interfaces/forms/interface.filters-form';
+import IPartialFilters from '../../../../interfaces/objects/interface.partial-filters';
 import regionsStats from '../../../../dummy/regions-stats';
 
 const initialFormValues: IFiltersForm = {
@@ -36,8 +37,8 @@ const initialFormValues: IFiltersForm = {
 };
 
 const FiltersModalForm = () => {
-  const [formValues, setFormValues] = useState<typeof initialFormValues>(initialFormValues);
-  const { filters } = useSelector((state: RootState): IUiState => state.ui);
+  const [formValues, setFormValues] = useState<IFiltersForm>(initialFormValues);
+  const filters = useSelector((state: RootState): IFilters => state.ui.filters);
   const dispatch = useDispatch<AppDispatch>();
   const theme = useTheme();
 
@@ -70,7 +71,7 @@ const FiltersModalForm = () => {
     resetForm({ values: initialFormValues });
   };
 
-  const handleApplyFilters = (values: any) => {
+  const handleApplyFilters = (values: IFiltersForm) => {
     const { name, type, services, appareance, promotion, video, city } = values;
 
     const servicesStrArr = services.map((service: { id: number; name: string }) => service.name);
@@ -78,18 +79,19 @@ const FiltersModalForm = () => {
       (appareance: { id: number; name: string }) => appareance.name,
     );
 
-    dispatch(
-      uiActions.handleApplyFilters({
-        appareance: appareanceStrArr,
-        city,
-        name,
-        promotion,
-        services: servicesStrArr,
-        type,
-        video,
-      }),
-    );
+    const partiaFilters: IPartialFilters = {
+      appareance: appareanceStrArr,
+      city,
+      name,
+      promotion,
+      services: servicesStrArr,
+      type,
+      video,
+    };
+
+    dispatch(uiActions.handleApplyFilters({ ...partiaFilters }));
     dispatch(uiActions.handleToggleFiltersModal(false));
+    dispatch(getEscorts({ ...partiaFilters }));
   };
 
   return (
@@ -130,18 +132,22 @@ const FiltersModalForm = () => {
               <FormControl fullWidth>
                 <InputLabel id="type-selet-label">Tipo</InputLabel>
                 <Select
-                  variant="standard"
-                  size="medium"
+                  id="select-type"
                   label={`Tipo`}
-                  value={values.type}
                   labelId="type-selet-label"
+                  name="type"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  size="medium"
+                  value={values.type}
+                  variant="standard"
                 >
                   <MenuItem value="">
                     <em>Todos</em>
                   </MenuItem>
                   <MenuItem value="VIP">VIP</MenuItem>
-                  <MenuItem value="Premium">Premium</MenuItem>
-                  <MenuItem value="Gold">Gold</MenuItem>
+                  <MenuItem value="PREMIUM">Premium</MenuItem>
+                  <MenuItem value="GOLD">Gold</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

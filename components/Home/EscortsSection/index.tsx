@@ -31,7 +31,7 @@ const EscortsSection = () => {
   // }, []);
 
   useEffect((): void => {
-    dispatch(thunks.getEscorts());
+    !escorts.length && dispatch(thunks.getEscorts());
   }, [dispatch]);
 
   return <ContentSection vip={vip} premium={premium} gold={gold} />;

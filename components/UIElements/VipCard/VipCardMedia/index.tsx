@@ -1,9 +1,12 @@
 import { CardMedia } from '@mui/material';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, memo } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 
 import IVideo from '../../../../interfaces/objects/interface.video';
+import NextImageWithSpinner from '../../NextImageWithSpinner';
 import TabPanel from '../../TabPanel';
+
+const ImgMemo = memo(NextImageWithSpinner);
 
 export interface IVipCardMedia {
   alt?: string;
@@ -45,23 +48,11 @@ const VipCardMedia = ({
   return (
     <>
       {!videosSrc.length ? (
-        <CardMedia
-          alt={`${alt || ''}`}
-          component="img"
-          height={mediaHeight}
-          src={imageSrc}
-          sx={{ objectPosition: 'top' }}
-        />
+        <ImgMemo src={imageSrc} height={mediaHeight} />
       ) : (
         <SwipeableViews axis={'x'} index={!showVideo ? 0 : 1}>
           <TabPanel dir={'ltr'}>
-            <CardMedia
-              alt={`${alt || ''}`}
-              component="img"
-              height={mediaHeight}
-              src={imageSrc}
-              sx={{ objectPosition: 'top' }}
-            />
+            <ImgMemo src={imageSrc} height={mediaHeight} />
           </TabPanel>
           <TabPanel dir={'ltr'}>
             <CardMedia

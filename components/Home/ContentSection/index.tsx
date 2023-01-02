@@ -4,6 +4,7 @@ import { RootState } from '../../../redux/store';
 import CardsSection from '../CardsSection';
 import IEscort from '../../../interfaces/states/interface.escort';
 import LoadingHome from '../LoadingHome';
+import NoCardsFound from '../NoCardsFound';
 
 export interface IContentSectionProps {
   vip: IEscort[];
@@ -14,17 +15,14 @@ export interface IContentSectionProps {
 const ContentSection = ({ vip, premium, gold }: IContentSectionProps) => {
   const isLoadingHome = useSelector((state: RootState): boolean => state.ui.isLoadingHome);
 
+  if (isLoadingHome) return <LoadingHome />;
+  if (vip.length === 0 && premium.length === 0 && gold.length === 0) return <NoCardsFound />;
+
   return (
     <>
-      {!isLoadingHome ? (
-        <>
-          {vip.length && <CardsSection cards={vip} type="VIP" />}
-          {premium.length && <CardsSection cards={premium} type="PREMIUM" />}
-          {gold.length && <CardsSection cards={gold} type="GOLD" />}
-        </>
-      ) : (
-        <LoadingHome />
-      )}
+      {vip.length > 0 && <CardsSection cards={vip} type="VIP" />}
+      {premium.length > 0 && <CardsSection cards={premium} type="PREMIUM" />}
+      {gold.length > 0 && <CardsSection cards={gold} type="GOLD" />}
     </>
   );
 };

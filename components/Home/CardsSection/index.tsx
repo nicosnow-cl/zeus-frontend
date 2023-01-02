@@ -1,5 +1,5 @@
-import { Grid } from '@mui/material';
 import { useRef } from 'react';
+import Grid from '@mui/material/Grid';
 
 import AnimatedCard from '../../UIElements/AnimatedCard';
 import EscortType from '../../../types/type.escort';
