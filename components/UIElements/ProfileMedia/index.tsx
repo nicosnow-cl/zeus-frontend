@@ -1,4 +1,3 @@
-import CardMedia from '@mui/material/CardMedia';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Videocam from '@mui/icons-material/Videocam';
 import Visibility from '@mui/icons-material/Visibility';
@@ -30,14 +29,6 @@ const ProfileMedia = ({ height, onClick, src, type }: IProfileMediaProps) => {
       </div>
 
       {type === 'video' ? (
-        // <CardMedia
-        //   autoPlay
-        //   component={'video'}
-        //   image={src}
-        //   loop
-        //   muted
-        //   sx={{ objectFit: 'cover', objectPosition: 'top', height: '100%' }}
-        // />
         <VideoWithSpinner defaultSrc={src} />
       ) : (
         <NextImageWithSpinner defaultSrc={src} />

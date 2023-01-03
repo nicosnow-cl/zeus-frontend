@@ -1,5 +1,8 @@
-import { CardMedia, Skeleton } from '@mui/material';
-import { useState, SyntheticEvent } from 'react';
+import { useState } from 'react';
+import CardMedia from '@mui/material/CardMedia';
+import Skeleton from '@mui/material/Skeleton';
+import SmartDisplay from '@mui/icons-material/SmartDisplay';
+
 import IconSpinner from '../IconSpinner';
 
 export interface IVideoWithSpinnerProps {
@@ -39,7 +42,7 @@ const VideoWithSpinner = ({
             height="100%"
             style={{ position: 'absolute', transform: 'none' }}
           />
-          <IconSpinner />
+          <IconSpinner icon={<SmartDisplay />} />
         </div>
       )}
     </>
