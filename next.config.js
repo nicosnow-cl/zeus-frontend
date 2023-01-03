@@ -7,12 +7,16 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
-      'picsum.photos',
-      's3.eu-central-1.amazonaws.com',
       'cdn-ea-images.escort-advisor.com',
-      'www.shutterstock.com',
+      'picsum.photos',
+      'pornstarbyface.com',
+      's3.eu-central-1.amazonaws.com',
+      'st2n.depositphotos.com',
+      'st3.depositphotos.com',
+      'st3n.depositphotos.com',
+      'st4n.depositphotos.com',
       'www.peacemakersnetwork.org',
-      'pornstarbyface.com'
+      'www.shutterstock.com',
     ],
   },
   serverRuntimeConfig: {

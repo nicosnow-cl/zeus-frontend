@@ -48,11 +48,11 @@ const VipCardMedia = ({
   return (
     <>
       {!videosSrc.length ? (
-        <ImgMemo src={imageSrc} height={mediaHeight} />
+        <ImgMemo defaultSrc={imageSrc} height={mediaHeight} />
       ) : (
         <SwipeableViews axis={'x'} index={!showVideo ? 0 : 1}>
           <TabPanel dir={'ltr'}>
-            <ImgMemo src={imageSrc} height={mediaHeight} />
+            <ImgMemo defaultSrc={imageSrc} height={mediaHeight} />
           </TabPanel>
           <TabPanel dir={'ltr'}>
             <CardMedia

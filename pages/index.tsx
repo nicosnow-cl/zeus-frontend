@@ -5,7 +5,6 @@ import checkIfIsServer from '../utils/checkIfIsServer';
 import ContentContainer from '../components/UIElements/ContentContainer';
 import EscortsSection from '../components/Home/EscortsSection';
 import FiltersModal from '../components/UIElements/FiltersModal';
-import LadyProfile from '../components/UIElements/LadyProfile';
 import MainContainer from '../components/UIElements/MainContainer';
 import Navbar from '../components/UIElements/Navbar';
 import PageFilters from '../components/UIElements/PageFilters';
@@ -30,7 +29,6 @@ const Home: NextPageWithLayout = () => {
       <div>
         {!isServer && <RegionsModal />}
         <FiltersModal />
-        <LadyProfile />
         <MediaDialog />
         <ViewLadyStory />
       </div>
