@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
-import Skeleton from '@mui/material/Skeleton';
 import ImageIcon from '@mui/icons-material/Image';
+import Skeleton from '@mui/material/Skeleton';
 
 import IconSpinner from '../IconSpinner';
 import getRandomNumber from '../../../utils/getRandomNumber';
@@ -30,22 +30,27 @@ const NextImageWithSpinner = ({
 
   return (
     <>
-      <div hidden={!isLoading} style={{ ...style, height }}>
-        <Skeleton width="100%" height="100%" style={{ position: 'absolute', transform: 'none' }} />
-        <IconSpinner icon={<ImageIcon />} />
-      </div>
+      <Image
+        alt={alt}
+        fill
+        hidden={isLoading}
+        onError={handleError}
+        onLoadingComplete={() => setIsLoading(false)}
+        quality={50}
+        src={src}
+        style={{ ...style, objectFit }}
+      />
 
-      <div style={{ height: isLoading ? 0 : height, position: 'relative' }}>
-        <Image
-          alt={alt}
-          fill
-          onError={handleError}
-          onLoadingComplete={() => setIsLoading(false)}
-          quality={50}
-          src={src}
-          style={{ ...style, objectFit }}
-        />
-      </div>
+      {isLoading && (
+        <div style={{ height: height || '100%' }}>
+          <Skeleton
+            width="100%"
+            height="100%"
+            style={{ position: 'absolute', transform: 'none' }}
+          />
+          <IconSpinner icon={<ImageIcon />} />
+        </div>
+      )}
     </>
   );
 };

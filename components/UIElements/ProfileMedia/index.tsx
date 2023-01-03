@@ -1,9 +1,11 @@
-import CardActionArea from '@mui/material/CardActionArea';
 import CardMedia from '@mui/material/CardMedia';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Videocam from '@mui/icons-material/Videocam';
+import Visibility from '@mui/icons-material/Visibility';
 
 import NextImageWithSpinner from '../NextImageWithSpinner';
+import styles from './index.module.scss';
+import VideoWithSpinner from '../VideoWithSpinner';
 
 export interface IProfileMediaProps {
   height?: number;
@@ -12,38 +14,35 @@ export interface IProfileMediaProps {
   type: 'img' | 'video';
 }
 
-const DEFAULT_MEDIA_HEIGHT = 300;
+const ProfileMedia = ({ height, onClick, src, type }: IProfileMediaProps) => {
+  const containerStyle = height
+    ? { height: `${height}px`, borderRadius: '12px' }
+    : { borderRadius: '12px' };
 
-const ProfileMedia = ({
-  height = DEFAULT_MEDIA_HEIGHT,
-  onClick,
-  src,
-  type,
-}: IProfileMediaProps) => {
   return (
-    <CardActionArea sx={{ borderRadius: 3 }} onClick={onClick}>
-      <div
-        className={`m-2`}
-        style={{
-          position: 'absolute',
-          right: 0,
-          zIndex: 3,
-        }}
-      >
+    <div className={`pointer ${styles.mediaContainer}`} onClick={onClick} style={containerStyle}>
+      <div className={`d-flex jc-center ai-center ${styles.hoverDiv}`}>
+        <Visibility />
+      </div>
+
+      <div className={`m-2 ${styles.chip}`}>
         {type === 'video' ? <Videocam color="action" /> : <PhotoCamera color="action" />}
       </div>
 
       {type === 'video' ? (
-        <CardMedia
-          component={'video'}
-          height={`${height}px`}
-          image={src}
-          sx={{ borderRadius: 3, objectFit: 'cover', objectPosition: 'top' }}
-        />
+        // <CardMedia
+        //   autoPlay
+        //   component={'video'}
+        //   image={src}
+        //   loop
+        //   muted
+        //   sx={{ objectFit: 'cover', objectPosition: 'top', height: '100%' }}
+        // />
+        <VideoWithSpinner defaultSrc={src} />
       ) : (
-        <NextImageWithSpinner defaultSrc={src} height={height} style={{ borderRadius: '12px' }} />
+        <NextImageWithSpinner defaultSrc={src} />
       )}
-    </CardActionArea>
+    </div>
   );
 };
 
