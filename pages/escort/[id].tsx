@@ -2,17 +2,20 @@ import { memo } from 'react';
 import { NextPageWithLayout } from '../_app';
 import { useSelector } from 'react-redux';
 import dynamic from 'next/dynamic';
-import Skeleton from '@mui/material/Skeleton';
 import type { ReactElement } from 'react';
 
 import { RootState } from '../../redux/store';
 import ContentContainer from '../../components/UIElements/ContentContainer';
 import EscortSection from '../../components/Escort/EscortSection';
 import MainContainer from '../../components/UIElements/MainContainer';
-import Navbar from '../../components/UIElements/Navbar';
+// import Navbar from '../../components/UIElements/Navbar';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
 
 const EscortSectionMemo = memo(EscortSection);
+
+const LazyNavbar = dynamic(() => import('../../components/UIElements/Navbar'), {
+  ssr: false,
+});
 
 const LazyMediaDialog = dynamic(() => import('../../components/UIElements/MediaDialog'), {
   ssr: false,
@@ -40,7 +43,7 @@ const EscortPage: NextPageWithLayout = ({ data }: any) => {
 
 EscortPage.getLayout = (page: ReactElement) => (
   <MainContainer>
-    <Navbar />
+    <LazyNavbar />
 
     <ContentContainer>{page}</ContentContainer>
   </MainContainer>
