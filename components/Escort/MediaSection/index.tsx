@@ -36,18 +36,29 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
     dispatch(homeActions.setMedias(mapImgVideosToMedia(videos, images)));
   }
 
-  const handleOpenLadyImage = () => {
+  const handleOpenLadyImage = (idx: number) => {
+    dispatch(uiActions.handleApplyProfileMedia(idx));
     dispatch(uiActions.handleToggleLadyImage(true));
   };
 
   return (
     <div className={`p-5 ${styles.mediaContainer}`}>
       {videos.map((video, idx) => (
-        <ProfileMedia key={idx} onClick={handleOpenLadyImage} src={video.mp4} type={'video'} />
+        <ProfileMedia
+          key={idx}
+          onClick={() => handleOpenLadyImage(idx)}
+          src={video.mp4}
+          type={'video'}
+        />
       ))}
 
       {images.map((src, idx) => (
-        <ProfileMedia key={idx} onClick={handleOpenLadyImage} src={src.lq} type={'img'} />
+        <ProfileMedia
+          key={idx}
+          onClick={() => handleOpenLadyImage(videos.length + idx)}
+          src={src.lq}
+          type={'img'}
+        />
       ))}
     </div>
   );

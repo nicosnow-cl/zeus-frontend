@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import { useRouter } from 'next/router';
 import useTheme from '@mui/material/styles/useTheme';
 
 import { AppDispatch } from '../../../../redux/store';
@@ -6,8 +7,12 @@ import { uiActions } from '../../../../redux/reducers/ui';
 import getHexToRgb from '../../../../utils/getHexToRgb';
 import Logo from '../../Logo';
 import MenuButton from '../../MenuButton';
+import NavLinks from '../NavLinks/index';
+
+const links: Array<{ label: string; href: string }> = [{ label: 'Inicio', href: '/' }];
 
 const DownBar = () => {
+  const router = useRouter();
   const theme = useTheme();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -26,6 +31,7 @@ const DownBar = () => {
       }}
     >
       <div className={`wrapper d-flex jc-center`}>
+        {router.pathname !== '/' && <NavLinks activePath={router.pathname} links={links} />}
         <Logo navbar={true} backgroundColor={theme.palette.grey[50]} />
         <MenuButton onClick={handleOpenSidebar} style={{ marginLeft: 'auto' }} />
       </div>

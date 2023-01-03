@@ -13,7 +13,6 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { uiActions } from '../../../redux/reducers/ui';
 import getRandomNumber from '../../../utils/getRandomNumber';
 import IMedia from '../../../interfaces/objects/interface.media';
-import SimpleSpinner from '../SimpleSpinner';
 import styles from './index.module.scss';
 
 const ERROR_IMAGES = [
@@ -50,7 +49,8 @@ const handleError = (evt: React.SyntheticEvent<HTMLImageElement, Event>) => {
 };
 
 const MediaDialog = () => {
-  const [mediaIdx, setMediaIdx] = useState<number>(0);
+  const idx = useSelector((state: RootState): number => state.ui.actualProfileMedia);
+  const [mediaIdx, setMediaIdx] = useState<number>(idx);
   const medias = useSelector((state: RootState): IMedia[] => state.home.medias);
   const showLadyImage = useSelector((state: RootState): boolean => state.ui.showLadyImage);
   const dispatch = useDispatch<AppDispatch>();
@@ -130,9 +130,8 @@ const MediaDialog = () => {
             img: (
               <div className={`w-100 h-100`} style={{ display: 'grid' }}>
                 <LazyLoadImage
-                  src={actualMedia.img?.hq}
-                  placeholder={<SimpleSpinner />}
                   onError={handleError}
+                  src={actualMedia.img?.hq}
                   style={{ maxWidth: '100%', maxHeight: '100vh', margin: 'auto' }}
                 />
               </div>

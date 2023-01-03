@@ -4,6 +4,7 @@ import IFilters from '../../../interfaces/states/interface.filters';
 import IPartialFilters from '../../../interfaces/objects/interface.partial-filters';
 
 export interface IUiState {
+  actualProfileMedia: number;
   filters: IFilters;
   isLoadingHome: boolean;
   isLoadingStories: boolean;
@@ -16,6 +17,7 @@ export interface IUiState {
 }
 
 const initialState: IUiState = {
+  actualProfileMedia: 0,
   filters: {
     appareance: [],
     city: 'Santiago',
@@ -39,6 +41,9 @@ const uiReducer = createSlice({
   name: 'ui',
   initialState,
   reducers: {
+    handleApplyProfileMedia: (state, action: PayloadAction<number>) => {
+      state.actualProfileMedia = action.payload;
+    },
     handleApplyFilters: (state, action: PayloadAction<IPartialFilters>) => {
       state.filters = { ...state.filters, ...action.payload };
     },
