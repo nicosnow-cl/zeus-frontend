@@ -1,47 +1,20 @@
-import { Button, Chip, IconButton, Typography, useTheme } from '@mui/material';
-import { Facebook, Instagram, LocationOn, Twitter, WhatsApp } from '@mui/icons-material';
+import Button from '@mui/material/Button';
+import Chip from '@mui/material/Chip';
+import LocationOn from '@mui/icons-material/LocationOn';
+import Typography from '@mui/material/Typography';
+import useTheme from '@mui/material/styles/useTheme';
 
 import formatNumberToString from '../../../../utils/formatNumberToString';
 import ILocation from '../../../../interfaces/objects/interface.location';
 import IRrSs from '../../../../interfaces/objects/interface.rrss';
 import styles from './index.module.scss';
+import RrSsButton from '../../RrSsButton';
 
 export interface IVipCardFooter {
   location: ILocation;
   price: number;
   rrss?: IRrSs[];
 }
-
-const getRRSSButton = (rrss: IRrSs, color: string) => {
-  switch (rrss.type) {
-    case 'facebook':
-      return (
-        <IconButton className={`${styles.btn}`} sx={{ color }}>
-          <Facebook />
-        </IconButton>
-      );
-    case 'instagram':
-      return (
-        <IconButton className={`${styles.btn}`} sx={{ color }}>
-          <Instagram />
-        </IconButton>
-      );
-    case 'twitter':
-      return (
-        <IconButton className={`${styles.btn}`} sx={{ color }}>
-          <Twitter />
-        </IconButton>
-      );
-    case 'whatsapp':
-      return (
-        <IconButton className={`${styles.btn}`} sx={{ color }}>
-          <WhatsApp />
-        </IconButton>
-      );
-    default:
-      return <></>;
-  }
-};
 
 const VipCardFooter = ({ location, price, rrss = [] }: IVipCardFooter) => {
   const theme = useTheme();
@@ -56,9 +29,7 @@ const VipCardFooter = ({ location, price, rrss = [] }: IVipCardFooter) => {
         <Typography variant="body2">{location.name}</Typography>
       </Button>
 
-      {rrss.length > 0 && (
-        <div>{rrss.map((rrss) => getRRSSButton(rrss, theme.palette.grey[900]))}</div>
-      )}
+      {rrss.length > 0 && <RrSsButton rrss={rrss} />}
 
       <Chip
         label={`$${formatNumberToString(price)} - 1h`}
