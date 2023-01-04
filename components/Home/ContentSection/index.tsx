@@ -21,8 +21,8 @@ const ContentSection = ({ vip, premium, gold }: IContentSectionProps) => {
   return (
     <>
       {vip.length > 0 && <CardsSection cards={vip} type="VIP" />}
-      {premium.length > 0 && <CardsSection cards={premium} type="PREMIUM" />}
-      {gold.length > 0 && <CardsSection cards={gold} type="GOLD" />}
+      {/* {premium.length > 0 && <CardsSection cards={premium} type="PREMIUM" />} */}
+      {/* {gold.length > 0 && <CardsSection cards={gold} type="GOLD" />} */}
     </>
   );
 };

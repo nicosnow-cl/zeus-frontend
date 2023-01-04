@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useMemo } from 'react';
 import { useTransition, a } from '@react-spring/web';
 import shuffle from 'lodash/shuffle';
+import useMeasure from 'react-use-measure';
 
 import { AppDispatch } from '../../../redux/store';
 import { homeActions } from '../../../redux/reducers/home';
@@ -12,8 +13,7 @@ import IMedia from '../../../interfaces/objects/interface.media';
 import IVideo from '../../../interfaces/objects/interface.video';
 import ProfileMedia from '../../UIElements/ProfileMedia';
 import styles from './index.module.scss';
-import useMeasure from 'react-use-measure';
-import useMedia from '../../../hooks/useMedia';
+import useMediaWithEvt from '../../../hooks/useMediaWithEvt';
 
 export interface IMediaSetionProps {
   images: IImage[];
@@ -40,7 +40,7 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
   const [containerRef, { width }] = useMeasure();
   const dispatch = useDispatch<AppDispatch>();
 
-  const columns = useMedia(
+  const columns = useMediaWithEvt(
     ['(min-width: 1500px)', '(min-width: 1000px)', '(min-width: 600px)'],
     [5, 3, 2],
     1,

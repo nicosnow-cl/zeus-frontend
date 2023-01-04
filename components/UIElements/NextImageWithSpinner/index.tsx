@@ -39,6 +39,9 @@ const NextImageWithSpinner = ({
         quality={50}
         src={src}
         style={{ ...style, objectFit }}
+        sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
       />
 
       {isLoading && (

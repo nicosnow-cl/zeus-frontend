@@ -1,6 +1,8 @@
-import { Card, CardActionArea, useTheme } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import useTheme from '@mui/material/styles/useTheme';
 
 import IEscort from '../../../interfaces/states/interface.escort';
 import styles from './index.module.scss';
@@ -11,9 +13,10 @@ import VipCardMedia from './VipCardMedia';
 export interface IVipCardProps {
   data: IEscort;
   style?: any;
+  ref?: any;
 }
 
-const VipCard = ({ data, style }: IVipCardProps) => {
+const VipCard = ({ data, style, ref }: IVipCardProps) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
   const router = useRouter();
   const theme = useTheme();
@@ -38,6 +41,7 @@ const VipCard = ({ data, style }: IVipCardProps) => {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
       sx={cardSx()}
+      ref={ref}
     >
       <CardActionArea onClick={handleClickCard}>
         <VipCardMedia

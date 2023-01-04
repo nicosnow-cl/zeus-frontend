@@ -28,9 +28,12 @@ const VipCardMedia = ({
 }: IVipCardMedia) => {
   const [showVideo, setShowVideo] = useState<boolean>(false);
   const [videoIdx, setVideoIdx] = useState<number>(0);
+  const [wasHovered, setWasHovered] = useState<boolean>(false);
 
   useEffect(() => {
     if (!videosSrc.length) return;
+
+    if (isHovering && !wasHovered) setWasHovered(true);
 
     let timeout: NodeJS.Timeout | null = null;
 
@@ -48,23 +51,31 @@ const VipCardMedia = ({
   return (
     <>
       {!videosSrc.length ? (
-        <ImgMemo defaultSrc={imageSrc} height={mediaHeight} />
+        <div style={{ height: mediaHeight, position: 'relative' }}>
+          <ImgMemo alt={alt} defaultSrc={imageSrc} />
+        </div>
       ) : (
         <SwipeableViews axis={'x'} index={!showVideo ? 0 : 1}>
           <TabPanel dir={'ltr'}>
-            <ImgMemo defaultSrc={imageSrc} height={mediaHeight} />
+            <div style={{ height: mediaHeight, position: 'relative' }}>
+              <ImgMemo alt={alt} defaultSrc={imageSrc} height={mediaHeight} />
+            </div>
           </TabPanel>
           <TabPanel dir={'ltr'}>
-            <CardMedia
-              autoPlay={true}
-              component="video"
-              height={mediaHeight}
-              loop={videosSrc.length < 1 ? true : false}
-              muted={true}
-              onEnded={() => setVideoIdx((prev) => (prev + 1) % videosSrc.length)}
-              src={videosSrc[videoIdx].mp4}
-              sx={{ objectFit: 'cover', objectPosition: 'top' }}
-            />
+            <div style={{ height: mediaHeight, position: 'relative' }}>
+              {wasHovered && (
+                <CardMedia
+                  autoPlay={true}
+                  component="video"
+                  height={mediaHeight}
+                  loop={videosSrc.length < 1 ? true : false}
+                  muted={true}
+                  onEnded={() => setVideoIdx((prev) => (prev + 1) % videosSrc.length)}
+                  src={videosSrc[videoIdx].mp4}
+                  sx={{ objectFit: 'cover', objectPosition: 'top' }}
+                />
+              )}
+            </div>
           </TabPanel>
         </SwipeableViews>
       )}

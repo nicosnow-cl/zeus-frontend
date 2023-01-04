@@ -1,6 +1,5 @@
-import { KeyboardArrowDown } from '@mui/icons-material';
-import { Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import KeyboardArrowDown from '@mui/icons-material/KeyboardArrowDown';
+import Typography from '@mui/material/Typography';
 
 import styles from './index.module.scss';
 
@@ -13,15 +12,15 @@ export interface IFakeDropdownProps {
 
 const FakeDropdown = ({ label, width, height, onClick }: IFakeDropdownProps) => {
   return (
-    <Box
+    <div
       className={`d-flex jc-between ai-center pointer ${styles.fakeDropdown}`}
-      sx={{ width, height }}
       onClick={onClick}
+      style={{ width, height }}
     >
       <Typography color="white">{label}</Typography>
 
       <KeyboardArrowDown />
-    </Box>
+    </div>
   );
 };
 
