@@ -7,7 +7,7 @@ import GoldCard from '../../UIElements/GoldCard';
 import IEscort from '../../../interfaces/states/interface.escort';
 import PremiumCard from '../../UIElements/PremiumCard';
 import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
-import VipCard from '../../UIElements/VipCard';
+import VipPremiumCard from '../../UIElements/VipCard';
 
 export interface ICardsSectionProps {
   cards: IEscort[];
@@ -32,7 +32,7 @@ const CardsSection = ({ cards, type }: ICardsSectionProps) => {
               <AnimatedCard delay={0.35 * idx}>
                 {
                   {
-                    VIP: <VipCard data={data} />,
+                    VIP: <VipPremiumCard data={data} />,
                     PREMIUM: <PremiumCard data={data} />,
                     GOLD: <GoldCard data={data} />,
                   }[type]

@@ -25,6 +25,7 @@ const NextImageWithSpinner = ({
   const [src, setSrc] = useState<string>(defaultSrc);
 
   const handleError = (evt: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    console.log('Error loading image');
     setSrc(`/profile-pics/demo-${getRandomNumber(1, 9)}.jpg`);
   };
 
@@ -35,7 +36,10 @@ const NextImageWithSpinner = ({
         fill
         hidden={isLoading}
         onError={handleError}
-        onLoadingComplete={() => setIsLoading(false)}
+        onLoadingComplete={() => {
+          console.log('Stop loading');
+          setIsLoading(false);
+        }}
         quality={50}
         src={src}
         style={{ ...style, objectFit }}

@@ -1,5 +1,4 @@
-import { CardMedia } from '@mui/material';
-
+import NextImage from '../../NextImage';
 export interface IGoldCardMedia {
   alt?: string;
   imageSrc: string;
@@ -10,13 +9,9 @@ const GOLD_MEDIA_HEIGHT = 400;
 
 const GoldCardMedia = ({ alt, imageSrc, mediaHeight = GOLD_MEDIA_HEIGHT }: IGoldCardMedia) => {
   return (
-    <CardMedia
-      alt={`${alt || ''}`}
-      component="img"
-      height={mediaHeight}
-      src={imageSrc}
-      sx={{ objectPosition: 'top' }}
-    />
+    <div style={{ height: mediaHeight, position: 'relative' }}>
+      <NextImage alt={alt} defaultSrc={imageSrc} />
+    </div>
   );
 };
 

@@ -11,11 +11,11 @@ import WhatsApp from '@mui/icons-material/WhatsApp';
 import IRrSs from '../../../interfaces/objects/interface.rrss';
 import styles from './index.module.scss';
 
-export interface IRrSsButtonProps {
+export interface IRrssMenuButtonProps {
   rrss: IRrSs[];
 }
 
-const getRRSSButton = (rrss: IRrSs, color: string) => {
+export const getRrssButton = (rrss: IRrSs, color: string) => {
   switch (rrss.type) {
     case 'facebook':
       return (
@@ -46,7 +46,7 @@ const getRRSSButton = (rrss: IRrSs, color: string) => {
   }
 };
 
-const RrSsButton = ({ rrss }: IRrSsButtonProps) => {
+const RrssMenuButton = ({ rrss }: IRrssMenuButtonProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const theme = useTheme();
 
@@ -101,10 +101,10 @@ const RrSsButton = ({ rrss }: IRrSsButtonProps) => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        {rrss.map((rrss) => getRRSSButton(rrss, theme.palette.grey[900]))}
+        {rrss.map((rrss) => getRrssButton(rrss, theme.palette.grey[900]))}
       </Menu>
     </div>
   );
 };
 
-export default RrSsButton;
+export default RrssMenuButton;

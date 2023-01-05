@@ -1,6 +1,8 @@
-import { Card, CardActionArea, useTheme } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import useTheme from '@mui/material/styles/useTheme';
 
 import GoldCardContent from './GoldCardContent';
 import GoldCardMedia from './GoldCardMedia';

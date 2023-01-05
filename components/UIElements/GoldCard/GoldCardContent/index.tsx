@@ -1,5 +1,8 @@
-import { Chip, Typography, useTheme } from '@mui/material';
-import { Favorite, Verified } from '@mui/icons-material';
+import Chip from '@mui/material/Chip';
+import Favorite from '@mui/icons-material/Favorite';
+import Typography from '@mui/material/Typography';
+import useTheme from '@mui/material/styles/useTheme';
+import Verified from '@mui/icons-material/Verified';
 
 import abbreviateNumber from '../../../../helpers/abbreviateNumber';
 import formatNumberToString from '../../../../helpers/formatNumberToString';

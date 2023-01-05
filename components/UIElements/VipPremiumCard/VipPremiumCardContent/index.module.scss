@@ -9,12 +9,21 @@
   text-shadow: 0 0 3px #000 !important;
 }
 
-.headerChip {
+.headerChipVip {
   background-color: rgba($vip-main, 0.6) !important;
 }
 
-.serviceChip {
+.serviceChipVip {
   background-color: rgba($vip-main, 0.6) !important;
+  font-size: 10px !important;
+}
+
+.headerChipPremium {
+  background-color: rgba($premium-main, 0.6) !important;
+}
+
+.serviceChipPremium {
+  background-color: rgba($premium-main, 0.6) !important;
   font-size: 10px !important;
 }
 

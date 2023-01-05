@@ -1,10 +1,13 @@
 import { useTransition, a } from '@react-spring/web';
+import { memo } from 'react';
 
 import { IGridItem } from '../../../interfaces/objects/interface.grid-data';
 import EscortType from '../../../types/type.escort';
 import GoldCard from '../GoldCard';
-import PremiumCard from '../PremiumCard';
-import VipCard from '../VipCard';
+import VipPremiumCard from '../VipPremiumCard';
+
+const VipPremiumCardMemo = memo(VipPremiumCard);
+const GoldCardMemo = memo(GoldCard);
 
 export interface IGridTransitionProps {
   items: readonly IGridItem[] | IGridItem[];
@@ -49,9 +52,9 @@ const GridTransition = ({
     <a.div key={item.id} style={style}>
       {
         {
-          VIP: <VipCard data={item.data} />,
-          PREMIUM: <PremiumCard data={item.data} />,
-          GOLD: <GoldCard data={item.data} />,
+          VIP: <VipPremiumCardMemo data={item.data} />,
+          PREMIUM: <VipPremiumCardMemo data={item.data} />,
+          GOLD: <GoldCardMemo data={item.data} />,
         }[item.data.type as EscortType]
       }
     </a.div>

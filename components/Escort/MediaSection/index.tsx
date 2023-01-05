@@ -11,6 +11,7 @@ import getRandomNumber from '../../../helpers/getRandomNumber';
 import IImage from '../../../interfaces/objects/interface.image';
 import IMedia from '../../../interfaces/objects/interface.media';
 import IVideo from '../../../interfaces/objects/interface.video';
+import mapImgsAndVideosToMedias from '../../../helpers/mapImgsAndVideosToMedias';
 import ProfileMedia from '../../UIElements/ProfileMedia';
 import styles from './index.module.scss';
 import useMediaWithEvt from '../../../hooks/useMediaWithEvt';
@@ -19,22 +20,6 @@ export interface IMediaSetionProps {
   images: IImage[];
   videos: IVideo[];
 }
-
-const mapImgVideosToMedia = (videos: IVideo[], images: IImage[]) => {
-  const videosMedia: IMedia[] = videos.map((video, idx) => ({
-    id: idx,
-    type: 'video',
-    video,
-  }));
-
-  const imagesMedia: IMedia[] = images.map((img, idx) => ({
-    id: idx + videosMedia.length,
-    type: 'img',
-    img,
-  }));
-
-  return [...videosMedia, ...imagesMedia];
-};
 
 const MediaSection = ({ images, videos }: IMediaSetionProps) => {
   const [containerRef, { width }] = useMeasure({ offsetSize: true });
@@ -45,7 +30,7 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
     [5, 3, 2],
     1,
   );
-  const items: IMedia[] = useMemo(() => mapImgVideosToMedia(videos, images), [images, videos]);
+  const items: IMedia[] = useMemo(() => mapImgsAndVideosToMedias(videos, images), [images, videos]);
 
   const [heights, gridItems] = useMemo(() => {
     const heights = new Array(columns).fill(0);
@@ -79,7 +64,7 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
   };
 
   if (items.length) {
-    dispatch(homeActions.setMedias(mapImgVideosToMedia(videos, images)));
+    dispatch(homeActions.setMedias(mapImgsAndVideosToMedias(videos, images)));
   }
 
   return (
