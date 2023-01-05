@@ -7,7 +7,7 @@ import useMeasure from 'react-use-measure';
 import { AppDispatch } from '../../../redux/store';
 import { homeActions } from '../../../redux/reducers/home';
 import { uiActions } from '../../../redux/reducers/ui';
-import getRandomNumber from '../../../utils/getRandomNumber';
+import getRandomNumber from '../../../helpers/getRandomNumber';
 import IImage from '../../../interfaces/objects/interface.image';
 import IMedia from '../../../interfaces/objects/interface.media';
 import IVideo from '../../../interfaces/objects/interface.video';

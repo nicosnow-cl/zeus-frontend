@@ -1,6 +1,6 @@
 import api from '../';
 
-import sleep from '../../utils/sleep';
+import sleep from '../../helpers/sleep';
 import IStory from '../../interfaces/states/interface.story';
 import stories from '../../dummy/stories';
 

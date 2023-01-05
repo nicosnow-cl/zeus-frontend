@@ -13,11 +13,11 @@ import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
 import type { ReactElement, ReactNode } from 'react';
 
-import checkIfIsServer from '../utils/checkIfIsServer';
-import getTheme from '../utils/theme';
+import checkIfIsServer from '../helpers/checkIfIsServer';
+import getTheme from '../helpers/theme';
 import Loader from '../components/Loader';
 import store, { persistor } from '../redux/store';
-import triggerThemeModeChange from '../utils/triggerThemeModeChange';
+import triggerThemeModeChange from '../helpers/triggerThemeModeChange';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;

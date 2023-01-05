@@ -8,6 +8,7 @@ import { IUiState, uiActions } from '../../../redux/reducers/ui';
 import regionsStats from '../../../dummy/regions-stats';
 import RegionInfo from './RegionInfo';
 import IRegionStats from '../../../interfaces/objects/interface.region-stats';
+import IFilters from '../../../interfaces/states/interface.filters';
 
 interface IRegionPonderation {
   regionId: number;
@@ -34,7 +35,8 @@ const ponderateRegions = (): IRegionPonderation[] => {
 };
 
 const RegionsModal = () => {
-  const { showRegionModal, filters } = useSelector((state: RootState): IUiState => state.ui);
+  const showRegionModal = useSelector((state: RootState): boolean => state.ui.showRegionModal);
+  const filters = useSelector((state: RootState): IFilters => state.ui.filters);
   const [regionIdSelected, setRegionIdSelected] = useState<number | null>(null);
   const [regionOnHover, setRegionOnHover] = useState<IRegionStats | null>(null);
   const [regionsPonderated, setRegionsPonderated] = useState<IRegionPonderation[]>([]);

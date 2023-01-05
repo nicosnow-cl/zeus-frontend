@@ -2,8 +2,8 @@ import { Chip, Tooltip, Typography } from '@mui/material';
 import { Favorite, Verified } from '@mui/icons-material';
 
 import styles from './index.module.scss';
-import abbreviateNumber from '../../../../utils/abbreviateNumber';
-import shortText from '../../../../utils/shortText';
+import abbreviateNumber from '../../../../helpers/abbreviateNumber';
+import shortText from '../../../../helpers/shortText';
 
 export interface IVipCardContent {
   age: number;

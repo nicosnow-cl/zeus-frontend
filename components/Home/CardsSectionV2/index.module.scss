@@ -1,0 +1,11 @@
+.cardsContainer > div {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.cardsContainer > div > div > div {
+  position: absolute;
+  will-change: transform, width, height, opacity, z-index;
+  padding: 7px;
+}

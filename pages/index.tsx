@@ -1,7 +1,7 @@
 import { NextPageWithLayout } from './_app';
 import type { ReactElement } from 'react';
 
-import checkIfIsServer from '../utils/checkIfIsServer';
+import checkIfIsServer from '../helpers/checkIfIsServer';
 import ContentContainer from '../components/UIElements/ContentContainer';
 import EscortsSection from '../components/Home/EscortsSection';
 import FiltersModal from '../components/UIElements/FiltersModal';

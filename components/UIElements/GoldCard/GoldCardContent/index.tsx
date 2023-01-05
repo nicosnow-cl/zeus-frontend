@@ -1,8 +1,8 @@
 import { Chip, Typography, useTheme } from '@mui/material';
 import { Favorite, Verified } from '@mui/icons-material';
 
-import abbreviateNumber from '../../../../utils/abbreviateNumber';
-import formatNumberToString from '../../../../utils/formatNumberToString';
+import abbreviateNumber from '../../../../helpers/abbreviateNumber';
+import formatNumberToString from '../../../../helpers/formatNumberToString';
 import styles from './index.module.scss';
 
 export interface IGoldCardContentProps {

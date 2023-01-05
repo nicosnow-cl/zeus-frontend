@@ -3,10 +3,9 @@ import { Box } from '@mui/system';
 import { Dialog, IconButton } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState, useCallback } from 'react';
-import getConfig from 'next/config';
 
 import { AppDispatch, RootState } from '../../../redux/store';
-import { IUiState, uiActions } from '../../../redux/reducers/ui';
+import { uiActions } from '../../../redux/reducers/ui';
 import BlurBackground from './BlurBackground';
 import StoryContainer from './StoryContainer/index';
 import styles from './index.module.scss';
@@ -26,7 +25,7 @@ const storiesSrc = [
 
 const ViewLadyStory = () => {
   const [videoIdx, setVideoIdx] = useState<number>(0);
-  const { showLadiesStories } = useSelector((state: RootState): IUiState => state.ui);
+  const showLadiesStories = useSelector((state: RootState): boolean => state.ui.showLadiesStories);
   const [videoProgress, setVideoProgress] = useState<number>(0);
   const dispatch = useDispatch<AppDispatch>();
 

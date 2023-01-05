@@ -14,9 +14,9 @@ import Transgender from '@mui/icons-material/Transgender';
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';
 import FakeDropdown from '../../FakeDropdown';
-import getHexToRgb from '../../../../utils/getHexToRgb';
+import getHexToRgb from '../../../../helpers/getHexToRgb';
 import styles from './index.module.scss';
-import checkIfIsServer from '../../../../utils/checkIfIsServer';
+import checkIfIsServer from '../../../../helpers/checkIfIsServer';
 
 export interface ITopBarProps {
   backgroundColor?: string;

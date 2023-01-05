@@ -4,7 +4,7 @@ import useTheme from '@mui/material/styles/useTheme';
 
 import { AppDispatch } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';
-import getHexToRgb from '../../../../utils/getHexToRgb';
+import getHexToRgb from '../../../../helpers/getHexToRgb';
 import Logo from '../../Logo';
 import MenuButton from '../../MenuButton';
 import NavLinks from '../NavLinks/index';

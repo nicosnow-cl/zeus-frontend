@@ -4,7 +4,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import Skeleton from '@mui/material/Skeleton';
 
 import IconSpinner from '../IconSpinner';
-import getRandomNumber from '../../../utils/getRandomNumber';
+import getRandomNumber from '../../../helpers/getRandomNumber';
 
 export interface INextImageWithSpinnerProps {
   alt?: string;

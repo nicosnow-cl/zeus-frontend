@@ -1,80 +1,47 @@
-import { useMemo, useRef, useState, useEffect } from 'react';
-import debounce from 'lodash/debounce';
+import { useRef } from 'react';
+import Grid from '@mui/material/Grid';
 
+import AnimatedCard from '../../UIElements/AnimatedCard';
 import EscortType from '../../../types/type.escort';
-import GridTransition from './GridTransition';
+import GoldCard from '../../UIElements/GoldCard';
 import IEscort from '../../../interfaces/states/interface.escort';
-import styles from './index.module.scss';
+import PremiumCard from '../../UIElements/PremiumCard';
+import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
+import VipCard from '../../UIElements/VipCard';
 
 export interface ICardsSectionProps {
   cards: IEscort[];
   type: EscortType;
 }
 
-const getHeightsAndGridItems = (cards: IEscort[], width: number, columns: number) => {
-  let heights = new Array(columns).fill(0); // Each column gets a height starting with zero
-  let prevCol = -1;
-  let prevCardPos = { x: 0, y: 0 };
-
-  let gridItems = cards.map((card, i) => {
-    const { x: prevX, y: prevY } = prevCardPos;
-    const column = prevCol + 1 === columns ? 0 : prevCol + 1; // Start by adding to the first column, if it's full, move to the second, etc.
-
-    const x = (width / columns) * column; // x = container width / number of columns * column index,
-    const y = (heights[column] += 668) - 668; // y = it's just the height of the current column
-
-    prevCol = column;
-    prevCardPos = { x, y };
-
-    return { idx: i, data: card, prevX, prevY, x, y, width: width / columns, height: 668 };
-  });
-
-  return [heights, gridItems];
-};
-
-const getColumns = (width: number) => {
-  if (width >= 1500) return 4;
-  if (width >= 1000) return 3;
-  if (width >= 600) return 2;
-  return 1;
-};
-
 const CardsSection = ({ cards, type }: ICardsSectionProps) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const [width, setWidth] = useState<number>(0);
-
-  useEffect(() => {
-    const current = containerRef.current;
-
-    if (!current) return;
-    if (!width) setWidth(current.offsetWidth);
-
-    const handleResize = debounce((evt) => {
-      setWidth(current.offsetWidth);
-    }, 100);
-
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, [containerRef, width]);
-
-  const columns = getColumns(width);
-  const [heights, gridItems] = useMemo(
-    () => getHeightsAndGridItems(cards, width, columns),
-    [cards, width, columns],
-  );
-
-  console.count('CardsSection render');
-  console.log(cards.length);
+  const containerRef = useRef(null);
+  const containerIsVisible = useIntersectionObserver(containerRef);
 
   return (
-    <div
+    <Grid
+      container
       ref={containerRef}
-      className={`${styles.cardsContainer}`}
-      style={{ height: Math.max(...heights) }}
+      spacing={[2, 2]}
+      sx={{ height: containerIsVisible ? 'auto' : '1000px' }}
     >
-      {width > 0 && <GridTransition items={gridItems} />}
-    </div>
+      {containerIsVisible &&
+        cards.map((data, idx) => {
+          return (
+            <Grid key={idx} item xs={12} sm={6} md={4} xl={3}>
+              <AnimatedCard delay={0.35 * idx}>
+                {
+                  {
+                    VIP: <VipCard data={data} />,
+                    PREMIUM: <PremiumCard data={data} />,
+                    GOLD: <GoldCard data={data} />,
+                  }[type]
+                }
+              </AnimatedCard>
+            </Grid>
+          );
+        })}
+    </Grid>
   );
 };
 

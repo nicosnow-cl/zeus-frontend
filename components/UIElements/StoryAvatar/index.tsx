@@ -3,7 +3,7 @@ import ImageIcon from '@mui/icons-material/Image';
 import Typography from '@mui/material/Typography';
 import useTheme from '@mui/material/styles/useTheme';
 
-import getTimeSince from '../../../utils/getTimeSince';
+import getTimeSince from '../../../helpers/getTimeSince';
 import IconSpinner from '../IconSpinner';
 import styles from './index.module.scss';
 

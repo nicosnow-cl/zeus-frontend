@@ -4,7 +4,7 @@ import LocationOn from '@mui/icons-material/LocationOn';
 import Typography from '@mui/material/Typography';
 import useTheme from '@mui/material/styles/useTheme';
 
-import formatNumberToString from '../../../../utils/formatNumberToString';
+import formatNumberToString from '../../../../helpers/formatNumberToString';
 import ILocation from '../../../../interfaces/objects/interface.location';
 import IRrSs from '../../../../interfaces/objects/interface.rrss';
 import styles from './index.module.scss';

@@ -3,9 +3,9 @@ import Fuse from 'fuse.js';
 
 import IEscort from '../../interfaces/states/interface.escort';
 import escorts from '../../dummy/escorts';
-import getRandomNumber from '../../utils/getRandomNumber';
+import getRandomNumber from '../../helpers/getRandomNumber';
 import IPartialFilters from '../../interfaces/objects/interface.partial-filters';
-import sleep from '../../utils/sleep';
+import sleep from '../../helpers/sleep';
 
 const obtainEscortsPost = async (filters?: IPartialFilters): Promise<IEscort[]> => {
   try {

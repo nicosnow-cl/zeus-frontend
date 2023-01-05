@@ -1,7 +1,7 @@
 import { Button, Chip, Typography, useTheme } from '@mui/material';
 import { LocationOn } from '@mui/icons-material';
 
-import formatNumberToString from '../../../../utils/formatNumberToString';
+import formatNumberToString from '../../../../helpers/formatNumberToString';
 import ILocation from '../../../../interfaces/objects/interface.location';
 import styles from './index.module.scss';
 

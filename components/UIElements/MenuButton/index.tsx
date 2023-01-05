@@ -4,10 +4,9 @@ import Box from '@mui/system/Box';
 import IconButton from '@mui/material/IconButton';
 import useTheme from '@mui/material/styles/useTheme';
 
-import { IUiState } from '../../../redux/reducers/ui';
 import { RootState } from '../../../redux/store';
-import checkIfIsServer from '../../../utils/checkIfIsServer';
-import getThemeMode from '../../../utils/getThemeMode';
+import checkIfIsServer from '../../../helpers/checkIfIsServer';
+import getThemeMode from '../../../helpers/getThemeMode';
 import styles from './index.module.scss';
 
 const isServer = checkIfIsServer();
@@ -20,7 +19,7 @@ export interface IMenuButtonProps {
 }
 
 const MenuButton = ({ customClasses, type = 'hover', onClick, style }: IMenuButtonProps) => {
-  const { showSidebar } = useSelector((state: RootState): IUiState => state.ui);
+  const showSidebar = useSelector((state: RootState): boolean => state.ui.showSidebar);
   const [checked, setChecked] = useState<boolean>(false);
   const [color, setColor] = useState<string>('');
   const theme = useTheme();

@@ -6,8 +6,8 @@ import { useTheme } from '@mui/material';
 import dynamic from 'next/dynamic';
 
 import chileRegions from '../../../../assets/geo-json/chile-regions';
-import getBlendStepsBetweenTwoColors from '../../../../utils/getBlendStepsBetweenTwoColors';
-import getHexToRgb from '../../../../utils/getHexToRgb';
+import getBlendStepsBetweenTwoColors from '../../../../helpers/getBlendStepsBetweenTwoColors';
+import getHexToRgb from '../../../../helpers/getHexToRgb';
 
 export interface IChileRegionsMapProps {
   mouseOut?: () => void;

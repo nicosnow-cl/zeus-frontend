@@ -11,7 +11,7 @@ import IconButton from '@mui/material/IconButton';
 import { AppDispatch, RootState } from '../../../redux/store';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { uiActions } from '../../../redux/reducers/ui';
-import getRandomNumber from '../../../utils/getRandomNumber';
+import getRandomNumber from '../../../helpers/getRandomNumber';
 import IMedia from '../../../interfaces/objects/interface.media';
 import styles from './index.module.scss';
 

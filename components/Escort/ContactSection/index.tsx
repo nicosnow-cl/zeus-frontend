@@ -8,7 +8,7 @@ import useTheme from '@mui/material/styles/useTheme';
 import WhatsApp from '@mui/icons-material/WhatsApp';
 
 import CustomBoxAction from '../../UIElements/CustomBoxAction';
-import formatNumberToString from '../../../utils/formatNumberToString';
+import formatNumberToString from '../../../helpers/formatNumberToString';
 import ILocation from '../../../interfaces/objects/interface.location';
 import IRrSs from '../../../interfaces/objects/interface.rrss';
 

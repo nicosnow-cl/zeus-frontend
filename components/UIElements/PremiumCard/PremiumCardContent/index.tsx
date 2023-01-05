@@ -1,8 +1,8 @@
 import { Favorite, Verified } from '@mui/icons-material';
 import { Chip, Tooltip, Typography } from '@mui/material';
 
-import abbreviateNumber from '../../../../utils/abbreviateNumber';
-import shortText from '../../../../utils/shortText';
+import abbreviateNumber from '../../../../helpers/abbreviateNumber';
+import shortText from '../../../../helpers/shortText';
 import styles from './index.module.scss';
 
 export interface IPremiumCardContent {

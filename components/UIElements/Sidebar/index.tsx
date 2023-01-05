@@ -13,12 +13,12 @@ import useTheme from '@mui/material/styles/useTheme';
 
 import { IUiState, uiActions } from '../../../redux/reducers/ui';
 import { RootState, AppDispatch } from '../../../redux/store';
-import checkIfIsServer from '../../../utils/checkIfIsServer';
+import checkIfIsServer from '../../../helpers/checkIfIsServer';
 import CustomButton from '../CustomButton';
-import getHexToRgb from '../../../utils/getHexToRgb';
-import getThemeMode from '../../../utils/getThemeMode';
+import getHexToRgb from '../../../helpers/getHexToRgb';
+import getThemeMode from '../../../helpers/getThemeMode';
 import ResumeFilters from './ResumeFilters';
-import setThemeMode from '../../../utils/setThemeMode';
+import setThemeMode from '../../../helpers/setThemeMode';
 import styles from './index.module.scss';
 
 const ICON_COLORS = {
@@ -29,7 +29,7 @@ const ICON_COLORS = {
 const isServer = checkIfIsServer();
 
 const Sidebar = () => {
-  const { showSidebar } = useSelector((state: RootState): IUiState => state.ui);
+  const showSidebar = useSelector((state: RootState): boolean => state.ui.showSidebar);
   const theme = useTheme();
   const dispatch = useDispatch<AppDispatch>();
 
