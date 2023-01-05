@@ -37,7 +37,7 @@ const mapImgVideosToMedia = (videos: IVideo[], images: IImage[]) => {
 };
 
 const MediaSection = ({ images, videos }: IMediaSetionProps) => {
-  const [containerRef, { width }] = useMeasure();
+  const [containerRef, { width }] = useMeasure({ offsetSize: true });
   const dispatch = useDispatch<AppDispatch>();
 
   const columns = useMediaWithEvt(
@@ -64,7 +64,7 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
   }, [columns, items, width]);
 
   const transitions = useTransition(gridItems, {
-    key: (item: { css: string; height: number }) => item.css,
+    keys: (item: any) => item.id,
     from: ({ x, y, width, height }) => ({ x, y, width, height, opacity: 0 }),
     enter: ({ x, y, width, height }) => ({ x, y, width, height, opacity: 1 }),
     update: ({ x, y, width, height }) => ({ x, y, width, height }),
@@ -89,7 +89,7 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
       style={{ height: Math.max(...heights) }}
     >
       {transitions((style, item) => (
-        <a.div style={style}>
+        <a.div key={item.id} style={style}>
           {item.type === 'video' ? (
             <ProfileMedia
               onClick={() => handleOpenLadyImage(item.id)}
