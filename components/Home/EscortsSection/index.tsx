@@ -8,12 +8,10 @@ import ContentSection from '../ContentSection';
 import IEscort from '../../../interfaces/states/interface.escort';
 
 const EscortsSection = () => {
-  const escorts = useSelector((state: RootState): IEscort[] => state.home.escorts);
+  const cards = useSelector((state: RootState): IEscort[] => state.home.escorts);
   const dispatch = useDispatch<AppDispatch>();
 
-  const vip = escorts.filter((escort) => escort.type === 'VIP');
-  const premium = escorts.filter((escort) => escort.type === 'PREMIUM');
-  const gold = escorts.filter((escort) => escort.type === 'GOLD');
+  const cardsLength = cards.length;
 
   // useEffect((): void => {
   //   fpfApi
@@ -31,8 +29,12 @@ const EscortsSection = () => {
   // }, []);
 
   useEffect((): void => {
-    !escorts.length && dispatch(thunks.getEscorts());
-  }, [dispatch]);
+    !cardsLength && dispatch(thunks.getEscorts());
+  }, [dispatch, cardsLength]);
+
+  const vip = cards.filter((card) => card.type === 'VIP');
+  const premium = cards.filter((card) => card.type === 'PREMIUM');
+  const gold = cards.filter((card) => card.type === 'GOLD');
 
   return <ContentSection vip={vip} premium={premium} gold={gold} />;
 };

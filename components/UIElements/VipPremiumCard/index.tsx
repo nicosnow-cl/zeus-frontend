@@ -26,7 +26,7 @@ const PREMIUM_MEDIA_HEIGHT = 500;
 
 const VipPremiumCard = ({ data, style }: IVipPremiumCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const { states, controls } = useCard({ cardRef, maxWidth: 645 });
+  const { states, controls } = useCard({ cardRef, maxWidth: 633 });
   const router = useRouter();
   const theme = useTheme();
 
