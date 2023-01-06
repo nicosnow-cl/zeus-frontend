@@ -54,7 +54,7 @@ const GridTransition = ({
     <a.div key={item.id} style={style}>
       {
         {
-          VIP: <VipPremiumCardMemo containerRef={containerRef} data={item.data} />,
+          VIP: <VipPremiumCardMemo data={item.data} />,
           PREMIUM: <VipPremiumCardMemo data={item.data} />,
           GOLD: <GoldCardMemo data={item.data} />,
         }[item.data.type as EscortType]

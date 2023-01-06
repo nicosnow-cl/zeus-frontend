@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import CardActionArea from '@mui/material/CardActionArea';
 import Check from '@mui/icons-material/Check';
 import Typography from '@mui/material/Typography';
-import useTheme from '@mui/material/styles/useTheme';
+
+import { AppContext } from '../../../pages/_app';
 
 export interface ICustomBoxActionProps {
   backgroundColor?: string;
@@ -24,13 +25,13 @@ const CustomBoxAction = ({
   title,
 }: ICustomBoxActionProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
-  const theme = useTheme();
+  const { theme } = useContext(AppContext);
 
   return (
     <CardActionArea
       className={`p-2 pr-3 pl-3 d-flex ai-center`}
       sx={{
-        backgroundColor: backgroundColor ? backgroundColor : theme.palette.grey[300],
+        backgroundColor: backgroundColor ? backgroundColor : theme?.palette.grey[300],
         borderRadius: 5,
         flex: 1,
         height: height ? height : 56,
@@ -46,10 +47,10 @@ const CustomBoxAction = ({
           transition: 'all 0.2s ease-in-out',
           ...(isHover
             ? {
-                color: theme.palette.primary.main,
+                color: theme?.palette.primary.main,
               }
             : {
-                color: theme.palette.grey[700],
+                color: theme?.palette.grey[700],
               }),
         }}
       >
@@ -65,10 +66,10 @@ const CustomBoxAction = ({
             transition: 'all 0.2s ease-in-out',
             ...(isHover
               ? {
-                  color: theme.palette.primary.main,
+                  color: theme?.palette.primary.main,
                 }
               : {
-                  color: theme.palette.grey[700],
+                  color: theme?.palette.grey[700],
                 }),
           }}
         >

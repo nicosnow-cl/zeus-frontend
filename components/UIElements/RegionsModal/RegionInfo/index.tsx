@@ -40,8 +40,8 @@ const RegionInfo = ({
       className={`h-100 p-5 d-flex fd-column jc-center ai-center`}
       sx={{ backgroundColor: theme.palette.grey[200] }}
     >
-      <Box className={`mb-5`}>
-        <Logo height={45} width={105} backgroundColor={theme.palette.grey[50]} navbar={false} />
+      <Box className={`mb-5 d-flex fd-column`}>
+        <Logo height={45} backgroundColor={theme.palette.grey[50]} navbar={false} />
         <Typography className={`mt-2 px-5`} variant="body1" textAlign={'center'} fontSize={18}>
           Usa el mapa para seleccionar la Región donde deseas buscar escorts
         </Typography>

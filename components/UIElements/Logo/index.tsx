@@ -36,24 +36,30 @@ const Logo = ({
           onClick={onClick}
         >
           <FemaleOutlined fontSize="large" color="primary" />
-          <Typography variant="h5" component="div">
+          <Typography
+            variant="h5"
+            sx={(theme) => ({ color: theme.palette.getContrastText(backgroundColor || '') })}
+          >
             Kariñosas.cl
           </Typography>
         </Box>
       ) : (
         <Box
-          className={`d-flex jc-center ai-center`}
+          className={`p-2 d-inline-flex jc-center ai-center`}
           sx={{
             backgroundColor,
             borderRadius: '30px',
             boxShadow: 1,
             height,
             margin: '0 auto',
-            width,
           }}
         >
           <FemaleOutlined fontSize="small" color="primary" />
-          <Typography variant="body1" component="div" fontSize={13}>
+          <Typography
+            variant="h6"
+            fontSize={13}
+            sx={(theme) => ({ color: theme?.palette.getContrastText(backgroundColor || '') })}
+          >
             Kariñosas.cl
           </Typography>
         </Box>

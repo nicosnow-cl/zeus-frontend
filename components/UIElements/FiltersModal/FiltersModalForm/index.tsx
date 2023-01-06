@@ -14,7 +14,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
-import useTheme from '@mui/material/styles/useTheme';
 
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { getEscorts } from '../../../../redux/thunks/home/index';
@@ -40,7 +39,6 @@ const FiltersModalForm = () => {
   const [formValues, setFormValues] = useState<IFiltersForm>(initialFormValues);
   const filters = useSelector((state: RootState): IFilters => state.ui.filters);
   const dispatch = useDispatch<AppDispatch>();
-  const theme = useTheme();
 
   const getUserFilters = useCallback(() => {
     const { name, type, services, appareance, promotion, video, city } = filters;
@@ -223,7 +221,7 @@ const FiltersModalForm = () => {
                 className={`p-3 d-flex jc-center ai-center`}
                 aria-label="position"
                 row
-                sx={{ backgroundColor: theme.palette.grey[300], borderRadius: 5 }}
+                sx={(theme) => ({ backgroundColor: theme.palette.grey[300], borderRadius: 5 })}
               >
                 <FormControlLabel
                   control={

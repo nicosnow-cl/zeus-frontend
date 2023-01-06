@@ -1,10 +1,10 @@
 import 'leaflet/dist/leaflet.css';
 import { GeoJsonObject } from 'geojson';
 import { MapContainer, TileLayer } from 'react-leaflet';
-import { memo, useState } from 'react';
-import { useTheme } from '@mui/material';
+import { memo, useContext, useState } from 'react';
 import dynamic from 'next/dynamic';
 
+import { AppContext } from '../../../../pages/_app';
 import chileRegions from '../../../../assets/geo-json/chile-regions';
 import getBlendStepsBetweenTwoColors from '../../../../helpers/getBlendStepsBetweenTwoColors';
 import getHexToRgb from '../../../../helpers/getHexToRgb';
@@ -24,9 +24,9 @@ const ChileRegionsMap = ({
   regionIdSelected,
   regionsPonderated,
 }: IChileRegionsMapProps) => {
-  const theme = useTheme();
-  const defaultColorRgb = `rgb(${getHexToRgb(theme.palette.grey[400]).join(',')})`;
-  const secondaryColorRgb = `rgb(${getHexToRgb(theme.palette.secondary.light).join(',')})`;
+  const { theme } = useContext(AppContext);
+  const defaultColorRgb = `rgb(${getHexToRgb(theme?.palette.grey[400]).join(',')})`;
+  const secondaryColorRgb = `rgb(${getHexToRgb(theme?.palette.secondary.light).join(',')})`;
   const GeoJSON = dynamic(() => import('react-leaflet').then((rLeaflet) => rLeaflet.GeoJSON), {
     ssr: false,
   });
@@ -41,14 +41,14 @@ const ChileRegionsMap = ({
     const { regionNumber } = feature;
     const defaultColor = regionsPonderated
       ? regionsColors[regionsPonderated.findIndex((region) => region.regionId === regionNumber)]
-      : theme.palette.grey[400];
+      : theme?.palette.grey[400];
 
     if (regionIdSelected === regionNumber) {
-      layer.setStyle({ color: theme.palette.primary.main, fillOpacity: 1 });
+      layer.setStyle({ color: theme?.palette.primary.main, fillOpacity: 1 });
     } else layer.setStyle({ color: defaultColor, weight: 2 });
 
     layer.on('mouseover', function () {
-      if (regionIdSelected !== regionNumber) layer.setStyle({ color: theme.palette.primary.main });
+      if (regionIdSelected !== regionNumber) layer.setStyle({ color: theme?.palette.primary.main });
       mouseOver && mouseOver(regionNumber);
     });
 

@@ -1,15 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Box from '@mui/system/Box';
 import IconButton from '@mui/material/IconButton';
-import useTheme from '@mui/material/styles/useTheme';
 
+import { AppContext } from '../../../pages/_app';
 import { RootState } from '../../../redux/store';
-import checkIfIsServer from '../../../helpers/checkIfIsServer';
 import getThemeMode from '../../../helpers/getThemeMode';
 import styles from './index.module.scss';
-
-const isServer = checkIfIsServer();
 
 export interface IMenuButtonProps {
   customClasses?: string;
@@ -19,17 +16,17 @@ export interface IMenuButtonProps {
 }
 
 const MenuButton = ({ customClasses, type = 'hover', onClick, style }: IMenuButtonProps) => {
-  const showSidebar = useSelector((state: RootState): boolean => state.ui.showSidebar);
+  const { theme, isServer } = useContext(AppContext);
   const [checked, setChecked] = useState<boolean>(false);
   const [color, setColor] = useState<string>('');
-  const theme = useTheme();
+  const showSidebar = useSelector((state: RootState): boolean => state.ui.showSidebar);
 
   const mode = !isServer ? getThemeMode() : 'light';
 
   useEffect(() => {
-    if (mode === 'light') setColor(theme.palette.grey[900]);
-    else setColor(theme.palette.grey['A200']);
-  }, [mode, theme.palette.grey]);
+    if (mode === 'light') setColor(theme?.palette.grey[900]);
+    else setColor(theme?.palette.grey['A200']);
+  }, [mode, theme?.palette.grey]);
 
   const menuTrigger =
     type === 'hover'

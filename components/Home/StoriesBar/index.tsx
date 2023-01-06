@@ -1,9 +1,10 @@
 import { AccessTime, Instagram } from '@mui/icons-material';
 import { Box } from '@mui/system';
-import { Typography, useTheme, Stack, Button } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 
+import { AppContext } from '../../../pages/_app';
 import { AppDispatch, RootState } from '../../../redux/store';
 import { getStories } from '../../../redux/thunks/home';
 import { uiActions } from '../../../redux/reducers/ui';
@@ -31,12 +32,15 @@ const responsive = {
 };
 
 const StoriesBar = () => {
+  const { theme } = useContext(AppContext);
   const dispatch = useDispatch<AppDispatch>();
   const stories = useSelector((state: RootState): IStory[] => state.home.stories);
-  const theme = useTheme();
+  const backgroundColorBody = theme?.palette.grey[100];
+  const backgroundColorHeader = theme?.palette.grey[300];
+  const fontColor = theme?.palette.getContrastText(backgroundColorHeader);
 
   useEffect(() => {
-    dispatch(getStories());
+    !stories.length && dispatch(getStories());
   }, [dispatch]);
 
   const mapStory = (story: IStory, idx: number): JSX.Element => {
@@ -45,10 +49,11 @@ const StoriesBar = () => {
     return (
       <StoryAvatar
         key={idx}
+        fontColor={fontColor}
         name={name}
         onShowStory={() => dispatch(uiActions.handleToggleLadiesStories(true))}
-        src={story.avatarSrc.lq}
         publishDate={story.publishDate}
+        src={story.avatarSrc.lq}
       />
     );
   };
@@ -58,18 +63,16 @@ const StoriesBar = () => {
   return (
     <Box
       className={`d-flex fd-column jc-center ai-center`}
-      sx={{ backgroundColor: theme.palette.grey[100], borderRadius: 10, boxShadow: 1 }}
+      sx={{ backgroundColor: backgroundColorBody, borderRadius: 10, boxShadow: 1 }}
     >
       <div
         className={`w-100 d-flex jc-between`}
-        style={{ backgroundColor: theme.palette.grey[300], borderRadius: '40px 40px 0 0' }}
+        style={{ backgroundColor: backgroundColorHeader, borderRadius: '40px 40px 0 0' }}
       >
-        <Stack className={`ml-2 pl-4 d-flex ai-center`} direction="row" spacing={2}>
-          <Typography sx={{ fontSize: 14, color: theme.palette.grey[800] }}>
-            ÚLTIMAS HISTORIAS
-          </Typography>
-          <AccessTime sx={{ color: theme.palette.grey[800] }} />
-        </Stack>
+        <div className={`ml-2 pl-4 d-flex ai-center col-gap-2`} style={{ color: fontColor }}>
+          <Typography sx={{ fontSize: 14 }}>ÚLTIMAS HISTORIAS</Typography>
+          <AccessTime />
+        </div>
 
         <Button
           className={`pr-4`}
@@ -81,9 +84,9 @@ const StoriesBar = () => {
         </Button>
       </div>
 
-      <Box className={`w-100`}>
+      <div className={`w-100`}>
         <CustomCarrousel elements={storiesAvatar} responsive={responsive} />
-      </Box>
+      </div>
     </Box>
   );
 };

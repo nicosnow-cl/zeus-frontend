@@ -8,19 +8,34 @@ const {
   PaletteColorsLight,
   ShadowsDark,
   ShadowsLight,
-  TypographyColorsDark,
-  TypographyColorsLight,
+  // TypographyColorsDark,
+  // TypographyColorsLight,
 } = Constants;
 
 const quicksand = localFont({
   src: [
     {
-      path: '../assets/fonts/Quicksand-Light.ttf',
+      path: '../assets/fonts/quicksand/Quicksand-Light.ttf',
       weight: '300',
       style: 'normal',
     },
     {
-      path: '../assets/fonts/Quicksand-Medium.ttf',
+      path: '../assets/fonts/quicksand/Quicksand-Medium.ttf',
+      weight: '400',
+      style: 'normal',
+    },
+  ],
+});
+
+const sourceSandProp = localFont({
+  src: [
+    {
+      path: '../assets/fonts/source-sans-pro/SourceSansPro-Light.ttf',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../assets/fonts/source-sans-pro/SourceSansPro-Regular.ttf',
       weight: '400',
       style: 'normal',
     },
@@ -33,20 +48,46 @@ const getTheme = (mode: PaletteMode) => ({
     ...(mode === 'light' ? PaletteColorsLight : PaletteColorsDark),
   },
   typography: {
-    fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
     fontSize: 12,
-    ...(mode === 'light' ? TypographyColorsLight : TypographyColorsDark),
-  },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: `
-        @font-face {
-          font-family: 'Quicksand';
-          font-style: normal;
-          font-display: swap;
-          font-weight: 300;
-        }
-      `,
+    fontFamily: `${sourceSandProp.style.fontFamily}, Arial, sans-serif`,
+    h1: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
+    },
+    h2: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
+    },
+    h3: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
+    },
+    h4: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
+    },
+    h5: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
+    },
+    h6: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
+    },
+    body1: {
+      fontFamily: `${sourceSandProp.style.fontFamily}, Arial, sans-serif`,
+    },
+    body2: {
+      fontFamily: `${sourceSandProp.style.fontFamily}, Arial, sans-serif`,
+    },
+    subtitle1: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
+    },
+    subtitle2: {
+      fontFamily: `${sourceSandProp.style.fontFamily}, Arial, sans-serif`,
+    },
+    caption: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
+    },
+    button: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
+    },
+    select: {
+      fontFamily: `${quicksand.style.fontFamily}, Arial, sans-serif`,
     },
   },
   shadows: mode === 'light' ? ShadowsLight : ShadowsDark,

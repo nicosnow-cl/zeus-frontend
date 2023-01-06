@@ -1,0 +1,58 @@
+.smallFilters {
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  --grid-layout-gap: 10px;
+  --grid-column-count: 3;
+  --grid-item--min-width: 100px;
+
+  --gap-count: calc(var(--grid-column-count) - 1);
+  --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+  --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr)
+  );
+  grid-column-gap: var(--grid-layout-gap);
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}
+
+.gridItem {
+  font-size: 12px;
+  min-height: 40px;
+}
+
+.btn {
+  height: 40px;
+  grid-column: 1 / -1;
+}
+
+.normalFilters {
+  max-height: 80px;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+}
+
+.text {
+  font-size: clamp(12px, 1.5vw, 16px) !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @supports (-webkit-line-clamp: 2) {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: initial;
+  }
+}

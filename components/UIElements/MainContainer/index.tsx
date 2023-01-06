@@ -1,20 +1,17 @@
-// import { useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 import Head from 'next/head';
-import useTheme from '@mui/material/styles/useTheme';
 
 export interface IMainContainerProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
 const MainContainer = ({ children }: IMainContainerProps) => {
-  const theme = useTheme();
-
   return (
-    <div
-      style={{
+    <Box
+      sx={(theme) => ({
         minHeight: '100vh',
         background: `linear-gradient(${theme.palette.grey[50]}, ${theme.palette.grey[300]})`,
-      }}
+      })}
     >
       <Head>
         <title>Cariñositas.cl</title>
@@ -22,7 +19,7 @@ const MainContainer = ({ children }: IMainContainerProps) => {
       </Head>
 
       {children}
-    </div>
+    </Box>
   );
 };
 

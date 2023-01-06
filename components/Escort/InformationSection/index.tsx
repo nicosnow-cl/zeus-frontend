@@ -38,8 +38,6 @@ const getDayName = (day: string) => {
 };
 
 const InformationSecion = ({ schedule, services }: IInformationSectionProps) => {
-  // const theme = useTheme();
-
   return (
     <div className={`p-5 h-100`}>
       <Accordion sx={{ backgroundColor: 'transparent !important', boxShadow: 'none' }}>

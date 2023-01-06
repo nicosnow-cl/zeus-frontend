@@ -1,9 +1,10 @@
+import { useContext } from 'react';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import useTheme from '@mui/material/styles/useTheme';
 import Image from 'next/image';
+import Typography from '@mui/material/Typography';
 
+import { AppContext } from '../../../pages/_app';
 import EscortType from '../../../types/type.escort';
 import SimpleAvatar from '../../UIElements/SimpleAvatar';
 import styles from './index.module.scss';
@@ -17,7 +18,7 @@ export interface IHeaderSectionProps {
 }
 
 const HeaderSection = ({ age, avatarImg, bannerImg, name, type }: IHeaderSectionProps) => {
-  const theme = useTheme();
+  const { theme } = useContext(AppContext);
 
   return (
     <div>
@@ -35,7 +36,7 @@ const HeaderSection = ({ age, avatarImg, bannerImg, name, type }: IHeaderSection
         />
       </div>
 
-      <div style={{ backgroundColor: theme.palette.grey[200] }}>
+      <div style={{ backgroundColor: theme?.palette.grey[200] }}>
         <Grid container spacing={[2, 0]}>
           <Grid
             className={`d-flex jc-center`}
