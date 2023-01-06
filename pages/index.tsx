@@ -3,16 +3,12 @@ import { useSelector } from 'react-redux';
 import dynamic from 'next/dynamic';
 import type { ReactElement } from 'react';
 
-// import FiltersModal from '../components/UIElements/FiltersModal';
-// import MediaDialog from '../components/UIElements/MediaDialog';
-// import RegionsModal from '../components/UIElements/RegionsModal';
-// import ViewLadyStory from '../components/UIElements/ViewLadyStory';
 import { RootState } from '../redux/store';
 import checkIfIsServer from '../helpers/checkIfIsServer';
 import ContentContainer from '../components/UIElements/ContentContainer';
 import EscortsSection from '../components/Home/EscortsSection';
 import MainContainer from '../components/UIElements/MainContainer';
-import Navbar from '../components/UIElements/Navbar';
+import NavbarHandler from '../components/UIElements/NavbarHandler';
 import PageFilters from '../components/UIElements/PageFilters';
 import StoriesBar from '../components/Home/StoriesBar';
 
@@ -46,7 +42,6 @@ const Home: NextPageWithLayout = () => {
         {!isServer && showRegionModal && <LazyRegionsModal />}
         {showFiltersModal && <LazyFiltersModal />}
         {showLadiesStories && <LazyViewLadyStory />}
-        {/* <MediaDialog /> */}
       </div>
     </div>
   );
@@ -54,7 +49,7 @@ const Home: NextPageWithLayout = () => {
 
 Home.getLayout = (page: ReactElement) => (
   <MainContainer>
-    <Navbar />
+    <NavbarHandler />
 
     <ContentContainer>{page}</ContentContainer>
   </MainContainer>

@@ -9,7 +9,7 @@ export interface IUseCard {
   treshold?: number;
 }
 
-const DEFAULT_TRESHOLD = 0.91;
+const DEFAULT_TRESHOLD = 0.95;
 
 const useCard = ({
   cardRef,
