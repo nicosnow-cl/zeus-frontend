@@ -26,7 +26,7 @@ const MobileNavbar = () => {
       <Box
         className={`w-100 px-2 d-flex jc-between ai-center downbar ${styles.mobileNavbar}`}
         sx={{
-          backgroundColor: `rgba(${backgroundColor}, 0.8)`,
+          // backgroundColor: `rgba(${backgroundColor}, 0.8)`,
           boxShadow: 1,
           top: isVisible ? '0' : '-60px',
           zIndex: (theme) => theme.zIndex.drawer + 1,

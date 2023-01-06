@@ -40,18 +40,17 @@ const Logo = ({
         </Box>
       ) : (
         <Box
-          className={`d-flex jc-center ai-center`}
+          className={`p-2 d-inline-flex jc-center ai-center`}
           sx={{
             backgroundColor,
             borderRadius: '30px',
             boxShadow: 1,
             height,
             margin: '0 auto',
-            width,
           }}
         >
           <FemaleOutlined fontSize="small" color="primary" />
-          <Typography variant="h5" fontSize={13}>
+          <Typography variant="h6" fontSize={13}>
             Kariñosas.cl
           </Typography>
         </Box>

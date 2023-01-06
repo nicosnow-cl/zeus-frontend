@@ -9,7 +9,7 @@ import ContentContainer from '../components/UIElements/ContentContainer';
 import EscortsSection from '../components/Home/EscortsSection';
 import MainContainer from '../components/UIElements/MainContainer';
 import NavbarHandler from '../components/UIElements/NavbarHandler';
-import PageFilters from '../components/UIElements/PageFilters';
+import PageFilters from '../components/Home/PageFilters';
 import StoriesBar from '../components/Home/StoriesBar';
 
 const isServer = checkIfIsServer();

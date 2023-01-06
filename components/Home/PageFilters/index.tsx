@@ -1,7 +1,10 @@
-import { Box } from '@mui/system';
-import { CheckCircleOutline, Search } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { useTheme, Typography, Grid, Button } from '@mui/material';
+import Box from '@mui/system/Box';
+import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';
+import Grid from '@mui/material/Grid';
+import Search from '@mui/icons-material/Search';
+import Typography from '@mui/material/Typography';
+import useTheme from '@mui/material/styles/useTheme';
 
 import { AppDispatch, RootState } from '../../../redux/store';
 import { uiActions } from '../../../redux/reducers/ui';
@@ -27,7 +30,7 @@ const PageFilters = ({ className }: IPageFiltersProps) => {
         className={`w-100 pointer ${styles.smallFilters} ${className}`}
         onClick={handleOpenFiltersModal}
         sx={{
-          backgroundColor: theme.palette.grey[50],
+          backgroundColor: theme.palette.grey[100],
           borderRadius: 5,
           boxShadow: 1,
         }}
@@ -77,7 +80,7 @@ const PageFilters = ({ className }: IPageFiltersProps) => {
         className={`d-flex jc-between ai-center pointer ${styles.normalFilters} ${className}`}
         onClick={handleOpenFiltersModal}
         sx={{
-          backgroundColor: theme.palette.grey[50],
+          backgroundColor: theme.palette.grey[100],
           borderRadius: 5,
           boxShadow: 1,
           margin: '0 auto',
