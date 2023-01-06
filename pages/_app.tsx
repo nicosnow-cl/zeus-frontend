@@ -1,7 +1,7 @@
 import '../styles/_nprogress.scss';
 import '../styles/index.scss';
 import 'the-new-css-reset/css/reset.css'; // Reset styles
-import { PaletteMode } from '@mui/material/';
+import { PaletteMode, responsiveFontSizes } from '@mui/material/';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/material';
@@ -39,7 +39,8 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     !isServer ? (localStorage.getItem('themeMode') as PaletteMode) || 'light' : 'light',
   );
 
-  const theme = useMemo(() => createTheme(getTheme(mode)), [mode]);
+  const theme = useMemo(() => responsiveFontSizes(createTheme(getTheme(mode))), [mode]);
+  console.log({ theme });
   const getLayout = Component.getLayout ?? ((page) => page);
 
   if (!isServer) {

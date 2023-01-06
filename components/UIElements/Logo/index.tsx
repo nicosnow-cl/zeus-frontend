@@ -36,9 +36,7 @@ const Logo = ({
           onClick={onClick}
         >
           <FemaleOutlined fontSize="large" color="primary" />
-          <Typography variant="h5" component="div">
-            Kariñosas.cl
-          </Typography>
+          <Typography variant="h5">Kariñosas.cl</Typography>
         </Box>
       ) : (
         <Box
@@ -53,7 +51,7 @@ const Logo = ({
           }}
         >
           <FemaleOutlined fontSize="small" color="primary" />
-          <Typography variant="body1" component="div" fontSize={13}>
+          <Typography variant="h5" fontSize={13}>
             Kariñosas.cl
           </Typography>
         </Box>
