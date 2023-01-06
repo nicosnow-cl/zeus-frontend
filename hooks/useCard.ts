@@ -9,7 +9,7 @@ export interface IUseCard {
   treshold?: number;
 }
 
-const DEFAULT_TRESHOLD = 0.91;
+const DEFAULT_TRESHOLD = 0.9;
 
 const useCard = ({
   cardRef,
@@ -33,7 +33,8 @@ const useCard = ({
       ([entry]) => {
         if (window.innerWidth > maxWidth) return;
 
-        setIsHightlighted(entry.isIntersecting && entry.intersectionRatio >= treshold);
+        const _treshold = Math.round((element.clientHeight / window.innerHeight) * 100) / 100;
+        setIsHightlighted(entry.isIntersecting && entry.intersectionRatio >= _treshold);
       },
       { root: container, rootMargin: rootMargin, threshold: [treshold] },
     );
@@ -44,7 +45,6 @@ const useCard = ({
   }, [cardRef, containerRef, treshold, maxWidth, rootMargin]);
 
   const conditionalSetIsHovering = (value: boolean) => {
-    console.log({ maxWidth, windowWidth: window.innerWidth, isHightlighted });
     if (maxWidth && window.innerWidth <= maxWidth && !isHightlighted) return;
 
     setIsHovering(value);
