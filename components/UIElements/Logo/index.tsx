@@ -36,7 +36,12 @@ const Logo = ({
           onClick={onClick}
         >
           <FemaleOutlined fontSize="large" color="primary" />
-          <Typography variant="h5">Kariñosas.cl</Typography>
+          <Typography
+            variant="h5"
+            sx={(theme) => ({ color: theme.palette.getContrastText(backgroundColor || '') })}
+          >
+            Kariñosas.cl
+          </Typography>
         </Box>
       ) : (
         <Box
@@ -50,7 +55,11 @@ const Logo = ({
           }}
         >
           <FemaleOutlined fontSize="small" color="primary" />
-          <Typography variant="h6" fontSize={13}>
+          <Typography
+            variant="h6"
+            fontSize={13}
+            sx={(theme) => ({ color: theme?.palette.getContrastText(backgroundColor || '') })}
+          >
             Kariñosas.cl
           </Typography>
         </Box>

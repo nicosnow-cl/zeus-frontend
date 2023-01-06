@@ -11,6 +11,8 @@ import CustomBoxAction from '../../UIElements/CustomBoxAction';
 import formatNumberToString from '../../../helpers/formatNumberToString';
 import ILocation from '../../../interfaces/objects/interface.location';
 import IRrSs from '../../../interfaces/objects/interface.rrss';
+import { AppContext } from '../../../pages/_app';
+import { useContext } from 'react';
 
 export interface IContactSectionProps {
   location: ILocation;
@@ -65,12 +67,12 @@ const getRrSsBoxAction = (rrss: IRrSs, idx: number) => {
 };
 
 const ContactSection = ({ location, phoneNumber, price, rrss }: IContactSectionProps) => {
-  const theme = useTheme();
+  const { theme } = useContext(AppContext);
 
   return (
     <div
       className={`p-2 d-flex jc-between fw-wrap col-gap-2 row-gap-2`}
-      style={{ backgroundColor: theme.palette.grey[200] }}
+      style={{ backgroundColor: theme?.palette.grey[200] }}
     >
       <CustomBoxAction
         icon={<PhoneIphone />}

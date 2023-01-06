@@ -1,7 +1,6 @@
 import Chip from '@mui/material/Chip';
 import Favorite from '@mui/icons-material/Favorite';
 import Typography from '@mui/material/Typography';
-import useTheme from '@mui/material/styles/useTheme';
 import Verified from '@mui/icons-material/Verified';
 
 import abbreviateNumber from '../../../../helpers/abbreviateNumber';
@@ -17,8 +16,6 @@ export interface IGoldCardContentProps {
 }
 
 const GoldCardContent = ({ age, likes, name, nationality, price }: IGoldCardContentProps) => {
-  const theme = useTheme();
-
   return (
     <div className={`w-100 h-100 d-flex fd-column jc-between ${styles.contentContainer}`}>
       <div className={`m-2 d-flex jc-between`}>
@@ -62,11 +59,11 @@ const GoldCardContent = ({ age, likes, name, nationality, price }: IGoldCardCont
 
         <Chip
           label={`$${formatNumberToString(price)} - 1h`}
-          sx={{
+          sx={(theme) => ({
             backgroundColor: theme.palette.grey[300],
             color: theme.palette.success.dark,
             fontSize: 16,
-          }}
+          })}
         />
       </div>
     </div>

@@ -18,6 +18,8 @@ import getTheme from '../helpers/theme';
 import Loader from '../components/Loader';
 import store, { persistor } from '../redux/store';
 import triggerThemeModeChange from '../helpers/triggerThemeModeChange';
+import createAppContext from '../contexts/app';
+import useDevice from '../hooks/useDevice';
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactNode;
@@ -27,21 +29,20 @@ type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
 
-const isServer = checkIfIsServer();
-
 NProgress.configure({ showSpinner: false });
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
+const isServer = checkIfIsServer();
+export const AppContext = createAppContext({ isServer });
+
 export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const [mode, setMode] = useState<PaletteMode>(
     !isServer ? (localStorage.getItem('themeMode') as PaletteMode) || 'light' : 'light',
   );
-
+  const device = useDevice({});
   const theme = useMemo(() => responsiveFontSizes(createTheme(getTheme(mode))), [mode]);
-  console.log({ theme });
-  const getLayout = Component.getLayout ?? ((page) => page);
 
   if (!isServer) {
     triggerThemeModeChange(() => {
@@ -51,10 +52,16 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
     });
   }
 
+  const getLayout = Component.getLayout ?? ((page) => page);
+
   return (
     <Provider store={store}>
       <PersistGate loading={<Loader />} persistor={persistor}>
-        <ThemeProvider theme={theme}>{getLayout(<Component {...pageProps} />)}</ThemeProvider>
+        <ThemeProvider theme={theme}>
+          <AppContext.Provider value={{ isServer, theme, device }}>
+            {getLayout(<Component {...pageProps} />)}
+          </AppContext.Provider>
+        </ThemeProvider>
       </PersistGate>
     </Provider>
   );

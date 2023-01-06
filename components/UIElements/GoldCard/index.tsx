@@ -1,9 +1,9 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
-import useTheme from '@mui/material/styles/useTheme';
 
+import { AppContext } from '../../../pages/_app';
 import GoldCardContent from './GoldCardContent';
 import GoldCardMedia from './GoldCardMedia';
 import IEscort from '../../../interfaces/states/interface.escort';
@@ -15,8 +15,8 @@ export interface IGoldCardProps {
 
 const GoldCard = ({ data }: IGoldCardProps) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
+  const { theme } = useContext(AppContext);
   const router = useRouter();
-  const theme = useTheme();
 
   const handleClickCard = () => {
     router.push(`/escort/${data.id}`);
@@ -24,10 +24,10 @@ const GoldCard = ({ data }: IGoldCardProps) => {
 
   const cardSx = () =>
     isHovering
-      ? { borderTop: `6px solid ${theme.palette.primary.main}` }
+      ? { borderTop: `6px solid ${theme?.palette.primary.main}` }
       : {
           borderTop: `6px solid ${
-            theme.palette.mode === 'light' ? theme.palette.grey[900] : 'white'
+            theme?.palette.mode === 'light' ? theme?.palette.grey[900] : 'white'
           }`,
         };
 

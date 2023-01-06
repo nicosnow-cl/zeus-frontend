@@ -7,7 +7,6 @@ import Select from '@mui/material/Select';
 
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';
-import checkIfIsServer from '../../../../helpers/checkIfIsServer';
 import FakeDropdown from '../../FakeDropdown';
 import getHexToRgb from '../../../../helpers/getHexToRgb';
 import styles from './index.module.scss';
@@ -18,7 +17,6 @@ export interface ITopBarProps {
 }
 
 const genders = ['Mujeres', 'Hombres', 'Trans'];
-const isServer = checkIfIsServer();
 
 const TopBar = ({ backgroundColor }: ITopBarProps) => {
   const backgroundColorRGB = backgroundColor ? getHexToRgb(backgroundColor).join(', ') : undefined;

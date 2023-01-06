@@ -1,8 +1,9 @@
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import useTheme from '@mui/material/styles/useTheme';
+import { useContext } from 'react';
+import Box from '@mui/system/Box';
 import dynamic from 'next/dynamic';
+import Grid from '@mui/material/Grid';
 
+import { AppContext } from '../../../pages/_app';
 import ContactSection from '../ContactSection/index';
 import DescriptionSection from '../DesciptionSection';
 import HeaderSection from '../HeaderSection';
@@ -16,14 +17,14 @@ export interface IEscortSectionProps {
 }
 
 const EscortSection = ({ profile }: IEscortSectionProps) => {
-  const theme = useTheme();
+  const { theme } = useContext(AppContext);
 
   return (
     <div style={{ margin: '0 auto' }}>
       <Box
         className={`mt-5 mb-5`}
         sx={{
-          backgroundColor: theme.palette.grey[100],
+          backgroundColor: theme?.palette.grey[100],
           borderRadius: 5,
         }}
       >

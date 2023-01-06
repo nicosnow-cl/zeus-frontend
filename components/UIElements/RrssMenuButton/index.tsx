@@ -5,7 +5,6 @@ import Instagram from '@mui/icons-material/Instagram';
 import Menu from '@mui/material/Menu';
 import MoreHoriz from '@mui/icons-material/MoreHoriz';
 import Twitter from '@mui/icons-material/Twitter';
-import useTheme from '@mui/material/styles/useTheme';
 import WhatsApp from '@mui/icons-material/WhatsApp';
 
 import IRrSs from '../../../interfaces/objects/interface.rrss';
@@ -15,7 +14,7 @@ export interface IRrssMenuButtonProps {
   rrss: IRrSs[];
 }
 
-export const getRrssButton = (rrss: IRrSs, color: string) => {
+export const getRrssButton = (rrss: IRrSs, color?: string) => {
   switch (rrss.type) {
     case 'facebook':
       return (
@@ -48,7 +47,6 @@ export const getRrssButton = (rrss: IRrSs, color: string) => {
 
 const RrssMenuButton = ({ rrss }: IRrssMenuButtonProps) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const theme = useTheme();
 
   const handleClick = (evt: React.MouseEvent<HTMLElement>) => {
     evt.preventDefault();
@@ -101,7 +99,7 @@ const RrssMenuButton = ({ rrss }: IRrssMenuButtonProps) => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        {rrss.map((rrss) => getRrssButton(rrss, theme.palette.grey[900]))}
+        {rrss.map((rrss) => getRrssButton(rrss))}
       </Menu>
     </div>
   );

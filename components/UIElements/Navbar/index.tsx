@@ -2,7 +2,6 @@ import Box from '@mui/material/Box';
 import useTheme from '@mui/material/styles/useTheme';
 
 import DownBar from './DownBar';
-import Sidebar from '../Sidebar';
 import TopBar from './TopBar';
 
 const Navbar = () => {
@@ -19,8 +18,6 @@ const Navbar = () => {
     >
       <TopBar backgroundColor={backgroundColor} />
       <DownBar />
-
-      <Sidebar />
     </Box>
   );
 };

@@ -2,11 +2,19 @@ import { useEffect, useState } from 'react';
 import debounce from 'lodash/debounce';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+import DeviceType from '../types/type.device';
+
 export interface IUseDevice {
   debounceTime?: number;
 }
 
-const useDevice = ({ debounceTime = 100 }: IUseDevice) => {
+export interface IDevice {
+  navbarHeight: string;
+  resizeCount: number;
+  type: DeviceType;
+}
+
+const useDevice = ({ debounceTime = 100 }: IUseDevice): IDevice => {
   const [resizeCount, setResizeCount] = useState<number>(0);
   const isMobile = useMediaQuery('(max-width: 600px)');
   const isTablet = useMediaQuery('(max-width: 960px)');
@@ -23,20 +31,20 @@ const useDevice = ({ debounceTime = 100 }: IUseDevice) => {
 
   if (isMobile)
     return {
-      device: 'mobile',
+      type: 'mobile',
       resizeCount,
       navbarHeight: '60px',
     } as const;
 
   if (isTablet)
     return {
-      device: 'tablet',
+      type: 'tablet',
       resizeCount,
       navbarHeight: '95px',
     } as const;
 
   return {
-    device: 'desktop',
+    type: 'desktop',
     resizeCount,
     navbarHeight: '95px',
   } as const;
