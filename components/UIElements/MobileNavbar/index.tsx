@@ -14,8 +14,8 @@ import useNavbar from '../../../hooks/useNavbar';
 const MobileNavbar = () => {
   const dispatch = useDispatch<AppDispatch>();
   const isVisible = useNavbar({});
-  const theme = useTheme();
-  const backgroundColor = getHexToRgb(theme.palette.grey[200]).join(', ');
+  let backgroundColor = useTheme().palette.grey[200];
+  backgroundColor = getHexToRgb(backgroundColor).join(', ');
 
   const handleOpenSidebar = () => {
     dispatch(uiActions.handleToggleSidebar());
@@ -27,9 +27,9 @@ const MobileNavbar = () => {
         className={`w-100 px-2 d-flex jc-between ai-center downbar ${styles.mobileNavbar}`}
         sx={{
           backgroundColor: `rgba(${backgroundColor}, 0.8)`,
-          top: isVisible ? '0' : '-60px',
           boxShadow: 1,
-          zIndex: (theme) => theme.zIndex?.drawer! + 1,
+          top: isVisible ? '0' : '-60px',
+          zIndex: (theme) => theme.zIndex.drawer + 1,
         }}
       >
         <FemaleOutlined fontSize="large" color="primary" />

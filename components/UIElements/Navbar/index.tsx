@@ -6,19 +6,18 @@ import Sidebar from '../Sidebar';
 import TopBar from './TopBar';
 
 const Navbar = () => {
-  const theme = useTheme();
+  const backgroundColor = useTheme().palette.grey[900];
 
   return (
     <Box
       sx={{
-        backgroundColor: 'transparent',
         boxShadow: 1,
         position: 'fixed',
         width: '100%',
         zIndex: (theme) => theme.zIndex.drawer + 1,
       }}
     >
-      <TopBar backgroundColor={theme.palette.grey[900]} />
+      <TopBar backgroundColor={backgroundColor} />
       <DownBar />
 
       <Sidebar />
