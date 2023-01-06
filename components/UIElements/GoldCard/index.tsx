@@ -39,7 +39,7 @@ const GoldCard = ({ data }: IGoldCardProps) => {
       sx={cardSx()}
     >
       <CardActionArea onClick={handleClickCard}>
-        <GoldCardMedia alt={`card-vip-${data.name}`} imageSrc={data.img.hq} />
+        <GoldCardMedia alt={`card-gold-${data.name}`} image={data.img} />
 
         <GoldCardContent
           age={data.age}

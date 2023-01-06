@@ -12,6 +12,7 @@ const GoldCardMemo = memo(GoldCard);
 export interface IGridTransitionProps {
   items: readonly IGridItem[] | IGridItem[];
   transitionProps?: any;
+  containerRef?: any;
 }
 
 const DEFAULT_TRANISITION_PROPS = {
@@ -45,6 +46,7 @@ const DEFAULT_TRANISITION_PROPS = {
 const GridTransition = ({
   items,
   transitionProps = DEFAULT_TRANISITION_PROPS,
+  containerRef,
 }: IGridTransitionProps) => {
   const animated = useTransition(items, transitionProps);
 
@@ -52,7 +54,7 @@ const GridTransition = ({
     <a.div key={item.id} style={style}>
       {
         {
-          VIP: <VipPremiumCardMemo data={item.data} />,
+          VIP: <VipPremiumCardMemo containerRef={containerRef} data={item.data} />,
           PREMIUM: <VipPremiumCardMemo data={item.data} />,
           GOLD: <GoldCardMemo data={item.data} />,
         }[item.data.type as EscortType]

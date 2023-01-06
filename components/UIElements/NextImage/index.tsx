@@ -2,23 +2,24 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 import getRandomNumber from '../../../helpers/getRandomNumber';
+import IImage from '../../../interfaces/objects/interface.image';
 
 export interface INextImageProps {
   alt?: string;
-  defaultSrc: string;
   height?: number | string;
+  image: IImage;
   objectFit?: 'cover' | 'contain';
   style?: React.CSSProperties;
 }
 
 const NextImage = ({
   alt = 'img-media',
-  defaultSrc,
   height,
+  image,
   objectFit = 'cover',
   style = {},
 }: INextImageProps) => {
-  const [src, setSrc] = useState<string>(defaultSrc);
+  const [src, setSrc] = useState<string>(image.hq);
 
   const handleError = (evt: React.SyntheticEvent<HTMLImageElement, Event>) =>
     setSrc(`/profile-pics/demo-${getRandomNumber(1, 9)}.jpg`);
@@ -26,8 +27,10 @@ const NextImage = ({
   return (
     <Image
       alt={alt}
+      blurDataURL={image.lq}
       fill
       onError={handleError}
+      placeholder="blur"
       quality={50}
       src={src}
       style={{ ...style, objectFit }}

@@ -1,47 +1,59 @@
-import { useRef } from 'react';
-import Grid from '@mui/material/Grid';
+import { useRef, useState, useEffect } from 'react';
+import debounce from 'lodash/debounce';
 
-import AnimatedCard from '../../UIElements/AnimatedCard';
-import EscortType from '../../../types/type.escort';
-import GoldCard from '../../UIElements/GoldCard';
+import getGridDataCards from '../../../helpers/getGridDataCards';
+import GridTransition from '../../UIElements/GridTransition';
 import IEscort from '../../../interfaces/states/interface.escort';
-import PremiumCard from '../../UIElements/PremiumCard';
-import useIntersectionObserver from '../../../hooks/useIntersectionObserver';
-import VipPremiumCard from '../../UIElements/VipCard';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import styles from './index.module.scss';
+import useGrid from '../../../hooks/useGrid';
 
 export interface ICardsSectionProps {
   cards: IEscort[];
-  type: EscortType;
 }
 
-const CardsSection = ({ cards, type }: ICardsSectionProps) => {
-  const containerRef = useRef(null);
-  const containerIsVisible = useIntersectionObserver(containerRef);
+const CardsSection = ({ cards }: ICardsSectionProps) => {
+  const [width, setWidth] = useState<number>(0);
+  const [{ columnsHeights, gridItems }, gridControls] = useGrid({
+    items: cards,
+    width,
+    defaultLimit: 12,
+    gridFunction: getGridDataCards,
+  });
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const current = containerRef.current;
+    if (!current) return;
+
+    setWidth(current.offsetWidth); // initial width
+
+    const handleResize = debounce(() => {
+      setWidth(current.offsetWidth);
+    }, 100);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [containerRef]);
+
+  console.count('CardsSection render');
 
   return (
-    <Grid
-      container
+    <div
       ref={containerRef}
-      spacing={[2, 2]}
-      sx={{ height: containerIsVisible ? 'auto' : '1000px' }}
+      className={`${styles.cardsContainer}`}
+      style={{ height: Math.max(...columnsHeights) }}
     >
-      {containerIsVisible &&
-        cards.map((data, idx) => {
-          return (
-            <Grid key={idx} item xs={12} sm={6} md={4} xl={3}>
-              <AnimatedCard delay={0.35 * idx}>
-                {
-                  {
-                    VIP: <VipPremiumCard data={data} />,
-                    PREMIUM: <PremiumCard data={data} />,
-                    GOLD: <GoldCard data={data} />,
-                  }[type]
-                }
-              </AnimatedCard>
-            </Grid>
-          );
-        })}
-    </Grid>
+      <InfiniteScroll
+        dataLength={gridItems.length}
+        hasMore={gridItems.length <= cards.length}
+        next={() => gridControls.next()}
+        loader={<></>}
+      >
+        <GridTransition items={gridItems} containerRef={containerRef} />
+      </InfiniteScroll>
+    </div>
   );
 };
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 
 // import mapImgsAndVideosToMedias from '../../../../helpers/mapImgsAndVideosToMedias';
@@ -6,6 +6,8 @@ import IImage from '../../../../interfaces/objects/interface.image';
 import IVideo from '../../../../interfaces/objects/interface.video';
 // import CardMediaTransition from '../../CardMediaTransition';
 import NextImage from '../../NextImage';
+
+const ImageMemo = memo(NextImage);
 
 const DEBOUNCE_TIME = 1500;
 const VIP_MEDIA_HEIGHT = 600;
@@ -54,7 +56,7 @@ const VipPremiumCardMedia = ({
   if (!videos.length) {
     return (
       <div style={{ height: mediaHeight, position: 'relative' }}>
-        <NextImage alt={alt} defaultSrc={image.hq} />
+        <ImageMemo alt={alt} image={image} />
       </div>
     );
   }
@@ -62,7 +64,7 @@ const VipPremiumCardMedia = ({
   return (
     <SwipeableViews axis={'x'} index={!showVideo ? 0 : 1}>
       <div style={{ height: mediaHeight, position: 'relative' }}>
-        <NextImage alt={alt} defaultSrc={image.hq} height={mediaHeight} />
+        <ImageMemo alt={alt} image={image} />
       </div>
 
       <div style={{ height: mediaHeight, position: 'relative', overflow: 'hidden' }}>

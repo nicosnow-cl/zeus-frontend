@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState, Profiler } from 'react';
+import { Profiler, useRef } from 'react';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 import useTheme from '@mui/material/styles/useTheme';
@@ -9,28 +9,13 @@ import styles from './index.module.scss';
 import VipPremiumCardContent from './VipPremiumCardContent';
 import VipPremiumCardFooter from './VipPremiumCardFooter';
 import VipPremiumCardMedia from './VipPremiumCardMediaV2';
+import useCard from '../../../hooks/useCard';
 
 export interface IVipPremiumCardProps {
   data: IEscort;
   style?: any;
-  ref?: any;
+  containerRef?: any;
 }
-
-interface ICardContext {
-  data: IEscort | null;
-  isHovering: boolean;
-  router: ReturnType<typeof useRouter> | null;
-  theme: ReturnType<typeof useTheme> | null;
-}
-
-// const DEFAULT_CARD_CONTEXT: ICardContext = {
-//   isHovering: false,
-//   data: null,
-//   theme: null,
-//   router: null,
-// };
-
-// export const CardContext = createContext(DEFAULT_CARD_CONTEXT);
 
 const handleRender = (id: string, phase: string, duration: number) => {
   if (id === 'VipCard-1') console.log(`Componente ${id} se renderizó en ${phase} en ${duration}ms`);
@@ -39,18 +24,25 @@ const handleRender = (id: string, phase: string, duration: number) => {
 const VIP_MEDIA_HEIGHT = 600;
 const PREMIUM_MEDIA_HEIGHT = 500;
 
-const VipPremiumCard = ({ data, style, ref }: IVipPremiumCardProps) => {
-  const [isHovering, setIsHovering] = useState<boolean>(false);
+const VipPremiumCard = ({ data, style }: IVipPremiumCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { states, controls } = useCard({ cardRef, maxWidth: 645 });
   const router = useRouter();
   const theme = useTheme();
+
+  const hasAction = states.isHovering || states.isHightlighted;
 
   const handleClickCard = () => {
     router.push(`/escort/${data.id}`);
   };
 
   const cardSx = () =>
-    isHovering
-      ? { borderTop: `6px solid ${theme.palette.primary.main}`, ...(style ?? {}) }
+    hasAction
+      ? {
+          borderTop: `6px solid ${theme.palette.primary.main}`,
+          ...(style ?? {}),
+          transform: 'scale(1.02)',
+        }
       : {
           borderTop: `6px solid ${
             theme.palette.mode === 'light' ? theme.palette.grey[900] : 'white'
@@ -58,28 +50,20 @@ const VipPremiumCard = ({ data, style, ref }: IVipPremiumCardProps) => {
           ...(style ?? {}),
         };
 
-  // const providerValue = {
-  //   data,
-  //   isHovering,
-  //   router,
-  //   theme,
-  // };
-
   return (
     <Profiler id={`VipCard-${data.id}`} onRender={handleRender}>
       <Card
         className={`h-100 d-flex fd-column ${styles.card}`}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
+        onMouseEnter={() => controls.setIsHovering(true)}
+        onMouseLeave={() => controls.setIsHovering(false)}
         sx={cardSx()}
-        ref={ref}
+        ref={cardRef}
       >
-        {/* <CardContext.Provider value={providerValue}> */}
         <CardActionArea onClick={handleClickCard}>
           <VipPremiumCardMedia
             alt={`card-vip-${data.name}`}
             image={data.img}
-            isHovering={isHovering}
+            isHovering={hasAction}
             videos={data.videos}
             mediaHeight={data.type === 'VIP' ? VIP_MEDIA_HEIGHT : PREMIUM_MEDIA_HEIGHT}
           />
@@ -87,7 +71,7 @@ const VipPremiumCard = ({ data, style, ref }: IVipPremiumCardProps) => {
           <VipPremiumCardContent
             age={data.age}
             description={data.description}
-            isHovering={isHovering}
+            isHovering={hasAction}
             likes={data.likes}
             name={data.name.split(' ')[0]}
             nationality={data.nationality}
@@ -102,7 +86,6 @@ const VipPremiumCard = ({ data, style, ref }: IVipPremiumCardProps) => {
           price={data.price}
           type={data.type}
         />
-        {/* </CardContext.Provider> */}
       </Card>
     </Profiler>
   );
