@@ -11,8 +11,6 @@ const EscortsSection = () => {
   const cards = useSelector((state: RootState): IEscort[] => state.home.escorts);
   const dispatch = useDispatch<AppDispatch>();
 
-  const cardsLength = cards.length;
-
   // useEffect((): void => {
   //   fpfApi
   //     .get('/actors', {
@@ -29,8 +27,8 @@ const EscortsSection = () => {
   // }, []);
 
   useEffect((): void => {
-    !cardsLength && dispatch(thunks.getEscorts());
-  }, [dispatch, cardsLength]);
+    dispatch(thunks.getEscorts());
+  }, [dispatch]);
 
   const vip = cards.filter((card) => card.type === 'VIP');
   const premium = cards.filter((card) => card.type === 'PREMIUM');

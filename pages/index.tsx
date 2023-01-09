@@ -1,8 +1,8 @@
-import { AppContext, NextPageWithLayout } from './_app';
-import { ReactElement, useContext, useRef } from 'react';
+import { ReactElement, useContext } from 'react';
 import { useSelector } from 'react-redux';
 import dynamic from 'next/dynamic';
 
+import { AppContext, NextPageWithLayout } from './_app';
 import { RootState } from '../redux/store';
 import ContentContainer from '../components/UIElements/ContentContainer';
 import EscortsSection from '../components/Home/EscortsSection';
@@ -22,7 +22,6 @@ const LazyViewLadyStory = dynamic(() => import('../components/UIElements/ViewLad
 });
 
 const Home: NextPageWithLayout = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
   const { isServer } = useContext(AppContext);
   const showRegionModal = useSelector((state: RootState): boolean => state.ui.showRegionModal);
   const showFiltersModal = useSelector((state: RootState): boolean => state.ui.showFiltersModal);
@@ -31,9 +30,9 @@ const Home: NextPageWithLayout = () => {
   console.count('Home render');
 
   return (
-    <div ref={containerRef} className={`d-flex fd-column row-gap-4`}>
+    <div className={`d-flex fd-column row-gap-4`}>
       <div className={`pt-4`}>
-        <PageFilters containerRef={containerRef} />
+        <PageFilters />
       </div>
       <StoriesBar />
       <EscortsSection />
