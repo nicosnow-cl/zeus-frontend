@@ -1,15 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Accordion from '@mui/material/Accordion';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import AccordionSummary from '@mui/material/AccordionSummary';
 import DarkMode from '@mui/icons-material/DarkMode';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
-import ExpandMore from '@mui/icons-material/ExpandMore';
 import LightMode from '@mui/icons-material/LightMode';
 import Switch from '@mui/material/Switch';
-import Typography from '@mui/material/Typography';
 import useTheme from '@mui/material/styles/useTheme';
+import { useContext } from 'react';
 
 import { IUiState, uiActions } from '../../../redux/reducers/ui';
 import { RootState, AppDispatch } from '../../../redux/store';
@@ -17,22 +13,38 @@ import checkIfIsServer from '../../../helpers/checkIfIsServer';
 import CustomButton from '../CustomButton';
 import getHexToRgb from '../../../helpers/getHexToRgb';
 import getThemeMode from '../../../helpers/getThemeMode';
-import ResumeFilters from './ResumeFilters';
 import setThemeMode from '../../../helpers/setThemeMode';
 import styles from './index.module.scss';
+import NavLinks from './NavLinks';
+import ILink from '../../../interfaces/objects/interface.link';
+import { AppContext } from '../../../pages/_app';
 
 const ICON_COLORS = {
   light: '#EABC00',
   dark: '#33567F',
 };
 
-const isServer = checkIfIsServer();
+const LINKS: ILink[] = [
+  {
+    title: 'Inicio',
+    href: '/',
+  },
+  {
+    title: 'Anunciate',
+    href: '/anunciate',
+  },
+  {
+    title: 'Contacto',
+    href: '/contacto',
+  },
+];
 
 const Sidebar = () => {
+  const { isServer, theme } = useContext(AppContext);
   const showSidebar = useSelector((state: RootState): boolean => state.ui.showSidebar);
-  const theme = useTheme();
   const dispatch = useDispatch<AppDispatch>();
 
+  const backgroundColor = getHexToRgb(theme?.palette.grey[300]).join(', ');
   const mode = !isServer ? getThemeMode() : 'light';
 
   const handleCloseSidebar = () => {
@@ -43,8 +55,6 @@ const Sidebar = () => {
     const { checked } = evt.target;
     setThemeMode(checked ? 'dark' : 'light');
   };
-
-  const backgroundColor = getHexToRgb(theme.palette.grey[300]).join(', ');
 
   return (
     <Drawer
@@ -76,18 +86,9 @@ const Sidebar = () => {
       <Divider />
 
       <div className={`h-100 d-flex fd-column jc-between`}>
-        <Accordion sx={{ borderRadius: '0 !important' }}>
-          <AccordionSummary
-            expandIcon={<ExpandMore />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Filtros rapidos</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            <ResumeFilters />
-          </AccordionDetails>
-        </Accordion>
+        <div className={`pt-1 px-2 d-flex fd-column row-gap-1`}>
+          <NavLinks links={LINKS} />
+        </div>
 
         <CustomButton customClasses="w-100" label={`Acceso Clientes`} />
       </div>

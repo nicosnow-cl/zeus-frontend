@@ -8,12 +8,11 @@ import { RootState } from '../../redux/store';
 import ContentContainer from '../../components/UIElements/ContentContainer';
 import EscortSection from '../../components/Escort/EscortSection';
 import MainContainer from '../../components/UIElements/MainContainer';
-// import Navbar from '../../components/UIElements/Navbar';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
 
 const EscortSectionMemo = memo(EscortSection);
 
-const LazyNavbar = dynamic(() => import('../../components/UIElements/Navbar'), {
+const LazyNavbar = dynamic(() => import('../../components/UIElements/NavbarHandler'), {
   ssr: false,
 });
 
