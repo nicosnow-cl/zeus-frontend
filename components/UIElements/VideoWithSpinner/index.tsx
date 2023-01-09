@@ -26,6 +26,7 @@ const VideoWithSpinner = ({
   return (
     <>
       <CardMedia
+        playsInline
         autoPlay
         component={'video'}
         image={src}

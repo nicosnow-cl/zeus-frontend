@@ -1,4 +1,4 @@
-import api from '../';
+// import api from '../';
 import Fuse from 'fuse.js';
 
 import IEscort from '../../interfaces/states/interface.escort';
@@ -9,7 +9,7 @@ import sleep from '../../helpers/sleep';
 
 const obtainEscortsPost = async (filters?: IPartialFilters): Promise<IEscort[]> => {
   try {
-    await sleep(getRandomNumber(500, 5000));
+    await sleep(getRandomNumber(500, 1500));
 
     let result = escorts;
 
@@ -19,9 +19,7 @@ const obtainEscortsPost = async (filters?: IPartialFilters): Promise<IEscort[]> 
 
     console.log({ filters });
 
-    if (type) {
-      result = result.filter((escort) => escort.type === type);
-    }
+    if (type) result = result.filter((escort) => escort.type === type);
 
     if (name) {
       const fuse = new Fuse(result, {
@@ -32,9 +30,7 @@ const obtainEscortsPost = async (filters?: IPartialFilters): Promise<IEscort[]> 
       result = fuse.search(name).map((match) => match.item);
     }
 
-    if (video) {
-      result = result.filter((escort) => escort.videos.length);
-    }
+    if (video) result = result.filter((escort) => escort.videos.length);
 
     // if ( appareance?.length ) {
     //   result = result.filter((escort) =>
@@ -42,9 +38,8 @@ const obtainEscortsPost = async (filters?: IPartialFilters): Promise<IEscort[]> 
     //   );
     // }
 
-    if (services?.length) {
+    if (services?.length)
       result = result.filter((escort) => services.some((match) => escort.services.includes(match)));
-    }
 
     return result;
   } catch (err: any) {

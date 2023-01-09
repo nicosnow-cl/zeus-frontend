@@ -17,6 +17,7 @@ export interface IVipPremiumCardContent {
   name: string;
   nationality: string;
   services: string[];
+  timeLapsedIcon?: JSX.Element;
   type: EscortType;
 }
 
@@ -56,73 +57,80 @@ const VipPremiumCardContent = ({
   name,
   nationality,
   services = [],
+  timeLapsedIcon,
   type,
 }: IVipPremiumCardContent) => {
   return (
-    <div className={`w-100 h-100 d-flex fd-column jc-between ${styles.contentContainer}`}>
-      <div className={`m-2 d-flex jc-between`}>
-        <Typography
-          className={`${styles.text}`}
-          color="white"
-          component="div"
-          gutterBottom
-          variant="h5"
-        >
-          {`${name}, ${age}`}
-        </Typography>
-
-        <div className={`d-flex fd-column row-gap-1`}>
-          <Chip
-            className={`${type === 'VIP' ? styles.headerChipVip : styles.headerChipPremium}`}
-            color="primary"
-            icon={<Verified />}
-            label={type}
-            size="small"
-          />
-
-          <Chip
-            className={`${type === 'VIP' ? styles.headerChipVip : styles.headerChipPremium}`}
-            color="primary"
-            icon={<Favorite />}
-            label={abbreviateNumber(likes)}
-            size="small"
-          />
-        </div>
-      </div>
-
-      <div
-        className={`${styles.infoContainer} ${
-          !isHovering ? styles.infoContainerHide : styles.infoContainerShow
-        }`}
-      >
-        <div className={`p-1`}>
+    <>
+      <div className={`w-100 h-100 d-flex fd-column jc-between ${styles.contentContainer}`}>
+        <div className={`m-2 d-flex jc-between`}>
           <Typography
-            className={`${styles.text} ${styles.nationalityText}`}
-            variant="body2"
+            className={`${styles.text}`}
             color="white"
+            component="div"
+            gutterBottom
+            variant="h5"
           >
-            {nationality}
+            {`${name}, ${age}`}
           </Typography>
 
-          <Typography
-            className={`mt-2 ${styles.descriptionText}`}
-            variant="body2"
-            color="white"
-            sx={{ textAlign: 'justify' }}
-          >
-            {description}
-          </Typography>
-        </div>
+          <div className={`d-flex fd-column row-gap-1`}>
+            <Chip
+              className={`${type === 'VIP' ? styles.headerChipVip : styles.headerChipPremium}`}
+              color="primary"
+              icon={<Verified />}
+              label={type}
+              size="small"
+            />
 
-        {services.length > 0 && (
-          <div className={`mt-2 d-flex fw-wrap gap-1`}>
-            {services
-              .slice(0, type === 'VIP' ? VIP_MAX_SERVICES : PREMIUM_MAX_SERVICES)
-              .map((service) => getServiceChip(service, type))}
+            <Chip
+              className={`${type === 'VIP' ? styles.headerChipVip : styles.headerChipPremium}`}
+              color="primary"
+              icon={<Favorite />}
+              label={abbreviateNumber(likes)}
+              size="small"
+            />
           </div>
-        )}
+        </div>
+
+        <div>
+          {timeLapsedIcon && timeLapsedIcon}
+
+          <div
+            className={`${styles.infoContainer} ${
+              !isHovering ? styles.infoContainerHide : styles.infoContainerShow
+            }`}
+          >
+            <div className={`p-1`}>
+              <Typography
+                className={`${styles.text} ${styles.nationalityText}`}
+                variant="body2"
+                color="white"
+              >
+                {nationality}
+              </Typography>
+
+              <Typography
+                className={`mt-2 ${styles.descriptionText}`}
+                variant="body2"
+                color="white"
+                sx={{ textAlign: 'justify' }}
+              >
+                {description}
+              </Typography>
+            </div>
+
+            {services.length > 0 && (
+              <div className={`mt-2 d-flex fw-wrap gap-1`}>
+                {services
+                  .slice(0, type === 'VIP' ? VIP_MAX_SERVICES : PREMIUM_MAX_SERVICES)
+                  .map((service) => getServiceChip(service, type))}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

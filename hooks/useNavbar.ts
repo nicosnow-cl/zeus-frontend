@@ -16,7 +16,7 @@ const useNavbar = ({
   debounceTime = 100,
   initialOffset = 0,
   initialState = true,
-  minMoveInPixels = 100,
+  minMoveInPixels = 25,
 }: IUseNavbar) => {
   const [yOffset, setYOffset] = useState<number>(
     initialOffset || !isServer ? window.pageYOffset : 0,
