@@ -5,7 +5,7 @@ import checkIfIsServer from '../helpers/checkIfIsServer';
 
 const isServer = checkIfIsServer();
 
-export interface IUseNavbar {
+export interface IUseNavbarProps {
   initialState?: boolean;
   debounceTime?: number;
   initialOffset?: number;
@@ -17,7 +17,7 @@ const useNavbar = ({
   initialOffset = 0,
   initialState = true,
   minMoveInPixels = 25,
-}: IUseNavbar) => {
+}: IUseNavbarProps): boolean => {
   const [yOffset, setYOffset] = useState<number>(
     initialOffset || !isServer ? window.pageYOffset : 0,
   );

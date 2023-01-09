@@ -10,19 +10,18 @@ import { uiActions } from '../../../../redux/reducers/ui';
 import FakeDropdown from '../../FakeDropdown';
 import getHexToRgb from '../../../../helpers/getHexToRgb';
 import styles from './index.module.scss';
-import useNavbar from '../../../../hooks/useNavbar';
 
 export interface ITopBarProps {
   backgroundColor?: string;
+  isVisible?: boolean;
 }
 
 const genders = ['Mujeres', 'Hombres', 'Trans'];
 
-const TopBar = ({ backgroundColor }: ITopBarProps) => {
+const TopBar = ({ backgroundColor, isVisible = true }: ITopBarProps) => {
   const backgroundColorRGB = backgroundColor ? getHexToRgb(backgroundColor).join(', ') : undefined;
   const city = useSelector((state: RootState): string => state.ui.filters.city);
   const dispatch = useDispatch<AppDispatch>();
-  const isVisible = useNavbar({});
 
   const handleOpenRegionsModal = () => {
     dispatch(uiActions.handleToggleRegionModal(true));
