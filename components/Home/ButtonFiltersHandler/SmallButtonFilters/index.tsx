@@ -1,22 +1,26 @@
+import { useContext, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
-import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';
 import Typography from '@mui/material/Typography';
 
+import { AppContext } from '../../../../pages/_app';
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';
+import DraggableButton from '../../../UIElements/DraggableButton';
 import IFilters from '../../../../interfaces/states/interface.filters';
 import styles from './index.module.scss';
-import { useEffect, useRef, useState } from 'react';
-import DraggableButton from '../../../UIElements/DraggableButton';
-import { IconButton } from '@mui/material';
-import { Search } from '@mui/icons-material';
 
 const SmallButtonFilters = () => {
-  const holderRef = useRef<HTMLDivElement>(null);
+  const { theme } = useContext(AppContext);
   const dispatch = useDispatch<AppDispatch>();
   const filters = useSelector((state: RootState): IFilters => state.ui.filters);
+  const holderRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const backgroundColor = theme?.palette.grey[100];
   const btnSize = 50;
+  const color = theme?.palette.grey[500];
+  const holderBackgroundColor = theme?.palette.grey[200];
 
   const handleOpenFiltersModal = () => {
     dispatch(uiActions.handleToggleFiltersModal(true));
@@ -24,31 +28,58 @@ const SmallButtonFilters = () => {
 
   return (
     <Box
-      className={`w-100 pointer d-flex jc-between ai-center ${styles.filtersContainer}`}
-      //   onClick={handleOpenFiltersModal}
-      sx={(theme) => ({
-        backgroundColor: theme.palette.grey[100],
-        borderRadius: 5,
+      ref={containerRef}
+      className={`w-100 pointer d-flex`}
+      onClick={handleOpenFiltersModal}
+      sx={{
+        backgroundColor,
+        borderRadius: 6,
         boxShadow: 1,
-      })}
+        color,
+        height: btnSize,
+      }}
     >
-      <Box
+      <div
         ref={holderRef}
-        sx={(theme) => ({
-          backgroundColor: theme.palette.grey[200],
+        onClick={(evt) => {
+          evt.preventDefault();
+          evt.stopPropagation();
+        }}
+        style={{
+          backgroundColor: holderBackgroundColor,
           borderRadius: '50%',
           height: btnSize,
-          width: btnSize,
-        })}
+          minWidth: btnSize,
+        }}
       >
-        <DraggableButton onClick={handleOpenFiltersModal} />
-      </Box>
+        <DraggableButton
+          containerRef={containerRef}
+          btnSize={btnSize}
+          onClick={handleOpenFiltersModal}
+        />
+      </div>
 
-      <Typography color="disabled">Nombre</Typography>
-      <Typography color="disabled">Apariencia</Typography>
-      <Typography className={`pr-3`} color="disabled">
-        Servicios
-      </Typography>
+      <div className={`pl-2 pr-3 w-100 d-flex jc-between ai-center ${styles.filtersContainer}`}>
+        <Typography
+          sx={{ color: filters.name.length && theme?.palette.getContrastText(backgroundColor) }}
+        >
+          Nombre
+        </Typography>
+        <Typography
+          sx={{
+            color: filters.appareance.length && theme?.palette.getContrastText(backgroundColor),
+          }}
+        >
+          Apariencia
+        </Typography>
+        <Typography
+          sx={{
+            color: filters.services.length && theme?.palette.getContrastText(backgroundColor),
+          }}
+        >
+          Servicios
+        </Typography>
+      </div>
     </Box>
   );
 };

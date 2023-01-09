@@ -1,22 +1,3 @@
-
-
-
-
-.btn {
-  height: 40px;
-  grid-column: 1 / -1;
-}
-
-.normalFilters {
-  max-height: 80px;
-  overflow: hidden;
-  transition: all 0.2s ease-in-out;
-
-  &:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-}
-
 .text {
   font-size: clamp(12px, 1.5vw, 16px) !important;
   overflow: hidden;
