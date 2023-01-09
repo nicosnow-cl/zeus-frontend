@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { RefObject, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Box from '@mui/system/Box';
 import CheckCircleOutline from '@mui/icons-material/CheckCircleOutline';
@@ -11,79 +11,34 @@ import { AppDispatch, RootState } from '../../../redux/store';
 import { uiActions } from '../../../redux/reducers/ui';
 import IFilters from '../../../interfaces/states/interface.filters';
 import styles from './index.module.scss';
+import DraggableButton from '../../UIElements/DraggableButton';
+import { IconButton } from '@mui/material';
+import SmallButtonFilters from './SmallButtonFilters';
 
 export interface IPageFiltersProps {
   className?: string;
+  containerRef?: RefObject<HTMLDivElement>;
 }
 
-const PageFilters = ({ className }: IPageFiltersProps) => {
+const PageFilters = ({ className, containerRef }: IPageFiltersProps) => {
   const { device, theme } = useContext(AppContext);
   const dispatch = useDispatch<AppDispatch>();
   const filters = useSelector((state: RootState): IFilters => state.ui.filters);
+
+  const backgroundColor = theme?.palette.grey[100];
 
   const handleOpenFiltersModal = () => {
     dispatch(uiActions.handleToggleFiltersModal(true));
   };
 
-  if (device?.type === 'mobile')
-    return (
-      <Box
-        className={`w-100 pointer ${styles.smallFilters} ${className}`}
-        onClick={handleOpenFiltersModal}
-        sx={{
-          backgroundColor: theme?.palette.grey[100],
-          borderRadius: 5,
-          boxShadow: 1,
-        }}
-      >
-        <div className={`pl-3 d-flex jc-center ai-center col-gap-2 ${styles.gridItem}`}>
-          <Typography color="disabled" style={{ fontSize: 'inherit' }}>
-            Nombre
-          </Typography>
-          <CheckCircleOutline
-            color={filters.name !== '' ? 'success' : 'disabled'}
-            style={{ fontSize: 'inherit' }}
-          />
-        </div>
-
-        <div className={`pl-3 d-flex jc-center ai-center col-gap-2 ${styles.gridItem}`}>
-          <Typography color="disabled" style={{ fontSize: 'inherit' }}>
-            Apariencia
-          </Typography>
-          <CheckCircleOutline
-            color={filters.appareance.length ? 'success' : 'disabled'}
-            style={{ fontSize: 'inherit' }}
-          />
-        </div>
-
-        <div className={`pl-3 d-flex jc-center ai-center col-gap-2 ${styles.gridItem}`}>
-          <Typography color="disabled" style={{ fontSize: 'inherit' }}>
-            Servicios
-          </Typography>
-          <CheckCircleOutline
-            color={filters.services.length ? 'success' : 'disabled'}
-            style={{ fontSize: 'inherit' }}
-          />
-        </div>
-
-        <div
-          className={`pl-2 pr-2 d-flex jc-center ai-center ${styles.btn}`}
-          style={{
-            backgroundColor: theme?.palette.primary.main,
-            color: 'white',
-          }}
-        >
-          <Search />
-        </div>
-      </Box>
-    );
+  if (device?.type === 'mobile') return <SmallButtonFilters />;
 
   return (
     <Box
       className={`d-flex jc-between ai-center pointer ${styles.normalFilters} ${className}`}
-      onClick={handleOpenFiltersModal}
+      // onClick={handleOpenFiltersModal}
       sx={{
-        backgroundColor: theme?.palette.grey[100],
+        backgroundColor,
         borderRadius: 5,
         boxShadow: 1,
         margin: '0 auto',
@@ -93,7 +48,10 @@ const PageFilters = ({ className }: IPageFiltersProps) => {
     >
       <Grid container>
         <Grid className={`p-2 d-flex jc-center ai-center`} item xs={4}>
-          <Typography className={`${styles.text}`} variant="body1">
+          <Typography
+            className={`${styles.text}`}
+            sx={(theme) => ({ color: theme.palette.getContrastText(backgroundColor || '') })}
+          >
             {filters.name !== '' ? filters.name : 'Nombre'}
           </Typography>
         </Grid>
@@ -107,19 +65,31 @@ const PageFilters = ({ className }: IPageFiltersProps) => {
             borderRight: `1px solid ${theme?.palette.grey['A400']}`,
           }}
         >
-          <Typography className={`${styles.text}`} variant="body1">
+          <Typography
+            className={`${styles.text}`}
+            sx={(theme) => ({ color: theme.palette.getContrastText(backgroundColor || '') })}
+          >
             {filters.services.length ? filters.services.join(', ') : 'Servicios'}
           </Typography>
         </Grid>
 
         <Grid className={`p-2 d-flex jc-center ai-center`} item xs={4}>
-          <Typography className={`${styles.text}`} variant="body1">
+          <Typography
+            className={`${styles.text}`}
+            sx={(theme) => ({ color: theme.palette.getContrastText(backgroundColor || '') })}
+          >
             {filters.appareance.length ? filters.appareance.join(', ') : 'Apariencia'}
           </Typography>
         </Grid>
       </Grid>
 
-      <div
+      <DraggableButton>
+        <IconButton>
+          <Search />
+        </IconButton>
+      </DraggableButton>
+
+      {/* <div
         className={`h-100 pl-2 pr-2 d-flex jc-center ai-center`}
         style={{
           backgroundColor: theme?.palette.primary.main,
@@ -129,7 +99,7 @@ const PageFilters = ({ className }: IPageFiltersProps) => {
         }}
       >
         <Search />
-      </div>
+      </div> */}
     </Box>
   );
 };
