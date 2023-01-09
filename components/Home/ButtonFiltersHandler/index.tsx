@@ -83,11 +83,7 @@ const PageFilters = ({ className, containerRef }: IPageFiltersProps) => {
         </Grid>
       </Grid>
 
-      <DraggableButton>
-        <IconButton>
-          <Search />
-        </IconButton>
-      </DraggableButton>
+      <DraggableButton />
 
       {/* <div
         className={`h-100 pl-2 pr-2 d-flex jc-center ai-center`}
