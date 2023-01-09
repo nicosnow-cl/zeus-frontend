@@ -44,7 +44,6 @@ const useCard = ({
   }, [cardRef, containerRef, treshold, maxWidth, rootMargin]);
 
   const conditionalSetIsHovering = (value: boolean) => {
-    console.log({ maxWidth, windowWidth: window.innerWidth, isHightlighted });
     if (maxWidth && window.innerWidth <= maxWidth && !isHightlighted) return;
 
     setIsHovering(value);
