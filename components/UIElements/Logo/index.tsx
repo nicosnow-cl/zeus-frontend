@@ -1,6 +1,8 @@
 import Box from '@mui/system/Box';
-import FemaleOutlined from '@mui/icons-material/FemaleOutlined';
+import LogoIcon from '../../custom-icons/LogoIcon';
 import Typography from '@mui/material/Typography';
+
+import Constants from '../../../helpers/constants';
 
 export interface ILogoProps {
   backgroundColor?: string;
@@ -10,18 +12,21 @@ export interface ILogoProps {
   width?: number | string;
 }
 
+const { AppName } = Constants;
+
 const Logo = ({
   backgroundColor,
   height = 70,
   navbar = false,
   onClick,
-  width = 200,
+  width = 175,
 }: ILogoProps) => {
   return (
     <>
       {navbar ? (
         <Box
-          className={`d-flex jc-center ai-center`}
+          className={`d-flex jc-center ai-center ${onClick ? 'pointer' : ''} }`}
+          onClick={onClick}
           sx={{
             backgroundColor,
             borderRadius: '0px 0px 30px 30px',
@@ -33,19 +38,19 @@ const Logo = ({
             transform: 'translateX(-50%)',
             width,
           }}
-          onClick={onClick}
         >
-          <FemaleOutlined fontSize="large" color="primary" />
+          <LogoIcon color="primary" sx={{ fontSize: '2.5rem' }} />
           <Typography
             variant="h5"
             sx={(theme) => ({ color: theme.palette.getContrastText(backgroundColor || '') })}
           >
-            Kariñosas.cl
+            {AppName}
           </Typography>
         </Box>
       ) : (
         <Box
-          className={`p-2 d-inline-flex jc-center ai-center`}
+          className={`p-2 d-inline-flex jc-center ai-center ${onClick ? 'pointer' : ''}`}
+          onClick={onClick}
           sx={{
             backgroundColor,
             borderRadius: '30px',
@@ -54,13 +59,13 @@ const Logo = ({
             margin: '0 auto',
           }}
         >
-          <FemaleOutlined fontSize="small" color="primary" />
+          <LogoIcon color="primary" sx={{ fontSize: '1.5rem' }} />
           <Typography
             variant="h6"
             fontSize={13}
             sx={(theme) => ({ color: theme?.palette.getContrastText(backgroundColor || '') })}
           >
-            Kariñosas.cl
+            {AppName}
           </Typography>
         </Box>
       )}

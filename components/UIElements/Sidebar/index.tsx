@@ -1,23 +1,25 @@
+import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import DarkMode from '@mui/icons-material/DarkMode';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import LightMode from '@mui/icons-material/LightMode';
 import Switch from '@mui/material/Switch';
-import useTheme from '@mui/material/styles/useTheme';
-import { useContext } from 'react';
 
-import { IUiState, uiActions } from '../../../redux/reducers/ui';
+import { AppContext } from '../../../pages/_app';
 import { RootState, AppDispatch } from '../../../redux/store';
-import checkIfIsServer from '../../../helpers/checkIfIsServer';
+import { uiActions } from '../../../redux/reducers/ui';
 import CustomButton from '../CustomButton';
 import getHexToRgb from '../../../helpers/getHexToRgb';
 import getThemeMode from '../../../helpers/getThemeMode';
+import ILink from '../../../interfaces/objects/interface.link';
+import NavLinks from './NavLinks';
 import setThemeMode from '../../../helpers/setThemeMode';
 import styles from './index.module.scss';
-import NavLinks from './NavLinks';
-import ILink from '../../../interfaces/objects/interface.link';
-import { AppContext } from '../../../pages/_app';
+
+export interface ISidebarProps {
+  marginTop?: string;
+}
 
 const ICON_COLORS = {
   light: '#EABC00',
@@ -39,7 +41,7 @@ const LINKS: ILink[] = [
   },
 ];
 
-const Sidebar = () => {
+const Sidebar = ({ marginTop = '60px' }: ISidebarProps) => {
   const { isServer, theme } = useContext(AppContext);
   const showSidebar = useSelector((state: RootState): boolean => state.ui.showSidebar);
   const dispatch = useDispatch<AppDispatch>();
@@ -70,14 +72,12 @@ const Sidebar = () => {
       }}
       PaperProps={{
         sx: {
+          marginTop,
           backgroundColor: `rgba(${backgroundColor}, 0.8)`,
         },
       }}
     >
-      <div
-        className={`p-2 d-flex jc-center ai-center col-gap-3`}
-        style={{ marginTop: 100, width: 225 }}
-      >
+      <div className={`mt-1 p-2 d-flex jc-center ai-center col-gap-3`} style={{ width: 225 }}>
         <LightMode sx={{ color: ICON_COLORS.light }} />
         <Switch checked={mode === 'dark'} onChange={(evt) => handleChangeThemeMode(evt)} />
         <DarkMode sx={{ color: ICON_COLORS.dark }} />

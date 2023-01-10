@@ -16,6 +16,7 @@
     "@next/font": "13.0.5",
     "@react-spring/web": "9.6.1",
     "@reduxjs/toolkit": "1.9.0",
+    "@svgr/webpack": "^6.5.1",
     "@use-gesture/react": "^10.2.23",
     "axios": "1.2.0",
     "eslint": "8.28.0",
