@@ -1,11 +1,9 @@
-import { createSvgIcon } from '@mui/material';
+import SvgIcon from '@mui/material/SvgIcon';
 
 import LogoSvg from '../../../public/images/logo.svg';
 
 const LogoIcon = (props: any) => {
-  const Icon = createSvgIcon(LogoSvg(), 'LogoIcon');
-
-  return <Icon {...props} />;
+  return <SvgIcon {...props} component={LogoSvg} inheritViewBox />;
 };
 
 export default LogoIcon;
