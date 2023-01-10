@@ -52,7 +52,7 @@ const VideoCountdownHandler = ({
       {countdown === 0 && <PlayArrow fontSize="small" />}
       {countdown === DEBOUNCE_TIME && <Videocam fontSize="small" />}
       {countdown > 0 && countdown < DEBOUNCE_TIME && (
-        <Typography variant="subtitle2">{countdown / 1000}s</Typography>
+        <Typography variant="subtitle2">{Math.ceil(countdown / 1000)}s</Typography>
       )}
     </div>
   );

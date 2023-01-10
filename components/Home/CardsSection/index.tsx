@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useLayoutEffect } from 'react';
 import debounce from 'lodash/debounce';
 
 import getGridDataCards from '../../../helpers/getGridDataCards';
@@ -13,6 +13,7 @@ export interface ICardsSectionProps {
 }
 
 const CardsSection = ({ cards }: ICardsSectionProps) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const [width, setWidth] = useState<number>(0);
   const [{ columnsHeights, gridItems }, gridControls] = useGrid({
     items: cards,
@@ -20,22 +21,21 @@ const CardsSection = ({ cards }: ICardsSectionProps) => {
     defaultLimit: 12,
     gridFunction: getGridDataCards,
   });
-  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const current = containerRef.current;
     if (!current) return;
 
-    setWidth(current.offsetWidth); // initial width
+    if (!width) setWidth(current.offsetWidth); // initial width
 
     const handleResize = debounce(() => {
       setWidth(current.offsetWidth);
-    }, 100);
+    }, 200);
 
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, [containerRef]);
+  }, [containerRef, width]);
 
   console.count('CardsSection render');
 
@@ -48,8 +48,9 @@ const CardsSection = ({ cards }: ICardsSectionProps) => {
       <InfiniteScroll
         dataLength={gridItems.length}
         hasMore={gridItems.length <= cards.length}
-        next={() => gridControls.next()}
         loader={<></>}
+        next={() => gridControls.next()}
+        scrollThreshold={0.95}
       >
         <GridTransition items={gridItems} containerRef={containerRef} />
       </InfiniteScroll>

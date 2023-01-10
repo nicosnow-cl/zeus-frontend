@@ -1,10 +1,12 @@
 import { useTransition, a } from '@react-spring/web';
-import { memo } from 'react';
+import { memo, useContext } from 'react';
 
 import { IGridItem } from '../../../interfaces/objects/interface.grid-data';
 import EscortType from '../../../types/type.escort';
 import GoldCard from '../GoldCard';
 import VipPremiumCard from '../VipPremiumCard';
+import useGridCards from '../../../hooks/useGridCards';
+import { AppContext } from '../../../pages/_app';
 
 const VipPremiumCardMemo = memo(VipPremiumCard);
 const GoldCardMemo = memo(GoldCard);
@@ -49,13 +51,21 @@ const GridTransition = ({
   containerRef,
 }: IGridTransitionProps) => {
   const animated = useTransition(items, transitionProps);
+  const { device } = useContext(AppContext);
+  const { cardsStatus } = useGridCards({
+    containerRef,
+    disable: device?.type !== 'mobile',
+    gridItemsLength: items.length,
+    querySelector: '.card-scope',
+    treshold: 0.91,
+  });
 
   return animated((style, item) => (
-    <a.div key={item.id} style={style}>
+    <a.div id={`card-${item.id}`} className={`card-scope`} key={item.id} style={style}>
       {
         {
-          VIP: <VipPremiumCardMemo data={item.data} />,
-          PREMIUM: <VipPremiumCardMemo data={item.data} />,
+          VIP: <VipPremiumCardMemo data={item.data} isHightlighted={cardsStatus[item.id]} />,
+          PREMIUM: <VipPremiumCardMemo data={item.data} isHightlighted={cardsStatus[item.id]} />,
           GOLD: <GoldCardMemo data={item.data} />,
         }[item.data.type as EscortType]
       }
