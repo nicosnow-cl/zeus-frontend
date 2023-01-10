@@ -53,22 +53,6 @@ const PaletteColorsDark = {
     light: '#409bdb',
     main: '#1082d2',
   },
-  // grey: {
-  //   '50': '#252525',
-  //   '100': '#212121',
-  //   '200': '#1e1e1e',
-  //   '300': '#1a1a1a',
-  //   '400': '#161616',
-  //   '500': '#131313',
-  //   '600': '#0f0f0f',
-  //   '700': '#0B0B0B',
-  //   '800': '#070707',
-  //   '900': '#040404',
-  //   A100: '#f5f5f5',
-  //   A200: '#eeeeee',
-  //   A400: '#bdbdbd',
-  //   A700: '#616161',
-  // },
   grey: {
     '50': '#717477',
     '100': '#595d61',
@@ -108,9 +92,12 @@ const ShadowsDark: any = [
   ...Array(21).fill('0px 4px 12px rgba(0, 0, 0, 0.1)'),
 ];
 
+const AppName = 'TuMoco.cl';
+
 const Constants = {
-  PaletteColorsLight,
+  AppName,
   PaletteColorsDark,
+  PaletteColorsLight,
   ShadowsDark,
   ShadowsLight,
   TypographyColorsDark,
