@@ -47,6 +47,7 @@ const Footer = () => {
 
   const backgroundColor = theme?.palette.grey[700];
   const downBarBackgroundColor = theme?.palette.grey[900];
+  const logoFill = theme?.palette.grey[400];
 
   return (
     <div className={`w-100`} style={{ backgroundColor, color: 'white' }}>
@@ -71,7 +72,7 @@ const Footer = () => {
       <Grid className={`pb-2 footer-content`} container spacing={[2, 2]}>
         <Grid item xs={4} sm={2}>
           <div className={`d-flex fd-column row-gap-3 jc-center ai-center`}>
-            <LogoSvg style={{ fill: 'white', maxHeight: '10rem' }} />
+            <LogoSvg style={{ fill: logoFill, maxHeight: '10rem' }} />
             <Typography variant="h5">{AppName}</Typography>
           </div>
         </Grid>
