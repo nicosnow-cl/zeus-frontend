@@ -10,6 +10,7 @@ import NavbarHandler from '../components/UIElements/NavbarHandler';
 import PageFilters from '../components/Home/ButtonFiltersHandler';
 import StoriesBar from '../components/Home/StoriesBar';
 import ContentSection from '../components/Home/ContentSection';
+import Footer from '../components/UIElements/Footer';
 
 const LazyRegionsModal = dynamic(() => import('../components/UIElements/RegionsModal'), {
   ssr: false,
@@ -51,6 +52,8 @@ Home.getLayout = (page: ReactElement) => (
     <NavbarHandler />
 
     <ContentContainer>{page}</ContentContainer>
+
+    <Footer />
   </MainContainer>
 );
 

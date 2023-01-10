@@ -5,6 +5,11 @@
   width: 100%;
 }
 
+.footer-content {
+  max-width: 95%;
+  margin: 0 auto !important;
+}
+
 /* tablet */
 @media screen and (min-width: 1024px) {
   .wrapper {
@@ -12,6 +17,11 @@
     padding-right: 2rem;
     width: 100%;
   }
+
+    .footer-content {
+      max-width: 90%;
+      margin: 0 auto !important;
+    }
 }
 
 /* smalls pcs */
@@ -21,6 +31,11 @@
         padding-right: 3rem;
         width: 100%;
     }
+
+        .footer-content {
+          max-width: 85%;
+          margin: 0 auto !important;
+        }
 }
 
 /* normal and big pcs */
