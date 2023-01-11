@@ -1,13 +1,13 @@
 // import api from '../';
 import Fuse from 'fuse.js';
 
-import IEscort from '../../interfaces/states/interface.escort';
+import ICard from '../../interfaces/states/interface.card';
 import escorts from '../../dummy/escorts';
 import getRandomNumber from '../../helpers/getRandomNumber';
 import IPartialFilters from '../../interfaces/objects/interface.partial-filters';
 import sleep from '../../helpers/sleep';
 
-const obtainEscortsPost = async (filters?: IPartialFilters): Promise<IEscort[]> => {
+const obtainCardsPost = async (filters?: IPartialFilters): Promise<ICard[]> => {
   try {
     await sleep(getRandomNumber(500, 1500));
 
@@ -49,4 +49,4 @@ const obtainEscortsPost = async (filters?: IPartialFilters): Promise<IEscort[]> 
   }
 };
 
-export default obtainEscortsPost;
+export default obtainCardsPost;

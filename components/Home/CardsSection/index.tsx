@@ -3,13 +3,13 @@ import debounce from 'lodash/debounce';
 
 import getGridDataCards from '../../../helpers/getGridDataCards';
 import GridTransition from '../../UIElements/GridTransition';
-import IEscort from '../../../interfaces/states/interface.escort';
+import ICard from '../../../interfaces/states/interface.card';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import styles from './index.module.scss';
 import useGrid from '../../../hooks/useGrid';
 
 export interface ICardsSectionProps {
-  cards: IEscort[];
+  cards: ICard[];
 }
 
 const CardsSection = ({ cards }: ICardsSectionProps) => {

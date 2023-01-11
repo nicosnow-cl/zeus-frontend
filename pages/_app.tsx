@@ -46,14 +46,14 @@ export default function App({ Component, pageProps }: AppPropsWithLayout) {
   const theme = useMemo(() => responsiveFontSizes(createTheme(getTheme(mode))), [mode]);
 
   if (!isServer) {
-    triggerThemeModeChange(() => {
-      const newMode = (localStorage.getItem('themeMode') as PaletteMode) || 'light';
-
-      setMode(newMode);
-    });
+    triggerThemeModeChange(() =>
+      setMode((localStorage.getItem('themeMode') as PaletteMode) || 'light'),
+    );
   }
 
   const getLayout = Component.getLayout ?? ((page) => page);
+
+  console.count('App render');
 
   return (
     <Provider store={store}>

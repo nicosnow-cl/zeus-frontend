@@ -5,14 +5,16 @@ import { useEffect } from 'react';
 import { AppDispatch, RootState } from '../../../redux/store';
 import * as thunks from '../../../redux/thunks/home';
 import CardsSection from '../CardsSection';
-import IEscort from '../../../interfaces/states/interface.escort';
 import LoadingHome from '../LoadingHome';
 import NoCardsFound from '../NoCardsFound';
 
+let STRICT_MODE_FIRST_RENDER = false;
+
 const ContentSection = () => {
-  const cards = useSelector((state: RootState): IEscort[] => state.home.escorts);
-  const isLoadingHome = useSelector((state: RootState): boolean => state.ui.isLoadingHome);
+  const { value: cards, isLoading } = useSelector((state: RootState) => state.home.cardsState);
   const dispatch = useDispatch<AppDispatch>();
+
+  console.count('ContentSection render');
 
   // useEffect((): void => {
   //   fpfApi
@@ -30,15 +32,18 @@ const ContentSection = () => {
   // }, []);
 
   useEffect((): void => {
-    dispatch(thunks.getEscorts());
+    if (STRICT_MODE_FIRST_RENDER) return;
+
+    dispatch(thunks.getCards());
+    STRICT_MODE_FIRST_RENDER = true;
   }, [dispatch]);
+
+  if (isLoading) return <LoadingHome />;
+  if (!cards.length) return <NoCardsFound />;
 
   const vip = cards.filter((card) => card.type === 'VIP');
   const premium = cards.filter((card) => card.type === 'PREMIUM');
   const gold = cards.filter((card) => card.type === 'GOLD');
-
-  if (isLoadingHome) return <LoadingHome />;
-  if (vip.length === 0 && premium.length === 0 && gold.length === 0) return <NoCardsFound />;
 
   return <CardsSection cards={[...vip, ...premium, ...gold]} />;
 };

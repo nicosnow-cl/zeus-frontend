@@ -1,33 +1,16 @@
-import { ReactElement, useContext } from 'react';
-import { useSelector } from 'react-redux';
-import dynamic from 'next/dynamic';
+import { ReactElement } from 'react';
 
-import { AppContext, NextPageWithLayout } from './_app';
-import { RootState } from '../redux/store';
+import { NextPageWithLayout } from './_app';
 import ContentContainer from '../components/UIElements/ContentContainer';
+import ContentSection from '../components/Home/ContentSection';
+import Footer from '../components/UIElements/Footer';
 import MainContainer from '../components/UIElements/MainContainer';
+import Modals from '../components/Home/Modals';
 import NavbarHandler from '../components/UIElements/NavbarHandler';
 import PageFilters from '../components/Home/ButtonFiltersHandler';
 import StoriesBar from '../components/Home/StoriesBar';
-import ContentSection from '../components/Home/ContentSection';
-import Footer from '../components/UIElements/Footer';
-
-const LazyRegionsModal = dynamic(() => import('../components/UIElements/RegionsModal'), {
-  ssr: false,
-});
-const LazyFiltersModal = dynamic(() => import('../components/UIElements/FiltersModal'), {
-  ssr: false,
-});
-const LazyViewLadyStory = dynamic(() => import('../components/UIElements/ViewLadyStory'), {
-  ssr: false,
-});
 
 const Home: NextPageWithLayout = () => {
-  const { isServer } = useContext(AppContext);
-  const showRegionModal = useSelector((state: RootState): boolean => state.ui.showRegionModal);
-  const showFiltersModal = useSelector((state: RootState): boolean => state.ui.showFiltersModal);
-  const showLadiesStories = useSelector((state: RootState): boolean => state.ui.showLadiesStories);
-
   console.count('Home render');
 
   return (
@@ -38,11 +21,7 @@ const Home: NextPageWithLayout = () => {
       <StoriesBar />
       <ContentSection />
 
-      <div>
-        {!isServer && showRegionModal && <LazyRegionsModal />}
-        {showFiltersModal && <LazyFiltersModal />}
-        {showLadiesStories && <LazyViewLadyStory />}
-      </div>
+      <Modals />
     </div>
   );
 };

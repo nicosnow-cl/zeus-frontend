@@ -3,7 +3,7 @@ import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
 
 import { AppContext } from '../../../pages/_app';
-import IEscort from '../../../interfaces/states/interface.escort';
+import ICard from '../../../interfaces/states/interface.card';
 import styles from './index.module.scss';
 import VideoCountdownHandler from './VideoCountdownHandler';
 import VipPremiumCardContent from './VipPremiumCardContent';
@@ -11,7 +11,7 @@ import VipPremiumCardFooter from './VipPremiumCardFooter';
 import VipPremiumCardMedia from './VipPremiumCardMediaV2';
 
 export interface IVipPremiumCardProps {
-  data: IEscort;
+  data: ICard;
   style?: any;
   containerRef?: any;
   isHightlighted?: boolean;
