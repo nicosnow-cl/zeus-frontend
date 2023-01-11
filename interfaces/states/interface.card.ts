@@ -4,7 +4,7 @@ import ILocation from '../objects/interface.location';
 import IRrSs from '../objects/interface.rrss';
 import IVideo from '../objects/interface.video';
 
-interface IEscort {
+interface ICard {
   active: boolean;
   age: number;
   description: string;
@@ -22,4 +22,4 @@ interface IEscort {
   videos: IVideo[];
 }
 
-export default IEscort;
+export default ICard;

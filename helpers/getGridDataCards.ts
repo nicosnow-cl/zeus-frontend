@@ -1,7 +1,7 @@
 import IGridData, { IGridItem } from '../interfaces/objects/interface.grid-data';
-import IEscort from '../interfaces/states/interface.escort';
+import ICard from '../interfaces/states/interface.card';
 
-const getGridDataCards = (cards: IEscort[], width: number, columns: number): IGridData => {
+const getGridDataCards = (cards: ICard[], width: number, columns: number): IGridData => {
   const columnsHeights: number[] = new Array(columns).fill(0); // Each column gets a height starting with zero
   let prevCol = -1;
   let prevItemPos = { x: 0, y: 0 };

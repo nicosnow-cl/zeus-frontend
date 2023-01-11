@@ -16,7 +16,7 @@ import Switch from '@mui/material/Switch';
 import TextField from '@mui/material/TextField';
 
 import { AppDispatch, RootState } from '../../../../redux/store';
-import { getEscorts } from '../../../../redux/thunks/home/index';
+import { getCards } from '../../../../redux/thunks/home/index';
 import { ladiesAppareance } from '../../../../dummy/ladies-appareance';
 import { ladiesServices } from '../../../../dummy/ladies-services';
 import { uiActions } from '../../../../redux/reducers/ui';
@@ -89,7 +89,7 @@ const FiltersModalForm = () => {
 
     dispatch(uiActions.handleApplyFilters({ ...partiaFilters }));
     dispatch(uiActions.handleToggleFiltersModal(false));
-    dispatch(getEscorts({ ...partiaFilters }));
+    dispatch(getCards({ ...partiaFilters }));
   };
 
   return (

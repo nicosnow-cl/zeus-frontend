@@ -2,20 +2,21 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { uiActions } from '../../reducers/ui';
 import HomeActions from '../../actions/home';
-import IEscort from '../../../interfaces/states/interface.escort';
+import ICard from '../../../interfaces/states/interface.card';
 import IPartialFilters from '../../../interfaces/objects/interface.partial-filters';
 import IStory from '../../../interfaces/states/interface.story';
-import obtainEscortsPost from '../../../services/home/obtainEscortsPost';
+import obtainCardsPost from '../../../services/home/obtainEscortsPost';
 import obtainStoriesGet from '../../../services/home/obtainStoriesGet';
+import { homeActions } from '../../reducers/home';
 
-export const getEscorts = createAsyncThunk(
-  HomeActions.GET_ESCORTS,
-  async (filters: IPartialFilters | undefined = undefined, thunkApi): Promise<IEscort[]> => {
+export const getCards = createAsyncThunk(
+  HomeActions.GET_CARDS,
+  async (filters: IPartialFilters | undefined = undefined, thunkApi): Promise<ICard[]> => {
     const { dispatch } = thunkApi;
 
-    dispatch(uiActions.handleLoadingHome(true));
-    const result = await obtainEscortsPost(filters);
-    dispatch(uiActions.handleLoadingHome(false));
+    dispatch(homeActions.handleLoadingCards(true));
+    const result = await obtainCardsPost(filters);
+    dispatch(homeActions.handleLoadingCards(false));
 
     return result;
   },
@@ -26,9 +27,9 @@ export const getStories = createAsyncThunk(
   async (_, thunkApi): Promise<IStory[]> => {
     const { dispatch } = thunkApi;
 
-    dispatch(uiActions.handleLoadingStories(true));
+    dispatch(homeActions.handleLoadingStories(true));
     const result = await obtainStoriesGet();
-    dispatch(uiActions.handleLoadingStories(false));
+    dispatch(homeActions.handleLoadingStories(false));
 
     return result;
   },

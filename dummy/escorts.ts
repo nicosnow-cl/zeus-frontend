@@ -1,6 +1,6 @@
-import IEscort from '../interfaces/states/interface.escort';
+import ICard from '../interfaces/states/interface.card';
 
-const escorts: IEscort[] = [
+const escorts: ICard[] = [
   {
     active: true,
     age: 23,

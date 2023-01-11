@@ -6,11 +6,11 @@ import CardActionArea from '@mui/material/CardActionArea';
 import { AppContext } from '../../../pages/_app';
 import GoldCardContent from './GoldCardContent';
 import GoldCardMedia from './GoldCardMedia';
-import IEscort from '../../../interfaces/states/interface.escort';
+import ICard from '../../../interfaces/states/interface.card';
 import styles from './index.module.scss';
 
 export interface IGoldCardProps {
-  data: IEscort;
+  data: ICard;
 }
 
 const GoldCard = ({ data }: IGoldCardProps) => {

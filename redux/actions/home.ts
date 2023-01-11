@@ -1,5 +1,5 @@
 enum HomeActions {
-  GET_ESCORTS = '[HOME] Get Escorts',
+  GET_CARDS = '[HOME] Get Cards',
   GET_STORIES = '[HOME] Get Stories',
 }
 

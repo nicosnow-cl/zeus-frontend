@@ -40,7 +40,11 @@ const StoryContainer = ({
       <Box className={`w-100 d-flex fd-column jc-between ${styles.titleContainer}`}>
         <Box className={`px-3 d-flex jc-between ai-center`}>
           <Box className={`d-flex ai-center`}>
-            <StoryAvatar src={avatarSrc || ''} showBorder={false} size={80} />
+            <StoryAvatar
+              image={{ hq: avatarSrc || '', lq: avatarSrc || '' }}
+              showBorder={false}
+              size={80}
+            />
 
             <Box className={`ml-3`}>
               <Typography variant="h5" color="white">
