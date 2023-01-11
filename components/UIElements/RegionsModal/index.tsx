@@ -103,7 +103,7 @@ const RegionsModal = () => {
             xs={12}
             md={5}
             order={{ xs: 2, md: 1 }}
-            sx={{ maxHeight: 1000, overflow: 'auto' }}
+            sx={{ maxHeight: 1000, overflow: 'hidden' }}
           >
             <ChileRegionsMap
               mouseOut={handleLeaveRegion}

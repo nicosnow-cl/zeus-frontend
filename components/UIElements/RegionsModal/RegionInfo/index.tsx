@@ -49,7 +49,7 @@ const RegionInfo = ({
 
       {regionToShow && (
         <>
-          <Card sx={{ minWidth: '400px' }}>
+          <Card sx={{ minWidth: '300px', width: '80%' }}>
             <CardContent className={`p-5`}>
               <Typography variant="h5">Región</Typography>
 

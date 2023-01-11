@@ -25,7 +25,7 @@ const ChileRegionsMap = ({
   regionsPonderated,
 }: IChileRegionsMapProps) => {
   const { theme } = useContext(AppContext);
-  const defaultColorRgb = `rgb(${getHexToRgb(theme?.palette.grey[400]).join(',')})`;
+  const defaultColorRgb = `rgb(${getHexToRgb(theme?.palette.grey[100]).join(',')})`;
   const secondaryColorRgb = `rgb(${getHexToRgb(theme?.palette.secondary.light).join(',')})`;
   const GeoJSON = dynamic(() => import('react-leaflet').then((rLeaflet) => rLeaflet.GeoJSON), {
     ssr: false,
