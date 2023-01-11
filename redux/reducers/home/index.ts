@@ -7,13 +7,13 @@ import IStory from '../../../interfaces/states/interface.story';
 
 export interface IHomeState {
   cardsState: { value: ICard[]; isLoading: boolean; firstLoadDone: boolean };
-  stories: IStory[];
+  storiesState: { value: IStory[]; isLoading: boolean };
   medias: IMedia[];
 }
 
 const initialState: IHomeState = {
   cardsState: { value: [], isLoading: true, firstLoadDone: false },
-  stories: [],
+  storiesState: { value: [], isLoading: true },
   medias: [],
 };
 
@@ -24,6 +24,9 @@ const homeReducer = createSlice({
     handleLoadingCards: (state, action: PayloadAction<boolean | undefined>): void => {
       state.cardsState.isLoading = action.payload ?? !state.cardsState.isLoading;
     },
+    handleLoadingStories: (state, action: PayloadAction<boolean | undefined>): void => {
+      state.storiesState.isLoading = action.payload ?? !state.storiesState.isLoading;
+    },
     setMedias: (state, action): void => {
       state.medias = action.payload;
     },
@@ -31,13 +34,12 @@ const homeReducer = createSlice({
   extraReducers: (builder): void => {
     builder.addCase(thunks.getCards.fulfilled, (state, action) => {
       state.cardsState.value = action.payload;
-      state.cardsState.isLoading = false;
 
       if (!state.cardsState.firstLoadDone) state.cardsState.firstLoadDone = true;
     });
 
     builder.addCase(thunks.getStories.fulfilled, (state, action) => {
-      state.stories = action.payload;
+      state.storiesState.value = action.payload;
     });
   },
 });

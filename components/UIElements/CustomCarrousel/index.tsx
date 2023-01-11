@@ -1,12 +1,12 @@
 import 'react-multi-carousel/lib/styles.css';
-import { IconButton } from '@mui/material';
-import { KeyboardArrowLeft, KeyboardArrowRight } from '@mui/icons-material';
 import Carousel, { ArrowProps, ResponsiveType } from 'react-multi-carousel';
-
-import styles from './index.module.scss';
+import IconButton from '@mui/material/IconButton';
+import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
+import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 
 export interface ICustomCarrouselProps {
   elements?: JSX.Element[];
+  infinite?: boolean;
   responsive?: ResponsiveType;
 }
 
@@ -57,23 +57,19 @@ const DEFAULT_RESPONSIVE: ResponsiveType = {
 
 const CustomCarrousel = ({
   elements = [],
+  infinite = false,
   responsive = DEFAULT_RESPONSIVE,
 }: ICustomCarrouselProps) => {
   return (
     <Carousel
       customLeftArrow={<CustomLeftArrow />}
       customRightArrow={<CustomRightArrow />}
-      infinite
-      keyBoardControl
+      infinite={infinite}
       responsive={responsive}
     >
-      {elements.map((element, idx) => {
-        return (
-          <div key={idx} className={styles.carouselItem}>
-            {element}
-          </div>
-        );
-      })}
+      {elements.map((element) => (
+        <>{element}</>
+      ))}
     </Carousel>
   );
 };

@@ -1,61 +1,58 @@
-import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { useContext } from 'react';
-import ImageIcon from '@mui/icons-material/Image';
 import Typography from '@mui/material/Typography';
 
 import { AppContext } from '../../../pages/_app';
 import getTimeSince from '../../../helpers/getTimeSince';
-import IconSpinner from '../IconSpinner';
+import IImage from '../../../interfaces/objects/interface.image';
+import Image from 'next/image';
 import styles from './index.module.scss';
 
 export interface IStoryAvatarProps {
   fontColor?: string;
+  image: IImage;
   name?: string;
-  onShowStory?: () => void;
+  onClick?: () => void;
   publishDate?: string;
   showBorder?: boolean;
   size?: number;
-  src: string;
 }
 
 const MIN_AVATAR_SIZE = 80;
 
 const StoryAvatar = ({
   fontColor,
+  image,
   name,
-  onShowStory,
+  onClick,
   publishDate,
   showBorder = true,
   size = MIN_AVATAR_SIZE,
-  src,
 }: IStoryAvatarProps) => {
   const { theme } = useContext(AppContext);
-  const timeSince = publishDate ? getTimeSince(new Date(), new Date(publishDate)) : null;
+
   const borderColor = theme?.palette.primary.main;
+  const firstName = name?.split(' ')[0];
+  const timeSince = publishDate ? getTimeSince(new Date(), new Date(publishDate)) : null;
 
   return (
     <div className={`d-flex fd-column jc-center ai-center`} style={{ color: fontColor }}>
-      {name && <Typography variant="subtitle1">{name}</Typography>}
+      {firstName && <Typography variant="subtitle1">{firstName}</Typography>}
 
-      <div
+      <Image
+        alt={`story-${name}`}
         className={`p-1 pointer ${styles.storyImage}`}
+        height={size}
+        onClick={onClick}
+        quality={30}
+        sizes={`(max-width: 768px) ${size}, (max-width: 1200px) ${size}, ${size}`}
+        src={image.lq}
         style={{
-          width: size,
-          height: size,
           borderRadius: '50%',
+          objectFit: 'cover',
           border: showBorder ? `3px solid ${borderColor}` : 'none',
         }}
-        onClick={onShowStory}
-      >
-        <LazyLoadImage
-          alt="story-image"
-          height={'100%'}
-          placeholder={<IconSpinner icon={<ImageIcon />} />}
-          src={src}
-          style={{ borderRadius: '50%', objectFit: 'cover' }}
-          width={'100%'}
-        />
-      </div>
+        width={size}
+      />
 
       {timeSince && <Typography variant="subtitle2">{timeSince}</Typography>}
     </div>

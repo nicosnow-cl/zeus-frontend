@@ -27,9 +27,9 @@ export const getStories = createAsyncThunk(
   async (_, thunkApi): Promise<IStory[]> => {
     const { dispatch } = thunkApi;
 
-    dispatch(uiActions.handleLoadingStories(true));
+    dispatch(homeActions.handleLoadingStories(true));
     const result = await obtainStoriesGet();
-    dispatch(uiActions.handleLoadingStories(false));
+    dispatch(homeActions.handleLoadingStories(false));
 
     return result;
   },
