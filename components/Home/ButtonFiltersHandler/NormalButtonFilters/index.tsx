@@ -15,7 +15,6 @@ const NormalButtonFilters = () => {
   const { theme } = useContext(AppContext);
   const dispatch = useDispatch<AppDispatch>();
   const filters = useSelector((state: RootState): IFilters => state.ui.filters);
-  const holderRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const backgroundColor = theme?.palette.grey[100];
@@ -87,7 +86,6 @@ const NormalButtonFilters = () => {
       </Grid>
 
       <div
-        ref={holderRef}
         onClick={(evt) => {
           evt.preventDefault();
           evt.stopPropagation();
