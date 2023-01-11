@@ -5,10 +5,10 @@ import MenuItem from '@mui/material/MenuItem';
 import MonetizationOn from '@mui/icons-material/MonetizationOn';
 import Select from '@mui/material/Select';
 
-import { AppDispatch, RootState } from '../../../../redux/store';
-import { uiActions } from '../../../../redux/reducers/ui';
-import FakeDropdown from '../../FakeDropdown';
-import getHexToRgb from '../../../../helpers/getHexToRgb';
+import { AppDispatch, RootState } from '../../../../../redux/store';
+import { uiActions } from '../../../../../redux/reducers/ui';
+import FakeDropdown from '../../../FakeDropdown';
+import getHexToRgb from '../../../../../helpers/getHexToRgb';
 import styles from './index.module.scss';
 
 export interface ITopBarProps {

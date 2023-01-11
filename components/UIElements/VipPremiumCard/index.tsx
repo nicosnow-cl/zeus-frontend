@@ -25,7 +25,7 @@ const VipPremiumCard = ({ data, style, isHightlighted }: IVipPremiumCardProps) =
   const [showVideos, setShowVideos] = useState<boolean>(false);
   const { theme, router } = useContext(AppContext);
 
-  const hasAction = isHightlighted !== undefined ? isHovering || isHightlighted : isHovering;
+  const hasAction = isHightlighted ?? isHovering;
   const hasVideos = Boolean(data.videos.length);
 
   const cardSx = () =>
@@ -46,19 +46,11 @@ const VipPremiumCard = ({ data, style, isHightlighted }: IVipPremiumCardProps) =
     router?.push(`/escort/${data.id}`);
   };
 
-  const onCountdownEnd = () => {
-    setShowVideos(true);
-  };
-
-  const onCountdownInit = () => {
-    setShowVideos(false);
-  };
-
   return (
     <Card
       className={`h-100 d-flex fd-column ${styles.card}`}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
+      onMouseEnter={() => isHightlighted === undefined && setIsHovering(true)}
+      onMouseLeave={() => isHightlighted === undefined && setIsHovering(false)}
       sx={cardSx()}
     >
       <CardActionArea onClick={handleClickCard}>
@@ -85,8 +77,8 @@ const VipPremiumCard = ({ data, style, isHightlighted }: IVipPremiumCardProps) =
               <VideoCountdownHandler
                 hasVideos={hasVideos}
                 startCountdown={hasAction}
-                onCountdownEnd={onCountdownEnd}
-                onCountdownInit={onCountdownInit}
+                onCountdownEnd={() => setShowVideos(true)}
+                onCountdownInit={() => setShowVideos(false)}
               />
             ) : undefined
           }

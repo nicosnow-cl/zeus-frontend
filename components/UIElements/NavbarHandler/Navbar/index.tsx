@@ -4,14 +4,14 @@ import useTheme from '@mui/material/styles/useTheme';
 
 import DownBar from './DownBar';
 import TopBar from './TopBar';
-import useNavbar from '../../../hooks/useNavbar';
+import useNavbar from '../../../../hooks/useNavbar';
 
 export interface INavbarProps {
   setNavbarHeight?: (height: string) => void;
 }
 
 const Navbar = ({ setNavbarHeight = () => {} }: INavbarProps) => {
-  const isVisible = useNavbar({});
+  const { isVisible } = useNavbar({});
 
   const backgroundColor = useTheme().palette.grey[900];
 

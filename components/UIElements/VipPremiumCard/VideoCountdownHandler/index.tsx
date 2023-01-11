@@ -15,6 +15,7 @@ export interface IVideoCountdownHandlerProps {
 }
 
 const DEBOUNCE_TIME = 5000;
+const STEP = 1000;
 
 const VideoCountdownHandler = ({
   backgroundColor = 'rgba(0,0,0,0.5)',
@@ -24,7 +25,7 @@ const VideoCountdownHandler = ({
   onCountdownInit = () => {},
   startCountdown = false,
 }: IVideoCountdownHandlerProps) => {
-  const { countdown, api } = useCountdown({ timeInMs: DEBOUNCE_TIME, step: 100 });
+  const { countdown, api } = useCountdown({ timeInMs: DEBOUNCE_TIME, step: STEP });
   const apiRef = useRef(api);
 
   useEffect(() => {
@@ -35,8 +36,8 @@ const VideoCountdownHandler = ({
   }, [hasVideos, startCountdown, apiRef]);
 
   useEffect(() => {
-    if (countdown === 0) onCountdownEnd();
-    else if (countdown === DEBOUNCE_TIME) onCountdownInit();
+    if (countdown <= 0) onCountdownEnd();
+    else if (countdown * STEP === DEBOUNCE_TIME) onCountdownInit();
   }, [countdown, onCountdownEnd, onCountdownInit]);
 
   return (
@@ -52,7 +53,7 @@ const VideoCountdownHandler = ({
       {countdown === 0 && <PlayArrow fontSize="small" />}
       {countdown === DEBOUNCE_TIME && <Videocam fontSize="small" />}
       {countdown > 0 && countdown < DEBOUNCE_TIME && (
-        <Typography variant="subtitle2">{Math.ceil(countdown / 1000)}s</Typography>
+        <Typography variant="subtitle2">{countdown}s</Typography>
       )}
     </div>
   );
