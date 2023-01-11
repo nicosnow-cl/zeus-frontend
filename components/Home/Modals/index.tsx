@@ -22,11 +22,11 @@ const Modals = () => {
   const showLadiesStories = useSelector((state: RootState): boolean => state.ui.showLadiesStories);
 
   return (
-    <div>
+    <>
       {!isServer && showRegionModal && <LazyRegionsModal />}
       {showFiltersModal && <LazyFiltersModal />}
       {showLadiesStories && <LazyViewLadyStory />}
-    </div>
+    </>
   );
 };
 
