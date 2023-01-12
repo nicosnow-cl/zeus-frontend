@@ -45,6 +45,7 @@ const StoriesCarousel = ({
       image={story.avatarSrc}
       name={story.name}
       onClick={() => {
+        dispatch(uiActions.handleSetSelectedEscortStory(story.escortId));
         dispatch(uiActions.handleToggleLadiesStories(true));
       }}
       publishDate={story.publishDate}

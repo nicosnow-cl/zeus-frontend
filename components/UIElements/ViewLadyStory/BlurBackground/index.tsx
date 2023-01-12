@@ -1,5 +1,3 @@
-import { Box } from '@mui/system';
-
 import styles from './index.module.scss';
 
 export interface IBlurBackgroundProps {
@@ -8,8 +6,8 @@ export interface IBlurBackgroundProps {
 
 const BlurBackground = ({ src }: IBlurBackgroundProps) => {
   return (
-    <Box className={`h-100 w-100 ${styles.videoContainer}`}>
-      <Box className={`h-100 w-100 ${styles.blur}`} />
+    <div className={`h-100 w-100 ${styles.videoContainer}`}>
+      <div className={`h-100 w-100 ${styles.blur}`} />
       {src && (
         <video
           autoPlay={false}
@@ -20,7 +18,7 @@ const BlurBackground = ({ src }: IBlurBackgroundProps) => {
           src={src}
         />
       )}
-    </Box>
+    </div>
   );
 };
 

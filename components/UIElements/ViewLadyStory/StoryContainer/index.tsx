@@ -1,90 +1,119 @@
-import { Button, CardMedia, LinearProgress, Typography } from '@mui/material';
-import { Box, Stack } from '@mui/system';
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import Button from '@mui/material/Button';
+import CardMedia from '@mui/material/CardMedia';
+import LinearProgress from '@mui/material/LinearProgress';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 
+import getTimeSince from '../../../../helpers/getTimeSince';
 import StoryAvatar from '../../StoryAvatar';
 import styles from './index.module.scss';
 
 export interface IStoryContainerProps {
   avatarSrc?: string;
-  videoSrc?: string;
   handleClose?: () => void;
-  handleVideoRef?: (videoRef: RefObject<HTMLVideoElement>) => void;
-  videoProgress?: number;
+  name: string;
+  publishDate: string;
+  storyIdx: number;
+  totalStories: number;
+  videoSrc?: string;
+  handleNext?: () => void;
 }
 
 const StoryContainer = ({
   avatarSrc,
   handleClose,
-  handleVideoRef,
+  name,
+  publishDate,
+  storyIdx,
+  totalStories,
   videoSrc,
-  videoProgress,
+  handleNext = () => {},
 }: IStoryContainerProps) => {
-  const [loop, setLoop] = useState<NodeJS.Timer | null>(null);
+  const [progress, setProgress] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  useEffect((): (() => void) => {
-    if (videoRef.current) videoRef.current.play();
-    if (loop) clearInterval(loop);
+  const handleProgress = useCallback(
+    (current: HTMLVideoElement) => {
+      const finished = videoRef.current?.ended;
 
-    if (handleVideoRef) {
-      const _ = setInterval((): void => handleVideoRef(videoRef), 500);
-      setLoop(_);
-    }
+      if (finished) {
+        handleNext();
+        return;
+      }
 
-    return (): void => (loop ? clearInterval(loop) : undefined);
-  }, [videoSrc, handleVideoRef]);
+      if (videoRef.current) {
+        const duration = videoRef.current.duration;
+        const currentTime = videoRef.current.currentTime;
+
+        setProgress(Math.floor((currentTime / duration) * 100));
+      }
+    },
+    [handleNext],
+  );
+
+  useEffect(() => {
+    const { current } = videoRef;
+    if (!current) return;
+
+    const intervalId = setInterval(() => handleProgress(current), 250);
+
+    return () => clearInterval(intervalId);
+  }, [videoRef, handleProgress]);
 
   return (
-    <Box className={`h-100 d-flex fd-column ${styles.storyContainer}`}>
-      <Box className={`w-100 d-flex fd-column jc-between ${styles.titleContainer}`}>
-        <Box className={`px-3 d-flex jc-between ai-center`}>
-          <Box className={`d-flex ai-center`}>
+    <div className={`h-100 d-flex fd-column ${styles.storyContainer}`} style={{ minWidth: 400 }}>
+      <div className={`w-100 d-flex fd-column jc-between ${styles.titleContainer}`}>
+        <div className={`px-3 d-flex jc-between ai-center`}>
+          <div className={`d-flex ai-center`}>
             <StoryAvatar
               image={{ hq: avatarSrc || '', lq: avatarSrc || '' }}
               showBorder={false}
               size={80}
             />
 
-            <Box className={`ml-3`}>
+            <div className={`ml-3`}>
               <Typography variant="h5" color="white">
-                Diana
+                {name}
                 <span className={`ml-3`} style={{ fontSize: 13 }}>
-                  Hace 8 min. atrás
+                  {getTimeSince(new Date(), new Date(publishDate))}
                 </span>
               </Typography>
-            </Box>
-          </Box>
+            </div>
+          </div>
 
           {handleClose && (
             <Button className={`${styles.closeBtn}`} onClick={handleClose} variant="contained">
               Cerrar
             </Button>
           )}
-        </Box>
+        </div>
 
         <Stack spacing={[0, 1]} direction="row">
-          <LinearProgress
-            sx={{ width: '100%' }}
-            value={videoProgress || 100}
-            variant="determinate"
-          />
+          {new Array(totalStories).fill(undefined).map((_, idx) => (
+            <LinearProgress
+              key={idx}
+              sx={{ width: '100%' }}
+              value={idx === storyIdx ? progress : 0}
+              variant="determinate"
+            />
+          ))}
         </Stack>
-      </Box>
+      </div>
 
       {videoSrc && (
         <CardMedia
           ref={videoRef}
-          id={`story-${Math.random()}`}
           autoPlay={true}
           component="video"
+          height="100%"
+          id={`story-${Math.random()}`}
           loop={false}
           muted={false}
           src={videoSrc}
-          height="100%"
         />
       )}
-    </Box>
+    </div>
   );
 };
 
