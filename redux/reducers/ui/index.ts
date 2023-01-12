@@ -8,6 +8,7 @@ export interface IUiState {
   filters: IFilters;
   isLoadingHome: boolean;
   isLoadingStories: boolean;
+  selectedEscortStory: number;
   showFiltersModal: boolean;
   showLadiesStories: boolean;
   showLadyImage: boolean;
@@ -29,6 +30,7 @@ const initialState: IUiState = {
   },
   isLoadingHome: false,
   isLoadingStories: false,
+  selectedEscortStory: 0,
   showFiltersModal: false,
   showLadiesStories: false,
   showLadyImage: false,
@@ -61,6 +63,9 @@ const uiReducer = createSlice({
     handleToggleLadiesStories: (state, action: PayloadAction<boolean | undefined>) => {
       state.showLadiesStories =
         action.payload === undefined ? !state.showLadiesStories : action.payload;
+    },
+    handleSetSelectedEscortStory: (state, action: PayloadAction<number>) => {
+      state.selectedEscortStory = action.payload;
     },
     handleToggleLadyImage: (state, action: PayloadAction<boolean | undefined>) => {
       state.showLadyImage = action.payload === undefined ? !state.showLadyImage : action.payload;
