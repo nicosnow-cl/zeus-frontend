@@ -41,7 +41,7 @@ const LINKS: ILink[] = [
   },
 ];
 
-const Sidebar = ({ marginTop = '60px' }: ISidebarProps) => {
+const Sidebar = ({ marginTop = '0px' }: ISidebarProps) => {
   const { isServer, theme } = useContext(AppContext);
   const showSidebar = useSelector((state: RootState): boolean => state.ui.showSidebar);
   const dispatch = useDispatch<AppDispatch>();
@@ -67,13 +67,15 @@ const Sidebar = ({ marginTop = '60px' }: ISidebarProps) => {
       sx={{
         flexShrink: 0,
         '& .MuiDrawer-paper': {
+          bottom: '0',
           boxSizing: 'border-box',
+          top: 'unset !important',
         },
       }}
       PaperProps={{
         sx: {
-          marginTop,
           backgroundColor: `rgba(${backgroundColor}, 0.8)`,
+          height: `calc(100% - ${marginTop})}`,
         },
       }}
     >
