@@ -1,43 +1,47 @@
-import { debounce } from 'lodash';
-import { useCallback, useEffect, useState } from 'react';
-
-import checkIfIsServer from '../helpers/checkIfIsServer';
-
-const isServer = checkIfIsServer();
+import { useMemo, useState } from 'react';
+import useDebouncedCallback from 'beautiful-react-hooks/useDebouncedCallback';
+import useWindowScroll from 'beautiful-react-hooks/useWindowScroll';
 
 export interface IUseNavbarProps {
-  initialState?: boolean;
-  debounceTime?: number;
   initialOffset?: number;
+  initialState?: boolean;
   minMoveInPixels?: number;
+  wait?: number;
+}
+
+export interface IUseNavbar {
+  isVisible: boolean;
+  lastOffset: number;
 }
 
 const useNavbar = ({
-  debounceTime = 100,
   initialOffset = 0,
   initialState = true,
   minMoveInPixels = 25,
-}: IUseNavbarProps): boolean => {
-  const [yOffset, setYOffset] = useState<number>(
-    initialOffset || !isServer ? window.pageYOffset : 0,
+  wait,
+}: IUseNavbarProps): IUseNavbar => {
+  const [status, set] = useState<IUseNavbar>({
+    isVisible: initialState,
+    lastOffset: initialOffset ?? window.pageYOffset,
+  });
+  const onWindowScroll = useWindowScroll();
+
+  onWindowScroll(
+    useDebouncedCallback(
+      () => {
+        const currentYOffset = window.pageYOffset;
+
+        set((prev) => ({
+          isVisible: currentYOffset === 0 || prev.lastOffset - minMoveInPixels > currentYOffset,
+          lastOffset: currentYOffset,
+        }));
+      },
+      [],
+      wait,
+    ),
   );
-  const [isVisible, setIsVisible] = useState<boolean>(initialState);
 
-  const handleScroll = useCallback(() => {
-    const currentYOffset = window.pageYOffset;
-
-    setYOffset(currentYOffset);
-    setIsVisible(currentYOffset === 0 || yOffset - minMoveInPixels > currentYOffset);
-  }, [setIsVisible, yOffset, minMoveInPixels]);
-
-  useEffect(() => {
-    const debounceHandleScroll = debounce(handleScroll, debounceTime);
-    window.addEventListener('scroll', debounceHandleScroll);
-
-    return () => window.removeEventListener('scroll', debounceHandleScroll);
-  }, [handleScroll, debounceTime]);
-
-  return isVisible;
+  return useMemo(() => status, [status]);
 };
 
 export default useNavbar;

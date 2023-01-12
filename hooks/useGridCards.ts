@@ -6,9 +6,9 @@ export interface IUseGridCardsProps {
   gridItemsLength: number;
   maxWidth?: number;
   oneElementActive?: boolean;
-  onlyOneActive?: boolean;
   querySelector?: string;
   rootMargin?: string;
+  startingValue?: boolean;
   treshold?: number;
 }
 
@@ -19,12 +19,14 @@ const useGridCards = ({
   disable = false,
   gridItemsLength,
   maxWidth,
-  onlyOneActive = false,
   querySelector = '.card',
   rootMargin = '0px',
+  startingValue = false,
   treshold = DEFAULT_TRESHOLD,
 }: IUseGridCardsProps) => {
-  const [cardsStatus, setCardsStatus] = useState<boolean[]>(new Array(gridItemsLength).fill(false));
+  const [cardsStatus, setCardsStatus] = useState<boolean[]>(
+    new Array(gridItemsLength).fill(startingValue),
+  );
 
   const { current: container } = containerRef;
 
@@ -42,7 +44,7 @@ const useGridCards = ({
         else updatedCards.push({ id, value: false });
       });
 
-      setCardsStatus((prev) => {
+      setCardsStatus((prev: any[]) => {
         const updated = [...prev];
         updatedCards.forEach(({ id, value }) => (updated[id] = value));
 
@@ -82,7 +84,7 @@ const useGridCards = ({
     return observerCleanup;
   }, [cleanup, container, disable, gridItemsLength]);
 
-  return useMemo(() => ({ cardsStatus, setCardsStatus }), [cardsStatus]);
+  return { cardsStatus, setCardsStatus };
 };
 
 export default useGridCards;

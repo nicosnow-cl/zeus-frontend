@@ -1,22 +1,21 @@
+import { memo } from 'react';
 import { useTransition, a } from '@react-spring/web';
-import { memo, useContext } from 'react';
 
 import { IGridItem } from '../../../interfaces/objects/interface.grid-data';
 import EscortType from '../../../types/type.escort';
 import GoldCard from '../GoldCard';
-import VipPremiumCard from '../VipPremiumCard';
 import useGridCards from '../../../hooks/useGridCards';
-import { AppContext } from '../../../pages/_app';
+import VipPremiumCard from '../VipPremiumCard';
+
+export interface IGridTransitionProps {
+  autoHightlight?: boolean;
+  containerRef?: any;
+  items: readonly IGridItem[] | IGridItem[];
+  transitionProps?: any;
+}
 
 const VipPremiumCardMemo = memo(VipPremiumCard);
 const GoldCardMemo = memo(GoldCard);
-
-export interface IGridTransitionProps {
-  items: readonly IGridItem[] | IGridItem[];
-  transitionProps?: any;
-  containerRef?: any;
-}
-
 const DEFAULT_TRANISITION_PROPS = {
   keys: (item: any) => item.id,
   from: ({ initialX, initialY, width, height, zIndex }: any) => ({
@@ -46,26 +45,38 @@ const DEFAULT_TRANISITION_PROPS = {
 };
 
 const GridTransition = ({
+  autoHightlight = false,
+  containerRef,
   items,
   transitionProps = DEFAULT_TRANISITION_PROPS,
-  containerRef,
 }: IGridTransitionProps) => {
   const animated = useTransition(items, transitionProps);
-  const { device } = useContext(AppContext);
   const { cardsStatus } = useGridCards({
     containerRef,
-    disable: device?.type !== 'mobile',
+    disable: !autoHightlight,
     gridItemsLength: items.length,
     querySelector: '.card-scope',
     treshold: 0.91,
   });
 
+  console.count('GridTransition render');
+
   return animated((style, item) => (
     <a.div id={`card-${item.id}`} className={`card-scope`} key={item.id} style={style}>
       {
         {
-          VIP: <VipPremiumCardMemo data={item.data} isHightlighted={cardsStatus[item.id]} />,
-          PREMIUM: <VipPremiumCardMemo data={item.data} isHightlighted={cardsStatus[item.id]} />,
+          VIP: (
+            <VipPremiumCardMemo
+              data={item.data}
+              isHightlighted={autoHightlight ? cardsStatus[item.id] : undefined}
+            />
+          ),
+          PREMIUM: (
+            <VipPremiumCardMemo
+              data={item.data}
+              isHightlighted={autoHightlight ? cardsStatus[item.id] : undefined}
+            />
+          ),
           GOLD: <GoldCardMemo data={item.data} />,
         }[item.data.type as EscortType]
       }

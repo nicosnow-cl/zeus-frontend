@@ -1,8 +1,8 @@
 import { memo, useContext, useState } from 'react';
 
 import { AppContext } from '../../../pages/_app';
-import MobileNavbar from '../MobileNavbar';
-import Navbar from '../Navbar';
+import MobileNavbar from './MobileNavbar';
+import Navbar from './Navbar';
 import Sidebar from '../Sidebar';
 
 const SidebarMemo = memo(Sidebar);

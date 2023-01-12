@@ -1,5 +1,6 @@
-import { Box } from '@mui/system';
-import { Card, CardContent, Skeleton } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Skeleton from '@mui/material/Skeleton';
 
 import styles from './index.module.scss';
 
@@ -7,14 +8,14 @@ const LoadingCard = () => {
   return (
     <Card className={`pointer h-100 d-flex fd-column ${styles.card}`}>
       <CardContent className={`${styles.cardContent}`}>
-        <Box className={`${styles.cardMedia}`}>
+        <div className={`${styles.cardMedia}`}>
           <Skeleton className={`h-100 w-100 ${styles.cardMediaSkeleton}`} />
-        </Box>
+        </div>
 
-        <Box className={`pt-3 px-2 w-100 d-flex jc-between ai-start ${styles.cardTop}`}>
+        <div className={`pt-3 px-2 w-100 d-flex jc-between ai-start ${styles.cardTop}`}>
           <Skeleton className={`${styles.skeletonNoTransform}`} width={130} height={30} />
 
-          <Box className={`d-flex fd-column row-gap-1`}>
+          <div className={`d-flex fd-column row-gap-1`}>
             <Skeleton
               className={`${styles.skeletonNoTransform}`}
               width={60}
@@ -27,10 +28,10 @@ const LoadingCard = () => {
               height={24}
               sx={{ borderRadius: 5 }}
             />
-          </Box>
-        </Box>
+          </div>
+        </div>
 
-        <Box className={`p-2 d-flex jc-between ai-center ${styles.cardFooter}`}>
+        <div className={`p-2 d-flex jc-between ai-center ${styles.cardFooter}`}>
           <Skeleton
             className={`${styles.skeletonNoTransform}`}
             width={100}
@@ -43,7 +44,7 @@ const LoadingCard = () => {
             height={32}
             sx={{ borderRadius: 5 }}
           />
-        </Box>
+        </div>
       </CardContent>
     </Card>
   );

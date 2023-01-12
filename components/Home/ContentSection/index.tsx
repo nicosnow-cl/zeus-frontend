@@ -8,7 +8,7 @@ import CardsSection from '../CardsSection';
 import LoadingHome from '../LoadingHome';
 import NoCardsFound from '../NoCardsFound';
 
-let STRICT_MODE_FIRST_RENDER = false;
+let FIRST_RENDER_DONE = false;
 
 const ContentSection = () => {
   const { value: cards, isLoading } = useSelector((state: RootState) => state.home.cardsState);
@@ -32,10 +32,10 @@ const ContentSection = () => {
   // }, []);
 
   useEffect((): void => {
-    if (STRICT_MODE_FIRST_RENDER) return;
+    if (FIRST_RENDER_DONE) return;
 
     dispatch(thunks.getCards());
-    STRICT_MODE_FIRST_RENDER = true;
+    FIRST_RENDER_DONE = true;
   }, [dispatch]);
 
   if (isLoading) return <LoadingHome />;

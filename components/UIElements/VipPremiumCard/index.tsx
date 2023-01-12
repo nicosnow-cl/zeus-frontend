@@ -8,58 +8,38 @@ import styles from './index.module.scss';
 import VideoCountdownHandler from './VideoCountdownHandler';
 import VipPremiumCardContent from './VipPremiumCardContent';
 import VipPremiumCardFooter from './VipPremiumCardFooter';
-import VipPremiumCardMedia from './VipPremiumCardMediaV2';
+import VipPremiumCardMedia from './VipPremiumCardMedia';
 
 export interface IVipPremiumCardProps {
   data: ICard;
-  style?: any;
-  containerRef?: any;
   isHightlighted?: boolean;
+  style?: any;
 }
 
 const VIP_MEDIA_HEIGHT = 600;
 const PREMIUM_MEDIA_HEIGHT = 500;
 
-const VipPremiumCard = ({ data, style, isHightlighted }: IVipPremiumCardProps) => {
+const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardProps) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
   const [showVideos, setShowVideos] = useState<boolean>(false);
   const { theme, router } = useContext(AppContext);
 
-  const hasAction = isHightlighted !== undefined ? isHovering || isHightlighted : isHovering;
+  const hasAction = isHightlighted ?? isHovering;
   const hasVideos = Boolean(data.videos.length);
-
-  const cardSx = () =>
-    hasAction
-      ? {
-          borderTop: `6px solid ${theme?.palette.primary.main}`,
-          ...(style ?? {}),
-          transform: 'scale(1.02)',
-        }
-      : {
-          borderTop: `6px solid ${
-            theme?.palette.mode === 'light' ? theme?.palette.grey[900] : 'white'
-          }`,
-          ...(style ?? {}),
-        };
+  const cardSx = hasAction
+    ? { borderTop: `6px solid ${theme?.palette.primary.main}`, transform: 'scale(1.02)' }
+    : { borderTop: `6px solid ${theme?.palette.grey[900]}` };
 
   const handleClickCard = () => {
     router?.push(`/escort/${data.id}`);
   };
 
-  const onCountdownEnd = () => {
-    setShowVideos(true);
-  };
-
-  const onCountdownInit = () => {
-    setShowVideos(false);
-  };
-
   return (
     <Card
       className={`h-100 d-flex fd-column ${styles.card}`}
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-      sx={cardSx()}
+      onMouseEnter={() => isHightlighted === undefined && setIsHovering(true)}
+      onMouseLeave={() => isHightlighted === undefined && setIsHovering(false)}
+      sx={{ ...cardSx, ...style }}
     >
       <CardActionArea onClick={handleClickCard}>
         <VipPremiumCardMedia
@@ -85,8 +65,8 @@ const VipPremiumCard = ({ data, style, isHightlighted }: IVipPremiumCardProps) =
               <VideoCountdownHandler
                 hasVideos={hasVideos}
                 startCountdown={hasAction}
-                onCountdownEnd={onCountdownEnd}
-                onCountdownInit={onCountdownInit}
+                onCountdownEnd={() => setShowVideos(true)}
+                onCountdownInit={() => setShowVideos(false)}
               />
             ) : undefined
           }

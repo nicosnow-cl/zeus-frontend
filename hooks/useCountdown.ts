@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export interface IUseCountdownProps {
-  timeInMs: number;
+  exact?: boolean;
   step?: number;
+  timeInMs: number;
 }
 
 export interface IUseCountdown {
@@ -16,30 +17,41 @@ export interface IUseCountdown {
 
 const DEFAULT_STEP = 1000;
 
-const useCountdown = ({ timeInMs, step = DEFAULT_STEP }: IUseCountdownProps): IUseCountdown => {
+const useCountdown = ({
+  exact = false,
+  step = DEFAULT_STEP,
+  timeInMs,
+}: IUseCountdownProps): IUseCountdown => {
   const [countdown, setCountdown] = useState(timeInMs);
   const [started, setStarted] = useState(false);
 
   useEffect(() => {
     if (!started) return;
 
-    const interval = setInterval(() => {
-      if (countdown <= 0) clearInterval(this);
+    const intervalId = setInterval(() => {
+      if (countdown <= 0) clearInterval(intervalId);
       else setCountdown((prev) => prev - step);
     }, step);
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(intervalId);
+    };
   }, [started, setCountdown, step, countdown]);
 
-  const start = () => setStarted(true);
-  const stop = () => setStarted(false);
-  const restart = () => {
-    setCountdown(timeInMs);
-    setStarted(false);
-  };
+  const { start, stop, restart } = useMemo(
+    () => ({
+      start: () => setStarted(true),
+      stop: () => setStarted(false),
+      restart: () => {
+        setCountdown(timeInMs);
+        setStarted(false);
+      },
+    }),
+    [setCountdown, setStarted, timeInMs],
+  );
 
   return {
-    countdown,
+    countdown: exact ? countdown : Math.ceil(countdown / 1000),
     api: {
       start,
       stop,

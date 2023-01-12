@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { useContext, useState } from 'react';
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActionArea';
@@ -11,32 +10,27 @@ import styles from './index.module.scss';
 
 export interface IGoldCardProps {
   data: ICard;
+  style?: any;
 }
 
-const GoldCard = ({ data }: IGoldCardProps) => {
+const GoldCard = ({ data, style = {} }: IGoldCardProps) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
-  const { theme } = useContext(AppContext);
-  const router = useRouter();
+  const { theme, router } = useContext(AppContext);
+
+  const cardSx = isHovering
+    ? { borderTop: `6px solid ${theme?.palette.primary.main}`, transform: 'scale(1.02)' }
+    : { borderTop: `6px solid ${theme?.palette.grey[900]}` };
 
   const handleClickCard = () => {
-    router.push(`/escort/${data.id}`);
+    router?.push(`/escort/${data.id}`);
   };
-
-  const cardSx = () =>
-    isHovering
-      ? { borderTop: `6px solid ${theme?.palette.primary.main}` }
-      : {
-          borderTop: `6px solid ${
-            theme?.palette.mode === 'light' ? theme?.palette.grey[900] : 'white'
-          }`,
-        };
 
   return (
     <Card
       className={`h-100 d-flex fd-column ${styles.card}`}
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
-      sx={cardSx()}
+      sx={{ ...cardSx, ...style }}
     >
       <CardActionArea onClick={handleClickCard}>
         <GoldCardMedia alt={`card-gold-${data.name}`} image={data.img} />

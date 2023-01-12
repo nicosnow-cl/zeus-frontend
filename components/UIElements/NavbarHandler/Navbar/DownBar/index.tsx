@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { AppContext } from '../../../../pages/_app';
-import { AppDispatch } from '../../../../redux/store';
-import { uiActions } from '../../../../redux/reducers/ui';
-import getHexToRgb from '../../../../helpers/getHexToRgb';
-import Logo from '../../Logo';
-import MenuButton from '../../MenuButton';
+import { AppContext } from '../../../../../pages/_app';
+import { AppDispatch } from '../../../../../redux/store';
+import { uiActions } from '../../../../../redux/reducers/ui';
+import getHexToRgb from '../../../../../helpers/getHexToRgb';
+import Logo from '../../../Logo';
+import MenuButton from '../../../MenuButton';
 
 const DownBar = () => {
   const { theme } = useContext(AppContext);

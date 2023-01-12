@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useMemo, useState } from 'react';
 import { ReactDOMAttributes } from '@use-gesture/react/dist/declarations/src/types';
 import { SpringRef, SpringValue, useSpring } from '@react-spring/web';
 import { useDrag } from '@use-gesture/react';
@@ -60,7 +60,7 @@ const useDraggable = ({
     },
   );
 
-  return { x, y, set, bind, setBounds } as const;
+  return useMemo(() => ({ x, y, set, bind, setBounds }), [x, y, set, bind, setBounds]);
 };
 
 export default useDraggable;
