@@ -34,6 +34,8 @@ const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardPro
     router?.push(`/escort/${data.id}`);
   };
 
+  if (data.id === 1) console.count('VipPremiumCard render');
+
   return (
     <Card
       className={`h-100 d-flex fd-column ${styles.card}`}
@@ -65,8 +67,8 @@ const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardPro
               <VideoCountdownHandler
                 hasVideos={hasVideos}
                 startCountdown={hasAction}
-                onCountdownEnd={() => setShowVideos(true)}
-                onCountdownInit={() => setShowVideos(false)}
+                onCountdownEnd={() => !showVideos && setShowVideos(true)}
+                onCountdownInit={() => showVideos && setShowVideos(false)}
               />
             ) : undefined
           }

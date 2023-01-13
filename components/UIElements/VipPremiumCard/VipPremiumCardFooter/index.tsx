@@ -24,10 +24,11 @@ const VipPremiumCardFooter = ({ location, price, rrss = [], type }: IVipPremiumC
         <>
           <Button
             className={`${styles.btn}`}
+            size="small"
             startIcon={<LocationOn />}
             sx={(theme) => ({ color: theme.palette.getContrastText(theme.palette.grey[400]) })}
           >
-            <Typography variant="body2">{location.name}</Typography>
+            {location.name}
           </Button>
 
           {rrss.length > 0 && (
@@ -44,7 +45,7 @@ const VipPremiumCardFooter = ({ location, price, rrss = [], type }: IVipPremiumC
 
       <Chip
         label={`$${formatNumberToString(price)} - 1h`}
-        sx={(theme) => ({ color: theme.palette.success.dark, fontSize: 16 })}
+        sx={(theme) => ({ color: theme.palette.success.main, fontSize: 16 })}
       />
     </div>
   );

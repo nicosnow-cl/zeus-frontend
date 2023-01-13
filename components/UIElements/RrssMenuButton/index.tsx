@@ -59,7 +59,7 @@ const RrssMenuButton = ({ rrss }: IRrssMenuButtonProps) => {
   };
 
   return (
-    <div>
+    <>
       <IconButton onClick={handleClick}>
         <MoreHoriz />
       </IconButton>
@@ -87,7 +87,7 @@ const RrssMenuButton = ({ rrss }: IRrssMenuButtonProps) => {
               display: 'block',
               position: 'absolute',
               top: 0,
-              right: 14,
+              left: 'calc(50% - 5px)',
               width: 10,
               height: 10,
               bgcolor: 'background.paper',
@@ -96,12 +96,12 @@ const RrssMenuButton = ({ rrss }: IRrssMenuButtonProps) => {
             },
           },
         }}
-        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+        transformOrigin={{ horizontal: 'center', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
       >
         {rrss.map((rrss) => getRrssButton(rrss))}
       </Menu>
-    </div>
+    </>
   );
 };
 
