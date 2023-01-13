@@ -35,7 +35,7 @@ const StoryAvatar = ({
   const timeSince = publishDate ? getTimeSince(new Date(), new Date(publishDate)) : null;
 
   return (
-    <div className={`d-flex fd-column jc-center ai-center`} style={{ color: fontColor }}>
+    <div className={`d-flex fd-column jc-center ai-center`} style={{ color: fontColor, zIndex: 4 }}>
       {firstName && <Typography variant="subtitle1">{firstName}</Typography>}
 
       <Image

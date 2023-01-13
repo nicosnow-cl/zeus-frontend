@@ -10,19 +10,31 @@ import BlurBackground from './BlurBackground';
 import StoryContainer from './StoryContainer/index';
 import styles from './index.module.scss';
 import useStories from '../../../hooks/useStories';
+import { useContext } from 'react';
+import { AppContext } from '../../../pages/_app';
 
-const ViewLadyStory = () => {
+const StoriesDialog = () => {
   const selectedEscortStory = useSelector(
     (state: RootState): number => state.ui.selectedEscortStory,
   );
-  const { value: allStories } = useSelector((state: RootState) => state.home.storiesState);
-  const { story, metadata, controls } = useStories({ selectedEscortStory, allStories });
+  const { value: stories } = useSelector((state: RootState) => state.home.storiesState);
+  const { controls, metadata, video } = useStories({ selectedEscortStory, stories });
   const showLadiesStories = useSelector((state: RootState): boolean => state.ui.showLadiesStories);
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleCloseLadyImage = () => {
+  const handleCloseStoriesDialog = () => {
     dispatch(uiActions.handleToggleLadiesStories(false));
   };
+
+  // if (!story) {
+  //   handleCloseStoriesDialog();
+  //   return <></>;
+  // }
+
+  const { avatar, escortId, hasNext, hasPrev, name, publishDate, totalStories, videoIdx } =
+    metadata;
+
+  console.count('StoriesDialog render');
 
   return (
     <Dialog
@@ -38,41 +50,39 @@ const ViewLadyStory = () => {
           width: '100%',
         },
       }}
-      onClose={handleCloseLadyImage}
+      onClose={handleCloseStoriesDialog}
     >
       <div className={`h-100 w-100 d-flex jc-center ai-center`}>
-        <BlurBackground src={`/videos/stories/${story?.mp4}`} />
+        <BlurBackground video={video} />
 
         <IconButton
-          disabled={metadata.actualEscortIdx === 0 && metadata.storyIdx === 0}
           className={`${styles.directionalBtn} ${styles.left}`}
           color="primary"
-          size="large"
+          disabled={!hasPrev}
           onClick={controls.prev}
+          size="large"
         >
           <ArrowBackIos fontSize="large" />
         </IconButton>
 
         <StoryContainer
-          avatarSrc={metadata.avatar?.lq || ''}
-          handleClose={handleCloseLadyImage}
-          name={metadata.name || ''}
-          publishDate={metadata.publishDate || ''}
-          storyIdx={metadata.storyIdx}
-          totalStories={metadata.totalStories}
-          videoSrc={`/videos/stories/${story?.mp4}`}
+          activeBar={videoIdx}
+          avatar={avatar}
+          escortId={escortId}
+          handleClose={handleCloseStoriesDialog}
           handleNext={controls.next}
+          name={name}
+          publishDate={publishDate}
+          totalBars={totalStories}
+          video={video}
         />
 
         <IconButton
-          disabled={
-            metadata.actualEscortIdx === allStories.length - 1 &&
-            metadata.storyIdx === metadata.totalStories - 1
-          }
           className={`${styles.directionalBtn} ${styles.right}`}
           color="primary"
-          size="large"
+          disabled={!hasNext}
           onClick={controls.next}
+          size="large"
         >
           <ArrowForwardIos fontSize="large" />
         </IconButton>
@@ -81,4 +91,4 @@ const ViewLadyStory = () => {
   );
 };
 
-export default ViewLadyStory;
+export default StoriesDialog;
