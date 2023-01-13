@@ -11,7 +11,7 @@ const LazyRegionsModal = dynamic(() => import('../../../components/UIElements/Re
 const LazyFiltersModal = dynamic(() => import('../../../components/UIElements/FiltersModal'), {
   ssr: false,
 });
-const LazyViewLadyStory = dynamic(() => import('../../../components/UIElements/StoriesDialog'), {
+const LazyStoriesDialog = dynamic(() => import('../../../components/UIElements/StoriesDialog'), {
   ssr: false,
 });
 
@@ -25,7 +25,7 @@ const Modals = () => {
     <>
       {!isServer && showRegionModal && <LazyRegionsModal />}
       {showFiltersModal && <LazyFiltersModal />}
-      {showLadiesStories && <LazyViewLadyStory />}
+      {showLadiesStories && <LazyStoriesDialog />}
     </>
   );
 };

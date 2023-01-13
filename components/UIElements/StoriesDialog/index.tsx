@@ -6,12 +6,9 @@ import IconButton from '@mui/material/IconButton';
 
 import { AppDispatch, RootState } from '../../../redux/store';
 import { uiActions } from '../../../redux/reducers/ui';
-import BlurBackground from './BlurBackground';
 import StoryContainer from './StoryContainer/index';
-import styles from './index.module.scss';
 import useStories from '../../../hooks/useStories';
-import { useContext } from 'react';
-import { AppContext } from '../../../pages/_app';
+import VideoBlurBackground from '../VideoBlurBackground';
 
 const StoriesDialog = () => {
   const selectedEscortStory = useSelector(
@@ -25,11 +22,6 @@ const StoriesDialog = () => {
   const handleCloseStoriesDialog = () => {
     dispatch(uiActions.handleToggleLadiesStories(false));
   };
-
-  // if (!story) {
-  //   handleCloseStoriesDialog();
-  //   return <></>;
-  // }
 
   const { avatar, escortId, hasNext, hasPrev, name, publishDate, totalStories, videoIdx } =
     metadata;
@@ -53,14 +45,15 @@ const StoriesDialog = () => {
       onClose={handleCloseStoriesDialog}
     >
       <div className={`h-100 w-100 d-flex jc-center ai-center`}>
-        <BlurBackground video={video} />
+        <VideoBlurBackground video={video} />
 
         <IconButton
-          className={`${styles.directionalBtn} ${styles.left}`}
+          className={`absolute`}
           color="primary"
           disabled={!hasPrev}
           onClick={controls.prev}
           size="large"
+          style={{ zIndex: 4, left: 0 }}
         >
           <ArrowBackIos fontSize="large" />
         </IconButton>
@@ -78,11 +71,12 @@ const StoriesDialog = () => {
         />
 
         <IconButton
-          className={`${styles.directionalBtn} ${styles.right}`}
+          className={`absolute`}
           color="primary"
           disabled={!hasNext}
           onClick={controls.next}
           size="large"
+          style={{ zIndex: 4, right: 0 }}
         >
           <ArrowForwardIos fontSize="large" />
         </IconButton>
