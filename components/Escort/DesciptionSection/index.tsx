@@ -4,39 +4,70 @@ import Typography from '@mui/material/Typography';
 
 interface IDescriptionSectionProps {
   appareance: string[];
+  color?: string;
   description: string;
   nacionality: string;
 }
 
-const DescriptionSection = ({ appareance, description, nacionality }: IDescriptionSectionProps) => {
+const DescriptionSection = ({
+  appareance,
+  color,
+  description,
+  nacionality,
+}: IDescriptionSectionProps) => {
   return (
-    <Grid container spacing={[2, 2]}>
+    <Grid className={`p-5`} container spacing={[3, 3]}>
       <Grid item xs={12} sm={7}>
         <Typography
-          className={`p-5`}
           variant="body1"
           fontSize={18}
           fontWeight={300}
           textAlign="justify"
+          style={{ color }}
         >
           &quot;{description}&quot;
         </Typography>
       </Grid>
       <Grid item xs={12} sm={5}>
-        <div className={`pt-5 px-2 d-flex jc-between fw-wrap col-gap-2`}>
-          <Typography fontSize={16} color="secondary" textTransform="uppercase">
+        <div className={`d-flex jc-between fw-wrap col-gap-2`}>
+          <Typography
+            color="primary"
+            fontWeight={600}
+            textTransform="uppercase"
+            variant="subtitle1"
+          >
             {nacionality}
           </Typography>
-          <Typography fontSize={16} color="secondary" textTransform="uppercase">
+          <Typography
+            color="primary"
+            fontWeight={600}
+            textTransform="uppercase"
+            variant="subtitle1"
+          >
             TRIGUEÑA
           </Typography>
-          <Typography fontSize={16} color="secondary" textTransform="uppercase">
+          <Typography
+            color="primary"
+            fontWeight={600}
+            textTransform="uppercase"
+            variant="subtitle1"
+          >
             168 CM
           </Typography>
-          <Typography fontSize={16} color="secondary" textTransform="uppercase">
+          <Typography
+            color="primary"
+            fontWeight={600}
+            textTransform="uppercase"
+            variant="subtitle1"
+          >
             66 KG
           </Typography>
-          <Typography fontSize={16} color="secondary" textTransform="uppercase">
+          <Typography
+            color="primary"
+            fontWeight={600}
+            textTransform="uppercase"
+            variant="subtitle1"
+          >
             97 - 60 - 109 CM
           </Typography>
         </div>

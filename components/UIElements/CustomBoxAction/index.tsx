@@ -12,7 +12,7 @@ export interface ICustomBoxActionProps {
   minWidth?: string | number;
   onClick?: () => void;
   subtitle?: string;
-  title?: string;
+  title: string;
 }
 
 const CustomBoxAction = ({
@@ -27,11 +27,14 @@ const CustomBoxAction = ({
   const [isHover, setIsHover] = useState<boolean>(false);
   const { theme } = useContext(AppContext);
 
+  const _backgroundColor = backgroundColor ? backgroundColor : theme?.palette.grey[300];
+  const color = theme?.palette.getContrastText(_backgroundColor);
+
   return (
     <CardActionArea
       className={`p-2 pr-3 pl-3 d-flex ai-center`}
       sx={{
-        backgroundColor: backgroundColor ? backgroundColor : theme?.palette.grey[300],
+        backgroundColor: _backgroundColor,
         borderRadius: 5,
         flex: 1,
         height: height ? height : 56,
@@ -44,42 +47,25 @@ const CustomBoxAction = ({
       <div
         className={`d-flex ai-center`}
         style={{
-          transition: 'all 0.2s ease-in-out',
-          ...(isHover
-            ? {
-                color: theme?.palette.primary.main,
-              }
-            : {
-                color: theme?.palette.grey[700],
-              }),
+          transition: 'color 0.2s ease-in-out',
+          ...(isHover ? { color: theme?.palette.primary.main } : { color }),
         }}
       >
         {icon ? icon : <Check />}
       </div>
 
-      <div>
-        <Typography
-          className={`ml-2`}
-          variant="h3"
-          fontSize={20}
-          style={{
-            transition: 'all 0.2s ease-in-out',
-            ...(isHover
-              ? {
-                  color: theme?.palette.primary.main,
-                }
-              : {
-                  color: theme?.palette.grey[700],
-                }),
-          }}
-        >
-          {title && title}
-        </Typography>
+      <Typography
+        className={`ml-2`}
+        variant="h6"
+        style={{
+          transition: 'all 0.2s ease-in-out',
+          ...(isHover ? { color: theme?.palette.primary.main } : { color: color }),
+        }}
+      >
+        {title}
 
-        <Typography className={`ml-2`} variant="h2" fontSize={16}>
-          {subtitle && subtitle}
-        </Typography>
-      </div>
+        {subtitle && <Typography variant="body1">{subtitle}</Typography>}
+      </Typography>
     </CardActionArea>
   );
 };

@@ -25,7 +25,7 @@ const StoryAvatar = ({
   name,
   onClick,
   publishDate,
-  showBorder = true,
+  showBorder = false,
   size = MIN_AVATAR_SIZE,
 }: IStoryAvatarProps) => {
   const { theme } = useContext(AppContext);

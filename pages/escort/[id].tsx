@@ -10,8 +10,6 @@ import EscortSection from '../../components/Escort/EscortSection';
 import MainContainer from '../../components/UIElements/MainContainer';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
 
-const EscortSectionMemo = memo(EscortSection);
-
 const LazyNavbar = dynamic(() => import('../../components/UIElements/NavbarHandler'), {
   ssr: false,
 });
@@ -33,7 +31,7 @@ const EscortPage: NextPageWithLayout = ({ data }: any) => {
 
   return (
     <>
-      <EscortSectionMemo profile={data} />
+      <EscortSection profile={data} />
 
       {showLadyImage && <LazyMediaDialog />}
     </>

@@ -39,39 +39,37 @@ const getDayName = (day: string) => {
 
 const InformationSecion = ({ schedule, services }: IInformationSectionProps) => {
   return (
-    <div className={`p-5 h-100`}>
-      <Accordion sx={{ backgroundColor: 'transparent !important', boxShadow: 'none' }}>
+    <div className={`p-5`}>
+      <Accordion sx={{ backgroundColor: 'unset', backgroundImage: 'unset', boxShadow: 'none' }}>
         <AccordionSummary
           expandIcon={<ExpandMore />}
           aria-controls="panel1a-content"
           id="panel1a-header"
           sx={{ padding: 0 }}
         >
-          <Typography variant="h2" fontSize={28}>
+          <Typography variant="h3" fontWeight={300}>
             Servicios
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <div>
-            {services.map((service, idx) => (
-              <Chip
-                className={`mr-2 mb-2`}
-                key={idx}
-                label={service}
-                // sx={{ color: theme.palette.secondary.main }}
-              />
-            ))}
-          </div>
+          {services.length > 0 ? (
+            services.map((service, idx) => (
+              <Chip className={`mr-2 mb-2`} key={idx} label={service} />
+            ))
+          ) : (
+            <Typography variant="subtitle1">Sin servicios informados</Typography>
+          )}
         </AccordionDetails>
       </Accordion>
-      <Accordion sx={{ backgroundColor: 'transparent !important', boxShadow: 'none' }}>
+
+      <Accordion sx={{ backgroundColor: 'unset', backgroundImage: 'unset', boxShadow: 'none' }}>
         <AccordionSummary
           expandIcon={<ExpandMore />}
           aria-controls="panel1a-content"
           id="panel1a-header"
           sx={{ padding: 0 }}
         >
-          <Typography variant="h2" fontSize={28}>
+          <Typography variant="h3" fontWeight={300}>
             Horario
           </Typography>
         </AccordionSummary>
@@ -81,14 +79,12 @@ const InformationSecion = ({ schedule, services }: IInformationSectionProps) => 
               {Object.keys(schedule).map((key, idx) => (
                 <TableRow key={idx} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <TableCell component="th" scope="row">
-                    <Typography variant="h3" fontSize={18} textTransform="uppercase">
+                    <Typography variant="h6" textTransform="uppercase">
                       {getDayName(key)}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <Typography variant="h3" fontSize={18}>
-                      {(schedule as any)[key]}
-                    </Typography>
+                    <Typography variant="h6">{(schedule as any)[key]}</Typography>
                   </TableCell>
                 </TableRow>
               ))}

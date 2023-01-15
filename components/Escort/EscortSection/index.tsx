@@ -19,46 +19,48 @@ export interface IEscortSectionProps {
 const EscortSection = ({ profile }: IEscortSectionProps) => {
   const { theme } = useContext(AppContext);
 
+  const backgroundColor = theme?.palette.grey[100];
+  const color = theme?.palette.getContrastText(backgroundColor);
+
   return (
-    <div style={{ margin: '0 auto' }}>
-      <Box
-        className={`mt-5 mb-5`}
-        sx={{
-          backgroundColor: theme?.palette.grey[100],
-          borderRadius: 5,
-        }}
-      >
-        <HeaderSection
-          age={profile.age}
-          avatarImg={profile.avatarImg.lq}
-          bannerImg={profile.bannerImg}
-          name={profile.name}
-          type={profile.type}
-        />
+    <Box
+      className={`mt-5 mb-5`}
+      sx={{
+        backgroundColor,
+        borderRadius: 5,
+      }}
+    >
+      <HeaderSection
+        age={profile.age}
+        avatar={profile.avatarImg}
+        bannerImg={profile.bannerImg}
+        name={profile.name}
+        type={profile.type}
+      />
 
-        <DescriptionSection
-          appareance={profile.appareance}
-          description={profile.description}
-          nacionality={profile.nationality}
-        />
+      <DescriptionSection
+        appareance={profile.appareance}
+        color={color}
+        description={profile.description}
+        nacionality={profile.nationality}
+      />
 
-        <ContactSection
-          location={profile.location}
-          phoneNumber={profile.phoneNumber}
-          price={profile.price}
-          rrss={profile.rrss}
-        />
+      <ContactSection
+        location={profile.location}
+        phoneNumber={profile.phoneNumber}
+        price={profile.price}
+        rrss={profile.rrss}
+      />
 
-        <Grid container>
-          <Grid item xs={12} xl={3}>
-            <InformationSecion schedule={profile.schedule} services={profile.services} />
-          </Grid>
-          <Grid item xs={12} xl={9}>
-            <LazyMediaSection images={profile.images} videos={profile.videos} />
-          </Grid>
+      <Grid container>
+        <Grid item xs={12} xl={3}>
+          <InformationSecion schedule={profile.schedule} services={profile.services} />
         </Grid>
-      </Box>
-    </div>
+        <Grid item xs={12} xl={9}>
+          <LazyMediaSection images={profile.images} videos={profile.videos} />
+        </Grid>
+      </Grid>
+    </Box>
   );
 };
 
