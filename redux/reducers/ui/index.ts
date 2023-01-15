@@ -2,10 +2,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import IFilters from '../../../interfaces/states/interface.filters';
 import IPartialFilters from '../../../interfaces/objects/interface.partial-filters';
+import ISort from '../../../interfaces/states/interface.sort';
 
 export interface IUiState {
   actualProfileMedia: number;
   filters: IFilters;
+  sort: ISort;
   isLoadingHome: boolean;
   isLoadingStories: boolean;
   selectedEscortStory: number;
@@ -28,6 +30,10 @@ const initialState: IUiState = {
     type: '',
     video: false,
   },
+  sort: {
+    field: 'none',
+    order: 'asc',
+  },
   isLoadingHome: false,
   isLoadingStories: false,
   selectedEscortStory: 0,
@@ -48,6 +54,9 @@ const uiReducer = createSlice({
     },
     handleApplyFilters: (state, action: PayloadAction<IPartialFilters>) => {
       state.filters = { ...state.filters, ...action.payload };
+    },
+    handleApplySort: (state, action: PayloadAction<ISort>) => {
+      state.sort = action.payload;
     },
     handleLoadingHome: (state, action: PayloadAction<boolean>) => {
       state.isLoadingHome = action.payload === undefined ? !state.isLoadingHome : action.payload;

@@ -34,7 +34,10 @@ const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardPro
     router?.push(`/escort/${data.id}`);
   };
 
-  if (data.id === 1) console.count('VipPremiumCard render');
+  if (data.id === 1) {
+    console.count('VipPremiumCard render');
+    // console.log({ image: data.img });
+  }
 
   return (
     <Card

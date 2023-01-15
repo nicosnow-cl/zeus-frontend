@@ -57,11 +57,13 @@ const useStories = ({ selectedEscortStory, stories }: IUseStoriesProps) => {
 
   const firstStoryLoaded = stories[actualEscortIdx];
 
+  console.log(stories.length > 1);
+
   const [metadata, setMetadata] = useState<IStoryMetadata>({
     avatar: firstStoryLoaded.avatarSrc,
     escortId: firstStoryLoaded.escortId,
-    hasNext: firstStoryLoaded.videos.length > 1,
-    hasPrev: false,
+    hasNext: firstStoryLoaded.videos.length > 1 || stories.length > 1,
+    hasPrev: actualEscortIdx > 0,
     name: firstStoryLoaded.name,
     publishDate: firstStoryLoaded.publishDate,
     totalStories: firstStoryLoaded.videos.length,
