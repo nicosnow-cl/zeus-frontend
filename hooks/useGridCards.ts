@@ -3,7 +3,7 @@ import { RefObject, useCallback, useEffect, useMemo, useState } from 'react';
 export interface IUseGridCardsProps {
   containerRef: RefObject<HTMLDivElement>;
   disable?: boolean;
-  gridItemsLength: number;
+  gridItems: any[] | readonly any[];
   maxWidth?: number;
   oneElementActive?: boolean;
   querySelector?: string;
@@ -17,7 +17,7 @@ const DEFAULT_TRESHOLD = 0.95;
 const useGridCards = ({
   containerRef,
   disable = false,
-  gridItemsLength,
+  gridItems,
   maxWidth,
   querySelector = '.card',
   rootMargin = '0px',
@@ -25,7 +25,7 @@ const useGridCards = ({
   treshold = DEFAULT_TRESHOLD,
 }: IUseGridCardsProps) => {
   const [cardsStatus, setCardsStatus] = useState<boolean[]>(
-    new Array(gridItemsLength).fill(startingValue),
+    new Array(gridItems.length).fill(startingValue),
   );
 
   const { current: container } = containerRef;
@@ -82,7 +82,7 @@ const useGridCards = ({
     const observerCleanup = cleanup();
 
     return observerCleanup;
-  }, [cleanup, container, disable, gridItemsLength]);
+  }, [cleanup, container, disable, gridItems]);
 
   return { cardsStatus, setCardsStatus };
 };

@@ -54,27 +54,28 @@ const GridTransition = ({
   const { cardsStatus } = useGridCards({
     containerRef,
     disable: !autoHightlight,
-    gridItemsLength: items.length,
+    gridItems: items,
     querySelector: '.card-scope',
     treshold: 0.91,
   });
 
   console.count('GridTransition render');
+  console.log({ cardsStatus });
 
   return animated((style, item) => (
-    <a.div id={`card-${item.id}`} className={`card-scope`} key={item.id} style={style}>
+    <a.div id={`card-${item.idx}`} className={`card-scope`} key={item.id} style={style}>
       {
         {
           VIP: (
             <VipPremiumCardMemo
               data={item.data}
-              isHightlighted={autoHightlight ? cardsStatus[item.id] : undefined}
+              isHightlighted={autoHightlight ? cardsStatus[item.idx] : undefined}
             />
           ),
           PREMIUM: (
             <VipPremiumCardMemo
               data={item.data}
-              isHightlighted={autoHightlight ? cardsStatus[item.id] : undefined}
+              isHightlighted={autoHightlight ? cardsStatus[item.idx] : undefined}
             />
           ),
           GOLD: <GoldCardMemo data={item.data} />,
