@@ -17,6 +17,15 @@ export interface IVideoCountdownHandlerProps {
 const DEBOUNCE_TIME = 5000;
 const STEP = 1000;
 
+const getCountdownInfo = (countdown: number, step: number, debounceTime: number) => {
+  if (countdown <= 0) return <PlayArrow fontSize="small" />;
+  else if (countdown * step === debounceTime) return <Videocam fontSize="small" />;
+  else if (countdown > 0 && countdown < debounceTime)
+    return <Typography variant="subtitle2">{countdown}s</Typography>;
+
+  return <></>;
+};
+
 const VideoCountdownHandler = ({
   backgroundColor = 'rgba(0,0,0,0.5)',
   color = 'white',
@@ -50,11 +59,7 @@ const VideoCountdownHandler = ({
         width: '30px',
       }}
     >
-      {countdown === 0 && <PlayArrow fontSize="small" />}
-      {countdown === DEBOUNCE_TIME && <Videocam fontSize="small" />}
-      {countdown > 0 && countdown < DEBOUNCE_TIME && (
-        <Typography variant="subtitle2">{countdown}s</Typography>
-      )}
+      {getCountdownInfo(countdown, STEP, DEBOUNCE_TIME)}
     </div>
   );
 };

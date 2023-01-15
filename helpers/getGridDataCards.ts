@@ -20,7 +20,7 @@ const getGridDataCards = (cards: ICard[], width: number, columns: number): IGrid
       endingX,
       endingY,
       height: cardHeight,
-      id: idx,
+      id: card.id,
       initialX: prevX,
       initialY: prevY,
       width: width / columns,
