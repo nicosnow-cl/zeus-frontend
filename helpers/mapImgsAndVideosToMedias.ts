@@ -1,8 +1,13 @@
 import IImage from '../interfaces/objects/interface.image';
 import IMedia from '../interfaces/objects/interface.media';
 import IVideo from '../interfaces/objects/interface.video';
+import shuffle from 'lodash/shuffle';
 
-const mapImgsAndVideosToMedias = (videos: IVideo[], images: IImage[]) => {
+const mapImgsAndVideosToMedias = (
+  images: IImage[],
+  videos: IVideo[],
+  order: 'videos_first' | 'images_first' | 'shuffle' = 'shuffle',
+) => {
   const videosMedia: IMedia[] = videos.map((video, idx) => ({
     id: idx,
     type: 'video',
@@ -15,7 +20,10 @@ const mapImgsAndVideosToMedias = (videos: IVideo[], images: IImage[]) => {
     img,
   }));
 
-  return [...videosMedia, ...imagesMedia];
+  if (order === 'shuffle') return shuffle([...videosMedia, ...imagesMedia]);
+  if (order === 'videos_first') return [...videosMedia, ...imagesMedia];
+
+  return [...imagesMedia, ...videosMedia];
 };
 
 export default mapImgsAndVideosToMedias;

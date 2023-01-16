@@ -21,7 +21,7 @@ export interface IContactSectionProps {
   rrss: IRrSs[];
 }
 
-const CUSTOM_BOX_ACTION_WIDTH = 250;
+const CUSTOM_BOX_ACTION_WIDTH = 190;
 
 const getRrSsBoxAction = (rrss: IRrSs, idx: number) => {
   switch (rrss.type) {

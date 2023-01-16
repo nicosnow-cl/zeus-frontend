@@ -1,19 +1,22 @@
+import CardMedia from '@mui/material/CardMedia';
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import Videocam from '@mui/icons-material/Videocam';
 import Visibility from '@mui/icons-material/Visibility';
 
-import NextImageWithSpinner from '../NextImageWithSpinner';
+import IImage from '../../../interfaces/objects/interface.image';
+import IVideo from '../../../interfaces/objects/interface.video';
+import NextImage from '../NextImage';
 import styles from './index.module.scss';
-import VideoWithSpinner from '../VideoWithSpinner';
 
 export interface IProfileMediaProps {
   height?: number;
+  image?: IImage;
   onClick?: () => void;
-  src: string;
   type: 'img' | 'video';
+  video?: IVideo;
 }
 
-const ProfileMedia = ({ height, onClick, src, type }: IProfileMediaProps) => {
+const ProfileMedia = ({ height, image, onClick, type, video }: IProfileMediaProps) => {
   const containerStyle = height
     ? { height: `${height}px`, borderRadius: '12px' }
     : { borderRadius: '12px' };
@@ -24,14 +27,24 @@ const ProfileMedia = ({ height, onClick, src, type }: IProfileMediaProps) => {
         <Visibility />
       </div>
 
-      <div className={`m-2 ${styles.chip}`}>
-        {type === 'video' ? <Videocam color="action" /> : <PhotoCamera color="action" />}
-      </div>
+      {type === 'video' ? (
+        <Videocam className={`m-2 absolute ${styles.chip}`} color="action" />
+      ) : (
+        <PhotoCamera className={`m-2 absolute ${styles.chip}`} color="action" />
+      )}
 
       {type === 'video' ? (
-        <VideoWithSpinner defaultSrc={src} />
+        <CardMedia
+          autoPlay
+          component="video"
+          loop
+          muted
+          playsInline
+          src={video!.mp4}
+          style={{ objectFit: 'cover', objectPosition: 'top', height: '100%' }}
+        />
       ) : (
-        <NextImageWithSpinner defaultSrc={src} />
+        <NextImage image={image!} />
       )}
     </div>
   );

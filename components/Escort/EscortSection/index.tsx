@@ -22,6 +22,8 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
   const backgroundColor = theme?.palette.grey[100];
   const color = theme?.palette.getContrastText(backgroundColor);
 
+  console.count('EscortSection render');
+
   return (
     <Box
       className={`mt-5 mb-5`}
