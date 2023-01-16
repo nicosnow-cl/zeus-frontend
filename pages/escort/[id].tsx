@@ -10,15 +10,13 @@ import EscortSection from '../../components/Escort/EscortSection';
 import MainContainer from '../../components/UIElements/MainContainer';
 import obtainProfileGet from '../../services/escort/obtainProfileGet';
 
-const EscortSectionMemo = memo(EscortSection);
-
 const LazyNavbar = dynamic(() => import('../../components/UIElements/NavbarHandler'), {
   ssr: false,
 });
-
 const LazyMediaDialog = dynamic(() => import('../../components/UIElements/MediaDialog'), {
   ssr: false,
 });
+const MemoEscortSection = memo(EscortSection);
 
 export const getServerSideProps = async ({ query }: any) => {
   const { id } = query;
@@ -31,9 +29,11 @@ export const getServerSideProps = async ({ query }: any) => {
 const EscortPage: NextPageWithLayout = ({ data }: any) => {
   const showLadyImage = useSelector((state: RootState): boolean => state.ui.showLadyImage);
 
+  console.count('EscortPage render');
+
   return (
     <>
-      <EscortSectionMemo profile={data} />
+      <MemoEscortSection profile={data} />
 
       {showLadyImage && <LazyMediaDialog />}
     </>

@@ -6,9 +6,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@mui/material';
 import { useMemo, useState } from 'react';
+import { useRouter } from 'next/router';
 import createTheme from '@mui/material/styles/createTheme';
-import NProgress from 'nprogress';
-import Router, { useRouter } from 'next/router';
 import type { AppProps } from 'next/app';
 import type { NextPage } from 'next';
 import type { ReactElement, ReactNode } from 'react';
@@ -28,11 +27,6 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
 };
-
-NProgress.configure({ showSpinner: false });
-Router.events.on('routeChangeStart', () => NProgress.start());
-Router.events.on('routeChangeComplete', () => NProgress.done());
-Router.events.on('routeChangeError', () => NProgress.done());
 
 const isServer = checkIfIsServer();
 export const AppContext = createAppContext({ isServer });

@@ -110,7 +110,6 @@ const CardsSection = ({ cards }: ICardsSectionProps) => {
   }, [containerRef]);
 
   const onWindowResizeHandler = useDebouncedCallback(() => {
-    console.log('onWindowResizeHandler');
     const { current } = containerRef;
     if (!current) return;
 
@@ -118,7 +117,8 @@ const CardsSection = ({ cards }: ICardsSectionProps) => {
   }, [containerRef]);
 
   onWindowResize(onWindowResizeHandler);
-  const containerHeight = Math.max(...columnsHeights) > 0 ? Math.max(...columnsHeights) : '600px';
+  const containerHeight =
+    Math.max(...columnsHeights) > 0 ? Math.max(...columnsHeights) + 54 : '654px';
 
   console.count('CardsSection render');
 
