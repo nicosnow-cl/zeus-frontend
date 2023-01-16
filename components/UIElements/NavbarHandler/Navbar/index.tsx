@@ -5,6 +5,7 @@ import useTheme from '@mui/material/styles/useTheme';
 import DownBar from './DownBar';
 import TopBar from './TopBar';
 import useNavbar from '../../../../hooks/useNavbar';
+import ProgressBar from '../ProgressBar';
 
 export interface INavbarProps {
   setNavbarHeight?: (height: string) => void;
@@ -30,6 +31,8 @@ const Navbar = ({ setNavbarHeight = () => {} }: INavbarProps) => {
     >
       <TopBar backgroundColor={backgroundColor} isVisible={isVisible} />
       <DownBar />
+
+      <ProgressBar zIndex={-1} />
     </Box>
   );
 };
