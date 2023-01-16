@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 
 // import { fpfApi } from '../../../services/index';
 import { AppDispatch, RootState } from '../../../redux/store';
+import { initialState } from '../../../redux/reducers/ui';
 import * as thunks from '../../../redux/thunks/home';
 import CardsSection from '../CardsSection';
 import LoadingHome from '../LoadingHome';
@@ -34,7 +35,7 @@ const ContentSection = () => {
   useEffect((): void => {
     if (FIRST_RENDER_DONE) return;
 
-    dispatch(thunks.getCards());
+    dispatch(thunks.getCards(initialState.filters));
     FIRST_RENDER_DONE = true;
   }, [dispatch]);
 

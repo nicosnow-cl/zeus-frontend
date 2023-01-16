@@ -1,6 +1,6 @@
 import ICard from '../interfaces/states/interface.card';
 
-const escorts: ICard[] = [
+const cards: ICard[] = [
   {
     active: true,
     age: 23,
@@ -2964,4 +2964,4 @@ const escorts: ICard[] = [
   },
 ];
 
-export default escorts;
+export default cards;

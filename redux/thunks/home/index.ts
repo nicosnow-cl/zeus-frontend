@@ -1,13 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { uiActions } from '../../reducers/ui';
+import { homeActions } from '../../reducers/home';
 import HomeActions from '../../actions/home';
 import ICard from '../../../interfaces/states/interface.card';
 import IPartialFilters from '../../../interfaces/objects/interface.partial-filters';
 import IStory from '../../../interfaces/states/interface.story';
-import obtainCardsPost from '../../../services/home/obtainEscortsPost';
+import obtainCardsPost from '../../../services/home/obtainCardsPost';
 import obtainStoriesGet from '../../../services/home/obtainStoriesGet';
-import { homeActions } from '../../reducers/home';
 
 export const getCards = createAsyncThunk(
   HomeActions.GET_CARDS,
@@ -15,10 +14,10 @@ export const getCards = createAsyncThunk(
     const { dispatch } = thunkApi;
 
     dispatch(homeActions.handleLoadingCards(true));
-    const result = await obtainCardsPost(filters);
+    const cards = await obtainCardsPost(filters);
     dispatch(homeActions.handleLoadingCards(false));
 
-    return result;
+    return cards;
   },
 );
 

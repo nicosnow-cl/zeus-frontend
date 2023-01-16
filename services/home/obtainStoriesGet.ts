@@ -1,19 +1,17 @@
 import api from '../';
-
-import sleep from '../../helpers/sleep';
 import IStory from '../../interfaces/states/interface.story';
-import stories from '../../dummy/stories';
-
-const storiesSorted = stories.sort(
-  (story1, story2) =>
-    new Date(story2.publishDate).getTime() - new Date(story1.publishDate).getTime(),
-);
 
 const obtainStoriesGet = async (): Promise<IStory[]> => {
   try {
-    await sleep(1000);
+    const response = await api.get('/obtain-stories-get');
+    const { data: result } = response;
 
-    return storiesSorted;
+    if (!result.success) {
+      console.error(result.error);
+      return [];
+    }
+
+    return result.data;
   } catch (err: any) {
     console.error(err);
 
