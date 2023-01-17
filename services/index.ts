@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const api = axios.create({});
+const api = axios.create({ baseURL: '/api/' });
 
 export const fpfApi = axios.create({
   baseURL: 'https://findpornface-find-porn-face-v1.p.rapidapi.com/',

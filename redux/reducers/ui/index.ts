@@ -19,7 +19,7 @@ export interface IUiState {
   showSidebar: boolean;
 }
 
-const initialState: IUiState = {
+export const initialState: IUiState = {
   actualProfileMedia: 0,
   filters: {
     appareance: [],
