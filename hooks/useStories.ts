@@ -20,35 +20,35 @@ interface IStoryMetadata {
   videoIdx: number;
 }
 
-interface IFlattedStory {
-  avatar: IImage;
-  escortId: number;
-  name: string;
-  publishDate: string;
-  video: IVideo;
-  videoIdx: number;
-}
+// interface IFlattedStory {
+//   avatar: IImage;
+//   escortId: number;
+//   name: string;
+//   publishDate: string;
+//   video: IVideo;
+//   videoIdx: number;
+// }
 
-const getFlattedStories = (stories: IStory[]) => {
-  const flattedStories: IFlattedStory[] = [];
+// const getFlattedStories = (stories: IStory[]) => {
+//   const flattedStories: IFlattedStory[] = [];
 
-  stories.forEach((story) => {
-    const { avatarSrc, escortId, name, publishDate, videos } = story;
+//   stories.forEach((story) => {
+//     const { avatarSrc, escortId, name, publishDate, videos } = story;
 
-    videos.forEach((video, idx) => {
-      flattedStories.push({
-        avatar: avatarSrc,
-        escortId,
-        name,
-        publishDate,
-        video,
-        videoIdx: idx,
-      });
-    });
-  });
+//     videos.forEach((video, idx) => {
+//       flattedStories.push({
+//         avatar: avatarSrc,
+//         escortId,
+//         name,
+//         publishDate,
+//         video,
+//         videoIdx: idx,
+//       });
+//     });
+//   });
 
-  return flattedStories;
-};
+//   return flattedStories;
+// };
 
 const useStories = ({ selectedEscortStory, stories }: IUseStoriesProps) => {
   const [actualEscortIdx, setActualEscortIdx] = useState<number>(
@@ -60,12 +60,12 @@ const useStories = ({ selectedEscortStory, stories }: IUseStoriesProps) => {
   console.log(stories.length > 1);
 
   const [metadata, setMetadata] = useState<IStoryMetadata>({
-    avatar: firstStoryLoaded.avatarSrc,
+    avatar: firstStoryLoaded.avatar,
     escortId: firstStoryLoaded.escortId,
     hasNext: firstStoryLoaded.videos.length > 1 || stories.length > 1,
     hasPrev: actualEscortIdx > 0,
     name: firstStoryLoaded.name,
-    publishDate: firstStoryLoaded.publishDate,
+    publishDate: firstStoryLoaded.highesUploadedDate,
     totalStories: firstStoryLoaded.videos.length,
     videoIdx: 0,
   });
@@ -93,12 +93,12 @@ const useStories = ({ selectedEscortStory, stories }: IUseStoriesProps) => {
       if (nextEscortIdx < stories.length) {
         setActualEscortIdx(nextEscortIdx);
         setMetadata({
-          avatar: stories[nextEscortIdx].avatarSrc,
+          avatar: stories[nextEscortIdx].avatar,
           escortId: stories[nextEscortIdx].escortId,
           hasNext: true,
           hasPrev: true,
           name: stories[nextEscortIdx].name,
-          publishDate: stories[nextEscortIdx].publishDate,
+          publishDate: stories[nextEscortIdx].highesUploadedDate,
           totalStories: stories[nextEscortIdx].videos.length,
           videoIdx: 0,
         });
@@ -131,12 +131,12 @@ const useStories = ({ selectedEscortStory, stories }: IUseStoriesProps) => {
       if (prevEscortIdx >= 0) {
         setActualEscortIdx(prevEscortIdx);
         setMetadata({
-          avatar: stories[prevEscortIdx].avatarSrc,
+          avatar: stories[prevEscortIdx].avatar,
           escortId: stories[prevEscortIdx].escortId,
           hasNext: true,
           hasPrev: true,
           name: stories[prevEscortIdx].name,
-          publishDate: stories[prevEscortIdx].publishDate,
+          publishDate: stories[prevEscortIdx].highesUploadedDate,
           totalStories: stories[prevEscortIdx].videos.length,
           videoIdx: stories[prevEscortIdx].videos.length - 1,
         });
