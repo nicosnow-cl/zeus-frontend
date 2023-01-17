@@ -27,7 +27,7 @@ const NextImage = ({
   return (
     <Image
       alt={alt}
-      blurDataURL={image.lq}
+      blurDataURL={image.placeholder}
       fill
       onError={handleError}
       placeholder="blur"

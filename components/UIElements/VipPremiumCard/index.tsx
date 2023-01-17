@@ -31,10 +31,10 @@ const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardPro
     : { borderTop: `6px solid ${theme?.palette.grey[900]}` };
 
   const handleClickCard = () => {
-    router?.push(`/escort/${data.id}`);
+    router?.push(`/escort/${data.escortId}`);
   };
 
-  if (data.id === 1) {
+  if (data._id === '63c708aa23b1e5bca73344fb') {
     console.count('VipPremiumCard render');
     // console.log({ image: data.img });
   }
@@ -49,7 +49,7 @@ const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardPro
       <CardActionArea onClick={handleClickCard}>
         <VipPremiumCardMedia
           alt={`card-vip-${data.name}`}
-          image={data.img}
+          image={data.avatar}
           isHovering={hasAction}
           mediaHeight={data.type === 'VIP' ? VIP_MEDIA_HEIGHT : PREMIUM_MEDIA_HEIGHT}
           showVideos={showVideos}
@@ -83,6 +83,7 @@ const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardPro
         price={data.price}
         rrss={data.rrss}
         type={data.type}
+        hasPromo={data.hasPromo}
       />
     </Card>
   );

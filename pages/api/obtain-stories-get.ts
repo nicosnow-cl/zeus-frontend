@@ -1,17 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
+import getConnection from './mongo';
 import IResponse from '../../interfaces/api/interface.response';
-import sleep from '../../helpers/sleep';
-import stories from '../../dummy/stories';
+import IStory from '../../interfaces/states/interface.story';
 
 async function handler(req: NextApiRequest, res: NextApiResponse<IResponse>) {
-  try {
-    await sleep(500);
+  const { db, closeConnection } = await getConnection();
 
-    const data = stories.sort(
-      (story1, story2) =>
-        new Date(story2.publishDate).getTime() - new Date(story1.publishDate).getTime(),
-    );
+  try {
+    const collection = db.collection<IStory>('stories');
+
+    const data = await collection.find({}).toArray();
 
     return res.status(200).json({ data, error: null, success: true });
   } catch (err: any) {
@@ -22,6 +21,8 @@ async function handler(req: NextApiRequest, res: NextApiResponse<IResponse>) {
       error: { code: -1, message: err.message || 'Error inesperado' },
       success: false,
     });
+  } finally {
+    await closeConnection();
   }
 }
 

@@ -22,7 +22,7 @@ const GoldCard = ({ data, style = {} }: IGoldCardProps) => {
     : { borderTop: `6px solid ${theme?.palette.grey[900]}` };
 
   const handleClickCard = () => {
-    router?.push(`/escort/${data.id}`);
+    router?.push(`/escort/${data.escortId}`);
   };
 
   return (
@@ -33,10 +33,11 @@ const GoldCard = ({ data, style = {} }: IGoldCardProps) => {
       sx={{ ...cardSx, ...style }}
     >
       <CardActionArea onClick={handleClickCard}>
-        <GoldCardMedia alt={`card-gold-${data.name}`} image={data.img} />
+        <GoldCardMedia alt={`card-gold-${data.name}`} image={data.avatar} />
 
         <GoldCardContent
           age={data.age}
+          hasPromo={data.hasPromo}
           likes={data.likes}
           name={data.name.split(' ')[0]}
           nationality={data.nationality}

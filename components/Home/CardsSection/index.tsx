@@ -2,7 +2,6 @@ import { useRef, useState, useEffect, useContext } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import useDebouncedCallback from 'beautiful-react-hooks/useDebouncedCallback';
 import useWindowResize from 'beautiful-react-hooks/useWindowResize';
-// import orderBy from 'lodash/orderBy';
 
 import { AppContext } from '../../../pages/_app';
 import { RootState } from '../../../redux/store';
@@ -11,89 +10,19 @@ import CardsSorter from '../CardsSorter';
 import getGridDataCards from '../../../helpers/getGridDataCards';
 import GridTransition from '../../UIElements/GridTransition';
 import ICard from '../../../interfaces/states/interface.card';
-import ISort from '../../../interfaces/states/interface.sort';
 import styles from './index.module.scss';
 import useGrid from '../../../hooks/useGrid';
+import handleSortCards from '../../../helpers/handleSortCards';
 
 export interface ICardsSectionProps {
   cards: ICard[];
 }
 
-const handleSort = (cards: ICard[], sort: ISort) => {
-  const { field, order } = sort;
-
-  if (field === 'none') return cards;
-
-  const vip = cards.filter((card) => card.type === 'VIP');
-  const premium = cards.filter((card) => card.type === 'PREMIUM');
-  const gold = cards.filter((card) => card.type === 'GOLD');
-
-  switch (field) {
-    case 'age':
-      const vipAge = vip.sort((cardA, cardB) =>
-        order === 'asc' ? cardA.age - cardB.age : cardB.age - cardA.age,
-      );
-      const premiumAge = premium.sort((cardA, cardB) =>
-        order === 'asc' ? cardA.age - cardB.age : cardB.age - cardA.age,
-      );
-      const goldAge = gold.sort((cardA, cardB) =>
-        order === 'asc' ? cardA.age - cardB.age : cardB.age - cardA.age,
-      );
-
-      return [...vipAge, ...premiumAge, ...goldAge];
-    case 'price':
-      const vipPrice = vip.sort((cardA, cardB) =>
-        order === 'asc' ? cardA.price - cardB.price : cardB.price - cardA.price,
-      );
-      const premiumPrice = premium.sort((cardA, cardB) =>
-        order === 'asc' ? cardA.price - cardB.price : cardB.price - cardA.price,
-      );
-      const goldPrice = gold.sort((cardA, cardB) =>
-        order === 'asc' ? cardA.price - cardB.price : cardB.price - cardA.price,
-      );
-
-      return [...vipPrice, ...premiumPrice, ...goldPrice];
-
-    case 'likes':
-      const vipLikes = vip.sort((cardA, cardB) =>
-        order === 'asc' ? cardA.likes - cardB.likes : cardB.likes - cardA.likes,
-      );
-      const premiumLikes = premium.sort((cardA, cardB) =>
-        order === 'asc' ? cardA.likes - cardB.likes : cardB.likes - cardA.likes,
-      );
-      const goldLikes = gold.sort((cardA, cardB) =>
-        order === 'asc' ? cardA.likes - cardB.likes : cardB.likes - cardA.likes,
-      );
-
-      return [...vipLikes, ...premiumLikes, ...goldLikes];
-    case 'name':
-      const vipName = vip.sort((cardA, cardB) =>
-        order === 'asc'
-          ? cardA.name.localeCompare(cardB.name)
-          : cardB.name.localeCompare(cardA.name),
-      );
-      const premiumName = premium.sort((cardA, cardB) =>
-        order === 'asc'
-          ? cardA.name.localeCompare(cardB.name)
-          : cardB.name.localeCompare(cardA.name),
-      );
-      const goldName = gold.sort((cardA, cardB) =>
-        order === 'asc'
-          ? cardA.name.localeCompare(cardB.name)
-          : cardB.name.localeCompare(cardA.name),
-      );
-
-      return [...vipName, ...premiumName, ...goldName];
-    default:
-      return cards;
-  }
-};
-
 const CardsSection = ({ cards }: ICardsSectionProps) => {
   const sort = useSelector((state: RootState) => state.ui.sort);
   const [width, setWidth] = useState<number>(0);
   const [{ columnsHeights, gridItems }, gridControls] = useGrid({
-    items: handleSort(cards, sort),
+    items: handleSortCards(cards, sort),
     width,
     defaultLimit: 12,
     gridFunction: getGridDataCards,

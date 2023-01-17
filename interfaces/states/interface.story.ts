@@ -2,10 +2,11 @@ import IImage from '../objects/interface.image';
 import IVideo from '../objects/interface.video';
 
 interface IStory {
-  avatarSrc: IImage;
+  _id: string;
+  avatar: IImage;
   escortId: number;
+  highesUploadedDate: string;
   name: string;
-  publishDate: string;
   videos: IVideo[];
 }
 

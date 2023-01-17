@@ -8,7 +8,7 @@ export interface IGridItem {
   endingX: number;
   endingY: number;
   height: number;
-  id: number;
+  id: string | number;
   idx: number;
   initialX: number;
   initialY: number;
