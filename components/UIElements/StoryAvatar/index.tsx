@@ -40,9 +40,11 @@ const StoryAvatar = ({
 
       <Image
         alt={`story-${name}`}
+        blurDataURL={image.placeholder}
         className={`p-1 pointer ${styles.storyImage}`}
         height={size}
         onClick={onClick}
+        placeholder="blur"
         quality={30}
         sizes={`(max-width: 768px) ${size}, (max-width: 1200px) ${size}, ${size}`}
         src={image.lq}

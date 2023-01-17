@@ -1,6 +1,7 @@
 interface IImage {
-  lq: string;
   hq: string;
+  lq: string;
+  placeholder: string;
 }
 
 export default IImage;

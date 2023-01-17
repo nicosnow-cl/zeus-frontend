@@ -1,23 +1,31 @@
+import Box from '@mui/system/Box';
 import Button from '@mui/material/Button';
-import Chip from '@mui/material/Chip';
 import LocationOn from '@mui/icons-material/LocationOn';
 import Typography from '@mui/material/Typography';
 
 import EscortType from '../../../../types/type.escort';
 import formatNumberToString from '../../../../helpers/formatNumberToString';
 import ILocation from '../../../../interfaces/objects/interface.location';
+import IPrice from '../../../../interfaces/objects/interface.price';
 import IRrSs from '../../../../interfaces/objects/interface.rrss';
 import RrssMenuButton, { getRrssButton } from '../../RrssMenuButton';
 import styles from './index.module.scss';
 
 export interface IVipPremiumCardFooter {
+  hasPromo: boolean;
   location: ILocation;
-  price: number;
+  price: IPrice;
   rrss?: IRrSs[];
   type: EscortType;
 }
 
-const VipPremiumCardFooter = ({ location, price, rrss = [], type }: IVipPremiumCardFooter) => {
+const VipPremiumCardFooter = ({
+  hasPromo,
+  location,
+  price,
+  rrss = [],
+  type,
+}: IVipPremiumCardFooter) => {
   return (
     <div className={`p-1 d-flex jc-between ai-center`}>
       {type === 'VIP' ? (
@@ -43,10 +51,30 @@ const VipPremiumCardFooter = ({ location, price, rrss = [], type }: IVipPremiumC
         </>
       )}
 
-      <Chip
-        label={`$${formatNumberToString(price)} - 1h`}
-        sx={(theme) => ({ color: theme.palette.success.main, fontSize: 16 })}
-      />
+      <Box
+        className={`py-1 px-2`}
+        sx={(theme) => ({
+          backgroundColor: theme.palette.grey[300],
+          borderRadius: 4,
+          color: theme.palette.success.main,
+          fontSize: 16,
+        })}
+      >
+        {hasPromo ? (
+          <>
+            <Typography
+              color="grey"
+              style={{ textDecorationLine: 'line-through', fontSize: 10, lineHeight: 1 }}
+              textAlign="center"
+            >
+              ${formatNumberToString(price.price)}
+            </Typography>
+            <Typography>${formatNumberToString(price.promo)} - 1h</Typography>
+          </>
+        ) : (
+          <Typography>${formatNumberToString(price.promo)} - 1h</Typography>
+        )}
+      </Box>
     </div>
   );
 };

@@ -96,28 +96,27 @@ const VipPremiumCardContent = ({
         {timeLapsedIcon && timeLapsedIcon}
 
         <div
-          className={`${styles.infoContainer} ${
+          className={`p-2 ${styles.infoContainer} ${
             !isHovering ? styles.infoContainerHide : styles.infoContainerShow
           }`}
         >
-          <div className={`p-1`}>
-            <Typography
-              className={`${styles.text} ${styles.nationalityText}`}
-              variant="body2"
-              color="white"
-            >
-              {nationality}
-            </Typography>
+          <Typography
+            className={`${styles.text} ${styles.nationalityText}`}
+            variant="body1"
+            color="white"
+            textAlign="start"
+          >
+            {nationality}
+          </Typography>
 
-            <Typography
-              className={`mt-2 ${styles.descriptionText}`}
-              variant="body2"
-              color="white"
-              sx={{ textAlign: 'justify' }}
-            >
-              {description}
-            </Typography>
-          </div>
+          <Typography
+            className={`mt-2 ${styles.descriptionText}`}
+            variant="body2"
+            color="white"
+            sx={{ textAlign: 'justify' }}
+          >
+            {description}
+          </Typography>
 
           {services.length > 0 && (
             <div className={`mt-2 d-flex fw-wrap gap-1`}>

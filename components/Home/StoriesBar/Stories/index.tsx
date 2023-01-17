@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import useLocalStorage from 'beautiful-react-hooks/useLocalStorage';
 
 import { AppDispatch } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';
@@ -37,20 +38,30 @@ const StoriesCarousel = ({
   stories,
 }: IStoriesCarouselProps) => {
   const dispatch = useDispatch<AppDispatch>();
+  const [storiesSeen, setStoriesSeen] = useLocalStorage<{ [id: string]: string }>(
+    'stories-seen',
+    {},
+  );
 
-  const avatars = stories.map((story, idx) => (
-    <StoryAvatar
-      key={idx}
-      fontColor={fontColor}
-      image={story.avatarSrc}
-      name={story.name}
-      onClick={() => {
-        dispatch(uiActions.handleSetSelectedEscortStory(story.escortId));
-        dispatch(uiActions.handleToggleLadiesStories(true));
-      }}
-      publishDate={story.publishDate}
-    />
-  ));
+  const avatars = stories.map((story, idx) => {
+    const showBorder = storiesSeen[story.escortId] !== story.highesUploadedDate;
+
+    return (
+      <StoryAvatar
+        key={idx}
+        fontColor={fontColor}
+        image={story.avatar}
+        name={story.name}
+        onClick={() => {
+          dispatch(uiActions.handleSetSelectedEscortStory(story.escortId));
+          dispatch(uiActions.handleToggleLadiesStories(true));
+          setStoriesSeen((prev: any) => ({ ...prev, [story.escortId]: story.highesUploadedDate }));
+        }}
+        publishDate={story.highesUploadedDate}
+        showBorder={showBorder}
+      />
+    );
+  });
 
   return <CustomCarrousel elements={avatars} responsive={responsive} />;
 };

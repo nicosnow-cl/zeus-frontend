@@ -6,16 +6,26 @@ import Verified from '@mui/icons-material/Verified';
 import abbreviateNumber from '../../../../helpers/abbreviateNumber';
 import formatNumberToString from '../../../../helpers/formatNumberToString';
 import styles from './index.module.scss';
+import Box from '@mui/system/Box';
+import IPrice from '../../../../interfaces/objects/interface.price';
 
 export interface IGoldCardContentProps {
   age: number;
+  hasPromo: boolean;
   likes: number;
   name: string;
   nationality: string;
-  price: number;
+  price: IPrice;
 }
 
-const GoldCardContent = ({ age, likes, name, nationality, price }: IGoldCardContentProps) => {
+const GoldCardContent = ({
+  age,
+  hasPromo,
+  likes,
+  name,
+  nationality,
+  price,
+}: IGoldCardContentProps) => {
   return (
     <div className={`w-100 h-100 d-flex fd-column jc-between ${styles.contentContainer}`}>
       <div className={`m-2 d-flex jc-between`}>
@@ -57,14 +67,30 @@ const GoldCardContent = ({ age, likes, name, nationality, price }: IGoldCardCont
           {nationality}
         </Typography>
 
-        <Chip
-          label={`$${formatNumberToString(price)} - 1h`}
+        <Box
+          className={`py-1 px-2`}
           sx={(theme) => ({
             backgroundColor: theme.palette.grey[300],
-            color: theme.palette.success.dark,
+            borderRadius: 4,
+            color: theme.palette.success.main,
             fontSize: 16,
           })}
-        />
+        >
+          {hasPromo ? (
+            <>
+              <Typography
+                color="grey"
+                style={{ textDecorationLine: 'line-through', fontSize: 10, lineHeight: 1 }}
+                textAlign="center"
+              >
+                ${formatNumberToString(price.price)}
+              </Typography>
+              <Typography>${formatNumberToString(price.promo)} - 1h</Typography>
+            </>
+          ) : (
+            <Typography>${formatNumberToString(price.promo)} - 1h</Typography>
+          )}
+        </Box>
       </div>
     </div>
   );

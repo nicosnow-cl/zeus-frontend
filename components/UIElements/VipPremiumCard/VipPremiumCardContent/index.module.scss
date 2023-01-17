@@ -30,9 +30,6 @@
 .infoContainer {
   background-color: rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
   transition: all 0.35s linear;
 }
 
@@ -41,7 +38,7 @@
 }
 
 .infoContainerHide {
-  max-height: 28px;
+  max-height: 35px;
 }
 
 .descriptionText {
