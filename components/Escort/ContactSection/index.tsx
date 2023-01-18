@@ -4,20 +4,21 @@ import Instagram from '@mui/icons-material/Instagram';
 import LocationOn from '@mui/icons-material/LocationOn';
 import PhoneIphone from '@mui/icons-material/PhoneIphone';
 import Twitter from '@mui/icons-material/Twitter';
-import useTheme from '@mui/material/styles/useTheme';
 import WhatsApp from '@mui/icons-material/WhatsApp';
 
+import { AppContext } from '../../../pages/_app';
+import { useContext } from 'react';
 import CustomBoxAction from '../../UIElements/CustomBoxAction';
 import formatNumberToString from '../../../helpers/formatNumberToString';
 import ILocation from '../../../interfaces/objects/interface.location';
+import IPrice from '../../../interfaces/objects/interface.price';
 import IRrSs from '../../../interfaces/objects/interface.rrss';
-import { AppContext } from '../../../pages/_app';
-import { useContext } from 'react';
 
 export interface IContactSectionProps {
+  hasPromo: boolean;
   location: ILocation;
   phoneNumber: string;
-  price: number;
+  price: IPrice;
   rrss: IRrSs[];
 }
 
@@ -66,7 +67,7 @@ const getRrSsBoxAction = (rrss: IRrSs, idx: number) => {
   }
 };
 
-const ContactSection = ({ location, phoneNumber, price, rrss }: IContactSectionProps) => {
+const ContactSection = ({ hasPromo, location, phoneNumber, price, rrss }: IContactSectionProps) => {
   const { theme } = useContext(AppContext);
 
   return (
@@ -84,7 +85,7 @@ const ContactSection = ({ location, phoneNumber, price, rrss }: IContactSectionP
 
       <CustomBoxAction
         icon={<AttachMoney />}
-        title={formatNumberToString(price)}
+        title={formatNumberToString(hasPromo ? price.promo : price.price)}
         subtitle={`la hora`}
         minWidth={CUSTOM_BOX_ACTION_WIDTH}
       />

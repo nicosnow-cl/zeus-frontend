@@ -6,14 +6,22 @@ interface IDescriptionSectionProps {
   appareance: string[];
   color?: string;
   description: string;
+  height: number;
   nacionality: string;
+  size: string;
+  skin: string;
+  weight: number;
 }
 
 const DescriptionSection = ({
   appareance,
   color,
   description,
+  height,
   nacionality,
+  size,
+  skin,
+  weight,
 }: IDescriptionSectionProps) => {
   return (
     <Grid className={`p-5`} container spacing={[3, 3]}>
@@ -44,7 +52,7 @@ const DescriptionSection = ({
             textTransform="uppercase"
             variant="subtitle1"
           >
-            TRIGUEÑA
+            {skin}
           </Typography>
           <Typography
             color="primary"
@@ -52,7 +60,7 @@ const DescriptionSection = ({
             textTransform="uppercase"
             variant="subtitle1"
           >
-            168 CM
+            {height} CM
           </Typography>
           <Typography
             color="primary"
@@ -60,7 +68,7 @@ const DescriptionSection = ({
             textTransform="uppercase"
             variant="subtitle1"
           >
-            66 KG
+            {weight} KG
           </Typography>
           <Typography
             color="primary"
@@ -68,7 +76,7 @@ const DescriptionSection = ({
             textTransform="uppercase"
             variant="subtitle1"
           >
-            97 - 60 - 109 CM
+            {size} CM
           </Typography>
         </div>
 

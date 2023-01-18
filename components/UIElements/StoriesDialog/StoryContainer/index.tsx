@@ -9,7 +9,7 @@ import StoryTitle from '../StoryTitle';
 export interface IStoryContainerProps {
   activeBar?: number;
   avatar: IImage;
-  escortId: number;
+  escortId: string;
   handleClose?: () => void;
   handleNext?: () => void;
   name: string;

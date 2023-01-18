@@ -175,6 +175,7 @@ const FiltersModalForm = () => {
             <Grid className={`mt-3`} item xs={12}>
               <FormControl fullWidth>
                 <Autocomplete
+                  disableCloseOnSelect
                   getOptionLabel={(option) => option.name}
                   isOptionEqualToValue={(option, value) => option.id === value.id}
                   multiple
@@ -197,6 +198,7 @@ const FiltersModalForm = () => {
             <Grid className={`mt-3`} item xs={12}>
               <FormControl fullWidth>
                 <Autocomplete
+                  disableCloseOnSelect
                   getOptionLabel={(option) => option.name}
                   isOptionEqualToValue={(option, value) => option.id === value.id}
                   multiple
