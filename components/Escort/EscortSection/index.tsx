@@ -34,8 +34,9 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
     >
       <HeaderSection
         age={profile.age}
-        avatar={profile.avatarImg}
-        bannerImg={profile.bannerImg}
+        avatar={profile.avatar}
+        banner={profile.banner}
+        id={`${profile._id}`}
         name={profile.name}
         type={profile.type}
       />
@@ -44,10 +45,15 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
         appareance={profile.appareance}
         color={color}
         description={profile.description}
+        height={profile.height}
         nacionality={profile.nationality}
+        size={profile.size}
+        skin={profile.skin}
+        weight={profile.weight}
       />
 
       <ContactSection
+        hasPromo={profile.hasPromo}
         location={profile.location}
         phoneNumber={profile.phoneNumber}
         price={profile.price}

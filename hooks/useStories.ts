@@ -5,13 +5,13 @@ import IVideo from '../interfaces/objects/interface.video';
 import IStory from '../interfaces/states/interface.story';
 
 export interface IUseStoriesProps {
-  selectedEscortStory: number;
+  selectedEscortStory: string;
   stories: IStory[];
 }
 
 interface IStoryMetadata {
   avatar: IImage;
-  escortId: number;
+  escortId: string;
   hasNext: boolean;
   hasPrev: boolean;
   name: string;

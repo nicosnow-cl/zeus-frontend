@@ -1,6 +1,6 @@
-import '../styles/_nprogress.scss';
-import '../styles/index.scss';
+import 'video-react/dist/video-react.css';
 import 'the-new-css-reset/css/reset.css'; // Reset styles
+import '../styles/index.scss';
 import { PaletteMode, responsiveFontSizes } from '@mui/material/';
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';

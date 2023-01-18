@@ -12,6 +12,7 @@ const nextConfig = {
   images: {
     domains: [
       'cdn-ea-images.escort-advisor.com',
+      'cdn1.sexvid.xxx',
       'picsum.photos',
       'pornstarbyface.com',
       's3.eu-central-1.amazonaws.com',

@@ -6,6 +6,7 @@ import ICard from '../../../interfaces/states/interface.card';
 import IPartialFilters from '../../../interfaces/objects/interface.partial-filters';
 import IStory from '../../../interfaces/states/interface.story';
 import obtainCardsPost from '../../../services/home/obtainCardsPost';
+import obtainStoriesByIdGet from '../../../services/home/obtainStoriesByIdGet';
 import obtainStoriesGet from '../../../services/home/obtainStoriesGet';
 
 export const getCards = createAsyncThunk(
@@ -31,5 +32,12 @@ export const getStories = createAsyncThunk(
     dispatch(homeActions.handleLoadingStories(false));
 
     return result;
+  },
+);
+
+export const getStoriesById = createAsyncThunk(
+  HomeActions.GET_STORIES_BY_ID,
+  async (id: string): Promise<IStory | null> => {
+    return await obtainStoriesByIdGet(id);
   },
 );

@@ -4,10 +4,11 @@ import IVideo from '../objects/interface.video';
 interface IStory {
   _id: string;
   avatar: IImage;
-  escortId: number;
+  escortId: string;
   highesUploadedDate: string;
   name: string;
   videos: IVideo[];
+  isNew?: boolean;
 }
 
 export default IStory;

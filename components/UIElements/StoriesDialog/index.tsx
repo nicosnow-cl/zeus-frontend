@@ -12,7 +12,7 @@ import VideoBlurBackground from '../VideoBlurBackground';
 
 const StoriesDialog = () => {
   const selectedEscortStory = useSelector(
-    (state: RootState): number => state.ui.selectedEscortStory,
+    (state: RootState): string => state.ui.selectedEscortStory,
   );
   const { value: stories } = useSelector((state: RootState) => state.home.storiesState);
   const { controls, metadata, video } = useStories({ selectedEscortStory, stories });

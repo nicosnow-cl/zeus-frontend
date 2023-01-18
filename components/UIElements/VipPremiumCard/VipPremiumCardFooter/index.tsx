@@ -27,7 +27,7 @@ const VipPremiumCardFooter = ({
   type,
 }: IVipPremiumCardFooter) => {
   return (
-    <div className={`p-1 d-flex jc-between ai-center`}>
+    <div className={`p-1 h-100 d-flex jc-around ai-center`}>
       {type === 'VIP' ? (
         <>
           <Button

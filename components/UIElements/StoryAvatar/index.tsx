@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, CSSProperties } from 'react';
 import Typography from '@mui/material/Typography';
 
 import { AppContext } from '../../../pages/_app';
@@ -41,7 +41,7 @@ const StoryAvatar = ({
       <Image
         alt={`story-${name}`}
         blurDataURL={image.placeholder}
-        className={`p-1 pointer ${styles.storyImage}`}
+        className={`p-1 ${styles.storyImage} ${onClick ? styles.clickeable : ''}`}
         height={size}
         onClick={onClick}
         placeholder="blur"

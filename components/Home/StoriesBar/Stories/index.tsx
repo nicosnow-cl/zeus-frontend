@@ -44,7 +44,7 @@ const StoriesCarousel = ({
   );
 
   const avatars = stories.map((story, idx) => {
-    const showBorder = storiesSeen[story.escortId] !== story.highesUploadedDate;
+    const isNew = storiesSeen[story.escortId] !== story.highesUploadedDate;
 
     return (
       <StoryAvatar
@@ -58,7 +58,7 @@ const StoriesCarousel = ({
           setStoriesSeen((prev: any) => ({ ...prev, [story.escortId]: story.highesUploadedDate }));
         }}
         publishDate={story.highesUploadedDate}
-        showBorder={showBorder}
+        showBorder={isNew}
       />
     );
   });

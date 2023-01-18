@@ -41,6 +41,13 @@ const homeReducer = createSlice({
     builder.addCase(thunks.getStories.fulfilled, (state, action) => {
       state.storiesState.value = action.payload;
     });
+
+    builder.addCase(thunks.getStoriesById.fulfilled, (state, action) => {
+      const story = action.payload;
+
+      if (story) state.storiesState.value = [story];
+      else state.storiesState.value = [];
+    });
   },
 });
 

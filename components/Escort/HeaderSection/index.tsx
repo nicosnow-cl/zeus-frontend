@@ -1,10 +1,15 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import Typography from '@mui/material/Typography';
+import useLocalStorage from 'beautiful-react-hooks/useLocalStorage';
 
 import { AppContext } from '../../../pages/_app';
+import { AppDispatch, RootState } from '../../../redux/store';
+import { getStoriesById } from '../../../redux/thunks/home';
+import { uiActions } from '../../../redux/reducers/ui';
 import EscortType from '../../../types/type.escort';
 import IImage from '../../../interfaces/objects/interface.image';
 import StoryAvatar from '../../UIElements/StoryAvatar/index';
@@ -12,29 +17,46 @@ import StoryAvatar from '../../UIElements/StoryAvatar/index';
 export interface IHeaderSectionProps {
   age: number;
   avatar: IImage;
-  bannerImg: string;
+  banner: IImage;
+  id: string;
   name: string;
   type: EscortType;
 }
 
-const HeaderSection = ({ age, avatar, bannerImg, name, type }: IHeaderSectionProps) => {
+const HeaderSection = ({ age, avatar, banner, id, name, type }: IHeaderSectionProps) => {
+  const dispatch = useDispatch<AppDispatch>();
+  const { value } = useSelector((state: RootState) => state.home.storiesState);
   const { theme } = useContext(AppContext);
+  const [storiesSeen, setStoriesSeen] = useLocalStorage<{ [id: string]: string }>(
+    'stories-seen',
+    {},
+  );
 
   const backgroundColor = theme?.palette.grey[200];
   const color = theme?.palette.getContrastText(backgroundColor);
+  const hasStories = value && value.length > 0;
+  const showBorder = hasStories && storiesSeen[id] !== value[0].highesUploadedDate;
+
+  const handleAvatarClick = () => {
+    dispatch(uiActions.handleSetSelectedEscortStory(id));
+    dispatch(uiActions.handleToggleLadiesStories(true));
+    setStoriesSeen((prev: any) => ({ ...prev, [id]: value[0].highesUploadedDate }));
+  };
+
+  useEffect(() => {
+    dispatch(getStoriesById(id));
+  }, [id, dispatch]);
 
   return (
     <>
       <div className={`w-100 d-flex fd-column jc-between relative`} style={{ height: 300 }}>
         <Image
           alt={`banner-img-${name}`}
-          blurDataURL={
-            'https://www.peacemakersnetwork.org/wp-content/uploads/2019/09/placeholder.jpg'
-          }
+          blurDataURL={banner.placeholder}
           fill
           placeholder="blur"
           quality={50}
-          src={bannerImg}
+          src={banner.hq}
           style={{ objectFit: 'cover', borderRadius: '20px 20px 0 0' }}
         />
       </div>
@@ -57,7 +79,12 @@ const HeaderSection = ({ age, avatar, bannerImg, name, type }: IHeaderSectionPro
               margin: '0 auto',
             }}
           >
-            <StoryAvatar size={200} image={avatar} />
+            <StoryAvatar
+              onClick={hasStories ? handleAvatarClick : undefined}
+              size={200}
+              image={avatar}
+              showBorder={showBorder}
+            />
           </div>
         </Grid>
 
