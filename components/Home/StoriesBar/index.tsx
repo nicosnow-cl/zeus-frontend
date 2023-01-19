@@ -13,7 +13,7 @@ import { AppContext } from '../../../pages/_app';
 import { AppDispatch, RootState } from '../../../redux/store';
 import { getStories } from '../../../redux/thunks/home';
 import IStory from '../../../interfaces/states/interface.story';
-import StoriesCarousel from './Stories';
+import StoriesCarousel from './StoriesCarousel';
 
 const StoriesBar = () => {
   const [storiesSeen] = useLocalStorage<{ [id: string]: string }>('stories-seen', {});

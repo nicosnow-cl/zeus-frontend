@@ -6,13 +6,19 @@ import ISort from '../interfaces/states/interface.sort';
 const handleSortCards = (cards: ICard[], sort: ISort) => {
   const { field, order } = sort;
 
-  if (field === 'none') return cards;
+  if (field === 'date' && order === 'desc') return cards;
 
   const vip = cards.filter((card) => card.type === 'VIP');
   const premium = cards.filter((card) => card.type === 'PREMIUM');
   const gold = cards.filter((card) => card.type === 'GOLD');
 
   switch (field) {
+    case 'date':
+      const vipDate = orderBy(vip, ['returnAt'], [order]);
+      const premiumDate = orderBy(premium, ['returnAt'], [order]);
+      const goldDate = orderBy(gold, ['returnAt'], [order]);
+
+      return [...vipDate, ...premiumDate, ...goldDate];
     case 'age':
       const vipAge = orderBy(vip, ['age'], [order]);
       const premiumAge = orderBy(premium, ['age'], [order]);

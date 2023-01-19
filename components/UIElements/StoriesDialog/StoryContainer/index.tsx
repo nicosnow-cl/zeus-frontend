@@ -1,7 +1,10 @@
 import { useContext, useRef } from 'react';
 import CardMedia from '@mui/material/CardMedia';
+import { useDispatch } from 'react-redux';
 
 import { AppContext } from '../../../../pages/_app';
+import { AppDispatch } from '../../../../redux/store';
+import { uiActions } from '../../../../redux/reducers/ui';
 import IImage from '../../../../interfaces/objects/interface.image';
 import IVideo from '../../../../interfaces/objects/interface.video';
 import StoryTitle from '../StoryTitle';
@@ -31,11 +34,15 @@ const StoryContainer = ({
 }: IStoryContainerProps) => {
   const { router } = useContext(AppContext);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const dispatch = useDispatch<AppDispatch>();
 
   const videoUrl = `/videos/stories/${video.mp4}`;
 
   const handleViewProfile = () => {
-    escortId && router?.push(`/escort/${escortId}`);
+    if (escortId) {
+      dispatch(uiActions.handleToggleLadiesStories(false));
+      router?.push(`/escort/${escortId}`);
+    }
   };
 
   return (

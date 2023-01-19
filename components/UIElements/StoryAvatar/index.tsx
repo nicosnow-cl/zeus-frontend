@@ -8,40 +8,48 @@ import Image from 'next/image';
 import styles from './index.module.scss';
 
 export interface IStoryAvatarProps {
-  fontColor?: string;
+  color?: string;
   image: IImage;
+  isNew?: boolean;
   name?: string;
   onClick?: () => void;
   publishDate?: string;
   showBorder?: boolean;
   size?: number;
+  imageStyle?: CSSProperties;
+  zIndex?: number;
 }
 
-const MIN_AVATAR_SIZE = 80;
-
 const StoryAvatar = ({
-  fontColor,
+  color,
   image,
+  isNew = false,
   name,
   onClick,
   publishDate,
   showBorder = false,
-  size = MIN_AVATAR_SIZE,
+  size = 80,
+  imageStyle = {},
+  zIndex = 4,
 }: IStoryAvatarProps) => {
   const { theme } = useContext(AppContext);
 
-  const borderColor = theme?.palette.primary.main;
+  const border = !showBorder
+    ? 'none'
+    : isNew
+    ? `3px solid ${theme?.palette.primary.main}`
+    : `3px solid ${theme?.palette.grey[300]}`;
   const firstName = name?.split(' ')[0];
   const timeSince = publishDate ? getTimeSince(new Date(), new Date(publishDate)) : null;
 
   return (
-    <div className={`d-flex fd-column jc-center ai-center`} style={{ color: fontColor, zIndex: 4 }}>
+    <div className={`d-flex fd-column jc-center ai-center`} style={{ color, zIndex }}>
       {firstName && <Typography variant="subtitle1">{firstName}</Typography>}
 
       <Image
         alt={`story-${name}`}
         blurDataURL={image.placeholder}
-        className={`p-1 ${styles.storyImage} ${onClick ? styles.clickeable : ''}`}
+        className={`p-1 ${onClick ? styles.clickeable : ''}`}
         height={size}
         onClick={onClick}
         placeholder="blur"
@@ -49,9 +57,11 @@ const StoryAvatar = ({
         sizes={`(max-width: 768px) ${size}, (max-width: 1200px) ${size}, ${size}`}
         src={image.lq}
         style={{
+          border,
           borderRadius: '50%',
           objectFit: 'cover',
-          border: showBorder ? `3px solid ${borderColor}` : 'none',
+          transition: 'transform 0.15s ease-in-out',
+          ...imageStyle,
         }}
         width={size}
       />

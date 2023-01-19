@@ -1,11 +1,7 @@
-.storyImage {
-  transition: transform 0.2s;
-}
-
 .clickeable {
   cursor: pointer;
 
   &:hover {
-    transform: scale(1.06);
+    transform: scale(1.05);
   }
 }

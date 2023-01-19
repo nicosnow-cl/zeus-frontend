@@ -49,7 +49,7 @@ const StoriesCarousel = ({
     return (
       <StoryAvatar
         key={idx}
-        fontColor={fontColor}
+        color={fontColor}
         image={story.avatar}
         name={story.name}
         onClick={() => {
@@ -58,7 +58,8 @@ const StoriesCarousel = ({
           setStoriesSeen((prev: any) => ({ ...prev, [story.escortId]: story.highesUploadedDate }));
         }}
         publishDate={story.highesUploadedDate}
-        showBorder={isNew}
+        showBorder={true}
+        isNew={isNew}
       />
     );
   });

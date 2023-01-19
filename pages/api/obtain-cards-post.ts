@@ -28,7 +28,7 @@ async function handler(req: ExtendedNextApiRequest, res: NextApiResponse<IRespon
       if (video) query.videos = { $exists: true, $not: { $size: 0 } };
     }
 
-    const data = await collection.find(query).toArray();
+    const data = await collection.find(query).sort(['returnAt', -1]).toArray();
 
     return res.status(200).json({ data, error: null, success: true });
   } catch (err: any) {
