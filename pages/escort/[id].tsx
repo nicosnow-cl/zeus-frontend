@@ -5,11 +5,12 @@ import type { ReactElement } from 'react';
 
 import ContentContainer from '../../components/UIElements/ContentContainer';
 import EscortSection from '../../components/Escort/EscortSection';
+import Footer from '../../components/UIElements/Footer';
 import MainContainer from '../../components/UIElements/MainContainer';
 import Modals from '../../components/Escort/Modals';
 import obtainProfile from '../../services/escort/obtainProfile';
 
-const LazyNavbar = dynamic(() => import('../../components/UIElements/NavbarHandler'), {
+const LazyNavbarHandler = dynamic(() => import('../../components/UIElements/NavbarHandler'), {
   ssr: false,
 });
 
@@ -35,9 +36,11 @@ const EscortPage: NextPageWithLayout = ({ data }: any) => {
 
 EscortPage.getLayout = (page: ReactElement) => (
   <MainContainer>
-    <LazyNavbar />
+    <LazyNavbarHandler />
 
     <ContentContainer>{page}</ContentContainer>
+
+    <Footer />
   </MainContainer>
 );
 

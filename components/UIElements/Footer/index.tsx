@@ -2,16 +2,16 @@ import { useContext } from 'react';
 import EmailRounded from '@mui/icons-material/EmailRounded';
 import Facebook from '@mui/icons-material/Facebook';
 import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
 import Instagram from '@mui/icons-material/Instagram';
+import Link from 'next/link';
 import Twitter from '@mui/icons-material/Twitter';
 import Typography from '@mui/material/Typography';
 
 import { AppContext } from '../../../pages/_app';
+import Breadcrumb from '../Breadcrumb';
 import Constants from '../../../helpers/constants';
-import LogoSvg from '../../../public/images/logo.svg';
-import NavLinks from './NavLinks';
 import ILink from '../../../interfaces/objects/interface.link';
+import NavLinks from './NavLinks';
 
 const { AppName } = Constants;
 
@@ -33,76 +33,84 @@ const LINKS: ILink[] = [
     href: '/preguntas-frecuentes',
   },
   {
-    title: 'Mapa del sitio',
-    href: '/mapa-del-sitio',
-  },
-  {
     title: 'Terminos y condiciones',
     href: '/terminos-y-condiciones',
   },
 ];
 
 const Footer = () => {
-  const { theme } = useContext(AppContext);
+  const { theme, router } = useContext(AppContext);
 
-  const backgroundColor = theme?.palette.grey[700];
-  const downBarBackgroundColor = theme?.palette.grey[900];
-  const color = theme?.palette.primary.light;
+  const getCrumb = (): any => {
+    const pathname = router?.pathname.split('/')[1];
+
+    return { label: pathname?.toUpperCase() };
+  };
 
   return (
-    <div className={`w-100`} style={{ backgroundColor, color: 'white' }}>
-      <div className={`p-1 d-flex jc-center`}>
-        <IconButton size="large">
-          <Facebook fontSize="large" style={{ color: 'white' }} />
-        </IconButton>
+    <div
+      className={`w-100`}
+      style={{ backgroundColor: theme?.palette.grey[800], color: 'white', fontSize: 10 }}
+    >
+      <div className={`py-3`} style={{ width: '75vw', maxWidth: '1200px', margin: '0 auto' }}>
+        {router?.pathname !== '/' && <Breadcrumb crumbs={[getCrumb()]} />}
 
-        <IconButton size="large">
-          <Instagram fontSize="large" style={{ color: 'white' }} />
-        </IconButton>
+        <Grid className={`mt-2 pb-3`} container>
+          <Grid className={`d-flex fd-column ai-start row-gap-3`} item xs={4} sm={1}>
+            <Facebook fontSize="large" />
+            <Instagram fontSize="large" />
+            <Twitter fontSize="large" />
+            <EmailRounded fontSize="large" />
+          </Grid>
 
-        <IconButton size="large">
-          <Twitter fontSize="large" style={{ color: 'white' }} />
-        </IconButton>
+          <Grid
+            className={`d-flex fd-column mb-3`}
+            item
+            style={{ maxWidth: 200, margin: '0 auto' }}
+            xs={8}
+            sm={7}
+          >
+            <NavLinks links={LINKS} style={{ color: 'white', fontSize: '1.1em' }} />
+          </Grid>
 
-        <IconButton size="large">
-          <EmailRounded fontSize="large" style={{ color: 'white' }} />
-        </IconButton>
-      </div>
-
-      <Grid className={`pb-2 footer-content`} container spacing={[2, 2]}>
-        <Grid item xs={4} sm={2}>
-          <div className={`d-flex fd-column row-gap-3 jc-center ai-center`}>
-            <LogoSvg style={{ fill: 'white', maxHeight: '10rem', opacity: '0.3' }} />
-            <Typography variant="h5" style={{ color }} fontWeight={600}>
-              {AppName}
+          <Grid item xs={12} sm={4}>
+            <Typography align="justify" fontSize="1.1em">
+              Portal sobre acompañantes y masajistas para mayores de 18 años. Todas las anunciantes
+              han sido entrevistadas personalmente. No poseemos vinculación laboral con las
+              anunciantes y nos limitamos exclusivamente a brindar un servicio publicitario. Somos
+              un medio publicitario legalmente constituido. Nos reservamos el derecho a publicación.
+              Queda prohibida la copia o reproducción, total o parcial.
             </Typography>
-          </div>
+          </Grid>
         </Grid>
 
-        <Grid className={`pb-2`} item xs={8} sm={6}>
-          <div className={`d-flex fd-column`} style={{ maxWidth: 200, margin: '0 auto' }}>
-            <NavLinks links={LINKS} />
-          </div>
-        </Grid>
-
-        <Grid className={`pb-2`} item xs={12} sm={4}>
-          <Typography align="justify">
-            Portal sobre escorts y masajistas para mayores de 18 años. Todas las anunciantes han
-            sido entrevistadas personalmente. No poseemos vinculación laboral con las anunciantes y
-            nos limitamos exclusivamente a brindar un servicio publicitario. Somos un medio
-            publicitario legalmente constituido. Nos reservamos el derecho a publicación. Queda
-            prohibida la copia o reproducción, total o parcial.
+        <div className={`pt-2 d-flex jc-between`} style={{ borderTop: '1px solid grey' }}>
+          <Typography align="justify" fontSize="1.1em">
+            Copyright © {new Date().getFullYear()} {AppName.replace('.cl', '')}. Todos los derechos
+            reservados.
           </Typography>
-        </Grid>
-      </Grid>
 
-      <Typography
-        className={`w-100 p-1 d-flex jc-center ai-center`}
-        variant="h6"
-        style={{ backgroundColor: downBarBackgroundColor }}
-      >
-        {new Date().getFullYear()} - All Rights Reserved - Copyright: {AppName}
-      </Typography>
+          <div className={`d-flex`}>
+            <Link className={`px-2`} href={`/politica-privacidad`}>
+              <Typography fontSize="1.1em">Política de privacidad</Typography>
+            </Link>
+            <Link
+              className={`px-2`}
+              href={`/aviso-legal`}
+              style={{ borderLeft: '1px solid grey', borderRight: '1px solid grey' }}
+            >
+              <Typography fontSize="1.1em">Aviso legal</Typography>
+            </Link>
+            <Link className={`px-2`} href={`/mapa-del-sitio`}>
+              <Typography fontSize="1.1em">Mapa del sitio</Typography>
+            </Link>
+          </div>
+
+          <Link href={`/`}>
+            <Typography fontSize="1.1em">Chile</Typography>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

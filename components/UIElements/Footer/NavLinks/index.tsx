@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { CSSProperties, useContext } from 'react';
 import Button from '@mui/material/Button';
 
 import { AppContext } from '../../../../pages/_app';
@@ -6,9 +6,10 @@ import ILink from '../../../../interfaces/objects/interface.link';
 
 export interface INavLinksProps {
   links: ILink[];
+  style?: CSSProperties;
 }
 
-const NavLinks = ({ links }: INavLinksProps) => {
+const NavLinks = ({ links, style = {} }: INavLinksProps) => {
   const { router, theme } = useContext(AppContext);
   const { pathname } = router || { pathname: '' };
 
@@ -29,7 +30,7 @@ const NavLinks = ({ links }: INavLinksProps) => {
   return (
     <>
       {links.map((link, idx) => (
-        <Button key={idx} onClick={() => handleOnClick(link.href)} style={{ color: 'white' }}>
+        <Button key={idx} onClick={() => handleOnClick(link.href)} style={style}>
           <div
             style={{ borderBottom: isLinkActive(link.href) ? borderBottom : 0, borderRadius: 0 }}
           >
