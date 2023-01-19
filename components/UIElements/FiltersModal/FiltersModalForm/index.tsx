@@ -17,8 +17,6 @@ import TextField from '@mui/material/TextField';
 
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { getCards } from '../../../../redux/thunks/home/index';
-import { ladiesAppareance } from '../../../../dummy/ladies-appareance';
-import { ladiesServices } from '../../../../dummy/ladies-services';
 import { uiActions } from '../../../../redux/reducers/ui';
 import IFilters from '../../../../interfaces/states/interface.filters';
 import IFiltersForm from '../../../../interfaces/forms/interface.filters-form';
@@ -37,18 +35,16 @@ const initialFormValues: IFiltersForm = {
 
 const FiltersModalForm = () => {
   const [formValues, setFormValues] = useState<IFiltersForm>(initialFormValues);
-  const filters = useSelector((state: RootState): IFilters => state.ui.filters);
+  const appearances = useSelector((state: RootState) => state.others.appearances);
+  const services = useSelector((state: RootState) => state.others.services);
   const dispatch = useDispatch<AppDispatch>();
+  const filters = useSelector((state: RootState): IFilters => state.ui.filters);
 
   const getUserFilters = useCallback(() => {
-    const { name, type, services, appareance, promotion, video, city } = filters;
+    const { name, type, services: fServices, appareance, promotion, video, city } = filters;
 
-    const servicesArr = ladiesServices.filter((ladyServices) =>
-      services.includes(ladyServices.name),
-    );
-    const appareanceArr = ladiesAppareance.filter((ladyAppareance) =>
-      appareance.includes(ladyAppareance.name),
-    );
+    const servicesArr = services.filter((service) => fServices.includes(service.name));
+    const appareanceArr = appearances.filter((appearance) => appareance.includes(appearance.name));
 
     return {
       appareance: appareanceArr,
@@ -59,7 +55,7 @@ const FiltersModalForm = () => {
       type,
       video,
     };
-  }, [filters]);
+  }, [filters, appearances, services]);
 
   useEffect(() => setFormValues(getUserFilters()), [getUserFilters]);
 
@@ -72,10 +68,8 @@ const FiltersModalForm = () => {
   const handleApplyFilters = (values: IFiltersForm) => {
     const { name, type, services, appareance, promotion, video, city } = values;
 
-    const servicesStrArr = services.map((service: { id: number; name: string }) => service.name);
-    const appareanceStrArr = appareance.map(
-      (appareance: { id: number; name: string }) => appareance.name,
-    );
+    const appareanceStrArr = appareance.map((appearance) => appearance.name);
+    const servicesStrArr = services.map((service) => service.name);
 
     const partiaFilters: IPartialFilters = {
       appareance: appareanceStrArr,
@@ -177,20 +171,22 @@ const FiltersModalForm = () => {
                 <Autocomplete
                   disableCloseOnSelect
                   getOptionLabel={(option) => option.name}
-                  isOptionEqualToValue={(option, value) => option.id === value.id}
+                  isOptionEqualToValue={(option, value) => option._id === value._id}
                   multiple
-                  onChange={(evt, value) => setFieldValue('services', value)}
-                  options={ladiesServices}
+                  onChange={(evt, value) => setFieldValue('appareance', value)}
+                  options={appearances}
                   renderInput={(params) => (
-                    <TextField {...params} label="Servicios" variant="standard" />
+                    <TextField {...params} label="Apariencia" variant="standard" />
                   )}
                   renderOption={(props, option) => (
                     <Box component="li" {...props}>
-                      <Checkbox checked={values.services.includes(option)} />
+                      <Checkbox
+                        checked={Boolean(values.appareance.find((item) => item._id === option._id))}
+                      />
                       {option.name}
                     </Box>
                   )}
-                  value={values.services}
+                  value={values.appareance}
                 />
               </FormControl>
             </Grid>
@@ -200,20 +196,22 @@ const FiltersModalForm = () => {
                 <Autocomplete
                   disableCloseOnSelect
                   getOptionLabel={(option) => option.name}
-                  isOptionEqualToValue={(option, value) => option.id === value.id}
+                  isOptionEqualToValue={(option, value) => option._id === value._id}
                   multiple
-                  onChange={(evt, value) => setFieldValue('appareance', value)}
-                  options={ladiesAppareance}
+                  onChange={(evt, value) => setFieldValue('services', value)}
+                  options={services}
                   renderInput={(params) => (
-                    <TextField {...params} label="Apariencia" variant="standard" />
+                    <TextField {...params} label="Servicios" variant="standard" />
                   )}
                   renderOption={(props, option) => (
                     <Box component="li" {...props}>
-                      <Checkbox checked={values.appareance.includes(option)} />
+                      <Checkbox
+                        checked={Boolean(values.services.find((item) => item._id === option._id))}
+                      />
                       {option.name}
                     </Box>
                   )}
-                  value={values.appareance}
+                  value={values.services}
                 />
               </FormControl>
             </Grid>

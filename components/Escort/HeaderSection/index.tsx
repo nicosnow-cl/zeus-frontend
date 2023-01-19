@@ -55,7 +55,7 @@ const HeaderSection = ({ age, avatar, banner, id, name, type }: IHeaderSectionPr
           blurDataURL={banner.placeholder}
           fill
           placeholder="blur"
-          quality={50}
+          quality={75}
           src={banner.hq}
           style={{ objectFit: 'cover', borderRadius: '20px 20px 0 0' }}
         />
@@ -75,7 +75,7 @@ const HeaderSection = ({ age, avatar, banner, id, name, type }: IHeaderSectionPr
               position: 'absolute',
               width: 200,
               height: 200,
-              bottom: 0,
+              bottom: 10,
               margin: '0 auto',
             }}
           >
@@ -84,6 +84,7 @@ const HeaderSection = ({ age, avatar, banner, id, name, type }: IHeaderSectionPr
               size={200}
               image={avatar}
               showBorder={showBorder}
+              imageStyle={{ backgroundColor }}
             />
           </div>
         </Grid>

@@ -7,7 +7,6 @@ import ISort from '../../../interfaces/states/interface.sort';
 export interface IUiState {
   actualProfileMedia: number;
   filters: IFilters;
-  sort: ISort;
   isLoadingHome: boolean;
   isLoadingStories: boolean;
   selectedEscortStory: string;
@@ -17,6 +16,7 @@ export interface IUiState {
   showLadyProfile: boolean;
   showRegionModal: boolean;
   showSidebar: boolean;
+  sort: ISort;
 }
 
 export const initialState: IUiState = {
@@ -31,8 +31,8 @@ export const initialState: IUiState = {
     video: false,
   },
   sort: {
-    field: 'none',
-    order: 'asc',
+    field: 'date',
+    order: 'desc',
   },
   isLoadingHome: false,
   isLoadingStories: false,

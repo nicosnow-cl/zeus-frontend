@@ -1,6 +1,6 @@
 import { Formik } from 'formik';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import FormGroup from '@mui/material/FormGroup';
 import IconButton from '@mui/material/IconButton';
@@ -14,11 +14,12 @@ import { AppDispatch, RootState } from '../../../redux/store';
 import { uiActions } from '../../../redux/reducers/ui';
 import ISort from '../../../interfaces/states/interface.sort';
 
-const VALID_FIELDS = ['none', 'age', 'price', 'likes', 'name'];
+const VALID_FIELDS = ['date', 'age', 'price', 'likes', 'name'];
 const VALID_ORDERS = ['asc', 'desc'];
 
 const CardsSorter = () => {
   const [anchorBtn, setAnchorBtn] = useState<null | HTMLElement>(null);
+  const [isDisabled, setIsDisabled] = useState<boolean>(false);
   const actualSort = useSelector((state: RootState) => state.ui.sort);
   const dispatch = useDispatch<AppDispatch>();
   const open = Boolean(anchorBtn);
@@ -50,11 +51,21 @@ const CardsSorter = () => {
     if (isEqual(values, actualSort)) return;
 
     dispatch(uiActions.handleApplySort(values));
+    setIsDisabled(true);
   };
+
+  useEffect(() => {
+    const intervalId = setTimeout(() => {
+      setIsDisabled(false);
+      clearTimeout(intervalId);
+    }, 1000);
+
+    return () => clearTimeout(intervalId);
+  }, [isDisabled]);
 
   return (
     <>
-      <IconButton onClick={hanleOpenMenu} size="large">
+      <IconButton disabled={isDisabled} onClick={hanleOpenMenu} size="large">
         <Sort fontSize="large" />
       </IconButton>
 
@@ -109,7 +120,7 @@ const CardsSorter = () => {
                     value={values.field}
                     variant="standard"
                   >
-                    <MenuItem value={VALID_FIELDS[0]}>Ninguno</MenuItem>
+                    <MenuItem value={VALID_FIELDS[0]}>Fecha</MenuItem>
                     <MenuItem value={VALID_FIELDS[1]}>Edad</MenuItem>
                     <MenuItem value={VALID_FIELDS[2]}>Precio</MenuItem>
                     <MenuItem value={VALID_FIELDS[3]}>Likes</MenuItem>
@@ -119,7 +130,6 @@ const CardsSorter = () => {
 
                 <Button
                   size="small"
-                  disabled={values.field === VALID_FIELDS[0]}
                   onClick={() =>
                     setFieldValue(
                       'order',
