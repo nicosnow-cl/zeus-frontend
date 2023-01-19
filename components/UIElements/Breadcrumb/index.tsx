@@ -36,7 +36,7 @@ const Breadcrumb = ({
 
   return (
     <Breadcrumbs
-      className={`mb-2`}
+      className={`mb-3`}
       separator={<NavigateNext fontSize="small" />}
       aria-label="web-breadcrumb"
       style={{ color: 'inherit' }}

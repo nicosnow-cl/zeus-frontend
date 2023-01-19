@@ -41,13 +41,19 @@ const LINKS: ILink[] = [
 const Footer = () => {
   const { theme, router } = useContext(AppContext);
 
+  const getCrumb = (): any => {
+    const pathname = router?.pathname.split('/')[1];
+
+    return { label: pathname?.toUpperCase() };
+  };
+
   return (
     <div
       className={`w-100`}
       style={{ backgroundColor: theme?.palette.grey[800], color: 'white', fontSize: 10 }}
     >
       <div className={`py-3`} style={{ width: '75vw', maxWidth: '1200px', margin: '0 auto' }}>
-        {router?.pathname !== '/' && <Breadcrumb crumbs={[]} />}
+        {router?.pathname !== '/' && <Breadcrumb crumbs={[getCrumb()]} />}
 
         <Grid className={`mt-2 pb-3`} container>
           <Grid className={`d-flex fd-column ai-start row-gap-3`} item xs={4} sm={1}>
