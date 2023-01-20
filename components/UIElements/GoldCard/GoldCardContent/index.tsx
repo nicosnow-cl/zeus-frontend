@@ -83,7 +83,7 @@ const GoldCardContent = ({
                 style={{ textDecorationLine: 'line-through', fontSize: 10, lineHeight: 1 }}
                 textAlign="center"
               >
-                ${formatNumberToString(price.price)}
+                ${formatNumberToString(price.normal)}
               </Typography>
               <Typography>${formatNumberToString(price.promo)} - 1h</Typography>
             </>

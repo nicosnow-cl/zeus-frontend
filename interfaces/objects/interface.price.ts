@@ -1,6 +1,6 @@
 interface IPrice {
+  normal: number;
   promo: number;
-  price: number;
 }
 
 export default IPrice;
