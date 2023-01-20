@@ -13,6 +13,7 @@ import MenuButton from '../../MenuButton';
 import styles from './index.module.scss';
 import useNavbar from '../../../../hooks/useNavbar';
 import ProgressBar from '../ProgressBar';
+import MenuButtonV2 from '../../MenuButtonV2';
 
 export interface IMobileNavbarProps {
   setNavbarHeight?: (height: string) => void;
@@ -67,7 +68,8 @@ const MobileNavbar = ({ setNavbarHeight = () => {} }: IMobileNavbarProps) => {
             {AppName}
           </Typography>
         </div>
-        <MenuButton onClick={handleOpenSidebar} style={{}} />
+        {/* <MenuButton onClick={handleOpenSidebar} style={{}} /> */}
+        <MenuButtonV2 backgroundColor={theme?.palette.grey[200]} onClick={handleOpenSidebar} />
       </Box>
     </>
   );
