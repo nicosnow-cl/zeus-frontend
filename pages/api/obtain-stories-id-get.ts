@@ -1,8 +1,9 @@
+import { ObjectId } from 'mongodb';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import getConnection from './mongo';
 import IResponse from '../../interfaces/api/interface.response';
-import IStory from '../../interfaces/states/interface.story';
+// import IStory from '../../interfaces/states/interface.story';
 
 interface ExtendedNextApiRequest extends NextApiRequest {
   query: { id: string };
@@ -13,9 +14,9 @@ async function handler(req: ExtendedNextApiRequest, res: NextApiResponse<IRespon
 
   try {
     const { id } = req.query;
-    const collection = db.collection<IStory>('stories');
+    const collection = db.collection<any>('stories');
 
-    const data = await collection.findOne({ escortId: id });
+    const data = await collection.findOne({ escortId: new ObjectId(id) });
 
     return res.status(200).json({ data, error: null, success: true });
   } catch (err: any) {

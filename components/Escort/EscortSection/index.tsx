@@ -42,13 +42,19 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
       />
 
       <DescriptionSection
-        appareance={profile.appareance}
+        breast={profile.breast}
         color={color}
+        contexture={profile.contexture}
         description={profile.description}
+        eyeColor={profile.eyeColor}
+        hairColor={profile.hairColor}
         height={profile.height}
+        languages={profile.languages}
         nacionality={profile.nationality}
+        rear={profile.rear}
         size={profile.size}
         skin={profile.skin}
+        waxing={profile.waxing}
         weight={profile.weight}
       />
 

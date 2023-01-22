@@ -11,9 +11,7 @@ import useStories from '../../../hooks/useStories';
 import VideoBlurBackground from '../VideoBlurBackground';
 
 const StoriesDialog = () => {
-  const selectedEscortStory = useSelector(
-    (state: RootState): string => state.ui.selectedEscortStory,
-  );
+  const selectedEscortStory = useSelector((state: RootState) => state.ui.selectedEscortStory);
   const { value: stories } = useSelector((state: RootState) => state.home.storiesState);
   const { controls, metadata, video } = useStories({ selectedEscortStory, stories });
   const showLadiesStories = useSelector((state: RootState): boolean => state.ui.showLadiesStories);

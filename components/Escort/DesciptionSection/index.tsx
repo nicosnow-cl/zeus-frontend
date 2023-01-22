@@ -3,24 +3,36 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 interface IDescriptionSectionProps {
-  appareance: string[];
+  breast: string;
   color?: string;
+  contexture: string;
   description: string;
+  eyeColor: string;
+  hairColor: string;
   height: number;
+  languages: string[];
   nacionality: string;
-  size: string;
+  rear: string;
+  size: number[];
   skin: string;
+  waxing: string;
   weight: number;
 }
 
 const DescriptionSection = ({
-  appareance,
+  breast,
   color,
+  contexture,
   description,
+  eyeColor,
+  hairColor,
   height,
+  languages,
   nacionality,
+  rear,
   size,
   skin,
+  waxing,
   weight,
 }: IDescriptionSectionProps) => {
   return (
@@ -76,17 +88,23 @@ const DescriptionSection = ({
             textTransform="uppercase"
             variant="subtitle1"
           >
-            {size} CM
+            {size.join(' - ')} CM
           </Typography>
         </div>
 
-        {appareance.length && (
-          <div className={`mt-3`}>
-            {appareance.map((skill, idx) => (
-              <Chip className={`mr-2 mb-2`} key={idx} label={skill} />
-            ))}
-          </div>
-        )}
+        <div className={`mt-3`}>
+          <Chip className={`mr-2 mb-2`} label={contexture} />
+          <Chip className={`mr-2 mb-2`} label={breast} />
+          <Chip className={`mr-2 mb-2`} label={eyeColor} />
+          <Chip className={`mr-2 mb-2`} label={hairColor} />
+          <Chip className={`mr-2 mb-2`} label={rear} />
+          <Chip className={`mr-2 mb-2`} label={waxing} />
+          <Chip className={`mr-2 mb-2`} label={skin} />
+
+          {languages.map((language, idx) => (
+            <Chip key={idx} className={`mr-2 mb-2`} label={language} />
+          ))}
+        </div>
       </Grid>
     </Grid>
   );

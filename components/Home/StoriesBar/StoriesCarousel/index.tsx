@@ -44,7 +44,8 @@ const StoriesCarousel = ({
   );
 
   const avatars = stories.map((story, idx) => {
-    const isNew = storiesSeen[story.escortId] !== story.highesUploadedDate;
+    const escortId = story.escortId.toString();
+    const isNew = storiesSeen[escortId] !== story.highesUploadedDate;
 
     return (
       <StoryAvatar
@@ -53,9 +54,9 @@ const StoriesCarousel = ({
         image={story.avatar}
         name={story.name}
         onClick={() => {
-          dispatch(uiActions.handleSetSelectedEscortStory(story.escortId));
+          dispatch(uiActions.handleSetSelectedEscortStory(escortId));
           dispatch(uiActions.handleToggleLadiesStories(true));
-          setStoriesSeen((prev: any) => ({ ...prev, [story.escortId]: story.highesUploadedDate }));
+          setStoriesSeen((prev: any) => ({ ...prev, [escortId]: story.highesUploadedDate }));
         }}
         publishDate={story.highesUploadedDate}
         showBorder={true}

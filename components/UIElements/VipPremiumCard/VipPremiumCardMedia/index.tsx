@@ -1,4 +1,5 @@
 import { memo, useEffect, useState } from 'react';
+import CardMedia from '@mui/material/CardMedia';
 import SwipeableViews from 'react-swipeable-views';
 
 import IImage from '../../../../interfaces/objects/interface.image';
@@ -48,21 +49,15 @@ const VipPremiumCardMedia = ({
 
       <div style={{ height: mediaHeight, position: 'relative', overflow: 'hidden' }}>
         {wasHovered && (
-          <video
-            playsInline
+          <CardMedia
             autoPlay
+            component="video"
+            loop={videos.length <= 1 ? true : false}
             muted
-            loop={videos.length < 1 ? true : false}
             onEnded={() => setVideoIdx((prev) => (prev + 1) % videos.length)}
-            controls={false}
+            playsInline
             src={videos[videoIdx].mp4}
-            style={{
-              backgroundPosition: 'center',
-              height: '100%',
-              objectFit: 'cover',
-              objectPosition: 'top',
-              width: '100%',
-            }}
+            style={{ objectFit: 'cover', objectPosition: 'top', height: '100%' }}
           />
         )}
       </div>

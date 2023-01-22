@@ -12,13 +12,13 @@ export interface ICustomBoxActionProps {
   minWidth?: string | number;
   onClick?: () => void;
   subtitle?: string;
-  title: string;
+  title: string | JSX.Element;
 }
 
 const CustomBoxAction = ({
   backgroundColor,
   height,
-  icon,
+  icon = <Check />,
   minWidth,
   onClick,
   subtitle,
@@ -51,7 +51,7 @@ const CustomBoxAction = ({
           ...(isHover ? { color: theme?.palette.primary.main } : { color }),
         }}
       >
-        {icon ? icon : <Check />}
+        {icon}
       </div>
 
       <Typography

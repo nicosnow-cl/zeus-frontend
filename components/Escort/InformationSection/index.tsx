@@ -51,6 +51,9 @@ const InformationSecion = ({ schedule, services }: IInformationSectionProps) => 
             Servicios
           </Typography>
         </AccordionSummary>
+        <Typography className={`mb-2`} variant="subtitle2">
+          Algunos servicios podrían tener un costo adicional
+        </Typography>
         <AccordionDetails>
           {services.length > 0 ? (
             services.map((service, idx) => (
@@ -73,6 +76,9 @@ const InformationSecion = ({ schedule, services }: IInformationSectionProps) => 
             Horario
           </Typography>
         </AccordionSummary>
+        <Typography className={`mb-2`} variant="subtitle2">
+          La disponibilidad es relativa, recuerda siempre confirmar
+        </Typography>
         <AccordionDetails>
           <Table aria-label="simple table">
             <TableBody>
