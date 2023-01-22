@@ -6,7 +6,8 @@ import { AppDispatch } from '../../../../../redux/store';
 import { uiActions } from '../../../../../redux/reducers/ui';
 import getHexToRgb from '../../../../../helpers/getHexToRgb';
 import Logo from '../../../Logo';
-import MenuButton from '../../../MenuButton';
+// import MenuButton from '../../../MenuButton';
+import MenuButtonV2 from '../../../MenuButtonV2';
 
 const DownBar = () => {
   const { theme } = useContext(AppContext);
@@ -29,7 +30,11 @@ const DownBar = () => {
     >
       <div className={`wrapper d-flex jc-center`}>
         <Logo navbar={true} backgroundColor={backgroundColorLogo} />
-        <MenuButton onClick={handleOpenSidebar} style={{ marginLeft: 'auto' }} />
+        <MenuButtonV2
+          backgroundColor={backgroundColorLogo}
+          onClick={handleOpenSidebar}
+          style={{ marginLeft: 'auto', marginTop: 'auto', marginBottom: 'auto' }}
+        />
       </div>
     </div>
   );

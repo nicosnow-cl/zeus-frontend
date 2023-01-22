@@ -14,29 +14,49 @@ export interface IRrssMenuButtonProps {
   rrss: IRrSs[];
 }
 
-export const getRrssButton = (rrss: IRrSs, color?: string) => {
+export const getRrssButton = (rrss: IRrSs, idx?: number, color?: string) => {
   switch (rrss.type) {
     case 'facebook':
       return (
-        <IconButton className={`${styles.btn}`} sx={{ color }}>
+        <IconButton
+          key={idx}
+          className={`${styles.btn}`}
+          onClick={() => window.open(rrss.url, '_blank')}
+          sx={{ color }}
+        >
           <Facebook />
         </IconButton>
       );
     case 'instagram':
       return (
-        <IconButton className={`${styles.btn}`} sx={{ color }}>
+        <IconButton
+          key={idx}
+          className={`${styles.btn}`}
+          onClick={() => window.open(rrss.url, '_blank')}
+          sx={{ color }}
+        >
           <Instagram />
         </IconButton>
       );
     case 'twitter':
       return (
-        <IconButton className={`${styles.btn}`} sx={{ color }}>
+        <IconButton
+          key={idx}
+          className={`${styles.btn}`}
+          onClick={() => window.open(rrss.url, '_blank')}
+          sx={{ color }}
+        >
           <Twitter />
         </IconButton>
       );
     case 'whatsapp':
       return (
-        <IconButton className={`${styles.btn}`} sx={{ color }}>
+        <IconButton
+          key={idx}
+          className={`${styles.btn}`}
+          onClick={() => window.open(rrss.url, '_blank')}
+          sx={{ color }}
+        >
           <WhatsApp />
         </IconButton>
       );
@@ -99,7 +119,7 @@ const RrssMenuButton = ({ rrss }: IRrssMenuButtonProps) => {
         transformOrigin={{ horizontal: 'center', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
       >
-        {rrss.map((rrss) => getRrssButton(rrss))}
+        {rrss.map((rrss, idx) => getRrssButton(rrss, idx))}
       </Menu>
     </>
   );

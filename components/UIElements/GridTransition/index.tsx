@@ -60,7 +60,6 @@ const GridTransition = ({
   });
 
   console.count('GridTransition render');
-  console.log({ cardsStatus });
 
   return animated((style, item) => (
     <a.div id={`card-${item.idx}`} className={`card-scope`} key={item.id} style={style}>

@@ -1,12 +1,11 @@
-import { useContext, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import Divider from '@mui/material/Divider';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
 import Typography from '@mui/material/Typography';
 import useLocalStorage from 'beautiful-react-hooks/useLocalStorage';
 
-import { AppContext } from '../../../pages/_app';
 import { AppDispatch, RootState } from '../../../redux/store';
 import { getStoriesById } from '../../../redux/thunks/home';
 import { uiActions } from '../../../redux/reducers/ui';
@@ -26,14 +25,12 @@ export interface IHeaderSectionProps {
 const HeaderSection = ({ age, avatar, banner, id, name, type }: IHeaderSectionProps) => {
   const dispatch = useDispatch<AppDispatch>();
   const { value } = useSelector((state: RootState) => state.home.storiesState);
-  const { theme } = useContext(AppContext);
   const [storiesSeen, setStoriesSeen] = useLocalStorage<{ [id: string]: string }>(
     'stories-seen',
     {},
   );
 
-  const backgroundColor = theme?.palette.grey[200];
-  const color = theme?.palette.getContrastText(backgroundColor);
+  const backgroundColor = type === 'VIP' ? '#393939' : type === 'PREMIUM' ? '#c16261' : '#c3a774';
   const hasStories = value && value.length > 0;
   const showBorder = hasStories && storiesSeen[id] !== value[0].highesUploadedDate;
 
@@ -90,15 +87,21 @@ const HeaderSection = ({ age, avatar, banner, id, name, type }: IHeaderSectionPr
         </Grid>
 
         <Grid className={`p-2 d-flex jc-evenly ai-center col-gap-3`} item xs={12} sm={7} md={8}>
-          <Typography variant="h2" style={{ color }}>
+          <Typography variant="h2" style={{ color: 'white' }}>
             {name}
             <Typography variant="h6">{age} años</Typography>
           </Typography>
 
           <Divider orientation="vertical" sx={{ maxHeight: '65%' }} />
 
-          <Typography className={`ml-2`} variant="h6" style={{ color }}>
-            Acompañante {type}
+          <Typography className={`ml-2`} variant="h6" style={{ color: 'white' }}>
+            Acompañante{' '}
+            <span
+              className={`px-3 py-1`}
+              style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '20px' }}
+            >
+              {type}
+            </span>
           </Typography>
         </Grid>
       </Grid>

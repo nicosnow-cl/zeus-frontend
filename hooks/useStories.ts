@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
-import IImage from '../interfaces/objects/interface.image';
 
-import IVideo from '../interfaces/objects/interface.video';
+import IImage from '../interfaces/objects/interface.image';
 import IStory from '../interfaces/states/interface.story';
+import IVideo from '../interfaces/objects/interface.video';
 
 export interface IUseStoriesProps {
   selectedEscortStory: string;

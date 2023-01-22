@@ -13,6 +13,7 @@ import formatNumberToString from '../../../helpers/formatNumberToString';
 import ILocation from '../../../interfaces/objects/interface.location';
 import IPrice from '../../../interfaces/objects/interface.price';
 import IRrSs from '../../../interfaces/objects/interface.rrss';
+import Typography from '@mui/material/Typography';
 
 export interface IContactSectionProps {
   hasPromo: boolean;
@@ -31,8 +32,9 @@ const getRrSsBoxAction = (rrss: IRrSs, idx: number) => {
         <CustomBoxAction
           key={idx}
           icon={<Facebook />}
-          title={'Facebook'}
           minWidth={CUSTOM_BOX_ACTION_WIDTH}
+          onClick={() => window.open(rrss.url, '_blank')}
+          title={'Facebook'}
         />
       );
     case 'instagram':
@@ -40,8 +42,9 @@ const getRrSsBoxAction = (rrss: IRrSs, idx: number) => {
         <CustomBoxAction
           key={idx}
           icon={<Instagram />}
-          title={'Instagram'}
           minWidth={CUSTOM_BOX_ACTION_WIDTH}
+          onClick={() => window.open(rrss.url, '_blank')}
+          title={'Instagram'}
         />
       );
     case 'twitter':
@@ -49,8 +52,9 @@ const getRrSsBoxAction = (rrss: IRrSs, idx: number) => {
         <CustomBoxAction
           key={idx}
           icon={<Twitter />}
-          title={'Twitter'}
           minWidth={CUSTOM_BOX_ACTION_WIDTH}
+          onClick={() => window.open(rrss.url, '_blank')}
+          title={'Twitter'}
         />
       );
     case 'whatsapp':
@@ -58,8 +62,9 @@ const getRrSsBoxAction = (rrss: IRrSs, idx: number) => {
         <CustomBoxAction
           key={idx}
           icon={<WhatsApp />}
-          title={'Whatsapp'}
           minWidth={CUSTOM_BOX_ACTION_WIDTH}
+          onClick={() => window.open(rrss.url, '_blank')}
+          title={'Whatsapp'}
         />
       );
     default:
@@ -77,15 +82,30 @@ const ContactSection = ({ hasPromo, location, phoneNumber, price, rrss }: IConta
     >
       <CustomBoxAction
         icon={<PhoneIphone />}
-        title={phoneNumber}
         minWidth={CUSTOM_BOX_ACTION_WIDTH}
+        onClick={() => navigator.clipboard.writeText(phoneNumber)}
+        title={phoneNumber}
       />
 
       {rrss.map((rrss, idx) => getRrSsBoxAction(rrss, idx))}
 
       <CustomBoxAction
         icon={<AttachMoney />}
-        title={formatNumberToString(hasPromo ? price.promo : price.price)}
+        title={
+          hasPromo ? (
+            <div className={`d-flex ai-center col-gap-2`}>
+              {formatNumberToString(price.promo)}
+              <Typography
+                color="grey"
+                style={{ textDecorationLine: 'line-through', fontSize: 11, lineHeight: 1 }}
+              >
+                ${formatNumberToString(price.normal)}
+              </Typography>
+            </div>
+          ) : (
+            formatNumberToString(price.normal)
+          )
+        }
         subtitle={`la hora`}
         minWidth={CUSTOM_BOX_ACTION_WIDTH}
       />

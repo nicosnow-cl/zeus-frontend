@@ -2,7 +2,7 @@ import { ObjectId } from 'mongodb';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 import getConnection from './mongo';
-import IProfile from '../../interfaces/states/interface.profile';
+// import IProfile from '../../interfaces/states/interface.profile';
 import IResponse from '../../interfaces/api/interface.response';
 
 interface ExtendedNextApiRequest extends NextApiRequest {
@@ -14,7 +14,7 @@ async function handler(req: ExtendedNextApiRequest, res: NextApiResponse<IRespon
 
   try {
     const { id } = req.query;
-    const collection = db.collection<IProfile>('escorts');
+    const collection = db.collection<any>('escorts');
 
     const data = await collection.findOne({ _id: new ObjectId(id) });
 

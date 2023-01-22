@@ -38,7 +38,7 @@ const StoriesBar = () => {
       orderBy(
         stories.map((story) => ({
           ...story,
-          isNew: storiesSeen[story.escortId] !== story.highesUploadedDate,
+          isNew: storiesSeen[story.escortId.toString()] !== story.highesUploadedDate,
         })),
         ['isNew', 'highesUploadedDate'],
         ['desc', 'desc'],
