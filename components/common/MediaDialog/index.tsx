@@ -9,8 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import { AppDispatch, RootState } from '../../../redux/store';
 import { uiActions } from '../../../redux/reducers/ui';
 import IMedia from '../../../interfaces/objects/interface.media';
-import MediaImage from './MediaImage';
-import MediaVideo from './MediaVideo';
+import MediaContainer from './MediaContainer';
 
 const MediaDialog = () => {
   const medias = useSelector((state: RootState): IMedia[] => state.home.medias);
@@ -66,7 +65,7 @@ const MediaDialog = () => {
         backgroundColor: 'rgba(0, 0, 0, 0.5)',
       }}
     >
-      <div className={`h-100 w-100 d-flex jc-between ai-center`}>
+      <div className={`h-100 w-100 d-flex jc-center ai-center`}>
         <Button
           sx={{
             position: 'absolute',
@@ -91,11 +90,7 @@ const MediaDialog = () => {
           <ArrowBackIos fontSize="large" />
         </IconButton>
 
-        {actualMedia &&
-          {
-            img: <MediaImage alt={`media-img`} image={actualMedia.img!} />,
-            video: <MediaVideo video={actualMedia.video!} />,
-          }[actualMedia.type]}
+        <MediaContainer media={actualMedia} />
 
         <IconButton
           color="primary"

@@ -44,7 +44,7 @@ const ProfileMedia = ({ height, image, onClick, type, video }: IProfileMediaProp
           style={{ objectFit: 'cover', objectPosition: 'top', height: '100%' }}
         />
       ) : (
-        <NextImage image={image!} />
+        <NextImage image={image!} style={{ objectPosition: 'top' }} />
       )}
     </div>
   );
