@@ -3,9 +3,9 @@ import useLocalStorage from 'beautiful-react-hooks/useLocalStorage';
 
 import { AppDispatch } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';
-import CustomCarrousel from '../../../UIElements/CustomCarrousel';
+import CustomCarrousel from '../../../common/CustomCarrousel';
 import IStory from '../../../../interfaces/states/interface.story';
-import StoryAvatar from '../../../UIElements/StoryAvatar';
+import StoryAvatar from '../../../common/StoryAvatar';
 
 export interface IStoriesCarouselProps {
   fontColor?: string;

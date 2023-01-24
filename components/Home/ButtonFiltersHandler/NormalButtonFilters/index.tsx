@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { AppContext } from '../../../../pages/_app';
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';
-import DraggableButton from '../../../UIElements/DraggableButton';
+import DraggableButton from '../../../common/DraggableButton';
 import IFilters from '../../../../interfaces/states/interface.filters';
 import styles from './index.module.scss';
 

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Grid from '@mui/material/Grid';
 
-import AnimatedCard from '../../UIElements/AnimatedCard';
-import LoadingCard from '../../UIElements/LoadingCard';
+import AnimatedCard from '../../common/AnimatedCard';
+import LoadingCard from '../../common/LoadingCard';
 
 export interface ILoadingHomeProps {
   cardsNumber?: number;

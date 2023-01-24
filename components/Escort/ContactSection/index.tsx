@@ -8,7 +8,7 @@ import WhatsApp from '@mui/icons-material/WhatsApp';
 
 import { AppContext } from '../../../pages/_app';
 import { useContext } from 'react';
-import CustomBoxAction from '../../UIElements/CustomBoxAction';
+import CustomBoxAction from '../../common/CustomBoxAction';
 import formatNumberToString from '../../../helpers/formatNumberToString';
 import ILocation from '../../../interfaces/objects/interface.location';
 import IPrice from '../../../interfaces/objects/interface.price';
