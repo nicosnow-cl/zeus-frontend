@@ -1,16 +1,15 @@
 .mediaContainer {
-    display: flex;
-    height: 100%;
-    margin: 0 auto;
-    width: 100%;
+  display: flex;
+  margin: 0 auto;
+  width: 100%;
 
-    div {
-        position: unset !important;
-    }
+  div {
+    position: unset !important;
+  }
 }
 
 .mediaImg {
-    height: unset !important;
-    position: relative !important;
-    object-fit: contain;
+  height: unset !important;
+  position: relative !important;
+  object-fit: contain;
 }
