@@ -12,7 +12,7 @@ import IImage from '../../../interfaces/objects/interface.image';
 import IMedia from '../../../interfaces/objects/interface.media';
 import IVideo from '../../../interfaces/objects/interface.video';
 import mapImgsAndVideosToMedias from '../../../helpers/mapImgsAndVideosToMedias';
-import ProfileMedia from '../../UIElements/ProfileMedia';
+import ProfileMedia from '../../common/ProfileMedia';
 import styles from './index.module.scss';
 import MediaSorter from './MediaSorter';
 

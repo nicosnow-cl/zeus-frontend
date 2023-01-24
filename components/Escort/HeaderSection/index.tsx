@@ -11,7 +11,7 @@ import { getStoriesById } from '../../../redux/thunks/home';
 import { uiActions } from '../../../redux/reducers/ui';
 import EscortType from '../../../types/type.escort';
 import IImage from '../../../interfaces/objects/interface.image';
-import StoryAvatar from '../../UIElements/StoryAvatar/index';
+import StoryAvatar from '../../common/StoryAvatar/index';
 
 export interface IHeaderSectionProps {
   age: number;

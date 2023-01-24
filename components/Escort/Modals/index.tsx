@@ -3,10 +3,10 @@ import dynamic from 'next/dynamic';
 
 import { RootState } from '../../../redux/store';
 
-const LazyMediaDialog = dynamic(() => import('../../../components/UIElements/MediaDialog'), {
+const LazyMediaDialog = dynamic(() => import('../../../components/common/MediaDialog'), {
   ssr: false,
 });
-const LazyStoriesDialog = dynamic(() => import('../../../components/UIElements/StoriesDialog'), {
+const LazyStoriesDialog = dynamic(() => import('../../../components/common/StoriesDialog'), {
   ssr: false,
 });
 

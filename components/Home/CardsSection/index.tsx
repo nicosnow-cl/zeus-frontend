@@ -8,7 +8,7 @@ import { RootState } from '../../../redux/store';
 import { useSelector } from 'react-redux';
 import CardsSorter from '../CardsSorter';
 import getGridDataCards from '../../../helpers/getGridDataCards';
-import GridTransition from '../../UIElements/GridTransition';
+import GridTransition from '../../common/GridTransition';
 import ICard from '../../../interfaces/states/interface.card';
 import styles from './index.module.scss';
 import useGrid from '../../../hooks/useGrid';

@@ -5,13 +5,13 @@ import dynamic from 'next/dynamic';
 import { AppContext } from '../../../pages/_app';
 import { RootState } from '../../../redux/store';
 
-const LazyRegionsModal = dynamic(() => import('../../../components/UIElements/RegionsModal'), {
+const LazyRegionsModal = dynamic(() => import('../../../components/common/RegionsModal'), {
   ssr: false,
 });
-const LazyFiltersModal = dynamic(() => import('../../../components/UIElements/FiltersModal'), {
+const LazyFiltersModal = dynamic(() => import('../../../components/common/FiltersModal'), {
   ssr: false,
 });
-const LazyStoriesDialog = dynamic(() => import('../../../components/UIElements/StoriesDialog'), {
+const LazyStoriesDialog = dynamic(() => import('../../../components/common/StoriesDialog'), {
   ssr: false,
 });
 

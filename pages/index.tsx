@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 
 import { NextPageWithLayout } from './_app';
-import ContentContainer from '../components/UIElements/ContentContainer';
+import ContentContainer from '../components/common/ContentContainer';
 import ContentSection from '../components/Home/ContentSection';
-import Footer from '../components/UIElements/Footer';
-import MainContainer from '../components/UIElements/MainContainer';
+import Footer from '../components/common/Footer';
+import MainContainer from '../components/common/MainContainer';
 import Modals from '../components/Home/Modals';
-import NavbarHandler from '../components/UIElements/NavbarHandler';
+import NavbarHandler from '../components/common/NavbarHandler';
 import PageFilters from '../components/Home/ButtonFiltersHandler';
 import StoriesBar from '../components/Home/StoriesBar';
 
