@@ -8,6 +8,8 @@ import IStory from '../../../interfaces/states/interface.story';
 import obtainCardsPost from '../../../services/home/obtainCardsPost';
 import obtainStoriesByIdGet from '../../../services/home/obtainStoriesByIdGet';
 import obtainStoriesGet from '../../../services/home/obtainStoriesGet';
+import obtainMediasByIdGet from '../../../services/home/obtainMediasByIdGet';
+import IMedia from '../../../interfaces/objects/interface.media';
 
 export const getCards = createAsyncThunk(
   HomeActions.GET_CARDS,
@@ -39,5 +41,12 @@ export const getStoriesById = createAsyncThunk(
   HomeActions.GET_STORIES_BY_ID,
   async (id: string): Promise<IStory | null> => {
     return await obtainStoriesByIdGet(id);
+  },
+);
+
+export const getMediasById = createAsyncThunk(
+  HomeActions.GET_MEDIAS_BY_ID,
+  async (id: string): Promise<IMedia[]> => {
+    return await obtainMediasByIdGet(id);
   },
 );

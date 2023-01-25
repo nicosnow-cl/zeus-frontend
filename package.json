@@ -20,6 +20,7 @@
     "@use-gesture/react": "^10.2.23",
     "axios": "^1.2.2",
     "beautiful-react-hooks": "^3.12.1",
+    "date-fns": "^2.29.3",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "formik": "2.2.9",

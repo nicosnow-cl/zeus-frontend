@@ -4,7 +4,7 @@ import ILocation from '../objects/interface.location';
 import IPrice from '../objects/interface.price';
 import IRrSs from '../objects/interface.rrss';
 import ISchedule from '../objects/interface.schedule';
-import IVideo from '../objects/interface.video';
+// import IVideo from '../objects/interface.video';
 
 interface IProfile {
   _id: string;
@@ -20,7 +20,7 @@ interface IProfile {
   hairColor: string;
   hasPromo: boolean;
   height: number;
-  images: IImage[];
+  // images: IImage[];
   languages: string[];
   likes: number;
   location: ILocation;
@@ -35,9 +35,10 @@ interface IProfile {
   size: number[];
   skin: string;
   type: EscortType;
-  videos: IVideo[];
+  // videos: IVideo[];
   waxing: string;
   weight: number;
+  username: string;
 }
 
 export default IProfile;

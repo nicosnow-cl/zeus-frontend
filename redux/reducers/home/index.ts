@@ -48,6 +48,10 @@ const homeReducer = createSlice({
       if (story) state.storiesState.value = [story];
       else state.storiesState.value = [];
     });
+
+    builder.addCase(thunks.getMediasById.fulfilled, (state, action) => {
+      state.medias = action.payload;
+    });
   },
 });
 

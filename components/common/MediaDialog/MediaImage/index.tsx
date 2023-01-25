@@ -13,11 +13,7 @@ export interface IMediaImageProps {
 }
 
 const MediaImage = ({ alt, fullHeight = false, image, style = {} }: IMediaImageProps) => {
-  const [src, setSrc] = useState<string>(image.hq);
-
   const otherProps = fullHeight ? { style: { height: '100%' } } : { fill: true };
-  const handleError = (evt: React.SyntheticEvent<HTMLImageElement, Event>) =>
-    setSrc(`/profile-pics/demo-${getRandomNumber(1, 9)}.jpg`);
 
   return (
     <div className={`${styles.mediaContainer}`} style={{ ...style }}>
@@ -25,10 +21,9 @@ const MediaImage = ({ alt, fullHeight = false, image, style = {} }: IMediaImageP
         alt={alt}
         blurDataURL={image.placeholder}
         className={`${styles.mediaImg}`}
-        onError={handleError}
         placeholder="blur"
         quality={100}
-        src={src}
+        src={image.hq}
         sizes={`(max-width: 768px) 100vw, 800px`}
         {...otherProps}
       />

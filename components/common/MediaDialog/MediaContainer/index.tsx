@@ -23,13 +23,14 @@ const MediaContainer = ({ media }: IMediaContainerProps) => {
 
   return (
     <div
-      className={`h-100`}
+      className={`d-flex fd-column`}
       style={{
         backgroundColor: '#000',
         color: '#fff',
+        height: '100vh',
+        maxWidth: 800,
         minWidth: 320,
         width: device?.type === 'mobile' ? '100%' : '75%',
-        maxWidth: 800,
       }}
     >
       <MediaContainerTop />
@@ -42,7 +43,11 @@ const MediaContainer = ({ media }: IMediaContainerProps) => {
           {
             {
               img: (
-                <MediaImage alt={`media-img`} image={media.img!} style={{ minHeight: '670px' }} />
+                <MediaImage
+                  alt={`media-img-${media._id}`}
+                  image={media.img!}
+                  style={{ minHeight: '670px' }}
+                />
               ),
               video: <MediaVideo video={media.video!} />,
             }[media.type]
@@ -50,7 +55,13 @@ const MediaContainer = ({ media }: IMediaContainerProps) => {
         </CardActionArea>
       )}
 
-      <MediaContainerBottom />
+      <MediaContainerBottom
+        comments={media?.comments}
+        description={media?.description}
+        likes={media?.likes}
+        publishDate={media?.createdAt}
+        style={{ flex: '1 1 auto' }}
+      />
     </div>
   );
 };

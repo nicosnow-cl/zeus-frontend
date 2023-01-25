@@ -71,7 +71,7 @@ const EscortSection = ({ profile }: IEscortSectionProps) => {
           <InformationSecion schedule={profile.schedule} services={profile.services} />
         </Grid>
         <Grid item xs={12} xl={9}>
-          <LazyMediaSection images={profile.images} videos={profile.videos} />
+          <LazyMediaSection id={profile._id} />
         </Grid>
       </Grid>
     </Box>

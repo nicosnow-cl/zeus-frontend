@@ -11,7 +11,7 @@ import VipPremiumCardFooter from './VipPremiumCardFooter';
 import VipPremiumCardMedia from './VipPremiumCardMedia';
 
 export interface IVipPremiumCardProps {
-  data: ICard;
+  card: ICard;
   isHightlighted?: boolean;
   style?: any;
 }
@@ -19,22 +19,24 @@ export interface IVipPremiumCardProps {
 const VIP_MEDIA_HEIGHT = 600;
 const PREMIUM_MEDIA_HEIGHT = 500;
 
-const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardProps) => {
+const VipPremiumCard = ({ card, isHightlighted, style = {} }: IVipPremiumCardProps) => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
   const [showVideos, setShowVideos] = useState<boolean>(false);
   const { theme, router } = useContext(AppContext);
 
   const hasAction = isHightlighted ?? isHovering;
-  const hasVideos = Boolean(data.videos.length);
+  const hasVideos = Boolean(card.medias.length);
   const cardSx = hasAction
     ? { borderTop: `6px solid ${theme?.palette.primary.main}`, transform: 'scale(1.02)' }
     : { borderTop: `6px solid ${theme?.palette.grey[900]}` };
 
   const handleClickCard = () => {
-    router?.push(`/escort/${data.escortId}`);
+    const match = card.username !== '' ? card.username : card.escortId;
+
+    router?.push(`/escort/${match}`);
   };
 
-  if (data._id === '63c708aa23b1e5bca73344fb') {
+  if (card._id === '63c708aa23b1e5bca73344fb') {
     console.count('VipPremiumCard render');
     // console.log({ image: data.img });
   }
@@ -48,23 +50,23 @@ const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardPro
     >
       <CardActionArea onClick={handleClickCard}>
         <VipPremiumCardMedia
-          alt={`card-vip-${data.name}`}
-          image={data.avatar}
+          alt={`card-vip-${card.name}`}
+          image={card.avatar}
           isHovering={hasAction}
-          mediaHeight={data.type === 'VIP' ? VIP_MEDIA_HEIGHT : PREMIUM_MEDIA_HEIGHT}
+          mediaHeight={card.type === 'VIP' ? VIP_MEDIA_HEIGHT : PREMIUM_MEDIA_HEIGHT}
           showVideos={showVideos}
-          videos={data.videos}
+          medias={card.medias}
         />
 
         <VipPremiumCardContent
-          age={data.age}
-          description={data.description}
+          age={card.age}
+          description={card.description}
           isHovering={hasAction}
-          likes={data.likes}
-          name={data.name.split(' ')[0]}
-          nationality={data.nationality}
-          services={data.services}
-          type={data.type}
+          likes={card.likes}
+          name={card.name.split(' ')[0]}
+          nationality={card.nationality}
+          services={card.services}
+          type={card.type}
           timeLapsedIcon={
             hasVideos ? (
               <VideoCountdownHandler
@@ -79,11 +81,11 @@ const VipPremiumCard = ({ data, isHightlighted, style = {} }: IVipPremiumCardPro
       </CardActionArea>
 
       <VipPremiumCardFooter
-        location={data.location}
-        price={data.price}
-        rrss={data.rrss}
-        type={data.type}
-        hasPromo={data.hasPromo}
+        location={card.location}
+        price={card.price}
+        rrss={card.rrss}
+        type={card.type}
+        hasPromo={card.hasPromo}
       />
     </Card>
   );

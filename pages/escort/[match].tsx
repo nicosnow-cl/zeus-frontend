@@ -17,7 +17,8 @@ const LazyNavbarHandler = dynamic(() => import('../../components/common/NavbarHa
 const MemoEscortSection = memo(EscortSection);
 
 export const getServerSideProps = async ({ query }: any) => {
-  const profile = await obtainProfile(query.id);
+  const profile = await obtainProfile(query.match);
+  console.log({ query });
 
   return { props: { data: profile && JSON.parse(profile) } };
 };
