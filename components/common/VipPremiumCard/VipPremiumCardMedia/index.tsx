@@ -3,8 +3,9 @@ import CardMedia from '@mui/material/CardMedia';
 import SwipeableViews from 'react-swipeable-views';
 
 import IImage from '../../../../interfaces/objects/interface.image';
-import IVideo from '../../../../interfaces/objects/interface.video';
 import NextImage from '../../NextImage';
+import IMedia from '../../../../interfaces/objects/interface.media';
+import IVideo from '../../../../interfaces/objects/interface.video';
 
 export interface IVipPremiumCardMediaProps {
   alt?: string;
@@ -12,7 +13,7 @@ export interface IVipPremiumCardMediaProps {
   isHovering?: boolean;
   mediaHeight?: number | string;
   showVideos?: boolean;
-  videos?: IVideo[];
+  medias?: IMedia[];
 }
 
 const ImageMemo = memo(NextImage);
@@ -24,8 +25,11 @@ const VipPremiumCardMedia = ({
   isHovering = false,
   mediaHeight = VIP_MEDIA_HEIGHT,
   showVideos = false,
-  videos = [],
+  medias = [],
 }: IVipPremiumCardMediaProps) => {
+  const [videos] = useState<IVideo[]>(
+    medias.filter((media) => media.type === 'video').map((media) => media.video!),
+  );
   const [videoIdx, setVideoIdx] = useState<number>(0);
   const [wasHovered, setWasHovered] = useState<boolean>(false);
 

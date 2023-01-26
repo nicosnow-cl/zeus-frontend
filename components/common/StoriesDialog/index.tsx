@@ -21,8 +21,17 @@ const StoriesDialog = () => {
     dispatch(uiActions.handleToggleLadiesStories(false));
   };
 
-  const { avatar, escortId, hasNext, hasPrev, name, publishDate, totalStories, videoIdx } =
-    metadata;
+  const {
+    avatar,
+    escortId,
+    hasNext,
+    hasPrev,
+    name,
+    publishDate,
+    totalStories,
+    username,
+    videoIdx,
+  } = metadata;
 
   console.count('StoriesDialog render');
 
@@ -65,6 +74,7 @@ const StoriesDialog = () => {
           name={name}
           publishDate={publishDate}
           totalBars={totalStories}
+          username={username}
           video={video}
         />
 

@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { NextPageWithLayout } from '../_app';
 import dynamic from 'next/dynamic';
 import type { ReactElement } from 'react';
@@ -14,10 +13,8 @@ const LazyNavbarHandler = dynamic(() => import('../../components/common/NavbarHa
   ssr: false,
 });
 
-const MemoEscortSection = memo(EscortSection);
-
 export const getServerSideProps = async ({ query }: any) => {
-  const profile = await obtainProfile(query.id);
+  const profile = await obtainProfile(query.match);
 
   return { props: { data: profile && JSON.parse(profile) } };
 };
@@ -27,7 +24,7 @@ const EscortPage: NextPageWithLayout = ({ data }: any) => {
 
   return (
     <>
-      <MemoEscortSection profile={data} />
+      <EscortSection profile={data} />
 
       <Modals />
     </>

@@ -4,17 +4,26 @@ import * as thunks from '../../thunks/home';
 import ICard from '../../../interfaces/states/interface.card';
 import IMedia from '../../../interfaces/objects/interface.media';
 import IStory from '../../../interfaces/states/interface.story';
+import IImage from '../../../interfaces/objects/interface.image';
 
 export interface IHomeState {
   cardsState: { value: ICard[]; isLoading: boolean; firstLoadDone: boolean };
   storiesState: { value: IStory[]; isLoading: boolean };
+  selected: {
+    _id: string;
+    avatar: IImage;
+    name: string;
+    type: 'VIP' | 'PREMIUM' | 'GOLD';
+    username: string;
+  } | null;
   medias: IMedia[];
 }
 
 const initialState: IHomeState = {
   cardsState: { value: [], isLoading: true, firstLoadDone: false },
-  storiesState: { value: [], isLoading: true },
   medias: [],
+  selected: null,
+  storiesState: { value: [], isLoading: true },
 };
 
 const homeReducer = createSlice({
@@ -29,6 +38,9 @@ const homeReducer = createSlice({
     },
     setMedias: (state, action): void => {
       state.medias = action.payload;
+    },
+    setSelected: (state, action): void => {
+      state.selected = action.payload;
     },
   },
   extraReducers: (builder): void => {
@@ -47,6 +59,10 @@ const homeReducer = createSlice({
 
       if (story) state.storiesState.value = [story];
       else state.storiesState.value = [];
+    });
+
+    builder.addCase(thunks.getMediasById.fulfilled, (state, action) => {
+      state.medias = action.payload;
     });
   },
 });

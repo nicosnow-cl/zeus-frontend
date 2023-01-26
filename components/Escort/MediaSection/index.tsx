@@ -1,28 +1,23 @@
-import { useDispatch } from 'react-redux';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useMemo, useRef, useState, useContext } from 'react';
 import { useTransition, a } from '@react-spring/web';
+import shuffle from 'lodash/shuffle';
 import useDebouncedCallback from 'beautiful-react-hooks/useDebouncedCallback';
+import useIsFirstRender from 'beautiful-react-hooks/useIsFirstRender';
 import useWindowResize from 'beautiful-react-hooks/useWindowResize';
 
-import { AppDispatch } from '../../../redux/store';
-import { homeActions } from '../../../redux/reducers/home';
+import { AppContext } from '../../../pages/_app';
+import { AppDispatch, RootState } from '../../../redux/store';
+import { getMediasById } from '../../../redux/thunks/home';
 import { uiActions } from '../../../redux/reducers/ui';
 import getRandomNumber from '../../../helpers/getRandomNumber';
-import IImage from '../../../interfaces/objects/interface.image';
 import IMedia from '../../../interfaces/objects/interface.media';
-import IVideo from '../../../interfaces/objects/interface.video';
-import mapImgsAndVideosToMedias from '../../../helpers/mapImgsAndVideosToMedias';
+import MediaSorter from './MediaSorter';
 import ProfileMedia from '../../common/ProfileMedia';
 import styles from './index.module.scss';
-import MediaSorter from './MediaSorter';
-
-export interface IMediaSetionProps {
-  images: IImage[];
-  videos: IVideo[];
-}
 
 const TRANSITION = {
-  keys: (item: IMedia) => item.id,
+  keys: (item: IMedia) => item._id,
   from: ({ x, y, width, height }: any) => ({ x, y, width, height, opacity: 0 }),
   enter: ({ x, y, width, height }: any) => ({ x, y, width, height, opacity: 1 }),
   update: ({ x, y, width, height }: any) => ({ x, y, width, height }),
@@ -31,15 +26,18 @@ const TRANSITION = {
   trail: 25,
 };
 
-const MediaSection = ({ images, videos }: IMediaSetionProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState<number>(0);
+export interface IMediaSectionProps {
+  id: string;
+}
+
+const MediaSection = ({ id }: IMediaSectionProps) => {
+  const { router } = useContext(AppContext);
   const [order, setOrder] = useState<'images_first' | 'shuffle' | 'videos_first'>('shuffle');
+  const [width, setWidth] = useState<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const medias = useSelector((state: RootState) => state.home.medias);
   const dispatch = useDispatch<AppDispatch>();
-  const items: IMedia[] = useMemo(
-    () => mapImgsAndVideosToMedias(images, videos, order),
-    [order, images, videos],
-  );
+  const isFirstRender = useIsFirstRender();
   const [heights, gridItems] = useMemo(() => {
     function getColumns(width: number) {
       if (width >= 1000) return 5;
@@ -50,6 +48,14 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
 
     const columns = getColumns(width);
     const heights = new Array(columns).fill(0);
+    const items = (() => {
+      const videosMedia = medias.filter((media) => media.type === 'video');
+      const imagesMedia = medias.filter((media) => media.type === 'img');
+      if (order === 'shuffle') return shuffle([...videosMedia, ...imagesMedia]);
+      if (order === 'videos_first') return [...videosMedia, ...imagesMedia];
+
+      return [...imagesMedia, ...videosMedia];
+    })();
 
     const gridItems = items.map((child) => {
       const column = heights.indexOf(Math.min(...heights)); // Basic masonry-grid placing, puts tile into the smallest column using Math.min
@@ -63,7 +69,7 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
     });
 
     return [heights, gridItems];
-  }, [items, width]);
+  }, [medias, order, width]);
 
   const onWindowResize = useWindowResize();
 
@@ -74,6 +80,14 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
     setWidth(current.offsetWidth);
   }, [containerRef]);
 
+  useEffect(() => {
+    if (isFirstRender) dispatch(getMediasById(id));
+  }, [dispatch, isFirstRender, id]);
+
+  useEffect(() => {
+    if (router?.query.key) dispatch(uiActions.handleToggleLadyImage(true));
+  }, [dispatch, router]);
+
   const onWindowResizeHandler = useDebouncedCallback(() => {
     const { current } = containerRef;
     if (!current) return;
@@ -81,14 +95,15 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
     setWidth(current.offsetWidth);
   }, [containerRef]);
 
-  const handleOpenLadyImage = (idx: number) => {
-    dispatch(uiActions.handleApplyProfileMedia(idx));
-    dispatch(uiActions.handleToggleLadyImage(true));
+  const handleSetMediaId = (id: string) => {
+    router?.replace(
+      {
+        query: { ...router.query, key: id },
+      },
+      undefined,
+      { shallow: true },
+    );
   };
-
-  if (items.length) {
-    dispatch(homeActions.setMedias([...items]));
-  }
 
   onWindowResize(onWindowResizeHandler);
   const transitions = useTransition(gridItems, TRANSITION);
@@ -105,16 +120,16 @@ const MediaSection = ({ images, videos }: IMediaSetionProps) => {
         style={{ height: Math.max(...heights) }}
       >
         {transitions((style, item) => (
-          <a.div key={item.id} style={style}>
+          <a.div key={item._id} style={style}>
             {item.type === 'video' ? (
               <ProfileMedia
-                onClick={() => handleOpenLadyImage(item.id)}
+                onClick={() => handleSetMediaId(item._id)}
                 video={item.video}
                 type={'video'}
               />
             ) : (
               <ProfileMedia
-                onClick={() => handleOpenLadyImage(item.id)}
+                onClick={() => handleSetMediaId(item._id)}
                 image={item.img}
                 type={'img'}
               />

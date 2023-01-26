@@ -30,7 +30,7 @@ const HeaderSection = ({ age, avatar, banner, id, name, type }: IHeaderSectionPr
     {},
   );
 
-  const backgroundColor = type === 'VIP' ? '#393939' : type === 'PREMIUM' ? '#c16261' : '#c3a774';
+  const backgroundColor = type === 'VIP' ? '#0b0b0b' : type === 'PREMIUM' ? '#b13b39' : '#b49151';
   const hasStories = value && value.length > 0;
   const showBorder = hasStories && storiesSeen[id] !== value[0].highesUploadedDate;
 

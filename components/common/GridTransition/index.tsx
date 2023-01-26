@@ -67,13 +67,13 @@ const GridTransition = ({
         {
           VIP: (
             <VipPremiumCardMemo
-              data={item.data}
+              card={item.data}
               isHightlighted={autoHightlight ? cardsStatus[item.idx] : undefined}
             />
           ),
           PREMIUM: (
             <VipPremiumCardMemo
-              data={item.data}
+              card={item.data}
               isHightlighted={autoHightlight ? cardsStatus[item.idx] : undefined}
             />
           ),
