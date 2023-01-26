@@ -8,7 +8,10 @@ const obtainProfile = async (match: string) => {
 
   try {
     const collection = db.collection<any>('escorts');
-    const query = ObjectId.isValid(match) ? { _id: new ObjectId(match) } : { username: match };
+    const query =
+      ObjectId.isValid(match) && match.length === 24
+        ? { _id: new ObjectId(match) }
+        : { username: match };
 
     const data = await collection.findOne(query);
 

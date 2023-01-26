@@ -1,9 +1,12 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Box from '@mui/system/Box';
 import dynamic from 'next/dynamic';
 import Grid from '@mui/material/Grid';
 
 import { AppContext } from '../../../pages/_app';
+import { AppDispatch } from '../../../redux/store';
+import { homeActions } from '../../../redux/reducers/home';
 import ContactSection from '../ContactSection/index';
 import DescriptionSection from '../DesciptionSection';
 import HeaderSection from '../HeaderSection';
@@ -18,9 +21,23 @@ export interface IEscortSectionProps {
 
 const EscortSection = ({ profile }: IEscortSectionProps) => {
   const { theme } = useContext(AppContext);
+  const dispatch = useDispatch<AppDispatch>();
 
   const backgroundColor = theme?.palette.grey[100];
   const color = theme?.palette.getContrastText(backgroundColor);
+
+  useEffect(() => {
+    profile &&
+      dispatch(
+        homeActions.setSelected({
+          _id: profile._id,
+          avatar: profile.avatar,
+          name: profile.name,
+          type: profile.type,
+          username: profile.username,
+        }),
+      );
+  });
 
   console.count('EscortSection render');
 

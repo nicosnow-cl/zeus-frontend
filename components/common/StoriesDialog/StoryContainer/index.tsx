@@ -18,6 +18,7 @@ export interface IStoryContainerProps {
   name: string;
   publishDate?: string;
   totalBars?: number;
+  username?: string;
   video: IVideo;
 }
 
@@ -30,6 +31,7 @@ const StoryContainer = ({
   name,
   publishDate,
   totalBars = 1,
+  username,
   video,
 }: IStoryContainerProps) => {
   const { router } = useContext(AppContext);
@@ -39,10 +41,8 @@ const StoryContainer = ({
   const videoUrl = `/videos/stories/${video.mp4}`;
 
   const handleViewProfile = () => {
-    if (escortId) {
-      dispatch(uiActions.handleToggleLadiesStories(false));
-      router?.push(`/escort/${escortId}`);
-    }
+    dispatch(uiActions.handleToggleLadiesStories(false));
+    router?.push(`/escort/${username || escortId}`);
   };
 
   return (

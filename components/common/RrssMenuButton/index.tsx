@@ -9,6 +9,7 @@ import WhatsApp from '@mui/icons-material/WhatsApp';
 
 import IRrSs from '../../../interfaces/objects/interface.rrss';
 import styles from './index.module.scss';
+import { SpeedDial, SpeedDialAction } from '@mui/material';
 
 export interface IRrssMenuButtonProps {
   rrss: IRrSs[];
@@ -59,6 +60,49 @@ export const getRrssButton = (rrss: IRrSs, idx?: number, color?: string) => {
         >
           <WhatsApp />
         </IconButton>
+      );
+    default:
+      return <></>;
+  }
+};
+
+export const getRrssButtonV2 = (rrss: IRrSs, idx?: number) => {
+  switch (rrss.type) {
+    case 'facebook':
+      return (
+        <SpeedDialAction
+          key={idx}
+          icon={<Facebook />}
+          onClick={() => window.open(rrss.url, '_blank')}
+          tooltipTitle="Facebook"
+        />
+      );
+    case 'instagram':
+      return (
+        <SpeedDialAction
+          key={idx}
+          icon={<Instagram />}
+          onClick={() => window.open(rrss.url, '_blank')}
+          tooltipTitle="Instagram"
+        />
+      );
+    case 'twitter':
+      return (
+        <SpeedDialAction
+          key={idx}
+          icon={<Twitter />}
+          onClick={() => window.open(rrss.url, '_blank')}
+          tooltipTitle="Twitter"
+        />
+      );
+    case 'whatsapp':
+      return (
+        <SpeedDialAction
+          key={idx}
+          icon={<WhatsApp />}
+          onClick={() => window.open(rrss.url, '_blank')}
+          tooltipTitle="WhatsApp"
+        />
       );
     default:
       return <></>;
@@ -122,6 +166,24 @@ const RrssMenuButton = ({ rrss }: IRrssMenuButtonProps) => {
         {rrss.map((rrss, idx) => getRrssButton(rrss, idx))}
       </Menu>
     </>
+  );
+};
+
+export const RrssMenuButtonV2 = ({ rrss }: IRrssMenuButtonProps) => {
+  return (
+    <SpeedDial
+      ariaLabel="menu-button"
+      icon={<MoreHoriz />}
+      sx={{
+        position: 'absolute',
+        bottom: 0,
+        '& .MuiFab-primary': { width: 40, height: 40 },
+        '& .MuiSpeedDial-actions': { paddingTop: '30px !important', flexDirection: 'row' },
+      }}
+      direction="up"
+    >
+      {rrss.map((rrss, idx) => getRrssButtonV2(rrss, idx))}
+    </SpeedDial>
   );
 };
 

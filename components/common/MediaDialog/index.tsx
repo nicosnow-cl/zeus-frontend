@@ -1,8 +1,7 @@
+import { useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useState, useContext } from 'react';
 import ArrowBackIos from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIos from '@mui/icons-material/ArrowForwardIos';
-import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import IconButton from '@mui/material/IconButton';
 
@@ -70,21 +69,6 @@ const MediaDialog = () => {
       }}
     >
       <div className={`h-100 w-100 d-flex jc-center ai-center`}>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            marginRight: 5,
-            marginTop: 1,
-            zIndex: 1300,
-          }}
-          variant="contained"
-          onClick={handleCloseMediaDialog}
-        >
-          Cerrar
-        </Button>
-
         <IconButton
           color="primary"
           size="large"

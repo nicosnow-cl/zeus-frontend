@@ -6,9 +6,10 @@ interface IStory {
   avatar: IImage;
   escortId: string;
   highesUploadedDate: string;
-  name: string;
-  videos: IVideo[];
   isNew?: boolean;
+  name: string;
+  username?: string;
+  videos: IVideo[];
 }
 
 export default IStory;

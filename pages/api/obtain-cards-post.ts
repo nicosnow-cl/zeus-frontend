@@ -20,7 +20,7 @@ async function handler(req: ExtendedNextApiRequest, res: NextApiResponse<IRespon
     if (filters) {
       const { appareance, city, name, promotion, services, type, video } = filters;
 
-      if (appareance?.length) query.appareance = { $in: appareance };
+      if (appareance?.length) query.appearance = { $in: appareance };
       if (name) query.name = { $regex: name, $options: 'i' };
       if (promotion) query.hasPromo = true;
       if (services?.length) query.services = { $in: services };

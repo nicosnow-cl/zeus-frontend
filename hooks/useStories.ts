@@ -17,6 +17,7 @@ interface IStoryMetadata {
   name: string;
   publishDate: string;
   totalStories: number;
+  username?: string;
   videoIdx: number;
 }
 
@@ -57,8 +58,6 @@ const useStories = ({ selectedEscortStory, stories }: IUseStoriesProps) => {
 
   const firstStoryLoaded = stories[actualEscortIdx];
 
-  console.log(stories.length > 1);
-
   const [metadata, setMetadata] = useState<IStoryMetadata>({
     avatar: firstStoryLoaded.avatar,
     escortId: firstStoryLoaded.escortId,
@@ -67,6 +66,7 @@ const useStories = ({ selectedEscortStory, stories }: IUseStoriesProps) => {
     name: firstStoryLoaded.name,
     publishDate: firstStoryLoaded.highesUploadedDate,
     totalStories: firstStoryLoaded.videos.length,
+    username: firstStoryLoaded.username,
     videoIdx: 0,
   });
   const [video, setVideo] = useState<IVideo>(firstStoryLoaded.videos[0]);
@@ -100,6 +100,7 @@ const useStories = ({ selectedEscortStory, stories }: IUseStoriesProps) => {
           name: stories[nextEscortIdx].name,
           publishDate: stories[nextEscortIdx].highesUploadedDate,
           totalStories: stories[nextEscortIdx].videos.length,
+          username: stories[nextEscortIdx].username,
           videoIdx: 0,
         });
         setVideo(stories[nextEscortIdx].videos[0]);
@@ -138,6 +139,7 @@ const useStories = ({ selectedEscortStory, stories }: IUseStoriesProps) => {
           name: stories[prevEscortIdx].name,
           publishDate: stories[prevEscortIdx].highesUploadedDate,
           totalStories: stories[prevEscortIdx].videos.length,
+          username: stories[prevEscortIdx].username,
           videoIdx: stories[prevEscortIdx].videos.length - 1,
         });
         setVideo(stories[prevEscortIdx].videos[stories[prevEscortIdx].videos.length - 1]);
