@@ -14,6 +14,7 @@ import Typography from '@mui/material/Typography';
 
 import IRegionStats from '../../../../interfaces/objects/interface.region-stats';
 import Logo from '../../Logo';
+import regionsStats from '../../../../dummy/regions-stats';
 
 export interface IRegionsInfoProps {
   handleSelectRegion?: () => void;
@@ -21,7 +22,7 @@ export interface IRegionsInfoProps {
   regionUserSelected?: IRegionStats | null;
 }
 
-const RegionInfo = ({
+const RegionInfoMobile = ({
   handleSelectRegion,
   regionOnHover,
   regionUserSelected,
@@ -49,6 +50,11 @@ const RegionInfo = ({
 
       {regionToShow && (
         <>
+          <div>
+            {regionsStats.map((region, idx) => (
+              <Typography key={idx}>{region.name}</Typography>
+            ))}
+          </div>
           <Card sx={{ minWidth: '300px', width: '80%' }}>
             <CardContent className={`p-5`}>
               <Typography variant="h5">Región</Typography>
@@ -121,7 +127,6 @@ const RegionInfo = ({
               />
             </CardContent>
           </Card>
-
           <Button
             className={`mt-5`}
             onClick={handleSelectRegion}
@@ -137,4 +142,4 @@ const RegionInfo = ({
   );
 };
 
-export default RegionInfo;
+export default RegionInfoMobile;
