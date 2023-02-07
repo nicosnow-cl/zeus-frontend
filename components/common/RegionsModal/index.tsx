@@ -11,7 +11,6 @@ import { uiActions } from '../../../redux/reducers/ui';
 import IFilters from '../../../interfaces/states/interface.filters';
 import IRegionStats from '../../../interfaces/objects/interface.region-stats';
 import RegionInfo from './RegionInfo';
-import RegionInfoMobile from './RegionInfoMobile';
 import regionsStats from '../../../dummy/regions-stats';
 
 interface IRegionPonderation {
@@ -103,8 +102,10 @@ const RegionsModal = () => {
     >
       <DialogContent sx={{ padding: 0 }}>
         {device?.type === 'mobile' ? (
-          <RegionInfoMobile
+          <RegionInfo
+            handleClickRegion={handleClickRegion}
             handleSelectRegion={handleApplyCity}
+            isMobile={true}
             regionOnHover={regionOnHover}
             regionUserSelected={regionUserSelected}
           />

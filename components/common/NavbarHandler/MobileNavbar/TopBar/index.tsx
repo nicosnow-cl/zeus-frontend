@@ -36,20 +36,14 @@ const TopBar = ({ backgroundColor, height = TOPBAR_HEIGHT }: ITopBarProps) => {
         height: `${height}px`,
       }}
     >
-      <div className={`wrapper d-flex jc-end ai-center col-gap-2`}>
-        <FakeDropdown
-          height={height}
-          label={city}
-          onClick={handleOpenRegionsModal}
-          width={`125px`}
-        />
+      <div className={`wrapper d-flex jc-between ai-center col-gap-2`}>
+        <FakeDropdown height={height} label={city} onClick={handleOpenRegionsModal} />
 
         <Select
           value={GENDERS[0]}
           variant="standard"
           sx={{
             height: height,
-            width: 125,
             color: 'white !important',
             '.MuiSvgIcon-root ': {
               fill: 'white !important',

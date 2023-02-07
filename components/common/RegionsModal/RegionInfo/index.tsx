@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
 import Box from '@mui/system/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -14,15 +15,20 @@ import Typography from '@mui/material/Typography';
 
 import IRegionStats from '../../../../interfaces/objects/interface.region-stats';
 import Logo from '../../Logo';
+import regionsStats from '../../../../dummy/regions-stats';
 
 export interface IRegionsInfoProps {
+  handleClickRegion?: (regionId: number) => void;
   handleSelectRegion?: () => void;
+  isMobile?: boolean;
   regionOnHover?: IRegionStats | null;
   regionUserSelected?: IRegionStats | null;
 }
 
 const RegionInfo = ({
+  handleClickRegion,
   handleSelectRegion,
+  isMobile = false,
   regionOnHover,
   regionUserSelected,
 }: IRegionsInfoProps) => {
@@ -49,7 +55,22 @@ const RegionInfo = ({
 
       {regionToShow && (
         <>
-          <Card sx={{ minWidth: '300px', width: '80%' }}>
+          {isMobile && (
+            <div className={`py-3`}>
+              {regionsStats.map((region, idx) => (
+                <IconButton
+                  key={idx}
+                  sx={{ width: 30, height: 30 }}
+                  onClick={() => handleClickRegion && handleClickRegion(region.id)}
+                  color={region.id === regionToShow.id ? 'secondary' : 'default'}
+                >
+                  <Typography>{region.number}</Typography>
+                </IconButton>
+              ))}
+            </div>
+          )}
+
+          <Card sx={{ minWidth: '270px', width: '80%' }}>
             <CardContent className={`p-5`}>
               <Typography variant="h5">Región</Typography>
 
@@ -126,7 +147,7 @@ const RegionInfo = ({
             className={`mt-5`}
             onClick={handleSelectRegion}
             size="large"
-            sx={{ borderRadius: 0, minWidth: '300px' }}
+            sx={{ borderRadius: 0, minWidth: '270px' }}
             variant="contained"
           >
             Aplicar Región
