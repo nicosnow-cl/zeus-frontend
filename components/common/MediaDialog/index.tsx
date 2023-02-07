@@ -73,7 +73,15 @@ const MediaDialog = () => {
           color="primary"
           size="large"
           onClick={handlePrevMedia}
-          sx={{ position: 'absolute', top: 0, bottom: 0, left: 0, borderRadius: 0, zIndex: 1300 }}
+          sx={{
+            borderRadius: 0,
+            height: 60,
+            left: 0,
+            position: 'absolute',
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 1300,
+          }}
         >
           <ArrowBackIos fontSize="large" />
         </IconButton>
@@ -84,7 +92,15 @@ const MediaDialog = () => {
           color="primary"
           size="large"
           onClick={handleNextMedia}
-          sx={{ position: 'absolute', top: 0, bottom: 0, right: 0, borderRadius: 0, zIndex: 1300 }}
+          sx={{
+            borderRadius: 0,
+            height: 60,
+            position: 'absolute',
+            right: 0,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            zIndex: 1300,
+          }}
         >
           <ArrowForwardIos fontSize="large" />
         </IconButton>

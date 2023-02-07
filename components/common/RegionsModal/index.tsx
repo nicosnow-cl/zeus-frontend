@@ -1,14 +1,17 @@
-import { Dialog, DialogContent, Grid } from '@mui/material';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useContext } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
 import dynamic from 'next/dynamic';
+import Grid from '@mui/material/Grid';
 
+import { AppContext } from '../../../pages/_app';
 import { AppDispatch, RootState } from '../../../redux/store';
-import { IUiState, uiActions } from '../../../redux/reducers/ui';
-import regionsStats from '../../../dummy/regions-stats';
-import RegionInfo from './RegionInfo';
-import IRegionStats from '../../../interfaces/objects/interface.region-stats';
+import { uiActions } from '../../../redux/reducers/ui';
 import IFilters from '../../../interfaces/states/interface.filters';
+import IRegionStats from '../../../interfaces/objects/interface.region-stats';
+import RegionInfo from './RegionInfo';
+import regionsStats from '../../../dummy/regions-stats';
 
 interface IRegionPonderation {
   regionId: number;
@@ -35,13 +38,14 @@ const ponderateRegions = (): IRegionPonderation[] => {
 };
 
 const RegionsModal = () => {
-  const showRegionModal = useSelector((state: RootState): boolean => state.ui.showRegionModal);
-  const filters = useSelector((state: RootState): IFilters => state.ui.filters);
+  const { device } = useContext(AppContext);
   const [regionIdSelected, setRegionIdSelected] = useState<number | null>(null);
   const [regionOnHover, setRegionOnHover] = useState<IRegionStats | null>(null);
   const [regionsPonderated, setRegionsPonderated] = useState<IRegionPonderation[]>([]);
   const [regionUserSelected, setRegionUserSelected] = useState<IRegionStats | null>(null);
   const dispatch = useDispatch<AppDispatch>();
+  const filters = useSelector((state: RootState): IFilters => state.ui.filters);
+  const showRegionModal = useSelector((state: RootState): boolean => state.ui.showRegionModal);
 
   useEffect(() => {
     setRegionsPonderated(ponderateRegions());
@@ -97,30 +101,40 @@ const RegionsModal = () => {
       }}
     >
       <DialogContent sx={{ padding: 0 }}>
-        <Grid container spacing={[2, 0]}>
-          <Grid
-            item
-            xs={12}
-            md={5}
-            order={{ xs: 2, md: 1 }}
-            sx={{ maxHeight: 1000, overflow: 'hidden' }}
-          >
-            <ChileRegionsMap
-              mouseOut={handleLeaveRegion}
-              mouseOver={handleHoverRegion}
-              onClick={handleClickRegion}
-              regionIdSelected={regionIdSelected}
-              regionsPonderated={regionsPonderated}
-            />
+        {device?.type === 'mobile' ? (
+          <RegionInfo
+            handleClickRegion={handleClickRegion}
+            handleSelectRegion={handleApplyCity}
+            isMobile={true}
+            regionOnHover={regionOnHover}
+            regionUserSelected={regionUserSelected}
+          />
+        ) : (
+          <Grid container spacing={[2, 0]}>
+            <Grid
+              item
+              xs={12}
+              md={5}
+              order={{ xs: 2, md: 1 }}
+              sx={{ maxHeight: 1000, overflow: 'hidden' }}
+            >
+              <ChileRegionsMap
+                mouseOut={handleLeaveRegion}
+                mouseOver={handleHoverRegion}
+                onClick={handleClickRegion}
+                regionIdSelected={regionIdSelected}
+                regionsPonderated={regionsPonderated}
+              />
+            </Grid>
+            <Grid item xs={12} md={7} order={{ xs: 1, md: 2 }}>
+              <RegionInfo
+                handleSelectRegion={handleApplyCity}
+                regionOnHover={regionOnHover}
+                regionUserSelected={regionUserSelected}
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={7} order={{ xs: 1, md: 2 }}>
-            <RegionInfo
-              handleSelectRegion={handleApplyCity}
-              regionOnHover={regionOnHover}
-              regionUserSelected={regionUserSelected}
-            />
-          </Grid>
-        </Grid>
+        )}
       </DialogContent>
     </Dialog>
   );

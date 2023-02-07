@@ -59,13 +59,7 @@ const MediaContainer = ({ media }: IMediaContainerProps) => {
         >
           {
             {
-              img: (
-                <MediaImage
-                  alt={`media-img-${media._id}`}
-                  image={media.img!}
-                  style={{ minHeight: '670px' }}
-                />
-              ),
+              img: <MediaImage alt={`media-img-${media._id}`} image={media.img!} />,
               video: <MediaVideo video={media.video!} />,
             }[media.type]
           }

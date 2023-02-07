@@ -1,28 +1,34 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  Chip,
-  Divider,
-  Grid,
-  Typography,
-  useTheme,
-} from '@mui/material';
-import { Box } from '@mui/system';
-import { Female, FemaleOutlined, Male, Transgender } from '@mui/icons-material';
 import { useState, useEffect } from 'react';
+import { useTheme } from '@mui/material';
+import IconButton from '@mui/material/IconButton';
+import Box from '@mui/system/Box';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Chip from '@mui/material/Chip';
+import Divider from '@mui/material/Divider';
+import Female from '@mui/icons-material/Female';
+import Grid from '@mui/material/Grid';
+import Male from '@mui/icons-material/Male';
+import Transgender from '@mui/icons-material/Transgender';
+import Typography from '@mui/material/Typography';
 
 import IRegionStats from '../../../../interfaces/objects/interface.region-stats';
 import Logo from '../../Logo';
+import regionsStats from '../../../../dummy/regions-stats';
 
 export interface IRegionsInfoProps {
+  handleClickRegion?: (regionId: number) => void;
   handleSelectRegion?: () => void;
+  isMobile?: boolean;
   regionOnHover?: IRegionStats | null;
   regionUserSelected?: IRegionStats | null;
 }
 
 const RegionInfo = ({
+  handleClickRegion,
   handleSelectRegion,
+  isMobile = false,
   regionOnHover,
   regionUserSelected,
 }: IRegionsInfoProps) => {
@@ -42,14 +48,29 @@ const RegionInfo = ({
     >
       <Box className={`mb-5 d-flex fd-column`}>
         <Logo height={45} backgroundColor={theme.palette.grey[50]} navbar={false} />
-        <Typography className={`mt-2 px-5`} variant="body1" textAlign={'center'} fontSize={18}>
-          Usa el mapa para seleccionar la Región donde deseas buscar escorts
+        <Typography className={`mt-2 px-5`} textAlign={'center'} fontSize={18}>
+          Usa el mapa para seleccionar la Región donde deseas buscar acompañantes
         </Typography>
       </Box>
 
       {regionToShow && (
         <>
-          <Card sx={{ minWidth: '300px', width: '80%' }}>
+          {isMobile && (
+            <div className={`py-3`}>
+              {regionsStats.map((region, idx) => (
+                <IconButton
+                  key={idx}
+                  sx={{ width: 30, height: 30 }}
+                  onClick={() => handleClickRegion && handleClickRegion(region.id)}
+                  color={region.id === regionToShow.id ? 'secondary' : 'default'}
+                >
+                  <Typography>{region.number}</Typography>
+                </IconButton>
+              ))}
+            </div>
+          )}
+
+          <Card sx={{ minWidth: '270px', width: '80%' }}>
             <CardContent className={`p-5`}>
               <Typography variant="h5">Región</Typography>
 
@@ -126,7 +147,7 @@ const RegionInfo = ({
             className={`mt-5`}
             onClick={handleSelectRegion}
             size="large"
-            sx={{ borderRadius: 0, minWidth: '300px' }}
+            sx={{ borderRadius: 0, minWidth: '270px' }}
             variant="contained"
           >
             Aplicar Región

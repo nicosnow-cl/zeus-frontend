@@ -8,8 +8,8 @@ import Sidebar from '../Sidebar';
 const SidebarMemo = memo(Sidebar);
 
 const NavbarHandler = () => {
-  const [navbarHeight, setNavbarHeight] = useState<string>('0px');
   const { device } = useContext(AppContext);
+  const [navbarHeight, setNavbarHeight] = useState<string>('0px');
 
   return (
     <>
