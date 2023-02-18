@@ -92,7 +92,7 @@ const ShadowsDark: any = [
   ...Array(21).fill('0px 4px 12px rgba(0, 0, 0, 0.1)'),
 ];
 
-const AppName = 'TuMoco.cl';
+const AppName = 'Afrodita';
 
 const Constants = {
   AppName,

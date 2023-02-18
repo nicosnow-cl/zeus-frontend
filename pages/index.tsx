@@ -19,6 +19,7 @@ const Home: NextPageWithLayout = () => {
         <PageFilters />
       </div>
       <StoriesBar />
+
       <ContentSection />
 
       <Modals />

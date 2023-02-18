@@ -36,7 +36,7 @@ const TopBar = ({ backgroundColor, height = TOPBAR_HEIGHT }: ITopBarProps) => {
         height: `${height}px`,
       }}
     >
-      <div className={`wrapper d-flex jc-between ai-center col-gap-2`}>
+      <div className={`wrapper d-flex jc-end col-gap-5`}>
         <FakeDropdown height={height} label={city} onClick={handleOpenRegionsModal} />
 
         <Select
@@ -57,15 +57,6 @@ const TopBar = ({ backgroundColor, height = TOPBAR_HEIGHT }: ITopBarProps) => {
             </MenuItem>
           ))}
         </Select>
-
-        <Button
-          endIcon={<MonetizationOn />}
-          size={`small`}
-          sx={{ height: height, borderRadius: 0 }}
-          variant="contained"
-        >
-          Anunciarme
-        </Button>
       </div>
     </div>
   );

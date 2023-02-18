@@ -14,7 +14,7 @@ export interface IMobileNavbarProps {
   topBarHeight?: number;
 }
 
-const DOWNBAR_HEIGHT = 35;
+const DOWNBAR_HEIGHT = 45;
 const TOPBAR_HEIGHT = 20;
 
 const MobileNavbar = ({
@@ -26,7 +26,7 @@ const MobileNavbar = ({
   const { theme } = useContext(AppContext);
   const ref = useRef<HTMLDivElement>(null);
 
-  const navbarHeight = `${topBarHeight + downBarHeight}px`;
+  const navbarHeight = `${downBarHeight + topBarHeight}px`;
   const topBarbackgroundColor = theme?.palette.grey[900];
   const downBarBackgroundColor = theme?.palette.grey[200];
 
