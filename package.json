@@ -10,8 +10,10 @@
     "analyze": "cross-env ANALYZE=true next build"
   },
   "dependencies": {
-    "@emotion/react": "11.10.5",
-    "@emotion/styled": "11.10.5",
+    "@chakra-ui/next-js": "^2.1.5",
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "5.11.0",
     "@mui/material": "5.10.14",
     "@next/font": "13.0.5",
@@ -25,6 +27,7 @@
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "formik": "2.2.9",
+    "framer-motion": "^10.16.4",
     "leaflet": "1.9.3",
     "lodash": "4.17.21",
     "mapbox-gl": "^2.12.0",
