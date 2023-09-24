@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CardActionArea from '@mui/material/CardActionArea';
 
@@ -10,6 +10,7 @@ import MediaImage from '../MediaImage';
 import MediaVideo from '../MediaVideo';
 import { AppDispatch, RootState } from '../../../../redux/store';
 import { uiActions } from '../../../../redux/reducers/ui';
+import styles from './index.module.scss';
 
 export interface IMediaContainerProps {
   media?: IMedia;
@@ -18,6 +19,7 @@ export interface IMediaContainerProps {
 const MediaContainer = ({ media }: IMediaContainerProps) => {
   const { device, router } = useContext(AppContext);
   const selected = useSelector((state: RootState) => state.home.selected);
+  const [mediaConstrained, setMediaConstrained] = useState(true);
   const dispatch = useDispatch<AppDispatch>();
 
   const handleCloseMediaDialog = () => {
@@ -29,6 +31,8 @@ const MediaContainer = ({ media }: IMediaContainerProps) => {
   const handleImageClick = () => {
     window.open(media?.img?.hq, '_blank');
   };
+
+  const handleClick = () => setMediaConstrained(!mediaConstrained);
 
   console.count('MediaContainer render');
 
@@ -54,8 +58,9 @@ const MediaContainer = ({ media }: IMediaContainerProps) => {
 
       {media && (
         <CardActionArea
-          style={{ maxHeight: '55%', overflow: 'hidden' }}
-          onClick={media.type === 'img' ? handleImageClick : undefined}
+          className={`${styles.mediaContainer}`}
+          sx={{ maxHeight: mediaConstrained ? '55%' : 'inherit', overflow: 'hidden' }}
+          onClick={media.type === 'img' ? handleClick : undefined}
         >
           {
             {

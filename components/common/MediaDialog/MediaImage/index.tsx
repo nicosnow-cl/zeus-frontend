@@ -1,9 +1,8 @@
-import { CSSProperties, useState } from 'react';
+import { CSSProperties } from 'react';
 import Image from 'next/image';
 
 import IImage from '../../../../interfaces/objects/interface.image';
 import styles from './index.module.scss';
-import getRandomNumber from '../../../../helpers/getRandomNumber';
 
 export interface IMediaImageProps {
   alt: string;
