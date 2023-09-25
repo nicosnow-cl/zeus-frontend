@@ -1,5 +1,5 @@
 import { PaletteMode } from '@mui/material';
-import localFont from '@next/font/local';
+import localFont from 'next/font/local';
 
 import Constants from './constants';
 

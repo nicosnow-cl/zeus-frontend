@@ -1,6 +1,6 @@
 import { ChakraUiProviders } from '../src/providers/chakra-ui-providers';
 
-export const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
       <body>
@@ -9,3 +9,5 @@ export const RootLayout = ({ children }: { children: React.ReactNode }) => {
     </html>
   );
 };
+
+export default RootLayout;
