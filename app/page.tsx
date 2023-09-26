@@ -1,13 +1,16 @@
-'use client';
+import { Metadata } from 'next';
 
-import { Button } from '@chakra-ui/react';
+export const metadata: Metadata = {
+  title: 'cl.afrodita.app',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+  },
+};
 
 function Home() {
-  return (
-    <Button colorScheme="primary" variant="solid">
-      Click me
-    </Button>
-  );
+  return 'Hola Mundo';
 }
 
 export default Home;
