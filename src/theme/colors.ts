@@ -1,3 +1,5 @@
+import { grey } from '@mui/material/colors';
+
 const colors = {
   primary: {
     '50': '#FBEAEE',
@@ -23,18 +25,7 @@ const colors = {
     '800': '#584A0E',
     '900': '#2C2507',
   },
-  gray: {
-    '50': '#EFF2F5',
-    '100': '#D3DBE4',
-    '200': '#B6C4D2',
-    '300': '#9AADC1',
-    '400': '#7E96AF',
-    '500': '#617F9E',
-    '600': '#4E667E',
-    '700': '#3A4C5F',
-    '800': '#27333F',
-    '900': '#131920',
-  },
+  gray: { ...grey },
   red: {
     '50': '#FCE8E8',
     '100': '#F7BFBF',

@@ -2,7 +2,7 @@ import { createContext } from 'react';
 import { NextRouter } from 'next/router';
 import { Theme } from '@mui/system';
 
-import { IDevice } from '../../hooks/useDevice';
+import { IDevice } from '../hooks/useDevice';
 
 export interface IAppContextProps {
   device?: IDevice;

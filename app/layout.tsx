@@ -4,7 +4,7 @@ import { ColorModeScript } from '@chakra-ui/react';
 import { ChakraUiProviders } from '../src/providers/chakra-ui-providers';
 
 import theme from '../src/theme';
-import MainContainer from '../src/components/common/MainContainer';
+import MainContainer from '../src/common/components/containers/MainContainer';
 
 function RootLayout({ children }: { children: React.ReactNode }) {
   return (

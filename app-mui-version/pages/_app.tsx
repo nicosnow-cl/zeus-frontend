@@ -13,7 +13,7 @@ import type { NextPage } from 'next';
 import type { ReactElement, ReactNode } from 'react';
 
 import checkIfIsServer from '../helpers/checkIfIsServer';
-import createAppContext from '../app-mui-version/contexts/app';
+import createAppContext from '../contexts/app';
 import getTheme from '../helpers/theme';
 import Loader from '../components/Loader';
 import store, { persistor } from '../redux/store';
