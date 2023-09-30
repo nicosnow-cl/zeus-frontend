@@ -1,8 +1,6 @@
 'use client';
 
-import chakraTheme from '@chakra-ui/theme';
-
-const { Button } = chakraTheme.theme.components;
+import { Button } from '../common/components/chakra-styled';
 
 const components = { Button };
 

@@ -1,14 +1,13 @@
-import { Fragment } from 'preact';
-import { Progress } from '@chakra-ui/react';
+import { Box, Progress } from '@chakra-ui/react';
 
 import DesktopNavbar from '../DesktopNavbar';
 
 const NavbarManager = () => {
   return (
-    <Fragment>
+    <Box display="flex" flexDirection="column">
       <DesktopNavbar />
-      <Progress value={20} size="xs" colorScheme="primary" isIndeterminate />
-    </Fragment>
+      {/* <Progress w="100%" value={20} size="xs" colorScheme="primary" isIndeterminate /> */}
+    </Box>
   );
 };
 

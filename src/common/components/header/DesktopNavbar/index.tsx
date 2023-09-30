@@ -2,6 +2,7 @@ import { Box } from '@chakra-ui/react';
 
 import useNavbar from '../../../hooks/useNavbar';
 import ProgressBar from '../ProgressBar';
+import Top from './Top';
 
 export interface INavbarProps {
   setNavbarHeight?: (height: string) => void;
@@ -14,8 +15,8 @@ const DesktopNavbar = ({ setNavbarHeight = () => {} }: INavbarProps) => {
 
   return (
     <Box boxShadow="xs" position="fixed" width="100%">
-      {/* <TopBar backgroundColor={backgroundColor} isVisible={isVisible} />
-      <DownBar /> */}
+      <Top />
+      {/* <DownBar />  */}
     </Box>
   );
 };
