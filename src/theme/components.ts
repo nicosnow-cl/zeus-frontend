@@ -1,7 +1,5 @@
-'use client';
+import * as Components from './chakra-styled';
 
-import { Button } from '../common/components/chakra-styled';
-
-const components = { Button };
+const components = { ...Components };
 
 export default components;

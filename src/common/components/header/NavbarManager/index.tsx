@@ -4,9 +4,8 @@ import DesktopNavbar from '../DesktopNavbar';
 
 const NavbarManager = () => {
   return (
-    <Box display="flex" flexDirection="column">
+    <Box w="100%" display="block" position="fixed" zIndex="banner">
       <DesktopNavbar />
-      {/* <Progress w="100%" value={20} size="xs" colorScheme="primary" isIndeterminate /> */}
     </Box>
   );
 };

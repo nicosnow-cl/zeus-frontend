@@ -1,6 +1,8 @@
-import { Box, Progress } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
+import { Fragment } from 'preact';
 
 import NavbarManager from '../../header/NavbarManager';
+import Sidebar from '../../header/Sidebar';
 
 export interface IMainContainerProps {
   children: React.ReactNode | React.ReactNode[];
@@ -8,10 +10,21 @@ export interface IMainContainerProps {
 
 const MainContainer = ({ children }: IMainContainerProps) => {
   return (
-    <Box w="100%" h="100vh" bgGradient={'linear(to-b, gray.50, gray.300)'}>
+    <Fragment>
       <NavbarManager />
-      {children}
-    </Box>
+      <Sidebar />
+
+      <Box
+        h="100vh"
+        bg="transparent"
+        bgGradient={'linear(to-b, gray.50, gray.300)'}
+        display="block"
+        paddingTop="65px"
+        marginLeft="40px"
+      >
+        {children}
+      </Box>
+    </Fragment>
   );
 };
 

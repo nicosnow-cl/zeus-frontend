@@ -1,17 +1,22 @@
-import { Box, Button } from '@chakra-ui/react';
+import { Button } from '@chakra-ui/react';
+
+import { CoinIcon } from '../../../icons/Coin';
+import { NavbarTop, NavbarTopProps } from '../../../ui/NavbarTop';
 
 export interface ITopBarProps {
-  backgroundColor?: string;
-  isVisible?: boolean;
+  menu?: React.ReactNode;
+  navbarTopProps?: NavbarTopProps;
 }
 
-const Top = ({ backgroundColor, isVisible = true }: ITopBarProps) => {
+const Top = ({ menu, navbarTopProps }: ITopBarProps) => {
   return (
-    <Box w="100%" h={isVisible ? '35px' : '0px'} display="flex" justifyContent="end">
-      <Button colorScheme="primary" maxH="100%" rounded="0">
+    <NavbarTop {...navbarTopProps}>
+      {menu}
+
+      <Button colorScheme="primary" rounded="0" rightIcon={<CoinIcon />}>
         ANUNCIARME
       </Button>
-    </Box>
+    </NavbarTop>
   );
 };
 

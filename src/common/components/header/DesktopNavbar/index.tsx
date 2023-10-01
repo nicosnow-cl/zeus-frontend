@@ -1,23 +1,18 @@
 import { Box } from '@chakra-ui/react';
+import { Fragment } from 'preact';
 
-import useNavbar from '../../../hooks/useNavbar';
-import ProgressBar from '../ProgressBar';
+import Down from './Down';
+import Logo from '../Logo';
 import Top from './Top';
 
-export interface INavbarProps {
-  setNavbarHeight?: (height: string) => void;
-}
-
-const DesktopNavbar = ({ setNavbarHeight = () => {} }: INavbarProps) => {
-  const { isVisible } = useNavbar();
-
-  // const backgroundColor = useTheme().palette.grey[900];
-
+const DesktopNavbar = () => {
   return (
-    <Box boxShadow="xs" position="fixed" width="100%">
-      <Top />
-      {/* <DownBar />  */}
-    </Box>
+    <Fragment>
+      <Box>
+        <Top menu={<Logo />} />
+        <Down />
+      </Box>
+    </Fragment>
   );
 };
 
