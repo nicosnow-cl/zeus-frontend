@@ -1,3 +1,5 @@
+import useTranslation from 'next-translate/useTranslation';
+
 import { BoxArrowRightIcon } from '../../icons/BoxArrowRight';
 import { SidebarContainer, SidebarContainerProps } from '../../ui/SidebarContainer';
 import { SidebarItem } from '../../ui/SidebarItem';
@@ -9,13 +11,15 @@ export interface IProps {
 }
 
 const Sidebar = ({ containerProps }: IProps) => {
+  const { t } = useTranslation();
+
   return (
     <SidebarContainer {...containerProps}>
       <SidebarItem href={Routes.SignIn} icon={<BoxArrowRightIcon />}>
-        Acceso Clientes
+        {t('sidebar.sign-in')}
       </SidebarItem>
       <SidebarItem href={Routes.Contact} icon={<EnvelopeIcon />}>
-        Contacto
+        {t('sidebar.contact')}
       </SidebarItem>
     </SidebarContainer>
   );

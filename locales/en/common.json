@@ -1,0 +1,8 @@
+{
+    "routes": {
+        "home": "Home",
+        "sign-in": "Sign in",
+        "sing-up": "Sign up",
+        "contact": "Contact"
+    }
+}

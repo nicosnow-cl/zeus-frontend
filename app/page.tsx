@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 function Home() {
-  return 'Hola Mundo';
+  return 'Hello World';
 }
 
 export default Home;

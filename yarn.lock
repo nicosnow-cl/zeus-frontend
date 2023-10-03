@@ -5450,7 +5450,14 @@
   "resolved" "https://registry.npmjs.org/next-compose-plugins/-/next-compose-plugins-2.2.1.tgz"
   "version" "2.2.1"
 
-"next-translate@^2.6.0":
+"next-translate-plugin@^2.6.0":
+  "integrity" "sha512-XeFoVhtiT738ow4bqaBlvPLG5DK0IVygSvQBKTo3SPW01nbiEjfnrln1Cz94hbN3jJi3qDjFNOGjzVUftHDyfg=="
+  "resolved" "https://registry.npmjs.org/next-translate-plugin/-/next-translate-plugin-2.6.0.tgz"
+  "version" "2.6.0"
+  dependencies:
+    "typescript" "4.5.2"
+
+"next-translate@^2.6.0", "next-translate@>= 2.4.1":
   "integrity" "sha512-hLbwFxTsGv4dWlPXwvUthQ/QQEK18dH5Lz6Vf2Po3UnndEdqfkeB9C+EK3yagWj3Pn+hYnpZ2GBvedZjWwWELA=="
   "resolved" "https://registry.npmjs.org/next-translate/-/next-translate-2.6.0.tgz"
   "version" "2.6.0"
@@ -6606,6 +6613,11 @@
   "integrity" "sha512-CIfGzTelbKNEnLpLdGFgdyKhG23CKdKgQPOBc+OUNrkJ2vr+KSzsSV5kq5iWhEQbok+quxgGzrAtGWCyU7tHnA=="
   "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.9.3.tgz"
   "version" "4.9.3"
+
+"typescript@4.5.2":
+  "integrity" "sha512-5BlMof9H1yGt0P8/WF+wPNw6GfctgGjXp5hkblpyT+8rkASSmkUKMXrxR0Xg8ThVCi/JnHQiKXeBaEwCeQwMFw=="
+  "resolved" "https://registry.npmjs.org/typescript/-/typescript-4.5.2.tgz"
+  "version" "4.5.2"
 
 "unbox-primitive@^1.0.2":
   "integrity" "sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw=="

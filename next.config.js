@@ -1,5 +1,6 @@
 const withPlugins = require('next-compose-plugins');
 const withBundleAnalyzer = require('@next/bundle-analyzer');
+const nextTranslate = require('next-translate-plugin');
 const path = require('path');
 
 const bundleAnalyzer = withBundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
@@ -47,4 +48,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withPlugins([bundleAnalyzer], nextConfig);
+module.exports = withPlugins([bundleAnalyzer, nextTranslate], nextConfig);
