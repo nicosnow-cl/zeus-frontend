@@ -1,6 +1,8 @@
+import { BoxArrowRightIcon } from '../../icons/BoxArrowRight';
 import { SidebarContainer, SidebarContainerProps } from '../../ui/SidebarContainer';
 import { SidebarItem } from '../../ui/SidebarItem';
-import DoorOpenIcon from '../../icons/DoorOpen';
+import EnvelopeIcon from '../../icons/Envelope';
+import Routes from '../../../enums/routes';
 
 export interface IProps {
   containerProps?: SidebarContainerProps;
@@ -9,10 +11,12 @@ export interface IProps {
 const Sidebar = ({ containerProps }: IProps) => {
   return (
     <SidebarContainer {...containerProps}>
-      <SidebarItem href="/clients" icon={<DoorOpenIcon />}>
+      <SidebarItem href={Routes.SignIn} icon={<BoxArrowRightIcon />}>
         Acceso Clientes
       </SidebarItem>
-      {/* <Heading>Contacto</Heading> */}
+      <SidebarItem href={Routes.Contact} icon={<EnvelopeIcon />}>
+        Contacto
+      </SidebarItem>
     </SidebarContainer>
   );
 };

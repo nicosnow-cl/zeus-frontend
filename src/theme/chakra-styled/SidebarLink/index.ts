@@ -11,9 +11,10 @@ const SidebarLink = defineStyleConfig({
     position: 'relative',
     zIndex: 1,
     columnGap: '10px',
+    marginBottom: '12px',
     svg: {
-      width: '24px',
-      height: '24px',
+      width: '22px',
+      height: '22px',
     },
     '& > #aware': {
       position: 'absolute',

@@ -13,7 +13,6 @@ const SidebarContainer = defineStyleConfig({
     overflow: 'hidden',
     paddingTop: '25px',
     position: 'fixed',
-    rowGap: '20px',
     transition: 'width 0.25s ease-in-out',
     width: '40px',
     zIndex: 'banner',
