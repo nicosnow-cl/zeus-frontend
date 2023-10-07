@@ -6,7 +6,7 @@ import LogoIcon from '../../icons/Logo';
 const Logo = () => {
   return (
     <LogoContainer>
-      <Box bgColor="primary.500" padding="8px" h="40px" w="40px">
+      <Box bgColor="primary.500" padding="8px" h="40px" minW="40px">
         <LogoIcon w={6} h={6} fill="white" />
       </Box>
 

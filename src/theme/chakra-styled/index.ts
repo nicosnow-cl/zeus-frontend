@@ -5,3 +5,4 @@ export { default as NavbarTop } from './NavbarTop';
 export { default as SidebarContainer } from './SidebarContainer';
 export { default as Switch } from './Switch';
 export { default as SidebarLink } from './SidebarLink';
+export { default as MainWrapper } from './MainWrapper';
