@@ -5,9 +5,9 @@ const withNextIntl = require('next-intl/plugin')('./i18n.ts');
 const nextConfig = {
   // reactStrictMode: true,
   // swcMinify: true,
-  // serverRuntimeConfig: {
-  //   PROJECT_ROOT: __dirname,
-  // },
+  env: {
+    rootDir: __dirname,
+  },
   images: {
     domains: [
       'cdn-ea-images.escort-advisor.com',

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 function Home() {
-  const t = useTranslations('Index');
+  const t = useTranslations('root');
 
   return t('hello-world');
 }
