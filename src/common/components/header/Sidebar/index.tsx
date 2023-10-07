@@ -1,4 +1,4 @@
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslations } from 'next-intl';
 
 import { BoxArrowRightIcon } from '../../icons/BoxArrowRight';
 import { SidebarContainer, SidebarContainerProps } from '../../ui/SidebarContainer';
@@ -11,7 +11,7 @@ export interface IProps {
 }
 
 const Sidebar = ({ containerProps }: IProps) => {
-  const { t } = useTranslation();
+  const t = useTranslations('common');
 
   return (
     <SidebarContainer {...containerProps}>

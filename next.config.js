@@ -1,12 +1,13 @@
-const nextTranslate = require('next-translate-plugin');
+// const nextTranslate = require('next-translate-plugin');
+const withNextIntl = require('next-intl/plugin')('./i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-  serverRuntimeConfig: {
-    PROJECT_ROOT: __dirname,
-  },
+  // reactStrictMode: true,
+  // swcMinify: true,
+  // serverRuntimeConfig: {
+  //   PROJECT_ROOT: __dirname,
+  // },
   images: {
     domains: [
       'cdn-ea-images.escort-advisor.com',
@@ -42,4 +43,5 @@ const nextConfig = {
   },
 };
 
-module.exports = nextTranslate(nextConfig);
+// module.exports = nextTranslate(nextConfig);
+module.exports = withNextIntl(nextConfig);
