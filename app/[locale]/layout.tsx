@@ -4,10 +4,10 @@ import { ColorModeScript } from '@chakra-ui/react';
 import { notFound } from 'next/navigation';
 
 import { ChakraUiProviders } from '../../src/providers/chakra-ui-providers';
-import Locales from '../../src/common/enums/locales';
-import theme from '../../src/theme';
-import MainContainer from '../../src/common/components/containers/MainContainer';
 import { IntlClientProvider } from '@/providers/intl-client-provider';
+import Locales from '../../src/common/enums/locales';
+import MainContainer from '../../src/common/components/containers/MainContainer';
+import theme from '../../src/theme';
 
 function RootLayout({ children, params }: { children: React.ReactNode; params: any }) {
   const { locale } = params;
@@ -19,6 +19,7 @@ function RootLayout({ children, params }: { children: React.ReactNode; params: a
     <html lang={locale}>
       <body>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+
         <IntlClientProvider locale={locale}>
           <ChakraUiProviders>
             <MainContainer>{children}</MainContainer>

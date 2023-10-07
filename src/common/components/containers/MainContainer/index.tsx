@@ -1,5 +1,4 @@
 import { Box } from '@chakra-ui/react';
-import { Fragment } from 'preact';
 
 import NavbarManager from '../../header/NavbarManager';
 import Sidebar from '../../header/Sidebar';
@@ -11,7 +10,7 @@ export interface IMainContainerProps {
 
 const MainContainer = ({ children }: IMainContainerProps) => {
   return (
-    <Fragment>
+    <>
       <NavbarManager />
       <Sidebar />
 
@@ -24,7 +23,7 @@ const MainContainer = ({ children }: IMainContainerProps) => {
       >
         <MainWrapper>{children}</MainWrapper>
       </Box>
-    </Fragment>
+    </>
   );
 };
 
