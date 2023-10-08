@@ -10,7 +10,7 @@ export const getLocalesFromJsons = async (
 ): Promise<{
   [key: string]: string;
 }> => {
-  const files = LOCALES_FILES(locale);
+  const files = LOCALES_FILES(locale).filter((name) => name.endsWith('.json'));
 
   const mergedJsons = [];
   for (const name of files) {

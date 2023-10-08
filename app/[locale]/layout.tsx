@@ -1,11 +1,15 @@
-import { ColorModeScript } from '@chakra-ui/react';
+import '@radix-ui/themes/styles.css';
+import '@styles/global.css';
+
+// import { ColorModeScript } from '@chakra-ui/react';
 import { notFound } from 'next/navigation';
 
-import { ChakraUiProviders } from '@/providers/chakra-ui-providers';
-import { IntlClientProvider } from '@/providers/intl-client-provider';
+// import { ChakraUiProviders } from '@/providers/chakra-ui-providers';
+// import { IntlClientProvider } from '@/providers/intl-client-provider';
 import { Locales } from '@/common/enums';
-import { theme } from '@/theme';
-import MainContainer from '@/common/components/containers/MainContainer';
+import { RadixUiProvider } from '@/providers/radix-ui-provider';
+// import { theme } from '@/theme';
+// import MainContainer from '@/common/components/containers/MainContainer';
 
 function RootLayout({
   children,
@@ -22,13 +26,16 @@ function RootLayout({
   return (
     <html lang={locale}>
       <body>
-        <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+        {/* <ColorModeScript initialColorMode={theme.config.initialColorMode} /> */}
 
-        <IntlClientProvider locale={locale}>
-          <ChakraUiProviders>
-            <MainContainer>{children}</MainContainer>
-          </ChakraUiProviders>
-        </IntlClientProvider>
+        {/* <IntlClientProvider locale={locale}> */}
+        {/* <ChakraUiProviders> */}
+        <RadixUiProvider>
+          <div>{children}</div>
+        </RadixUiProvider>
+        {/* <MainContainer>{children}</MainContainer> */}
+        {/* </ChakraUiProviders> */}
+        {/* </IntlClientProvider> */}
       </body>
     </html>
   );
