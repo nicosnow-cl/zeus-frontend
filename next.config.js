@@ -3,8 +3,8 @@ const withNextIntl = require('next-intl/plugin')('./i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: true,
-  // swcMinify: true,
+  reactStrictMode: true,
+  swcMinify: true,
   env: {
     rootDir: __dirname,
   },
@@ -24,10 +24,18 @@ const nextConfig = {
     ],
   },
   webpack(config, { dev, isServer }) {
+    config.resolve.fallback = {
+      // if you miss it, all the other options in fallback, specified
+      // by next.js will be dropped.
+      ...config.resolve.fallback,
+
+      fs: false, // the solution
+    };
+
     config.module.rules.push({
       test: /\.svg$/i,
-      issuer: /\.[jt]sx?$/,
       use: ['@svgr/webpack'],
+      resourceQuery: /svgr/, // *.svg?svgr
     });
 
     if (!dev && !isServer) {

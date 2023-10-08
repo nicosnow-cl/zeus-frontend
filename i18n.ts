@@ -1,14 +1,8 @@
 import { getRequestConfig } from 'next-intl/server';
-import fs from 'fs';
-import path from 'path';
 
-import { LOCALES_FOLDER } from '@/common/constants';
+// import { getLocalesFromJsons } from '@utils';
+import { getLocales } from '@utils/getLocales';
 
-export default getRequestConfig(async ({ locale }) => {
-  const fileNames = fs.readdirSync(path.join(LOCALES_FOLDER, locale));
-
-  const jsons = [];
-  for (const name of fileNames) jsons.push((await import(`./locales/${locale}/${name}`)).default);
-
-  return { messages: jsons.reduce((acc, json) => ({ ...acc, ...json }), {}) };
-});
+export default getRequestConfig(async ({ locale }) => ({
+  messages: await getLocales(locale),
+}));

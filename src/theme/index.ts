@@ -1,10 +1,10 @@
 import { extendBaseTheme } from '@chakra-ui/react';
 
-import colors from './colors';
-import components from './components';
-import fonts from './fonts';
+import { colors } from './colors';
+import { components } from './components';
+import { fonts } from './fonts';
 
-const theme = extendBaseTheme({
+export const theme = extendBaseTheme({
   styles: {
     global: {
       'html, body': {
@@ -16,5 +16,3 @@ const theme = extendBaseTheme({
   components: { ...components },
   fonts: { ...fonts },
 });
-
-export default theme;

@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 
-import Locales from '@/common/enums/locales';
+import { Locales } from '@/common/enums';
+import { getLocales } from '@utils/getLocales';
 
 export interface IProps {
   children: React.ReactNode;
@@ -11,8 +12,10 @@ export async function IntlClientProvider({ children, locale }: IProps) {
   let messages;
 
   try {
-    messages = (await import(`../../messages/${locale}.json`)).default;
-  } catch (error) {
+    messages = await getLocales(locale);
+  } catch (err) {
+    console.error(err);
+
     return null;
   }
 

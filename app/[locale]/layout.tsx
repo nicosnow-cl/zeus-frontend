@@ -1,18 +1,22 @@
-'use client';
-
 import { ColorModeScript } from '@chakra-ui/react';
 import { notFound } from 'next/navigation';
 
-import { ChakraUiProviders } from '../../src/providers/chakra-ui-providers';
+import { ChakraUiProviders } from '@/providers/chakra-ui-providers';
 import { IntlClientProvider } from '@/providers/intl-client-provider';
-import Locales from '../../src/common/enums/locales';
-import MainContainer from '../../src/common/components/containers/MainContainer';
-import theme from '../../src/theme';
+import { Locales } from '@/common/enums';
+import { theme } from '@/theme';
+import MainContainer from '@/common/components/containers/MainContainer';
 
-function RootLayout({ children, params }: { children: React.ReactNode; params: any }) {
-  const { locale } = params;
-
-  const isValidLocale = !!Locales[locale as keyof typeof Locales];
+function RootLayout({
+  children,
+  params: { locale },
+}: {
+  children: React.ReactNode;
+  params: {
+    locale: Locales;
+  };
+}) {
+  const isValidLocale = Boolean(Locales[locale]);
   if (!isValidLocale) notFound();
 
   return (

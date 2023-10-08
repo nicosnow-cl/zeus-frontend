@@ -1,4 +1,4 @@
-import Routes from '../enums/routes';
+import { Routes } from '../enums';
 
 interface IBreadcrumb {
   code: string;

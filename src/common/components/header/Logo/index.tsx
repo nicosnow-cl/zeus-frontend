@@ -1,7 +1,7 @@
 import { Box, Heading } from '@chakra-ui/react';
 
 import { LogoContainer } from '../../ui/LogoContainer';
-import LogoIcon from '../../icons/Logo';
+import { LogoIcon } from '@/common/icons';
 
 const Logo = () => {
   return (
