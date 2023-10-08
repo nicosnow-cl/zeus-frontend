@@ -21,11 +21,24 @@ const nextConfig = {
     ],
   },
   webpack(config, { dev, isServer }) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      use: ['@svgr/webpack'],
-      resourceQuery: /svgr/, // *.svg?svgr
-    });
+    // @ts-ignore - rules is a private property that is not typed
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));
+
+    config.module.rules.push(
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/, // *.svg?url
+      },
+      {
+        test: /\.svg$/i,
+        issuer: fileLoaderRule.issuer,
+        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+        use: ['@svgr/webpack'],
+      },
+    );
+
+    fileLoaderRule.exclude = /\.svg$/i;
 
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {

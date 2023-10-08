@@ -1,13 +1,12 @@
-import { Box } from '@radix-ui/themes';
-
-// import Down from './down';
-// import Top from './top';
+import { Top } from './top';
+import { Down } from './down';
+import { Logo } from '../logo';
 
 export const DesktopNavbar = () => {
   return (
-    <Box>
-      {/* <Top />
-        <Down /> */}
-    </Box>
+    <div>
+      <Top start={<Logo />} />
+      <Down />
+    </div>
   );
 };

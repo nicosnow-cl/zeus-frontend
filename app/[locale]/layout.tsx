@@ -1,12 +1,13 @@
+import { notFound } from 'next/navigation';
+
+import { fonts } from '@/theme/fonts';
+import { Locales } from '@/common/enums';
+import { MainContainer } from '@/common/components/containers/main';
+import { RadixUiProvider } from '@/providers/radix-ui-provider';
+
 import '@radix-ui/themes/styles.css';
 import '@styles/globals.css';
 import '@styles/theme-config.css';
-
-import { notFound } from 'next/navigation';
-
-import { Locales } from '@/common/enums';
-import { RadixUiProvider } from '@/providers/radix-ui-provider';
-import { fonts } from '@/theme/fonts';
 
 function RootLayout({
   children,
@@ -22,12 +23,14 @@ function RootLayout({
 
   return (
     <html
+      suppressHydrationWarning
       lang={locale}
       className={fonts.map((font) => font.variable).join(' ')}
-      suppressHydrationWarning
     >
       <body>
-        <RadixUiProvider>{children}</RadixUiProvider>
+        <RadixUiProvider>
+          <MainContainer>{children}</MainContainer>
+        </RadixUiProvider>
       </body>
     </html>
   );

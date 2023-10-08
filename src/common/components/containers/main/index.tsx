@@ -3,11 +3,11 @@ import { Fragment } from 'react';
 
 import { DesktopNavbar } from '../../header/desktop-navbar';
 
-export interface IMainContainerProps {
+export interface IProps {
   children: React.ReactNode | React.ReactNode[];
 }
 
-export const MainContainer = ({ children }: IMainContainerProps) => {
+export const MainContainer = ({ children }: IProps) => {
   return (
     <Fragment>
       <DesktopNavbar />
