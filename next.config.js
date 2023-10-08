@@ -1,10 +1,7 @@
-// const nextTranslate = require('next-translate-plugin');
 const withNextIntl = require('next-intl/plugin')('./i18n.ts');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
   env: {
     rootDir: __dirname,
   },
@@ -24,14 +21,6 @@ const nextConfig = {
     ],
   },
   webpack(config, { dev, isServer }) {
-    config.resolve.fallback = {
-      // if you miss it, all the other options in fallback, specified
-      // by next.js will be dropped.
-      ...config.resolve.fallback,
-
-      fs: false, // the solution
-    };
-
     config.module.rules.push({
       test: /\.svg$/i,
       use: ['@svgr/webpack'],
@@ -51,5 +40,4 @@ const nextConfig = {
   },
 };
 
-// module.exports = nextTranslate(nextConfig);
 module.exports = withNextIntl(nextConfig);
