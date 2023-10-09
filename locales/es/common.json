@@ -1,4 +1,8 @@
 {
+    "lang-names": {
+        "es": "Español",
+        "en": "English"
+    },
     "breadcrumb": {
         "home": "Inicio",
         "sign-in": "Login",

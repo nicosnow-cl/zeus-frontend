@@ -1,4 +1,2 @@
 export * as constants from './constants';
-
-export { getLocales } from './getLocales';
-export { getLocalesFromJsons } from './getLocalesFromJsons';
+export * as tailwind from './tailwind';

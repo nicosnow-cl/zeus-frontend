@@ -1,14 +1,18 @@
 {
+    "lang-names": {
+        "es": "Español",
+        "en": "English"
+    },
     "breadcrumb": {
-        "home": "Inicio",
-        "sign-in": "Login",
-        "sing-up": "Registro",
-        "contact": "Contacto"
+        "home": "Home",
+        "sign-in": "Sign in",
+        "sing-up": "Sign up",
+        "contact": "Contact"
     },
     "sidebar": {
-        "home": "Inicio",
-        "sign-in": "Acceso clientes",
-        "sing-up": "Registrarse",
-        "contact": "Contacto"
+        "home": "Home",
+        "sign-in": "Sign in",
+        "sing-up": "Sign up",
+        "contact": "Contact"
     }
 }

@@ -1,12 +1,14 @@
 import { notFound } from 'next/navigation';
 
 import { fonts } from '@/theme/fonts';
-import { Locales } from '@/common/enums';
+import { Locales } from '@intl/locales';
 import { MainContainer } from '@/common/components/containers/main';
 import { RadixUiProvider } from '@/providers/radix-ui-provider';
 
 import '@styles/globals.css';
 import '@styles/theme-config.css';
+
+const MAIN_LOCALES = Object.values(Locales);
 
 function RootLayout({
   children,
@@ -17,7 +19,7 @@ function RootLayout({
     locale: Locales;
   };
 }) {
-  const isValidLocale = Boolean(Locales[locale]);
+  const isValidLocale = MAIN_LOCALES.includes(locale);
   if (!isValidLocale) notFound();
 
   return (

@@ -19,7 +19,7 @@ export const BottomBar = () => {
     >
       <Breadcrumbs crumbs={crumbs} />
 
-      <span>
+      <span className={`flex items-center gap-x-3`}>
         <LangModeSwitch />
         <ColorModeSwitch />
       </span>

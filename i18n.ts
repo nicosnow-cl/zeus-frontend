@@ -1,7 +1,8 @@
 import { getRequestConfig } from 'next-intl/server';
 
-import { getLocalesFromJsons } from '@utils';
+import { getLocales } from './intl/getLocales';
+import { Locales } from './intl/locales';
 
 export default getRequestConfig(async ({ locale }) => ({
-  messages: await getLocalesFromJsons(locale),
+  messages: await getLocales(locale as Locales),
 }));
