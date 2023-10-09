@@ -1,8 +1,6 @@
 import { Box, Container } from '@radix-ui/themes';
-import { Fragment } from 'react';
 
 import { DesktopNavbar } from '../../header/desktop-navbar';
-import { Sidebar } from '../../header/sidebar';
 
 export interface IProps {
   children: React.ReactNode | React.ReactNode[];
@@ -10,9 +8,8 @@ export interface IProps {
 
 export const MainContainer = ({ children }: IProps) => {
   return (
-    <Fragment>
+    <>
       <DesktopNavbar />
-      <Sidebar />
 
       <Box style={{ paddingTop: 65 }}>
         <Container
@@ -24,6 +21,6 @@ export const MainContainer = ({ children }: IProps) => {
           {children}
         </Container>
       </Box>
-    </Fragment>
+    </>
   );
 };

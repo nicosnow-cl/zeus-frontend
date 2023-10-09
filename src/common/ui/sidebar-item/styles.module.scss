@@ -1,10 +1,14 @@
 .item {
-  padding-left: 8px;
-
   &:hover {
     & > .aware {
-      height: calc(160px * 2.25);
-      width: calc(160px * 2.25);
+      height: calc(170px * 2.25);
+      width: calc(170px * 2.25);
+    }
+  }
+
+  &:active {
+    & > .aware {
+      transition: none;
     }
   }
 
@@ -16,7 +20,6 @@
     bottom: 0;
     left: 0;
     border-radius: 50%;
-    transition: width 0.4s ease-in-out, height 0.4s ease-in-out;
     transform: translate(-50%, 50%);
     z-index: -1;
   }

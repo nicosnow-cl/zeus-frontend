@@ -1,14 +1,17 @@
 import { Box } from '@radix-ui/themes';
 
-import { Top } from './top';
-import { Down } from './down';
+import { BottomBar } from './bottom-bar';
 import { Logo } from '../logo';
+import { NavigationSidebar } from '../navigation-sidebar';
+import { TopBar } from './top-bar';
 
 export const DesktopNavbar = () => {
   return (
     <Box position="fixed" width="100%">
-      <Top start={<Logo />} />
-      <Down />
+      <TopBar start={<Logo />} />
+      <BottomBar />
+
+      <NavigationSidebar />
     </Box>
   );
 };

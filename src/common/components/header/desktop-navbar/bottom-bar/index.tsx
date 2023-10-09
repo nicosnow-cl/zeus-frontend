@@ -7,15 +7,14 @@ import { Breadcrumbs } from '@/common/ui/breadcrumbs';
 import { ColorModeSwitch } from '@/common/ui/color-mode-switch';
 import { getUrlBreadcrumb } from '@/common/helpers/getUrlBreadcrumb';
 
-export const Down = () => {
+export const BottomBar = () => {
   const pathname = usePathname();
 
   const crumbs = getUrlBreadcrumb(pathname);
 
   return (
     <Box
-      className={`p-2 flex justify-between bg-gray-3`}
-      style={{ paddingLeft: '45px', height: '25px' }}
+      className={`h-[25px] p-2 pl-[45px] flex justify-between bg-woodsmoke-200/80 backdrop-blur-md backdrop-saturate-150 text-woodsmoke-950 fill-woodsmoke-950`}
     >
       <Breadcrumbs crumbs={crumbs} />
 

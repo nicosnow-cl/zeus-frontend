@@ -1,19 +1,18 @@
 'use client';
 
-import { Box, Button, Card } from '@radix-ui/themes';
+import { Box, Button } from '@radix-ui/themes';
 
 export interface IProps {
   start?: React.ReactNode;
-  //   navbarTopProps?: NavbarTopProps;
 }
 
-export const Top = ({ start }: IProps) => {
+export const TopBar = ({ start }: IProps) => {
   const handleClick = () => console.log('click');
 
   return (
     <Box
-      className={`flex justify-between bg-gray-2 border-b border-gray-5`}
-      style={{ height: '40px' }}
+      className={`h-[40px] flex justify-between bg-woodsmoke-950/80 text-woodsmoke-50 backdrop-blur-md backdrop-saturate-150 
+      border-b border-b-woodsmoke-200`}
     >
       {start}
 

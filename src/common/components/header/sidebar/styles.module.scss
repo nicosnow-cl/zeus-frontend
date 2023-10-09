@@ -1,9 +1,0 @@
-.sidebar {
-  width: 40px;
-  transition: width 0.25s ease-in-out;
-  backdrop-filter: saturate(180%) blur(10px);
-
-  &:hover {
-    width: 170px;
-  }
-}

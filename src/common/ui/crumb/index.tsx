@@ -8,7 +8,7 @@ export interface IProps {
 }
 export const Crumb = ({ crumb }: IProps) => (
   <li className="inline-flex items-center">
-    <Link className={`inline-flex items-center`} highContrast asChild>
+    <Link className={`inline-flex items-center text-woodsmoke-950`} highContrast asChild>
       <NextLink href={crumb.href}>
         {crumb.icon}
         {crumb.label}
