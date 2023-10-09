@@ -1,3 +1,5 @@
+@import './config/colors.css';
+
 .radix-themes {
   --default-font-family: var(--font-source-code-pro);
   --heading-font-family: var(--font-quicksand);
