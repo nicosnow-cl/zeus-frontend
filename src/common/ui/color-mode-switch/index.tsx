@@ -4,7 +4,7 @@ import { Box, Switch } from '@radix-ui/themes';
 import { useEffect, useMemo, useState } from 'react';
 import { useTheme } from 'next-themes';
 
-import { MoonIcon, SunIcon } from '@/common/icons';
+import { MoonIcon } from '@/common/icons';
 
 export const ColorModeSwitch = () => {
   const [checked, setChecked] = useState(false);
@@ -18,15 +18,13 @@ export const ColorModeSwitch = () => {
 
   return (
     <Box className={`inline-flex items-center gap-x-2`}>
-      <SunIcon className={`text-amber-11`} />
       <Switch
         checked={checked}
-        color="indigo"
         defaultChecked={defaultChecked}
         onClick={handleToggleTheme}
         size="1"
       />
-      <MoonIcon className={`text-slate-11`} />
+      <MoonIcon className={`text-indigo-9 text-4`} />
     </Box>
   );
 };

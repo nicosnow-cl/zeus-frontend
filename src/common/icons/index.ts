@@ -6,6 +6,7 @@ export const {
   CoinIcon,
   DoorOpenIcon,
   EnvelopeIcon,
+  Globe2Icon,
   HouseIcon,
   LogoIcon,
   MoonIcon,

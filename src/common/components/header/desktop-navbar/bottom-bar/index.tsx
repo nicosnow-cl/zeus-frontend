@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { Breadcrumbs } from '@/common/ui/breadcrumbs';
 import { ColorModeSwitch } from '@/common/ui/color-mode-switch';
 import { getUrlBreadcrumb } from '@/common/helpers/getUrlBreadcrumb';
+import { LangModeSwitch } from '@/common/ui/lang-mode-switch';
 
 export const BottomBar = () => {
   const pathname = usePathname();
@@ -18,7 +19,10 @@ export const BottomBar = () => {
     >
       <Breadcrumbs crumbs={crumbs} />
 
-      <ColorModeSwitch />
+      <span>
+        <LangModeSwitch />
+        <ColorModeSwitch />
+      </span>
     </Box>
   );
 };

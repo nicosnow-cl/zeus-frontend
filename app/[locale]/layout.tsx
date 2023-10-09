@@ -5,7 +5,6 @@ import { Locales } from '@/common/enums';
 import { MainContainer } from '@/common/components/containers/main';
 import { RadixUiProvider } from '@/providers/radix-ui-provider';
 
-import '@radix-ui/themes/styles.css';
 import '@styles/globals.css';
 import '@styles/theme-config.css';
 

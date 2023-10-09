@@ -6,6 +6,7 @@ export {
   Coin,
   DoorOpen,
   Envelope,
+  Globe2,
   House,
   Moon,
   Sun,

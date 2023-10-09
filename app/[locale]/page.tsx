@@ -1,3 +1,4 @@
+import { LangModeSwitch } from '@/common/ui/lang-mode-switch';
 import { Metadata } from 'next';
 import { useTranslations } from 'next-intl';
 
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 function Home() {
   const t = useTranslations('root');
 
-  return t('hello-world');
+  return <>{t('hello-world')}</>;
 }
 
 export default Home;
