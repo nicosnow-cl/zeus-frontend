@@ -1,6 +1,6 @@
 'use client';
 
-import { Box } from '@radix-ui/themes';
+import { Box, Separator } from '@radix-ui/themes';
 import { usePathname } from 'next/navigation';
 
 import { Breadcrumbs } from '@/common/ui/breadcrumbs';
@@ -20,8 +20,9 @@ export const BottomBar = () => {
       <Breadcrumbs crumbs={crumbs} />
 
       <span className={`flex items-center gap-x-3`}>
-        <LangModeSwitch />
         <ColorModeSwitch />
+        <Separator orientation="vertical" size="1" />
+        <LangModeSwitch />
       </span>
     </Box>
   );

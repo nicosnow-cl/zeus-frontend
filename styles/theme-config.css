@@ -1,6 +1,9 @@
-@import './config/colors.css';
-
 .radix-themes {
   --default-font-family: var(--font-source-code-pro);
-  --heading-font-family: var(--font-quicksand);
+  --heading-font-family: var(--font-quicksand-google);
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
 }

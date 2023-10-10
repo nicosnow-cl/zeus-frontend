@@ -1,13 +1,12 @@
-'use client';
-
 import { Box, Button } from '@radix-ui/themes';
+import { useTranslations } from 'next-intl';
 
 export interface IProps {
   start?: React.ReactNode;
 }
 
 export const TopBar = ({ start }: IProps) => {
-  const handleClick = () => console.log('click');
+  const t = useTranslations();
 
   return (
     <Box
@@ -16,14 +15,8 @@ export const TopBar = ({ start }: IProps) => {
     >
       {start}
 
-      <Button
-        className={`h-full cursor-pointer`}
-        size="3"
-        radius="none"
-        color="crimson"
-        onClick={handleClick}
-      >
-        ANUNCIARME
+      <Button className={`h-full cursor-pointer uppercase`} size="3" radius="none" color="crimson">
+        {t('navbar.announce')}
       </Button>
     </Box>
   );

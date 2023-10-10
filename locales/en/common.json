@@ -3,6 +3,9 @@
         "es": "Español",
         "en": "English"
     },
+    "navbar": {
+        "announce": "Announce"
+    },
     "breadcrumb": {
         "home": "Home",
         "sign-in": "Sign in",
