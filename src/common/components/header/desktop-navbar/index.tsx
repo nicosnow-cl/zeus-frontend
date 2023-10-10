@@ -7,7 +7,7 @@ import { TopBar } from './top-bar';
 
 export const DesktopNavbar = () => {
   return (
-    <Box position="fixed" width="100%">
+    <Box className={`z-30`} position="fixed" width="100%">
       <TopBar start={<Logo />} />
       <BottomBar />
 

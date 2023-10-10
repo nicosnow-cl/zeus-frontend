@@ -1,6 +1,5 @@
-import { LangModeSwitch } from '@/common/ui/lang-mode-switch';
+import { CardsContainer } from '@/features/home/components/cards-container';
 import { Metadata } from 'next';
-import { useTranslations } from 'next-intl';
 
 export const metadata: Metadata = {
   title: 'cl.afrodita.app',
@@ -12,9 +11,7 @@ export const metadata: Metadata = {
 };
 
 function Home() {
-  const t = useTranslations('root');
-
-  return <>{t('hello-world')}</>;
+  return <CardsContainer />;
 }
 
 export default Home;
