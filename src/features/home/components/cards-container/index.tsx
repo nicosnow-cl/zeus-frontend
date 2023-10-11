@@ -6,11 +6,9 @@ export const CardsContainer = async () => {
   const userCards = await getCards();
 
   return (
-    <Grid columns="3" gap="3" width="auto">
+    <Grid columns="3" gap="5">
       {userCards.map((user, idx) => (
-        <Box key={idx}>
-          <UserCard user={user} />
-        </Box>
+        <UserCard key={idx} user={user} />
       ))}
     </Grid>
   );

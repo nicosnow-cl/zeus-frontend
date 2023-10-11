@@ -1,5 +1,3 @@
-import { Box, Container } from '@radix-ui/themes';
-
 import { DesktopNavbar } from '../../header/desktop-navbar';
 
 export interface IProps {
@@ -11,16 +9,9 @@ export const MainContainer = ({ children }: IProps) => {
     <>
       <DesktopNavbar />
 
-      <Box style={{ paddingTop: 65 }}>
-        <Container
-          p="2"
-          size={{
-            md: '4',
-          }}
-        >
-          {children}
-        </Container>
-      </Box>
+      <div className="pt-[65px]">
+        <div className="ml-[40px] p-12">{children}</div>
+      </div>
     </>
   );
 };

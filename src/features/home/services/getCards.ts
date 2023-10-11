@@ -28,7 +28,7 @@ export async function getCards() {
       ])
       .toArray();
 
-    return data;
+    return data.map((card) => JSON.parse(JSON.stringify(card)));
 
     // return res.status(200).json({ data, error: null, success: true });
   } catch (err: any) {
