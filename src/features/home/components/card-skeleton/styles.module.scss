@@ -1,0 +1,30 @@
+.box {
+  background-image: conic-gradient(
+    from var(--border-angle),
+    transparent 20%,
+    rgb(193, 213, 219),
+    rgba(250, 43, 98, 0.808)
+  );
+  background-size:
+    calc(100%) calc(100% - (0turn * 2)),
+    cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  animation: bg-spin 3s linear infinite;
+  @keyframes bg-spin {
+    to {
+      --border-angle: 1turn;
+    }
+  }
+
+  &:hover {
+    animation-play-state: paused;
+  }
+}
+
+@property --border-angle {
+  syntax: '<angle>';
+  inherits: true;
+  initial-value: 0turn;
+}
