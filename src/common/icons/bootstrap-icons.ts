@@ -9,5 +9,8 @@ export {
   Globe2,
   House,
   Moon,
+  PersonCircle,
   Sun,
+  SuitHeartFill,
+  PatchCheckFill,
 } from 'react-bootstrap-icons';

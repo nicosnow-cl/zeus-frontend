@@ -10,5 +10,8 @@ export const {
   HouseIcon,
   LogoIcon,
   MoonIcon,
+  PersonCircleIcon,
+  SuitHeartFillIcon,
+  PatchCheckFillIcon,
   SunIcon,
 } = Icons;
