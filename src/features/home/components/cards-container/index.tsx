@@ -5,7 +5,7 @@ import * as UserCard from '../user-card';
 export const CardsContainer = async () => {
   const userCards = await getCards();
 
-  const delays = userCards.map((_, idx) => 1000 + Math.max(1, idx) * 100);
+  const delays = userCards.map((_, idx) => 100 + Math.max(1, idx) * 100);
 
   return (
     <>

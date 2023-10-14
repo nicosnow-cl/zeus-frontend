@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, Separator } from '@radix-ui/themes';
+import { Box, Container, Separator } from '@radix-ui/themes';
 import { usePathname } from 'next/navigation';
 
 import { Breadcrumbs } from '@/common/ui/breadcrumbs';
@@ -15,9 +15,12 @@ export const BottomBar = () => {
 
   return (
     <Box
-      className={`h-[25px] p-2 pl-[45px] flex justify-between bg-woodsmoke-200/80 backdrop-blur-md backdrop-saturate-150 text-woodsmoke-950 fill-woodsmoke-950`}
+      pr="2"
+      className={`flex justify-between bg-woodsmoke-200/80 fill-woodsmoke-950 text-woodsmoke-950 backdrop-blur-md backdrop-saturate-150`}
     >
-      <Breadcrumbs crumbs={crumbs} />
+      <Container py="1" size="4">
+        <Breadcrumbs crumbs={crumbs} />
+      </Container>
 
       <span className={`flex items-center gap-x-3`}>
         <ColorModeSwitch />
