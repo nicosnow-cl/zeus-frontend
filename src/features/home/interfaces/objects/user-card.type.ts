@@ -4,7 +4,7 @@ import { IMedia } from './interface.media';
 import { IPrice } from './interface.price';
 import { IRrSs } from './interface.rrss';
 
-export interface IUserCard {
+export type UserCardEntity = {
   _id: string;
   // type: EscortType;
   active: boolean;
@@ -26,4 +26,4 @@ export interface IUserCard {
   rrss: IRrSs[];
   services: string[];
   username: string;
-}
+};

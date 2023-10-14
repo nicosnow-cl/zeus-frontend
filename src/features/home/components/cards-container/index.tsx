@@ -1,15 +1,24 @@
-import { Box, Grid } from '@radix-ui/themes';
 import { getCards } from '../../services/getCards';
-import { UserCard } from '../user-card';
+import * as UserCard from '../user-card';
 
 export const CardsContainer = async () => {
   const userCards = await getCards();
 
   return (
-    <Grid columns="3" gap="4">
+    <>
       {userCards.map((user, idx) => (
-        <UserCard key={idx} user={user} />
+        <UserCard.Root key={idx}>
+          <UserCard.BackgroundMedia avatar={user.avatar} medias={user.medias} />
+          <UserCard.AvatarWithName
+            avatar={user.avatar}
+            username={user.username}
+            age={user.age}
+            name={user.name}
+          />
+          <UserCard.Description description={user.description} />
+          <UserCard.Actions />
+        </UserCard.Root>
       ))}
-    </Grid>
+    </>
   );
 };

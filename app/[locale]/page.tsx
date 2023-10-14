@@ -1,4 +1,5 @@
 import { CardsContainer } from '@/features/home/components/cards-container';
+import { Grid } from '@radix-ui/themes';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -11,7 +12,11 @@ export const metadata: Metadata = {
 };
 
 function Home() {
-  return <CardsContainer />;
+  return (
+    <Grid columns="3" gap="4">
+      <CardsContainer />;
+    </Grid>
+  );
 }
 
 export default Home;

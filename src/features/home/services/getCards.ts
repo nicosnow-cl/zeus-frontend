@@ -1,12 +1,12 @@
 import { getConnection } from '@/common/repositories/mongo';
-import { IUserCard } from '../interfaces/objects/user-card.interface';
+import { UserCardEntity } from '../interfaces/objects/user-card.type';
 
 export async function getCards() {
   const { db, closeConnection } = await getConnection();
 
   try {
     // const { body: filters } = req;
-    const collection = db.collection<IUserCard>('cards');
+    const collection = db.collection<UserCardEntity>('cards');
 
     const query: any = {};
     // if (filters) {
