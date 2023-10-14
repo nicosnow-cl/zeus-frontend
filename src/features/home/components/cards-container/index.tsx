@@ -8,7 +8,10 @@ export const CardsContainer = async () => {
     <>
       {userCards.map((user, idx) => (
         <UserCard.Root key={idx}>
-          <UserCard.BackgroundMedia avatar={user.avatar} medias={user.medias} />
+          <div className="absolute h-[600px] w-full overflow-hidden">
+            <UserCard.BackgroundMedia avatar={user.avatar} medias={user.medias} />
+          </div>
+
           <UserCard.AvatarWithName
             avatar={user.avatar}
             username={user.username}

@@ -1,25 +1,18 @@
-.box {
+.highlightBorder {
   background-image: conic-gradient(
     from var(--border-angle),
-    transparent 20%,
-    rgb(223, 242, 255),
-    rgba(252, 20, 82, 0.808)
+    transparent 10%,
+    theme('colors.woodsmoke.50'),
+    theme('colors.primary.500')
   );
-  background-size:
-    calc(100%) calc(100% - (0turn * 2)),
-    cover;
   background-position: center center;
   background-repeat: no-repeat;
-
   animation: bg-spin 3s linear infinite;
-  @keyframes bg-spin {
-    to {
-      --border-angle: 1turn;
-    }
-  }
+}
 
-  &:hover {
-    animation-play-state: paused;
+@keyframes bg-spin {
+  to {
+    --border-angle: 1turn;
   }
 }
 

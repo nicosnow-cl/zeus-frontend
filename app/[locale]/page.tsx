@@ -1,6 +1,7 @@
-import { CardsContainer } from '@/features/home/components/cards-container';
 import { Grid } from '@radix-ui/themes';
 import { Metadata } from 'next';
+
+import { CardsContainer } from '@/features/home/components/cards-container';
 
 export const metadata: Metadata = {
   title: 'cl.afrodita.app',
