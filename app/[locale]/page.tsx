@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 function Home() {
   return (
     <Grid columns="3" gap="4">
-      <CardsContainer />;
+      <CardsContainer />
     </Grid>
   );
 }
