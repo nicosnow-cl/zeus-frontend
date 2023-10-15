@@ -3,10 +3,10 @@
 import { Box, Container, Separator } from '@radix-ui/themes';
 import { usePathname } from 'next/navigation';
 
-import { Breadcrumbs } from '@/common/ui/breadcrumbs';
-import { ColorModeSwitch } from '@/common/ui/color-mode-switch';
+import { Breadcrumbs } from '@/common/ui/others/breadcrumbs';
+import { ColorModeSwitch } from '@/common/ui/others/color-mode-switch';
 import { getUrlBreadcrumb } from '@/common/helpers/getUrlBreadcrumb';
-import { LangModeSwitch } from '@/common/ui/lang-mode-switch';
+import { LangModeSwitch } from '@/common/ui/others/lang-mode-switch';
 
 export const BottomBar = () => {
   const pathname = usePathname();

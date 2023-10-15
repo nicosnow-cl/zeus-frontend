@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import { Drawer } from '@/common/ui/drawer';
+import { Drawer } from '@/common/ui/primitives/drawer';
 import { FilterForm } from '../filter-form';
 import { Heading } from '@radix-ui/themes';
 import { FilterCircleFillIcon } from '@/common/icons';
