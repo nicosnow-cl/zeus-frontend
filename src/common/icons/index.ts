@@ -16,4 +16,6 @@ export const {
   SunIcon,
   SearchIcon,
   FilterCircleFillIcon,
+  XCircleFillIcon,
+  ChevronDownIcon,
 } = Icons;

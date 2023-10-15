@@ -1,4 +1,4 @@
-import { HighLightBorder } from '@/common/ui/highlight-border';
+import { HighLightBorder } from '@/common/ui/effects/highlight-border';
 
 export const Skeleton = () => {
   return (

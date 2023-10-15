@@ -15,4 +15,6 @@ export {
   PatchCheckFill,
   Search,
   FilterCircleFill,
+  XCircleFill,
+  ChevronDown,
 } from 'react-bootstrap-icons';

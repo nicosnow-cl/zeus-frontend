@@ -1,4 +1,4 @@
-import { FlipEffect } from '@/common/ui/flip-effect';
+import { FlipEffect } from '@/common/ui/effects/flip-effect';
 import { getCards } from '../../services/getCards';
 import * as UserCard from '../user-card';
 

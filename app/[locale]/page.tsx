@@ -2,7 +2,7 @@ import { Grid } from '@radix-ui/themes';
 import { Metadata } from 'next';
 
 import { CardsContainer } from '@/features/home/components/cards-container';
-import { FilterSidebar } from '@/features/home/components/filter-sidebar';
+import { FilterDrawer } from '@/features/home/components/filter-drawer';
 
 export const metadata: Metadata = {
   title: 'cl.afrodita.app',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 function Home() {
   return (
     <>
-      <FilterSidebar />
+      <FilterDrawer />
       <Grid columns="3" gap="4">
         <CardsContainer />
       </Grid>

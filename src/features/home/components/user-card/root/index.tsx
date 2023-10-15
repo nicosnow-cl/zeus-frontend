@@ -1,4 +1,4 @@
-import { HighLightBorder } from '@/common/ui/highlight-border';
+import { HighLightBorder } from '@/common/ui/effects/highlight-border';
 import { RootProps } from '@/features/home/types/components/user-card-props.type';
 
 export const Root = ({ children }: RootProps) => (
