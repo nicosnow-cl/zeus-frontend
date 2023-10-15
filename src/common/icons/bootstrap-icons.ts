@@ -13,4 +13,6 @@ export {
   Sun,
   SuitHeartFill,
   PatchCheckFill,
+  Search,
+  FilterCircleFill,
 } from 'react-bootstrap-icons';

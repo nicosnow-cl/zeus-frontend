@@ -14,4 +14,6 @@ export const {
   SuitHeartFillIcon,
   PatchCheckFillIcon,
   SunIcon,
+  SearchIcon,
+  FilterCircleFillIcon,
 } = Icons;

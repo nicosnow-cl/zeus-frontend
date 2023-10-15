@@ -4,13 +4,13 @@ import NextLink from 'next/link';
 import { BoxArrowRightIcon, EnvelopeIcon } from '@/common/icons';
 import { Item } from '@/common/ui/sidebar-item';
 import { Routes } from '@/common/enums';
-import { Sidebar } from '@/common/ui/sidebar';
+import { Drawer } from '@/common/ui/drawer';
 
 export const NavigationSidebar = () => {
   const t = useTranslations();
 
   return (
-    <Sidebar className={`mt-[-25px] pt-[25px]`}>
+    <Drawer className={`mt-[-25px] pt-[25px]`}>
       <Item>
         <NextLink className={`flex items-center gap-x-3`} href={Routes.Home}>
           {<BoxArrowRightIcon width={22} height={22} />}
@@ -23,6 +23,6 @@ export const NavigationSidebar = () => {
           {t('sidebar.contact')}
         </NextLink>
       </Item>
-    </Sidebar>
+    </Drawer>
   );
 };

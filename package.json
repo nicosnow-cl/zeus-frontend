@@ -11,6 +11,7 @@
   "dependencies": {
     "@radix-ui/themes": "^2.0.0",
     "@react-spring/web": "^9.7.3",
+    "beautiful-react-hooks": "^5.0.0",
     "framer-motion": "^10.16.4",
     "mongodb": "6.1",
     "next": "13.5.4",
@@ -20,7 +21,8 @@
     "radix-themes-tw": "^0.0.8",
     "react": "^18",
     "react-bootstrap-icons": "^1.10.3",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.47.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
