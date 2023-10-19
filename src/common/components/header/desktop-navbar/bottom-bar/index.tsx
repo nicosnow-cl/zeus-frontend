@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 import { Breadcrumbs } from '@/common/ui/others/breadcrumbs';
 import { ColorModeSwitch } from '@/common/ui/others/color-mode-switch';
-import { getUrlBreadcrumb } from '@/common/helpers/getUrlBreadcrumb';
+import { getUrlBreadcrumb } from '@/common/utils/getUrlBreadcrumb';
 import { LangModeSwitch } from '@/common/ui/others/lang-mode-switch';
 
 export const BottomBar = () => {

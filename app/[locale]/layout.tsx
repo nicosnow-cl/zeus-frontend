@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 import { fonts } from '@/theme/fonts';
-import { Locales } from '@intl/locales';
+import { Locales } from '../../intl/locales';
 import { MainContainer } from '@/common/components/containers/main';
 import { RadixUiProvider } from '@/providers/radix-ui-provider';
 

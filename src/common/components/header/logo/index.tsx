@@ -2,7 +2,7 @@ import { Box, Heading } from '@radix-ui/themes';
 
 import { LogoContainer } from '@/common/ui/others/logo-container';
 import { LogoIcon } from '@/common/icons';
-import { APP_NAME } from '@utils/constants';
+import { APP_NAME } from '../../../../../constants/main';
 
 export const Logo = () => (
   <LogoContainer>
