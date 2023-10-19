@@ -9,8 +9,7 @@ export const TopBar = ({ logo }: TopBarProps) => {
 
   return (
     <Box
-      className={`flex border-b border-b-woodsmoke-200 bg-woodsmoke-950/90 text-woodsmoke-50 
-      backdrop-blur-md backdrop-saturate-150`}
+      className={`flex border-b border-b-woodsmoke-200 bg-woodsmoke-950/90 text-woodsmoke-50 backdrop-blur-md backdrop-saturate-150`}
     >
       <Container size="4">
         <div className="flex h-[44px] items-center">
