@@ -1,12 +1,12 @@
 'use client';
 
 import { Box, Container, Separator } from '@radix-ui/themes';
-import { usePathname } from 'next/navigation';
 
-import { Breadcrumbs } from '@/common/ui/others/breadcrumbs';
-import { ColorModeSwitch } from '@/common/ui/others/color-mode-switch';
+import { Breadcrumbs } from '../../breadcrumbs';
+import { ColorModeSwitch } from '../../color-mode-switch';
 import { getUrlBreadcrumb } from '@/common/utils/getUrlBreadcrumb';
-import { LangModeSwitch } from '@/common/ui/others/lang-mode-switch';
+import { LangModeSwitch } from '../../lang-mode-switch';
+import { usePathname } from 'next/navigation';
 
 export const BottomBar = () => {
   const pathname = usePathname();

@@ -1,8 +1,8 @@
 import { Box, Button, Container } from '@radix-ui/themes';
 import { useTranslations } from 'next-intl';
 
-import { LinkTab } from '@/common/ui/others/link-tab';
 import { TopBarProps } from '@/common/types/components/desktop-navbar.type';
+import { LinkTab } from '../../link-tab';
 
 export const TopBar = ({ logo }: TopBarProps) => {
   const t = useTranslations();

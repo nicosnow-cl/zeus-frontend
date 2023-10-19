@@ -1,7 +1,7 @@
 import { fonts } from '@/theme/fonts';
 import { getValidLocale } from '@intl/locale';
 import { MainContainer } from '@/common/components/containers/main';
-import { RadixUiProvider } from '@/providers/radix-ui-provider';
+import { RadixUiProvider } from '@/common/components/providers/radix-ui';
 
 import '@styles/globals.css';
 import '@styles/theme-config.css';

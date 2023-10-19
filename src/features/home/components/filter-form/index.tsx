@@ -1,7 +1,8 @@
 'use client';
 
+import { Multiselect } from '@/common/components/ui/primitives/multiselect';
 import { SearchIcon } from '@/common/icons';
-import { Multiselect } from '@/common/ui/primitives/multiselect';
+
 import { Checkbox, Flex, Select, Text, TextField } from '@radix-ui/themes';
 
 export const FilterForm = () => {

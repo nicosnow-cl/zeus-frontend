@@ -1,5 +1,3 @@
-'use client';
-
 export { Actions } from './actions';
 export { AvatarWithName } from './avatar';
 export { BackgroundMedia } from './background-media';

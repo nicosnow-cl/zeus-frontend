@@ -3,8 +3,8 @@
 import { DropdownMenu, IconButton } from '@radix-ui/themes';
 
 import { Globe2Icon } from '@/common/icons';
-import { Locale } from '../../../../../intl/locale';
-import { usePathname, useRouter } from '../../../../../intl/navigation';
+import { Locale } from '@intl/locale';
+import { usePathname, useRouter } from '@intl/navigation';
 
 export const LangModeSwitch = () => {
   const pathname = usePathname();

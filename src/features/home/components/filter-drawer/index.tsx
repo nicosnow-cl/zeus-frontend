@@ -3,10 +3,10 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-import { Drawer } from '@/common/ui/primitives/drawer';
+import { Drawer } from '@/common/components/ui/primitives/drawer';
+import { FilterCircleFillIcon } from '@/common/icons';
 import { FilterForm } from '../filter-form';
 import { Heading } from '@radix-ui/themes';
-import { FilterCircleFillIcon } from '@/common/icons';
 
 const variants = {
   hidden: { opacity: 0 },
