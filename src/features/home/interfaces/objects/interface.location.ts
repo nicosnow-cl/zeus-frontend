@@ -1,4 +1,4 @@
 export interface ILocation {
-  name: string;
-  center: number[];
+  name: string
+  center: number[]
 }

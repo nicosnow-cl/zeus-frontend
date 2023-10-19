@@ -2,5 +2,5 @@
 
 export interface IRrSs {
   // type: RrSs;
-  url: string;
+  url: string
 }

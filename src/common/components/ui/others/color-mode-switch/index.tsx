@@ -1,20 +1,20 @@
-'use client';
+'use client'
 
-import { Box, Switch } from '@radix-ui/themes';
-import { useEffect, useMemo, useState } from 'react';
-import { useTheme } from 'next-themes';
+import { Box, Switch } from '@radix-ui/themes'
+import { useEffect, useMemo, useState } from 'react'
+import { useTheme } from 'next-themes'
 
-import { MoonIcon } from '@/common/icons';
+import { MoonIcon } from '@/common/icons'
 
 export const ColorModeSwitch = () => {
-  const [checked, setChecked] = useState(false);
-  const { systemTheme, theme, setTheme } = useTheme();
+  const [checked, setChecked] = useState(false)
+  const { systemTheme, theme, setTheme } = useTheme()
 
-  const defaultChecked = useMemo(() => systemTheme === 'dark', [systemTheme]);
+  const defaultChecked = useMemo(() => systemTheme === 'dark', [systemTheme])
 
-  const handleToggleTheme = () => (theme === 'dark' ? setTheme('light') : setTheme('dark'));
+  const handleToggleTheme = () => (theme === 'dark' ? setTheme('light') : setTheme('dark'))
 
-  useEffect(() => setChecked(theme === 'dark'), [theme]);
+  useEffect(() => setChecked(theme === 'dark'), [theme])
 
   return (
     <Box className={`inline-flex items-center gap-x-2`}>
@@ -24,7 +24,7 @@ export const ColorModeSwitch = () => {
         onClick={handleToggleTheme}
         size="1"
       />
-      <MoonIcon className={`text-indigo-9 text-4`} />
+      <MoonIcon className={`text-4 text-indigo-9`} />
     </Box>
-  );
-};
+  )
+}

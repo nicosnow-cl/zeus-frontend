@@ -1,4 +1,4 @@
 export interface IPrice {
-  normal: number;
-  promo: number;
+  normal: number
+  promo: number
 }

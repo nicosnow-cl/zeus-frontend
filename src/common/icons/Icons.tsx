@@ -1,21 +1,24 @@
-import { Icon } from 'react-bootstrap-icons';
+import { Icon } from 'react-bootstrap-icons'
 
-import * as bootstrapIcons from './bootstrap-icons';
-import * as customIcons from './custom-icons';
+import * as bootstrapIcons from './bootstrap-icons'
+import * as customIcons from './custom-icons'
 
-const mappedCustomIcons = Object.entries(customIcons).reduce((acc, [name, Icon]) => {
-  acc[name] = (props) => <Icon width="1em" height="1em" fill="currentColor" {...props} />;
+const mappedCustomIcons = Object.entries(customIcons).reduce(
+  (acc, [name, Icon]) => {
+    acc[name] = (props) => <Icon width="1em" height="1em" fill="currentColor" {...props} />
 
-  return acc;
-}, {} as Record<string, React.FC<Icon>>);
+    return acc
+  },
+  {} as Record<string, React.FC<Icon>>
+)
 
 const Icons = Object.entries({ ...bootstrapIcons, ...mappedCustomIcons }).reduce(
   (acc, [name, Icon]) => {
-    acc[`${name}Icon`] = (props) => <Icon {...props} />;
+    acc[`${name}Icon`] = (props) => <Icon {...props} />
 
-    return acc;
+    return acc
   },
-  {} as Record<string, Icon>,
-);
+  {} as Record<string, Icon>
+)
 
-export default Icons;
+export default Icons

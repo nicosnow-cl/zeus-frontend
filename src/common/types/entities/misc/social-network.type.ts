@@ -2,5 +2,5 @@
 
 export type SocialNetwork = {
   // type: RrSs;
-  url: string;
-};
+  url: string
+}

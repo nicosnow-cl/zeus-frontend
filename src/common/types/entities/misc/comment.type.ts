@@ -1,4 +1,4 @@
 export type Comment = {
-  username: string;
-  msg: string;
-};
+  username: string
+  msg: string
+}

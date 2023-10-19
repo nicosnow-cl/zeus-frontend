@@ -1,13 +1,13 @@
-import { useTranslations } from 'next-intl';
-import NextLink from 'next/link';
+import { useTranslations } from 'next-intl'
+import NextLink from 'next/link'
 
-import { BoxArrowRightIcon, EnvelopeIcon } from '@/common/icons';
-import { Drawer } from '../../primitives/drawer';
-import { Item } from '../sidebar-item';
-import { Routes } from '@/common/enums';
+import { BoxArrowRightIcon, EnvelopeIcon } from '@/common/icons'
+import { Drawer } from '../../primitives/drawer'
+import { Item } from '../sidebar-item'
+import { Routes } from '@/common/enums'
 
 export const NavigationSidebar = () => {
-  const t = useTranslations();
+  const t = useTranslations()
 
   return (
     <Drawer className={`mt-[-25px] pt-[25px]`}>
@@ -24,5 +24,5 @@ export const NavigationSidebar = () => {
         </NextLink>
       </Item>
     </Drawer>
-  );
-};
+  )
+}

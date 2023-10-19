@@ -1,10 +1,10 @@
-import { ChevronRight } from 'react-bootstrap-icons';
-import { Crumb } from '../crumb';
-import { ICrumb } from '@/common/interfaces/crumb.interface';
+import { ChevronRight } from 'react-bootstrap-icons'
+import { Crumb } from '../crumb'
+import { ICrumb } from '@/common/interfaces/crumb.interface'
 
 export interface IProps {
-  crumbs: ICrumb[];
-  className?: string;
+  crumbs: ICrumb[]
+  className?: string
 }
 
 export const Breadcrumbs = ({ crumbs, className = '' }: IProps) => {
@@ -19,5 +19,5 @@ export const Breadcrumbs = ({ crumbs, className = '' }: IProps) => {
         ))}
       </ol>
     </nav>
-  );
-};
+  )
+}

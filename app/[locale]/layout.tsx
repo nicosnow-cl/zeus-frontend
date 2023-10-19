@@ -1,21 +1,21 @@
-import { fonts } from '@/theme/fonts';
-import { getValidLocale } from '@intl/locale';
-import { MainContainer } from '@/common/components/containers/main';
-import { RadixUiProvider } from '@/common/components/providers/radix-ui';
+import { fonts } from '@/theme/fonts'
+import { getValidLocale } from '@intl/locale'
+import { MainContainer } from '@/common/components/containers/main'
+import { RadixUiProvider } from '@/common/components/providers/radix-ui'
 
-import '@styles/globals.css';
-import '@styles/theme-config.css';
+import '@styles/globals.css'
+import '@styles/theme-config.css'
 
 function RootLayout({
   children,
   params: { locale },
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
   params: {
-    locale: string;
-  };
+    locale: string
+  }
 }) {
-  const appLocale = getValidLocale(locale);
+  const appLocale = getValidLocale(locale)
 
   return (
     <html
@@ -29,7 +29,7 @@ function RootLayout({
         </RadixUiProvider>
       </body>
     </html>
-  );
+  )
 }
 
-export default RootLayout;
+export default RootLayout

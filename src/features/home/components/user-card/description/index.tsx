@@ -1,6 +1,6 @@
-import { Badge, Blockquote, Box, Flex } from '@radix-ui/themes';
+import { Badge, Blockquote, Box, Flex } from '@radix-ui/themes'
 
-import { DescriptionProps } from '../../../types/components/user-card-props.type';
+import { DescriptionProps } from '../../../types/components/user-card-props.type'
 
 export const Description = ({ description, services = [] }: DescriptionProps) => (
   <Box
@@ -24,4 +24,4 @@ export const Description = ({ description, services = [] }: DescriptionProps) =>
       )}
     </Blockquote>
   </Box>
-);
+)

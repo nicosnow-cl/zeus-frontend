@@ -1,11 +1,11 @@
-import { Flex } from '@radix-ui/themes';
-import { useTranslations } from 'next-intl';
-import NextLink from 'next/link';
+import { Flex } from '@radix-ui/themes'
+import { useTranslations } from 'next-intl'
+import NextLink from 'next/link'
 
-import { Routes } from '@/common/enums';
+import { Routes } from '@/common/enums'
 
 export const LinkTab = () => {
-  const t = useTranslations();
+  const t = useTranslations()
 
   return (
     <Flex gap="9">
@@ -16,5 +16,5 @@ export const LinkTab = () => {
         {t('sidebar.contact')}
       </NextLink>
     </Flex>
-  );
-};
+  )
+}

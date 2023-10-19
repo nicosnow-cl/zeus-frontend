@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 export {
   BoxArrowRight,
@@ -17,4 +17,4 @@ export {
   FilterCircleFill,
   XCircleFill,
   ChevronDown,
-} from 'react-bootstrap-icons';
+} from 'react-bootstrap-icons'

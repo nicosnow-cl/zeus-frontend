@@ -1,7 +1,7 @@
-import { NavbarContainer } from '../navbar';
+import { NavbarContainer } from '../navbar'
 
 export interface IProps {
-  children: React.ReactNode | React.ReactNode[];
+  children: React.ReactNode | React.ReactNode[]
 }
 
 export const MainContainer = ({ children }: IProps) => {
@@ -13,5 +13,5 @@ export const MainContainer = ({ children }: IProps) => {
         <div className="ml-[40px] p-12">{children}</div>
       </div>
     </>
-  );
-};
+  )
+}

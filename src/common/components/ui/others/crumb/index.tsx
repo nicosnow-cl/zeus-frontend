@@ -1,10 +1,10 @@
-import { Link } from '@radix-ui/themes';
-import NextLink from 'next/link';
+import { Link } from '@radix-ui/themes'
+import NextLink from 'next/link'
 
-import { ICrumb } from '@/common/interfaces/crumb.interface';
+import { ICrumb } from '@/common/interfaces/crumb.interface'
 
 export interface IProps {
-  crumb: ICrumb;
+  crumb: ICrumb
 }
 export const Crumb = ({ crumb }: IProps) => (
   <li className="inline-flex items-center">
@@ -15,4 +15,4 @@ export const Crumb = ({ crumb }: IProps) => (
       </NextLink>
     </Link>
   </li>
-);
+)

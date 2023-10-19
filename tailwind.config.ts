@@ -1,7 +1,7 @@
-import type { Config } from 'tailwindcss';
-import { radixThemePreset } from 'radix-themes-tw';
+import type { Config } from 'tailwindcss'
+import { radixThemePreset } from 'radix-themes-tw'
 
-import { palette } from './constants/tailwind';
+import { palette } from './constants/tailwind'
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}', './app/**/*.{js,ts,jsx,tsx,mdx}'],
@@ -21,5 +21,5 @@ const config: Config = {
   },
   plugins: [],
   presets: [radixThemePreset],
-};
-export default config;
+}
+export default config

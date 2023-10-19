@@ -1,4 +1,4 @@
-const withNextIntl = require('next-intl/plugin')('./i18n.ts');
+const withNextIntl = require('next-intl/plugin')('./i18n.ts')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -22,7 +22,7 @@ const nextConfig = {
   },
   webpack(config, { dev, isServer }) {
     // @ts-ignore - rules is a private property that is not typed
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'));
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
 
     config.module.rules.push(
       {
@@ -35,10 +35,10 @@ const nextConfig = {
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
         use: ['@svgr/webpack'],
-      },
-    );
+      }
+    )
 
-    fileLoaderRule.exclude = /\.svg$/i;
+    fileLoaderRule.exclude = /\.svg$/i
 
     if (!dev && !isServer) {
       Object.assign(config.resolve.alias, {
@@ -46,11 +46,11 @@ const nextConfig = {
         react: 'preact/compat',
         'react-dom/test-utils': 'preact/test-utils',
         'react-dom': 'preact/compat',
-      });
+      })
     }
 
-    return config;
+    return config
   },
-};
+}
 
-module.exports = withNextIntl(nextConfig);
+module.exports = withNextIntl(nextConfig)

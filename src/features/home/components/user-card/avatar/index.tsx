@@ -1,7 +1,7 @@
-import { Avatar, Badge, Flex, Heading, Text } from '@radix-ui/themes';
+import { Avatar, Badge, Flex, Heading, Text } from '@radix-ui/themes'
 
-import { AvatarWithNameProps } from '@/features/home/types/components/user-card-props.type';
-import { PatchCheckFillIcon, PersonCircleIcon, SuitHeartFillIcon } from '@/common/icons';
+import { AvatarWithNameProps } from '@/features/home/types/components/user-card-props.type'
+import { PatchCheckFillIcon, PersonCircleIcon, SuitHeartFillIcon } from '@/common/icons'
 
 export const AvatarWithName = ({ avatar, username, age, name }: AvatarWithNameProps) => (
   <Flex p="2" justify="between" className="relative h-[600px]">
@@ -50,4 +50,4 @@ export const AvatarWithName = ({ avatar, username, age, name }: AvatarWithNamePr
       </Badge>
     </Flex>
   </Flex>
-);
+)

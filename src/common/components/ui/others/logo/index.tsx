@@ -1,8 +1,8 @@
-import { Box, Heading } from '@radix-ui/themes';
+import { Box, Heading } from '@radix-ui/themes'
 
-import { LogoContainer } from '@/common/ui/others/logo-container';
-import { LogoIcon } from '@/common/icons';
-import { APP_NAME } from '../../../../../constants/main';
+import { LogoContainer } from '@/common/ui/others/logo-container'
+import { LogoIcon } from '@/common/icons'
+import { APP_NAME } from '../../../../../constants/main'
 
 export const Logo = () => (
   <LogoContainer>
@@ -12,4 +12,4 @@ export const Logo = () => (
 
     <Heading>{APP_NAME}</Heading>
   </LogoContainer>
-);
+)

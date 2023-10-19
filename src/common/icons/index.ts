@@ -1,4 +1,4 @@
-import Icons from './Icons';
+import Icons from './Icons'
 
 export const {
   BoxArrowRightIcon,
@@ -18,4 +18,4 @@ export const {
   FilterCircleFillIcon,
   XCircleFillIcon,
   ChevronDownIcon,
-} = Icons;
+} = Icons

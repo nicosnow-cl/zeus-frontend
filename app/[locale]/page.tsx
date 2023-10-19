@@ -1,8 +1,8 @@
-import { Grid } from '@radix-ui/themes';
-import { Metadata } from 'next';
+import { Grid } from '@radix-ui/themes'
+import { Metadata } from 'next'
 
 // import { CardsContainer } from '@/features/home/components/cards-container';
-import { FilterDrawer } from '@/features/home/components/filter-drawer';
+import { FilterDrawer } from '@/features/home/components/filter-drawer'
 
 export const metadata: Metadata = {
   title: 'cl.afrodita.app',
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     initialScale: 1,
     maximumScale: 1,
   },
-};
+}
 
 function Home() {
   return (
@@ -22,7 +22,7 @@ function Home() {
         {/* <CardsContainer /> */}
       </Grid>
     </>
-  );
+  )
 }
 
-export default Home;
+export default Home

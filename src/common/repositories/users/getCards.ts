@@ -1,14 +1,14 @@
-import { getConnection } from '@/common/repositories/mongo';
-import { UserCardEntity } from '@/common/types/entities/user-card-entity.type';
+import { getConnection } from '@/common/repositories/mongo'
+import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
 export async function getCards() {
-  const { db, closeConnection } = await getConnection();
+  const { db, closeConnection } = await getConnection()
 
   try {
     // const { body: filters } = req;
-    const collection = db.collection<UserCardEntity>('cards');
+    const collection = db.collection<UserCardEntity>('cards')
 
-    const query: any = {};
+    const query: any = {}
     // if (filters) {
     //   const { appareance, city, name, promotion, services, type, video } = filters;
 
@@ -26,21 +26,21 @@ export async function getCards() {
         ['type', -1],
         ['returnAt', -1],
       ])
-      .toArray();
+      .toArray()
 
-    return data.map((card) => JSON.parse(JSON.stringify(card)));
+    return data.map((card) => JSON.parse(JSON.stringify(card)))
 
     // return res.status(200).json({ data, error: null, success: true });
   } catch (err: any) {
-    console.error(err);
+    console.error(err)
 
-    return [];
+    return []
     // return res.status(200).json({
     //   data: [],
     //   error: { code: -1, message: err.message || 'Error inesperado' },
     //   success: false,
     // });
   } finally {
-    await closeConnection();
+    await closeConnection()
   }
 }

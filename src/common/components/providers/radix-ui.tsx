@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import { Theme } from '@radix-ui/themes';
+import { Theme } from '@radix-ui/themes'
 // import { ThemePanel } from '@radix-ui/themes';
-import { ThemeProvider } from 'next-themes';
+import { ThemeProvider } from 'next-themes'
 
 export function RadixUiProvider({ children }: { children: React.ReactNode }) {
   return (
@@ -12,5 +12,5 @@ export function RadixUiProvider({ children }: { children: React.ReactNode }) {
         {/* <ThemePanel /> */}
       </Theme>
     </ThemeProvider>
-  );
+  )
 }

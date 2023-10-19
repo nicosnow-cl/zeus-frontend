@@ -1,20 +1,20 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 
-import { Drawer } from '@/common/components/ui/primitives/drawer';
-import { FilterCircleFillIcon } from '@/common/icons';
-import { FilterForm } from '../filter-form';
-import { Heading } from '@radix-ui/themes';
+import { Drawer } from '@/common/components/ui/primitives/drawer'
+import { FilterCircleFillIcon } from '@/common/icons'
+import { FilterForm } from '../filter-form'
+import { Heading } from '@radix-ui/themes'
 
 const variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
-};
+}
 
 export const FilterDrawer = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   return (
     <Drawer
@@ -42,5 +42,5 @@ export const FilterDrawer = () => {
         <FilterForm />
       </motion.div>
     </Drawer>
-  );
-};
+  )
+}

@@ -1,21 +1,21 @@
 {
-    "lang-names": {
-        "es": "Español",
-        "en": "English"
-    },
-    "navbar": {
-        "announce": "Announce"
-    },
-    "breadcrumb": {
-        "home": "Home",
-        "sign-in": "Sign in",
-        "sing-up": "Sign up",
-        "contact": "Contact"
-    },
-    "sidebar": {
-        "home": "Home",
-        "sign-in": "Sign in",
-        "sing-up": "Sign up",
-        "contact": "Contact"
-    }
+  "lang-names": {
+    "es": "Español",
+    "en": "English"
+  },
+  "navbar": {
+    "announce": "Announce"
+  },
+  "breadcrumb": {
+    "home": "Home",
+    "sign-in": "Sign in",
+    "sing-up": "Sign up",
+    "contact": "Contact"
+  },
+  "sidebar": {
+    "home": "Home",
+    "sign-in": "Sign in",
+    "sing-up": "Sign up",
+    "contact": "Contact"
+  }
 }

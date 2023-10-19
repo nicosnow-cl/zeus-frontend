@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import { Badge, Button, DropdownMenu, Flex } from '@radix-ui/themes';
+import { Badge, Button, DropdownMenu, Flex } from '@radix-ui/themes'
 
-import { ActionsProps } from '@/features/home/types/components/user-card-props.type';
+import { ActionsProps } from '@/features/home/types/components/user-card-props.type'
 
 export const Actions = ({}: ActionsProps) => (
   <Flex className="relative bg-gray-4" justify="between" height="7" align="center" p="2">
@@ -20,4 +20,4 @@ export const Actions = ({}: ActionsProps) => (
       $155.000 - 1h
     </Badge>
   </Flex>
-);
+)

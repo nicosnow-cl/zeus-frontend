@@ -1,7 +1,7 @@
 export type RootProps = {
-  children?: React.ReactNode;
-};
+  children?: React.ReactNode
+}
 
 export type TopBarProps = {
-  logo?: React.ReactNode;
-};
+  logo?: React.ReactNode
+}

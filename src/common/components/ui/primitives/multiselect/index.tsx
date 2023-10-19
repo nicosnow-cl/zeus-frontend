@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { Badge, Box, Checkbox, DropdownMenu } from '@radix-ui/themes';
-import { useState } from 'react';
+import { Badge, Box, Checkbox, DropdownMenu } from '@radix-ui/themes'
+import { useState } from 'react'
 
-import { ChevronDownIcon, XCircleFillIcon } from '@/common/icons';
+import { ChevronDownIcon, XCircleFillIcon } from '@/common/icons'
 
 const options = [
   {
@@ -30,47 +30,47 @@ const options = [
     label: 'Cola grande',
     value: 'option-6',
   },
-];
+]
 
 export type MultiselectProps = {
-  open?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  onItemClick?: (evt: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => void;
-};
+  open?: boolean
+  onOpenChange?: (open: boolean) => void
+  onItemClick?: (evt: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => void
+}
 
 export const Multiselect = () => {
-  const [open, setOpen] = useState(false);
-  const [selectedValues, setSelectedValues] = useState<string[]>([]);
-  const [rootElem, setRootElem] = useState<HTMLDivElement | null>(null);
+  const [open, setOpen] = useState(false)
+  const [selectedValues, setSelectedValues] = useState<string[]>([])
+  const [rootElem, setRootElem] = useState<HTMLDivElement | null>(null)
 
-  const placeholder = 'Seleccione una opción';
+  const placeholder = 'Seleccione una opción'
 
   const handleItemClick = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>, value: string) => {
-    evt.preventDefault();
-    evt.stopPropagation();
+    evt.preventDefault()
+    evt.stopPropagation()
 
     if (selectedValues.includes(value)) {
-      setSelectedValues(selectedValues.filter((value) => value !== value));
-      return;
+      setSelectedValues(selectedValues.filter((value) => value !== value))
+      return
     }
 
-    setSelectedValues([...selectedValues, value]);
-  };
+    setSelectedValues([...selectedValues, value])
+  }
 
   const handleRemoveValue = (evt: React.MouseEvent<SVGElement, MouseEvent>, value: string) => {
-    evt.preventDefault();
-    evt.stopPropagation();
+    evt.preventDefault()
+    evt.stopPropagation()
 
-    setSelectedValues(selectedValues.filter((val) => val !== value));
-  };
+    setSelectedValues(selectedValues.filter((val) => val !== value))
+  }
 
   const handleOpen = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    evt.preventDefault();
-    evt.stopPropagation();
+    evt.preventDefault()
+    evt.stopPropagation()
 
-    setOpen(true);
-    setRootElem(evt.currentTarget);
-  };
+    setOpen(true)
+    setRootElem(evt.currentTarget)
+  }
 
   return (
     <DropdownMenu.Root open={open} onOpenChange={(open) => !open && setOpen(open)}>
@@ -116,5 +116,5 @@ export const Multiselect = () => {
         ))}
       </DropdownMenu.Content>
     </DropdownMenu.Root>
-  );
-};
+  )
+}

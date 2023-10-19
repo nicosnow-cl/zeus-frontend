@@ -1,17 +1,17 @@
-'use client';
+'use client'
 
-import { Box } from '@radix-ui/themes';
-import { useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
-import useThrottledCallback from 'beautiful-react-hooks/useThrottledCallback';
+import { Box } from '@radix-ui/themes'
+import { useMemo, useState } from 'react'
+import { motion } from 'framer-motion'
+import useThrottledCallback from 'beautiful-react-hooks/useThrottledCallback'
 
 export type DrawerProps = React.HTMLAttributes<HTMLDivElement> & {
-  closeWidth?: string | number;
-  onClose?: () => void;
-  onOpen?: () => void;
-  open?: boolean;
-  openWidth?: string | number;
-};
+  closeWidth?: string | number
+  onClose?: () => void
+  onOpen?: () => void
+  open?: boolean
+  openWidth?: string | number
+}
 
 export const Drawer = ({
   children,
@@ -23,36 +23,36 @@ export const Drawer = ({
   openWidth = '300px',
   ...props
 }: DrawerProps) => {
-  const isControlled = typeof openProp != 'undefined';
+  const isControlled = typeof openProp != 'undefined'
 
-  const [internalOpen, setInternalOpen] = useState(isControlled ? openProp : false);
+  const [internalOpen, setInternalOpen] = useState(isControlled ? openProp : false)
   const variants = useMemo(
     () => ({
       open: { width: openWidth, transition: { duration: 0.03 } },
       closed: { width: closeWidth, transition: { duration: 0.03 } },
     }),
-    [closeWidth, openWidth],
-  );
+    [closeWidth, openWidth]
+  )
 
-  const open = isControlled ? openProp : internalOpen;
+  const open = isControlled ? openProp : internalOpen
 
   const handleOpen = useThrottledCallback(
     () => {
-      if (onOpen) onOpen();
-      if (!isControlled) setInternalOpen(true);
+      if (onOpen) onOpen()
+      if (!isControlled) setInternalOpen(true)
     },
     [],
-    50,
-  );
+    50
+  )
 
   const handleClose = useThrottledCallback(
     () => {
-      if (onClose) onClose();
-      if (!isControlled) setInternalOpen(false);
+      if (onClose) onClose()
+      if (!isControlled) setInternalOpen(false)
     },
     [],
-    50,
-  );
+    50
+  )
 
   return (
     <div {...props} onMouseEnter={handleOpen} onMouseLeave={handleClose}>
@@ -66,5 +66,5 @@ export const Drawer = ({
         {children}
       </motion.div>
     </div>
-  );
-};
+  )
+}

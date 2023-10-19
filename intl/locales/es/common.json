@@ -1,21 +1,21 @@
 {
-    "lang-names": {
-        "es": "Español",
-        "en": "English"
-    },
-    "navbar": {
-        "announce": "Anunciarme"
-    },
-    "breadcrumb": {
-        "home": "Inicio",
-        "sign-in": "Login",
-        "sing-up": "Registro",
-        "contact": "Contacto"
-    },
-    "sidebar": {
-        "home": "Inicio",
-        "sign-in": "Acceso clientes",
-        "sing-up": "Registrarse",
-        "contact": "Contacto"
-    }
+  "lang-names": {
+    "es": "Español",
+    "en": "English"
+  },
+  "navbar": {
+    "announce": "Anunciarme"
+  },
+  "breadcrumb": {
+    "home": "Inicio",
+    "sign-in": "Login",
+    "sing-up": "Registro",
+    "contact": "Contacto"
+  },
+  "sidebar": {
+    "home": "Inicio",
+    "sign-in": "Acceso clientes",
+    "sing-up": "Registrarse",
+    "contact": "Contacto"
+  }
 }

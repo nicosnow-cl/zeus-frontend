@@ -1,4 +1,4 @@
-import { HighLightBorder } from '@/common/components/ui/effects/highlight-border';
+import { HighLightBorder } from '@/common/components/ui/effects/highlight-border'
 
 export const Skeleton = () => {
   return (
@@ -9,5 +9,5 @@ export const Skeleton = () => {
 
       <HighLightBorder />
     </div>
-  );
-};
+  )
+}

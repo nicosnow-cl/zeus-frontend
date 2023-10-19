@@ -1,4 +1,4 @@
-import { Grid } from '@radix-ui/themes';
+import { Grid } from '@radix-ui/themes'
 
 // import { Skeleton } from '@/features/home/components/user-card';
 
@@ -10,5 +10,5 @@ export default function Loading() {
         <Skeleton key={idx} />
       ))} */}
     </Grid>
-  );
+  )
 }

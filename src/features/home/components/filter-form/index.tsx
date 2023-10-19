@@ -1,9 +1,9 @@
-'use client';
+'use client'
 
-import { Multiselect } from '@/common/components/ui/primitives/multiselect';
-import { SearchIcon } from '@/common/icons';
+import { Multiselect } from '@/common/components/ui/primitives/multiselect'
+import { SearchIcon } from '@/common/icons'
 
-import { Checkbox, Flex, Select, Text, TextField } from '@radix-ui/themes';
+import { Checkbox, Flex, Select, Text, TextField } from '@radix-ui/themes'
 
 export const FilterForm = () => {
   return (
@@ -90,5 +90,5 @@ export const FilterForm = () => {
         </Text>
       </Flex>
     </Flex>
-  );
-};
+  )
+}

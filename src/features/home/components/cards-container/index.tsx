@@ -1,11 +1,11 @@
-import { FlipEffect } from '@/common/components/ui/effects/flip-effect';
-import { getCards } from '../../services/getCards';
-import * as UserCard from '../user-card';
+import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
+import { getCards } from '../../services/getCards'
+import * as UserCard from '../user-card'
 
 export const CardsContainer = async () => {
-  const userCards = await getCards();
+  const userCards = await getCards()
 
-  const delays = userCards.map((_, idx) => 100 + Math.max(1, idx) * 100);
+  const delays = userCards.map((_, idx) => 100 + Math.max(1, idx) * 100)
 
   return (
     <>
@@ -33,5 +33,5 @@ export const CardsContainer = async () => {
         />
       ))}
     </>
-  );
-};
+  )
+}

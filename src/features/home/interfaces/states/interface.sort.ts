@@ -1,4 +1,4 @@
 export interface ISort {
-  field: string;
-  order: 'asc' | 'desc';
+  field: string
+  order: 'asc' | 'desc'
 }

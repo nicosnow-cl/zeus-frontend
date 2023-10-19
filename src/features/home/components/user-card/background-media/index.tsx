@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import { SyntheticEvent } from 'react';
-import Image from 'next/image';
+import { SyntheticEvent } from 'react'
+import Image from 'next/image'
 
-import { BackgroundMediaProps } from '../../../types/components/user-card-props.type';
+import { BackgroundMediaProps } from '../../../types/components/user-card-props.type'
 
-const scaleTransition = 'transition-all duration-150 ease-linear group-hover:scale-[1.05]';
+const scaleTransition = 'transition-all duration-150 ease-linear group-hover:scale-[1.05]'
 
 export const BackgroundMedia = ({ avatar, medias }: BackgroundMediaProps) => {
   const handleError = (evt: SyntheticEvent<HTMLImageElement, Event>) => {
-    console.log({ evt, avatar });
-  };
+    console.log({ evt, avatar })
+  }
 
-  if (!avatar) return null;
+  if (!avatar) return null
 
   return (
     <Image
@@ -26,5 +26,5 @@ export const BackgroundMedia = ({ avatar, medias }: BackgroundMediaProps) => {
       src={avatar.hq as string}
       fill
     />
-  );
-};
+  )
+}
