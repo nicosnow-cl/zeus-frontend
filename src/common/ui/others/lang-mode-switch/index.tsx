@@ -3,14 +3,14 @@
 import { DropdownMenu, IconButton } from '@radix-ui/themes';
 
 import { Globe2Icon } from '@/common/icons';
-import { Locales } from '../../../../../intl/locales';
+import { Locale } from '../../../../../intl/locale';
 import { usePathname, useRouter } from '../../../../../intl/navigation';
 
 export const LangModeSwitch = () => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const handleChangeLang = (locale: Locales) => router.push(pathname, { locale });
+  const handleChangeLang = (locale: Locale) => router.push(pathname, { locale });
 
   return (
     <DropdownMenu.Root>
@@ -21,8 +21,8 @@ export const LangModeSwitch = () => {
       </DropdownMenu.Trigger>
 
       <DropdownMenu.Content>
-        <DropdownMenu.Item onClick={() => handleChangeLang(Locales.Es)}>Español</DropdownMenu.Item>
-        <DropdownMenu.Item onClick={() => handleChangeLang(Locales.En)}>English</DropdownMenu.Item>
+        <DropdownMenu.Item onClick={() => handleChangeLang(Locale.Es)}>Español</DropdownMenu.Item>
+        <DropdownMenu.Item onClick={() => handleChangeLang(Locale.En)}>English</DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
   );

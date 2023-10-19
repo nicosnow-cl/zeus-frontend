@@ -2,12 +2,12 @@ import { AbstractIntlMessages } from 'next-intl';
 import fs from 'fs';
 import path from 'path';
 
-import { Locales } from './locales';
+import { Locale } from './locale';
 
 const LOCALES_FOLDER = path.join(process.env.rootDir as string, './intl/locales');
-const getLocalesFiles = (locale: Locales) => fs.readdirSync(path.join(LOCALES_FOLDER, locale));
+const getLocalesFiles = (locale: Locale) => fs.readdirSync(path.join(LOCALES_FOLDER, locale));
 
-export const getMessages = async (locale: Locales): Promise<AbstractIntlMessages> => {
+export const getMessages = async (locale: Locale): Promise<AbstractIntlMessages> => {
   const files = getLocalesFiles(locale);
   const filtered = files.filter((file) => file.endsWith('.json'));
 
