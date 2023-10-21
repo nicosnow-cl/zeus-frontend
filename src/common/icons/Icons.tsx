@@ -5,7 +5,7 @@ import * as customIcons from './custom-icons'
 
 const mappedCustomIcons = Object.entries(customIcons).reduce(
   (acc, [name, Icon]) => {
-    acc[name] = (props) => <Icon width="1em" height="1em" fill="currentColor" {...props} />
+    acc[name] = (props) => <Icon width="1rem" height="1rem" fill="currentColor" {...props} />
 
     return acc
   },
