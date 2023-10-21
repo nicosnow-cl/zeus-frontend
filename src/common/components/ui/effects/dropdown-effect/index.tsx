@@ -2,7 +2,7 @@
 
 import { Container, Flex } from '@radix-ui/themes'
 import { AnimatePresence, MotionConfig, Transition, Variants, motion } from 'framer-motion'
-import { useState } from 'react'
+import { MouseEventHandler, useState } from 'react'
 
 export const baseTransition: Transition = {
   type: 'tween',
@@ -31,6 +31,14 @@ type ContentWithDropdownProps = {
   classNameContent?: string
   classNameOverlay?: string
   content: React.ReactNode
+  onMouseEnter?: (
+    evt: React.MouseEvent<HTMLDivElement, MouseEvent> | undefined,
+    setter: React.Dispatch<React.SetStateAction<boolean>>
+  ) => void
+  onMouseLeave?: (
+    evt: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    setter: React.Dispatch<React.SetStateAction<boolean>>
+  ) => void
   transition?: Transition
   variantsContainer?: Variants
   variantsContent?: Variants
@@ -40,6 +48,8 @@ type ContentWithDropdownProps = {
 export function ContentWithDropdown({
   children,
   content,
+  onMouseEnter,
+  onMouseLeave,
   transition,
   variantsContainer,
   variantsContent,
@@ -69,31 +79,38 @@ export function ContentWithDropdown({
         }}
         initial="closed"
         animate={isOpen ? 'open' : 'closed'}
+        onMouseEnter={(evt) => onMouseEnter?.(evt, setIsOpen)}
+        onMouseLeave={(evt) => onMouseLeave?.(evt, setIsOpen)}
       >
         {children({
           isOpen,
           handleToggle,
         })}
 
-        <motion.div
-          className={classNameContent}
-          variants={{
-            closed: {
-              ...baseVariantsContent.closed,
-              ...variantsContent?.closed,
-            },
-            open: {
-              ...baseVariantsContent.open,
-              ...variantsContent?.open,
-            },
-          }}
-          initial="closed"
-          animate={isOpen ? 'open' : 'closed'}
-        >
-          <Flex align="center" className="h-[44px]" justify="center" px="6">
-            <Container size="4">{content}</Container>
-          </Flex>
-        </motion.div>
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className={classNameContent}
+              variants={{
+                closed: {
+                  ...baseVariantsContent.closed,
+                  ...variantsContent?.closed,
+                },
+                open: {
+                  ...baseVariantsContent.open,
+                  ...variantsContent?.open,
+                },
+              }}
+              initial="closed"
+              animate={isOpen ? 'open' : 'closed'}
+              exit="closed"
+            >
+              <Container size="4" p="6">
+                {content}
+              </Container>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       <AnimatePresence>
