@@ -5,6 +5,7 @@ import { RadixUiProvider } from '@/common/components/providers/radix-ui'
 
 import '@styles/globals.css'
 import '@styles/theme-config.css'
+import NextIntlClientProvider from '@/common/components/providers/next-intl-client'
 
 function RootLayout({
   children,
@@ -24,9 +25,12 @@ function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        <RadixUiProvider>
-          <MainContainer>{children}</MainContainer>
-        </RadixUiProvider>
+        {/* TODO: Find a better solution to apply next-intl */}
+        <NextIntlClientProvider>
+          <RadixUiProvider>
+            <MainContainer>{children}</MainContainer>
+          </RadixUiProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   )
