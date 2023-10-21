@@ -5,6 +5,9 @@ const nextConfig = {
   env: {
     rootDir: __dirname,
   },
+  experimental: {
+    serverActions: true,
+  },
   images: {
     domains: [
       'cdn-ea-images.escort-advisor.com',

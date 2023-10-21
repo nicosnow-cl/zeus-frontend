@@ -1,29 +1,38 @@
-import { Box, Button, Container, Flex } from '@radix-ui/themes'
-import { useTranslations } from 'next-intl'
+'use client'
+
+import { Container, Flex, Heading } from '@radix-ui/themes'
 
 import { TopBarProps } from '@/common/types/components/desktop-navbar.type'
 import { LinkTab } from '../../link-tab'
+import { ContentWithDropdown } from '../../../effects/dropdown-effect'
 
 export function TopBar({ logo }: TopBarProps) {
-  // const t = useTranslations()
-
   return (
-    <Flex
-      align="center"
-      className={`min-h-[44px] border-b border-b-woodsmoke-200 bg-woodsmoke-950/90 text-woodsmoke-50 backdrop-blur-md backdrop-saturate-150`}
-      justify="center"
-      px="6"
+    <ContentWithDropdown
+      className="border-b border-b-woodsmoke-200 text-woodsmoke-50 backdrop-blur-md backdrop-saturate-150 [--bg-to:theme(colors.woodsmoke.950)] [--bg-from:theme(colors.woodsmoke.950/0.9)]"
+      content={<Heading>Buscar en tumoko.app</Heading>}
+      variantsContainer={{
+        closed: {
+          backgroundColor: 'var(--bg-from)',
+        },
+        open: {
+          backgroundColor: 'var(--bg-to)',
+        },
+      }}
     >
-      <Container size="4">
-        <div className="flex items-center justify-center">
-          {logo}
-          <LinkTab />
-        </div>
-      </Container>
+      {({ isOpen, handleToggle }) => (
+        <Flex align="center" className="h-[44px] bg-transparent" justify="center" px="6">
+          <Container size="4">
+            <Flex align="center" justify="center">
+              {logo}
 
-      {/* <Button className={`h-full cursor-pointer uppercase`} size="3" radius="none" color="crimson">
-        {t('navbar.announce')}
-      </Button> */}
-    </Flex>
+              {/* <LinkTab /> */}
+            </Flex>
+          </Container>
+
+          <button onClick={() => handleToggle()}>Collapse</button>
+        </Flex>
+      )}
+    </ContentWithDropdown>
   )
 }

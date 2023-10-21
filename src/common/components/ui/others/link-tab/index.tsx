@@ -2,8 +2,8 @@ import { Button, Flex } from '@radix-ui/themes'
 import { useTranslations } from 'next-intl'
 import NextLink from 'next/link'
 
-import { Routes } from '@/common/enums'
 import { BoxArrowRightIcon, PatchCheckFillIcon, SearchIcon } from '@/common/icons'
+import { Routes } from '@/common/enums'
 
 export const LinkTab = () => {
   const t = useTranslations()
