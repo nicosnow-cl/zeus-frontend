@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
+'use client'
+
+import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 
 export type TWithInfiniteScrollFetchDataProps<T> = {
@@ -19,9 +21,8 @@ export function withInfiniteScrollFetchData<T>({
   }) {
     const [data, setData] = useState<T[]>(initialData)
     const [page, setPage] = useState(1)
-    const [ref, inView] = useInView()
-    const isFirstRender = useRef(true)
     const [isLoading, setIsLoading] = useState(false)
+    const [ref, inView] = useInView()
 
     async function fetchMoreData() {
       setIsLoading(true)
@@ -41,27 +42,18 @@ export function withInfiniteScrollFetchData<T>({
     }
 
     useEffect(() => {
-      if (isFirstRender.current) {
-        isFirstRender.current = false
-        return
-      }
-    }, [])
-
-    useEffect(() => {
-      if (isFirstRender.current) return
-
       if (inView && !isLoading) {
         setIsLoading(true)
         fetchMoreData()
       }
-    }, [isFirstRender.current, isLoading, inView])
+    }, [inView, isLoading])
 
     return (
-      <div>
+      <>
         <Component data={data} />
 
         <div ref={ref}>Loading more data...</div>
-      </div>
+      </>
     )
   }
 }

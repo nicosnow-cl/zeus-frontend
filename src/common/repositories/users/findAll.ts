@@ -40,7 +40,8 @@ export async function findAll({ page = 0, limit = 10 }: TFindAllProps | undefine
       ])
       .toArray()
 
-    return data.map((card) => JSON.parse(JSON.stringify(card)))
+    // return data.map((card) => JSON.parse(JSON.stringify(card)))
+    return JSON.parse(JSON.stringify(data))
 
     // return res.status(200).json({ data, error: null, success: true });
   } catch (err: any) {
