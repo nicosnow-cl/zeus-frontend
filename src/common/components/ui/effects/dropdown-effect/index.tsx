@@ -63,8 +63,10 @@ export function ContentWithDropdown({
   const handleToggle = (value?: boolean) =>
     setIsOpen((prev) => (typeof value === 'boolean' ? value : !prev))
 
-  if (isOpen) document.body.style.overflow = 'hidden'
-  else document.body.style.overflow = 'auto'
+  if (document) {
+    if (isOpen) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = 'auto'
+  }
 
   return (
     <MotionConfig transition={{ ...baseTransition, ...transition }}>
