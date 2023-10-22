@@ -19,7 +19,7 @@ export type TFilterSheetProps = {
 export function FilterSheet({ trigger = 'Filters' }: TFilterSheetProps) {
   return (
     <Sheet>
-      <SheetTrigger>{trigger}</SheetTrigger>
+      <SheetTrigger asChild>{trigger}</SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
           <SheetTitle>Filtros</SheetTitle>

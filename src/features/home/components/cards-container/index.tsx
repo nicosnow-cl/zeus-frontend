@@ -1,15 +1,26 @@
+import { Grid } from '@radix-ui/themes'
+
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
-import { getCards } from '../../services/getCards'
+import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import * as UserCard from '../user-card'
 
-export const CardsContainer = async () => {
-  const userCards = await getCards()
+export type TCardsContainerProps = {
+  data?: UserCardEntity[]
+}
 
-  const delays = userCards.map((_, idx) => 100 + Math.max(1, idx) * 100)
+export const CardsContainer = async ({ data = [] }: TCardsContainerProps) => {
+  const delays = data.map((_, idx) => 100 + Math.max(1, idx) * 100)
 
   return (
-    <>
-      {userCards.slice(0, 10).map((user, idx) => (
+    <Grid
+      columns={{
+        initial: '1',
+        md: '2',
+        lg: '3',
+      }}
+      gap="4"
+    >
+      {data.map((user, idx) => (
         <FlipEffect
           key={idx}
           frontChild={
@@ -32,6 +43,6 @@ export const CardsContainer = async () => {
           delay={delays[idx]}
         />
       ))}
-    </>
+    </Grid>
   )
 }

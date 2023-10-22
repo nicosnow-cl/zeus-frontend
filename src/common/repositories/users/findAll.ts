@@ -1,11 +1,16 @@
 import { getConnection } from '@/common/repositories/mongo'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
-export async function getCards() {
+export type TFindAllProps = {
+  page?: number | string
+  limit?: number | string
+}
+
+export async function findAll({ page = 0, limit = 10 }: TFindAllProps | undefined = {}) {
   const { db, closeConnection } = await getConnection()
 
   try {
-    // const { body: filters } = req;
+    // const { body:   } = req;
     const collection = db.collection<UserCardEntity>('cards')
 
     const query: any = {}
@@ -20,8 +25,15 @@ export async function getCards() {
     //   if (video) query.videos = { $exists: true, $not: { $size: 0 } };
     // }
 
+    let skip = 0
+    let limitTo = 10
+
+    if (page) skip = Number(page) * Number(limit)
+
     const data = await collection
       .find(query)
+      .skip(skip)
+      .limit(limitTo)
       .sort([
         ['type', -1],
         ['returnAt', -1],
