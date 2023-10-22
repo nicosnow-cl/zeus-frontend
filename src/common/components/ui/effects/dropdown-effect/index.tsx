@@ -1,8 +1,8 @@
 'use client'
 
-import { Container, Flex } from '@radix-ui/themes'
+import { Container } from '@radix-ui/themes'
 import { AnimatePresence, MotionConfig, Transition, Variants, motion } from 'framer-motion'
-import { MouseEventHandler, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const baseTransition: Transition = {
   type: 'tween',
@@ -63,6 +63,9 @@ export function ContentWithDropdown({
   const handleToggle = (value?: boolean) =>
     setIsOpen((prev) => (typeof value === 'boolean' ? value : !prev))
 
+  if (isOpen) document.body.style.overflow = 'hidden'
+  else document.body.style.overflow = 'scroll'
+
   return (
     <MotionConfig transition={{ ...baseTransition, ...transition }}>
       <motion.div
@@ -116,7 +119,7 @@ export function ContentWithDropdown({
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className={`h-full w-full backdrop-blur-md backdrop-saturate-150 ${classNameOverlay}`}
+            className={`h-full w-full backdrop-blur-md backdrop-saturate-100 ${classNameOverlay}`}
             variants={{
               closed: {
                 ...baseVariantsOverlay.closed,

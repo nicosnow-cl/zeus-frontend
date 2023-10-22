@@ -60,7 +60,7 @@ export function TopBar({ logo }: TopBarProps) {
     <ContentWithDropdown
       classNameContainer="border-b border-b-woodsmoke-200 text-woodsmoke-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.woodsmoke.950/0.9)] [--bg-to:theme(colors.woodsmoke.950)]"
       classNameContent="min-h-[215px]"
-      classNameOverlay="h-screen w-screen"
+      classNameOverlay="h-screen w-screen bg-woodsmoke-950/20"
       content={getCurrentContent(currentContent)}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}
       variantsContainer={{
