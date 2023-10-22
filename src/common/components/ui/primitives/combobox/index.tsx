@@ -94,7 +94,7 @@ export function Combobox({
       <PopoverTrigger asChild onClick={(evt) => handleTriggerClick(evt)}>
         <Button
           aria-expanded={isOpen}
-          className="h-auto min-h-[38px] justify-between rounded-full"
+          className="h-auto min-h-[38px] justify-between rounded-full text-gray-500 dark:text-gray-400"
           role="combobox"
           variant="outline"
         >
