@@ -1,81 +1,14 @@
 'use client'
 
-import { Multiselect } from '@/common/components/ui/primitives/multiselect'
-import { SearchIcon } from '@/common/icons'
+import { Combobox } from '@/common/components/ui/primitives/combobox'
 
-import { Checkbox, Flex, Select, Text, TextField } from '@radix-ui/themes'
+import { Checkbox, Flex, Text } from '@radix-ui/themes'
 
 export const FilterForm = () => {
   return (
-    <Flex direction="column" gap="5">
-      {/* <TextField.Root size="3">
-        <TextField.Slot>
-          <SearchIcon height="16" width="16" />
-        </TextField.Slot>
-        <TextField.Input placeholder="Buscar nombre de usuario..." />
-      </TextField.Root> */}
-
-      <Multiselect />
-
-      <Select.Root defaultValue="apple" size="3">
-        <Select.Trigger />
-        <Select.Content>
-          <Select.Group>
-            <Select.Label>Fruits</Select.Label>
-            <Select.Item value="orange">Orange</Select.Item>
-            <Select.Item value="apple">Apple</Select.Item>
-            <Select.Item value="grape" disabled>
-              Grape
-            </Select.Item>
-          </Select.Group>
-          <Select.Separator />
-          <Select.Group>
-            <Select.Label>Vegetables</Select.Label>
-            <Select.Item value="carrot">Carrot</Select.Item>
-            <Select.Item value="potato">Potato</Select.Item>
-          </Select.Group>
-        </Select.Content>
-      </Select.Root>
-
-      {/* <Select.Root defaultValue="apple" size="3">
-        <Select.Trigger />
-        <Select.Content>
-          <Select.Group>
-            <Select.Label>Fruits</Select.Label>
-            <Select.Item value="orange">Orange</Select.Item>
-            <Select.Item value="apple">Apple</Select.Item>
-            <Select.Item value="grape" disabled>
-              Grape
-            </Select.Item>
-          </Select.Group>
-          <Select.Separator />
-          <Select.Group>
-            <Select.Label>Vegetables</Select.Label>
-            <Select.Item value="carrot">Carrot</Select.Item>
-            <Select.Item value="potato">Potato</Select.Item>
-          </Select.Group>
-        </Select.Content>
-      </Select.Root>
-
-      <Select.Root defaultValue="apple" size="3">
-        <Select.Trigger />
-        <Select.Content>
-          <Select.Group>
-            <Select.Label>Fruits</Select.Label>
-            <Select.Item value="orange">Orange</Select.Item>
-            <Select.Item value="apple">Apple</Select.Item>
-            <Select.Item value="grape" disabled>
-              Grape
-            </Select.Item>
-          </Select.Group>
-          <Select.Separator />
-          <Select.Group>
-            <Select.Label>Vegetables</Select.Label>
-            <Select.Item value="carrot">Carrot</Select.Item>
-            <Select.Item value="potato">Potato</Select.Item>
-          </Select.Group>
-        </Select.Content>
-      </Select.Root> */}
+    <>
+      <Combobox triggerPlaceholder="Apariencia" />
+      <Combobox triggerPlaceholder="Servicios" />
 
       <Flex gap="4">
         <Text as="label" size="2">
@@ -89,6 +22,6 @@ export const FilterForm = () => {
           </Flex>
         </Text>
       </Flex>
-    </Flex>
+    </>
   )
 }

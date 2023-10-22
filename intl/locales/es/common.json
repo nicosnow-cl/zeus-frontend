@@ -3,6 +3,15 @@
     "es": "Español",
     "en": "English"
   },
+  "primitives": {
+    "multi-combobox": {
+      "placeholder": "Seleccione una opción",
+      "select-all": "Seleccionar todo",
+      "select-none": "Deseleccionar todo",
+      "input-placeholder": "Filtrar...",
+      "no-results": "No se encontraron resultados"
+    }
+  },
   "navbar": {
     "announce": "Anunciarme"
   },

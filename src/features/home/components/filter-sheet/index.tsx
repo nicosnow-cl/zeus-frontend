@@ -11,7 +11,7 @@ import {
 
 import { FilterForm } from '../filter-form'
 import { RadixUiProvider } from '@/common/components/providers/radix-ui'
-import { Theme } from '@radix-ui/themes'
+import { Flex, Theme } from '@radix-ui/themes'
 
 export type TFilterSheetProps = {
   trigger?: React.ReactNode
@@ -23,7 +23,7 @@ export function FilterSheet({ trigger = 'Filters' }: TFilterSheetProps) {
       <SheetTrigger>{trigger}</SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
-          <SheetTitle>Are you sure absolutely sure?</SheetTitle>
+          <SheetTitle>Filtros</SheetTitle>
           <SheetDescription>This action is permanent and cannot be undone.</SheetDescription>
         </SheetHeader>
 
@@ -34,7 +34,9 @@ export function FilterSheet({ trigger = 'Filters' }: TFilterSheetProps) {
           scaling="90%"
           hasBackground={false}
         >
-          <FilterForm />
+          <Flex className="mt-5" direction="column" gap="5">
+            <FilterForm />
+          </Flex>
         </Theme>
       </SheetContent>
     </Sheet>
