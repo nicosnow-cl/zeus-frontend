@@ -1,3 +1,5 @@
+const { radixThemePreset } = require('radix-themes-tw')
+
 const { palette } = require('./constants/tailwind')
 
 /** @type {import('tailwindcss').Config} */
@@ -18,7 +20,9 @@ module.exports = {
       },
     },
     extend: {
+      ...radixThemePreset.theme,
       colors: {
+        ...radixThemePreset.theme?.colors,
         ...palette,
       },
       keyframes: {

@@ -9,7 +9,7 @@ export const CardsContainer = async () => {
 
   return (
     <>
-      {userCards.map((user, idx) => (
+      {userCards.slice(0, 10).map((user, idx) => (
         <FlipEffect
           key={idx}
           frontChild={

@@ -7,7 +7,7 @@ import { Checkbox, Flex, Select, Text, TextField } from '@radix-ui/themes'
 
 export const FilterForm = () => {
   return (
-    <Flex className="mt-5 flex" direction="column" gap="5">
+    <Flex direction="column" gap="5">
       {/* <TextField.Root size="3">
         <TextField.Slot>
           <SearchIcon height="16" width="16" />

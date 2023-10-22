@@ -1,3 +1,5 @@
+'use client'
+
 import {
   Sheet,
   SheetContent,
@@ -7,18 +9,33 @@ import {
   SheetTrigger,
 } from '@/shadcn-components/ui/sheet'
 
-export function FilterSheet() {
+import { FilterForm } from '../filter-form'
+import { RadixUiProvider } from '@/common/components/providers/radix-ui'
+import { Theme } from '@radix-ui/themes'
+
+export type TFilterSheetProps = {
+  trigger?: React.ReactNode
+}
+
+export function FilterSheet({ trigger = 'Filters' }: TFilterSheetProps) {
   return (
     <Sheet>
-      <SheetTrigger>Open</SheetTrigger>
-      <SheetContent>
+      <SheetTrigger>{trigger}</SheetTrigger>
+      <SheetContent side="left">
         <SheetHeader>
           <SheetTitle>Are you sure absolutely sure?</SheetTitle>
-          <SheetDescription>
-            This action cannot be undone. This will permanently delete your account and remove your
-            data from our servers.
-          </SheetDescription>
+          <SheetDescription>This action is permanent and cannot be undone.</SheetDescription>
         </SheetHeader>
+
+        <Theme
+          accentColor="gray"
+          grayColor="slate"
+          radius="full"
+          scaling="90%"
+          hasBackground={false}
+        >
+          <FilterForm />
+        </Theme>
       </SheetContent>
     </Sheet>
   )

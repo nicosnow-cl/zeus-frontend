@@ -2,10 +2,8 @@
   background-image: conic-gradient(
     from var(--border-angle),
     transparent 10%,
-    // theme('colors.woodsmoke.50'),
-    // theme('colors.primary.500'),
-    red,
-    blue
+    theme('colors.woodsmoke.50'),
+    theme('colors.primary.500')
   );
   background-position: center center;
   background-repeat: no-repeat;

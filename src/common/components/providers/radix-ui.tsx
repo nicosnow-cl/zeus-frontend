@@ -6,7 +6,7 @@ import { ThemeProvider } from 'next-themes'
 
 export function RadixUiProvider({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="class">
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
       <Theme accentColor="gray" grayColor="slate" radius="full" scaling="90%">
         {children}
         {/* <ThemePanel /> */}

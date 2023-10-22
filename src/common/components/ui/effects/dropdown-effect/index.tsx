@@ -2,7 +2,7 @@
 
 import { AnimatePresence, MotionConfig, Transition, Variants, motion } from 'framer-motion'
 import { Container } from '@radix-ui/themes'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export const baseTransition: Transition = {
   type: 'tween',
@@ -63,10 +63,12 @@ export function ContentWithDropdown({
   const handleToggle = (value?: boolean) =>
     setIsOpen((prev) => (typeof value === 'boolean' ? value : !prev))
 
-  if (document) {
-    if (isOpen) document.body.style.overflow = 'hidden'
-    else document.body.style.overflow = 'auto'
-  }
+  useEffect(() => {
+    if (document) {
+      if (isOpen) document.body.style.overflow = 'hidden'
+      else document.body.style.overflow = 'auto'
+    }
+  }, [isOpen])
 
   return (
     <MotionConfig transition={{ ...baseTransition, ...transition }}>

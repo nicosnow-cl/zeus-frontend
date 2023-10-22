@@ -18,9 +18,9 @@ function Home() {
   return (
     <>
       <FilterSheet />
-      {/* <Grid columns="3" gap="4">
+      <Grid columns="3" gap="4">
         <CardsContainer />
-      </Grid> */}
+      </Grid>
     </>
   )
 }
