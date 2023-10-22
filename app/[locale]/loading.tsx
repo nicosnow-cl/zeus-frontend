@@ -1,14 +1,13 @@
 import { Grid } from '@radix-ui/themes'
 
-// import { Skeleton } from '@/features/home/components/user-card';
+import { Skeleton } from '@/features/home/components/user-card'
 
 export default function Loading() {
   return (
     <Grid columns="3" gap="4">
-      Holi
-      {/* {Array.from({ length: 10 }).map((_, idx) => (
+      {Array.from({ length: 10 }).map((_, idx) => (
         <Skeleton key={idx} />
-      ))} */}
+      ))}
     </Grid>
   )
 }
