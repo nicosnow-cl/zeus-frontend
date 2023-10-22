@@ -1,3 +1,5 @@
+'use client'
+
 import { Grid } from '@radix-ui/themes'
 
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'

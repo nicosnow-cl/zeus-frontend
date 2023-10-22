@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { Suspense } from 'react'
 
 import { fetchUsers } from '@/features/home/actions/fetchUsers'
 import { CardsContainerInfiniteScroll } from '@/features/home/components/cards-container-infinite-scroll'
@@ -20,5 +19,9 @@ export default async function Home({
 }) {
   const initialData = await fetchUsers()
 
-  return <CardsContainerInfiniteScroll initialData={initialData} />
+  return (
+    <div key={Math.random()}>
+      <CardsContainerInfiniteScroll initialData={initialData} />
+    </div>
+  )
 }
