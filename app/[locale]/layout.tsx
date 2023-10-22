@@ -3,7 +3,7 @@ import { getValidLocale } from '@intl/locale'
 import { MainContainer } from '@/common/components/containers/main'
 import { RadixUiProvider } from '@/common/components/providers/radix-ui'
 
-import '@styles/globals.css'
+import '@styles/global.css'
 import '@styles/theme-config.css'
 import NextIntlClientProvider from '@/common/components/providers/next-intl-client'
 

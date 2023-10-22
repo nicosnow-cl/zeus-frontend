@@ -5,7 +5,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/common/components/ui/primitives/shadcn/sheet'
+} from '@/shadcn-components/ui/sheet'
 
 export function FilterSheet() {
   return (
