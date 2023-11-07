@@ -1,21 +1,17 @@
-import { Quicksand, Source_Code_Pro, Source_Sans_3 } from 'next/font/google'
+import { Philosopher, Poppins } from 'next/font/google'
 
-const quickSand = Quicksand({
+const philosopher = Philosopher({
   subsets: ['latin'],
+  weight: ['400', '700'],
   display: 'swap',
-  variable: '--font-quicksand-google',
+  variable: '--font-heading',
 })
 
-const sourceCodePro = Source_Code_Pro({
+const poppins = Poppins({
   subsets: ['latin'],
+  weight: ['100', '300', '400', '500', '600', '700', '900'],
   display: 'swap',
-  variable: '--font-source-code-pro',
+  variable: '--font-default',
 })
 
-const sourceSans3 = Source_Sans_3({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-source-sans-3',
-})
-
-export const fonts = [quickSand, sourceCodePro, sourceSans3]
+export const fonts = [poppins, philosopher]

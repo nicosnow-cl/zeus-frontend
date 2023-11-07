@@ -1,12 +1,12 @@
 .radix-themes {
   /* fonts */
-  --default-font-family: var(--font-source-code-pro);
-  --heading-font-family: var(--font-quicksand-google);
+  --default-font-family: var(--font-default);
+  --heading-font-family: var(--font-heading);
 
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
+  --font-weight-light: 100;
+  --font-weight-regular: 300;
   --font-weight-medium: 500;
-  --font-weight-bold: 600;
+  --font-weight-bold: 700;
 
   /* containers */
   --container-4: 1366px;
