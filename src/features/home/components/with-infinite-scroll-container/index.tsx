@@ -1,5 +1,8 @@
-import { useEffect, useState } from 'react'
-import { useInView } from 'react-intersection-observer'
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
+import { useInView } from 'framer-motion'
+import LoadMore from './load-more'
 
 export type TWithInfiniteScrollFetchDataProps<T> = {
   Component: React.FC<{ data: T[] }>
@@ -20,7 +23,8 @@ export function withInfiniteScrollFetchData<T>({
     const [data, setData] = useState<T[]>(initialData)
     const [page, setPage] = useState(1)
     const [isLoading, setIsLoading] = useState(false)
-    const [ref, inView] = useInView()
+    const loadingMoreRef = useRef<HTMLDivElement>(null)
+    const isInView = useInView(loadingMoreRef)
 
     async function fetchMoreData() {
       setIsLoading(true)
@@ -40,17 +44,14 @@ export function withInfiniteScrollFetchData<T>({
     }
 
     useEffect(() => {
-      if (inView && !isLoading) {
-        setIsLoading(true)
-        fetchMoreData()
-      }
-    }, [inView, isLoading])
+      if (isInView && !isLoading) fetchMoreData()
+    }, [isInView, isLoading])
 
     return (
       <>
         <Component data={data} />
 
-        <div ref={ref}>Loading more data...</div>
+        <LoadMore ref={loadingMoreRef} isLoading={isLoading} />
       </>
     )
   }

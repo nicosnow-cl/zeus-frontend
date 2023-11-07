@@ -10,7 +10,7 @@ export type TCardsContainerProps = {
   data?: UserCardEntity[]
 }
 
-export const CardsContainer = async ({ data = [] }: TCardsContainerProps) => {
+export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
   const delays = data.map((_, idx) => 100 + Math.max(1, idx) * 100)
 
   return (

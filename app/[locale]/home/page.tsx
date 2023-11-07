@@ -19,9 +19,5 @@ export default async function Home({
 }) {
   const initialData = await fetchUsers()
 
-  return (
-    <div key={Math.random()}>
-      <CardsContainerInfiniteScroll initialData={initialData} />
-    </div>
-  )
+  return <CardsContainerInfiniteScroll initialData={initialData} />
 }
