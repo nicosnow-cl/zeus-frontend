@@ -1,5 +1,6 @@
 export enum Routes {
-  Home = '/',
+  Root = '/',
+  Home = '/home',
   SignIn = '/sign-in',
   Register = '/register',
   Contact = '/contact',

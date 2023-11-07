@@ -3,10 +3,10 @@ import { ICrumb } from '../interfaces/crumb.interface'
 import { Routes } from '../enums'
 
 const DEFAULT_CRUMB: ICrumb = {
-  code: 'home',
-  href: Routes.Home,
+  code: 'root',
+  href: Routes.Root,
   icon: <HouseIcon />,
-  label: '',
+  label: 'afrodita.app',
 }
 
 export const getUrlBreadcrumb = (pathname: string): ICrumb[] => {
