@@ -1,4 +1,5 @@
 import { Image } from './misc/image.type'
+import { Location } from './misc/location.type'
 import { Media } from './misc/media.type'
 import { Price } from './misc/price.type'
 import { SocialNetwork } from './misc/social-network.type'
@@ -22,7 +23,7 @@ export type UserCardEntity = {
   nationality: string
   price: Price
   returnAt: string
-  rrss: SocialNetwork[]
+  rrss?: SocialNetwork[]
   services: string[]
   username: string
 }

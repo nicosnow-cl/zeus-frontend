@@ -24,14 +24,14 @@ export const AvatarWithName = ({ avatar, username, age, name }: AvatarWithNamePr
         >
           {name}, {age}
         </Heading>
-        <Text
+        {/* <Text
           className="text-crimson-9"
           size="2"
           style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}
           highContrast
         >
-          {username}
-        </Text>
+          @{username}
+        </Text> */}
       </Flex>
     </Flex>
 

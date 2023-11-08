@@ -1,7 +1,8 @@
-import { UserCardEntity } from '../../interfaces/objects/user-card.type'
+import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
 export type RootProps = {
   children?: React.ReactNode
+  onClik?: () => void
 }
 
 export type BackgroundMediaProps = {
@@ -21,4 +22,8 @@ export type DescriptionProps = {
   services?: UserCardEntity['services']
 }
 
-export type ActionsProps = {}
+export type ActionsProps = {
+  price: UserCardEntity['price']
+  location: UserCardEntity['location']
+  rrss?: UserCardEntity['rrss']
+}

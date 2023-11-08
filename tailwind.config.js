@@ -21,6 +21,10 @@ module.exports = {
     },
     extend: {
       ...radixThemePreset.theme,
+      fontFamily: {
+        default: ['var(--font-default)'],
+        heading: ['var(--font-heading)'],
+      },
       colors: {
         ...radixThemePreset.theme?.colors,
         ...palette,

@@ -1,6 +1,6 @@
-// import RrSs from '../../types/type.rrss';
+export type SocialNetworkType = 'whatsapp' | 'instagram' | 'twitter' | 'facebook'
 
 export type SocialNetwork = {
-  // type: RrSs;
+  type: SocialNetworkType
   url: string
 }
