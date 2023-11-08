@@ -10,11 +10,22 @@ export type BackgroundMediaProps = {
   medias?: UserCardEntity['medias']
 }
 
-export type AvatarWithNameProps = {
+export type BodyProps = {
+  username: UserCardEntity['username']
   age?: UserCardEntity['age']
   avatar: UserCardEntity['avatar']
-  name?: UserCardEntity['name']
+  name: UserCardEntity['name']
+}
+
+export type AvatarWithNameProps = {
   username: UserCardEntity['username']
+  age?: UserCardEntity['age']
+  avatar: UserCardEntity['avatar']
+  name: UserCardEntity['name']
+  showAvatar?: boolean
+  showUsername?: boolean
+  showUserType?: boolean
+  withDropShadow?: boolean
 }
 
 export type DescriptionProps = {

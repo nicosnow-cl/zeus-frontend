@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Badge, Flex, Heading, Separator, Text, Theme } from '@radix-ui/themes'
 
+import { AvatarWithName } from '@/common/components/ui/others/avatar'
 import { AppearanceGroup } from '../appearance-group'
 import {
   Arrow90degRightIcon,
@@ -90,17 +91,15 @@ export const UserDialog = ({ open: externalOpen, onOpenChange, data }: TUserDial
 
                 <Separator my="3" size="2" />
 
-                <Flex justify="between" gap="2">
-                  <div>
-                    <Heading size="7">
-                      {data.name}, {data.age}
-                    </Heading>
-
-                    <Text size="2" className="italic text-crimson-9">
-                      @{data.username}
-                    </Text>
-                  </div>
-                </Flex>
+                <AvatarWithName
+                  avatar={data.avatar}
+                  name={data.name}
+                  age={data.age}
+                  username={data.username}
+                  showUserType={false}
+                  showAvatar
+                  showUsername
+                />
               </div>
             </DialogTitle>
 

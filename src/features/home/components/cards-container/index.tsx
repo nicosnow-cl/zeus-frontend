@@ -64,7 +64,7 @@ export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
                   <UserCard.BackgroundMedia avatar={user.avatar} medias={user.medias} />
                 </div>
 
-                <UserCard.AvatarWithName
+                <UserCard.Body
                   avatar={user.avatar}
                   username={user.username}
                   age={user.age}
