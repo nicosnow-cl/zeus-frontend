@@ -9,6 +9,6 @@ export type TFetchUsersProps = {
 }
 
 export const fetchUsers = async ({ page = 0, limit = 10 }: TFetchUsersProps | undefined = {}) => {
-  await sleep(1000)
+  await sleep(500)
   return await findAll({ page, limit })
 }

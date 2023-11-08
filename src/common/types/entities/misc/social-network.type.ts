@@ -1,4 +1,10 @@
-export type SocialNetworkType = 'whatsapp' | 'instagram' | 'twitter' | 'facebook'
+export type SocialNetworkType =
+  | 'facebook'
+  | 'instagram'
+  | 'threads'
+  | 'tiktok'
+  | 'twitter'
+  | 'whatsapp'
 
 export type SocialNetwork = {
   type: SocialNetworkType

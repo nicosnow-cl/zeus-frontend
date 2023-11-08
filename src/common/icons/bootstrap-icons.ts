@@ -1,6 +1,7 @@
 'use client'
 
 export {
+  Arrow90degRight,
   BoxArrowRight,
   Check,
   CheckSquare,
@@ -9,16 +10,22 @@ export {
   Coin,
   DoorOpen,
   Envelope,
+  Facebook,
   FilterCircleFill,
   GeoAltFill,
   Globe2,
   House,
+  Instagram,
   Moon,
   PatchCheckFill,
   PersonCircle,
   Search,
+  ShareFill,
   Square,
   SuitHeartFill,
   Sun,
+  Tiktok,
+  Twitter,
+  Whatsapp,
   XCircleFill,
 } from 'react-bootstrap-icons'

@@ -25,6 +25,10 @@ module.exports = {
         default: ['var(--font-default)'],
         heading: ['var(--font-heading)'],
       },
+      fontSize: {
+        xs: ['var(--font-size-1)', 'var(--line-height-1)'],
+        sm: ['var(--font-size-2)', 'var(--line-height-2)'],
+      },
       colors: {
         ...radixThemePreset.theme?.colors,
         ...palette,

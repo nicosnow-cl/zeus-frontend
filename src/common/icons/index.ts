@@ -1,6 +1,7 @@
 import Icons from './Icons'
 
 export const {
+  Arrow90degRightIcon,
   BoxArrowRightIcon,
   CheckIcon,
   CheckSquareIcon,
@@ -9,17 +10,23 @@ export const {
   CoinIcon,
   DoorOpenIcon,
   EnvelopeIcon,
+  FacebookIcon,
   FilterCircleFillIcon,
   GeoAltFillIcon,
   Globe2Icon,
   HouseIcon,
+  InstagramIcon,
   LogoIcon,
   MoonIcon,
   PatchCheckFillIcon,
   PersonCircleIcon,
   SearchIcon,
+  ShareFillIcon,
   SquareIcon,
   SuitHeartFillIcon,
   SunIcon,
+  TiktokIcon,
+  TwitterIcon,
+  WhatsappIcon,
   XCircleFillIcon,
 } = Icons

@@ -1,16 +1,25 @@
 import { useState } from 'react'
+import { Badge, Flex, Heading, Separator, Text, Theme } from '@radix-ui/themes'
 
+import { AppearanceGroup } from '../appearance-group'
+import {
+  Arrow90degRightIcon,
+  PatchCheckFillIcon,
+  ShareFillIcon,
+  SuitHeartFillIcon,
+} from '@/common/icons'
+import { Button } from '@/shadcn-components/ui/button'
 import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
 } from '@/shadcn-components/ui/dialog'
+import { ServicesGroup } from '../services-group'
+import { SocialNetworksGroup } from '../social-networks-group'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import { Badge, Flex, Heading, Separator, Text, Theme } from '@radix-ui/themes'
-import { PatchCheckFillIcon, SuitHeartFillIcon } from '@/common/icons'
-import { Button } from '@/shadcn-components/ui/button'
 
 export type TUserDialogProps = {
   onOpenChange?: (open: boolean) => void
@@ -30,6 +39,8 @@ export const UserDialog = ({ open: externalOpen, onOpenChange, data }: TUserDial
     if (!isControlled) setInternalOpen(true)
   }
 
+  if (!data) return null
+
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
@@ -42,47 +53,75 @@ export const UserDialog = ({ open: externalOpen, onOpenChange, data }: TUserDial
         >
           <DialogHeader>
             <DialogTitle asChild>
-              <Flex className="mb-3" direction="column">
-                <Flex align="center" justify="between" gap="2" className="mb-1">
-                  <Heading>
-                    {data?.name}, {data?.age}
-                  </Heading>
+              <div className="mb-2">
+                <Flex justify="between" align="center">
+                  <Flex gap="2">
+                    <Badge
+                      className="px-2 py-1 text-3"
+                      radius="full"
+                      variant="surface"
+                      highContrast
+                    >
+                      <PatchCheckFillIcon /> VIP
+                    </Badge>
 
-                  <div>
-                    <Button size="sm">Ver perfil</Button>
-                    <Button className="ml-2" size="sm">
-                      Compartir
+                    <Badge
+                      className="px-2 py-1 text-2"
+                      color="tomato"
+                      radius="full"
+                      variant="surface"
+                      highContrast
+                    >
+                      <SuitHeartFillIcon /> 2.6k
+                    </Badge>
+                  </Flex>
+
+                  <Flex gap="2">
+                    <Button>
+                      Ver perfil
+                      <Arrow90degRightIcon className="ml-2" />
                     </Button>
+                    <Button>
+                      Compartir
+                      <ShareFillIcon className="ml-2" />
+                    </Button>
+                  </Flex>
+                </Flex>
+
+                <Separator my="3" size="2" />
+
+                <Flex justify="between" gap="2">
+                  <div>
+                    <Heading size="7">
+                      {data.name}, {data.age}
+                    </Heading>
+
+                    <Text size="2" className="italic text-crimson-9">
+                      @{data.username}
+                    </Text>
                   </div>
                 </Flex>
-
-                <Flex gap="2" align="center">
-                  <Text size="2" className="text-crimson-9">
-                    @{data?.username}
-                  </Text>
-
-                  <Badge className="px-2 py-1 text-3" radius="full" variant="surface" highContrast>
-                    <PatchCheckFillIcon /> VIP
-                  </Badge>
-                  <Badge
-                    className="px-2 py-1 text-2"
-                    color="tomato"
-                    radius="full"
-                    variant="surface"
-                    highContrast
-                  >
-                    <SuitHeartFillIcon /> 2.6k
-                  </Badge>
-                </Flex>
-              </Flex>
+              </div>
             </DialogTitle>
 
-            <DialogDescription>{data?.description}</DialogDescription>
+            <DialogDescription>
+              <Text className="italic" size="2">
+                {data.description}
+              </Text>
+            </DialogDescription>
           </DialogHeader>
 
-          <Separator my="5" size="4" />
+          <DialogFooter>
+            <Flex className="mt-4 w-full" justify="between" gap="5">
+              {data?.rrss && data.rrss.length > 0 && <SocialNetworksGroup rrss={data.rrss} />}
 
-          <div></div>
+              <div>
+                <AppearanceGroup nationality={data.nationality} flexProps={{ className: 'mb-2' }} />
+
+                {data.services.length > 0 && <ServicesGroup services={data?.services} />}
+              </div>
+            </Flex>
+          </DialogFooter>
         </Theme>
       </DialogContent>
     </Dialog>
