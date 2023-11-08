@@ -40,7 +40,7 @@ export function withInfiniteScrollFetchData<T>({
         setData((prev) => [...prev, ...newData])
       }
 
-      setIsLoading(false)
+      setTimeout(() => setIsLoading(false), 250)
     }
 
     useEffect(() => {
