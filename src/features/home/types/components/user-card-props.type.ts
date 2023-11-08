@@ -2,7 +2,7 @@ import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
 export type RootProps = {
   children?: React.ReactNode
-  onClik?: () => void
+  onClik?: (evt: React.MouseEvent<HTMLElement>) => void
 }
 
 export type BackgroundMediaProps = {

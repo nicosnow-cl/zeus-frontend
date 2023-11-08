@@ -3,6 +3,8 @@
 export {
   Arrow90degRight,
   BoxArrowRight,
+  CaretLeftFill,
+  CaretRightFill,
   Check,
   CheckSquare,
   ChevronDown,

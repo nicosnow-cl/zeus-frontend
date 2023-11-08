@@ -14,14 +14,14 @@ export const AvatarWithName = ({
   showUserType = true,
 }: AvatarWithNameProps) => (
   <Flex p="2" justify="between" className="relative">
-    <Flex gap="3" align="center">
+    <Flex gap="3" align={`${showAvatar ? 'center' : 'start'}`}>
       {showAvatar && avatar && (
         <Avatar
           className={`${withDropShadow ? 'drop-shadow' : ''}`}
           fallback={<PersonCircleIcon size="15" />}
           variant="solid"
           size="4"
-          src={Math.random() > 0.5 ? avatar.lq : 'ww.dolasd.cl'}
+          src={avatar.lq}
         />
       )}
 

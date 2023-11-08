@@ -3,6 +3,8 @@ import Icons from './Icons'
 export const {
   Arrow90degRightIcon,
   BoxArrowRightIcon,
+  CaretLeftFillIcon,
+  CaretRightFillIcon,
   CheckIcon,
   CheckSquareIcon,
   ChevronDownIcon,

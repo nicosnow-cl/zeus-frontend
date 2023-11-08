@@ -2,7 +2,7 @@
 
 import { Grid } from '@radix-ui/themes'
 import { MotionConfig } from 'framer-motion'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
@@ -17,7 +17,8 @@ const DELAYS = [...Array(10)].map((_, idx) => 100 + Math.max(1, idx) * 100)
 
 export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
   const [showDialog, setShowDialog] = useState(false)
-  const [selectedUser, setSelectedUser] = useState<UserCardEntity | null>(null)
+  const [selectedUser, setSelectedUser] = useState<[number, UserCardEntity] | null>(null)
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([])
 
   const getDelay = (idx: number) => {
     const strNumber = idx.toString()
@@ -26,14 +27,43 @@ export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
     return DELAYS[parseInt(lastNumber)]
   }
 
-  const handleClickCard = (idx: number) => {
-    setSelectedUser(data[idx])
+  const handleClickCard = (idx: number, evt?: React.MouseEvent<HTMLElement>) => {
+    setSelectedUser([idx, data[idx]])
     setShowDialog(true)
+
+    if (evt) {
+      evt.preventDefault()
+      evt.stopPropagation()
+    }
   }
 
   const handleCloseDialog = () => {
     setShowDialog(false)
     setSelectedUser(null)
+  }
+
+  const handleGoLeft = () => {
+    const currentIdx = selectedUser?.[0] || 0
+    let nextIdx = currentIdx - 1
+
+    if (nextIdx < 0) nextIdx = data.length - 1
+
+    setSelectedUser([nextIdx, data[nextIdx]])
+
+    const card = cardsRef.current[nextIdx]
+    card?.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const handleGoRight = () => {
+    const currentIdx = selectedUser?.[0] || 0
+    let nextIdx = currentIdx + 1
+
+    if (nextIdx >= data.length) nextIdx = 0
+
+    setSelectedUser([nextIdx, data[nextIdx]])
+
+    const card = cardsRef.current[nextIdx]
+    card?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
@@ -56,10 +86,11 @@ export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
         {data.map((user, idx) => (
           <FlipEffect
             key={idx}
+            ref={(el) => (cardsRef.current[idx] = el)}
             delay={getDelay(idx)}
             frontChild={<UserCard.Skeleton />}
             backChild={
-              <UserCard.Root onClik={() => handleClickCard(idx)}>
+              <UserCard.Root onClik={(evt) => handleClickCard(idx, evt)}>
                 <div className="absolute h-[600px] w-full overflow-hidden">
                   <UserCard.BackgroundMedia avatar={user.avatar} medias={user.medias} />
                 </div>
@@ -78,7 +109,13 @@ export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
         ))}
       </Grid>
 
-      <UserDialog open={showDialog} data={selectedUser} onOpenChange={handleCloseDialog} />
+      <UserDialog
+        open={showDialog}
+        data={selectedUser?.[1] || null}
+        onOpenChange={handleCloseDialog}
+        onLeftClick={handleGoLeft}
+        onRightClick={handleGoRight}
+      />
     </MotionConfig>
   )
 }
