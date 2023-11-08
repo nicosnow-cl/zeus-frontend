@@ -1,5 +1,7 @@
 'use client'
 
+import { Theme } from '@radix-ui/themes'
+
 import {
   Sheet,
   SheetContent,
@@ -8,9 +10,7 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/shadcn-components/ui/sheet'
-
 import { FilterForm } from '../filter-form'
-import { Button, Flex, Theme } from '@radix-ui/themes'
 
 export type TFilterSheetProps = {
   trigger?: React.ReactNode
@@ -33,18 +33,7 @@ export function FilterSheet({ trigger = 'Filters' }: TFilterSheetProps) {
           scaling="90%"
           hasBackground={false}
         >
-          <Flex className="mt-5" direction="column" gap="5">
-            <FilterForm />
-
-            <Flex justify="between">
-              <Button variant="soft" size="3">
-                Limpiar
-              </Button>
-              <Button variant="surface" color="crimson" size="3">
-                Aplicar filtros
-              </Button>
-            </Flex>
-          </Flex>
+          <FilterForm />
         </Theme>
       </SheetContent>
     </Sheet>

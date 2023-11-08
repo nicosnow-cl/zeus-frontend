@@ -12,10 +12,10 @@ import {
 } from '@/shadcn-components/ui/command'
 import { Popover, PopoverContent, PopoverTrigger } from '@/shadcn-components/ui/popover'
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 
 import { CheckIcon, CheckSquareIcon, ChevronDownIcon, SquareIcon } from '@/common/icons'
 import { TMenuSelectOption } from '@/common/types/misc/select-option'
-import { useTranslations } from 'next-intl'
 
 const frameworks = [
   {
@@ -49,16 +49,20 @@ const frameworks = [
 ]
 
 export type TComboboxProps = {
+  btnClassName?: string
   emptyPlaceholder?: string
   inputPlaceholder?: string
-  triggerPlaceholder?: string
+  onChange?: (value: string[]) => void
   options?: TMenuSelectOption[]
+  triggerPlaceholder?: string
 }
 
 export function Combobox({
   emptyPlaceholder,
   inputPlaceholder,
+  onChange,
   triggerPlaceholder,
+  btnClassName = '',
   options = [...frameworks],
 }: TComboboxProps) {
   const [isOpen, setIsOpen] = useState(false)
@@ -74,10 +78,13 @@ export function Combobox({
   const handleClickOption = (currentValue: string) => {
     if (selectedValues.includes(currentValue)) {
       setSelectedValues((prev) => prev.filter((value) => value !== currentValue))
+      onChange?.(selectedValues.filter((value) => value !== currentValue))
+
       return
     }
 
     setSelectedValues((prev) => [...prev, currentValue])
+    onChange?.([...selectedValues, currentValue])
   }
 
   const isSelected = (value: string) => selectedValues.includes(value)
@@ -94,7 +101,7 @@ export function Combobox({
       <PopoverTrigger asChild onClick={(evt) => handleTriggerClick(evt)}>
         <Button
           aria-expanded={isOpen}
-          className="h-auto min-h-[38px] justify-between rounded-full text-gray-500 dark:text-gray-400"
+          className={`h-auto min-h-[38px] justify-between rounded-full text-gray-500 dark:text-gray-400 ${btnClassName}`}
           role="combobox"
           variant="outline"
         >
