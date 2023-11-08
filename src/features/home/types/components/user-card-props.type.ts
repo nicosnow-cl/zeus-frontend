@@ -36,5 +36,4 @@ export type DescriptionProps = {
 export type ActionsProps = {
   price: UserCardEntity['price']
   location: UserCardEntity['location']
-  rrss?: UserCardEntity['rrss']
 }

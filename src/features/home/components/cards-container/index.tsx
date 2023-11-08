@@ -102,7 +102,7 @@ export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
                   name={user.name}
                 />
                 <UserCard.Description description={user.description} />
-                <UserCard.Actions price={user.price} location={user.location} rrss={user.rrss} />
+                <UserCard.Actions price={user.price} location={user.location} />
               </UserCard.Root>
             }
           />
