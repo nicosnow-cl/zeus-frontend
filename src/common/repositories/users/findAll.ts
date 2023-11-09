@@ -1,3 +1,5 @@
+import { Filter } from 'mongodb'
+
 import { getConnection } from '@/common/repositories/mongo'
 import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
@@ -26,13 +28,15 @@ export async function findAll({
   try {
     const collection = db.collection<UserCardEntity>('cards')
 
-    const filter: any = {}
+    const filter: Filter<UserCardEntity> = {}
     if (query) {
       const { name, appearance, hasPromo, services, withVideo } = query
 
       if (name) filter.name = { $regex: name, $options: 'i' }
-      if (appearance?.length) filter.appearance = { $in: appearance }
-      if (services?.length) filter.services = { $in: services }
+      if (appearance?.length)
+        filter.appearance = { $in: appearance.map((value) => new RegExp(value, 'i')) }
+      if (services?.length)
+        filter.services = { $in: services.map((value) => new RegExp(value, 'i')) }
       if (hasPromo) filter.hasPromo = true
       if (withVideo) filter.videos = { $exists: true, $not: { $size: 0 } }
       // if (type) query.type = type;
@@ -41,6 +45,8 @@ export async function findAll({
     let skip = 0
 
     if (page) skip = Number(page) * Number(limit)
+
+    console.log(filter)
 
     const data = await collection
       .find(filter)
@@ -67,8 +73,6 @@ export async function findAll({
         metadata,
       })
     )
-
-    // return res.status(200).json({ data, error: null, success: true });
   } catch (err: any) {
     console.error(err)
 

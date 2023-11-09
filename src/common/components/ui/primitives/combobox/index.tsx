@@ -17,37 +17,6 @@ import { useTranslations } from 'next-intl'
 import { CheckIcon, CheckSquareIcon, ChevronDownIcon, SquareIcon } from '@/common/icons'
 import { TMenuSelectOption } from '@/common/types/misc/select-option'
 
-const frameworks = [
-  {
-    value: 'next.js',
-    label: 'Next.js',
-  },
-  {
-    value: 'sveltekit',
-    label: 'SvelteKit',
-  },
-  {
-    value: 'nuxt.js',
-    label: 'Nuxt.js',
-  },
-  {
-    value: 'remix',
-    label: 'Remix',
-  },
-  {
-    value: 'astro',
-    label: 'Astro',
-  },
-  {
-    value: 'blitz',
-    label: 'Blitz',
-  },
-  {
-    value: 'redwood',
-    label: 'Redwood',
-  },
-]
-
 export type TComboboxProps = {
   btnClassName?: string
   emptyPlaceholder?: string
@@ -63,7 +32,7 @@ export function Combobox({
   onChange,
   triggerPlaceholder,
   btnClassName = '',
-  options = [...frameworks],
+  options = [],
 }: TComboboxProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedValues, setSelectedValues] = useState<string[]>([])

@@ -1,12 +1,7 @@
 'use client'
 
-import { useForm, SubmitHandler } from 'react-hook-form'
 import { Button, Flex } from '@radix-ui/themes'
-
 import { Checkbox } from '@/shadcn-components/ui/checkbox'
-import { Combobox } from '@/common/components/ui/primitives/combobox'
-import { Input } from '@/shadcn-components/ui/input'
-import { TUsersFilters } from '../../signals/users-filters'
 import {
   Form,
   FormControl,
@@ -15,6 +10,15 @@ import {
   FormLabel,
   FormMessage,
 } from '@/shadcn-components/ui/form'
+import { Input } from '@/shadcn-components/ui/input'
+import { useEffect } from 'react'
+import { useForm, SubmitHandler } from 'react-hook-form'
+
+import { actionFetchAppearances } from '@/common/actions/fetch-appearances'
+import { actionFetchServices } from '@/common/actions/fetch-services'
+import { appearances, services } from '@/common/signals/masters'
+import { Combobox } from '@/common/components/ui/primitives/combobox'
+import { TUsersFilters } from '../../signals/users-filters'
 
 export const DEFAULT_VALUES: TUsersFilters = {
   nameUsername: '',
@@ -37,7 +41,23 @@ export const FilterForm = ({
     defaultValues,
   })
 
+  async function fetchMasters() {
+    const res = await Promise.all([actionFetchAppearances(), actionFetchServices()])
+
+    if (res[0].status === 'success') {
+      appearances.value = res[0].data.map(({ name, value }) => ({ label: name, value }))
+    }
+
+    if (res[1].status === 'success') {
+      services.value = res[1].data.map(({ name, value }) => ({ label: name, value }))
+    }
+  }
+
   const handleSubmit: SubmitHandler<TUsersFilters> = (data) => onSubmit?.(data)
+
+  useEffect(() => {
+    fetchMasters()
+  }, [])
 
   return (
     <Form {...form}>
@@ -65,6 +85,7 @@ export const FilterForm = ({
                   <Combobox
                     btnClassName="w-full"
                     triggerPlaceholder="Apariencia"
+                    options={appearances.value}
                     onChange={(values) => form.setValue('appearance', values)}
                   />
                 </FormControl>
@@ -82,6 +103,7 @@ export const FilterForm = ({
                   <Combobox
                     btnClassName="w-full"
                     triggerPlaceholder="Servicios"
+                    options={services.value}
                     onChange={(values) => form.setValue('services', values)}
                   />
                 </FormControl>
