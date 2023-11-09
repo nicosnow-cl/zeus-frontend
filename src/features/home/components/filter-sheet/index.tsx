@@ -11,12 +11,27 @@ import {
   SheetTrigger,
 } from '@/shadcn-components/ui/sheet'
 import { FilterForm } from '../filter-form'
+import { TUsersFilters } from '../../signals/users-filters'
+import { useRouter } from '@intl/navigation'
+import { Routes } from '@/common/enums'
 
 export type TFilterSheetProps = {
   trigger?: React.ReactNode
 }
 
 export function FilterSheet({ trigger = 'Filters' }: TFilterSheetProps) {
+  const router = useRouter()
+
+  const handleSubmit = (data: TUsersFilters) => {
+    const params = new URLSearchParams()
+
+    if (data.nameUsername) params.set('name', data.nameUsername)
+
+    const url = `${Routes.Home}?${params.toString()}`
+
+    router.replace(url)
+  }
+
   return (
     <Sheet>
       <SheetTrigger asChild>{trigger}</SheetTrigger>
@@ -33,7 +48,7 @@ export function FilterSheet({ trigger = 'Filters' }: TFilterSheetProps) {
           scaling="90%"
           hasBackground={false}
         >
-          <FilterForm />
+          <FilterForm onSubmit={handleSubmit} />
         </Theme>
       </SheetContent>
     </Sheet>

@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import { randomUUID } from 'crypto'
 
 import { fetchUsers } from '@/features/home/actions/fetchUsers'
 import { CardsContainerInfiniteScroll } from '@/features/home/components/cards-container-infinite-scroll'
@@ -17,7 +18,17 @@ export default async function Home({
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  const initialData = await fetchUsers()
+  const res = await fetchUsers({ filters: { ...searchParams } })
 
-  return <CardsContainerInfiniteScroll initialData={initialData} />
+  if (res.status === 'error') {
+    throw new Error(res.error)
+  }
+
+  return (
+    <CardsContainerInfiniteScroll
+      key={randomUUID()}
+      initialData={res.data}
+      initialTotal={res.metadata.total}
+    />
+  )
 }

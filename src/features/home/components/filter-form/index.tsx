@@ -16,17 +16,21 @@ import {
   FormMessage,
 } from '@/shadcn-components/ui/form'
 
-export const FilterForm = () => {
+export type TFilterFormProps = {
+  onSubmit?: (data: TUsersFilters) => void
+}
+
+export const FilterForm = ({ onSubmit }: TFilterFormProps) => {
   const form = useForm<TUsersFilters>({
     defaultValues: { ...usersFilters.value },
   })
 
-  const onSubmit: SubmitHandler<TUsersFilters> = (data) => console.log(data)
+  const handleSubmit: SubmitHandler<TUsersFilters> = (data) => onSubmit?.(data)
 
   return (
     <Form {...form}>
       <Flex className="mt-5" direction="column" gap="5" asChild>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(handleSubmit)}>
           <FormField
             control={form.control}
             name="nameUsername"

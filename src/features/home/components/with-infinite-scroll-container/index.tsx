@@ -2,11 +2,17 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
+
+import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
 import LoadMore from './load-more'
 
 export type TWithInfiniteScrollFetchDataProps<T> = {
   Component: React.FC<{ data: T[] }>
-  fetchFunction: (props: { page?: string | number; limit?: string | number }) => Promise<T[]>
+  fetchFunction: (props: {
+    page?: string | number
+    limit?: string | number
+    query?: string
+  }) => Promise<TPaginatedResponse<T>>
 }
 
 export function withInfiniteScrollFetchData<T>({
@@ -14,14 +20,21 @@ export function withInfiniteScrollFetchData<T>({
   fetchFunction,
 }: TWithInfiniteScrollFetchDataProps<T>) {
   return function InfiniteScrollContainer({
-    search,
     initialData = [],
+    initialPage = 0,
+    initialTotal = 0,
+    query,
   }: {
     initialData?: T[]
-    search?: string
+    initialPage?: number
+    initialTotal?: number
+    query?: string
   }) {
     const [data, setData] = useState<T[]>(initialData)
-    const [page, setPage] = useState(1)
+    const [metadata, setMetadata] = useState({
+      page: initialPage,
+      total: initialTotal,
+    })
     const [isLoading, setIsLoading] = useState(false)
     const loadingMoreRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(loadingMoreRef)
@@ -29,15 +42,18 @@ export function withInfiniteScrollFetchData<T>({
     async function fetchMoreData() {
       setIsLoading(true)
 
-      const next = page + 1
-      const newData = await fetchFunction({
-        page: next,
+      const nextPage = metadata.page + 1
+      const res = await fetchFunction({
+        page: nextPage,
         limit: 10,
+        query,
       })
 
-      if (newData?.length) {
-        setPage(next)
-        setData((prev) => [...prev, ...newData])
+      if (res.status === 'error') return
+
+      if (res.data.length) {
+        setMetadata((prev) => ({ ...prev, page: nextPage, total: res.metadata.total }))
+        setData((prev) => [...prev, ...res.data])
       }
 
       setTimeout(() => setIsLoading(false), 250)
@@ -51,7 +67,7 @@ export function withInfiniteScrollFetchData<T>({
       <>
         <Component data={data} />
 
-        <LoadMore ref={loadingMoreRef} isLoading={isLoading} />
+        {data.length < metadata.total && <LoadMore ref={loadingMoreRef} isLoading={isLoading} />}
       </>
     )
   }
