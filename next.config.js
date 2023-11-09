@@ -5,22 +5,52 @@ const nextConfig = {
   env: {
     rootDir: __dirname,
   },
-  experimental: {
-    serverActions: true,
-  },
   images: {
-    domains: [
-      'cdn-ea-images.escort-advisor.com',
-      'cdn1.sexvid.xxx',
-      'picsum.photos',
-      'pornstarbyface.com',
-      's3.eu-central-1.amazonaws.com',
-      'st2n.depositphotos.com',
-      'st3.depositphotos.com',
-      'st3n.depositphotos.com',
-      'st4n.depositphotos.com',
-      'www.peacemakersnetwork.org',
-      'www.shutterstock.com',
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn-ea-images.escort-advisor.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn1.sexvid.xxx',
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+      {
+        protocol: 'https',
+        hostname: 'pornstarbyface.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 's3.eu-central-1.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'st2n.depositphotos.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'st3.depositphotos.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'st3n.depositphotos.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'st4n.depositphotos.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.peacemakersnetwork.org',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.shutterstock.com',
+      },
     ],
   },
   webpack(config, { dev, isServer }) {

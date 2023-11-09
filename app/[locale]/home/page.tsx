@@ -1,4 +1,4 @@
-import { Metadata } from 'next'
+import { Metadata, Viewport } from 'next'
 import { randomUUID } from 'crypto'
 
 import { CardsContainerInfiniteScroll } from '@/features/home/components/cards-container-infinite-scroll'
@@ -7,11 +7,12 @@ import { TSearchParams } from '@/common/types/misc/search-params.type'
 
 export const metadata: Metadata = {
   title: 'cl.afrodita.app',
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
 }
 
 export default async function Home({ searchParams }: { searchParams?: TSearchParams }) {
