@@ -8,7 +8,6 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/shadcn-components/ui/sheet'
-import { Theme } from '@radix-ui/themes'
 import { useState } from 'react'
 
 import { FilterForm } from '../filter-form'
@@ -73,15 +72,7 @@ export function FilterSheet({
           <SheetDescription>Ajuste los resultados de acuerdo a sus preferencias</SheetDescription>
         </SheetHeader>
 
-        <Theme
-          accentColor="gray"
-          grayColor="slate"
-          radius="full"
-          scaling="90%"
-          hasBackground={false}
-        >
-          <FilterForm onSubmit={handleSubmit} defaultValues={usersFilters.value} />
-        </Theme>
+        <FilterForm onSubmit={handleSubmit} defaultValues={usersFilters.value} />
       </SheetContent>
     </Sheet>
   )

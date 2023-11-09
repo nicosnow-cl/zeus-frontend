@@ -84,9 +84,10 @@ export const FilterForm = ({
                 <FormControl>
                   <Combobox
                     btnClassName="w-full"
-                    triggerPlaceholder="Apariencia"
-                    options={appearances.value}
                     onChange={(values) => form.setValue('appearance', values)}
+                    options={appearances.value}
+                    triggerPlaceholder="Apariencia"
+                    value={field.value}
                   />
                 </FormControl>
                 <FormMessage />
@@ -102,9 +103,10 @@ export const FilterForm = ({
                 <FormControl>
                   <Combobox
                     btnClassName="w-full"
-                    triggerPlaceholder="Servicios"
-                    options={services.value}
                     onChange={(values) => form.setValue('services', values)}
+                    options={services.value}
+                    triggerPlaceholder="Servicios"
+                    value={field.value}
                   />
                 </FormControl>
                 <FormMessage />

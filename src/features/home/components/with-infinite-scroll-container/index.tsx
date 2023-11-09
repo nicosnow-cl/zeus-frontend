@@ -4,15 +4,12 @@ import { useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 
 import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
+import { TSearchParams } from '@/common/types/misc/search-params.type'
 import LoadMore from './load-more'
 
 export type TWithInfiniteScrollFetchDataProps<T> = {
   Component: React.FC<{ data: T[] }>
-  fetchFunction: (props: {
-    page?: string | number
-    limit?: string | number
-    query?: string
-  }) => Promise<TPaginatedResponse<T>>
+  fetchFunction: (searchParams?: TSearchParams) => Promise<TPaginatedResponse<T>>
 }
 
 export function withInfiniteScrollFetchData<T>({
@@ -44,8 +41,8 @@ export function withInfiniteScrollFetchData<T>({
 
       const nextPage = metadata.page + 1
       const res = await fetchFunction({
-        page: nextPage,
-        limit: 10,
+        page: nextPage.toString(),
+        limit: '10',
         query,
       })
 
