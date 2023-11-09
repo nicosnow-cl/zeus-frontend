@@ -16,7 +16,7 @@ export {
   FilterCircleFill,
   GeoAltFill,
   Globe2,
-  House,
+  HouseFill,
   Instagram,
   Moon,
   PatchCheckFill,

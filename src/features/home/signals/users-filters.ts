@@ -8,10 +8,12 @@ export type TUsersFilters = {
   hasPromo: boolean
 }
 
-export const usersFilters = signal<TUsersFilters>({
+export const DEFAULT_VALUES: TUsersFilters = {
   nameUsername: '',
   appearance: [],
   services: [],
   withVideo: false,
   hasPromo: false,
-})
+}
+
+export const usersFilters = signal<TUsersFilters>(DEFAULT_VALUES)

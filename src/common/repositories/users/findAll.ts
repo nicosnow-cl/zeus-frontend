@@ -43,10 +43,7 @@ export async function findAll({
     }
 
     let skip = 0
-
     if (page) skip = Number(page) * Number(limit)
-
-    console.log(filter)
 
     const data = await collection
       .find(filter)

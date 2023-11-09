@@ -1,17 +1,24 @@
-import { Link } from '@radix-ui/themes'
+import { Box, Link } from '@radix-ui/themes'
 import NextLink from 'next/link'
 
-import { ICrumb } from '@/common/interfaces/crumb.interface'
+import { TCrumb } from '@/common/types/misc/crumb.type'
 
-export interface IProps {
-  crumb: ICrumb
+export type TCrumbProps = TCrumb & {
+  isFirst?: boolean
 }
-export const Crumb = ({ crumb }: IProps) => (
-  <li className="inline-flex items-center">
-    <Link className={`inline-flex items-center gap-x-2 text-woodsmoke-950`} highContrast asChild>
-      <NextLink href={crumb.href}>
-        {crumb.icon}
-        {crumb.label}
+
+export const Crumb = ({ href, label, icon, isFirst }: TCrumbProps) => (
+  <li className="inline-flex items-center" color="crimson">
+    <Link
+      asChild
+      className={`inline-flex items-center gap-x-2 ${
+        isFirst ? 'text-primary-600' : 'text-woodsmoke-950'
+      }`}
+      size="2"
+    >
+      <NextLink href={href}>
+        {icon}
+        {label}
       </NextLink>
     </Link>
   </li>

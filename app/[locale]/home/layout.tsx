@@ -1,6 +1,6 @@
-import { FilterSheet } from '@/features/home/components/filter-sheet'
-import { Button } from '@/shadcn-components/ui/button'
-import { Container, Flex } from '@radix-ui/themes'
+import { Container } from '@radix-ui/themes'
+
+import { UserCardsFiltersContainer } from '@/features/home/components/containers/user-cards-filters-container'
 
 export type TLayoutProps = {
   children: React.ReactNode
@@ -17,19 +17,7 @@ export default function Layout({ children }: TLayoutProps) {
           xl: '4',
         }}
       >
-        <Flex justify="between" py="4">
-          <FilterSheet
-            trigger={
-              <Button className="rounded-full" variant="default">
-                Filtros
-              </Button>
-            }
-          />
-
-          <Button className="rounded-full" variant="outline">
-            Sort
-          </Button>
-        </Flex>
+        <UserCardsFiltersContainer />
 
         {children}
       </Container>

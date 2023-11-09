@@ -1,8 +1,5 @@
 'use client'
 
-import { Theme } from '@radix-ui/themes'
-import { useState } from 'react'
-
 import {
   Sheet,
   SheetContent,
@@ -11,10 +8,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/shadcn-components/ui/sheet'
+import { Theme } from '@radix-ui/themes'
+import { useState } from 'react'
+
 import { FilterForm } from '../filter-form'
+import { Routes } from '@/common/enums'
 import { TUsersFilters, usersFilters } from '../../signals/users-filters'
 import { useRouter } from '@intl/navigation'
-import { Routes } from '@/common/enums'
 
 export type TFilterSheetProps = {
   onOpenChange?: (open: boolean) => void
@@ -43,7 +43,7 @@ export function FilterSheet({
     usersFilters.value = { ...usersFilters.value, ...data }
   }
 
-  const handleUpdateHomeQuery = (data: Partial<TUsersFilters>) => {
+  const handleUpdateHomeQuery = async (data: Partial<TUsersFilters>) => {
     const params = new URLSearchParams()
 
     if (data.nameUsername) params.set('name', data.nameUsername)
@@ -54,7 +54,7 @@ export function FilterSheet({
 
     const url = `${Routes.Home}?${params.toString()}`
 
-    router.replace(url)
+    router.push(url)
   }
 
   const handleSubmit = (data: TUsersFilters) => {

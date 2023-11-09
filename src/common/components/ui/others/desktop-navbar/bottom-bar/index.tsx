@@ -1,5 +1,8 @@
 'use client'
 
+'use client'
+
+import { useMemo } from 'react'
 import { Flex, Separator } from '@radix-ui/themes'
 
 import { Breadcrumbs } from '../../breadcrumbs'
@@ -10,8 +13,7 @@ import { usePathname } from '@intl/navigation'
 
 export const BottomBar = () => {
   const pathname = usePathname()
-
-  const crumbs = getUrlBreadcrumb(pathname)
+  const crumbs = useMemo(() => getUrlBreadcrumb(pathname), [pathname])
 
   return (
     <Flex
