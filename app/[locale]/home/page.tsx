@@ -1,8 +1,9 @@
 import { Metadata } from 'next'
 import { randomUUID } from 'crypto'
 
-import { fetchUsers } from '@/features/home/actions/fetchUsers'
 import { CardsContainerInfiniteScroll } from '@/features/home/components/cards-container-infinite-scroll'
+import { fetchUsers } from '@/features/home/actions/fetchUsers'
+import { TSearchParams } from '@/common/types/misc/search-params.type'
 
 export const metadata: Metadata = {
   title: 'cl.afrodita.app',
@@ -13,16 +14,10 @@ export const metadata: Metadata = {
   },
 }
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined }
-}) {
-  const res = await fetchUsers({ filters: { ...searchParams } })
+export default async function Home({ searchParams }: { searchParams?: TSearchParams }) {
+  const res = await fetchUsers(searchParams)
 
-  if (res.status === 'error') {
-    throw new Error(res.error)
-  }
+  if (res.status === 'error') throw new Error(res.error)
 
   return (
     <CardsContainerInfiniteScroll

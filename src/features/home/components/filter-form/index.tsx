@@ -6,7 +6,7 @@ import { Button, Flex } from '@radix-ui/themes'
 import { Checkbox } from '@/shadcn-components/ui/checkbox'
 import { Combobox } from '@/common/components/ui/primitives/combobox'
 import { Input } from '@/shadcn-components/ui/input'
-import { TUsersFilters, usersFilters } from '../../signals/users-filters'
+import { TUsersFilters } from '../../signals/users-filters'
 import {
   Form,
   FormControl,
@@ -16,13 +16,25 @@ import {
   FormMessage,
 } from '@/shadcn-components/ui/form'
 
-export type TFilterFormProps = {
-  onSubmit?: (data: TUsersFilters) => void
+export const DEFAULT_VALUES: TUsersFilters = {
+  nameUsername: '',
+  appearance: [],
+  services: [],
+  withVideo: false,
+  hasPromo: false,
 }
 
-export const FilterForm = ({ onSubmit }: TFilterFormProps) => {
+export type TFilterFormProps = {
+  onSubmit?: (data: TUsersFilters) => void
+  defaultValues?: TUsersFilters
+}
+
+export const FilterForm = ({
+  onSubmit,
+  defaultValues = { ...DEFAULT_VALUES },
+}: TFilterFormProps) => {
   const form = useForm<TUsersFilters>({
-    defaultValues: { ...usersFilters.value },
+    defaultValues,
   })
 
   const handleSubmit: SubmitHandler<TUsersFilters> = (data) => onSubmit?.(data)
