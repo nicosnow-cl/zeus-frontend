@@ -1,6 +1,7 @@
 'use client'
 
 import { Theme } from '@radix-ui/themes'
+import { useState } from 'react'
 
 import {
   Sheet,
@@ -16,11 +17,27 @@ import { useRouter } from '@intl/navigation'
 import { Routes } from '@/common/enums'
 
 export type TFilterSheetProps = {
+  onOpenChange?: (open: boolean) => void
+  open?: boolean
   trigger?: React.ReactNode
 }
 
-export function FilterSheet({ trigger = 'Filters' }: TFilterSheetProps) {
+export function FilterSheet({
+  onOpenChange,
+  open: externalOpen,
+  trigger = 'Filters',
+}: TFilterSheetProps) {
+  const isControlled = typeof externalOpen != 'undefined'
+
+  const [internalOpen, setInternalOpen] = useState(isControlled ? externalOpen : false)
   const router = useRouter()
+
+  const open = isControlled ? externalOpen : internalOpen
+
+  const handleOpenChange = (open: boolean) => {
+    if (onOpenChange) onOpenChange(open)
+    if (!isControlled) setInternalOpen(open)
+  }
 
   const handleUpdateUsersFiltersSignal = (data: Partial<TUsersFilters>) => {
     usersFilters.value = { ...usersFilters.value, ...data }
@@ -43,10 +60,12 @@ export function FilterSheet({ trigger = 'Filters' }: TFilterSheetProps) {
   const handleSubmit = (data: TUsersFilters) => {
     handleUpdateUsersFiltersSignal(data)
     handleUpdateHomeQuery(data)
+
+    handleOpenChange(false)
   }
 
   return (
-    <Sheet>
+    <Sheet open={open} onOpenChange={handleOpenChange}>
       <SheetTrigger asChild>{trigger}</SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>

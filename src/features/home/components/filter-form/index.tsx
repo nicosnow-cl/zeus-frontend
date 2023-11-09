@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Flex } from '@radix-ui/themes'
+import { Button, Flex, Text } from '@radix-ui/themes'
 import { Checkbox } from '@/shadcn-components/ui/checkbox'
 import {
   Form,
@@ -117,13 +117,17 @@ export const FilterForm = ({
               control={form.control}
               name="withVideo"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center gap-x-2">
-                  <FormControl>
-                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                  </FormControl>
-                  <FormLabel>Con video</FormLabel>
-                  <FormMessage />
-                </FormItem>
+                <Flex className="space-y-0" gap="2" align="center" asChild>
+                  <FormItem>
+                    <FormControl>
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                    <FormLabel>
+                      <Text>Con video</Text>
+                    </FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                </Flex>
               )}
             />
 
@@ -131,23 +135,36 @@ export const FilterForm = ({
               control={form.control}
               name="hasPromo"
               render={({ field }) => (
-                <FormItem className="flex flex-row items-center gap-x-2">
-                  <FormControl>
-                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                  </FormControl>
-                  <FormLabel>En promoción</FormLabel>
-                  <FormMessage />
-                </FormItem>
+                <Flex className="space-y-0" gap="2" align="center" asChild>
+                  <FormItem>
+                    <FormControl>
+                      <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                    <FormLabel>
+                      <Text>En promoción</Text>
+                    </FormLabel>
+                    <FormMessage />
+                  </FormItem>
+                </Flex>
               )}
             />
           </Flex>
 
           <Flex justify="between">
-            <Button variant="surface" size="3" type="reset">
+            <Button
+              variant="surface"
+              size="3"
+              type="reset"
+              onClick={() =>
+                form.reset({
+                  ...DEFAULT_VALUES,
+                })
+              }
+            >
               Limpiar
             </Button>
             <Button variant="surface" color="crimson" size="3" type="submit">
-              Aplicar filtros
+              Aplicar cambios
             </Button>
           </Flex>
         </form>

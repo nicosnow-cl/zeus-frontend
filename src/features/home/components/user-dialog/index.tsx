@@ -49,7 +49,7 @@ export const UserDialog = ({
 
   const handleOpenChange = (open: boolean) => {
     if (onOpenChange) onOpenChange(open)
-    if (!isControlled) setInternalOpen(true)
+    if (!isControlled) setInternalOpen(open)
   }
 
   return (
