@@ -7,7 +7,7 @@ function NavbarContainer() {
   return (
     <DesktopNavbar.Root>
       <DesktopNavbar.TopBar
-        logo={<LogoIcon className="mr-12 fill-primary-500" width={30} height={30} />}
+        logo={<LogoIcon className="fill-primary-500" width={30} height={30} />}
       />
       <DesktopNavbar.BottomBar />
     </DesktopNavbar.Root>

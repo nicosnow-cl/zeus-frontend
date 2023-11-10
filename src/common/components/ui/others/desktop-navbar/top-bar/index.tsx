@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Container, Flex, Heading } from '@radix-ui/themes'
+import { Box, Button, Flex, Heading, Separator } from '@radix-ui/themes'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import NextLink from 'next/link'
@@ -74,29 +74,33 @@ export function TopBar({ logo }: TopBarProps) {
     >
       {({ handleToggle }) => (
         <div className="grid-wrapper h-[44px] bg-transparent">
-          <Flex align="center" justify="center">
+          <Flex align="center" justify="center" gap="7">
             {logo}
 
-            <Flex gap="8">
-              <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Contact}>
+            <Flex className="rounded-md bg-woodsmoke-50/20 px-2 py-1.5 backdrop-blur-md" gap="5">
+              <NextLink className={`flex items-center gap-x-2 text-1`} href={Routes.Contact}>
                 {t('sidebar.sign-up')}
                 {<PatchCheckFillIcon width={14} height={14} />}
               </NextLink>
-              <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Home}>
+
+              <Separator orientation="vertical" size="1" />
+
+              <NextLink className={`flex items-center gap-x-2 text-1`} href={Routes.Home}>
                 {t('sidebar.sign-in')}
                 <BoxArrowRightIcon width={14} height={14} />
               </NextLink>
-              <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Contact}>
-                {t('sidebar.contact')}
-              </NextLink>
-
-              <Button
-                className={`flex items-center gap-x-3 text-1`}
-                onClick={(evt) => handleSetSearchContent(evt, handleToggle)}
-              >
-                {<SearchIcon width={14} height={14} />}
-              </Button>
             </Flex>
+
+            <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Contact}>
+              {t('sidebar.contact')}
+            </NextLink>
+
+            <Button
+              className={`flex items-center gap-x-3 text-1`}
+              onClick={(evt) => handleSetSearchContent(evt, handleToggle)}
+            >
+              {<SearchIcon width={14} height={14} />}
+            </Button>
           </Flex>
         </div>
       )}
