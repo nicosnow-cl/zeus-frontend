@@ -1,10 +1,10 @@
 'use client'
 
-import { Box, Switch } from '@radix-ui/themes'
+import { Box, Flex, Switch } from '@radix-ui/themes'
 import { useEffect, useMemo, useState } from 'react'
 import { useTheme } from 'next-themes'
 
-import { MoonIcon } from '@/common/icons'
+import { MoonIcon, SunIcon } from '@/common/icons'
 
 export const ColorModeSwitch = () => {
   const [checked, setChecked] = useState(false)
@@ -17,14 +17,19 @@ export const ColorModeSwitch = () => {
   useEffect(() => setChecked(theme === 'dark'), [theme])
 
   return (
-    <Box className={`inline-flex items-center gap-x-2`}>
+    <Flex align="center" gap="2">
       <Switch
         checked={checked}
         defaultChecked={defaultChecked}
         onClick={handleToggleTheme}
         size="1"
       />
-      <MoonIcon className={`text-4 text-indigo-9`} />
-    </Box>
+
+      {theme === 'dark' ? (
+        <MoonIcon className={`text-4 text-indigo-9`} />
+      ) : (
+        <SunIcon className={`text-4 text-amber-11`} />
+      )}
+    </Flex>
   )
 }

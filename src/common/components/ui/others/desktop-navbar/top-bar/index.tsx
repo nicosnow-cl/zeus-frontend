@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Button, Flex, Heading, Separator } from '@radix-ui/themes'
+import { Button, Flex, Heading, Separator } from '@radix-ui/themes'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import NextLink from 'next/link'

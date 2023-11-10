@@ -12,7 +12,7 @@ export type NextIntlClientProviderProps = {
 
 export default async function NextIntlClientProvider({ children }: NextIntlClientProviderProps) {
   const locale = useLocale()
-  const messages = await getMessages(locale)
+  const messages = await getMessages({ locale })
 
   return (
     <IntlClientProvider locale={locale} messages={messages}>
