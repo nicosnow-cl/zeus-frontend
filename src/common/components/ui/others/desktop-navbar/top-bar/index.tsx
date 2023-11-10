@@ -73,34 +73,32 @@ export function TopBar({ logo }: TopBarProps) {
       }}
     >
       {({ handleToggle }) => (
-        <Flex align="center" className="h-[44px] bg-transparent" justify="center" px="6">
-          <Container size="4">
-            <Flex align="center" justify="center">
-              {logo}
+        <div className="grid-wrapper h-[44px] bg-transparent">
+          <Flex align="center" justify="center">
+            {logo}
 
-              <Flex gap="8">
-                <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Contact}>
-                  {t('sidebar.sign-up')}
-                  {<PatchCheckFillIcon width={14} height={14} />}
-                </NextLink>
-                <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Home}>
-                  {t('sidebar.sign-in')}
-                  <BoxArrowRightIcon width={14} height={14} />
-                </NextLink>
-                <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Contact}>
-                  {t('sidebar.contact')}
-                </NextLink>
+            <Flex gap="8">
+              <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Contact}>
+                {t('sidebar.sign-up')}
+                {<PatchCheckFillIcon width={14} height={14} />}
+              </NextLink>
+              <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Home}>
+                {t('sidebar.sign-in')}
+                <BoxArrowRightIcon width={14} height={14} />
+              </NextLink>
+              <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Contact}>
+                {t('sidebar.contact')}
+              </NextLink>
 
-                <Button
-                  className={`flex items-center gap-x-3 text-1`}
-                  onClick={(evt) => handleSetSearchContent(evt, handleToggle)}
-                >
-                  {<SearchIcon width={14} height={14} />}
-                </Button>
-              </Flex>
+              <Button
+                className={`flex items-center gap-x-3 text-1`}
+                onClick={(evt) => handleSetSearchContent(evt, handleToggle)}
+              >
+                {<SearchIcon width={14} height={14} />}
+              </Button>
             </Flex>
-          </Container>
-        </Flex>
+          </Flex>
+        </div>
       )}
     </ContentWithDropdown>
   )

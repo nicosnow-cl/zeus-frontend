@@ -24,7 +24,7 @@ export const UserCardsFiltersContainer = () => {
   }, [isFirstRender, searchParams])
 
   return (
-    <Flex justify="between" py="4">
+    <Flex className="breakout" justify="between" py="4">
       <FilterSheet
         trigger={
           <Button className="rounded-full" variant="default">

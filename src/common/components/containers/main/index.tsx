@@ -6,12 +6,12 @@ export interface IProps {
 
 export const MainContainer = ({ children }: IProps) => {
   return (
-    <>
+    <main>
       <NavbarContainer />
 
-      <div className="pt-[65px]">
-        <div className="ml-[40px] p-12">{children}</div>
+      <div className="pt-[70px]">
+        <div className="p-1 sm:p-6 lg:p-9">{children}</div>
       </div>
-    </>
+    </main>
   )
 }

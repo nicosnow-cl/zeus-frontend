@@ -1,7 +1,5 @@
 'use client'
 
-'use client'
-
 import { useMemo } from 'react'
 import { Flex, Separator } from '@radix-ui/themes'
 
@@ -16,20 +14,18 @@ export const BottomBar = () => {
   const crumbs = useMemo(() => getUrlBreadcrumb(pathname), [pathname])
 
   return (
-    <Flex
-      className={`bg-woodsmoke-200/80 fill-woodsmoke-950 text-woodsmoke-950 backdrop-blur-md backdrop-saturate-150`}
-      justify="between"
-      py="1"
-      pl="5"
-      pr="5"
+    <div
+      className={`grid-wrapper min-h-[26px] bg-woodsmoke-200/80 fill-woodsmoke-950 text-woodsmoke-950 backdrop-blur-md backdrop-saturate-150`}
     >
-      <Breadcrumbs crumbs={crumbs} />
+      <Flex className="breakout" justify="between" py="1">
+        <Breadcrumbs crumbs={crumbs} />
 
-      <span className={`flex items-center gap-x-3`}>
-        <ColorModeSwitch />
-        <Separator orientation="vertical" size="1" />
-        <LangModeSwitch />
-      </span>
-    </Flex>
+        <span className={`flex items-center gap-x-3`}>
+          <ColorModeSwitch />
+          <Separator orientation="vertical" size="1" />
+          <LangModeSwitch />
+        </span>
+      </Flex>
+    </div>
   )
 }

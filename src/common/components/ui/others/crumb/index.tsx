@@ -1,13 +1,14 @@
-import { Box, Link } from '@radix-ui/themes'
+import { Link } from '@radix-ui/themes'
 import NextLink from 'next/link'
 
 import { TCrumb } from '@/common/types/misc/crumb.type'
 
 export type TCrumbProps = TCrumb & {
   isFirst?: boolean
+  disabled?: boolean
 }
 
-export const Crumb = ({ href, label, icon, isFirst }: TCrumbProps) => (
+export const Crumb = ({ href, label, icon, isFirst, disabled }: TCrumbProps) => (
   <li className="inline-flex items-center" color="crimson">
     <Link
       asChild

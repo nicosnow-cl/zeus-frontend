@@ -5,3 +5,5 @@
 @tailwind utilities;
 
 @import '@radix-ui/themes/styles.css';
+
+@import './config/layout.css';

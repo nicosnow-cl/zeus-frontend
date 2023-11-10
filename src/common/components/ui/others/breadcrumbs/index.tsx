@@ -1,3 +1,5 @@
+import { Text } from '@radix-ui/themes'
+
 import { ChevronRightIcon } from '@/common/icons'
 import { Crumb } from '../crumb'
 import { TCrumb } from '@/common/types/misc/crumb.type'
@@ -13,8 +15,14 @@ export const Breadcrumbs = ({ crumbs, className = '' }: TBreadcrumbsProps) => {
       <ol className="inline-flex items-center space-x-2">
         {crumbs.map((crumb, idx) => (
           <span key={idx} className={`inline-flex items-center space-x-2`}>
-            <Crumb {...crumb} isFirst={idx === 0} />
-            {idx < crumbs.length - 1 && <ChevronRightIcon />}
+            {idx < crumbs.length - 1 ? (
+              <>
+                <Crumb {...crumb} isFirst={idx === 0} />
+                <ChevronRightIcon size="12" />
+              </>
+            ) : (
+              <Text size="2">{crumb.label}</Text>
+            )}
           </span>
         ))}
       </ol>
