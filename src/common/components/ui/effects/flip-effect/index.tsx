@@ -5,12 +5,13 @@ import { forwardRef, useEffect, useState } from 'react'
 
 export type FlipEffectProps = {
   backChild?: React.ReactNode
+  className?: string
   delay?: number
   frontChild: React.ReactNode
 }
 
 export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
-  ({ backChild, delay, frontChild }, ref) => {
+  ({ backChild, className = '', delay, frontChild }, ref) => {
     const [isRevealed, setIsRevealed] = useState(false)
 
     useEffect(() => {
@@ -20,9 +21,9 @@ export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
     }, [delay])
 
     return (
-      <div
+      <motion.div
         ref={ref}
-        className="relative flex h-[636px] items-center justify-center"
+        className={`relative flex h-[636px] items-center justify-center ${className}`}
         style={{
           perspective: '800px',
           transformStyle: 'preserve-3d',
@@ -63,7 +64,7 @@ export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
             </motion.div>
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
     )
   }
 )

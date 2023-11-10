@@ -1,7 +1,16 @@
 'use client'
 
-import { useState } from 'react'
 import { Badge, Flex, Separator, Text, Theme } from '@radix-ui/themes'
+import { Button } from '@/shadcn-components/ui/button'
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '@/shadcn-components/ui/dialog'
+import { useState } from 'react'
 
 import { AvatarWithName } from '@/common/components/ui/others/avatar-with-name'
 import { AppearanceGroup } from '../appearance-group'
@@ -13,15 +22,6 @@ import {
   ShareFillIcon,
   SuitHeartFillIcon,
 } from '@/common/icons'
-import { Button } from '@/shadcn-components/ui/button'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/shadcn-components/ui/dialog'
 import { ServicesGroup } from '../services-group'
 import { SocialNetworksGroup } from '../social-networks-group'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
@@ -54,7 +54,7 @@ export const UserDialog = ({
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
-      <DialogContent>
+      <DialogContent withOverlay={false}>
         {data !== null && (
           <>
             <Theme
@@ -89,11 +89,11 @@ export const UserDialog = ({
                         </Badge>
                       </Flex>
 
-                      <Flex gap="2">
+                      <Flex gap="2" align="center">
                         <Button>
                           <ShareFillIcon />
                         </Button>
-                        <Button>
+                        <Button size="lg">
                           Ver perfil
                           <Arrow90degRightIcon className="ml-2" />
                         </Button>
@@ -113,13 +113,13 @@ export const UserDialog = ({
                     />
                   </div>
                 </DialogTitle>
-
-                <DialogDescription>
-                  <Text className="italic" size="2">
-                    {data.description}
-                  </Text>
-                </DialogDescription>
               </DialogHeader>
+
+              <DialogDescription>
+                <Text className="italic" size="2">
+                  {data.description}
+                </Text>
+              </DialogDescription>
 
               <DialogFooter>
                 <Flex className="mt-4 w-full" justify="between" gap="5">

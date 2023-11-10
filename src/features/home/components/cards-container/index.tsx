@@ -4,6 +4,7 @@ import { Grid } from '@radix-ui/themes'
 import { MotionConfig } from 'framer-motion'
 import { useRef, useState } from 'react'
 
+import { DimLayer } from '@/common/components/ui/effects/dim-layer'
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { UserDialog } from '../user-dialog'
@@ -35,11 +36,17 @@ export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
       evt.preventDefault()
       evt.stopPropagation()
     }
+
+    const card = cardsRef.current[idx]
+    card?.scrollIntoView({ behavior: 'smooth' })
   }
 
   const handleCloseDialog = () => {
     setShowDialog(false)
-    setSelectedUser(null)
+
+    setTimeout(() => {
+      setSelectedUser(null)
+    }, 150)
   }
 
   const handleGoLeft = () => {
@@ -86,6 +93,7 @@ export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
         {data.map((user, idx) => (
           <FlipEffect
             key={idx}
+            className={selectedUser?.[0] === idx ? 'z-[55]' : ''}
             ref={(el) => (cardsRef.current[idx] = el)}
             delay={getDelay(idx)}
             frontChild={<UserCard.Skeleton />}
@@ -109,6 +117,7 @@ export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
         ))}
       </Grid>
 
+      <DimLayer isVisible={showDialog} />
       <UserDialog
         open={showDialog}
         data={selectedUser?.[1] || null}
