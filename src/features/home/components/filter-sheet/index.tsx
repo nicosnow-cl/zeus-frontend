@@ -11,7 +11,7 @@ import {
 import { useState } from 'react'
 
 import { FilterForm } from '../filter-form'
-import { Routes } from '@/common/enums'
+import { Routes } from '@/common/enums/routes'
 import { TUsersFilters, usersFilters } from '../../signals/users-filters'
 import { useRouter } from '@intl/navigation'
 
