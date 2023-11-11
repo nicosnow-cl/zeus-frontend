@@ -17,17 +17,6 @@ export type BodyProps = {
   name: UserCardEntity['name']
 }
 
-export type AvatarWithNameProps = {
-  username: UserCardEntity['username']
-  age?: UserCardEntity['age']
-  avatar: UserCardEntity['avatar']
-  name: UserCardEntity['name']
-  showAvatar?: boolean
-  showUsername?: boolean
-  showUserType?: boolean
-  withDropShadow?: boolean
-}
-
 export type DescriptionProps = {
   description: UserCardEntity['description']
   services?: UserCardEntity['services']

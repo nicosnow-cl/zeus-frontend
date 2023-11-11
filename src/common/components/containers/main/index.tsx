@@ -1,3 +1,4 @@
+import { Grid } from '@radix-ui/themes'
 import { NavbarContainer } from '../navbar'
 
 export interface IProps {

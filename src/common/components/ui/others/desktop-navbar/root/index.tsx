@@ -1,5 +1,7 @@
-import { RootProps } from '@/common/types/components/desktop-navbar.type'
+export const Root = (
+  props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
+) => {
+  const { className = '', ...restProps } = props
 
-export function Root({ children }: RootProps) {
-  return <nav className="fixed z-40 w-full">{children}</nav>
+  return <nav className={`fixed z-40 w-screen ${className}`} {...restProps} />
 }

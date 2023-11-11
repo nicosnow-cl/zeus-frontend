@@ -14,9 +14,9 @@ import { Input } from '@/shadcn-components/ui/input'
 import { useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
-import { actionFetchAppearances } from '@/common/actions/fetch-appearances'
-import { actionFetchServices } from '@/common/actions/fetch-services'
-import { appearances, services } from '@/common/signals/masters'
+import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appearances'
+import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
+import { appearances, services } from '@/common/signals/master-data'
 import { Combobox } from '@/common/components/ui/primitives/combobox'
 import { TUsersFilters } from '../../signals/users-filters'
 

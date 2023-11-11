@@ -2,7 +2,7 @@ import { Metadata, Viewport } from 'next'
 import { randomUUID } from 'crypto'
 
 import { CardsContainerInfiniteScroll } from '@/features/home/components/cards-container-infinite-scroll'
-import { fetchUsers } from '@/features/home/actions/fetchUsers'
+import { fetchUsers } from '@/features/home/actions/users/fetch-users'
 import { TSearchParams } from '@/common/types/misc/search-params.type'
 
 export const metadata: Metadata = {

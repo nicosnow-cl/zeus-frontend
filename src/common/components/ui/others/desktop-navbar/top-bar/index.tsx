@@ -8,9 +8,12 @@ import NextLink from 'next/link'
 import { BoxArrowRightIcon, PatchCheckFillIcon, SearchIcon } from '@/common/icons'
 import { ContentWithDropdown } from '../../../effects/dropdown-effect'
 import { Routes } from '@/common/enums/routes'
-import { TopBarProps } from '@/common/types/components/desktop-navbar.type'
 
-export function TopBar({ logo }: TopBarProps) {
+export type TTopBarProps = {
+  logo?: React.ReactNode
+}
+
+export function TopBar({ logo }: TTopBarProps) {
   const [currentContent, setCurrentContent] = useState<'search'>('search')
   const t = useTranslations()
 

@@ -6,7 +6,7 @@ import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
 import { FilterSheet } from '../../filter-sheet'
-import { searchParamsToUsersFilters } from '@/features/home/mappers/params-to-users-filter'
+import { searchParamsToUsersFilters } from '@/features/home/utils/params-to-users-filter'
 import { useIsFirstRender } from '@/common/hooks/is-first-render'
 import { usersFilters } from '@/features/home/signals/users-filters'
 

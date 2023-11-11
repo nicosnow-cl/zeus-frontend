@@ -9,7 +9,7 @@ const DEFAULT_CRUMB: TCrumb = {
   label: 'afrodita.app',
 }
 
-export const getUrlBreadcrumb = (pathname: string): TCrumb[] => {
+export const getPathCrumbs = (pathname: string): TCrumb[] => {
   const pathnameWithouthQuery = pathname.split('?')[0]
   const pathnameArr = pathnameWithouthQuery.split('/').filter((path) => path.length > 0)
 

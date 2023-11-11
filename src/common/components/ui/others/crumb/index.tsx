@@ -5,22 +5,19 @@ import { TCrumb } from '@/common/types/misc/crumb.type'
 
 export type TCrumbProps = TCrumb & {
   isFirst?: boolean
-  disabled?: boolean
 }
 
-export const Crumb = ({ href, label, icon, isFirst, disabled }: TCrumbProps) => (
-  <li className="inline-flex items-center" color="crimson">
-    <Link
-      asChild
-      className={`inline-flex items-center gap-x-2 ${
-        isFirst ? 'text-primary-600' : 'text-woodsmoke-950'
-      }`}
-      size="2"
-    >
-      <NextLink href={href}>
-        {icon}
-        {label}
-      </NextLink>
-    </Link>
-  </li>
+export const Crumb = ({ href, label, icon, isFirst }: TCrumbProps) => (
+  <Link
+    asChild
+    className={`inline-flex items-center gap-x-2 ${
+      isFirst ? 'text-primary-600' : 'text-woodsmoke-950'
+    }`}
+    size="2"
+  >
+    <NextLink href={href}>
+      {icon}
+      {label}
+    </NextLink>
+  </Link>
 )

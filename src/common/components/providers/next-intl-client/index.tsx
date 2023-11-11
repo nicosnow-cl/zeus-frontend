@@ -1,5 +1,5 @@
 {
-  /* TODO: Find a way to improve this componen to apply on specific clients components */
+  /* TODO: Find a way to improve this component to apply on specific clients components */
 }
 
 import { getMessages } from 'next-intl/server'
@@ -10,7 +10,7 @@ export type NextIntlClientProviderProps = {
   children: React.ReactNode
 }
 
-export default async function NextIntlClientProvider({ children }: NextIntlClientProviderProps) {
+export const NextIntlClientProvider = async ({ children }: NextIntlClientProviderProps) => {
   const locale = useLocale()
   const messages = await getMessages({ locale })
 

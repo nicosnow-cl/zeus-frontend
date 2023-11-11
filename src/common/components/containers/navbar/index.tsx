@@ -1,5 +1,3 @@
-import { Box } from '@radix-ui/themes'
-
 import { LogoIcon } from '@/common/icons'
 import * as DesktopNavbar from '../../ui/others/desktop-navbar'
 

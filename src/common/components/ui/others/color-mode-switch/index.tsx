@@ -1,6 +1,6 @@
 'use client'
 
-import { Box, Flex, Switch } from '@radix-ui/themes'
+import { Flex, Switch } from '@radix-ui/themes'
 import { useEffect, useMemo, useState } from 'react'
 import { useTheme } from 'next-themes'
 

@@ -5,13 +5,13 @@ import { Flex, Separator } from '@radix-ui/themes'
 
 import { Breadcrumbs } from '../../breadcrumbs'
 import { ColorModeSwitch } from '../../color-mode-switch'
-import { getUrlBreadcrumb } from '@/common/utils/getUrlBreadcrumb'
+import { getPathCrumbs } from '@/common/utils/get-path-crumbs'
 import { LangModeSwitch } from '../../lang-mode-switch'
 import { usePathname } from '@intl/navigation'
 
 export const BottomBar = () => {
   const pathname = usePathname()
-  const crumbs = useMemo(() => getUrlBreadcrumb(pathname), [pathname])
+  const crumbs = useMemo(() => getPathCrumbs(pathname), [pathname])
 
   return (
     <div

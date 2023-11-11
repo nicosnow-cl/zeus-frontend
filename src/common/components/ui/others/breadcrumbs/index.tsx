@@ -14,7 +14,7 @@ export const Breadcrumbs = ({ crumbs, className = '' }: TBreadcrumbsProps) => {
     <nav className={`flex ${className}`} aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-2">
         {crumbs.map((crumb, idx) => (
-          <span key={idx} className={`inline-flex items-center space-x-2`}>
+          <li key={idx} className={`inline-flex items-center space-x-2`}>
             {idx < crumbs.length - 1 ? (
               <>
                 <Crumb {...crumb} isFirst={idx === 0} />
@@ -23,7 +23,7 @@ export const Breadcrumbs = ({ crumbs, className = '' }: TBreadcrumbsProps) => {
             ) : (
               <Text size="2">{crumb.label}</Text>
             )}
-          </span>
+          </li>
         ))}
       </ol>
     </nav>
