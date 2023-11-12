@@ -1,12 +1,12 @@
 'use client'
 
-import { Button, Flex, Heading, Separator } from '@radix-ui/themes'
+import { Button, Flex, Heading, Link, Separator } from '@radix-ui/themes'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import NextLink from 'next/link'
 
 import { BoxArrowRightIcon, PatchCheckFillIcon, SearchIcon } from '@/common/icons'
 import { ContentWithDropdown } from '../../../effects/dropdown-effect'
+import { Link as NextLink } from '@intl/navigation'
 import { Routes } from '@/common/enums/routes'
 
 export type TTopBarProps = {
@@ -61,7 +61,7 @@ export function TopBar({ logo }: TTopBarProps) {
 
   return (
     <ContentWithDropdown
-      classNameContainer="border-b border-b-woodsmoke-200 text-woodsmoke-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.woodsmoke.950/0.9)] [--bg-to:theme(colors.woodsmoke.950)]"
+      classNameContainer="text-woodsmoke-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.woodsmoke.950/0.9)] [--bg-to:theme(colors.woodsmoke.950)]"
       classNameContent="min-h-[215px]"
       classNameOverlay="h-screen w-screen bg-woodsmoke-950/20"
       content={getCurrentContent(currentContent)}
@@ -81,22 +81,26 @@ export function TopBar({ logo }: TTopBarProps) {
             {logo}
 
             <Flex className="rounded-md bg-woodsmoke-50/20 px-2 py-1.5 backdrop-blur-md" gap="5">
-              <NextLink className={`flex items-center gap-x-2 text-1`} href={Routes.Contact}>
-                {t('sidebar.sign-up')}
-                {<PatchCheckFillIcon width={14} height={14} />}
-              </NextLink>
+              <Link className={`flex items-center gap-x-2 text-1 text-woodsmoke-100`} asChild>
+                <NextLink href={Routes.Contact}>
+                  {t('sidebar.sign-up')}
+                  {<PatchCheckFillIcon width={14} height={14} />}
+                </NextLink>
+              </Link>
 
               <Separator orientation="vertical" size="1" />
 
-              <NextLink className={`flex items-center gap-x-2 text-1`} href={Routes.Home}>
-                {t('sidebar.sign-in')}
-                <BoxArrowRightIcon width={14} height={14} />
-              </NextLink>
+              <Link className={`flex items-center gap-x-2 text-1 text-woodsmoke-100`} asChild>
+                <NextLink href={Routes.Home}>
+                  {t('sidebar.sign-in')}
+                  <BoxArrowRightIcon width={14} height={14} />
+                </NextLink>
+              </Link>
             </Flex>
 
-            <NextLink className={`flex items-center gap-x-3 text-1`} href={Routes.Contact}>
-              {t('sidebar.contact')}
-            </NextLink>
+            <Link className={`flex items-center gap-x-2 text-1 text-woodsmoke-100`} asChild>
+              <NextLink href={Routes.Contact}>{t('sidebar.contact')}</NextLink>
+            </Link>
 
             <Button
               className={`flex items-center gap-x-3 text-1`}

@@ -3,5 +3,5 @@ export const Root = (
 ) => {
   const { className = '', ...restProps } = props
 
-  return <nav className={`fixed z-40 w-screen ${className}`} {...restProps} />
+  return <nav className={`fixed z-40 w-screen bg-transparent ${className}`} {...restProps} />
 }
