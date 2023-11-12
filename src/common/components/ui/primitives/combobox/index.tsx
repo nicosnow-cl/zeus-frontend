@@ -2,7 +2,7 @@
 
 import { Badge, Flex } from '@radix-ui/themes'
 import { Button } from '@/shadcn-components/ui/button'
-import { cn } from '@/shadcn-lib'
+import { cn } from '@/shadcn-lib/utils'
 import {
   Command,
   CommandEmpty,

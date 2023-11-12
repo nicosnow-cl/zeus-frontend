@@ -7,8 +7,8 @@ import { useRef, useState } from 'react'
 import { DimLayer } from '@/common/components/ui/effects/dim-layer'
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import { UserDialog } from '../user-dialog'
-import * as UserCard from '../user-card'
+import { UserInfoDialog } from '../../ui/presentational/user-info-dialog'
+import * as UserCard from '../../ui/presentational/user-card'
 
 export type TCardsContainerProps = {
   data?: UserCardEntity[]
@@ -16,7 +16,7 @@ export type TCardsContainerProps = {
 
 const DELAYS = [...Array(10)].map((_, idx) => 100 + Math.max(1, idx) * 100)
 
-export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
+export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
   const [showDialog, setShowDialog] = useState(false)
   const [selectedUser, setSelectedUser] = useState<[number, UserCardEntity] | null>(null)
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
@@ -119,7 +119,7 @@ export const CardsContainer = ({ data = [] }: TCardsContainerProps) => {
       </Grid>
 
       <DimLayer isVisible={showDialog} />
-      <UserDialog
+      <UserInfoDialog
         open={showDialog}
         data={selectedUser?.[1] || null}
         onOpenChange={handleCloseDialog}

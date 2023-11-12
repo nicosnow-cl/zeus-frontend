@@ -1,5 +1,6 @@
 import { forwardRef, useEffect, useState } from 'react'
 import { Progress } from '@/shadcn-components/ui/progress'
+
 import randomIntFromInterval from '@lib/rand-int-from-interval'
 
 export type TLoadMoreProps = {

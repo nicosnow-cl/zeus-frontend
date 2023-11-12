@@ -10,9 +10,9 @@ import {
 } from '@/shadcn-components/ui/sheet'
 import { useState } from 'react'
 
-import { FilterForm } from '../filter-form'
+import { UsersCardsFiltersForm } from '../../../forms/users-cards-filters-form'
 import { Routes } from '@/common/enums/routes'
-import { TUsersFilters, usersFilters } from '../../signals/users-filters'
+import { TUsersFilters, usersFilters } from '@/features/home/signals/users-filters'
 import { useRouter } from '@intl/navigation'
 
 export type TFilterSheetProps = {
@@ -21,7 +21,7 @@ export type TFilterSheetProps = {
   trigger?: React.ReactNode
 }
 
-export function FilterSheet({
+export function UsersCardsFiltersSheet({
   onOpenChange,
   open: externalOpen,
   trigger = 'Filters',
@@ -72,7 +72,7 @@ export function FilterSheet({
           <SheetDescription>Ajuste los resultados de acuerdo a sus preferencias</SheetDescription>
         </SheetHeader>
 
-        <FilterForm onSubmit={handleSubmit} defaultValues={usersFilters.value} />
+        <UsersCardsFiltersForm onSubmit={handleSubmit} defaultValues={usersFilters.value} />
       </SheetContent>
     </Sheet>
   )

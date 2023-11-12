@@ -5,9 +5,9 @@ import { Flex } from '@radix-ui/themes'
 import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 
-import { FilterSheet } from '../../filter-sheet'
 import { searchParamsToUsersFilters } from '@/features/home/utils/params-to-users-filter'
 import { useIsFirstRender } from '@/common/hooks/is-first-render'
+import { UsersCardsFiltersSheet } from '../../ui/presentational/users-cards-filters-sheet'
 import { usersFilters } from '@/features/home/signals/users-filters'
 
 export const UserCardsFiltersContainer = () => {
@@ -25,7 +25,7 @@ export const UserCardsFiltersContainer = () => {
 
   return (
     <Flex className="breakout" justify="between" py="4">
-      <FilterSheet
+      <UsersCardsFiltersSheet
         trigger={
           <Button className="rounded-full" variant="default">
             Filtros

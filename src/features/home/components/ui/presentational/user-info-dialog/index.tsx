@@ -12,7 +12,7 @@ import {
 } from '@/shadcn-components/ui/dialog'
 import { useState } from 'react'
 
-import { AvatarWithName } from '@/common/components/ui/others/avatar-with-name'
+import { AvatarWithName } from '@/common/components/ui/presentational/avatar-with-name'
 import { AppearanceGroup } from '../appearance-group'
 import {
   Arrow90degRightIcon,
@@ -26,7 +26,7 @@ import { ServicesGroup } from '../services-group'
 import { SocialNetworksGroup } from '../social-networks-group'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
-export type TUserDialogProps = {
+export type TUserInfoDialogProps = {
   data: UserCardEntity | null
   onLeftClick?: () => void
   onOpenChange?: (open: boolean) => void
@@ -34,13 +34,13 @@ export type TUserDialogProps = {
   open?: boolean
 }
 
-export const UserDialog = ({
+export const UserInfoDialog = ({
   data,
   onLeftClick,
   onOpenChange,
   onRightClick,
   open: externalOpen,
-}: TUserDialogProps) => {
+}: TUserInfoDialogProps) => {
   const isControlled = typeof externalOpen != 'undefined'
 
   const [internalOpen, setInternalOpen] = useState(isControlled ? externalOpen : false)

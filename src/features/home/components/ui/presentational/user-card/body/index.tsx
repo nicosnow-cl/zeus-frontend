@@ -1,6 +1,6 @@
 import { Box } from '@radix-ui/themes'
 
-import { AvatarWithName } from '@/common/components/ui/others/avatar-with-name'
+import { AvatarWithName } from '@/common/components/ui/presentational/avatar-with-name'
 import { BodyProps } from '@/features/home/types/components/user-card-props.type'
 
 export const Body = ({ avatar, name, username, age }: BodyProps) => {

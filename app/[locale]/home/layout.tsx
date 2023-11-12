@@ -1,4 +1,4 @@
-import { UserCardsFiltersContainer } from '@/features/home/components/containers/user-cards-filters-container'
+import { UserCardsFiltersContainer } from '@/features/home/components/containers/user-cards-filters'
 
 export type TLayoutProps = {
   children: React.ReactNode

@@ -18,7 +18,7 @@ import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appea
 import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
 import { appearances, services } from '@/common/signals/master-data'
 import { Combobox } from '@/common/components/ui/primitives/combobox'
-import { TUsersFilters } from '../../signals/users-filters'
+import { TUsersFilters } from '@/features/home/signals/users-filters'
 
 export const DEFAULT_VALUES: TUsersFilters = {
   nameUsername: '',
@@ -33,7 +33,7 @@ export type TFilterFormProps = {
   defaultValues?: TUsersFilters
 }
 
-export const FilterForm = ({
+export const UsersCardsFiltersForm = ({
   onSubmit,
   defaultValues = { ...DEFAULT_VALUES },
 }: TFilterFormProps) => {

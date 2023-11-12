@@ -4,14 +4,14 @@ import { Grid } from '@radix-ui/themes'
 import { stagger, useAnimate } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-import { Skeleton } from '@/features/home/components/user-card'
+import { Skeleton } from '../user-card'
 
 export type TCardsContainerLoadingProps = {
   staggerDelay?: number
   skeletonCount?: number
 }
 
-export const CardsContainerLoading = ({
+export const UsersCardsSkeleton = ({
   staggerDelay = 0.15,
   skeletonCount = 10,
 }: TCardsContainerLoadingProps) => {

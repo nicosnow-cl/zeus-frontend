@@ -1,5 +1,5 @@
 import { LogoIcon } from '@/common/icons'
-import * as DesktopNavbar from '../../ui/others/desktop-navbar'
+import * as DesktopNavbar from '../../ui/presentational/desktop-navbar'
 
 function NavbarContainer() {
   return (

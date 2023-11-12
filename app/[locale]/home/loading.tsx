@@ -1,5 +1,5 @@
-import { CardsContainerLoading } from '@/features/home/components/cards-container-loading'
+import { UsersCardsSkeleton } from '@/features/home/components/ui/presentational/users-cards-skeleton'
 
 export default function Loading() {
-  return <CardsContainerLoading />
+  return <UsersCardsSkeleton />
 }
