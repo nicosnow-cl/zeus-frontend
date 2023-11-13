@@ -1,11 +1,22 @@
-export const Root = (props: React.PropsWithChildren<React.HTMLAttributes<HTMLElement>>) => {
-  const { className = '', children, ...restProps } = props
+import { HTMLMotionProps, motion } from 'framer-motion'
 
-  console.count('DesktopNavbar.Root')
+export type TRootProps = HTMLMotionProps<'nav'> & {
+  children: React.ReactNode
+  showNavbar?: boolean
+}
+
+export const Root = (props: TRootProps) => {
+  const { children, className = '', showNavbar = true, ...restProps } = props
 
   return (
-    <nav className={`fixed z-40 w-screen bg-transparent ${className}`} {...restProps}>
+    <motion.nav
+      className={`fixed z-40 w-screen bg-transparent ${className}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: showNavbar ? 1 : 0 }}
+      transition={{ duration: showNavbar ? 0.2 : 0.1 }}
+      {...restProps}
+    >
       <div className="relative">{children}</div>
-    </nav>
+    </motion.nav>
   )
 }

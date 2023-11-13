@@ -1,12 +1,23 @@
-'use client'
-
 import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect } from 'react'
 
 export type TDimLayerProps = {
   isVisible?: boolean
 }
 
 export const DimLayer = ({ isVisible }: TDimLayerProps) => {
+  useEffect(() => {
+    if (isVisible) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = '15px'
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset'
+      document.body.style.paddingRight = '0px'
+    }
+  }, [isVisible])
+
   return (
     <AnimatePresence>
       {isVisible && (
