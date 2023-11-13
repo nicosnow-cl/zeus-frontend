@@ -1,7 +1,11 @@
-export const Root = (
-  props: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
-) => {
-  const { className = '', ...restProps } = props
+export const Root = (props: React.PropsWithChildren<React.HTMLAttributes<HTMLElement>>) => {
+  const { className = '', children, ...restProps } = props
 
-  return <nav className={`fixed z-40 w-screen bg-transparent ${className}`} {...restProps} />
+  console.count('DesktopNavbar.Root')
+
+  return (
+    <nav className={`fixed z-40 w-screen bg-transparent ${className}`} {...restProps}>
+      <div className="relative">{children}</div>
+    </nav>
+  )
 }

@@ -4,6 +4,8 @@ import { AnimatePresence, MotionConfig, Transition, Variants, motion } from 'fra
 import { Container } from '@radix-ui/themes'
 import { useEffect, useState } from 'react'
 
+import { DimLayer } from '../../presentational/dim-layer'
+
 export const baseTransition: Transition = {
   type: 'tween',
   duration: 0.3,
@@ -20,16 +22,10 @@ export const baseVariantsContent: Variants = {
   open: { opacity: 1 },
 }
 
-export const baseVariantsOverlay: Variants = {
-  closed: { opacity: 0 },
-  open: { opacity: 1 },
-}
-
-type ContentWithDropdownProps = {
+export type TContentWithDropdownProps = {
   children: (props: { isOpen: boolean; handleToggle: (value?: boolean) => void }) => JSX.Element
   classNameContainer?: string
   classNameContent?: string
-  classNameOverlay?: string
   content: React.ReactNode
   onMouseEnter?: (
     evt: React.MouseEvent<HTMLDivElement, MouseEvent> | undefined,
@@ -42,7 +38,6 @@ type ContentWithDropdownProps = {
   transition?: Transition
   variantsContainer?: Variants
   variantsContent?: Variants
-  variantsOverlay?: Variants
 }
 
 export function ContentWithDropdown({
@@ -53,11 +48,9 @@ export function ContentWithDropdown({
   transition,
   variantsContainer,
   variantsContent,
-  variantsOverlay,
   classNameContainer = '',
   classNameContent = '',
-  classNameOverlay = '',
-}: ContentWithDropdownProps) {
+}: TContentWithDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = (value?: boolean) =>
@@ -120,27 +113,7 @@ export function ContentWithDropdown({
         </AnimatePresence>
       </motion.div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className={`h-full w-full backdrop-blur-md backdrop-saturate-100 ${classNameOverlay}`}
-            variants={{
-              closed: {
-                ...baseVariantsOverlay.closed,
-                ...variantsOverlay?.closed,
-              },
-              open: {
-                ...baseVariantsOverlay.open,
-                ...variantsOverlay?.open,
-              },
-            }}
-            initial="closed"
-            animate={isOpen ? 'open' : 'closed'}
-            exit="closed"
-            transition={{ duration: 0.1 }}
-          />
-        )}
-      </AnimatePresence>
+      <DimLayer isVisible={isOpen} />
     </MotionConfig>
   )
 }

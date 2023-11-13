@@ -15,12 +15,12 @@ export const BottomBar = () => {
 
   return (
     <div
-      className={`grid-wrapper min-h-[26px] bg-woodsmoke-200/80 fill-woodsmoke-950 text-woodsmoke-950 backdrop-blur-md backdrop-saturate-150`}
+      className={`grid-wrapper absolute top-[44px] min-h-[26px] w-full bg-woodsmoke-200/80 fill-woodsmoke-950 text-woodsmoke-950 backdrop-blur-md backdrop-saturate-150`}
     >
       <Flex className="breakout" justify="between" py="1">
         <Breadcrumbs crumbs={crumbs} />
 
-        <span className={`flex items-center gap-x-3`}>
+        <span className="flex items-center gap-x-3">
           <ColorModeSwitch />
           <Separator orientation="vertical" size="1" />
           <LangModeSwitch />

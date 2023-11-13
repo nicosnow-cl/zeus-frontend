@@ -4,8 +4,8 @@ import { Grid } from '@radix-ui/themes'
 import { MotionConfig } from 'framer-motion'
 import { useRef, useState } from 'react'
 
-import { DimLayer } from '@/common/components/ui/effects/dim-layer'
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
+import { $showNavbar } from '@/common/signals/ui'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { UserInfoDialog } from '../../ui/presentational/user-info-dialog'
 import * as UserCard from '../../ui/presentational/user-card'
@@ -29,6 +29,8 @@ export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
   }
 
   const handleClickCard = (idx: number, evt?: React.MouseEvent<HTMLElement>) => {
+    $showNavbar.value = false
+
     setSelectedUser([idx, data[idx]])
     setShowDialog(true)
 
@@ -42,6 +44,8 @@ export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
   }
 
   const handleCloseDialog = () => {
+    $showNavbar.value = true
+
     setShowDialog(false)
 
     setTimeout(() => {
@@ -94,7 +98,7 @@ export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
         {data.map((user, idx) => (
           <FlipEffect
             key={idx}
-            className={selectedUser?.[0] === idx ? 'z-[55]' : ''}
+            className={selectedUser?.[0] === idx ? 'z-40' : ''}
             ref={(el) => (cardsRef.current[idx] = el)}
             delay={getDelay(idx)}
             frontChild={<UserCard.Skeleton />}
@@ -118,12 +122,11 @@ export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
         ))}
       </Grid>
 
-      <DimLayer isVisible={showDialog} />
       <UserInfoDialog
         open={showDialog}
         data={selectedUser?.[1] || null}
-        onOpenChange={handleCloseDialog}
         onLeftClick={handleGoLeft}
+        onOpenChange={handleCloseDialog}
         onRightClick={handleGoRight}
       />
     </MotionConfig>

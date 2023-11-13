@@ -10,10 +10,10 @@ import {
 } from '@/shadcn-components/ui/sheet'
 import { useState } from 'react'
 
-import { UsersCardsFiltersForm } from '../../../forms/users-cards-filters-form'
-import { Routes } from '@/common/enums/routes'
+import { Routes } from '@config/enums'
 import { TUsersFilters, usersFilters } from '@/features/home/signals/users-filters'
 import { useRouter } from '@intl/navigation'
+import { UsersCardsFiltersForm } from '../../../forms/users-cards-filters-form'
 
 export type TFilterSheetProps = {
   onOpenChange?: (open: boolean) => void

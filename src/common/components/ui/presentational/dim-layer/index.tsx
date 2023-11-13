@@ -11,7 +11,7 @@ export const DimLayer = ({ isVisible }: TDimLayerProps) => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed inset-0 z-50 h-screen w-screen bg-woodsmoke-950/20 backdrop-blur-md"
+          className="fixed inset-0 h-screen w-screen bg-woodsmoke-950/20 backdrop-blur-md"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}

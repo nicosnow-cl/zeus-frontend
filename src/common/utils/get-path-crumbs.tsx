@@ -1,5 +1,5 @@
 import { HouseFillIcon } from '../icons'
-import { Routes } from '../enums/routes'
+import { Routes } from '@config/enums'
 import { TCrumb } from '../types/misc/crumb.type'
 
 const DEFAULT_CRUMB: TCrumb = {
