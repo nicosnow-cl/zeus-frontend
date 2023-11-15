@@ -11,24 +11,24 @@ import { searchParamsToUsersFilters } from '@/features/home/utils/params-to-user
 import { useIsFirstRender } from '@/common/hooks/is-first-render'
 import { UsersCardsFiltersSheet } from '../../ui/presentational/users-cards-filters-sheet'
 import {
-  UsersFilters,
-  usersFiltersActions,
-  useUsersFiltersStore,
-} from '@/features/home/store/users-filters'
+  UsersCardsFilters,
+  usersCardsFiltersActions,
+  useUsersCardsFiltersStore,
+} from '@/features/home/store/user-cards-filters'
 
-export const UserCardsFiltersContainer = () => {
+export const UsersCardsFiltersContainer = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const isFirstRender = useIsFirstRender()
-  const usersFilters = useUsersFiltersStore()
+  const usersFilters = useUsersCardsFiltersStore()
 
   const handleSetInitialUsersFilters = (params: ReadonlyURLSearchParams) => {
     const filters = searchParamsToUsersFilters(params)
 
-    usersFiltersActions.update(filters)
+    usersCardsFiltersActions.update(filters)
   }
 
-  const handleUpdateHomeQuery = async (data: Partial<UsersFilters>) => {
+  const handleUpdateHomeQuery = async (data: Partial<UsersCardsFilters>) => {
     const params = new URLSearchParams()
 
     if (data.nameUsername) params.set('name', data.nameUsername)
@@ -42,9 +42,9 @@ export const UserCardsFiltersContainer = () => {
     router.push(url)
   }
 
-  const handleSubmit = (data: UsersFilters) => {
+  const handleSubmit = (data: UsersCardsFilters) => {
     handleUpdateHomeQuery(data)
-    usersFiltersActions.update(data)
+    usersCardsFiltersActions.update(data)
   }
 
   useEffect(() => {

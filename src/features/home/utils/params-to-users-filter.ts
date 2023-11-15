@@ -1,11 +1,11 @@
 import { ReadonlyURLSearchParams } from 'next/navigation'
 
-import { UsersFilters } from '../store/users-filters'
+import { UsersCardsFilters } from '../store/user-cards-filters'
 
 export const searchParamsToUsersFilters = (
   params: ReadonlyURLSearchParams
-): Partial<UsersFilters> => {
-  const filters: Partial<UsersFilters> = {}
+): Partial<UsersCardsFilters> => {
+  const filters: Partial<UsersCardsFilters> = {}
 
   for (const [key, value] of params) {
     switch (key) {

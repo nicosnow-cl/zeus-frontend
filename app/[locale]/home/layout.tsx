@@ -1,4 +1,4 @@
-import { UserCardsFiltersContainer } from '@/features/home/components/containers/user-cards-filters'
+import { UsersCardsFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
 
 export type TLayoutProps = {
   children: React.ReactNode
@@ -7,7 +7,7 @@ export type TLayoutProps = {
 export default function Layout({ children }: TLayoutProps) {
   return (
     <section className="grid-wrapper">
-      <UserCardsFiltersContainer />
+      <UsersCardsFiltersContainer />
 
       {children}
     </section>
