@@ -16,9 +16,9 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 
 import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appearances'
 import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
-import { appearances, services } from '@/common/signals/master-data'
 import { Combobox } from '@/common/components/ui/primitives/combobox'
 import { DEFAULT_VALUES, UsersCardsFilters } from '../../../store/user-cards-filters'
+import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
 
 export type UsersCardsFiltersFormProps = {
   defaultValues?: UsersCardsFilters
@@ -32,23 +32,25 @@ export const UsersCardsFiltersForm = ({
   const form = useForm<UsersCardsFilters>({
     defaultValues,
   })
+  const appearances = useMasterDataStore((state) => state.appearances)
+  const services = useMasterDataStore((state) => state.services)
 
-  async function fetchMasters() {
+  async function fetchMasterData() {
     const res = await Promise.all([actionFetchAppearances(), actionFetchServices()])
 
-    if (res[0].status === 'success') {
-      appearances.value = res[0].data.map(({ name, value }) => ({ label: name, value }))
-    }
+    if (res[0].status === 'success')
+      masterDataActions.setAppearances(
+        res[0].data.map(({ name, value }) => ({ label: name, value }))
+      )
 
-    if (res[1].status === 'success') {
-      services.value = res[1].data.map(({ name, value }) => ({ label: name, value }))
-    }
+    if (res[1].status === 'success')
+      masterDataActions.setServices(res[1].data.map(({ name, value }) => ({ label: name, value })))
   }
 
   const handleSubmit: SubmitHandler<UsersCardsFilters> = (data) => onSubmit?.(data)
 
   useEffect(() => {
-    fetchMasters()
+    fetchMasterData()
   }, [])
 
   return (
@@ -77,7 +79,7 @@ export const UsersCardsFiltersForm = ({
                   <Combobox
                     btnClassName="w-full"
                     onChange={(values) => form.setValue('appearance', values)}
-                    options={appearances.value}
+                    options={appearances}
                     triggerPlaceholder="Apariencia"
                     value={field.value}
                   />
@@ -96,7 +98,7 @@ export const UsersCardsFiltersForm = ({
                   <Combobox
                     btnClassName="w-full"
                     onChange={(values) => form.setValue('services', values)}
-                    options={services.value}
+                    options={services}
                     triggerPlaceholder="Servicios"
                     value={field.value}
                   />

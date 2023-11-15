@@ -3,7 +3,7 @@
 import { Button } from '@/shadcn-components/ui/button'
 import { Flex } from '@radix-ui/themes'
 import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from '@intl/navigation'
 
 import { Routes } from '@config/enums'
@@ -17,10 +17,13 @@ import {
 } from '@/features/home/store/user-cards-filters'
 
 export const UsersCardsFiltersContainer = () => {
+  const [openSheet, setOpenSheet] = useState(false)
   const router = useRouter()
   const searchParams = useSearchParams()
   const isFirstRender = useIsFirstRender()
   const usersFilters = useUsersCardsFiltersStore()
+
+  const handleOpenSheet = (value: boolean) => setOpenSheet(value)
 
   const handleSetInitialUsersFilters = (params: ReadonlyURLSearchParams) => {
     const filters = searchParamsToUsersFilters(params)
@@ -54,13 +57,15 @@ export const UsersCardsFiltersContainer = () => {
   return (
     <Flex className="breakout" justify="between" py="4">
       <UsersCardsFiltersSheet
+        defaultValues={usersFilters}
+        onOpenChange={handleOpenSheet}
+        onSubmit={handleSubmit}
+        open={openSheet}
         trigger={
           <Button className="rounded-full" variant="default">
             Filtros
           </Button>
         }
-        defaultValues={usersFilters}
-        onSubmit={handleSubmit}
       />
 
       <Button className="rounded-full" variant="outline">

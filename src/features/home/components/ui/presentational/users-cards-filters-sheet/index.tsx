@@ -8,46 +8,33 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/shadcn-components/ui/sheet'
-import { useState } from 'react'
+import { DialogProps } from '@radix-ui/react-dialog'
 
 import {
   UsersCardsFiltersForm,
   UsersCardsFiltersFormProps,
 } from '../../../forms/users-cards-filters-form'
 
-export type UsersCardsFiltersSheetProps = UsersCardsFiltersFormProps & {
-  onOpenChange?: (open: boolean) => void
-  open?: boolean
-  trigger?: React.ReactNode
-}
+export type UsersCardsFiltersSheetProps = DialogProps &
+  UsersCardsFiltersFormProps & {
+    trigger?: React.ReactNode
+  }
 
-export function UsersCardsFiltersSheet({
+export const UsersCardsFiltersSheet = ({
   defaultValues,
   onOpenChange,
   onSubmit,
-  open: externalOpen,
   trigger = 'Filters',
-}: UsersCardsFiltersSheetProps) {
-  const isControlled = typeof externalOpen != 'undefined'
-
-  const [internalOpen, setInternalOpen] = useState(isControlled ? externalOpen : false)
-
-  const open = isControlled ? externalOpen : internalOpen
-
-  const handleOpenChange = (open: boolean) => {
-    if (!isControlled) setInternalOpen(open)
-
-    onOpenChange?.(open)
-  }
-
+  ...restProps
+}: UsersCardsFiltersSheetProps) => {
   const handleSubmit: UsersCardsFiltersFormProps['onSubmit'] = (data) => {
-    handleOpenChange(false)
+    onOpenChange?.(false)
 
     onSubmit?.(data)
   }
 
   return (
-    <Sheet open={open} onOpenChange={handleOpenChange}>
+    <Sheet {...restProps} onOpenChange={onOpenChange}>
       <SheetTrigger asChild>{trigger}</SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>

@@ -10,13 +10,13 @@ import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { UserInfoDialog } from '../../ui/presentational/user-info-dialog'
 import * as UserCard from '../../ui/presentational/user-card'
 
-export type TCardsContainerProps = {
+export type UsersCardsContainerProps = {
   data?: UserCardEntity[]
 }
 
 const DELAYS = [...Array(10)].map((_, idx) => 100 + Math.max(1, idx) * 100)
 
-export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
+export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => {
   const [showDialog, setShowDialog] = useState(false)
   const [selectedUser, setSelectedUser] = useState<[number, UserCardEntity] | null>(null)
   const cardsRef = useRef<(HTMLDivElement | null)[]>([])
@@ -43,7 +43,9 @@ export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
     card?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const handleCloseDialog = () => {
+  const handleOpenDialog = (value: boolean) => {
+    if (value) return
+
     uiActions.toggleNavbar(true)
 
     setShowDialog(false)
@@ -126,7 +128,7 @@ export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
         open={showDialog}
         data={selectedUser?.[1] || null}
         onLeftClick={handleGoLeft}
-        onOpenChange={handleCloseDialog}
+        onOpenChange={handleOpenDialog}
         onRightClick={handleGoRight}
       />
     </MotionConfig>
