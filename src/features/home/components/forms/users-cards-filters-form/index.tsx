@@ -18,26 +18,18 @@ import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appea
 import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
 import { appearances, services } from '@/common/signals/master-data'
 import { Combobox } from '@/common/components/ui/primitives/combobox'
-import { TUsersFilters } from '@/features/home/signals/users-filters'
+import { DEFAULT_VALUES, UsersFilters } from '../../../store/users-filters'
 
-export const DEFAULT_VALUES: TUsersFilters = {
-  nameUsername: '',
-  appearance: [],
-  services: [],
-  withVideo: false,
-  hasPromo: false,
-}
-
-export type TFilterFormProps = {
-  onSubmit?: (data: TUsersFilters) => void
-  defaultValues?: TUsersFilters
+export type UsersCardsFiltersFormProps = {
+  defaultValues?: UsersFilters
+  onSubmit?: (data: UsersFilters) => void
 }
 
 export const UsersCardsFiltersForm = ({
   onSubmit,
   defaultValues = { ...DEFAULT_VALUES },
-}: TFilterFormProps) => {
-  const form = useForm<TUsersFilters>({
+}: UsersCardsFiltersFormProps) => {
+  const form = useForm<UsersFilters>({
     defaultValues,
   })
 
@@ -53,7 +45,7 @@ export const UsersCardsFiltersForm = ({
     }
   }
 
-  const handleSubmit: SubmitHandler<TUsersFilters> = (data) => onSubmit?.(data)
+  const handleSubmit: SubmitHandler<UsersFilters> = (data) => onSubmit?.(data)
 
   useEffect(() => {
     fetchMasters()

@@ -1,9 +1,11 @@
 import { ReadonlyURLSearchParams } from 'next/navigation'
 
-import { TUsersFilters, DEFAULT_VALUES } from '../signals/users-filters'
+import { UsersFilters } from '../store/users-filters'
 
-export const searchParamsToUsersFilters = (params: ReadonlyURLSearchParams): TUsersFilters => {
-  const filters: TUsersFilters = { ...DEFAULT_VALUES }
+export const searchParamsToUsersFilters = (
+  params: ReadonlyURLSearchParams
+): Partial<UsersFilters> => {
+  const filters: Partial<UsersFilters> = {}
 
   for (const [key, value] of params) {
     switch (key) {

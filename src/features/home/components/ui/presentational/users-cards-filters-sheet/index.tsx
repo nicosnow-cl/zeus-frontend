@@ -10,57 +10,40 @@ import {
 } from '@/shadcn-components/ui/sheet'
 import { useState } from 'react'
 
-import { Routes } from '@config/enums'
-import { TUsersFilters, usersFilters } from '@/features/home/signals/users-filters'
-import { useRouter } from '@intl/navigation'
-import { UsersCardsFiltersForm } from '../../../forms/users-cards-filters-form'
+import {
+  UsersCardsFiltersForm,
+  UsersCardsFiltersFormProps,
+} from '../../../forms/users-cards-filters-form'
 
-export type TFilterSheetProps = {
+export type UsersCardsFiltersSheetProps = UsersCardsFiltersFormProps & {
   onOpenChange?: (open: boolean) => void
   open?: boolean
   trigger?: React.ReactNode
 }
 
 export function UsersCardsFiltersSheet({
+  defaultValues,
   onOpenChange,
+  onSubmit,
   open: externalOpen,
   trigger = 'Filters',
-}: TFilterSheetProps) {
+}: UsersCardsFiltersSheetProps) {
   const isControlled = typeof externalOpen != 'undefined'
 
   const [internalOpen, setInternalOpen] = useState(isControlled ? externalOpen : false)
-  const router = useRouter()
 
   const open = isControlled ? externalOpen : internalOpen
 
   const handleOpenChange = (open: boolean) => {
-    if (onOpenChange) onOpenChange(open)
     if (!isControlled) setInternalOpen(open)
+
+    onOpenChange?.(open)
   }
 
-  const handleUpdateUsersFiltersSignal = (data: Partial<TUsersFilters>) => {
-    usersFilters.value = { ...usersFilters.value, ...data }
-  }
-
-  const handleUpdateHomeQuery = async (data: Partial<TUsersFilters>) => {
-    const params = new URLSearchParams()
-
-    if (data.nameUsername) params.set('name', data.nameUsername)
-    if (data.appearance?.length) params.set('appearance', data.appearance.join(','))
-    if (data.services?.length) params.set('services', data.services.join(','))
-    if (data.withVideo) params.set('withVideo', 'true')
-    if (data.hasPromo) params.set('hasPromo', 'true')
-
-    const url = `${Routes.Home}?${params.toString()}`
-
-    router.push(url)
-  }
-
-  const handleSubmit = (data: TUsersFilters) => {
-    handleUpdateUsersFiltersSignal(data)
-    handleUpdateHomeQuery(data)
-
+  const handleSubmit: UsersCardsFiltersFormProps['onSubmit'] = (data) => {
     handleOpenChange(false)
+
+    onSubmit?.(data)
   }
 
   return (
@@ -72,7 +55,7 @@ export function UsersCardsFiltersSheet({
           <SheetDescription>Ajuste los resultados de acuerdo a sus preferencias</SheetDescription>
         </SheetHeader>
 
-        <UsersCardsFiltersForm onSubmit={handleSubmit} defaultValues={usersFilters.value} />
+        <UsersCardsFiltersForm onSubmit={handleSubmit} defaultValues={defaultValues} />
       </SheetContent>
     </Sheet>
   )

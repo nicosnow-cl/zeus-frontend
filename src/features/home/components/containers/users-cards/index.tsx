@@ -5,7 +5,7 @@ import { MotionConfig } from 'framer-motion'
 import { useRef, useState } from 'react'
 
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
-import { toggleNavbar } from '@/common/store/ui'
+import { uiActions } from '@/common/store/ui'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { UserInfoDialog } from '../../ui/presentational/user-info-dialog'
 import * as UserCard from '../../ui/presentational/user-card'
@@ -29,7 +29,7 @@ export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
   }
 
   const handleClickCard = (idx: number, evt?: React.MouseEvent<HTMLElement>) => {
-    toggleNavbar(false)
+    uiActions.toggleNavbar(false)
 
     setSelectedUser([idx, data[idx]])
     setShowDialog(true)
@@ -44,7 +44,7 @@ export const UsersCardsContainer = ({ data = [] }: TCardsContainerProps) => {
   }
 
   const handleCloseDialog = () => {
-    toggleNavbar(true)
+    uiActions.toggleNavbar(true)
 
     setShowDialog(false)
 
