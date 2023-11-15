@@ -1,12 +1,17 @@
-import { Box } from '@radix-ui/themes'
-
 import { AvatarWithName } from '@/common/components/ui/presentational/avatar-with-name'
-import { BodyProps } from '@/features/home/types/components/user-card-props.type'
+import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
+
+export type BodyProps = {
+  username: UserCardEntity['username']
+  age?: UserCardEntity['age']
+  avatar: UserCardEntity['avatar']
+  name: UserCardEntity['name']
+}
 
 export const Body = ({ avatar, name, username, age }: BodyProps) => {
   return (
-    <Box className="h-[600px] text-woodsmoke-50">
+    <div className="h-[600px] text-woodsmoke-50">
       <AvatarWithName avatar={avatar} name={name} username={username} age={age} withDropShadow />
-    </Box>
+    </div>
   )
 }

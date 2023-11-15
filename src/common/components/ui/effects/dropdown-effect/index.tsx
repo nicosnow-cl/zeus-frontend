@@ -22,7 +22,7 @@ export const baseVariantsContent: Variants = {
   open: { opacity: 1 },
 }
 
-export type TContentWithDropdownProps = {
+export type ContentWithDropdownProps = {
   children: (props: { isOpen: boolean; handleToggle: (value?: boolean) => void }) => JSX.Element
   classNameContainer?: string
   classNameContent?: string
@@ -50,7 +50,7 @@ export function ContentWithDropdown({
   variantsContent,
   classNameContainer = '',
   classNameContent = '',
-}: TContentWithDropdownProps) {
+}: ContentWithDropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = (value?: boolean) =>

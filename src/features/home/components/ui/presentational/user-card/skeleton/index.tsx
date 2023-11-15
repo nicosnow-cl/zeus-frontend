@@ -2,9 +2,9 @@
 
 import { HTMLMotionProps, motion } from 'framer-motion'
 
-export type TSkeletonProps = HTMLMotionProps<'div'>
+export type SkeletonProps = HTMLMotionProps<'div'>
 
-export const Skeleton = (props: TSkeletonProps) => {
+export const Skeleton = (props: SkeletonProps) => {
   const { className, ...restProps } = props
 
   return (

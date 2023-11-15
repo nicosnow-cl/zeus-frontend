@@ -9,11 +9,11 @@ import { ContentWithDropdown } from '../../../effects/dropdown-effect'
 import { Link as NextLink } from '@intl/navigation'
 import { Routes } from '@config/enums'
 
-export type TTopBarProps = {
+export type TopBarProps = {
   logo?: React.ReactNode
 }
 
-export function TopBar({ logo }: TTopBarProps) {
+export function TopBar({ logo }: TopBarProps) {
   const [currentContent, setCurrentContent] = useState<'search'>('search')
   const t = useTranslations()
 

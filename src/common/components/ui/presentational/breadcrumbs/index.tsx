@@ -2,14 +2,14 @@ import { Text } from '@radix-ui/themes'
 
 import { ChevronRightIcon } from '@/common/icons'
 import { Crumb } from '../crumb'
-import { TCrumb } from '@/common/types/misc/crumb.type'
+import { Crumb as TCrumb } from '@/common/types/misc/crumb.type'
 
-export type TBreadcrumbsProps = {
+export type BreadcrumbsProps = {
   crumbs: TCrumb[]
   className?: string
 }
 
-export const Breadcrumbs = ({ crumbs, className = '' }: TBreadcrumbsProps) => {
+export const Breadcrumbs = ({ crumbs, className = '' }: BreadcrumbsProps) => {
   return (
     <nav className={`flex ${className}`} aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-2">

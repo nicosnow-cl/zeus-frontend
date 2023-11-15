@@ -1,5 +1,9 @@
 import { HighLightBorder } from '@/common/components/ui/effects/highlight-border'
-import { RootProps } from '@/features/home/types/components/user-card-props.type'
+
+export type RootProps = {
+  children?: React.ReactNode
+  onClik?: (evt: React.MouseEvent<HTMLElement>) => void
+}
 
 export const Root = ({ children, onClik }: RootProps) => (
   <div

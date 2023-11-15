@@ -1,11 +1,16 @@
 'use client'
 
 import { Badge, Flex } from '@radix-ui/themes'
-
-import { ActionsProps } from '@/features/home/types/components/user-card-props.type'
 import { Button } from '@/shadcn-components/ui/button'
+
 import { formatNumberToCurrency } from '@lib/format-number-to-currency'
 import { GeoAltFillIcon } from '@/common/icons'
+import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
+
+export type ActionsProps = {
+  price: UserCardEntity['price']
+  location: UserCardEntity['location']
+}
 
 export const Actions = ({ price, location }: ActionsProps) => {
   const priceFormatted = formatNumberToCurrency(price.normal)

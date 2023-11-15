@@ -1,10 +1,10 @@
 import { UsersCardsFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
 
-export type TLayoutProps = {
+export type LayoutProps = {
   children: React.ReactNode
 }
 
-export default function Layout({ children }: TLayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
     <section className="grid-wrapper">
       <UsersCardsFiltersContainer />

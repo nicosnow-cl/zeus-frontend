@@ -1,10 +1,10 @@
 import { NavbarContainer } from '../navbar'
 
-export interface IProps {
+export interface MainContainerProps {
   children: React.ReactNode | React.ReactNode[]
 }
 
-export const MainContainer = ({ children }: IProps) => {
+export const MainContainer = ({ children }: MainContainerProps) => {
   return (
     <main>
       <NavbarContainer />

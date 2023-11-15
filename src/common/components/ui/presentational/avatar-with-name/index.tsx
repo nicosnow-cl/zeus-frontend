@@ -3,7 +3,7 @@ import { Avatar, Badge, Flex, Heading, Text } from '@radix-ui/themes'
 import { PatchCheckFillIcon, PersonCircleIcon, SuitHeartFillIcon } from '@/common/icons'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
-export type TAvatarWithNameProps = {
+export type AvatarWithNameProps = {
   username: UserCardEntity['username']
   age?: UserCardEntity['age']
   avatar: UserCardEntity['avatar']
@@ -23,7 +23,7 @@ export const AvatarWithName = ({
   username,
   withDropShadow,
   showUserType = true,
-}: TAvatarWithNameProps) => (
+}: AvatarWithNameProps) => (
   <Flex p="2" justify="between" className="relative">
     <Flex gap="3" align={`${showAvatar ? 'center' : 'start'}`}>
       {showAvatar && avatar && (

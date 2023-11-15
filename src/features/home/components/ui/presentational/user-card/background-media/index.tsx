@@ -3,7 +3,12 @@
 import { SyntheticEvent } from 'react'
 import Image from 'next/image'
 
-import { BackgroundMediaProps } from '../../../types/components/user-card-props.type'
+import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
+
+export type BackgroundMediaProps = {
+  avatar: UserCardEntity['avatar']
+  medias?: UserCardEntity['medias']
+}
 
 const scaleTransition = 'transition-all duration-150 ease-linear group-hover:scale-[1.05]'
 

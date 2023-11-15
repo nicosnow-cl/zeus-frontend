@@ -1,6 +1,11 @@
 import { Badge, Blockquote, Box, Flex } from '@radix-ui/themes'
 
-import { DescriptionProps } from '../../../types/components/user-card-props.type'
+import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
+
+export type DescriptionProps = {
+  description: UserCardEntity['description']
+  services?: UserCardEntity['services']
+}
 
 export const Description = ({ description, services = [] }: DescriptionProps) => (
   <Box

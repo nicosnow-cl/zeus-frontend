@@ -1,11 +1,11 @@
 import { HTMLMotionProps, motion } from 'framer-motion'
 
-export type TRootProps = HTMLMotionProps<'nav'> & {
+export type RootProps = HTMLMotionProps<'nav'> & {
   children: React.ReactNode
   showNavbar?: boolean
 }
 
-export const Root = (props: TRootProps) => {
+export const Root = (props: RootProps) => {
   const { children, className = '', showNavbar = true, ...restProps } = props
 
   return (
