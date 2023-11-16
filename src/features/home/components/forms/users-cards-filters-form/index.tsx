@@ -19,6 +19,7 @@ import { actionFetchServices } from '@/common/actions/master-data/fetch-services
 import { Combobox } from '@/common/components/ui/primitives/combobox'
 import { DEFAULT_VALUES, UsersCardsFilters } from '../../../store/user-cards-filters'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
+import { LabeledSlider } from '@/common/components/ui/primitives/labeled-slider'
 
 export type UsersCardsFiltersFormProps = {
   defaultValues?: UsersCardsFilters
@@ -108,7 +109,7 @@ export const UsersCardsFiltersForm = ({
             )}
           />
 
-          <Flex className="rounded-md bg-gray-100 dark:bg-gray-900 " gap="4" p="3">
+          <Flex className="rounded-md bg-gray-100 dark:bg-gray-900" gap="4" p="3">
             <FormField
               control={form.control}
               name="withVideo"
@@ -145,6 +146,11 @@ export const UsersCardsFiltersForm = ({
               )}
             />
           </Flex>
+
+          <LabeledSlider
+            defaultValue={[0, 500000]}
+            onValueCommit={(value) => console.log({ value })}
+          />
 
           <Flex justify="between">
             <Button

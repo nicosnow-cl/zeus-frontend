@@ -6,6 +6,7 @@ export type UsersCardsFilters = {
   services: string[]
   withVideo: boolean
   hasPromo: boolean
+  price: [number, number]
 }
 
 export type UsersCardsFiltersActions = {
@@ -18,6 +19,7 @@ export const DEFAULT_VALUES: UsersCardsFilters = {
   services: [],
   withVideo: false,
   hasPromo: false,
+  price: [0, 500000],
 }
 
 export const useUsersCardsFiltersStore = create<UsersCardsFilters>(() => DEFAULT_VALUES)
