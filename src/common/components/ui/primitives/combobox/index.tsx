@@ -19,7 +19,7 @@ import { CheckIcon, CheckSquareIcon, ChevronDownIcon, SquareIcon } from '@/commo
 import { TMenuSelectOption } from '@/common/types/misc/select-option'
 import { ValueBadge } from './value-badge'
 
-export type TComboboxProps = {
+export type ComboboxProps = {
   btnClassName?: string
   emptyPlaceholder?: string
   inputPlaceholder?: string
@@ -37,7 +37,7 @@ export function Combobox({
   value: externalValue,
   btnClassName = '',
   options = [],
-}: TComboboxProps) {
+}: ComboboxProps) {
   const isControlled = typeof externalValue != 'undefined'
 
   const [isOpen, setIsOpen] = useState(false)

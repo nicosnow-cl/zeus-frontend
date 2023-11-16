@@ -68,3 +68,5 @@ export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
     )
   }
 )
+
+FlipEffect.displayName = 'FlipEffect'

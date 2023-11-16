@@ -1,9 +1,9 @@
 import { omitBy } from 'lodash'
 
-import { TFindAllProps } from '@/common/repositories/users/findAll'
+import { FindAllProps } from '@/common/repositories/users/findAll'
 import { TSearchParams } from '@/common/types/misc/search-params.type'
 
-export const searchParamsToFindAllProps = (searchParams?: TSearchParams): TFindAllProps => {
+export const searchParamsToFindAllProps = (searchParams?: TSearchParams): FindAllProps => {
   const query = {
     name: searchParams?.name,
     appearance: searchParams?.appearance?.split(','),

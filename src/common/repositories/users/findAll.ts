@@ -4,7 +4,7 @@ import { getConnection } from '@/common/repositories/mongo'
 import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
-export type TFindAllQuery = {
+export type FindAllQuery = {
   name?: string
   appearance?: string[]
   services?: string[]
@@ -12,17 +12,17 @@ export type TFindAllQuery = {
   withVideo?: boolean
 }
 
-export type TFindAllProps = {
+export type FindAllProps = {
   page?: number | string
   limit?: number | string
-  query?: TFindAllQuery
+  query?: FindAllQuery
 }
 
 export async function findAll({
   query,
   page = 0,
   limit = 10,
-}: TFindAllProps | undefined = {}): Promise<TPaginatedResponse<UserCardEntity>> {
+}: FindAllProps | undefined = {}): Promise<TPaginatedResponse<UserCardEntity>> {
   const { db, closeConnection } = await getConnection()
 
   try {

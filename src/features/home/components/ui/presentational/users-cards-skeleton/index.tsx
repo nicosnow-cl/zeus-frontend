@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 
 import { Skeleton } from '../user-card'
 
-export type TCardsContainerLoadingProps = {
+export type CardsContainerLoadingProps = {
   staggerDelay?: number
   skeletonCount?: number
 }
@@ -14,7 +14,7 @@ export type TCardsContainerLoadingProps = {
 export const UsersCardsSkeleton = ({
   staggerDelay = 0.15,
   skeletonCount = 10,
-}: TCardsContainerLoadingProps) => {
+}: CardsContainerLoadingProps) => {
   const [scope, animate] = useAnimate()
   const [duration] = useState(skeletonCount * staggerDelay)
 
@@ -30,7 +30,7 @@ export const UsersCardsSkeleton = ({
         repeatDelay: duration,
       }
     )
-  }, [])
+  }, [animate, duration, staggerDelay])
 
   return (
     <Grid

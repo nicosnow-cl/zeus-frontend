@@ -1,11 +1,11 @@
 import { Badge } from '@radix-ui/themes'
 
-export type TValueBadgeProps = {
+export type ValueBadgeProps = {
   badgeProps?: Omit<React.ComponentProps<typeof Badge>, 'children'>
   label: string
 }
 
-export const ValueBadge = ({ badgeProps, label }: TValueBadgeProps) => {
+export const ValueBadge = ({ badgeProps, label }: ValueBadgeProps) => {
   const needSplitLabel = label.length > 13
 
   return (

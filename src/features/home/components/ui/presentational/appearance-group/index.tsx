@@ -1,12 +1,12 @@
 import { Flex, Text } from '@radix-ui/themes'
 
-export type TAppearanceGroupProps = {
+export type AppearanceGroupProps = {
   nationality: string
   flexProps?: Omit<React.ComponentProps<typeof Flex>, 'children'>
   textProps?: Omit<React.ComponentProps<typeof Text>, 'children' | 'as'>
 }
 
-export const AppearanceGroup = ({ nationality, flexProps, textProps }: TAppearanceGroupProps) => {
+export const AppearanceGroup = ({ nationality, flexProps, textProps }: AppearanceGroupProps) => {
   return (
     <Flex justify="between" gap="2" width="100%" {...flexProps}>
       <Text className="text-crimson-9" size="2" weight="bold" {...textProps}>

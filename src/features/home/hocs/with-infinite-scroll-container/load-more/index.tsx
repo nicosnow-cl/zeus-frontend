@@ -1,27 +1,30 @@
-import { forwardRef, useEffect, useState } from 'react'
+import { forwardRef, useCallback, useEffect, useState } from 'react'
 import { Progress } from '@/shadcn-components/ui/progress'
 
 import randomIntFromInterval from '@lib/rand-int-from-interval'
 
-export type TLoadMoreProps = {
+export type LoadMoreProps = {
   className?: string
   isLoading?: boolean
   maxProgressValue?: number
 }
 
-const LoadMore = forwardRef<HTMLDivElement, TLoadMoreProps>(
+export const LoadMore = forwardRef<HTMLDivElement, LoadMoreProps>(
   ({ className = 'mt-4', isLoading, maxProgressValue = 95 }, ref) => {
     const [progress, setProgress] = useState(0)
 
-    const handleProgress = (initialStep = 25) => {
-      setProgress((prev) => {
-        if (prev >= maxProgressValue) return maxProgressValue
+    const handleProgress = useCallback(
+      (initialStep = 25) => {
+        setProgress((prev) => {
+          if (prev >= maxProgressValue) return maxProgressValue
 
-        const step = initialStep * (1 - prev / maxProgressValue)
+          const step = initialStep * (1 - prev / maxProgressValue)
 
-        return prev + step
-      })
-    }
+          return prev + step
+        })
+      },
+      [maxProgressValue]
+    )
 
     useEffect(() => {
       let intervalId: NodeJS.Timeout | null
@@ -33,7 +36,7 @@ const LoadMore = forwardRef<HTMLDivElement, TLoadMoreProps>(
       return () => {
         if (intervalId) clearTimeout(intervalId)
       }
-    }, [isLoading])
+    }, [isLoading, handleProgress])
 
     return (
       <div ref={ref} className={className}>
@@ -43,4 +46,4 @@ const LoadMore = forwardRef<HTMLDivElement, TLoadMoreProps>(
   }
 )
 
-export default LoadMore
+LoadMore.displayName = 'LoadMore'

@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 
 import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
 import { TSearchParams } from '@/common/types/misc/search-params.type'
-import LoadMore from './load-more'
+import { LoadMore } from './load-more'
 
 export type TWithInfiniteScrollFetchDataProps<T> = {
   Component: React.FC<{ data: T[] }>
@@ -36,7 +36,7 @@ export function withInfiniteScrollFetchData<T>({
     const loadingMoreRef = useRef<HTMLDivElement>(null)
     const isInView = useInView(loadingMoreRef)
 
-    async function fetchMoreData() {
+    const fetchMoreData = useCallback(async () => {
       setIsLoading(true)
 
       const nextPage = metadata.page + 1
@@ -54,11 +54,11 @@ export function withInfiniteScrollFetchData<T>({
       }
 
       setTimeout(() => setIsLoading(false), 250)
-    }
+    }, [metadata, query])
 
     useEffect(() => {
       if (isInView && !isLoading) fetchMoreData()
-    }, [isInView, isLoading])
+    }, [isInView, isLoading, fetchMoreData])
 
     return (
       <>

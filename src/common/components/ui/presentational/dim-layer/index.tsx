@@ -1,11 +1,11 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
 
-export type TDimLayerProps = {
+export type DimLayerProps = {
   isVisible?: boolean
 }
 
-export const DimLayer = ({ isVisible }: TDimLayerProps) => {
+export const DimLayer = ({ isVisible }: DimLayerProps) => {
   useEffect(() => {
     if (isVisible) {
       document.body.style.overflow = 'hidden'

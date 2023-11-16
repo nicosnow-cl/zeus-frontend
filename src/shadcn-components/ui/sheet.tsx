@@ -49,17 +49,17 @@ const sheetVariants = cva(
   }
 )
 
-interface SheetContentProps
+interface BaseSheetContentProps
   extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
     VariantProps<typeof sheetVariants> {}
 
-export type TSheetContentProps = SheetContentProps & {
+export type SheetContentProps = BaseSheetContentProps & {
   withPortal?: boolean
 }
 
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
-  TSheetContentProps
+  SheetContentProps
 >(({ side = 'right', className, children, withPortal, ...props }, ref) => {
   return withPortal ? (
     <SheetPortal>

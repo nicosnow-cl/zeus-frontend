@@ -3,17 +3,13 @@ import { Button, Flex } from '@radix-ui/themes'
 import { FacebookIcon, InstagramIcon, TiktokIcon, TwitterIcon, WhatsappIcon } from '@/common/icons'
 import { SocialNetwork } from '@/common/types/entities/misc/social-network.type'
 
-export type TSocialNetworksGroupProps = {
+export type SocialNetworksGroupProps = {
   rrss: SocialNetwork[]
   buttonProps?: Omit<React.ComponentProps<typeof Button>, 'children'>
   flexProps?: Omit<React.ComponentProps<typeof Flex>, 'children' | 'key'>
 }
 
-export const SocialNetworksGroup = ({
-  rrss,
-  buttonProps,
-  flexProps,
-}: TSocialNetworksGroupProps) => {
+export const SocialNetworksGroup = ({ rrss, buttonProps, flexProps }: SocialNetworksGroupProps) => {
   const getRRSSButton = (rrss: SocialNetwork, idx: number) => {
     switch (rrss.type) {
       case 'facebook':

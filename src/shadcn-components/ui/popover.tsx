@@ -9,7 +9,7 @@ const Popover = PopoverPrimitive.Root
 
 const PopoverTrigger = PopoverPrimitive.Trigger
 
-export type TPopoverContentProps = React.ComponentPropsWithoutRef<
+export type PopoverContentProps = React.ComponentPropsWithoutRef<
   typeof PopoverPrimitive.Content
 > & {
   withPortal?: boolean
@@ -17,7 +17,7 @@ export type TPopoverContentProps = React.ComponentPropsWithoutRef<
 
 const PopoverContent = React.forwardRef<
   React.ElementRef<typeof PopoverPrimitive.Content>,
-  TPopoverContentProps
+  PopoverContentProps
 >(({ className, withPortal, align = 'center', sideOffset = 4, ...props }, ref) => {
   return withPortal ? (
     <PopoverPrimitive.Portal>

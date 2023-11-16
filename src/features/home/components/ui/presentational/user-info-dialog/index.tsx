@@ -27,7 +27,7 @@ import { ServicesGroup } from '../services-group'
 import { SocialNetworksGroup } from '../social-networks-group'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
-export type TUserInfoDialogProps = DialogProps & {
+export type UserInfoDialogProps = DialogProps & {
   data: UserCardEntity | null
   onLeftClick?: () => void
   onRightClick?: () => void
@@ -40,7 +40,7 @@ export const UserInfoDialog = ({
   onRightClick,
   open,
   ...restProps
-}: TUserInfoDialogProps) => (
+}: UserInfoDialogProps) => (
   <>
     <DimLayer isVisible={open} />
 
