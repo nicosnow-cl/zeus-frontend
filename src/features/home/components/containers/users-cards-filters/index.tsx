@@ -61,11 +61,7 @@ export const UsersCardsFiltersContainer = () => {
         onOpenChange={handleOpenSheet}
         onSubmit={handleSubmit}
         open={openSheet}
-        trigger={
-          <Button className="rounded-full" variant="default">
-            Filtros
-          </Button>
-        }
+        trigger={<Button className="rounded-full">Filtros</Button>}
       />
 
       <Button className="rounded-full" variant="outline">

@@ -159,7 +159,7 @@ export const UsersCardsFiltersForm = ({
             >
               Limpiar
             </Button>
-            <Button variant="surface" color="crimson" size="3" type="submit">
+            <Button variant="solid" color="crimson" size="3" type="submit">
               Aplicar cambios
             </Button>
           </Flex>
