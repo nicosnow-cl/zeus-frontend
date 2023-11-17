@@ -148,8 +148,11 @@ export const UsersCardsFiltersForm = ({
           </Flex>
 
           <LabeledSlider
-            defaultValue={[0, 500000]}
+            defaultValue={[50000, 500000]}
             onValueCommit={(value) => console.log({ value })}
+            min={50000}
+            max={500000}
+            step={10000}
           />
 
           <Flex justify="between">
