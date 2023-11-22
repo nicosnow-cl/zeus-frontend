@@ -10,7 +10,7 @@ export type BodyProps = {
 
 export const Body = ({ avatar, name, username, age }: BodyProps) => {
   return (
-    <div className="h-[600px] text-woodsmoke-50">
+    <div className="text-shade-50 h-[600px]">
       <AvatarWithName avatar={avatar} name={name} username={username} age={age} withDropShadow />
     </div>
   )

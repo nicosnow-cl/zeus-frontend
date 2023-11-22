@@ -1,40 +1,64 @@
 :root {
-  /* Primary */
-  --color-primary-50: #fef1f2;
-  --color-primary-100: #fde7e9;
-  --color-primary-200: #fbd0d6;
-  --color-primary-300: #f7abb6;
-  --color-primary-400: #f2788b;
-  --color-primary-500: #e84a67;
-  --color-primary-600: #d52a52;
-  --color-primary-700: #b41d45;
-  --color-primary-800: #971c41;
-  --color-primary-900: #7e1b3c;
-  --color-primary-950: #470a1d;
+  /* Brand (Primary) color */
+  /* --clr-brand-50: #fef1f2;
+  --clr-brand-100: #fde7e9;
+  --clr-brand-200: #fbd0d6;
+  --clr-brand-300: #f7abb6;
+  --clr-brand-400: #f2788b;
+  --clr-brand-500: #e84a67;
+  --clr-brand-600: #d52a52;
+  --clr-brand-700: #b41d45;
+  --clr-brand-800: #971c41;
+  --clr-brand-900: #7e1b3c;
+  --clr-brand-950: #470a1d; */
 
-  /* Secondary */
-  --color-secondary-50: #f0f7fe;
-  --color-secondary-100: #dcecfd;
-  --color-secondary-200: #c2dffb;
-  --color-secondary-300: #97ccf9;
-  --color-secondary-400: #66b0f4;
-  --color-secondary-500: #438fee;
-  --color-secondary-600: #2d72e3;
-  --color-secondary-700: #255dd0;
-  --color-secondary-800: #2248a0;
-  --color-secondary-900: #224386;
-  --color-secondary-950: #192a52;
+  --clr-brand-50: #fff0f1;
+  --clr-brand-100: #ffe5e8;
+  --clr-brand-200: #ffcbd2;
+  --clr-brand-300: #ffa2af;
+  --clr-brand-400: #ff6a83;
+  --clr-brand-500: #fb375e;
+  --clr-brand-600: #e9164b;
+  --clr-brand-700: #bf0d3d;
+  --clr-brand-800: #a1123d;
+  --clr-brand-900: #861339;
+  --clr-brand-950: #4d041a;
 
-  /* Woodsmoke */
-  --color-woodsmoke-50: #ffffff;
-  --color-woodsmoke-100: #f8fafc;
-  --color-woodsmoke-200: #dce6ef;
-  --color-woodsmoke-300: #b1c9dd;
-  --color-woodsmoke-400: #80a4c6;
-  --color-woodsmoke-500: #3b71ab;
-  --color-woodsmoke-600: #2c4568;
-  --color-woodsmoke-700: #22334e;
-  --color-woodsmoke-800: #1b263b;
-  --color-woodsmoke-900: #191f2f;
-  --color-woodsmoke-950: #0b0d14;
+  /* Accent (Secondary) color */
+  --clr-accent-50: #edfbff;
+  --clr-accent-100: #d7f3ff;
+  --clr-accent-200: #b8ecff;
+  --clr-accent-300: #87e3ff;
+  --clr-accent-400: #4fd0ff;
+  --clr-accent-500: #26b5ff;
+  --clr-accent-600: #0f99ff;
+  --clr-accent-700: #087ce7;
+  --clr-accent-800: #0e65bf;
+  --clr-accent-900: #125696;
+  --clr-accent-950: #10345b;
+
+  /* Shades (shade) color */
+  /* --clr-shade-50: #ffffff;
+  --clr-shade-100: #f8fafc;
+  --clr-shade-200: #dce6ef;
+  --clr-shade-300: #b1c9dd;
+  --clr-shade-400: #80a4c6;
+  --clr-shade-500: #3b71ab;
+  --clr-shade-600: #2c4568;
+  --clr-shade-700: #22334e;
+  --clr-shade-800: #1b263b;
+  --clr-shade-900: #191f2f;
+  --clr-shade-950: #0b0d14; */
+
+  --clr-shade-50: #f8f9fc;
+  --clr-shade-100: #eef1f7;
+  --clr-shade-200: #d1dcea;
+  --clr-shade-300: #a8bdd7;
+  --clr-shade-400: #7396bf;
+  --clr-shade-500: #375576;
+  --clr-shade-600: #283d58;
+  --clr-shade-700: #1c2b3f;
+  --clr-shade-800: #161f2d;
+  --clr-shade-900: #111822;
+  --clr-shade-950: #0e1116;
 }

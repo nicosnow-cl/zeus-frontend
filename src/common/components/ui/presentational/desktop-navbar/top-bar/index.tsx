@@ -61,7 +61,7 @@ export function TopBar({ logo }: TopBarProps) {
 
   return (
     <ContentWithDropdown
-      classNameContainer="absolute w-full text-woodsmoke-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.woodsmoke.950/0.9)] [--bg-to:theme(colors.woodsmoke.950)] z-50"
+      classNameContainer="absolute w-full text-shade-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.shade.950/0.9)] [--bg-to:theme(colors.shade.950)] z-50"
       classNameContent="min-h-[215px]"
       content={getCurrentContent(currentContent)}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}
@@ -79,8 +79,8 @@ export function TopBar({ logo }: TopBarProps) {
           <Flex align="center" justify="center" gap="7">
             {logo}
 
-            <Flex className="rounded-md bg-woodsmoke-50/20 px-2 py-1.5 backdrop-blur-md" gap="5">
-              <Link className={`flex items-center gap-x-2 text-1 text-woodsmoke-100`} asChild>
+            <Flex className="bg-shade-50/20 rounded-md px-2 py-1.5 backdrop-blur-md" gap="5">
+              <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
                 <NextLink href={Routes.SignUp}>
                   {t('sidebar.sign-up')}
                   {<PatchCheckFillIcon width={14} height={14} />}
@@ -89,7 +89,7 @@ export function TopBar({ logo }: TopBarProps) {
 
               <Separator orientation="vertical" size="1" />
 
-              <Link className={`flex items-center gap-x-2 text-1 text-woodsmoke-100`} asChild>
+              <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
                 <NextLink href={Routes.SignIn}>
                   {t('sidebar.sign-in')}
                   <BoxArrowRightIcon width={14} height={14} />
@@ -97,7 +97,15 @@ export function TopBar({ logo }: TopBarProps) {
               </Link>
             </Flex>
 
-            <Link className={`flex items-center gap-x-2 text-1 text-woodsmoke-100`} asChild>
+            <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
+              <NextLink href={Routes.Blog}>{t('sidebar.blog')}</NextLink>
+            </Link>
+
+            <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
+              <NextLink href={Routes.About}>{t('sidebar.about')}</NextLink>
+            </Link>
+
+            <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
               <NextLink href={Routes.Contact}>{t('sidebar.contact')}</NextLink>
             </Link>
 

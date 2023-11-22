@@ -10,12 +10,12 @@ export type DescriptionProps = {
 export const Description = ({ description, services = [] }: DescriptionProps) => (
   <Box
     p="2"
-    className="absolute bottom-0 border-t border-woodsmoke-100/20 bg-woodsmoke-900/20 opacity-0 backdrop-blur-sm backdrop-contrast-100 transition-[bottom,opacity] ease-in-out group-hover:bottom-[36px] group-hover:opacity-100"
+    className="border-shade-100/20 bg-shade-900/20 absolute bottom-0 border-t opacity-0 backdrop-blur-sm backdrop-contrast-100 transition-[bottom,opacity] ease-in-out group-hover:bottom-[36px] group-hover:opacity-100"
     style={{
       textShadow: '2px 2px 3px rgba(0, 0, 0, 0.15)',
     }}
   >
-    <Blockquote className="text-woodsmoke-50" color="crimson" size="2">
+    <Blockquote className="text-shade-50" color="crimson" size="2">
       {description}
 
       {services.length > 0 && (

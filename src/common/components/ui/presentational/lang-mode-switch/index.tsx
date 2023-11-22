@@ -16,7 +16,7 @@ export const LangModeSwitch = () => {
     <DropdownMenu.Root>
       <DropdownMenu.Trigger>
         <IconButton size="1" variant="ghost">
-          <Globe2Icon className={`text-woodsmoke-800`} />
+          <Globe2Icon className={`text-shade-800`} />
         </IconButton>
       </DropdownMenu.Trigger>
 

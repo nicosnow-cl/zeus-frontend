@@ -10,9 +10,7 @@ export type CrumbProps = TCrumb & {
 export const Crumb = ({ href, label, icon, isFirst }: CrumbProps) => (
   <Link
     asChild
-    className={`inline-flex items-center gap-x-2 ${
-      isFirst ? 'text-primary-600' : 'text-woodsmoke-950'
-    }`}
+    className={`inline-flex items-center gap-x-2 ${isFirst ? 'text-brand-600' : 'text-shade-950'}`}
     size="2"
   >
     <NextLink href={href}>

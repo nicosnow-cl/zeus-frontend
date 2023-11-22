@@ -2,8 +2,8 @@
   background-image: conic-gradient(
     from var(--border-angle),
     transparent 10%,
-    theme('colors.gray.500'),
-    theme('colors.primary.500')
+    theme('colors.shade.500'),
+    theme('colors.brand.500')
   );
   background-position: center center;
   background-repeat: no-repeat;

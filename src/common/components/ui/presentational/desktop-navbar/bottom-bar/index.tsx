@@ -15,7 +15,7 @@ export const BottomBar = () => {
 
   return (
     <div
-      className={`grid-wrapper absolute top-[44px] min-h-[26px] w-full bg-woodsmoke-200/80 fill-woodsmoke-950 text-woodsmoke-950 backdrop-blur-md backdrop-saturate-150`}
+      className={`grid-wrapper bg-shade-200/80 fill-shade-950 text-shade-950 absolute top-[44px] min-h-[26px] w-full backdrop-blur-md backdrop-saturate-150`}
     >
       <Flex className="breakout" justify="between" py="1">
         <Breadcrumbs crumbs={crumbs} />

@@ -25,3 +25,13 @@
   --cursor-slider-thumb-active: default;
   --cursor-switch: pointer;
 }
+
+html.dark body {
+  background: var(--clr-shade-950);
+  background: linear-gradient(0deg, var(--clr-shade-950) 25%, var(--clr-shade-900) 100%);
+}
+
+body {
+  background: var(--clr-shade-100);
+  background: linear-gradient(0deg, var(--clr-shade-100) 25%, var(--clr-shade-50) 100%);
+}
