@@ -32,6 +32,6 @@ html.dark body {
 }
 
 body {
-  background: var(--clr-shade-100);
-  background: linear-gradient(0deg, var(--clr-shade-100) 25%, var(--clr-shade-50) 100%);
+  background-color: var(--clr-shade-100) !important;
+  /* background: linear-gradient(0deg, var(--clr-shade-100) 10%, var(--clr-shade-50) 100%); */
 }

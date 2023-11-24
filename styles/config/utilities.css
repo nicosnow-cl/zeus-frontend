@@ -11,10 +11,48 @@
 .hero::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: 75px;
   transform: translateY(50%);
   width: 75px;
   height: 75px;
   border-radius: 50% 0;
   background: linear-gradient(45deg, var(--clr-brand-600), var(--clr-brand-950));
+}
+
+.curve {
+  /* position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg); */
+}
+
+/* .curve {
+  position: relative;
+  display: block;
+  width: calc(155% + 1.3px);
+  height: 167px;
+} */
+
+.curve {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(155% + 1.3px);
+  height: 95px;
+  transform: rotate(180deg);
+}
+
+.curve .shape-fill {
+  fill: var(--clr-shade-100);
+}
+
+/** For tablet devices **/
+@media (min-width: 768px) and (max-width: 1023px) {
+  .curve svg {
+    width: calc(177% + 1.3px);
+    height: 109px;
+  }
 }
