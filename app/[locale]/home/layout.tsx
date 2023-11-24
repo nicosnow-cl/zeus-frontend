@@ -1,7 +1,6 @@
 import { UsersCardsFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
 
-import HeroTitle from '@/common/components/ui/presentational/hero-title'
-import Image from 'next/image'
+import * as Hero from '@/common/components/ui/presentational/hero'
 
 export type LayoutProps = {
   children: React.ReactNode
@@ -10,22 +9,20 @@ export type LayoutProps = {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <section className="grid-wrapper relative">
-        <div className="full-width h-[550px] bg-shade-950">
-          <Image
-            className="full-width hero-banner"
-            src="/images/header2.jpg"
-            alt="sexy woman in the beach"
-            fill
-          />
-        </div>
+      <Hero.Root>
+        <Hero.Banner
+          imageProps={{
+            src: '/images/header2.jpg',
+            alt: 'sexy woman in the beach',
+          }}
+        />
 
-        <HeroTitle className="animated-gradient absolute right-0 top-7 text-end text-7xl">
-          Improve. <br />
+        <Hero.Title className="animated-gradient">
           Unleash. <br />
+          Improve. <br />
           Rise.
-        </HeroTitle>
-      </section>
+        </Hero.Title>
+      </Hero.Root>
 
       <section className="grid-wrapper main-content">
         <UsersCardsFiltersContainer />

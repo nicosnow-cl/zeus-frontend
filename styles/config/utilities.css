@@ -8,32 +8,13 @@
   mask: linear-gradient(90deg, hsl(0 0% 0% / 0) 5%, hsl(0 0% 100% / 0.9), hsl(0 0% 0% / 0) 95%);
 }
 
-@property --gradient-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-.animated-gradient::before {
+.hero::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: conic-gradient(
-    from var(--gradient-angle),
-    var(--clr-brand-700),
-    var(--clr-accent-700)
-  );
-  border-radius: inherit;
-  animation: rotation 15s linear infinite;
-  filter: blur(3.5rem);
-  opacity: 0.3;
-}
-
-@keyframes rotation {
-  0% {
-    --gradient-angle: 0deg;
-  }
-  100% {
-    --gradient-angle: 360deg;
-  }
+  bottom: 0;
+  transform: translateY(50%);
+  width: 75px;
+  height: 75px;
+  border-radius: 50% 0;
+  background: linear-gradient(45deg, var(--clr-brand-600), var(--clr-brand-950));
 }

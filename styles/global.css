@@ -6,6 +6,7 @@
 
 @import './config/colors.css';
 @import './config/layout.css';
+@import './config/effects.css';
 @import './config/utilities.css';
 
 @import '@radix-ui/themes/styles.css';
