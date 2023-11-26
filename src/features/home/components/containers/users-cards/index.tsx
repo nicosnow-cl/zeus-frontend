@@ -82,7 +82,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
   return (
     <MotionConfig
       transition={{
-        ease: 'easeInOut',
+        ease: 'linear',
         type: 'spring',
         stiffness: 700,
         damping: 90,
@@ -105,10 +105,8 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
             delay={getDelay(idx)}
             frontChild={<UserCard.Skeleton />}
             backChild={
-              <UserCard.Root onClik={(evt) => handleClickCard(idx, evt)}>
-                <div className="absolute h-[400px] w-full">
-                  <UserCard.BackgroundMedia avatar={user.avatar} medias={user.medias} />
-                </div>
+              <UserCard.Root onClick={(evt) => handleClickCard(idx, evt)}>
+                <UserCard.BackgroundMedia avatar={user.avatar} medias={user.medias} />
 
                 <UserCard.Body
                   avatar={user.avatar}
