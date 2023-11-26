@@ -23,7 +23,7 @@ export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
     return (
       <motion.div
         ref={ref}
-        className={`relative flex h-[636px] items-center justify-center ${className}`}
+        className={`relative flex h-[400px] items-center justify-center ${className}`}
         style={{
           perspective: '800px',
           transformStyle: 'preserve-3d',
@@ -34,8 +34,8 @@ export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
             <motion.div
               key="front"
               className="h-fit w-full"
-              initial={{ rotateY: 0, zIndex: 1 }}
-              exit={{ rotateY: -180, zIndex: 0 }}
+              initial={{ rotateY: 0 }}
+              exit={{ rotateY: -180 }}
               style={{
                 width: '100%',
                 height: '100%',
@@ -51,8 +51,8 @@ export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
             <motion.div
               key="back"
               className="h-fit w-full"
-              initial={{ rotateY: 180, zIndex: 0 }}
-              animate={{ rotateY: 0, zIndex: 1 }}
+              initial={{ rotateY: 180 }}
+              animate={{ rotateY: 0 }}
               style={{
                 width: '100%',
                 height: '100%',

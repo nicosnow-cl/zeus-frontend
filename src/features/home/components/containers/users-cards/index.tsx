@@ -95,7 +95,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
           md: '3',
           lg: '4',
         }}
-        gap="4"
+        gap="1"
       >
         {data.map((user, idx) => (
           <FlipEffect
@@ -106,7 +106,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
             frontChild={<UserCard.Skeleton />}
             backChild={
               <UserCard.Root onClik={(evt) => handleClickCard(idx, evt)}>
-                <div className="absolute h-[600px] w-full overflow-hidden">
+                <div className="absolute h-[400px] w-full">
                   <UserCard.BackgroundMedia avatar={user.avatar} medias={user.medias} />
                 </div>
 
@@ -117,7 +117,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
                   name={user.name}
                 />
                 <UserCard.Description description={user.description} />
-                <UserCard.Actions price={user.price} location={user.location} />
+                {/* <UserCard.Actions price={user.price} location={user.location} /> */}
               </UserCard.Root>
             }
           />

@@ -5,7 +5,7 @@ export type RootProps = {
 
 export const Root = ({ children, onClik }: RootProps) => (
   <div
-    className={`group relative cursor-pointer overflow-hidden rounded-4 border border-gray-6 drop-shadow`}
+    className={`group relative cursor-pointer overflow-hidden rounded-3 hover:z-20 hover:scale-[1.03]`}
     onClick={onClik}
   >
     {children}

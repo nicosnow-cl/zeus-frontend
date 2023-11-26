@@ -10,7 +10,7 @@ export type BackgroundMediaProps = {
   medias?: UserCardEntity['medias']
 }
 
-const scaleTransition = 'transition-all duration-150 ease-linear group-hover:scale-[1.05]'
+const scaleTransition = 'transition-all duration-150 ease-linear '
 
 export const BackgroundMedia = ({ avatar, medias }: BackgroundMediaProps) => {
   const handleError = (evt: SyntheticEvent<HTMLImageElement, Event>) => {
@@ -24,7 +24,7 @@ export const BackgroundMedia = ({ avatar, medias }: BackgroundMediaProps) => {
       <Image
         alt="img-media"
         blurDataURL={avatar.placeholder}
-        className={`h-[600px] object-cover ${scaleTransition}`}
+        className={`h-[400px] object-cover ${scaleTransition}`}
         onError={handleError}
         placeholder="blur"
         quality={75}
@@ -32,7 +32,7 @@ export const BackgroundMedia = ({ avatar, medias }: BackgroundMediaProps) => {
         src={avatar.hq as string}
         fill
       />
-      <div className="vignette" />
+      <div className="vignette rounded-3" />
     </>
   )
 }

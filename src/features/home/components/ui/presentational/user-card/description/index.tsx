@@ -10,7 +10,7 @@ export type DescriptionProps = {
 export const Description = ({ description, services = [] }: DescriptionProps) => (
   <Box
     p="2"
-    className="border-shade-100/20 bg-shade-900/20 absolute bottom-0 border-t opacity-0 backdrop-blur-sm backdrop-contrast-100 transition-[bottom,opacity] ease-in-out group-hover:bottom-[36px] group-hover:opacity-100"
+    className="absolute bottom-[-10rem] border-t border-shade-100/20 bg-shade-900/20 opacity-0 backdrop-blur-sm backdrop-contrast-100 transition-[bottom,opacity] ease-in-out group-hover:bottom-0 group-hover:opacity-100"
     style={{
       textShadow: '2px 2px 3px rgba(0, 0, 0, 0.15)',
     }}
