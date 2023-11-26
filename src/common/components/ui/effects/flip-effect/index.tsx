@@ -23,7 +23,14 @@ export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
     return (
       <motion.div
         ref={ref}
-        className={`relative flex h-[400px] items-center justify-center ${className}`}
+        className={`relative h-fit ${className}`}
+        whileHover={{
+          zIndex: 1,
+          scale: 1.04,
+        }}
+        transition={{
+          duration: 0.15,
+        }}
         style={{
           perspective: '800px',
           transformStyle: 'preserve-3d',

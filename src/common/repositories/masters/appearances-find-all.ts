@@ -10,6 +10,8 @@ export async function appearancesFindAll(): Promise<TResponse<TAppearanceEntity>
 
     const data = await collection.find().sort(['value', 1]).toArray()
 
+    await closeConnection()
+
     return JSON.parse(
       JSON.stringify({
         status: 'success',
@@ -23,7 +25,5 @@ export async function appearancesFindAll(): Promise<TResponse<TAppearanceEntity>
       status: 'error',
       error: err.message || 'Error inesperado',
     }
-  } finally {
-    await closeConnection()
   }
 }

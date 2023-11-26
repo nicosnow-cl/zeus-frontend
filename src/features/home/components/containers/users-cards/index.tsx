@@ -100,7 +100,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
         {data.map((user, idx) => (
           <FlipEffect
             key={idx}
-            className={selectedUser?.[0] === idx ? 'z-40' : ''}
+            className={selectedUser?.[0] === idx ? 'z-40 min-h-[400px]' : 'min-h-[400px]'}
             ref={(el) => (cardsRef.current[idx] = el)}
             delay={getDelay(idx)}
             frontChild={<UserCard.Skeleton />}
@@ -115,7 +115,6 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
                   name={user.name}
                 />
                 <UserCard.Description description={user.description} />
-                {/* <UserCard.Actions price={user.price} location={user.location} /> */}
               </UserCard.Root>
             }
           />

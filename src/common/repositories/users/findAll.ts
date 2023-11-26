@@ -63,6 +63,8 @@ export async function findAll({
       totalPages: Math.ceil(dataCount / Number(limit)),
     }
 
+    await closeConnection()
+
     return JSON.parse(
       JSON.stringify({
         status: 'success',
@@ -77,7 +79,5 @@ export async function findAll({
       status: 'error',
       error: err.message || 'Error inesperado',
     }
-  } finally {
-    await closeConnection()
   }
 }
