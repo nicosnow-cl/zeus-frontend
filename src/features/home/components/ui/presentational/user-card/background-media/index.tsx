@@ -23,7 +23,7 @@ export const BackgroundMedia = ({ avatar, medias, withVignette = true }: Backgro
       <Image
         alt="img-media"
         blurDataURL={avatar.placeholder}
-        className="object-cover"
+        className="object-cover object-top"
         onError={handleError}
         placeholder="blur"
         quality={75}

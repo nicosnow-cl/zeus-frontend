@@ -24,7 +24,7 @@ export const AvatarWithName = ({
   withDropShadow,
   showUserType = true,
 }: AvatarWithNameProps) => (
-  <Flex p="2" justify="between" className="relative">
+  <Flex py="2" justify="between" className="relative">
     <Flex gap="3" align={`${showAvatar ? 'center' : 'start'}`}>
       {showAvatar && avatar && (
         <Avatar

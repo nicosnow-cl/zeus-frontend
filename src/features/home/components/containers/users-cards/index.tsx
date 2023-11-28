@@ -6,9 +6,10 @@ import { useRef, useState } from 'react'
 
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import { UserInfoDialog } from '../../ui/presentational/user-info-dialog'
 import * as UserCard from '../../ui/presentational/user-card'
 import { UserInfoDialogV2 } from '../../ui/presentational/user-info-dialog-2'
+import { Button } from '@/shadcn-components/ui/button'
+import { CaretLeftFillIcon, CaretRightFillIcon } from '@/common/icons'
 
 export type UsersCardsContainerProps = {
   data?: UserCardEntity[]
@@ -48,7 +49,10 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
     setSelectedUser(null)
   }
 
-  const handleGoLeft = () => {
+  const handleGoLeft = (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    evt.preventDefault()
+    evt.stopPropagation()
+
     const currentIdx = selectedUser?.[0] || 0
     let nextIdx = currentIdx - 1
 
@@ -60,7 +64,10 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
     card?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  const handleGoRight = () => {
+  const handleGoRight = (evt: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    evt.preventDefault()
+    evt.stopPropagation()
+
     const currentIdx = selectedUser?.[0] || 0
     let nextIdx = currentIdx + 1
 
@@ -129,15 +136,17 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
         data={selectedUser?.[1] || null}
         open={showDialog}
         onOpenChange={handleOpenDialog}
+        leftAdornment={
+          <Button size="icon" onClick={(evt) => handleGoLeft(evt)}>
+            <CaretLeftFillIcon />
+          </Button>
+        }
+        rightAdornment={
+          <Button size="icon" onClick={(evt) => handleGoRight(evt)}>
+            <CaretRightFillIcon />
+          </Button>
+        }
       />
-
-      {/* <UserInfoDialog
-        open={showDialog}
-        data={selectedUser?.[1] || null}
-        onLeftClick={handleGoLeft}
-        onOpenChange={handleOpenDialog}
-        onRightClick={handleGoRight}
-      /> */}
     </MotionConfig>
   )
 }
