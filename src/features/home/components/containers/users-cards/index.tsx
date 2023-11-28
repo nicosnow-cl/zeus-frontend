@@ -104,16 +104,6 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
             className="min-h-[400px]"
             ref={(el) => (cardsRef.current[idx] = el)}
             delay={getDelay(idx)}
-            containerProps={{
-              animate: { opacity: selectedUser?.[0] === idx ? 0 : 1 },
-              whileHover: {
-                zIndex: 1,
-                scale: 1.05,
-              },
-              transition: {
-                duration: 0.15,
-              },
-            }}
             frontChild={<UserCard.Skeleton />}
             backChild={
               <UserCard.Root onClick={(evt) => handleClickCard(idx, evt)}>

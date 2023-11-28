@@ -23,7 +23,7 @@ export const BackgroundMedia = ({ avatar, medias, withVignette = true }: Backgro
       <Image
         alt="img-media"
         blurDataURL={avatar.placeholder}
-        className="object-cover object-top"
+        className="object-cover object-top transition-[transform] group-hover:scale-[1.02]"
         onError={handleError}
         placeholder="blur"
         quality={75}
@@ -31,7 +31,10 @@ export const BackgroundMedia = ({ avatar, medias, withVignette = true }: Backgro
         src={avatar.hq}
         fill
       />
-      {withVignette && <div className="vignette" />}
+
+      {withVignette && (
+        <div className="vignette opacity-100 transition-[opacity] group-hover:opacity-50" />
+      )}
     </>
   )
 }

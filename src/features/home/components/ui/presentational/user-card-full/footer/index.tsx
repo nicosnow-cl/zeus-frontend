@@ -1,4 +1,4 @@
-import { Flex } from '@radix-ui/themes'
+import { Flex, Separator } from '@radix-ui/themes'
 
 import { AppearanceGroup } from '../../appearance-group'
 import { ServicesGroup } from '../../services-group'
@@ -13,14 +13,18 @@ export type FooterProps = {
 
 export const Footer = ({ nationality, rrss, services }: FooterProps) => {
   return (
-    <Flex className="mt-4 w-full" justify="between" gap="5">
-      {rrss && rrss.length > 0 && <SocialNetworksGroup rrss={rrss} />}
+    <>
+      <Separator className="ml-auto mr-0" my="3" size="2" />
 
-      <div>
-        <AppearanceGroup nationality={nationality} flexProps={{ className: 'mb-2' }} />
+      <Flex className="mt-4 w-full" justify="between" gap="5">
+        {rrss && rrss.length > 0 && <SocialNetworksGroup rrss={rrss} />}
 
-        {services && services.length > 0 && <ServicesGroup services={services} />}
-      </div>
-    </Flex>
+        <div>
+          <AppearanceGroup nationality={nationality} flexProps={{ className: 'mb-2' }} />
+
+          {services && services.length > 0 && <ServicesGroup services={services} />}
+        </div>
+      </Flex>
+    </>
   )
 }
