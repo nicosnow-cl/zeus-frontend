@@ -1,17 +1,18 @@
 'use client'
 
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion'
 import { forwardRef, useEffect, useState } from 'react'
 
 export type FlipEffectProps = {
   backChild?: React.ReactNode
   className?: string
+  containerProps?: Omit<HTMLMotionProps<'div'>, 'children' | 'ref'>
   delay?: number
   frontChild: React.ReactNode
 }
 
 export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
-  ({ backChild, className = '', delay, frontChild }, ref) => {
+  ({ backChild, className = '', containerProps, delay, frontChild }, ref) => {
     const [isRevealed, setIsRevealed] = useState(false)
 
     useEffect(() => {
@@ -24,17 +25,11 @@ export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
       <motion.div
         ref={ref}
         className={`relative h-fit ${className}`}
-        whileHover={{
-          zIndex: 1,
-          scale: 1.04,
-        }}
-        transition={{
-          duration: 0.15,
-        }}
         style={{
           perspective: '800px',
           transformStyle: 'preserve-3d',
         }}
+        {...containerProps}
       >
         <AnimatePresence>
           {!isRevealed && (

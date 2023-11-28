@@ -8,9 +8,10 @@ import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 export type BackgroundMediaProps = {
   avatar: UserCardEntity['avatar']
   medias?: UserCardEntity['medias']
+  withVignette?: boolean
 }
 
-export const BackgroundMedia = ({ avatar, medias }: BackgroundMediaProps) => {
+export const BackgroundMedia = ({ avatar, medias, withVignette = true }: BackgroundMediaProps) => {
   const handleError = (evt: SyntheticEvent<HTMLImageElement, Event>) => {
     console.log({ evt, avatar })
   }
@@ -30,7 +31,7 @@ export const BackgroundMedia = ({ avatar, medias }: BackgroundMediaProps) => {
         src={avatar.hq}
         fill
       />
-      <div className="vignette rounded-3" />
+      {withVignette && <div className="vignette" />}
     </>
   )
 }

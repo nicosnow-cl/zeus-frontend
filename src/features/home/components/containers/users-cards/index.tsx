@@ -5,10 +5,10 @@ import { MotionConfig } from 'framer-motion'
 import { useRef, useState } from 'react'
 
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
-import { uiActions } from '@/common/store/ui'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { UserInfoDialog } from '../../ui/presentational/user-info-dialog'
 import * as UserCard from '../../ui/presentational/user-card'
+import { UserInfoDialogV2 } from '../../ui/presentational/user-info-dialog-2'
 
 export type UsersCardsContainerProps = {
   data?: UserCardEntity[]
@@ -29,15 +29,13 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
   }
 
   const handleClickCard = (idx: number, evt?: React.MouseEvent<HTMLElement>) => {
-    uiActions.toggleNavbar(false)
-
-    setSelectedUser([idx, data[idx]])
-    setShowDialog(true)
-
     if (evt) {
       evt.preventDefault()
       evt.stopPropagation()
     }
+
+    setSelectedUser([idx, data[idx]])
+    setShowDialog(true)
 
     const card = cardsRef.current[idx]
     card?.scrollIntoView({ behavior: 'smooth' })
@@ -46,13 +44,8 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
   const handleOpenDialog = (value: boolean) => {
     if (value) return
 
-    uiActions.toggleNavbar(true)
-
     setShowDialog(false)
-
-    setTimeout(() => {
-      setSelectedUser(null)
-    }, 150)
+    setSelectedUser(null)
   }
 
   const handleGoLeft = () => {
@@ -89,6 +82,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
       }}
     >
       <Grid
+        className="relative"
         columns={{
           initial: '1',
           sm: '2',
@@ -100,9 +94,19 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
         {data.map((user, idx) => (
           <FlipEffect
             key={idx}
-            className={selectedUser?.[0] === idx ? 'z-40 min-h-[400px]' : 'min-h-[400px]'}
+            className="min-h-[400px]"
             ref={(el) => (cardsRef.current[idx] = el)}
             delay={getDelay(idx)}
+            containerProps={{
+              animate: { opacity: selectedUser?.[0] === idx ? 0 : 1 },
+              whileHover: {
+                zIndex: 1,
+                scale: 1.05,
+              },
+              transition: {
+                duration: 0.15,
+              },
+            }}
             frontChild={<UserCard.Skeleton />}
             backChild={
               <UserCard.Root onClick={(evt) => handleClickCard(idx, evt)}>
@@ -121,13 +125,19 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
         ))}
       </Grid>
 
-      <UserInfoDialog
+      <UserInfoDialogV2
+        data={selectedUser?.[1] || null}
+        open={showDialog}
+        onOpenChange={handleOpenDialog}
+      />
+
+      {/* <UserInfoDialog
         open={showDialog}
         data={selectedUser?.[1] || null}
         onLeftClick={handleGoLeft}
         onOpenChange={handleOpenDialog}
         onRightClick={handleGoRight}
-      />
+      /> */}
     </MotionConfig>
   )
 }

@@ -2,11 +2,14 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
 
 export type DimLayerProps = {
+  byOwn?: boolean
   isVisible?: boolean
 }
 
-export const DimLayer = ({ isVisible }: DimLayerProps) => {
+export const DimLayer = ({ byOwn, isVisible }: DimLayerProps) => {
   useEffect(() => {
+    if (!byOwn) return
+
     if (isVisible) {
       document.body.style.overflow = 'hidden'
       document.body.style.paddingRight = '15px'
@@ -16,19 +19,18 @@ export const DimLayer = ({ isVisible }: DimLayerProps) => {
       document.body.style.overflow = 'unset'
       document.body.style.paddingRight = '0px'
     }
-  }, [isVisible])
+  }, [byOwn, isVisible])
 
-  return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          className="bg-shade-950/20 fixed inset-0 h-screen w-screen backdrop-blur-md"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ ease: 'easeInOut', duration: 0.15 }}
-        />
-      )}
-    </AnimatePresence>
-  )
+  const getMainComponent = () =>
+    isVisible ? (
+      <motion.div
+        animate={{ opacity: 1 }}
+        className="fixed inset-0 h-screen w-screen bg-shade-950/20 backdrop-blur-md dark:bg-gray-950/80"
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+        transition={{ ease: 'easeInOut', duration: 0.2 }}
+      />
+    ) : null
+
+  return byOwn ? <AnimatePresence>{getMainComponent()}</AnimatePresence> : getMainComponent()
 }
