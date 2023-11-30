@@ -7,9 +7,11 @@ import { useRef, useState } from 'react'
 import { FlipEffect } from '@/common/components/ui/effects/flip-effect'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import * as UserCard from '../../ui/presentational/user-card'
-import { UserInfoDialogV2 } from '../../ui/presentational/user-info-dialog-2'
+import { UserInfoDialog } from '../../ui/presentational/user-info-dialog'
 import { Button } from '@/shadcn-components/ui/button'
 import { CaretLeftFillIcon, CaretRightFillIcon } from '@/common/icons'
+import { UserCardDynamic } from '../user-card-dynamic'
+import { DimLayer } from '@/common/components/ui/presentational/dim-layer'
 
 export type UsersCardsContainerProps = {
   data?: UserCardEntity[]
@@ -122,7 +124,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
         ))}
       </Grid>
 
-      <UserInfoDialogV2
+      <UserInfoDialog
         data={selectedUser?.[1] || null}
         open={showDialog}
         onOpenChange={handleOpenDialog}

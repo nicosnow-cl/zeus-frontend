@@ -1,12 +1,13 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion'
 import { useEffect } from 'react'
 
 export type DimLayerProps = {
   byOwn?: boolean
+  containerProps?: Omit<HTMLMotionProps<'div'>, 'children'>
   isVisible?: boolean
 }
 
-export const DimLayer = ({ byOwn, isVisible }: DimLayerProps) => {
+export const DimLayer = ({ byOwn, containerProps, isVisible }: DimLayerProps) => {
   useEffect(() => {
     if (!byOwn) return
 
@@ -25,10 +26,11 @@ export const DimLayer = ({ byOwn, isVisible }: DimLayerProps) => {
     isVisible ? (
       <motion.div
         animate={{ opacity: 1 }}
-        className="fixed inset-0 h-screen w-screen bg-shade-950/20 backdrop-blur-md dark:bg-gray-950/80"
+        className="fixed inset-0 z-40 h-screen w-screen bg-shade-950/20 backdrop-blur-md dark:bg-gray-950/80"
         exit={{ opacity: 0 }}
         initial={{ opacity: 0 }}
         transition={{ ease: 'easeInOut', duration: 0.2 }}
+        {...containerProps}
       />
     ) : null
 
