@@ -64,7 +64,7 @@ export function withInfiniteScrollFetchData<T>({
       <>
         <Component data={data} />
 
-        {data.length < metadata.total && <LoadMore ref={loadingMoreRef} isLoading={isLoading} />}
+        {/* {data.length < metadata.total && <LoadMore ref={loadingMoreRef} isLoading={isLoading} />} */}
       </>
     )
   }

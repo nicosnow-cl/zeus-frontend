@@ -1,10 +1,13 @@
 import { Grid } from '@radix-ui/themes'
 import { MotionConfig, PanInfo } from 'framer-motion'
 import { useRef, useState } from 'react'
+import Masonry from 'react-masonry-component'
 
 import { DimLayer } from '@/common/components/ui/presentational/dim-layer'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { UserCardDynamic } from '../user-card-dynamic'
+import * as UserCardMinimal from '../../ui/presentational/user-card'
+import styles from './styles.module.css'
 
 export type UsersCardsContainerProps = {
   data?: UserCardEntity[]
@@ -33,11 +36,11 @@ export const UsersCardsContainerV2 = ({ data = [] }: UsersCardsContainerProps) =
   const getCardSize = (type: string) => {
     switch (type) {
       case 'VIP':
-        return 500
+        return 'grid-item--width2 h-[500px]'
       case 'PREMIUM':
-        return 450
+        return 'h-[450px]'
       default:
-        return 400
+        return 'h-[400px]'
     }
   }
 
@@ -49,9 +52,22 @@ export const UsersCardsContainerV2 = ({ data = [] }: UsersCardsContainerProps) =
         damping: 40,
       }}
     >
-      <div className="columns-4 gap-1">
+      {/* <div className="columns-4 gap-1"> */}
+      <Masonry
+        className={'grid w-full'}
+        options={{
+          transitionDuration: 0,
+          // use outer width of grid-sizer for columnWidth
+          columnWidth: '.grid-sizer',
+          // do not use .grid-sizer in layout
+          itemSelector: '.grid-item',
+          percentPosition: true,
+        }}
+      >
+        <div className={'grid-sizer'} />
+
         {data.map((user, idx) => (
-          <div key={idx} className={`relative mb-1 h-[${getCardSize(user.type)}px]`}>
+          <div key={idx} className={`grid-item ${getCardSize(user.type)}`}>
             <UserCardDynamic
               data={user}
               expanded={selectedId === user._id}
@@ -61,7 +77,8 @@ export const UsersCardsContainerV2 = ({ data = [] }: UsersCardsContainerProps) =
             />
           </div>
         ))}
-      </div>
+      </Masonry>
+      {/* </div> */}
 
       <DimLayer
         byOwn
