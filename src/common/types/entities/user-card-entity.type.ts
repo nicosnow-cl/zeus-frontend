@@ -1,3 +1,4 @@
+import { EscortType } from './misc/escort.type'
 import { Image } from './misc/image.type'
 import { Location } from './misc/location.type'
 import { Media } from './misc/media.type'
@@ -6,7 +7,7 @@ import { SocialNetwork } from './misc/social-network.type'
 
 export type UserCardEntity = {
   _id: string
-  // type: EscortType;
+  type: EscortType
   active: boolean
   age: number
   appearance: string[]

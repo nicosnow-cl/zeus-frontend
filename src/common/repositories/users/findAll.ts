@@ -50,7 +50,8 @@ export async function findAll({
       .skip(skip)
       .limit(Number(limit))
       .sort([
-        ['type', -1],
+        ['age', 1],
+        ['name', 1],
         ['returnAt', -1],
       ])
       .toArray()

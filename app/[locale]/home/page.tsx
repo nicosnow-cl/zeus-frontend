@@ -16,6 +16,8 @@ export const viewport: Viewport = {
 }
 
 export default async function Home({ searchParams }: { searchParams?: TSearchParams }) {
+  if (searchParams) searchParams.limit = '30'
+
   const res = await fetchUsers(searchParams)
 
   if (res.status === 'error') throw new Error(res.error)

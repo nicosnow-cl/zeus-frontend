@@ -42,7 +42,7 @@ export function withInfiniteScrollFetchData<T>({
       const nextPage = metadata.page + 1
       const res = await fetchFunction({
         page: nextPage.toString(),
-        limit: '10',
+        limit: '30',
         query,
       })
 
@@ -64,7 +64,7 @@ export function withInfiniteScrollFetchData<T>({
       <>
         <Component data={data} />
 
-        {/* {data.length < metadata.total && <LoadMore ref={loadingMoreRef} isLoading={isLoading} />} */}
+        {data.length < metadata.total && <LoadMore ref={loadingMoreRef} isLoading={isLoading} />}
       </>
     )
   }

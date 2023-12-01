@@ -8,7 +8,7 @@ export type MediaProps = {
 
 export const Media = ({ avatar }: MediaProps) => {
   return (
-    <div className="relative block h-[450px]">
+    <div className="relative block">
       <BackgroundMedia avatar={avatar} />
     </div>
   )

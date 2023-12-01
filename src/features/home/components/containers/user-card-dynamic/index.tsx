@@ -57,14 +57,14 @@ const UserCardDynamic = forwardRef<HTMLDivElement | null, UserCardDynamicProps>(
     )
 
     return (
-      <div className="w-full">
+      <div className="h-full w-full">
         <motion.div
           id={data._id}
           ref={ref}
           className={
             expanded
               ? 'fixed inset-0 bottom-0 left-0 right-0 top-0 z-50 m-auto flex h-fit w-fit items-center justify-center'
-              : ''
+              : 'h-full w-full'
           }
           layout
           transition={{

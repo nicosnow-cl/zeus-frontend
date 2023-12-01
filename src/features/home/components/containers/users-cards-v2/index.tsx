@@ -30,6 +30,17 @@ export const UsersCardsContainerV2 = ({ data = [] }: UsersCardsContainerProps) =
     if (selectedId) setSelectedId(null)
   }
 
+  const getCardSize = (type: string) => {
+    switch (type) {
+      case 'VIP':
+        return 500
+      case 'PREMIUM':
+        return 450
+      default:
+        return 400
+    }
+  }
+
   return (
     <MotionConfig
       transition={{
@@ -38,27 +49,19 @@ export const UsersCardsContainerV2 = ({ data = [] }: UsersCardsContainerProps) =
         damping: 40,
       }}
     >
-      <Grid
-        className="relative"
-        columns={{
-          initial: '1',
-          sm: '2',
-          md: '3',
-          lg: '4',
-        }}
-        gap="1"
-      >
+      <div className="columns-4 gap-1">
         {data.map((user, idx) => (
-          <UserCardDynamic
-            key={idx}
-            data={user}
-            expanded={selectedId === user._id}
-            containerProps={{
-              onClick: (evt) => handleClickCard(evt, { idx, id: user._id }),
-            }}
-          />
+          <div key={idx} className={`relative mb-1 h-[${getCardSize(user.type)}px]`}>
+            <UserCardDynamic
+              data={user}
+              expanded={selectedId === user._id}
+              containerProps={{
+                onClick: (evt) => handleClickCard(evt, { idx, id: user._id }),
+              }}
+            />
+          </div>
         ))}
-      </Grid>
+      </div>
 
       <DimLayer
         byOwn
