@@ -33,23 +33,14 @@ export const UsersCardsContainerV2 = ({ data = [] }: UsersCardsContainerProps) =
     if (selectedId) setSelectedId(null)
   }
 
-  const getCardDimensions = (type: string) => {
+  const getCardClassName = (type: string) => {
     switch (type) {
       case 'VIP':
-        return {
-          className: 'col-span-full row-span-3 xl:col-span-2 xl:row-span-3 min-h-[400px]',
-          style: { gridColumn: 'span 2', gridRow: 'span 3', minHeight: '400px' },
-        }
+        return 'col-span-4 row-span-4 sm:col-span-2 sm:row-span-3 xl:col-span-2 xl:row-span-4 min-h-[400px]'
       case 'PREMIUM':
-        return {
-          className: 'col-span-2 row-span-2 xl:col-span-2 xl:row-span-2 min-h-[400px]',
-          style: { gridColumn: 'span 2', gridRow: 'span 2', minHeight: '400px' },
-        }
+        return 'col-span-2 row-span-3 sm:col-span-2 sm:row-span-2 xl:col-span-2 xl:row-span-3 min-h-[400px]'
       default:
-        return {
-          className: 'col-span-2 row-span-2 xl:col-span-1 xl:row-span-2 min-h-[400px]',
-          style: { gridColumn: 'span 1', gridRow: 'span 2', minHeight: '400px' },
-        }
+        return 'col-span-2 row-span-2 sm:col-span-2 sm:row-span-1 xl:col-span-2 xl:row-span-2 min-h-[400px]'
     }
   }
 
@@ -63,7 +54,7 @@ export const UsersCardsContainerV2 = ({ data = [] }: UsersCardsContainerProps) =
     >
       <MasonryContainer className="grid-cols-4 gap-1">
         {data.map((user, idx) => (
-          <div key={idx} className={`relative ${getCardDimensions(user.type).className}`}>
+          <div key={idx} className={`relative ${getCardClassName(user.type)}`}>
             <UserCardDynamic
               data={user}
               expanded={selectedId === user._id}

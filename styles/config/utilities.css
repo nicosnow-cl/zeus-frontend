@@ -1,5 +1,5 @@
 .main-content {
-  @apply p-1 sm:p-6 lg:p-9;
+  @apply px-1 md:px-3 lg:px-5 xl:px-7;
 }
 
 .hero-banner {

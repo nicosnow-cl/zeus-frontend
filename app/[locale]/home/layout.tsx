@@ -1,6 +1,7 @@
-import { UsersCardsFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
-
 import * as Hero from '@/common/components/ui/presentational/hero'
+import { SectionWithAsideContainer } from '@/common/components/containers/section-with-aside'
+import { UsersCardsFiltersForm } from '@/features/home/components/forms/users-cards-filters-form'
+import { UsersCardsFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
 
 export type LayoutProps = {
   children: React.ReactNode
@@ -23,7 +24,6 @@ export default function Layout({ children }: LayoutProps) {
           Rise.
         </Hero.Title>
 
-        {/* <div className="curve "> */}
         <svg
           className="curve full-width"
           data-name="Layer 1"
@@ -36,14 +36,26 @@ export default function Layout({ children }: LayoutProps) {
             className="shape-fill"
           ></path>
         </svg>
-        {/* </div> */}
       </Hero.Root>
 
-      <section className="grid-wrapper main-content relative">
-        <UsersCardsFiltersContainer />
-
+      <SectionWithAsideContainer
+        heroProps={{
+          className: 'block md:hidden',
+        }}
+        hero={<UsersCardsFiltersContainer />}
+        aside={
+          <UsersCardsFiltersForm
+            containerProps={{
+              className: 'sticky top-[78px]',
+            }}
+          />
+        }
+        asideProps={{
+          className: 'hidden md:block',
+        }}
+      >
         {children}
-      </section>
+      </SectionWithAsideContainer>
     </>
   )
 }

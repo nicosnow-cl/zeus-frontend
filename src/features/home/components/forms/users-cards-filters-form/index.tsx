@@ -20,13 +20,16 @@ import { Combobox } from '@/common/components/ui/primitives/combobox'
 import { DEFAULT_VALUES, UsersCardsFilters } from '../../../store/user-cards-filters'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
 import { LabeledSlider } from '@/common/components/ui/primitives/labeled-slider'
+import { useIsFirstRender } from '@/common/hooks/is-first-render'
 
 export type UsersCardsFiltersFormProps = {
+  containerProps?: Omit<React.ComponentProps<typeof Flex>, 'children'>
   defaultValues?: UsersCardsFilters
   onSubmit?: (data: UsersCardsFilters) => void
 }
 
 export const UsersCardsFiltersForm = ({
+  containerProps,
   onSubmit,
   defaultValues = { ...DEFAULT_VALUES },
 }: UsersCardsFiltersFormProps) => {
@@ -35,6 +38,7 @@ export const UsersCardsFiltersForm = ({
   })
   const appearances = useMasterDataStore((state) => state.appearances)
   const services = useMasterDataStore((state) => state.services)
+  const isFirstRender = useIsFirstRender()
 
   async function fetchMasterData() {
     const res = await Promise.all([actionFetchAppearances(), actionFetchServices()])
@@ -51,12 +55,12 @@ export const UsersCardsFiltersForm = ({
   const handleSubmit: SubmitHandler<UsersCardsFilters> = (data) => onSubmit?.(data)
 
   useEffect(() => {
-    fetchMasterData()
-  }, [])
+    if (isFirstRender) fetchMasterData()
+  }, [isFirstRender])
 
   return (
     <Form {...form}>
-      <Flex className="mt-5" direction="column" gap="5" asChild>
+      <Flex direction="column" gap="5" asChild {...containerProps}>
         <form onSubmit={form.handleSubmit(handleSubmit)}>
           <FormField
             control={form.control}

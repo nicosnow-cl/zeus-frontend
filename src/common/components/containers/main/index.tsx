@@ -9,7 +9,7 @@ export const MainContainer = ({ children }: MainContainerProps) => {
     <>
       <NavbarContainer />
 
-      <main className="pt-[70px]">{children}</main>
+      <main className="flex flex-col gap-y-5 pt-[70px]">{children}</main>
     </>
   )
 }

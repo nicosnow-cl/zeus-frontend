@@ -55,7 +55,7 @@ export const UsersCardsFiltersContainer = () => {
   }, [isFirstRender, searchParams])
 
   return (
-    <Flex className="breakout" justify="between" py="4">
+    <Flex justify="between">
       <UsersCardsFiltersSheet
         defaultValues={usersFilters}
         onOpenChange={handleOpenSheet}
