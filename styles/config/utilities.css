@@ -32,6 +32,10 @@
   fill: var(--clr-shade-100);
 }
 
+html.dark .curve .shape-fill {
+  fill: var(--clr-shade-950);
+}
+
 /** For tablet devices **/
 @media (min-width: 768px) and (max-width: 1023px) {
   .curve svg {
@@ -49,13 +53,20 @@
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.7) inset;
 }
 
+.masonry-highlight > * {
+  filter: brightness(0.875);
+}
+
 .masonry-highlight:has(> *:hover) > *:not(:hover) {
   scale: 0.975;
-  opacity: 0.85;
 }
 
 .masonry-item-highlighted {
   transition:
     scale 0.25s ease,
-    opacity 0.25s linear;
+    filter 0.25s linear;
+}
+
+.masonry-item-highlighted:hover {
+  filter: brightness(1.05);
 }

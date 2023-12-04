@@ -1,0 +1,5 @@
+:root {
+  --navbar-top-height: 2.75rem;
+  --navbar-bottom-height: 1.625rem;
+  --navbar-full-height: calc(var(--navbar-top-height) + var(--navbar-bottom-height));
+}

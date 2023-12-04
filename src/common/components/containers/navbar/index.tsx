@@ -15,7 +15,7 @@ export const NavbarContainer = () => {
         logo={
           <Link href={Routes.Home}>
             <LogoIcon
-              className="fill-shade-100 cursor-pointer transition-[fill] duration-300 hover:fill-primary-600"
+              className="hover:fill-primary-600 cursor-pointer fill-shade-100 transition-[fill] duration-300"
               width={30}
               height={30}
             />

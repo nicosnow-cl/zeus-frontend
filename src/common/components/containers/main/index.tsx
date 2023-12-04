@@ -7,9 +7,11 @@ export interface MainContainerProps {
 export const MainContainer = ({ children }: MainContainerProps) => {
   return (
     <>
-      <NavbarContainer />
+      <div className="h-[var(--navbar-full-height)] bg-shade-900">
+        <NavbarContainer />
+      </div>
 
-      <main className="flex flex-col gap-y-5 pt-[70px]">{children}</main>
+      <main className="flex flex-col gap-y-5">{children}</main>
     </>
   )
 }

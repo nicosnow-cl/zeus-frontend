@@ -4,6 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './config/vars.css';
 @import './config/colors.css';
 @import './config/layout.css';
 @import './config/effects.css';

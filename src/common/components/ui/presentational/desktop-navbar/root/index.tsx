@@ -10,7 +10,7 @@ export const Root = (props: RootProps) => {
 
   return (
     <motion.nav
-      className={`fixed z-40 w-screen bg-transparent ${className}`}
+      className={`fixed z-40 min-h-[var(--navbar-full-height)] w-screen bg-transparent ${className}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: showNavbar ? 1 : 0 }}
       transition={{ duration: showNavbar ? 0.2 : 0.1 }}

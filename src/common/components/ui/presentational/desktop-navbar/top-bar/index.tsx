@@ -75,12 +75,12 @@ export function TopBar({ logo }: TopBarProps) {
       }}
     >
       {({ handleToggle }) => (
-        <div className="grid-wrapper h-[44px] w-full bg-transparent">
+        <div className="grid-wrapper h-[var(--navbar-top-height)] w-full bg-transparent">
           <Flex align="center" justify="center" gap="7">
             {logo}
 
-            <Flex className="bg-shade-50/20 rounded-md px-2 py-1.5 backdrop-blur-md" gap="5">
-              <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
+            <Flex className="rounded-md bg-shade-50/20 px-2 py-1.5 backdrop-blur-md" gap="5">
+              <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
                 <NextLink href={Routes.SignUp}>
                   {t('sidebar.sign-up')}
                   {<PatchCheckFillIcon width={14} height={14} />}
@@ -89,7 +89,7 @@ export function TopBar({ logo }: TopBarProps) {
 
               <Separator orientation="vertical" size="1" />
 
-              <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
+              <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
                 <NextLink href={Routes.SignIn}>
                   {t('sidebar.sign-in')}
                   <BoxArrowRightIcon width={14} height={14} />
@@ -97,15 +97,15 @@ export function TopBar({ logo }: TopBarProps) {
               </Link>
             </Flex>
 
-            <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
+            <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
               <NextLink href={Routes.Blog}>{t('sidebar.blog')}</NextLink>
             </Link>
 
-            <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
+            <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
               <NextLink href={Routes.About}>{t('sidebar.about')}</NextLink>
             </Link>
 
-            <Link className={`text-shade-100 flex items-center gap-x-2 text-1`} asChild>
+            <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
               <NextLink href={Routes.Contact}>{t('sidebar.contact')}</NextLink>
             </Link>
 
