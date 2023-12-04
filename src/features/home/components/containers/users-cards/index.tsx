@@ -17,6 +17,13 @@ const DELAYS = [...Array(10)].map((_, idx) => 100 + Math.max(1, idx) * 100)
 export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => {
   const [selectedId, setSelectedId] = useState<string | null>(null)
 
+  const getDelay = (idx: number) => {
+    const strNumber = idx.toString()
+    const lastNumber = strNumber[strNumber.length - 1]
+
+    return DELAYS[parseInt(lastNumber)]
+  }
+
   const handleClickCard = (
     evt: React.MouseEvent<HTMLDivElement, MouseEvent>,
     card: { idx: number; id: string }
