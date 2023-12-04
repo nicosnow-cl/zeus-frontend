@@ -56,15 +56,15 @@ export function withInfiniteScrollFetchData<T>({
       setTimeout(() => setIsLoading(false), 250)
     }, [metadata, query])
 
-    useEffect(() => {
-      if (isInView && !isLoading) fetchMoreData()
-    }, [isInView, isLoading, fetchMoreData])
+    // useEffect(() => {
+    //   if (isInView && !isLoading) fetchMoreData()
+    // }, [isInView, isLoading, fetchMoreData])
 
     return (
       <>
         <Component data={data} />
 
-        {/* {data.length < metadata.total && <LoadMore ref={loadingMoreRef} isLoading={isLoading} />} */}
+        {data.length < metadata.total && <LoadMore ref={loadingMoreRef} isLoading={isLoading} />}
       </>
     )
   }

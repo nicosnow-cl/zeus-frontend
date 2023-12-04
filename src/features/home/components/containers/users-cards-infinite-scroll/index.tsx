@@ -3,10 +3,10 @@
 import { memo } from 'react'
 
 import { fetchUsers } from '@/features/home/actions/users/fetch-users'
-import { UsersCardsContainerV2 } from '../users-cards-v2'
+import { UsersCardsContainer } from '../users-cards'
 import { withInfiniteScrollFetchData } from '@/features/home/hocs/with-infinite-scroll-container'
 
 export const UsersCardsInfiniteScrollContainer = withInfiniteScrollFetchData({
-  Component: memo(UsersCardsContainerV2),
+  Component: memo(UsersCardsContainer),
   fetchFunction: fetchUsers,
 })
