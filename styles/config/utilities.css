@@ -48,3 +48,14 @@
   height: 100%;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.7) inset;
 }
+
+.masonry-highlight:has(> *:hover) > *:not(:hover) {
+  scale: 0.975;
+  opacity: 0.85;
+}
+
+.masonry-item-highlighted {
+  transition:
+    scale 0.25s ease,
+    opacity 0.25s linear;
+}

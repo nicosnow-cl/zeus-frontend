@@ -52,9 +52,12 @@ export const UsersCardsContainerV2 = ({ data = [] }: UsersCardsContainerProps) =
         damping: 40,
       }}
     >
-      <MasonryContainer className="grid-cols-4 gap-1">
+      <MasonryContainer className="masonry-highlight relative grid-cols-4 gap-1">
         {data.map((user, idx) => (
-          <div key={idx} className={`relative ${getCardClassName(user.type)}`}>
+          <div
+            key={idx}
+            className={`masonry-item-highlighted relative ${getCardClassName(user.type)}`}
+          >
             <UserCardDynamic
               data={user}
               expanded={selectedId === user._id}
