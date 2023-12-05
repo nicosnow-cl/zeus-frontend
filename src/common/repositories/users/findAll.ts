@@ -3,6 +3,7 @@ import { Filter } from 'mongodb'
 import { getConnection } from '@/common/repositories/mongo'
 import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
+import sleep from '@lib/sleep'
 
 export type FindAllQuery = {
   name?: string
@@ -65,6 +66,8 @@ export async function findAll({
     }
 
     await closeConnection()
+
+    // await sleep(10000)
 
     return JSON.parse(
       JSON.stringify({

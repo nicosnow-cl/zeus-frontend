@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { forwardRef } from 'react'
 
 export type MasonryContainerProps = Omit<
   React.ComponentPropsWithoutRef<typeof motion.div>,
@@ -7,17 +8,18 @@ export type MasonryContainerProps = Omit<
   children: React.ReactNode
 }
 
-export const MasonryContainer = ({
-  children,
-  className: classNameProp = '',
-  ...restProps
-}: MasonryContainerProps) => {
-  return (
-    <motion.div
-      {...restProps}
-      className={`relative grid grid-flow-dense auto-rows-fr ${classNameProp}`}
-    >
-      {children}
-    </motion.div>
-  )
-}
+export const MasonryContainer = forwardRef<HTMLDivElement, MasonryContainerProps>(
+  ({ children, className: classNameProp = '', ...restProps }, ref) => {
+    return (
+      <motion.div
+        ref={ref}
+        className={`relative grid grid-flow-dense auto-rows-fr ${classNameProp}`}
+        {...restProps}
+      >
+        {children}
+      </motion.div>
+    )
+  }
+)
+
+MasonryContainer.displayName = 'MasonryContainer'

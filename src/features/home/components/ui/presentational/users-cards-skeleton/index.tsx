@@ -5,6 +5,7 @@ import { stagger, useAnimate } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 import { Skeleton } from '../user-card'
+import { MasonryContainer } from '@/common/components/containers/masonry'
 
 export type CardsContainerLoadingProps = {
   staggerDelay?: number
@@ -17,6 +18,16 @@ export const UsersCardsSkeleton = ({
 }: CardsContainerLoadingProps) => {
   const [scope, animate] = useAnimate()
   const [duration] = useState(skeletonCount * staggerDelay)
+
+  const pickRandomClassName = () => {
+    const className = [
+      'col-span-4 row-span-4 sm:col-span-2 sm:row-span-3 xl:col-span-2 xl:row-span-4 min-h-[300px] md:min-h-[400px]',
+      'col-span-2 row-span-3 sm:col-span-2 sm:row-span-2 xl:col-span-2 xl:row-span-3 min-h-[300px] md:min-h-[400px]',
+      'col-span-2 row-span-2 sm:col-span-2 sm:row-span-1 xl:col-span-2 xl:row-span-2 min-h-[300px] md:min-h-[400px]',
+    ]
+
+    return className[Math.floor(Math.random() * className.length)]
+  }
 
   useEffect(() => {
     animate(
@@ -33,19 +44,14 @@ export const UsersCardsSkeleton = ({
   }, [animate, duration, staggerDelay])
 
   return (
-    <Grid
-      columns={{
-        initial: '1',
-        sm: '2',
-        md: '3',
-        lg: '4',
-      }}
-      gap="4"
-      ref={scope}
-    >
+    <MasonryContainer ref={scope} className="relative grow grid-cols-4 gap-1">
       {Array.from({ length: skeletonCount }).map((_, idx) => (
-        <Skeleton key={idx} className="card-skeleton" initial={{ opacity: 0.05 }} />
+        <Skeleton
+          key={idx}
+          className={`card-skeleton rounded-2xl ${pickRandomClassName()}`}
+          initial={{ opacity: 0.05 }}
+        />
       ))}
-    </Grid>
+    </MasonryContainer>
   )
 }
