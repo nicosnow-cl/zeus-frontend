@@ -15,7 +15,7 @@ export const MasonryContainer = ({
   return (
     <motion.div
       {...restProps}
-      className={`relative grid w-full grid-flow-dense auto-rows-fr ${classNameProp}`}
+      className={`relative grid grid-flow-dense auto-rows-fr ${classNameProp}`}
     >
       {children}
     </motion.div>

@@ -10,7 +10,7 @@ export type LoadMoreProps = {
 }
 
 export const LoadMore = forwardRef<HTMLDivElement, LoadMoreProps>(
-  ({ className = 'mt-4', isLoading, maxProgressValue = 95 }, ref) => {
+  ({ className = '', isLoading, maxProgressValue = 95 }, ref) => {
     const [progress, setProgress] = useState(0)
 
     const handleProgress = useCallback(
@@ -39,7 +39,7 @@ export const LoadMore = forwardRef<HTMLDivElement, LoadMoreProps>(
     }, [isLoading, handleProgress])
 
     return (
-      <div ref={ref} className={`${className}`}>
+      <div ref={ref} className={`mt-4 ${className}`}>
         <Progress value={progress} />
       </div>
     )

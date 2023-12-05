@@ -1,16 +1,5 @@
 :root {
   /* Brand (Primary) color */
-  /* --clr-brand-50: #fef1f2;
-  --clr-brand-100: #fde7e9;
-  --clr-brand-200: #fbd0d6;
-  --clr-brand-300: #f7abb6;
-  --clr-brand-400: #f2788b;
-  --clr-brand-500: #e84a67;
-  --clr-brand-600: #d52a52;
-  --clr-brand-700: #b41d45;
-  --clr-brand-800: #971c41;
-  --clr-brand-900: #7e1b3c;
-  --clr-brand-950: #470a1d; */
 
   --clr-brand-50: #fff0f1;
   --clr-brand-100: #ffe5e8;
@@ -25,6 +14,7 @@
   --clr-brand-950: #4d041a;
 
   /* Accent (Secondary) color */
+
   --clr-accent-50: #edfbff;
   --clr-accent-100: #d7f3ff;
   --clr-accent-200: #b8ecff;
@@ -38,17 +28,6 @@
   --clr-accent-950: #10345b;
 
   /* Shades (shade) color */
-  /* --clr-shade-50: #ffffff;
-  --clr-shade-100: #f8fafc;
-  --clr-shade-200: #dce6ef;
-  --clr-shade-300: #b1c9dd;
-  --clr-shade-400: #80a4c6;
-  --clr-shade-500: #3b71ab;
-  --clr-shade-600: #2c4568;
-  --clr-shade-700: #22334e;
-  --clr-shade-800: #1b263b;
-  --clr-shade-900: #191f2f;
-  --clr-shade-950: #0b0d14; */
 
   --clr-shade-50: #f8f9fc;
   --clr-shade-100: #eef1f7;
