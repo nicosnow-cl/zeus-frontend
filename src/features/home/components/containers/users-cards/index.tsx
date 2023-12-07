@@ -7,6 +7,7 @@ import { DimLayer } from '@/common/components/ui/presentational/dim-layer'
 import { MasonryContainer } from '@/common/components/containers/masonry'
 import { UserCardDynamic } from '../user-card-dynamic'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
+import * as UserCard from '@/features/home/components/ui/presentational/user-card-complete'
 
 export type UsersCardsContainerProps = {
   data?: UserCardEntity[]
@@ -64,13 +65,32 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
             key={idx}
             className={`masonry-item-highlighted relative ${getCardClassName(user.type)}`}
           >
-            <UserCardDynamic
+            {/* <UserCardDynamic
               data={user}
               expanded={selectedId === user._id}
               containerProps={{
                 onClick: (evt) => handleClickCard(evt, { idx, id: user._id }),
               }}
-            />
+            /> */}
+            <UserCard.Root className="rounded-2xl">
+              <UserCard.Media avatar={user.avatar} />
+              <UserCard.Contracted
+                avatar={user.avatar}
+                description={user.description}
+                name={user.name}
+                age={user.age}
+              />
+              <UserCard.Expanded
+                age={user.age}
+                avatar={user.avatar}
+                description={user.description}
+                name={user.name}
+                nationality={user.nationality}
+                rrss={user.rrss}
+                services={user.services}
+                username={user.username}
+              />
+            </UserCard.Root>
           </div>
         ))}
       </MasonryContainer>

@@ -4,7 +4,7 @@ export type ContentProps = React.ComponentPropsWithoutRef<'div'>
 
 export const Content = ({ className = '', children, ...restProps }: ContentProps) => {
   const classes = clsx({
-    'bg-white p-6 border border-gray-200 dark:border-gray-800 dark:bg-gray-950': true,
+    'bg-white p-4 border': true,
     [className]: true,
   })
 
