@@ -1,6 +1,0 @@
-export { Actions, type ActionsProps } from './actions'
-export { BackgroundMedia, type BackgroundMediaProps } from './background-media'
-export { Body, type BodyProps } from './body'
-export { Description, type DescriptionProps } from './description'
-export { Root, type RootProps } from './root'
-export { Skeleton, type SkeletonProps } from './skeleton'

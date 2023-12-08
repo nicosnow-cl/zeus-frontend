@@ -1,9 +1,8 @@
 import { Separator } from '@radix-ui/themes'
-import * as UserCardFull from '../../user-card-full'
 
-export type ExpandedProps = UserCardFull.HeaderProps &
-  UserCardFull.BodyProps &
-  UserCardFull.FooterProps
+import * as UserInfo from '../../user-info'
+
+export type ExpandedProps = UserInfo.HeaderProps & UserInfo.BodyProps & UserInfo.FooterProps
 
 export default function Expanded({
   age,
@@ -16,13 +15,13 @@ export default function Expanded({
   username,
 }: ExpandedProps) {
   return (
-    <UserCardFull.Root className="absolute bottom-[-600px] transition-[bottom] group-data-[expanded=true]:bottom-0">
-      <UserCardFull.Content>
-        <UserCardFull.Header />
+    <UserInfo.Root className="absolute bottom-[-600px] transition-[bottom] group-data-[expanded=true]:bottom-0">
+      <UserInfo.Content>
+        <UserInfo.Header />
 
         <Separator my="2" size="2" />
 
-        <UserCardFull.Body
+        <UserInfo.Body
           age={age}
           avatar={avatar}
           description={description}
@@ -32,8 +31,8 @@ export default function Expanded({
 
         <Separator my="2" className="ml-auto mr-0" size="2" />
 
-        <UserCardFull.Footer nationality={nationality} rrss={rrss} services={services} />
-      </UserCardFull.Content>
-    </UserCardFull.Root>
+        <UserInfo.Footer nationality={nationality} rrss={rrss} services={services} />
+      </UserInfo.Content>
+    </UserInfo.Root>
   )
 }

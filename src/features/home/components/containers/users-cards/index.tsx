@@ -37,13 +37,11 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
             className={`masonry-item-highlighted relative ${getCardClassName(user.type)}`}
           >
             <UserCard.Root className="cursor-pointer rounded-2xl">
-              <UserCard.Media avatar={user.avatar} />
-
               <UserCard.Contracted
+                age={user.age}
                 avatar={user.avatar}
                 description={user.description}
                 name={user.name}
-                age={user.age}
               />
 
               <UserCard.Expanded

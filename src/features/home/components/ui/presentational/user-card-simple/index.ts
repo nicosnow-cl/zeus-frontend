@@ -1,0 +1,5 @@
+export { Root, type RootProps } from './root'
+export { Media, type MediaProps } from './media'
+export { Content, type ContentProps } from './content'
+export { Header, type HeaderProps } from './header'
+export { Body, type BodyProps } from './body'

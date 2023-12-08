@@ -1,10 +1,9 @@
 'use client'
 
-import { Grid } from '@radix-ui/themes'
+import { Skeleton } from '@/shadcn-components/ui/skeleton'
 import { stagger, useAnimate } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
-import { Skeleton } from '../user-card'
 import { MasonryContainer } from '@/common/components/containers/masonry'
 
 export type CardsContainerLoadingProps = {
@@ -46,11 +45,7 @@ export const UsersCardsSkeleton = ({
   return (
     <MasonryContainer ref={scope} className="relative grow grid-cols-4 gap-1">
       {Array.from({ length: skeletonCount }).map((_, idx) => (
-        <Skeleton
-          key={idx}
-          className={`card-skeleton rounded-2xl ${pickRandomClassName()}`}
-          initial={{ opacity: 0.05 }}
-        />
+        <Skeleton key={idx} className={`card-skeleton ${pickRandomClassName()} rounded-2xl`} />
       ))}
     </MasonryContainer>
   )
