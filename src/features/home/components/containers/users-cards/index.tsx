@@ -72,7 +72,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
                 onClick: (evt) => handleClickCard(evt, { idx, id: user._id }),
               }}
             /> */}
-            <UserCard.Root className="rounded-2xl">
+            <UserCard.Root className="cursor-pointer rounded-2xl">
               <UserCard.Media avatar={user.avatar} />
               <UserCard.Contracted
                 avatar={user.avatar}

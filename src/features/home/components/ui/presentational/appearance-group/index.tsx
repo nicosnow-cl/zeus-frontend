@@ -1,14 +1,19 @@
-import { Flex, Text } from '@radix-ui/themes'
+import { Text } from '@radix-ui/themes'
+import clsx from 'clsx'
 
 export type AppearanceGroupProps = {
+  containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
   nationality: string
-  flexProps?: Omit<React.ComponentProps<typeof Flex>, 'children'>
   textProps?: Omit<React.ComponentProps<typeof Text>, 'children' | 'as'>
 }
 
-export const AppearanceGroup = ({ nationality, flexProps, textProps }: AppearanceGroupProps) => {
+export function AppearanceGroup({ containerProps, nationality, textProps }: AppearanceGroupProps) {
+  const { className, ...restContainerProps } = containerProps ?? {}
+
+  const classes = clsx('flex flex-wrap gap-1 justify-between', className)
+
   return (
-    <Flex justify="between" gap="2" width="100%" {...flexProps}>
+    <div {...restContainerProps} className={classes}>
       <Text className="text-crimson-9" size="2" weight="bold" {...textProps}>
         {nationality}
       </Text>
@@ -24,6 +29,6 @@ export const AppearanceGroup = ({ nationality, flexProps, textProps }: Appearanc
       <Text className="text-crimson-9" size="2" weight="bold" {...textProps}>
         101 - 84 - 100 CM
       </Text>
-    </Flex>
+    </div>
   )
 }

@@ -1,15 +1,24 @@
-import { Button, Flex } from '@radix-ui/themes'
+import { Button } from '@radix-ui/themes'
+import clsx from 'clsx'
 
 import { FacebookIcon, InstagramIcon, TiktokIcon, TwitterIcon, WhatsappIcon } from '@/common/icons'
 import { SocialNetwork } from '@/common/types/entities/misc/social-network.type'
 
 export type SocialNetworksGroupProps = {
-  rrss: SocialNetwork[]
   buttonProps?: Omit<React.ComponentProps<typeof Button>, 'children'>
-  flexProps?: Omit<React.ComponentProps<typeof Flex>, 'children' | 'key'>
+  containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
+  rrss: SocialNetwork[]
 }
 
-export const SocialNetworksGroup = ({ rrss, buttonProps, flexProps }: SocialNetworksGroupProps) => {
+export const SocialNetworksGroup = ({
+  buttonProps,
+  containerProps,
+  rrss,
+}: SocialNetworksGroupProps) => {
+  const { className, ...restContainerProps } = containerProps ?? {}
+
+  const classes = clsx('flex gap-1', className)
+
   const getRRSSButton = (rrss: SocialNetwork, idx: number) => {
     switch (rrss.type) {
       case 'facebook':
@@ -66,8 +75,8 @@ export const SocialNetworksGroup = ({ rrss, buttonProps, flexProps }: SocialNetw
   }
 
   return (
-    <Flex direction="column" wrap="wrap" align="center" gap="2" {...flexProps}>
+    <div {...restContainerProps} className={classes}>
       {rrss.map((rrss, idx) => getRRSSButton(rrss, idx))}
-    </Flex>
+    </div>
   )
 }

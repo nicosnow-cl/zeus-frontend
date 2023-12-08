@@ -23,14 +23,11 @@ export default function Contracted({
 }: ContractedProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
 
-  const classes = clsx(
-    'pt-2 px-2 relative h-full group-data-[expanded=true]:opacity-0 transition-opacity',
-    className
-  )
+  const classes = clsx('pt-2 px-2 relative h-full', className)
 
   return (
     <div {...restContainerProps} className={classes}>
-      <div className="grid auto-cols-max grid-rows-1 place-content-end gap-2">
+      <div className="grid auto-cols-max grid-rows-1 place-content-end gap-2 transition-opacity group-data-[expanded=true]:opacity-0">
         <Badge className="px-2 py-1 text-3" radius="full" variant="surface" highContrast>
           <PatchCheckFillIcon /> VIP
         </Badge>

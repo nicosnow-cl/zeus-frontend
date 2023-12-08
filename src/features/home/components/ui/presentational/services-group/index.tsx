@@ -1,20 +1,23 @@
-import { Flex, Grid } from '@radix-ui/themes'
-
 import { Badge } from '@/shadcn-components/ui/badge'
+import clsx from 'clsx'
 
 export type ServicesGroupProps = {
   services: string[]
-  gridProps?: Omit<React.ComponentProps<typeof Grid>, 'children'>
+  containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
 }
 
-export const ServicesGroup = ({ services, gridProps }: ServicesGroupProps) => {
+export const ServicesGroup = ({ services, containerProps }: ServicesGroupProps) => {
+  const { className, ...restContainerProps } = containerProps ?? {}
+
+  const classes = clsx('grid grid-cols-2 gap-1', className)
+
   return (
-    <Grid columns="3" gap="3" width="100%" {...gridProps}>
+    <div {...restContainerProps} className={classes}>
       {services.map((service, idx) => (
         <Badge key={idx} variant="secondary">
           {service}
         </Badge>
       ))}
-    </Grid>
+    </div>
   )
 }
