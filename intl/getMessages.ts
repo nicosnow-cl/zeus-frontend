@@ -2,7 +2,7 @@ import { AbstractIntlMessages } from 'next-intl'
 import fs from 'fs'
 import path from 'path'
 
-import { Locale } from './locale'
+import { Locale } from '@config/enums'
 
 const LOCALES_FOLDER = path.join(process.env.rootDir as string, './intl/locales')
 const getLocalesFiles = (locale: Locale) => fs.readdirSync(path.join(LOCALES_FOLDER, locale))
