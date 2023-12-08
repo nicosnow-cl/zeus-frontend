@@ -20,6 +20,9 @@ export default function Root({ className, children, ...restProps }: RootProps) {
       className={classes}
       data-expanded={isExpanded}
       onClick={() => setIsExpanded((prev) => !prev)}
+      onFocus={() => setIsExpanded(true)}
+      role="button"
+      tabIndex={0}
     >
       {children}
     </motion.div>

@@ -19,7 +19,7 @@ export default function Media({ avatar, imgProps, medias, withVignette }: MediaP
       <Image
         alt="img-media"
         blurDataURL={avatar.placeholder}
-        className="h-full object-cover object-top transition-[transform] group-hover:scale-[1.02]"
+        className="h-full object-cover object-top transition-[transform] group-hover:scale-[1.02] group-focus:scale-[1.02]"
         onError={handleError}
         placeholder="blur"
         quality={75}

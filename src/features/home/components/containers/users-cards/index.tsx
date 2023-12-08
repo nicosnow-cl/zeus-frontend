@@ -1,11 +1,6 @@
-'use client'
-
 import { MotionConfig } from 'framer-motion'
-import { useState } from 'react'
 
-import { DimLayer } from '@/common/components/ui/presentational/dim-layer'
 import { MasonryContainer } from '@/common/components/containers/masonry'
-import { UserCardDynamic } from '../user-card-dynamic'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import * as UserCard from '@/features/home/components/ui/presentational/user-card-complete'
 
@@ -16,30 +11,6 @@ export type UsersCardsContainerProps = {
 const DELAYS = [...Array(10)].map((_, idx) => 100 + Math.max(1, idx) * 100)
 
 export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => {
-  const [selectedId, setSelectedId] = useState<string | null>(null)
-
-  const getDelay = (idx: number) => {
-    const strNumber = idx.toString()
-    const lastNumber = strNumber[strNumber.length - 1]
-
-    return DELAYS[parseInt(lastNumber)]
-  }
-
-  const handleClickCard = (
-    evt: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    card: { idx: number; id: string }
-  ) => {
-    evt.preventDefault()
-
-    if (!selectedId) setSelectedId(card.id)
-  }
-
-  const handleHideCard = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    evt.preventDefault()
-
-    if (selectedId) setSelectedId(null)
-  }
-
   const getCardClassName = (type: string) => {
     switch (type) {
       case 'VIP':
@@ -65,21 +36,16 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
             key={idx}
             className={`masonry-item-highlighted relative ${getCardClassName(user.type)}`}
           >
-            {/* <UserCardDynamic
-              data={user}
-              expanded={selectedId === user._id}
-              containerProps={{
-                onClick: (evt) => handleClickCard(evt, { idx, id: user._id }),
-              }}
-            /> */}
             <UserCard.Root className="cursor-pointer rounded-2xl">
               <UserCard.Media avatar={user.avatar} />
+
               <UserCard.Contracted
                 avatar={user.avatar}
                 description={user.description}
                 name={user.name}
                 age={user.age}
               />
+
               <UserCard.Expanded
                 age={user.age}
                 avatar={user.avatar}
@@ -94,14 +60,6 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
           </div>
         ))}
       </MasonryContainer>
-
-      <DimLayer
-        byOwn
-        isVisible={Boolean(selectedId)}
-        containerProps={{
-          onClick: handleHideCard,
-        }}
-      />
     </MotionConfig>
   )
 }
