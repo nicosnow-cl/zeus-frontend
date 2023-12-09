@@ -30,7 +30,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
         damping: 40,
       }}
     >
-      <MasonryContainer className="masonry-highlight relative grow grid-cols-4 gap-1">
+      <MasonryContainer className="masonry-highlight relative grow grid-cols-4 gap-1" role="list">
         {data.map((user, idx) => (
           <div
             key={idx}

@@ -1,7 +1,7 @@
 'use client'
 
 import { HTMLMotionProps, motion } from 'framer-motion'
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import clsx from 'clsx'
 
 export type RootProps = HTMLMotionProps<'div'>
@@ -9,19 +9,28 @@ export type RootProps = HTMLMotionProps<'div'>
 export default function Root({ className, children, ...restProps }: RootProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const classes = useMemo(
-    () => clsx('group relative h-full overflow-hidden', className),
-    [className]
-  )
+  const classes = clsx('group relative h-full overflow-hidden', className)
+
+  const handleClick = (evt: React.MouseEvent<HTMLDivElement>) => {
+    evt.preventDefault()
+    evt.stopPropagation()
+
+    setIsExpanded((prev) => !prev)
+  }
+
+  const handleFocus = (evt: React.FocusEvent<HTMLDivElement>) => {
+    evt.preventDefault()
+    evt.stopPropagation()
+
+    setIsExpanded(true)
+  }
 
   return (
     <motion.div
       className={classes}
       data-expanded={isExpanded}
-      onClick={() => setIsExpanded((prev) => !prev)}
-      onFocus={() => setIsExpanded(true)}
-      role="button"
-      tabIndex={0}
+      onClick={handleClick}
+      onFocus={handleFocus}
       {...restProps}
     >
       {children}
