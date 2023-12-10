@@ -72,3 +72,8 @@ html.dark .curve .shape-fill {
 .masonry-item-highlighted:focus-within {
   filter: brightness(1.05);
 }
+
+.logo-gradient {
+  --gradient: linear-gradient(45deg, var(--clr-shade-600), var(--clr-shade-200));
+  background-image: var(--gradient);
+}
