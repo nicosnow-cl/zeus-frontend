@@ -4,7 +4,15 @@ export type ContractedProps = UserCardSimple.MediaProps &
   UserCardSimple.HeaderProps &
   UserCardSimple.BodyProps
 
-export function Contracted({ age, avatar, description, name, nationality }: ContractedProps) {
+export function Contracted({
+  age,
+  avatar,
+  description,
+  name,
+  nationality,
+  type,
+  likes,
+}: ContractedProps) {
   return (
     <UserCardSimple.Root>
       <UserCardSimple.Media
@@ -20,6 +28,9 @@ export function Contracted({ age, avatar, description, name, nationality }: Cont
           containerProps={{
             className: 'group-data-[expanded=true]:opacity-0 transition-[opacity] duration-150',
           }}
+          likes={likes}
+          nationality={nationality}
+          type={type}
         />
 
         <UserCardSimple.Body

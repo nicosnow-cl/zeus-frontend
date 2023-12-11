@@ -20,8 +20,6 @@ export function Body({ age, containerProps, description, name, nationality }: Bo
   return (
     <div {...restContainerProps} className={classes}>
       <div className="mb-2 flex items-center gap-2 px-2">
-        {nationality && <CountryFlag countryCode={nationality} />}
-
         <Heading
           as="h4"
           className="text-shade-50 drop-shadow-sm"
