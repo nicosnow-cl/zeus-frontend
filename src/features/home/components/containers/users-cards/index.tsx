@@ -30,15 +30,19 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
         damping: 40,
       }}
     >
-      <MasonryContainer className="masonry-highlight relative grow grid-cols-12 gap-1" role="list">
+      <MasonryContainer className="masonry-highlight grow grid-cols-12 gap-1" role="list">
         {data.map((user, idx) => (
-          <div key={idx} className={`relative min-h-[325px] ${getCardClassName(user.type)}`}>
-            <UserCard.Root className="cursor-pointer rounded-2xl">
-              <UserCard.Contracted {...user} />
+          <UserCard.Root
+            key={idx}
+            className={`min-h-[325px] cursor-pointer rounded-2xl 
+            border-gray-200 shadow-gray-950 focus-within:border-2 focus-within:shadow-md hover:border-2 hover:shadow-md 
+            dark:border-gray-800 ${getCardClassName(user.type)}`}
+            role="listitem"
+          >
+            <UserCard.Contracted {...user} />
 
-              <UserCard.Expanded {...user} />
-            </UserCard.Root>
-          </div>
+            <UserCard.Expanded {...user} />
+          </UserCard.Root>
         ))}
       </MasonryContainer>
     </MotionConfig>

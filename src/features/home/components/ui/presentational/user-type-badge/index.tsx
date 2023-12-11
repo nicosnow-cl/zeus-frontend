@@ -4,12 +4,13 @@ import clsx from 'clsx'
 import { GemIcon } from '@/common/icons'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
-export type UserTypeDecoratorProps = {
+export type UserTypeBadgeProps = {
   containerProps?: Omit<React.ComponentProps<typeof Badge>, 'children'>
+  small?: boolean
   type: UserCardEntity['type']
 }
 
-export default function UserTypeDecorator({ containerProps, type }: UserTypeDecoratorProps) {
+export default function UserTypeBadge({ containerProps, small, type }: UserTypeBadgeProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
   const classes = clsx('px-2 py-1 text-3 font-semibold uppercase', className)
 
@@ -63,7 +64,7 @@ export default function UserTypeDecorator({ containerProps, type }: UserTypeDeco
       {...restContainerProps}
     >
       {props.icon}
-      {props.label}
+      {!small && props.label}
     </Badge>
   )
 }
