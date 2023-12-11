@@ -1,57 +1,42 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { useTheme } from 'next-themes'
 import { useMemo } from 'react'
+import { useTheme } from 'next-themes'
 
 export type DarkModeTransitionContainerProps = {
   children: React.ReactNode | React.ReactNode[]
 }
 
-const transitionSpringPhysics = {
-  type: 'spring',
-  mass: 0.2,
-  stiffness: 80,
-  damping: 10,
+const variants = {
+  initial: {
+    clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)',
+  },
+  animate: {
+    clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+  },
+  exit: {
+    clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)',
+  },
 }
 
 export function DarkModeTransitionContainer({ children }: DarkModeTransitionContainerProps) {
-  const { systemTheme, theme } = useTheme()
+  const { theme } = useTheme()
 
   const isDarkMode = useMemo(() => theme === 'dark', [theme])
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence initial={false} mode="wait">
       <motion.div
-        id="theme-transition-in"
-        key="theme-transition-in"
-        className="bg-shade-950"
-        style={{
-          position: 'fixed',
-          width: '100vw',
-          zIndex: 1000,
-          bottom: 0,
-        }}
-        transition={transitionSpringPhysics}
-        animate={{ height: '0vh' }}
-        exit={{ height: '100vh' }}
-      />
-      <motion.div
-        id="exit-loader"
-        key="exit-loader"
-        className="bg-shade-950"
-        style={{
-          position: 'fixed',
-          width: '100vw',
-          zIndex: 1000,
-          top: 0,
-        }}
-        transition={transitionSpringPhysics}
-        initial={{ height: '100vh' }}
-        animate={{ height: '0vh', transition: { delay: 0.2 } }}
-      />
-
-      <motion.div layout>{children}</motion.div>
+        key={`${isDarkMode}`}
+        animate="animate"
+        exit="exit"
+        initial="initial"
+        transition={{ duration: 0.3, ease: 'easeInOut' }}
+        variants={variants}
+      >
+        {children}
+      </motion.div>
     </AnimatePresence>
   )
 }

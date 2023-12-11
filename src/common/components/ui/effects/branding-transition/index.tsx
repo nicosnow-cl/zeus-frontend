@@ -55,7 +55,7 @@ export function BrandingTransition({ title = APP_NAME }: BrandingTransitionProps
     <AnimatePresence>
       {mount && (
         <motion.div
-          id="initial-transition"
+          id="branding-transition"
           className="fixed inset-0 z-[1000] flex w-screen items-center justify-center bg-shade-950"
           initial="initial"
           exit="exit"

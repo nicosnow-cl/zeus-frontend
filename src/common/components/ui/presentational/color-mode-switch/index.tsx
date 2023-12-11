@@ -25,7 +25,7 @@ export const ColorModeSwitch = () => {
         size="1"
       />
 
-      {theme === 'dark' ? (
+      {checked ? (
         <MoonIcon className={`text-4 text-indigo-9`} />
       ) : (
         <SunIcon className={`text-4 text-amber-11`} />
