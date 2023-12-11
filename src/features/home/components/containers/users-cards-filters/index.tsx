@@ -1,7 +1,6 @@
 'use client'
 
 import { Button } from '@/shadcn-components/ui/button'
-import { Flex } from '@radix-ui/themes'
 import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import { useRouter } from '@intl/navigation'
@@ -15,8 +14,21 @@ import {
   usersCardsFiltersActions,
   useUsersCardsFiltersStore,
 } from '@/features/home/store/user-cards-filters'
+import clsx from 'clsx'
 
-export const UsersCardsFiltersContainer = () => {
+export type UsersCardsMobileFiltersContainerProps = {
+  containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
+}
+
+export const UsersCardsMobileFiltersContainer = ({
+  containerProps,
+}: UsersCardsMobileFiltersContainerProps) => {
+  const { className, ...restContainerProps } = containerProps ?? {}
+  const classes = clsx(
+    'flex gap-2 justify-between rounded-full bg-slate-200 p-1 dark:bg-shade-900/25',
+    className
+  )
+
   const [openSheet, setOpenSheet] = useState(false)
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -55,7 +67,7 @@ export const UsersCardsFiltersContainer = () => {
   }, [isFirstRender, searchParams])
 
   return (
-    <Flex justify="between">
+    <div {...restContainerProps} className={classes}>
       <UsersCardsFiltersSheet
         defaultValues={usersFilters}
         onOpenChange={handleOpenSheet}
@@ -64,9 +76,7 @@ export const UsersCardsFiltersContainer = () => {
         trigger={<Button className="rounded-full">Filtros</Button>}
       />
 
-      <Button className="rounded-full" variant="outline">
-        Sort
-      </Button>
-    </Flex>
+      <Button className="rounded-full">Sort</Button>
+    </div>
   )
 }

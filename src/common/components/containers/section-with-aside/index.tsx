@@ -27,7 +27,7 @@ export const SectionWithAsideContainer: React.FunctionComponent<SectionWithAside
   return (
     <section className="grid-wrapper main-content relative">
       {hero && (
-        <div {...heroRestProps} className={clsx('breakout mb-2', heroClassName)}>
+        <div {...heroRestProps} className={clsx('breakout mb-3', heroClassName)}>
           {hero}
         </div>
       )}
@@ -44,7 +44,7 @@ export const SectionWithAsideContainer: React.FunctionComponent<SectionWithAside
         <div
           {...asideRestProps}
           className={clsx(
-            'order-2 w-1/4 min-w-fit rounded-2xl bg-slate-100/90 p-2 shadow-sm dark:bg-shade-950/30',
+            'order-2 w-1/5 min-w-[275px] rounded-2xl bg-slate-100/90 p-2 shadow-sm dark:bg-shade-950/30',
             asideClassName
           )}
         >

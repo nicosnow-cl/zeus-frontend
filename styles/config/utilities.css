@@ -2,6 +2,29 @@
   @apply px-1 md:px-3 lg:px-5 xl:px-7;
 }
 
+.title-1 {
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 200%;
+  color: transparent;
+  animation: bg-right-to-left 10s ease-in-out infinite alternate;
+  background-image: var(--brand-gradient);
+}
+
+.title-1::after {
+  background-color: var(--clr-brand-700);
+  border-radius: 0.25rem;
+  content: '';
+  display: block;
+  height: 0.25rem;
+  width: 62px;
+  margin-bottom: 1.25rem;
+}
+
+html.dark .title-1 {
+  background-image: var(--brand-gradient-dark);
+}
+
 .hero-banner {
   @apply object-cover object-left-top contrast-125 grayscale saturate-200;
 
@@ -51,24 +74,4 @@ html.dark .curve .shape-fill {
   width: 100%;
   height: 100%;
   box-shadow: 0 0 100px rgba(0, 0, 0, 0.7) inset;
-}
-
-.masonry-highlight > * {
-  filter: brightness(0.875);
-}
-
-.masonry-highlight:has(> *:hover) > *:not(:hover),
-.masonry-highlight:has(> *:focus-within) > *:not(:focus-within) {
-  scale: 0.975;
-}
-
-.masonry-item-highlighted {
-  transition:
-    scale 0.25s ease,
-    filter 0.25s linear;
-}
-
-.masonry-item-highlighted:hover,
-.masonry-item-highlighted:focus-within {
-  filter: brightness(1.05);
 }

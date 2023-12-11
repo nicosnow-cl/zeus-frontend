@@ -2,4 +2,11 @@
   --navbar-top-height: 2.75rem;
   --navbar-bottom-height: 1.625rem;
   --navbar-full-height: calc(var(--navbar-top-height) + var(--navbar-bottom-height));
+
+  --brand-gradient: linear-gradient(to right, var(--clr-shade-800) 0%, var(--clr-shade-500) 100%);
+  --brand-gradient-dark: linear-gradient(
+    to right,
+    var(--clr-shade-100) 0%,
+    var(--clr-shade-600) 100%
+  );
 }

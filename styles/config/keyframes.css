@@ -1,0 +1,10 @@
+@keyframes bg-right-to-left {
+  0%,
+  100% {
+    background-position: right;
+  }
+
+  50% {
+    background-position: left;
+  }
+}

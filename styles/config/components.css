@@ -1,3 +1,23 @@
+.masonry-highlight > * {
+  filter: brightness(0.875);
+}
+
+.masonry-highlight:has(> *:hover) > *:not(:hover),
+.masonry-highlight:has(> *:focus-within) > *:not(:focus-within) {
+  scale: 0.975;
+}
+
+.masonry-item-highlighted {
+  transition:
+    scale 0.25s ease,
+    filter 0.25s linear;
+}
+
+.masonry-item-highlighted:hover,
+.masonry-item-highlighted:focus-within {
+  filter: brightness(1.05);
+}
+
 /* Misc */
 
 @keyframes start-gradient-animation {

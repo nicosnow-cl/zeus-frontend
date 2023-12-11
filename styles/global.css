@@ -6,6 +6,7 @@
 
 @import './config/vars.css';
 @import './config/colors.css';
+@import './config/keyframes.css';
 @import './config/layout.css';
 @import './config/utilities.css';
 @import './config/components.css';

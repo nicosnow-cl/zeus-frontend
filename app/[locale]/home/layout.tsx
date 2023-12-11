@@ -1,7 +1,9 @@
+import { Heading, Text } from '@radix-ui/themes'
+
 import * as Hero from '@/common/components/ui/presentational/hero'
 import { SectionWithAsideContainer } from '@/common/components/containers/section-with-aside'
 import { UsersCardsFiltersForm } from '@/features/home/components/forms/users-cards-filters-form'
-import { UsersCardsFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
+import { UsersCardsMobileFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
 
 export type LayoutProps = {
   children: React.ReactNode
@@ -40,15 +42,37 @@ export default function Layout({ children }: LayoutProps) {
 
       <SectionWithAsideContainer
         heroProps={{
-          className: 'block md:hidden',
+          className: 'flex flex-col gap-3',
         }}
-        hero={<UsersCardsFiltersContainer />}
+        hero={
+          <>
+            <Heading as="h1" className="title-1 text-4xl">
+              Nuestros usuarios
+              <Text as="p" className="font-default text-base font-light">
+                Encuentre el mejor servicio de acompañantes
+              </Text>
+            </Heading>
+
+            <UsersCardsMobileFiltersContainer
+              containerProps={{
+                className: 'block md:hidden',
+              }}
+            />
+          </>
+        }
         aside={
-          <UsersCardsFiltersForm
-            containerProps={{
-              className: 'sticky top-[78px]',
-            }}
-          />
+          <div className="sticky top-[var(--navbar-full-height)] flex flex-col gap-3">
+            <div>
+              <Text as="p" className="pl-2 text-lg font-semibold text-gray-950 dark:text-gray-50">
+                Filtros
+              </Text>
+              <Text as="p" className="pl-2 text-sm text-gray-500 dark:text-gray-400">
+                Ajuste los resultados de acuerdo a sus preferencias
+              </Text>
+            </div>
+
+            <UsersCardsFiltersForm />
+          </div>
         }
         asideProps={{
           className: 'hidden md:block',
