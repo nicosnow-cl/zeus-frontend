@@ -18,11 +18,26 @@ export default function Root({ className, children, ...restProps }: RootProps) {
     setIsExpanded((prev) => !prev)
   }
 
-  const handleFocus = (evt: React.FocusEvent<HTMLDivElement>) => {
+  const handleKeyUp = (evt: React.KeyboardEvent<HTMLDivElement>) => {
     evt.preventDefault()
     evt.stopPropagation()
 
-    setIsExpanded(true)
+    if (evt.key === 'Enter') setIsExpanded((prev) => !prev)
+  }
+
+  const handleBlur = (evt: React.FocusEvent<HTMLDivElement>) => {
+    evt.preventDefault()
+    evt.stopPropagation()
+
+    const currentTarget = evt.currentTarget
+
+    requestAnimationFrame(() => {
+      // Check if the new focused element is a child of the original container
+      if (!currentTarget.contains(document.activeElement)) {
+        // Do blur logic here!
+        setIsExpanded(false)
+      }
+    })
   }
 
   return (
@@ -30,7 +45,9 @@ export default function Root({ className, children, ...restProps }: RootProps) {
       className={classes}
       data-expanded={isExpanded}
       onClick={handleClick}
-      onFocus={handleFocus}
+      onKeyUp={handleKeyUp}
+      onBlur={handleBlur}
+      onMouseLeave={() => setIsExpanded(false)}
       {...restProps}
     >
       {children}

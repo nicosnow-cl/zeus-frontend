@@ -19,18 +19,18 @@ export function Contracted({
         avatar={avatar}
         containerProps={{
           className:
-            'transition-[transform] group-hover:scale-[1.03] group-data-[expanded=true]:scale-[1.03]',
+            'transition-[transform] group-hover:scale-[1.03] group-focus-within:scale-[1.03] group-data-[expanded=true]:scale-[1.03]',
         }}
       />
 
-      <UserCardSimple.Content className="transition-[opacity] duration-150 group-data-[expanded=true]:opacity-0">
+      <UserCardSimple.Content className="transition-[opacity] duration-200 group-data-[expanded=true]:opacity-0">
         <UserCardSimple.Header likes={likes} nationality={nationality} type={type} />
 
         <UserCardSimple.Body
           age={age}
           containerProps={{
             className:
-              'max-h-[2rem] group-hover:max-h-[600px] transition-[max-height] duration-200',
+              'max-h-[2rem] group-hover:max-h-[600px] group-focus-within:max-h-[600px] transition-[max-height] duration-200',
           }}
           description={description}
           name={name}

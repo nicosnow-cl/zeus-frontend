@@ -26,11 +26,11 @@ export default function Header({ containerProps, likes, type }: HeaderProps) {
       </div>
 
       <div className="flex grow items-center justify-center gap-1">
-        <Button>
+        <Button onFocus={(evt) => evt.stopPropagation()}>
           <ShareFillIcon />
         </Button>
 
-        <Button size="lg">
+        <Button size="lg" onFocus={(evt) => evt.stopPropagation()}>
           Ver perfil
           <Arrow90degRightIcon className="ml-2" />
         </Button>

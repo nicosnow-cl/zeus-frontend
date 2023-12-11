@@ -17,7 +17,7 @@ export default function Expanded({
   likes,
 }: ExpandedProps) {
   return (
-    <UserInfo.Root className="absolute bottom-[-600px] transition-[bottom] duration-300 group-data-[expanded=true]:bottom-0">
+    <UserInfo.Root className="absolute -bottom-full left-0 transition-[bottom] duration-300 group-data-[expanded=true]:bottom-0">
       <UserInfo.Content className="bg-shade-100/80 backdrop-blur-sm dark:bg-shade-950/90">
         <UserInfo.Header likes={likes} type={type} />
 

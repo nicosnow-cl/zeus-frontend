@@ -24,7 +24,7 @@ export const SocialNetworksGroup = ({
       case 'facebook':
         return (
           <Button key={idx} color="blue" asChild {...buttonProps}>
-            <a href={rrss.url} target="_blank">
+            <a href={rrss.url} target="_blank" onFocus={(evt) => evt.stopPropagation()}>
               <FacebookIcon />
             </a>
           </Button>
@@ -32,7 +32,7 @@ export const SocialNetworksGroup = ({
       case 'instagram':
         return (
           <Button key={idx} color="pink" asChild {...buttonProps}>
-            <a href={rrss.url} target="_blank">
+            <a href={rrss.url} target="_blank" onFocus={(evt) => evt.stopPropagation()}>
               <InstagramIcon />
             </a>
           </Button>
@@ -40,7 +40,7 @@ export const SocialNetworksGroup = ({
       case 'threads':
         return (
           <Button key={idx} asChild {...buttonProps}>
-            <a href={rrss.url} target="_blank">
+            <a href={rrss.url} target="_blank" onFocus={(evt) => evt.stopPropagation()}>
               Threads
             </a>
           </Button>
@@ -48,7 +48,7 @@ export const SocialNetworksGroup = ({
       case 'twitter':
         return (
           <Button key={idx} color="cyan" asChild {...buttonProps}>
-            <a href={rrss.url} target="_blank">
+            <a href={rrss.url} target="_blank" onFocus={(evt) => evt.stopPropagation()}>
               <TwitterIcon />
             </a>
           </Button>
@@ -56,7 +56,7 @@ export const SocialNetworksGroup = ({
       case 'tiktok':
         return (
           <Button key={idx} color="gray" asChild {...buttonProps}>
-            <a href={rrss.url} target="_blank">
+            <a href={rrss.url} target="_blank" onFocus={(evt) => evt.stopPropagation()}>
               <TiktokIcon />
             </a>
           </Button>
@@ -64,7 +64,7 @@ export const SocialNetworksGroup = ({
       case 'whatsapp':
         return (
           <Button key={idx} color="green" asChild {...buttonProps}>
-            <a href={rrss.url} target="_blank">
+            <a href={rrss.url} target="_blank" onFocus={(evt) => evt.stopPropagation()}>
               <WhatsappIcon />
             </a>
           </Button>
