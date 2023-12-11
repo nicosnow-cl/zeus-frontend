@@ -35,8 +35,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
           <UserCard.Root
             key={idx}
             className={`min-h-[325px] cursor-pointer rounded-2xl 
-            border-gray-200 shadow-gray-950 focus-within:border-2 focus-within:shadow-md hover:border-2 hover:shadow-md 
-            dark:border-gray-800 ${getCardClassName(user.type)}`}
+             focus-within:shadow-md hover:shadow-md ${getCardClassName(user.type)}`}
             role="listitem"
           >
             <UserCard.Contracted {...user} />

@@ -3,20 +3,16 @@ import clsx from 'clsx'
 
 export type AppearanceGroupProps = {
   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
-  nationality: string
   textProps?: Omit<React.ComponentProps<typeof Text>, 'children' | 'as'>
 }
 
-export function AppearanceGroup({ containerProps, nationality, textProps }: AppearanceGroupProps) {
+export function AppearanceGroup({ containerProps, textProps }: AppearanceGroupProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
 
   const classes = clsx('flex flex-wrap gap-1 justify-between', className)
 
   return (
     <div {...restContainerProps} className={classes}>
-      <Text className="text-crimson-9" size="2" weight="bold" {...textProps}>
-        {nationality}
-      </Text>
       <Text className="text-crimson-9" size="2" weight="bold" {...textProps}>
         Mulata
       </Text>

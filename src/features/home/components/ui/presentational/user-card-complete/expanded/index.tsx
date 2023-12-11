@@ -13,11 +13,13 @@ export default function Expanded({
   rrss,
   services,
   username,
+  type,
+  likes,
 }: ExpandedProps) {
   return (
-    <UserInfo.Root className="absolute bottom-[-600px] transition-[bottom] group-data-[expanded=true]:bottom-0">
-      <UserInfo.Content>
-        <UserInfo.Header />
+    <UserInfo.Root className="absolute bottom-[-600px] transition-[bottom] duration-300 group-data-[expanded=true]:bottom-0">
+      <UserInfo.Content className="bg-shade-100/80 backdrop-blur-sm dark:bg-shade-950/90">
+        <UserInfo.Header likes={likes} type={type} />
 
         <Separator my="2" size="2" />
 
@@ -27,11 +29,12 @@ export default function Expanded({
           description={description}
           name={name}
           username={username}
+          nationality={nationality}
         />
 
         <Separator my="2" className="ml-auto mr-0" size="2" />
 
-        <UserInfo.Footer nationality={nationality} rrss={rrss} services={services} />
+        <UserInfo.Footer rrss={rrss} services={services} type={type} />
       </UserInfo.Content>
     </UserInfo.Root>
   )

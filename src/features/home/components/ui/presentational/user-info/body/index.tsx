@@ -1,4 +1,4 @@
-import { Text } from '@radix-ui/themes'
+import { Badge, Text } from '@radix-ui/themes'
 
 import { AvatarWithName } from '@/common/components/ui/presentational/avatar-with-name'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
@@ -9,6 +9,7 @@ export type BodyProps = {
   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
   description: UserCardEntity['description']
   name: UserCardEntity['name']
+  nationality: UserCardEntity['nationality']
   username: UserCardEntity['username']
 }
 
@@ -18,6 +19,7 @@ export default function Body({
   containerProps,
   description,
   name,
+  nationality,
   username,
 }: BodyProps) {
   return (
@@ -26,7 +28,6 @@ export default function Body({
         age={age}
         avatar={avatar}
         name={name}
-        showAvatar
         showUsername
         showUserType={false}
         username={username}
@@ -38,7 +39,11 @@ export default function Body({
         }}
       />
 
-      <Text className="mt-1 italic" as="p" size="2">
+      <Text as="p" size="2">
+        <Badge className="mr-2 px-[0.65rem] py-[0.20rem]" size="1" variant="surface" highContrast>
+          {nationality}
+        </Badge>
+
         {description}
       </Text>
     </div>

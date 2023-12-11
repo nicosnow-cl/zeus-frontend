@@ -23,15 +23,8 @@ export function Contracted({
         }}
       />
 
-      <UserCardSimple.Content>
-        <UserCardSimple.Header
-          containerProps={{
-            className: 'group-data-[expanded=true]:opacity-0 transition-[opacity] duration-150',
-          }}
-          likes={likes}
-          nationality={nationality}
-          type={type}
-        />
+      <UserCardSimple.Content className="transition-[opacity] duration-150 group-data-[expanded=true]:opacity-0">
+        <UserCardSimple.Header likes={likes} nationality={nationality} type={type} />
 
         <UserCardSimple.Body
           age={age}

@@ -24,7 +24,7 @@ export function Header({ containerProps, likes, nationality, type }: HeaderProps
       <span className="flex items-center gap-1">
         {nationality && <CountryFlag countryCode={nationality} />}
 
-        <LikesBadge count={likes} />
+        <LikesBadge count={likes} small />
       </span>
     </div>
   )
