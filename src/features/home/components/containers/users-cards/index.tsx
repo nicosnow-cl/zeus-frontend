@@ -32,30 +32,11 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
     >
       <MasonryContainer className="masonry-highlight relative grow grid-cols-12 gap-1" role="list">
         {data.map((user, idx) => (
-          <div
-            key={idx}
-            className={`masonry-item-highlighted relative min-h-[325px] ${getCardClassName(
-              user.type
-            )}`}
-          >
+          <div key={idx} className={`relative min-h-[325px] ${getCardClassName(user.type)}`}>
             <UserCard.Root className="cursor-pointer rounded-2xl">
-              <UserCard.Contracted
-                age={user.age}
-                avatar={user.avatar}
-                description={user.description}
-                name={user.name}
-              />
+              <UserCard.Contracted {...user} />
 
-              <UserCard.Expanded
-                age={user.age}
-                avatar={user.avatar}
-                description={user.description}
-                name={user.name}
-                nationality={user.nationality}
-                rrss={user.rrss}
-                services={user.services}
-                username={user.username}
-              />
+              <UserCard.Expanded {...user} />
             </UserCard.Root>
           </div>
         ))}

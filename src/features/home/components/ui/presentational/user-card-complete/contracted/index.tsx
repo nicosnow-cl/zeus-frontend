@@ -26,7 +26,7 @@ export function Contracted({ age, avatar, description, name }: ContractedProps) 
           age={age}
           containerProps={{
             className:
-              'max-h-[1.75rem] group-hover:max-h-[600px] transition-[max-height] duration-150',
+              'max-h-[2rem] group-hover:max-h-[600px] transition-[max-height] duration-150',
           }}
           description={description}
           name={name}

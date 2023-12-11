@@ -5,7 +5,7 @@ import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
 export type FooterProps = {
   nationality: UserCardEntity['nationality']
-  rrss: UserCardEntity['rrss']
+  rrss?: UserCardEntity['rrss']
   services: UserCardEntity['services']
 }
 

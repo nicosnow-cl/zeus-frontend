@@ -19,16 +19,15 @@ export function Body({ age, containerProps, description, name }: BodyProps) {
     <div {...restContainerProps} className={classes}>
       <Heading
         as="h4"
+        className="mb-2 px-2 text-shade-50 drop-shadow-sm"
         size="6"
-        className="px-2 text-shade-50"
-        style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }}
-        highContrast
+        style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}
       >
         {name}, {age}
       </Heading>
 
       <div
-        className="border-t border-slate-100/20 bg-shade-900/20 px-2 py-3 backdrop-blur-sm"
+        className="border-t border-shade-100/50 bg-gradient-to-t from-shade-950/50 px-2 py-3 backdrop-blur-sm dark:from-shade-950/80"
         style={{
           textShadow: '2px 2px 3px rgba(0, 0, 0, 0.15)',
         }}

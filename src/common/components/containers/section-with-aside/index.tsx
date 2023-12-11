@@ -44,7 +44,7 @@ export const SectionWithAsideContainer: React.FunctionComponent<SectionWithAside
         <div
           {...asideRestProps}
           className={clsx(
-            'order-2 w-1/5 min-w-[275px] rounded-2xl bg-slate-100/90 px-2 py-3 shadow-sm dark:bg-shade-950/30',
+            'order-2 min-w-[275px] basis-1/5 rounded-2xl bg-slate-100/90 px-2 py-3 shadow-sm dark:bg-shade-950/30',
             asideClassName
           )}
         >

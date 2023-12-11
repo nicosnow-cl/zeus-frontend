@@ -1,20 +1,17 @@
-.masonry-highlight > * {
-  filter: brightness(0.875);
-}
-
 .masonry-highlight:has(> *:hover) > *:not(:hover),
 .masonry-highlight:has(> *:focus-within) > *:not(:focus-within) {
   scale: 0.975;
 }
 
-.masonry-item-highlighted {
+.masonry-highlight > * {
+  filter: brightness(0.875);
   transition:
     scale 0.25s ease,
     filter 0.25s linear;
 }
 
-.masonry-item-highlighted:hover,
-.masonry-item-highlighted:focus-within {
+.masonry-highlight > *:hover,
+.masonry-highlight > *:focus-within {
   filter: brightness(1.05);
 }
 
