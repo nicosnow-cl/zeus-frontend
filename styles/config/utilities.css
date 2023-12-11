@@ -67,7 +67,8 @@ html.dark .curve .shape-fill {
   }
 }
 
-.vignette {
+.vignette::after {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;

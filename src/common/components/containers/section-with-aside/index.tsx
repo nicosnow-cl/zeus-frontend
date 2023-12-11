@@ -35,7 +35,7 @@ export const SectionWithAsideContainer: React.FunctionComponent<SectionWithAside
       <div
         {...containerRestProps}
         className={clsx(
-          'relative flex flex-wrap justify-end gap-x-2 rounded-lg bg-slate-200 p-2 dark:bg-shade-900/25',
+          'relative flex flex-wrap justify-end gap-x-2 rounded-2xl bg-slate-200 p-2 dark:bg-shade-900/25',
           containerClassName
         )}
       >
@@ -44,7 +44,7 @@ export const SectionWithAsideContainer: React.FunctionComponent<SectionWithAside
         <div
           {...asideRestProps}
           className={clsx(
-            'order-2 w-1/5 min-w-[275px] rounded-2xl bg-slate-100/90 p-2 shadow-sm dark:bg-shade-950/30',
+            'order-2 w-1/5 min-w-[275px] rounded-2xl bg-slate-100/90 px-2 py-3 shadow-sm dark:bg-shade-950/30',
             asideClassName
           )}
         >

@@ -14,11 +14,11 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
   const getCardClassName = (type: string) => {
     switch (type) {
       case 'VIP':
-        return 'col-span-4 row-span-4 sm:col-span-2 sm:row-span-3 xl:col-span-2 xl:row-span-4 min-h-[300px] md:min-h-[400px]'
+        return 'col-span-12 row-span-4 sm:col-span-6 sm:row-span-3 xl:col-span-5 xl:row-span-4 min-h-[300px] md:min-h-[400px]'
       case 'PREMIUM':
-        return 'col-span-2 row-span-3 sm:col-span-2 sm:row-span-2 xl:col-span-2 xl:row-span-3 min-h-[300px] md:min-h-[400px]'
+        return 'col-span-12 row-span-3 sm:col-span-6 sm:row-span-2 xl:col-span-4 xl:row-span-3 min-h-[300px] md:min-h-[400px]'
       default:
-        return 'col-span-2 row-span-2 sm:col-span-2 sm:row-span-1 xl:col-span-2 xl:row-span-2 min-h-[300px] md:min-h-[400px]'
+        return 'col-span-6 row-span-2 sm:col-span-3 sm:row-span-1 xl:col-span-3 xl:row-span-2 min-h-[300px] md:min-h-[400px]'
     }
   }
 
@@ -30,7 +30,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
         damping: 40,
       }}
     >
-      <MasonryContainer className="masonry-highlight relative grow grid-cols-4 gap-1" role="list">
+      <MasonryContainer className="masonry-highlight relative grow grid-cols-12 gap-1" role="list">
         {data.map((user, idx) => (
           <div
             key={idx}
