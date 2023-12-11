@@ -4,7 +4,7 @@ export type ContractedProps = UserCardSimple.MediaProps &
   UserCardSimple.HeaderProps &
   UserCardSimple.BodyProps
 
-export function Contracted({ age, avatar, description, name }: ContractedProps) {
+export function Contracted({ age, avatar, description, name, nationality }: ContractedProps) {
   return (
     <UserCardSimple.Root>
       <UserCardSimple.Media
@@ -30,6 +30,7 @@ export function Contracted({ age, avatar, description, name }: ContractedProps) 
           }}
           description={description}
           name={name}
+          nationality={nationality}
         />
       </UserCardSimple.Content>
     </UserCardSimple.Root>
