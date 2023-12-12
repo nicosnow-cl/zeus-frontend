@@ -2,8 +2,8 @@ import { Heading, Text } from '@radix-ui/themes'
 
 import * as Hero from '@/common/components/ui/presentational/hero'
 import { SectionWithAsideContainer } from '@/common/components/containers/section-with-aside'
-import { UsersCardsFiltersForm } from '@/features/home/components/forms/users-cards-filters-form'
 import { UsersCardsMobileFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
+import { UsersCardsFiltersFormQueryLogic } from '@/features/home/components/containers/users-cards-filters-form-query-logic'
 
 export type LayoutProps = {
   children: React.ReactNode
@@ -71,7 +71,7 @@ export default function Layout({ children }: LayoutProps) {
               </Text>
             </div>
 
-            <UsersCardsFiltersForm />
+            <UsersCardsFiltersFormQueryLogic />
           </div>
         }
         asideProps={{

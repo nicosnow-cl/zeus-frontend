@@ -10,10 +10,8 @@ import {
 } from '@/shadcn-components/ui/sheet'
 import { DialogProps } from '@radix-ui/react-dialog'
 
-import {
-  UsersCardsFiltersForm,
-  UsersCardsFiltersFormProps,
-} from '../../../forms/users-cards-filters-form'
+import { UsersCardsFiltersFormProps } from '../../../forms/users-cards-filters-form'
+import { UsersCardsFiltersFormQueryLogic } from '../../../containers/users-cards-filters-form-query-logic'
 
 export type UsersCardsFiltersSheetProps = DialogProps &
   UsersCardsFiltersFormProps & {
@@ -42,7 +40,7 @@ export const UsersCardsFiltersSheet = ({
           <SheetDescription>Ajuste los resultados de acuerdo a sus preferencias</SheetDescription>
         </SheetHeader>
 
-        <UsersCardsFiltersForm onSubmit={handleSubmit} defaultValues={defaultValues} />
+        <UsersCardsFiltersFormQueryLogic />
       </SheetContent>
     </Sheet>
   )
