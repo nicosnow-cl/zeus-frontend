@@ -40,6 +40,15 @@ export default function Root({ className, children, ...restProps }: RootProps) {
     })
   }
 
+  const handleMouseLeave = (evt: React.MouseEvent<HTMLDivElement>) => {
+    evt.preventDefault()
+    evt.stopPropagation()
+
+    evt.currentTarget.blur()
+
+    setIsExpanded(false)
+  }
+
   return (
     <motion.div
       className={classes}
@@ -47,7 +56,7 @@ export default function Root({ className, children, ...restProps }: RootProps) {
       onClick={handleClick}
       onKeyUp={handleKeyUp}
       onBlur={handleBlur}
-      onMouseLeave={() => setIsExpanded(false)}
+      onMouseLeave={handleMouseLeave}
       {...restProps}
     >
       {children}
