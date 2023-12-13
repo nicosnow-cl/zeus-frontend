@@ -1,6 +1,6 @@
 'use client'
 
-import { Button, Flex, Heading, Link, Separator } from '@radix-ui/themes'
+import * as Separator from '@radix-ui/react-separator'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
@@ -8,6 +8,7 @@ import { BoxArrowRightIcon, PatchCheckFillIcon, SearchIcon } from '@/common/icon
 import { ContentWithDropdown } from '../../../effects/dropdown-effect'
 import { Link as NextLink } from '@intl/navigation'
 import { Routes } from '@config/enums'
+import { Button } from '@/shadcn-components/ui/button'
 
 export type TopBarProps = {
   logo?: React.ReactNode
@@ -42,7 +43,7 @@ export function TopBar({ logo }: TopBarProps) {
     if (type === 'search') {
       return (
         <div>
-          <Heading>Buscar en tumoko.app</Heading>
+          <h3>Buscar en tumoko.app</h3>
 
           <div>
             <ul>1</ul>
@@ -76,38 +77,49 @@ export function TopBar({ logo }: TopBarProps) {
     >
       {({ handleToggle }) => (
         <div className="grid-wrapper h-[var(--navbar-top-height)] w-full bg-transparent">
-          <Flex align="center" justify="center" gap="7">
+          <div className="flex items-center justify-center gap-7">
             {logo}
 
-            <Flex className="rounded-md bg-shade-50/20 px-2 py-1.5 backdrop-blur-md" gap="5">
-              <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
-                <NextLink href={Routes.SignUp}>
-                  {t('sidebar.sign-up')}
-                  {<PatchCheckFillIcon width={14} height={14} />}
-                </NextLink>
-              </Link>
+            <div className="flex gap-5 rounded-md bg-shade-50/20 px-2 py-1.5 backdrop-blur-md">
+              <NextLink
+                className="flex items-center gap-x-2 text-1 text-shade-100"
+                href={Routes.SignUp}
+              >
+                {t('sidebar.sign-up')}
+                {<PatchCheckFillIcon width={14} height={14} />}
+              </NextLink>
 
-              <Separator orientation="vertical" size="1" />
+              <Separator.Root orientation="vertical" />
 
-              <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
-                <NextLink href={Routes.SignIn}>
-                  {t('sidebar.sign-in')}
-                  <BoxArrowRightIcon width={14} height={14} />
-                </NextLink>
-              </Link>
-            </Flex>
+              <NextLink
+                className="flex items-center gap-x-2 text-1 text-shade-100"
+                href={Routes.SignIn}
+              >
+                {t('sidebar.sign-in')}
+                <BoxArrowRightIcon width={14} height={14} />
+              </NextLink>
+            </div>
 
-            <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
-              <NextLink href={Routes.Blog}>{t('sidebar.blog')}</NextLink>
-            </Link>
+            <NextLink
+              className="flex items-center gap-x-2 text-1 text-shade-100"
+              href={Routes.Blog}
+            >
+              {t('sidebar.blog')}
+            </NextLink>
 
-            <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
-              <NextLink href={Routes.About}>{t('sidebar.about')}</NextLink>
-            </Link>
+            <NextLink
+              className="flex items-center gap-x-2 text-1 text-shade-100"
+              href={Routes.About}
+            >
+              {t('sidebar.about')}
+            </NextLink>
 
-            <Link className={`flex items-center gap-x-2 text-1 text-shade-100`} asChild>
-              <NextLink href={Routes.Contact}>{t('sidebar.contact')}</NextLink>
-            </Link>
+            <NextLink
+              className="flex items-center gap-x-2 text-1 text-shade-100"
+              href={Routes.Contact}
+            >
+              {t('sidebar.contact')}
+            </NextLink>
 
             <Button
               className={`flex items-center gap-x-3 text-1`}
@@ -115,7 +127,7 @@ export function TopBar({ logo }: TopBarProps) {
             >
               {<SearchIcon width={14} height={14} />}
             </Button>
-          </Flex>
+          </div>
         </div>
       )}
     </ContentWithDropdown>

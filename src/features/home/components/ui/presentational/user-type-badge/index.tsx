@@ -1,8 +1,8 @@
-import { Badge } from '@radix-ui/themes'
 import clsx from 'clsx'
 
 import { GemIcon } from '@/common/icons'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
+import { Badge } from '@/shadcn-components/ui/badge'
 
 export type UserTypeBadgeProps = {
   containerProps?: Omit<React.ComponentProps<typeof Badge>, 'children'>
@@ -54,15 +54,7 @@ export default function UserTypeBadge({ containerProps, small, type }: UserTypeB
   }
 
   return (
-    <Badge
-      className={`${classes} ${props.className}`}
-      color={props.color}
-      highContrast
-      radius="full"
-      size="2"
-      variant="surface"
-      {...restContainerProps}
-    >
+    <Badge className={`${classes} ${props.className}`} {...restContainerProps}>
       {props.icon}
       {!small && props.label}
     </Badge>

@@ -1,8 +1,8 @@
 'use client'
 
-import { Flex, Switch } from '@radix-ui/themes'
 import { useEffect, useMemo, useState } from 'react'
 import { useTheme } from 'next-themes'
+import { Switch } from '@/shadcn-components/ui/switch'
 
 import { MoonIcon, SunIcon } from '@/common/icons'
 
@@ -17,7 +17,7 @@ export const ColorModeSwitch = () => {
   useEffect(() => setChecked(theme === 'dark'), [theme])
 
   return (
-    <Flex align="center" gap="2">
+    <div className="flex items-center gap-2">
       <Switch
         checked={checked}
         defaultChecked={defaultChecked}
@@ -30,6 +30,6 @@ export const ColorModeSwitch = () => {
       ) : (
         <SunIcon className={`text-4 text-amber-11`} />
       )}
-    </Flex>
+    </div>
   )
 }

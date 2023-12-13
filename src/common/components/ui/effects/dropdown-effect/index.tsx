@@ -1,7 +1,6 @@
 'use client'
 
 import { AnimatePresence, MotionConfig, Transition, Variants, motion } from 'framer-motion'
-import { Container } from '@radix-ui/themes'
 import { useEffect, useState } from 'react'
 
 import { DimLayer } from '../../presentational/dim-layer'
@@ -105,9 +104,7 @@ export function ContentWithDropdown({
               animate={isOpen ? 'open' : 'closed'}
               exit="closed"
             >
-              <Container size="4" p="6">
-                {content}
-              </Container>
+              <div>{content}</div>
             </motion.div>
           )}
         </AnimatePresence>

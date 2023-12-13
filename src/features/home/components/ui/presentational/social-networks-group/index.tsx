@@ -1,4 +1,4 @@
-import { Button } from '@radix-ui/themes'
+import { Button } from '@/shadcn-components/ui/button'
 import clsx from 'clsx'
 
 import { FacebookIcon, InstagramIcon, TiktokIcon, TwitterIcon, WhatsappIcon } from '@/common/icons'

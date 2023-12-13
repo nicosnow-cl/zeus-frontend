@@ -1,4 +1,4 @@
-import { Badge } from '@radix-ui/themes'
+import { Badge } from '@/shadcn-components/ui/badge'
 
 export type ValueBadgeProps = {
   badgeProps?: Omit<React.ComponentProps<typeof Badge>, 'children'>
@@ -11,7 +11,6 @@ export const ValueBadge = ({ badgeProps, label }: ValueBadgeProps) => {
   return (
     <Badge
       {...badgeProps}
-      highContrast
       className="cursor-pointer"
       style={{
         fontSize: '10px',

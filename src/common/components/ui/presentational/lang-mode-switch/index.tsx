@@ -1,10 +1,16 @@
 'use client'
 
-import { DropdownMenu, IconButton } from '@radix-ui/themes'
+import { Button } from '@/shadcn-components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/shadcn-components/ui/dropdown-menu'
+import { usePathname, useRouter } from '@intl/navigation'
 
 import { Globe2Icon } from '@/common/icons'
 import { Locale } from '@config/enums'
-import { usePathname, useRouter } from '@intl/navigation'
 
 export const LangModeSwitch = () => {
   const pathname = usePathname()
@@ -13,17 +19,17 @@ export const LangModeSwitch = () => {
   const handleChangeLang = (locale: Locale) => router.push(pathname, { locale })
 
   return (
-    <DropdownMenu.Root>
-      <DropdownMenu.Trigger>
-        <IconButton size="1" variant="ghost">
+    <DropdownMenu>
+      <DropdownMenuTrigger>
+        <Button>
           <Globe2Icon className={`text-shade-800`} />
-        </IconButton>
-      </DropdownMenu.Trigger>
+        </Button>
+      </DropdownMenuTrigger>
 
-      <DropdownMenu.Content>
-        <DropdownMenu.Item onClick={() => handleChangeLang(Locale.Es)}>Español</DropdownMenu.Item>
-        <DropdownMenu.Item onClick={() => handleChangeLang(Locale.En)}>English</DropdownMenu.Item>
-      </DropdownMenu.Content>
-    </DropdownMenu.Root>
+      <DropdownMenuContent>
+        <DropdownMenuItem onClick={() => handleChangeLang(Locale.Es)}>Español</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => handleChangeLang(Locale.En)}>English</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   )
 }

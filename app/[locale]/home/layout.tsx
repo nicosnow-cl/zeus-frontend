@@ -1,5 +1,3 @@
-import { Heading, Text } from '@radix-ui/themes'
-
 import * as Hero from '@/common/components/ui/presentational/hero'
 import { SectionWithAsideContainer } from '@/common/components/containers/section-with-aside'
 import { UsersCardsMobileFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
@@ -46,12 +44,12 @@ export default function Layout({ children }: LayoutProps) {
         }}
         hero={
           <>
-            <Heading as="h1" className="title-1 text-4xl">
+            <h1 className="title-1 text-4xl">
               Nuestros usuarios
-              <Text as="p" className="font-default text-base font-light">
+              <small className="font-default text-base font-light">
                 Encuentre el mejor servicio de acompañantes
-              </Text>
-            </Heading>
+              </small>
+            </h1>
 
             <UsersCardsMobileFiltersContainer
               containerProps={{
@@ -63,12 +61,10 @@ export default function Layout({ children }: LayoutProps) {
         aside={
           <div className="sticky top-[var(--navbar-full-height)] flex flex-col gap-3">
             <div>
-              <Text as="p" className="pl-2 text-lg font-semibold text-gray-950 dark:text-gray-50">
-                Filtros
-              </Text>
-              <Text as="p" className="pl-2 text-sm text-gray-500 dark:text-gray-400">
+              <p className="pl-2 text-lg font-semibold text-gray-950 dark:text-gray-50">Filtros</p>
+              <p className="pl-2 text-sm text-gray-500 dark:text-gray-400">
                 Ajuste los resultados de acuerdo a sus preferencias
-              </Text>
+              </p>
             </div>
 
             <UsersCardsFiltersFormQueryLogic />

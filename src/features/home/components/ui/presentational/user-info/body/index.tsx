@@ -1,4 +1,4 @@
-import { Badge, Text } from '@radix-ui/themes'
+import { Badge } from '@/shadcn-components/ui/badge'
 
 import { AvatarWithName } from '@/common/components/ui/presentational/avatar-with-name'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
@@ -39,13 +39,11 @@ export default function Body({
         }}
       />
 
-      <Text as="p" size="2">
-        <Badge className="mr-2 px-[0.65rem] py-[0.20rem]" size="1" variant="surface" highContrast>
-          {nationality}
-        </Badge>
+      <p>
+        <Badge className="mr-2 px-[0.65rem] py-[0.20rem]">{nationality}</Badge>
 
         {description}
-      </Text>
+      </p>
     </div>
   )
 }

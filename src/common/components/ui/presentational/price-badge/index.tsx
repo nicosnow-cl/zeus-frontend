@@ -1,4 +1,4 @@
-import { Badge } from '@radix-ui/themes'
+import { Badge } from '@/shadcn-components/ui/badge'
 
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { formatNumberToCurrency } from '@lib/format-number-to-currency'
@@ -12,12 +12,7 @@ export function PriceBadge({ hasPromo, price }: PriceBadgeProps) {
   const realPrice = hasPromo ? price.promo : price.normal
 
   return (
-    <Badge
-      className="relative rounded-md text-sm font-bold"
-      color="grass"
-      highContrast
-      variant="surface"
-    >
+    <Badge className="relative rounded-md text-sm font-bold">
       {formatNumberToCurrency(realPrice)}
 
       {hasPromo && (

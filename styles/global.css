@@ -11,5 +11,3 @@
 @import './config/utilities.css';
 @import './config/components.css';
 @import './config/effects.css';
-
-@import '@radix-ui/themes/styles.css';

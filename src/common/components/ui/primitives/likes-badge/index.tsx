@@ -1,4 +1,4 @@
-import { Badge } from '@radix-ui/themes'
+import { Badge } from '@/shadcn-components/ui/badge'
 import clsx from 'clsx'
 
 import { HeartFillIcon } from '@/common/icons'
@@ -15,14 +15,7 @@ export function LikesBadge({ containerProps, count = 0, small }: LikeBadgeProps)
   const classes = clsx('px-2 py-1 text-2', className)
 
   return (
-    <Badge
-      color="crimson"
-      radius="full"
-      variant="surface"
-      highContrast
-      className={classes}
-      {...restContainerProps}
-    >
+    <Badge className={classes} {...restContainerProps}>
       <HeartFillIcon /> {small ? abbreviateNumber(count) : count}
     </Badge>
   )

@@ -1,4 +1,3 @@
-import { Text } from '@radix-ui/themes'
 import { AppearanceGroup } from '../../appearance-group'
 import { ServicesGroup } from '../../services-group'
 import { SocialNetworksGroup } from '../../social-networks-group'

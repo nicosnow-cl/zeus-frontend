@@ -1,8 +1,9 @@
-import { Avatar, Badge, Heading, Text } from '@radix-ui/themes'
 import clsx from 'clsx'
 
 import { PatchCheckFillIcon, PersonCircleIcon, SuitHeartFillIcon } from '@/common/icons'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
+import { Avatar, AvatarFallback, AvatarImage } from '@/shadcn-components/ui/avatar'
+import { Badge } from '@/shadcn-components/ui/badge'
 
 export type AvatarWithNameProps = {
   age?: UserCardEntity['age']
@@ -35,50 +36,36 @@ export function AvatarWithName({
     <div {...restContainerProps} className={classes}>
       <div className="flex items-center gap-2">
         {showAvatar && (
-          <Avatar
-            className={`${withDropShadow ? 'drop-shadow' : ''}`}
-            fallback={<PersonCircleIcon size="15" />}
-            variant="solid"
-            size="4"
-            src={avatar?.lq}
-          />
+          <Avatar className={`${withDropShadow ? 'drop-shadow' : ''}`}>
+            <AvatarImage sizes="" src={avatar?.lq} />
+            <AvatarFallback>
+              <PersonCircleIcon size="15" />
+            </AvatarFallback>
+          </Avatar>
         )}
 
         <div className="flex flex-col">
-          <Heading
-            as="h5"
-            size="6"
-            style={{ ...(withDropShadow && { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }) }}
-            highContrast
-          >
+          <h5 style={{ ...(withDropShadow && { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }) }}>
             {name}, {age}
-          </Heading>
+          </h5>
 
           {showUsername && (
-            <Text
+            <p
               className="text-crimson-9"
-              size="2"
               style={{ ...(withDropShadow && { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }) }}
-              highContrast
             >
               @{username}
-            </Text>
+            </p>
           )}
         </div>
       </div>
 
       {showUserType && (
         <div className="flex flex-col">
-          <Badge className="px-2 py-1 text-3" radius="full" variant="surface" highContrast>
+          <Badge className="px-2 py-1 text-3">
             <PatchCheckFillIcon /> VIP
           </Badge>
-          <Badge
-            className="px-2 py-1 text-2"
-            color="tomato"
-            radius="full"
-            variant="surface"
-            highContrast
-          >
+          <Badge className="px-2 py-1 text-2">
             <SuitHeartFillIcon /> 2.6k
           </Badge>
         </div>

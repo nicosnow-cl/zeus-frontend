@@ -1,4 +1,3 @@
-import { Link } from '@radix-ui/themes'
 import NextLink from 'next/link'
 
 import { Crumb as TCrumb } from '@/common/types/misc/crumb.type'
@@ -8,14 +7,11 @@ export type CrumbProps = TCrumb & {
 }
 
 export const Crumb = ({ href, label, icon, isFirst }: CrumbProps) => (
-  <Link
-    asChild
+  <NextLink
     className={`inline-flex items-center gap-x-2 ${isFirst ? 'text-brand-600' : 'text-shade-950'}`}
-    size="2"
+    href={href}
   >
-    <NextLink href={href}>
-      {icon}
-      {label}
-    </NextLink>
-  </Link>
+    {icon}
+    {label}
+  </NextLink>
 )

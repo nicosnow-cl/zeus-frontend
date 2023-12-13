@@ -1,4 +1,3 @@
-import { Blockquote, Heading } from '@radix-ui/themes'
 import clsx from 'clsx'
 
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
@@ -21,14 +20,12 @@ export function Body({ age, containerProps, description, hasPromo, name, price }
   return (
     <div {...restContainerProps} className={classes}>
       <div className="mb-2 flex items-center justify-between px-2">
-        <Heading
-          as="h4"
+        <h4
           className="text-shade-50 drop-shadow-sm"
-          size="6"
           style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}
         >
           {name}, {age}
-        </Heading>
+        </h4>
 
         <PriceBadge hasPromo={hasPromo} price={price} />
       </div>
@@ -39,9 +36,7 @@ export function Body({ age, containerProps, description, hasPromo, name, price }
           textShadow: '2px 2px 3px rgba(0, 0, 0, 0.15)',
         }}
       >
-        <Blockquote className="text-shade-50" color="crimson" size="2">
-          {description}
-        </Blockquote>
+        <p className="text-shade-50">{description}</p>
       </div>
     </div>
   )

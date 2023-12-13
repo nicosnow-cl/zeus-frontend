@@ -1,4 +1,4 @@
-import { Badge, Flex } from '@radix-ui/themes'
+import { Badge } from '@/shadcn-components/ui/badge'
 import { Slider } from '@/shadcn-components/ui/slider'
 import { SliderProps } from '@radix-ui/react-slider'
 import { useMemo, useState } from 'react'
@@ -50,15 +50,11 @@ export const LabeledSlider = ({
         background: `linear-gradient(90deg, var(--bg-from) ${minPercent}%, var(--bg-to) ${maxPercent}%)`,
       }}
     >
-      <Flex justify="between">
-        <Badge className="bg-transparent" variant="soft" color="mint" size="2">
-          ${value[0]}
-        </Badge>
+      <div className="justify-between">
+        <Badge className="bg-transparent">${value[0]}</Badge>
 
-        <Badge className="bg-transparent" variant="soft" color="bronze" size="2">
-          ${value[1]}
-        </Badge>
-      </Flex>
+        <Badge className="bg-transparent">${value[1]}</Badge>
+      </div>
 
       <Slider
         {...restProps}

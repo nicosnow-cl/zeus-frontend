@@ -1,5 +1,3 @@
-import { Text } from '@radix-ui/themes'
-
 import { ChevronRightIcon } from '@/common/icons'
 import { Crumb } from '../crumb'
 import { Crumb as TCrumb } from '@/common/types/misc/crumb.type'
@@ -21,7 +19,7 @@ export const Breadcrumbs = ({ crumbs, className = '' }: BreadcrumbsProps) => {
                 <ChevronRightIcon size="12" />
               </>
             ) : (
-              <Text size="2">{crumb.label}</Text>
+              <p>{crumb.label}</p>
             )}
           </li>
         ))}

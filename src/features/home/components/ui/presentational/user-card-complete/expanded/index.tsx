@@ -1,5 +1,4 @@
-import { Separator } from '@radix-ui/themes'
-
+import * as Separator from '@radix-ui/react-separator'
 import * as UserInfo from '../../user-info'
 
 export type ExpandedProps = UserInfo.HeaderProps & UserInfo.BodyProps & UserInfo.FooterProps
@@ -21,7 +20,7 @@ export default function Expanded({
       <UserInfo.Content className="bg-shade-100/80 backdrop-blur-sm dark:bg-shade-950/90">
         <UserInfo.Header likes={likes} type={type} />
 
-        <Separator my="2" size="2" />
+        <Separator.Root className="my-2" />
 
         <UserInfo.Body
           age={age}
@@ -32,7 +31,7 @@ export default function Expanded({
           nationality={nationality}
         />
 
-        <Separator my="2" className="ml-auto mr-0" size="2" />
+        <Separator.Root className="ml-auto mr-0" />
 
         <UserInfo.Footer rrss={rrss} services={services} type={type} />
       </UserInfo.Content>

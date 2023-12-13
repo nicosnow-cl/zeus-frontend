@@ -24,9 +24,9 @@ function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        <RadixUiProvider>
-          <MainContainer>{children}</MainContainer>
-        </RadixUiProvider>
+        {/* <RadixUiProvider> */}
+        <MainContainer>{children}</MainContainer>
+        {/* </RadixUiProvider> */}
       </body>
     </html>
   )

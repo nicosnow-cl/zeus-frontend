@@ -1,5 +1,5 @@
 import { getMessages } from 'next-intl/server'
-import { NextIntlClientProvider as IntlClientProvider } from 'next-intl'
+import { NextIntlClientProvider as IntlClientProvider, useMessages } from 'next-intl'
 import { useLocale } from 'next-intl'
 
 export type NextIntlClientProviderProps = {
@@ -8,7 +8,7 @@ export type NextIntlClientProviderProps = {
 
 export function NextIntlClientProvider({ children }: NextIntlClientProviderProps) {
   const locale = useLocale()
-  const messages = await getMessages({ locale })
+  const messages = useMessages()
 
   return <IntlClientProvider messages={messages}>{children}</IntlClientProvider>
 }

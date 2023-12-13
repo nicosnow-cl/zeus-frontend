@@ -1,6 +1,6 @@
 'use client'
 
-import { Badge, Flex } from '@radix-ui/themes'
+import { Badge } from '@/shadcn-components/ui/badge'
 import { Button } from '@/shadcn-components/ui/button'
 import { cn } from '@/shadcn-lib/utils'
 import {
@@ -18,7 +18,6 @@ import { useTranslations } from 'next-intl'
 import { CheckIcon, CheckSquareIcon, ChevronDownIcon, SquareIcon } from '@/common/icons'
 import { TMenuSelectOption } from '@/common/types/misc/select-option'
 import { ValueBadge } from './value-badge'
-import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
 
 export type ComboboxProps = {
   btnClassName?: string
@@ -91,11 +90,7 @@ export function Combobox({
           />
         ))}
 
-        {valueLength > 5 && (
-          <Badge className="cursor-pointer" highContrast>
-            +{valueLength - 5}
-          </Badge>
-        )}
+        {valueLength > 5 && <Badge className="cursor-pointer">+{valueLength - 5}</Badge>}
       </>
     )
   }
@@ -110,9 +105,7 @@ export function Combobox({
           variant="outline"
         >
           {value.length > 0 ? (
-            <Flex gap="2" wrap="wrap">
-              {renderSelectedValues()}
-            </Flex>
+            <div className="flex flex-wrap gap-2">{renderSelectedValues()}</div>
           ) : (
             triggerPlaceholder ?? t('placeholder')
           )}

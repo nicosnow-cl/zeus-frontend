@@ -1,9 +1,8 @@
-import { Text } from '@radix-ui/themes'
 import clsx from 'clsx'
 
 export type AppearanceGroupProps = {
   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
-  textProps?: Omit<React.ComponentProps<typeof Text>, 'children' | 'as'>
+  textProps?: Omit<React.ComponentProps<'p'>, 'children' | 'as'>
 }
 
 export function AppearanceGroup({ containerProps, textProps }: AppearanceGroupProps) {
@@ -13,18 +12,18 @@ export function AppearanceGroup({ containerProps, textProps }: AppearanceGroupPr
 
   return (
     <div {...restContainerProps} className={classes}>
-      <Text className="text-crimson-9" size="2" weight="bold" {...textProps}>
+      <p className="text-crimson-9" {...textProps}>
         Mulata
-      </Text>
-      <Text className="text-crimson-9" size="2" weight="bold" {...textProps}>
+      </p>
+      <p className="text-crimson-9" {...textProps}>
         162 CM
-      </Text>
-      <Text className="text-crimson-9" size="2" weight="bold" {...textProps}>
+      </p>
+      <p className="text-crimson-9" {...textProps}>
         57 KG
-      </Text>
-      <Text className="text-crimson-9" size="2" weight="bold" {...textProps}>
+      </p>
+      <p className="text-crimson-9" {...textProps}>
         101 - 84 - 100 CM
-      </Text>
+      </p>
     </div>
   )
 }
