@@ -1,4 +1,4 @@
-const withNextIntl = require('next-intl/plugin')('./i18n.ts')
+const withNextIntl = require('next-intl/plugin')('./intl/i18n.ts')
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -72,15 +72,6 @@ const nextConfig = {
     )
 
     fileLoaderRule.exclude = /\.svg$/i
-
-    // if (!dev && !isServer) {
-    //   Object.assign(config.resolve.alias, {
-    //     'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
-    //     react: 'preact/compat',
-    //     'react-dom/test-utils': 'preact/test-utils',
-    //     'react-dom': 'preact/compat',
-    //   })
-    // }
 
     return config
   },

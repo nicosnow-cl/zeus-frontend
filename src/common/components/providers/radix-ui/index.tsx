@@ -4,9 +4,9 @@ import { Theme } from '@radix-ui/themes'
 import { ThemeProvider } from 'next-themes'
 // import { ThemePanel } from '@radix-ui/themes';
 
-export const RadixUiProvider = ({ children }: { children: React.ReactNode }) => {
+export function RadixUiProvider({ children }: { children: React.ReactNode }) {
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <Theme
         accentColor="gray"
         grayColor="slate"

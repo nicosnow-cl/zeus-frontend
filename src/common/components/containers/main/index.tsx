@@ -1,18 +1,21 @@
-import { DarkModeTransitionContainer } from '../dark-mode-transition'
-import { NavbarContainer } from '../navbar'
+import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
+// import { DarkModeTransitionContainer } from '../dark-mode-transition'
+import { NavbarContainer as NavbarContainerClient } from '../navbar'
 
-export interface MainContainerProps {
+const NavbarContainer = withIntlClientProvider(NavbarContainerClient, 'NavbarContainer')
+
+export type MainContainerProps = {
   children: React.ReactNode | React.ReactNode[]
 }
 
-export const MainContainer = ({ children }: MainContainerProps) => {
+export async function MainContainer({ children }: MainContainerProps) {
   return (
-    <DarkModeTransitionContainer>
+    <>
       <div className="h-[var(--navbar-full-height)] bg-shade-900">
         <NavbarContainer />
       </div>
 
       <main className="flex flex-col gap-y-5">{children}</main>
-    </DarkModeTransitionContainer>
+    </>
   )
 }

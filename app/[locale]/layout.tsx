@@ -1,7 +1,6 @@
 import { fonts } from '@/theme/fonts'
 import { getValidLocale } from '@intl/locale'
 import { MainContainer } from '@/common/components/containers/main'
-import { NextIntlClientProvider } from '@/common/components/providers/next-intl-client'
 import { RadixUiProvider } from '@/common/components/providers/radix-ui'
 
 import '@styles/global.css'
@@ -25,12 +24,9 @@ function RootLayout({
       suppressHydrationWarning
     >
       <body>
-        {/* TODO: Find a better solution to apply next-intl */}
-        <NextIntlClientProvider>
-          <RadixUiProvider>
-            <MainContainer>{children}</MainContainer>
-          </RadixUiProvider>
-        </NextIntlClientProvider>
+        <RadixUiProvider>
+          <MainContainer>{children}</MainContainer>
+        </RadixUiProvider>
       </body>
     </html>
   )

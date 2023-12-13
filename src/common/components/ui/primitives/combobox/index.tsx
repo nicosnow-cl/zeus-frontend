@@ -18,6 +18,7 @@ import { useTranslations } from 'next-intl'
 import { CheckIcon, CheckSquareIcon, ChevronDownIcon, SquareIcon } from '@/common/icons'
 import { TMenuSelectOption } from '@/common/types/misc/select-option'
 import { ValueBadge } from './value-badge'
+import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
 
 export type ComboboxProps = {
   btnClassName?: string

@@ -16,11 +16,14 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 
 import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appearances'
 import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
-import { Combobox } from '@/common/components/ui/primitives/combobox'
+import { Combobox as ComboboxClient } from '@/common/components/ui/primitives/combobox'
 import { DEFAULT_VALUES, UsersCardsFilters } from '../../../store/user-cards-filters'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
 import { LabeledSlider } from '@/common/components/ui/primitives/labeled-slider'
 import { useIsFirstRender } from '@/common/hooks/is-first-render'
+import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
+
+const Combobox = withIntlClientProvider(ComboboxClient, 'Combobox')
 
 export type UsersCardsFiltersFormProps = {
   containerProps?: Omit<React.ComponentProps<typeof Flex>, 'children'>
