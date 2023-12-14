@@ -1,13 +1,23 @@
+import { useMessages } from 'next-intl'
+
 import * as Hero from '@/common/components/ui/presentational/hero'
 import { SectionWithAsideContainer } from '@/common/components/containers/section-with-aside'
 import { UsersCardsMobileFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
 import { UsersCardsFiltersFormQueryLogic } from '@/features/home/components/containers/users-cards-filters-form-query-logic'
+import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
+
+const UsersCardsFiltersForm = withIntlClientProvider(
+  UsersCardsFiltersFormQueryLogic,
+  'UsersCardsFiltersForm'
+)
 
 export type LayoutProps = {
   children: React.ReactNode
 }
 
 export default function Layout({ children }: LayoutProps) {
+  const messages = useMessages()
+
   return (
     <>
       <Hero.Root>
@@ -67,7 +77,11 @@ export default function Layout({ children }: LayoutProps) {
               </p>
             </div>
 
-            <UsersCardsFiltersFormQueryLogic />
+            <UsersCardsFiltersForm
+              intlProps={{
+                messages,
+              }}
+            />
           </div>
         }
         asideProps={{

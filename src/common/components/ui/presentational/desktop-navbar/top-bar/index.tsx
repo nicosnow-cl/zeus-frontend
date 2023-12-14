@@ -85,7 +85,7 @@ export function TopBar({ logo }: TopBarProps) {
                 className="flex items-center gap-x-2 text-1 text-shade-100"
                 href={Routes.SignUp}
               >
-                {t('sidebar.sign-up')}
+                {t('COMMON.sidebar.sign-up')}
                 {<PatchCheckFillIcon width={14} height={14} />}
               </NextLink>
 
@@ -95,7 +95,7 @@ export function TopBar({ logo }: TopBarProps) {
                 className="flex items-center gap-x-2 text-1 text-shade-100"
                 href={Routes.SignIn}
               >
-                {t('sidebar.sign-in')}
+                {t('COMMON.sidebar.sign-in')}
                 <BoxArrowRightIcon width={14} height={14} />
               </NextLink>
             </div>
@@ -104,21 +104,21 @@ export function TopBar({ logo }: TopBarProps) {
               className="flex items-center gap-x-2 text-1 text-shade-100"
               href={Routes.Blog}
             >
-              {t('sidebar.blog')}
+              {t('COMMON.sidebar.blog')}
             </NextLink>
 
             <NextLink
               className="flex items-center gap-x-2 text-1 text-shade-100"
               href={Routes.About}
             >
-              {t('sidebar.about')}
+              {t('COMMON.sidebar.about')}
             </NextLink>
 
             <NextLink
               className="flex items-center gap-x-2 text-1 text-shade-100"
               href={Routes.Contact}
             >
-              {t('sidebar.contact')}
+              {t('COMMON.sidebar.contact')}
             </NextLink>
 
             <Button

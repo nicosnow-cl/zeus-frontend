@@ -21,9 +21,7 @@ export const LangModeSwitch = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Button>
-          <Globe2Icon className={`text-shade-800`} />
-        </Button>
+        <Globe2Icon className={`text-shade-800`} />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
