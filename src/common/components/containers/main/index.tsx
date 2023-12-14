@@ -22,7 +22,7 @@ export function MainContainer({ children }: MainContainerProps) {
         />
       </div>
 
-      <main className="flex flex-col gap-y-5">{children}</main>
+      {/* <main className="flex flex-col gap-y-5">{children}</main> */}
     </>
   )
 }

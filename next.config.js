@@ -5,6 +5,23 @@ const nextConfig = {
   env: {
     rootDir: __dirname,
   },
+  redirects: async () => [
+    {
+      source: '/',
+      destination: '/home',
+      permanent: true,
+    },
+    {
+      source: '/es',
+      destination: '/es/home',
+      permanent: true,
+    },
+    {
+      source: '/en',
+      destination: '/en/home',
+      permanent: true,
+    },
+  ],
   images: {
     remotePatterns: [
       {

@@ -11,6 +11,6 @@ export default createMiddleware({
 
 export const config = {
   // matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
-  // matcher: ['/((?!_next|.*\\..*).*)'],
-  matcher: ['/', '/(es|en)/:path*'],
+  matcher: ['/((?!_next|.*\\..*).*)'], // Skip all paths that should not be internationalized
+  // matcher: ['/', '/(es|en)/:path*'],
 }
