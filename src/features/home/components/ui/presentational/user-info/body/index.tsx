@@ -39,11 +39,11 @@ export default function Body({
         }}
       />
 
-      <p>
+      <div>
         <Badge className="mr-2 px-[0.65rem] py-[0.20rem]">{nationality}</Badge>
 
         {description}
-      </p>
+      </div>
     </div>
   )
 }

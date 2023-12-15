@@ -1,3 +1,4 @@
+const path = require('path')
 const withNextIntl = require('next-intl/plugin')('./intl/i18n.tsx')
 
 /** @type {import('next').NextConfig} */
@@ -22,6 +23,31 @@ const nextConfig = {
       permanent: true,
     },
   ],
+  webpack(config, { dev, isServer }) {
+    // @ts-ignore - rules is a private property that is not typed
+    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
+
+    config.module.rules.push(
+      {
+        ...fileLoaderRule,
+        test: /\.svg$/i,
+        resourceQuery: /url/, // *.svg?url
+      },
+      {
+        test: /\.svg$/i,
+        issuer: fileLoaderRule.issuer,
+        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
+        use: ['@svgr/webpack'],
+      }
+    )
+
+    fileLoaderRule.exclude = /\.svg$/i
+
+    return config
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles/sass')],
+  },
   images: {
     remotePatterns: [
       {
@@ -69,28 +95,6 @@ const nextConfig = {
         hostname: 'www.shutterstock.com',
       },
     ],
-  },
-  webpack(config, { dev, isServer }) {
-    // @ts-ignore - rules is a private property that is not typed
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
-
-    config.module.rules.push(
-      {
-        ...fileLoaderRule,
-        test: /\.svg$/i,
-        resourceQuery: /url/, // *.svg?url
-      },
-      {
-        test: /\.svg$/i,
-        issuer: fileLoaderRule.issuer,
-        resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
-        use: ['@svgr/webpack'],
-      }
-    )
-
-    fileLoaderRule.exclude = /\.svg$/i
-
-    return config
   },
 }
 

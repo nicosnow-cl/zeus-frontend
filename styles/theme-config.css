@@ -1,37 +1,44 @@
-.radix-themes {
-  /* fonts */
-  --default-font-family: var(--font-default);
-  --heading-font-family: var(--font-heading);
-
-  --font-weight-light: 100;
-  --font-weight-regular: 300;
-  --font-weight-medium: 500;
-  --font-weight-bold: 700;
-
-  /* containers */
-  --container-4: 1366px;
-  --container-3: 1024px;
-  --container-2: 768px;
-  --container-1: 480px;
-
-  /* pointers */
-  --cursor-button: pointer;
-  --cursor-checkbox: pointer;
-  --cursor-disabled: not-allowed;
-  --cursor-link: pointer;
-  --cursor-menu-item: pointer;
-  --cursor-radio: pointer;
-  --cursor-slider-thumb: default;
-  --cursor-slider-thumb-active: default;
-  --cursor-switch: pointer;
-}
-
 body {
-  background-color: var(--clr-shade-100) !important;
-  /* background: linear-gradient(0deg, var(--clr-shade-100) 10%, var(--clr-shade-50) 100%); */
+  font-size: var(--fs-body);
+  font-weight: var(--fw-body);
+  font-family: var(--default-font-family);
+
+  background-color: var(--clr-shade-100);
 }
 
 html.dark body {
-  background-color: var(--clr-shade-950) !important;
-  /* background: linear-gradient(0deg, var(--clr-shade-950) 25%, var(--clr-shade-900) 100%); */
+  background-color: var(--clr-shade-950);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font-family);
+}
+
+h1 {
+  font-weight: var(--fw-bold);
+}
+
+h2 {
+  font-weight: var(--fw-bold);
+}
+
+h3 {
+  font-weight: var(--fw-medium);
+}
+
+h4 {
+  font-weight: var(--fw-medium);
+}
+
+h5 {
+  font-weight: var(--fw-medium);
+}
+
+h6 {
+  font-weight: var(--fw-medium);
 }

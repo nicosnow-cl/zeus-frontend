@@ -43,7 +43,7 @@ export function Combobox({
   const [isOpen, setIsOpen] = useState(false)
   const [internalValue, setInternalValue] = useState<string[]>(isControlled ? externalValue : [])
   const [triggerAnchor, setTriggerAnchor] = useState<HTMLButtonElement | null>(null)
-  const t = useTranslations('primitives.multi-combobox')
+  const t = useTranslations('COMMON.primitives.multi-combobox')
 
   const value = isControlled ? externalValue : internalValue
 

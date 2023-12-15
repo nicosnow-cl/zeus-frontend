@@ -1,5 +1,4 @@
 import { Config } from 'tailwindcss'
-import { radixThemePreset } from 'radix-themes-tw'
 import tailwindcssAnimate from 'tailwindcss-animate'
 
 const config: Config = {
@@ -22,18 +21,18 @@ const config: Config = {
       },
     },
     extend: {
-      ...radixThemePreset.theme,
       fontFamily: {
         default: ['var(--font-default)'],
         heading: ['var(--font-heading)'],
       },
       fontSize: {
-        ...radixThemePreset.theme?.fontSize,
-        xs: ['var(--font-size-1)', 'var(--line-height-1)'],
-        sm: ['var(--font-size-2)', 'var(--line-height-2)'],
+        xs: ['var(--fs-300)', { lineHeight: '1rem' }],
+        sm: ['var(--fs-400)', { lineHeight: '1.25rem' }],
+        base: ['var(--fs-body)', { lineHeight: '1.5rem' }],
+        lg: ['var(--fs-600)', { lineHeight: '1.75rem' }],
+        xl: ['var(--fs-700)', { lineHeight: '1.75rem' }],
       },
       colors: {
-        ...radixThemePreset.theme?.colors,
         brand: {
           50: 'hsl(356, 100%, 97%)',
           100: 'hsl(353, 100%, 95%)',

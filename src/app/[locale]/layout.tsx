@@ -19,7 +19,11 @@ export default function LocaleLayout({ children, params: { locale } }: LocaleLay
   if (!isValid) notFound()
 
   return (
-    <html lang={locale} className={fonts.map((font) => font.variable).join(' ')}>
+    <html
+      lang={locale}
+      className={fonts.map((font) => font.variable).join(' ')}
+      suppressHydrationWarning
+    >
       <body>
         <MainContainer>{children}</MainContainer>
       </body>
