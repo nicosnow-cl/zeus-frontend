@@ -18,12 +18,7 @@ export const ColorModeSwitch = () => {
 
   return (
     <div className="flex items-center gap-2">
-      <Switch
-        checked={checked}
-        defaultChecked={defaultChecked}
-        onClick={handleToggleTheme}
-        size="1"
-      />
+      <Switch checked={checked} defaultChecked={defaultChecked} onClick={handleToggleTheme} />
 
       {checked ? (
         <MoonIcon className={`text-4 text-indigo-9`} />

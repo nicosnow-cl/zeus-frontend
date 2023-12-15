@@ -3,8 +3,7 @@ import { getValidLocale } from '@intl/locale'
 import { MainContainer } from '@/common/components/containers/main'
 import { notFound } from 'next/navigation'
 
-import '@styles/global.css'
-import '@styles/theme-config.css'
+import '@styles/global.scss'
 
 export type LocaleLayoutProps = {
   children: React.ReactNode

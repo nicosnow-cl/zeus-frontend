@@ -46,7 +46,7 @@ const nextConfig = {
     return config
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, 'styles/sass')],
+    includePaths: [path.join(__dirname, 'styles')],
   },
   images: {
     remotePatterns: [

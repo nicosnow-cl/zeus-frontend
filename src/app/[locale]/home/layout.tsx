@@ -54,7 +54,7 @@ export default function Layout({ children }: LayoutProps) {
         }}
         hero={
           <>
-            <h1 className="title-1 text-4xl">
+            <h1 className="gradient-heading text-4xl">
               Nuestros usuarios
               <small className="font-default text-base font-light">
                 Encuentre el mejor servicio de acompañantes

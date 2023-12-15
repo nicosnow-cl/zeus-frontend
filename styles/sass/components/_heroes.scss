@@ -1,0 +1,16 @@
+.hero-banner {
+  @apply object-cover object-left-top contrast-125 grayscale saturate-200;
+
+  mask: linear-gradient(90deg, hsl(0 0% 0% / 0) 5%, hsl(0 0% 100% / 0.9), hsl(0 0% 0% / 0) 95%);
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 75px;
+  transform: translateY(50%);
+  width: 75px;
+  height: 75px;
+  border-radius: 50% 0;
+  background: linear-gradient(45deg, var(--clr-brand-600), var(--clr-brand-950));
+}

@@ -1,0 +1,31 @@
+@keyframes bg-right-to-left {
+  0%,
+  100% {
+    background-position: right;
+  }
+
+  50% {
+    background-position: left;
+  }
+}
+
+@keyframes start-gradient-animation {
+  0%,
+  100% {
+    stop-color: var(--gradient-start);
+  }
+
+  60% {
+    stop-color: var(--gradient-end);
+  }
+}
+
+@keyframes end-gradient-animation {
+  0%,
+  100% {
+    stop-color: var(--gradient-end);
+  }
+  40% {
+    stop-color: var(--gradient-start);
+  }
+}

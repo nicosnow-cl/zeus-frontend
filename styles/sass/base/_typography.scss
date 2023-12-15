@@ -1,0 +1,43 @@
+body {
+  font-size: var(--fs-body);
+  font-family: var(--default-font-family);
+  letter-spacing: -0.5px;
+  font-weight: var(--fw-body);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font-family);
+}
+
+h1 {
+  font-weight: var(--fw-bold);
+}
+
+h2 {
+  font-weight: var(--fw-bold);
+}
+
+h3 {
+  font-weight: var(--fw-bold);
+}
+
+h4 {
+  font-weight: var(--fw-medium);
+}
+
+h5 {
+  font-weight: var(--fw-medium);
+}
+
+h6 {
+  font-weight: var(--fw-medium);
+}
+
+small {
+  font-size: var(--fs-200);
+}

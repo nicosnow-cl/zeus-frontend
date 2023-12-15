@@ -1,0 +1,42 @@
+.masonry-highlight:has(> *:hover) > *:not(:hover),
+.masonry-highlight:has(> *:focus-within) > *:not(:focus-within) {
+  scale: 0.975;
+}
+
+.masonry-highlight > * {
+  filter: brightness(0.875);
+  transition:
+    scale 0.25s ease,
+    filter 0.25s linear;
+}
+
+.masonry-highlight > *:hover,
+.masonry-highlight > *:focus-within {
+  filter: brightness(1.05);
+}
+
+.curve {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(155% + 1.3px);
+  height: 95px;
+  transform: rotate(180deg);
+
+  & .shape-fill {
+    fill: var(--clr-shade-100);
+  }
+
+  html.dark & .shape-fill {
+    fill: var(--clr-shade-950);
+  }
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    /** For tablet devices **/
+
+    svg {
+      width: calc(177% + 1.3px);
+      height: 109px;
+    }
+  }
+}

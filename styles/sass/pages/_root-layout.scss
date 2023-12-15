@@ -1,0 +1,15 @@
+.text-gradient {
+  --gradient-start: var(--clr-shade-100);
+  --gradient-end: var(--clr-shade-800);
+  --duration: 10s;
+
+  & > stop:first-child {
+    stop-color: var(--gradient-start);
+    animation: start-gradient-animation var(--duration) ease-in-out infinite alternate;
+  }
+
+  & > stop:nth-child(2) {
+    stop-color: var(--gradient-end);
+    animation: end-gradient-animation var(--duration) ease-in-out infinite alternate;
+  }
+}
