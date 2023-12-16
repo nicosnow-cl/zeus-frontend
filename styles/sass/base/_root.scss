@@ -11,18 +11,11 @@
     }
 
     // Font sizes
-    @each $screen-size, $property in $type-scale {
-      @if $screen-size == small {
-        @each $prop, $value in $property {
-          --fs-#{$prop}: #{$value};
-        }
-      } @else {
-        @include mq(small) {
-          @each $prop, $value in $property {
-            --fs-#{$prop}: #{$value};
-          }
-        }
-      }
+    @each $scale, $screen-size in $type-scale {
+      $min: map-get($screen-size, 'small');
+      $max: map-get($screen-size, 'big');
+
+      --fs-#{$scale}: #{clamp($min, 1vw + (($max - $min) / 2), $max)};
     }
 
     // Font families

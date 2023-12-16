@@ -1,28 +1,44 @@
 $type-scale: (
-  small: (
-    // Major second
-    100: 0.79rem,
-    200: 0.889rem,
-    300: 1rem,
-    400: 1.125rem,
-    500: 1.266rem,
-    600: 1.424rem,
-    700: 1.602rem,
-    800: 1.802rem,
-    900: 2.027rem,
-    950: 2.278rem,
+  // (Major second, Perfect fourth)
+  100:
+    (
+      small: 0.563rem,
+      big: 0.79rem,
+    ),
+  200: (
+    small: 0.75rem,
+    big: 0.889rem,
   ),
-  big: (
-    // Perfect fourth
-    100: 0.563rem,
-    200: 0.75rem,
-    300: 1rem,
-    400: 1.333rem,
-    500: 1.777rem,
-    600: 2.369rem,
-    700: 3.157rem,
-    800: 4.209rem,
-    900: 5.61rem,
-    950: 7.478rem,
+  300: (
+    small: 1rem,
+    big: 1rem,
   ),
+  400: (
+    small: 1.125rem,
+    big: 1.333rem,
+  ),
+  500: (
+    small: 1.266rem,
+    big: 1.777rem,
+  ),
+  600: (
+    small: 1.424rem,
+    big: 2.369rem,
+  ),
+  700: (
+    small: 1.602rem,
+    big: 3.157rem,
+  ),
+  800: (
+    small: 1.802rem,
+    big: 4.209rem,
+  ),
+  900: (
+    small: 2.027rem,
+    big: 5.61rem,
+  ),
+  950: (
+    small: 2.278rem,
+    big: 7.478rem,
+  )
 );

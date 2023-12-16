@@ -44,7 +44,7 @@ export default function Layout({ children }: LayoutProps) {
         }}
         hero={
           <>
-            <h1 className="gradient-heading text-5xl">
+            <h1 className="gradient-heading">
               Nuestros usuarios
               <small>Encuentre el mejor servicio de acompañantes</small>
             </h1>
