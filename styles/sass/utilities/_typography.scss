@@ -1,22 +1,21 @@
+@use '../abstracts/mixins' as *;
+@use '../base/keyframes' as *;
+
 .gradient-heading {
   -webkit-background-clip: text;
   background-clip: text;
   background-size: 200%;
   color: transparent;
-  animation: bg-right-to-left 10s ease-in-out infinite alternate;
   background-image: var(--brand-gradient);
+  @include animation('bg-right-to-left 10s ease-in-out infinite alternate');
 
   &::after {
+    content: '';
     background-color: var(--clr-brand-700);
     border-radius: 0.25rem;
-    content: '';
     display: block;
     height: 0.25rem;
     width: 62px;
     margin-bottom: 1.25rem;
-  }
-
-  html.dark & {
-    background-image: var(--brand-gradient-dark);
   }
 }

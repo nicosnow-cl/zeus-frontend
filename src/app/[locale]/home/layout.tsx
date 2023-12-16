@@ -44,11 +44,9 @@ export default function Layout({ children }: LayoutProps) {
         }}
         hero={
           <>
-            <h1 className="gradient-heading text-4xl">
+            <h1 className="gradient-heading text-5xl">
               Nuestros usuarios
-              <small className="font-default text-base font-light">
-                Encuentre el mejor servicio de acompañantes
-              </small>
+              <small>Encuentre el mejor servicio de acompañantes</small>
             </h1>
 
             <UsersCardsMobileFiltersContainer
