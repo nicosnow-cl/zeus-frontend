@@ -1,49 +1,52 @@
 @use '../abstracts' as *;
 
-:root {
-  // Colors
-  @each $color, $shades in $colors {
-    @each $shade, $value in $shades {
-      --clr-#{$color}-#{$shade}: #{$value};
-    }
-  }
-
-  // Font sizes
-  @each $screen-size, $property in $type-scale {
-    @if $screen-size == small {
-      @each $prop, $value in $property {
-        --fs-#{$prop}: #{$value};
+@layer base {
+  :root {
+    // Colors
+    @each $color, $shades in $colors {
+      @each $shade, $value in $shades {
+        --clr-#{$color}-#{$shade}: #{$value};
+        --clr-#{$color}-#{$shade}-ch: #{red($value) green($value) blue($value)};
       }
-    } @else {
-      @include mq(small) {
+    }
+
+    // Font sizes
+    @each $screen-size, $property in $type-scale {
+      @if $screen-size == small {
         @each $prop, $value in $property {
           --fs-#{$prop}: #{$value};
         }
+      } @else {
+        @include mq(small) {
+          @each $prop, $value in $property {
+            --fs-#{$prop}: #{$value};
+          }
+        }
       }
     }
+
+    --default-font-family: var(--font-default);
+    --heading-font-family: var(--font-heading);
+
+    --fs-body: var(--fs-300);
+
+    // Font weights
+    --fw-light: 100;
+    --fw-regular: 300;
+    --fw-medium: 500;
+    --fw-bold: 700;
+
+    // Components
+    --navbar-top-height: 2.75rem;
+    --navbar-bottom-height: 1.625rem;
+    --navbar-full-height: calc(var(--navbar-top-height) + var(--navbar-bottom-height));
+
+    // Misc
+    --brand-gradient: linear-gradient(to right, var(--clr-shade-800) 0%, var(--clr-shade-500) 100%);
+    --brand-gradient-dark: linear-gradient(
+      to right,
+      var(--clr-shade-100) 0%,
+      var(--clr-shade-600) 100%
+    );
   }
-
-  --default-font-family: var(--font-default);
-  --heading-font-family: var(--font-heading);
-
-  --fs-body: var(--fs-300);
-
-  // Font weights
-  --fw-light: 100;
-  --fw-regular: 300;
-  --fw-medium: 500;
-  --fw-bold: 700;
-
-  // Components
-  --navbar-top-height: 2.75rem;
-  --navbar-bottom-height: 1.625rem;
-  --navbar-full-height: calc(var(--navbar-top-height) + var(--navbar-bottom-height));
-
-  // Misc
-  --brand-gradient: linear-gradient(to right, var(--clr-shade-800) 0%, var(--clr-shade-500) 100%);
-  --brand-gradient-dark: linear-gradient(
-    to right,
-    var(--clr-shade-100) 0%,
-    var(--clr-shade-600) 100%
-  );
 }

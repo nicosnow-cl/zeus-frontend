@@ -10,10 +10,16 @@ export const Banner = ({ containerProps, imageProps }: BannerProps) => {
 
   return (
     <div
-      className={`full-width bg-shade-950 ${containerProps?.className ?? ''}`}
+      className={`full-width relative bg-shade-950 ${containerProps?.className ?? ''}`}
       {...containerProps}
     >
-      <Image alt={alt} fill {...restImgProps} className={`full-width hero-banner ${className}`} />
+      <Image
+        alt={alt}
+        fill
+        {...restImgProps}
+        className={`full-width hero-banner ${className}`}
+        priority
+      />
     </div>
   )
 }

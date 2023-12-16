@@ -76,23 +76,23 @@ export function TopBar({ logo }: TopBarProps) {
       }}
     >
       {({ handleToggle }) => (
-        <div className="grid-wrapper h-[var(--navbar-top-height)] w-full bg-transparent">
+        <div className="grid-wrapper h-[var(--navbar-top-height)] w-full bg-transparent text-sm">
           <div className="flex items-center justify-center gap-7">
             {logo}
 
-            <div className="flex gap-5 rounded-md bg-shade-50/20 px-2 py-1.5 backdrop-blur-md">
+            <div className="flex h-[32px] gap-5 rounded-md bg-shade-50/10 px-2 py-1.5 backdrop-blur-md">
               <NextLink
-                className="flex items-center gap-x-2 text-1 text-shade-100"
+                className="text-1 flex items-center gap-x-2 text-shade-100"
                 href={Routes.SignUp}
               >
                 {t('COMMON.sidebar.sign-up')}
                 {<PatchCheckFillIcon width={14} height={14} />}
               </NextLink>
 
-              <Separator.Root orientation="vertical" />
+              <Separator.Root className="separator-root" orientation="vertical" decorative />
 
               <NextLink
-                className="flex items-center gap-x-2 text-1 text-shade-100"
+                className="text-1 flex items-center gap-x-2 text-shade-100"
                 href={Routes.SignIn}
               >
                 {t('COMMON.sidebar.sign-in')}
@@ -101,28 +101,28 @@ export function TopBar({ logo }: TopBarProps) {
             </div>
 
             <NextLink
-              className="flex items-center gap-x-2 text-1 text-shade-100"
+              className="text-1 flex items-center gap-x-2 text-shade-100"
               href={Routes.Blog}
             >
               {t('COMMON.sidebar.blog')}
             </NextLink>
 
             <NextLink
-              className="flex items-center gap-x-2 text-1 text-shade-100"
+              className="text-1 flex items-center gap-x-2 text-shade-100"
               href={Routes.About}
             >
               {t('COMMON.sidebar.about')}
             </NextLink>
 
             <NextLink
-              className="flex items-center gap-x-2 text-1 text-shade-100"
+              className="text-1 flex items-center gap-x-2 text-shade-100"
               href={Routes.Contact}
             >
               {t('COMMON.sidebar.contact')}
             </NextLink>
 
             <Button
-              className={`flex items-center gap-x-3 text-1`}
+              className={`text-1 flex items-center gap-x-3`}
               onClick={(evt) => handleSetSearchContent(evt, handleToggle)}
             >
               {<SearchIcon width={14} height={14} />}

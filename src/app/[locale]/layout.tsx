@@ -1,7 +1,9 @@
+import { notFound } from 'next/navigation'
+
 import { fonts } from '@/theme/fonts'
 import { getValidLocale } from '@intl/locale'
 import { MainContainer } from '@/common/components/containers/main'
-import { notFound } from 'next/navigation'
+import { ThemeProvider } from '@/common/components/providers/theme-provider'
 
 import '@styles/global.scss'
 
@@ -24,7 +26,9 @@ export default function LocaleLayout({ children, params: { locale } }: LocaleLay
       suppressHydrationWarning
     >
       <body>
-        <MainContainer>{children}</MainContainer>
+        <ThemeProvider>
+          <MainContainer>{children}</MainContainer>
+        </ThemeProvider>
       </body>
     </html>
   )
