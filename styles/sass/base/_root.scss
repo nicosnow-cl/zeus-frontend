@@ -38,7 +38,7 @@
     --fw-bold: 700;
 
     // Body background
-    --bg-body: var(--clr-shade-100);
+    --bg-body: var(--clr-shade-50);
 
     // Components
     --navbar-top-height: 2.75rem;
@@ -46,7 +46,7 @@
     --navbar-full-height: calc(var(--navbar-top-height) + var(--navbar-bottom-height));
 
     // Misc
-    --brand-gradient: linear-gradient(to right, var(--clr-shade-900) 0%, var(--clr-shade-200) 100%);
+    --brand-gradient: linear-gradient(to right, var(--clr-shade-900) 0%, var(--clr-shade-100) 100%);
   }
 
   // Dark mode
@@ -55,6 +55,6 @@
     --bg-body: var(--clr-shade-950);
 
     // Misc
-    --brand-gradient: linear-gradient(to right, var(--clr-shade-50) 0%, var(--clr-shade-600) 100%);
+    --brand-gradient: linear-gradient(to right, var(--clr-shade-50) 0%, var(--clr-shade-700) 100%);
   }
 }

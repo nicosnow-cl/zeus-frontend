@@ -24,7 +24,7 @@
   transform: rotate(180deg);
 
   & .shape-fill {
-    fill: var(--clr-shade-100);
+    fill: var(--clr-shade-50);
   }
 
   html.dark & .shape-fill {

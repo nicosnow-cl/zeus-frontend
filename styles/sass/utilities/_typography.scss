@@ -4,7 +4,7 @@
 .gradient-heading {
   -webkit-background-clip: text;
   background-clip: text;
-  background-size: 200%;
+  background-size: 150%;
   color: transparent;
   background-image: var(--brand-gradient);
   @include animation('bg-right-to-left 10s ease-in-out infinite alternate');
