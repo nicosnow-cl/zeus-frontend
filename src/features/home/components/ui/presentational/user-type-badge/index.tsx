@@ -1,18 +1,15 @@
 import clsx from 'clsx'
 
+import { Badge } from '@/common/components/ui/primitives/Badge'
 import { GemIcon } from '@/common/icons'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import { Badge } from '@/common/components/ui/primitives/Badge'
 
-export type UserTypeBadgeProps = {
-  containerProps?: Omit<React.ComponentProps<typeof Badge>, 'children'>
-  small?: boolean
+export type UserTypeBadgeProps = Omit<React.ComponentProps<typeof Badge>, 'children' | 'color'> & {
   type: UserCardEntity['type']
 }
 
-export default function UserTypeBadge({ containerProps, small, type }: UserTypeBadgeProps) {
-  const { className, ...restContainerProps } = containerProps ?? {}
-  const classes = clsx('px-2 py-1 text-3 font-semibold uppercase', className)
+export function UserTypeBadge({ className, small, type, ...restProps }: UserTypeBadgeProps) {
+  const classes = clsx('uppercase', className)
 
   const props = {
     className: '',
@@ -53,7 +50,12 @@ export default function UserTypeBadge({ containerProps, small, type }: UserTypeB
   }
 
   return (
-    <Badge className={`${classes} ${props.className}`} color={props.color} {...restContainerProps}>
+    <Badge
+      {...restProps}
+      className={`${classes} ${props.className}`}
+      color={props.color}
+      small={small}
+    >
       {props.icon}
       {!small && props.label}
     </Badge>

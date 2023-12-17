@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { Arrow90degRightIcon, ShareFillIcon } from '@/common/icons'
 import { LikesBadge } from '@/common/components/ui/primitives/likes-badge'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import UserTypeBadge from '../../user-type-badge'
+import { UserTypeBadge } from '../../user-type-badge'
 
 export type HeaderProps = {
   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>

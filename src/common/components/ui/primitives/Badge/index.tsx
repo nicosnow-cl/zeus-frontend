@@ -24,14 +24,20 @@ export type Colors =
   | 'fuchsia'
   | 'pink'
   | 'rose'
+  | 'slate'
+  | 'gray'
+  | 'zinc'
+  | 'neutral'
+  | 'stone'
 
 export type BadgeProps = React.ComponentProps<'span'> & {
   color?: Colors
+  small?: boolean
 }
 
 export function Badge(props: BadgeProps) {
-  const { color, className, ...restProps } = props
-  const classes = twMerge('badge', className)
+  const { color, small, className, ...restProps } = props
+  const classes = twMerge(className, 'badge', !small ? 'text-sm font-semibold' : 'text-xs')
 
-  return <span className={classes} {...restProps} data-color={color} />
+  return <span {...restProps} className={classes} data-color={color} />
 }
