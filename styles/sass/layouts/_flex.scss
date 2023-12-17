@@ -6,12 +6,12 @@
   align-content: stretch;
 
   & > :first-child {
-    flex-basis: 600px;
+    flex-basis: 500px;
     flex-grow: 9999;
   }
 
   & > :last-child {
-    flex-basis: 200px;
+    flex-basis: 20%;
     flex-grow: 1;
   }
 }

@@ -44,28 +44,33 @@ export function AvatarWithName({
           </Avatar>
         )}
 
-        <div className="flex flex-col">
-          <h5 style={{ ...(withDropShadow && { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }) }}>
+        <div>
+          <div
+            className="text-xl font-bold"
+            style={{ ...(withDropShadow && { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }) }}
+          >
             {name}, {age}
-          </h5>
+          </div>
 
           {showUsername && (
-            <p
-              className="text-crimson-9"
-              style={{ ...(withDropShadow && { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }) }}
+            <div
+              className="text-xs text-brand-700"
+              style={{
+                ...(withDropShadow && { textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)' }),
+              }}
             >
               @{username}
-            </p>
+            </div>
           )}
         </div>
       </div>
 
       {showUserType && (
         <div className="flex flex-col">
-          <Badge className="px-2 py-1 text-3">
+          <Badge className="text-3 px-2 py-1">
             <PatchCheckFillIcon /> VIP
           </Badge>
-          <Badge className="px-2 py-1 text-2">
+          <Badge className="text-2 px-2 py-1">
             <SuitHeartFillIcon /> 2.6k
           </Badge>
         </div>

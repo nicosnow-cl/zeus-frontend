@@ -56,7 +56,7 @@ export default function Root({ className, children, ...restProps }: RootProps) {
       onClick={handleClick}
       onKeyUp={handleKeyUp}
       onBlur={handleBlur}
-      onMouseLeave={handleMouseLeave}
+      // onMouseLeave={handleMouseLeave}
       {...restProps}
     >
       {children}

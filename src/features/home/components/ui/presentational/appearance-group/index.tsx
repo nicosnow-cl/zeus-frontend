@@ -12,16 +12,16 @@ export function AppearanceGroup({ containerProps, textProps }: AppearanceGroupPr
 
   return (
     <div {...restContainerProps} className={classes}>
-      <p className="text-crimson-9" {...textProps}>
+      <p className="text-brand-600" {...textProps}>
         Mulata
       </p>
-      <p className="text-crimson-9" {...textProps}>
+      <p className="text-brand-600" {...textProps}>
         162 CM
       </p>
-      <p className="text-crimson-9" {...textProps}>
+      <p className="text-brand-600" {...textProps}>
         57 KG
       </p>
-      <p className="text-crimson-9" {...textProps}>
+      <p className="text-brand-600" {...textProps}>
         101 - 84 - 100 CM
       </p>
     </div>

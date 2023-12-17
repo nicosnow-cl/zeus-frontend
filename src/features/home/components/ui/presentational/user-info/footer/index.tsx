@@ -22,7 +22,7 @@ export const Footer = ({ rrss, services, type }: FooterProps) => {
       )}
 
       <div className="flex w-full flex-col gap-2">
-        <AppearanceGroup />
+        <AppearanceGroup containerProps={{ className: 'font-semibold' }} />
 
         {type !== 'GOLD' && services && services.length > 0 && (
           <ServicesGroup services={services} />

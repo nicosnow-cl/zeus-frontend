@@ -1,6 +1,3 @@
-'use client'
-
-import { useScroll, motion, useTransform } from 'framer-motion'
 import clsx from 'clsx'
 
 export type SectionWithAsideContainerProps = {
@@ -44,7 +41,7 @@ export const SectionWithAsideContainer: React.FunctionComponent<SectionWithAside
         <div
           {...asideRestProps}
           className={clsx(
-            'min-w-[250px] rounded-2xl bg-slate-100/90 px-2 py-3 shadow-sm dark:bg-shade-950/30',
+            'rounded-2xl bg-slate-100/90 px-2 py-3 shadow-sm dark:bg-shade-950/30',
             asideClassName
           )}
         >

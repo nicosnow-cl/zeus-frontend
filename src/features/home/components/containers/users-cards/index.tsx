@@ -14,11 +14,11 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
   const getCardClassName = (type: string) => {
     switch (type) {
       case 'VIP':
-        return 'col-span-12 row-span-4 sm:col-span-6 lg:col-span-4'
+        return 'col-span-12 row-span-6 sm:col-span-6 lg:col-span-4'
       case 'PREMIUM':
-        return 'col-span-6 row-span-3 sm:col-span-6 lg:col-span-4'
+        return 'col-span-12 row-span-5 sm:col-span-6 lg:col-span-4'
       default:
-        return 'col-span-6 row-span-2 sm:col-span-6 lg:col-span-4'
+        return 'col-span-12 row-span-4 sm:col-span-6 lg:col-span-4'
     }
   }
 
@@ -30,11 +30,11 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
         damping: 40,
       }}
     >
-      <MasonryContainer className="masonry-highlight grow grid-cols-12 gap-1" role="list">
+      <MasonryContainer className="masonry-highlight grid-cols-12 gap-1" role="list">
         {data.map((user, idx) => (
           <UserCard.Root
             key={idx}
-            className={`min-h-[325px] cursor-pointer rounded-2xl focus-within:shadow-md hover:shadow-md ${getCardClassName(
+            className={`min-h-[450px] cursor-pointer rounded-2xl focus-within:shadow-md hover:shadow-md ${getCardClassName(
               user.type
             )}`}
             role="listitem"
@@ -42,7 +42,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
           >
             <UserCard.Contracted {...user} />
 
-            {/* <UserCard.Expanded {...user} /> */}
+            <UserCard.Expanded {...user} />
           </UserCard.Root>
         ))}
       </MasonryContainer>

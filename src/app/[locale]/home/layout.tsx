@@ -73,7 +73,7 @@ export default function Layout({ children }: LayoutProps) {
           </div>
         }
         asideProps={{
-          className: 'hidden md:block',
+          className: 'hidden md:block min-w-[225px]',
         }}
       >
         {children}

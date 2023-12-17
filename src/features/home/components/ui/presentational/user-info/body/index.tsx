@@ -1,6 +1,5 @@
-import { Badge } from '@/shadcn-components/ui/badge'
-
 import { AvatarWithName } from '@/common/components/ui/presentational/avatar-with-name'
+import { Badge } from '@/common/components/ui/primitives/Badge'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
 export type BodyProps = {
@@ -29,6 +28,7 @@ export default function Body({
         avatar={avatar}
         name={name}
         showUsername
+        showAvatar
         showUserType={false}
         username={username}
         containerProps={{
@@ -39,11 +39,13 @@ export default function Body({
         }}
       />
 
-      <div>
-        <Badge className="mr-2 px-[0.65rem] py-[0.20rem]">{nationality}</Badge>
+      <p className="text-justify">
+        {/* <Badge className="mr-2 inline w-fit" small>
+          {nationality}
+        </Badge> */}
 
         {description}
-      </div>
+      </p>
     </div>
   )
 }
