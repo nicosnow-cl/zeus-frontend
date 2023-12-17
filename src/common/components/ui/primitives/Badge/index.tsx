@@ -13,7 +13,7 @@ export type Colors =
   | 'yellow'
   | 'lime'
   | 'green'
-  | 'esmerald'
+  | 'emerald'
   | 'teal'
   | 'cyan'
   | 'sky'

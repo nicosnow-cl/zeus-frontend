@@ -1,6 +1,6 @@
-import { Badge } from '@/shadcn-components/ui/badge'
 import clsx from 'clsx'
 
+import { Badge } from '../Badge'
 import { HeartFillIcon } from '@/common/icons'
 import abbreviateNumber from '@lib/abbreviate-number'
 
@@ -12,10 +12,10 @@ export type LikeBadgeProps = {
 
 export function LikesBadge({ containerProps, count = 0, small }: LikeBadgeProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
-  const classes = clsx('px-2 py-1 text-2', className)
+  const classes = clsx('text-xs', className)
 
   return (
-    <Badge className={classes} {...restContainerProps}>
+    <Badge className={classes} {...restContainerProps} color="brand">
       <HeartFillIcon /> {small ? abbreviateNumber(count) : count}
     </Badge>
   )
