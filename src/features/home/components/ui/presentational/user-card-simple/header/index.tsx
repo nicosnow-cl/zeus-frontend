@@ -4,6 +4,7 @@ import { CountryFlag } from '@/common/components/ui/presentational/country-flag'
 import { LikesBadge } from '@/common/components/ui/primitives/likes-badge/index'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import UserTypeBadge from '../../user-type-badge'
+import { Badge } from '@/common/components/ui/primitives/Badge'
 
 export type HeaderProps = {
   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>

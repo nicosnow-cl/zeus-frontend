@@ -1,0 +1,97 @@
+@use '../abstracts/mixins' as *;
+
+@layer components {
+  .badge {
+    @apply flex items-center gap-x-1 rounded-full border px-2 py-1 text-sm font-semibold;
+
+    @include colored(slate);
+  }
+
+  .badge[data-color='brand'] {
+    @include colored(brand);
+  }
+
+  .badge[data-color='accent'] {
+    @include colored(accent);
+  }
+
+  .badge[data-color='elite'] {
+    @include colored(elite);
+  }
+
+  .badge[data-color='pro'] {
+    @include colored(pro);
+  }
+
+  .badge[data-color='prime'] {
+    @include colored(prime);
+  }
+
+  .badge[data-color='red'] {
+    @include colored(red);
+  }
+
+  .badge[data-color='orange'] {
+    @include colored(orange);
+  }
+
+  .badge[data-color='amber'] {
+    @include colored(amber);
+  }
+
+  .badge[data-color='yellow'] {
+    @include colored(yellow);
+  }
+
+  .badge[data-color='lime'] {
+    @include colored(lime);
+  }
+
+  .badge[data-color='green'] {
+    @include colored(green);
+  }
+
+  .badge[data-color='emerald'] {
+    @include colored(emerald);
+  }
+
+  .badge[data-color='teal'] {
+    @include colored(teal);
+  }
+
+  .badge[data-color='cyan'] {
+    @include colored(cyan);
+  }
+
+  .badge[data-color='sky'] {
+    @include colored(sky);
+  }
+
+  .badge[data-color='blue'] {
+    @include colored(blue);
+  }
+
+  .badge[data-color='indigo'] {
+    @include colored(indigo);
+  }
+
+  .badge[data-color='violet'] {
+    @include colored(violet);
+  }
+
+  .badge[data-color='purple'] {
+    @include colored(purple);
+  }
+
+  .badge[data-color='fuchsia'] {
+    @include colored(fuchsia);
+  }
+
+  .badge[data-color='pink'] {
+    @include colored(pink);
+  }
+
+  .badge[data-color='rose'] {
+    @include colored(rose);
+  }
+}

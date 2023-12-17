@@ -2,7 +2,7 @@ import clsx from 'clsx'
 
 import { GemIcon } from '@/common/icons'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import { Badge } from '@/shadcn-components/ui/badge'
+import { Badge } from '@/common/components/ui/primitives/Badge'
 
 export type UserTypeBadgeProps = {
   containerProps?: Omit<React.ComponentProps<typeof Badge>, 'children'>
@@ -16,7 +16,7 @@ export default function UserTypeBadge({ containerProps, small, type }: UserTypeB
 
   const props = {
     className: '',
-    color: 'brown',
+    color: 'prime',
     icon: <GemIcon className="h-4 w-4 opacity-80" />,
     label: 'Prime',
   } as {
@@ -28,8 +28,7 @@ export default function UserTypeBadge({ containerProps, small, type }: UserTypeB
 
   switch (type) {
     case 'VIP':
-      props.className = 'bg-shade-950/70 text-white border-gray-400 border'
-      props.color = 'gray'
+      props.color = 'elite'
       props.icon = (
         <div className="flex items-center">
           <GemIcon className="mr-[-5px] h-3 w-3 opacity-50" />
@@ -40,7 +39,7 @@ export default function UserTypeBadge({ containerProps, small, type }: UserTypeB
       props.label = 'Elite'
       break
     case 'PREMIUM':
-      props.color = 'blue'
+      props.color = 'pro'
       props.icon = (
         <div className="flex items-center">
           <GemIcon className="h-4 w-4" />
@@ -54,7 +53,7 @@ export default function UserTypeBadge({ containerProps, small, type }: UserTypeB
   }
 
   return (
-    <Badge className={`${classes} ${props.className}`} {...restContainerProps}>
+    <Badge className={`${classes} ${props.className}`} color={props.color} {...restContainerProps}>
       {props.icon}
       {!small && props.label}
     </Badge>
