@@ -30,10 +30,6 @@ export function Contracted({
 
         <UserCardSimple.Body
           age={age}
-          containerProps={{
-            className:
-              'max-h-[2rem] group-hover:max-h-[600px] group-focus-within:max-h-[600px] transition-[max-height] duration-200',
-          }}
           description={description}
           hasPromo={hasPromo}
           name={name}

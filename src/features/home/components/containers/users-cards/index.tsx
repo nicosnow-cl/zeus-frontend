@@ -42,7 +42,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
           >
             <UserCard.Contracted {...user} />
 
-            <UserCard.Expanded {...user} />
+            {/* <UserCard.Expanded {...user} /> */}
           </UserCard.Root>
         ))}
       </MasonryContainer>

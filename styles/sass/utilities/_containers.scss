@@ -1,3 +1,17 @@
 .main-content {
   @apply px-1 md:px-3 lg:px-5 xl:px-7;
 }
+
+.simple-expandible-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms ease-in-out;
+
+  &:hover {
+    grid-template-rows: 1fr;
+  }
+
+  & > * {
+    overflow: hidden;
+  }
+}

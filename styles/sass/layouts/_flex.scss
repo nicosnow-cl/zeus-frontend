@@ -1,0 +1,17 @@
+.main-with-aside {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  align-content: stretch;
+
+  & > :first-child {
+    flex-basis: 600px;
+    flex-grow: 9999;
+  }
+
+  & > :last-child {
+    flex-basis: 200px;
+    flex-grow: 1;
+  }
+}

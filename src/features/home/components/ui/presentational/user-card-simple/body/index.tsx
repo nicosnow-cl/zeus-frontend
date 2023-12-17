@@ -15,13 +15,13 @@ export type BodyProps = {
 export function Body({ age, containerProps, description, hasPromo, name, price }: BodyProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
 
-  const classes = clsx('absolute bottom-0 left-0', className)
+  const classes = clsx('p-2 bg-gradient-to-t from-gray-950 text-gray-100', className)
 
   return (
     <div {...restContainerProps} className={classes}>
-      <div className="mb-2 flex items-center justify-between px-2">
+      <div className="mb-2 flex items-end justify-between">
         <h4
-          className="text-lg text-shade-50 drop-shadow-sm"
+          className="heading-decorator text-xl"
           style={{ textShadow: '1px 1px 2px rgba(0, 0, 0, 0.5)' }}
         >
           {name}, {age}
@@ -31,12 +31,12 @@ export function Body({ age, containerProps, description, hasPromo, name, price }
       </div>
 
       <div
-        className="border-t border-gray-50/70 bg-gradient-to-t from-gray-950/80 px-2 py-3 backdrop-blur-sm dark:from-shade-950/90"
+        className="line-clamp-4 text-sm"
         style={{
           textShadow: '2px 2px 3px rgba(0, 0, 0, 0.15)',
         }}
       >
-        <p className="text-xs text-shade-50">{description}</p>
+        {description}
       </div>
     </div>
   )

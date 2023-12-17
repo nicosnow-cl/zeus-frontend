@@ -13,7 +13,7 @@ export const MasonryContainer = forwardRef<HTMLDivElement, MasonryContainerProps
     return (
       <motion.div
         ref={ref}
-        className={`relative grid grid-flow-dense auto-rows-fr ${classNameProp}`}
+        className={`grid grid-flow-dense auto-rows-fr ${classNameProp}`}
         {...restProps}
       >
         {children}

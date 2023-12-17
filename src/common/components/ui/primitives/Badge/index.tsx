@@ -30,7 +30,7 @@ export type Colors =
   | 'neutral'
   | 'stone'
 
-export type BadgeProps = React.ComponentProps<'span'> & {
+export type BadgeProps = React.ComponentProps<'div'> & {
   color?: Colors
   small?: boolean
 }
@@ -39,5 +39,5 @@ export function Badge(props: BadgeProps) {
   const { color, small, className, ...restProps } = props
   const classes = twMerge(className, 'badge', !small ? 'text-sm font-semibold' : 'text-xs')
 
-  return <span {...restProps} className={classes} data-color={color} />
+  return <div {...restProps} className={classes} data-color={color} />
 }

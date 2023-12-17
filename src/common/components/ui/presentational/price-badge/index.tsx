@@ -10,7 +10,7 @@ export type PriceBadgeProps = Omit<React.ComponentProps<typeof Badge>, 'children
 }
 
 export function PriceBadge({ className, hasPromo, price, ...restProps }: PriceBadgeProps) {
-  const classes = twMerge(className, 'relative flex flex-col font-semibold')
+  const classes = twMerge(className, 'flex flex-col font-semibold')
   const realPrice = hasPromo ? price.promo : price.normal
 
   return (

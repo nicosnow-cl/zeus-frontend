@@ -7,8 +7,11 @@
   background-size: 150%;
   color: transparent;
   background-image: var(--brand-gradient);
-  @include animation('bg-right-to-left 10s ease-in-out infinite alternate');
 
+  @include animation('bg-right-to-left 10s ease-in-out infinite alternate');
+}
+
+.heading-decorator {
   &::after {
     content: '';
     background-color: var(--clr-brand-700);
@@ -16,6 +19,5 @@
     display: block;
     height: 0.25rem;
     width: 62px;
-    margin-bottom: 1.25rem;
   }
 }

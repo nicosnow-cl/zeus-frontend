@@ -13,7 +13,6 @@ export type MediaProps = {
 
 export function Media({ avatar, containerProps, medias, withVignette }: MediaProps) {
   const { className, ...imgProps } = containerProps ?? {}
-
   const classes = clsx('object-cover object-top', className)
 
   const handleError = (evt: SyntheticEvent<HTMLImageElement, Event>) => {

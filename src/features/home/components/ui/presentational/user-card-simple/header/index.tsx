@@ -14,8 +14,7 @@ export type HeaderProps = {
 
 export function Header({ containerProps, likes, nationality, type }: HeaderProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
-
-  const classes = clsx('relative flex justify-between gap-2', className)
+  const classes = clsx('flex justify-between gap-2 p-2', className)
 
   return (
     <div {...restContainerProps} className={classes}>

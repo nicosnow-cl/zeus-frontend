@@ -9,7 +9,7 @@ export type RootProps = HTMLMotionProps<'div'>
 export default function Root({ className, children, ...restProps }: RootProps) {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const classes = clsx('group relative h-full overflow-hidden', className)
+  const classes = clsx('relative group h-full overflow-hidden', className)
 
   const handleClick = (evt: React.MouseEvent<HTMLDivElement>) => {
     evt.preventDefault()

@@ -112,6 +112,9 @@ const config: Config = {
           950: 'rgb(var(--clr-prime-950-ch) / <alpha-value>)',
         },
       },
+      gridTemplateRows: {
+        '0': '0fr',
+      },
     },
   },
   plugins: [tailwindcssAnimate],

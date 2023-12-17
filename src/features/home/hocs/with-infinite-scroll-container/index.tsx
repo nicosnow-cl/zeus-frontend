@@ -57,7 +57,7 @@ export function withInfiniteScrollFetchData<T>({
     }, [metadata, query])
 
     useEffect(() => {
-      if (isInView && !isLoading) fetchMoreData()
+      // if (isInView && !isLoading) fetchMoreData()
     }, [isInView, isLoading, fetchMoreData])
 
     return (
@@ -67,7 +67,7 @@ export function withInfiniteScrollFetchData<T>({
         {data.length < metadata.total && (
           <LoadMore
             ref={loadingMoreRef}
-            className="order-last grow basis-full"
+            className="order-last col-span-full grow basis-full"
             isLoading={isLoading}
           />
         )}
