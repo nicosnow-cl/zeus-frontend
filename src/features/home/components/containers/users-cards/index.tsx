@@ -2,13 +2,11 @@ import { MotionConfig } from 'framer-motion'
 
 import { MasonryContainer } from '@/common/components/containers/masonry'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import * as UserCard from '@/features/home/components/ui/presentational/user-card-complete'
+import { UserCardWithFlipEffect } from '../../ui/presentational/user-card-flip'
 
 export type UsersCardsContainerProps = {
   data?: UserCardEntity[]
 }
-
-const DELAYS = [...Array(10)].map((_, idx) => 100 + Math.max(1, idx) * 100)
 
 export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => {
   const getCardClassName = (type: string) => {
@@ -26,24 +24,19 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
     <MotionConfig
       transition={{
         type: 'spring',
-        stiffness: 500,
-        damping: 40,
+        stiffness: 550,
+        damping: 80,
       }}
     >
       <MasonryContainer className="masonry-highlight grid-cols-12 gap-1" role="list">
         {data.map((user, idx) => (
-          <UserCard.Root
+          <UserCardWithFlipEffect
             key={idx}
-            className={`min-h-[450px] cursor-pointer rounded-2xl focus-within:shadow-md hover:shadow-md ${getCardClassName(
-              user.type
-            )}`}
-            role="listitem"
-            tabIndex={0}
-          >
-            <UserCard.Contracted {...user} />
-
-            <UserCard.Expanded {...user} />
-          </UserCard.Root>
+            user={user}
+            containerProps={{
+              className: `min-h-[450px] group ${getCardClassName(user.type)}`,
+            }}
+          />
         ))}
       </MasonryContainer>
     </MotionConfig>

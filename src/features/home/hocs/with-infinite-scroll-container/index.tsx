@@ -57,7 +57,7 @@ export function withInfiniteScrollFetchData<T>({
     }, [metadata, query])
 
     useEffect(() => {
-      // if (isInView && !isLoading) fetchMoreData()
+      if (isInView && !isLoading) fetchMoreData()
     }, [isInView, isLoading, fetchMoreData])
 
     return (

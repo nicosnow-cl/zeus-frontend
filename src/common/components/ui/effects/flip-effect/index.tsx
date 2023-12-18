@@ -1,43 +1,57 @@
 'use client'
 
 import { AnimatePresence, HTMLMotionProps, motion } from 'framer-motion'
-import { forwardRef, useEffect, useState } from 'react'
+import { forwardRef, useState } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export type FlipEffectProps = {
   backChild?: React.ReactNode
-  className?: string
+  backChildProps?: Omit<HTMLMotionProps<'div'>, 'children' | 'ref'>
   containerProps?: Omit<HTMLMotionProps<'div'>, 'children' | 'ref'>
-  delay?: number
   frontChild: React.ReactNode
+  frontChildProps?: Omit<HTMLMotionProps<'div'>, 'children' | 'ref'>
 }
 
 export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
-  ({ backChild, className = '', containerProps, delay, frontChild }, ref) => {
+  ({ backChild, backChildProps, containerProps, frontChild, frontChildProps }, ref) => {
     const [isRevealed, setIsRevealed] = useState(false)
+    const [isSafeToRender, setIsSafeToRender] = useState(true)
 
-    useEffect(() => {
-      const timeoutId = setTimeout(() => setIsRevealed(true), delay)
+    const { className, ...restContainerProps } = containerProps || {}
+    const { className: frontClassName, ...restFrontChildProps } = frontChildProps || {}
+    const { className: backClassName, ...restBackChildProps } = backChildProps || {}
+    const classes = twMerge('relative h-full', className)
+    const frontClasses = twMerge('h-fit w-full overflow-hidden', frontClassName)
+    const backClasses = twMerge('h-fit w-full overflow-hidden', backClassName)
 
-      return () => clearTimeout(timeoutId)
-    }, [delay])
+    const handleDoFlip = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      evt.preventDefault()
+      evt.stopPropagation()
+
+      if (!isSafeToRender) return
+
+      setIsRevealed((prev) => !prev)
+    }
 
     return (
       <motion.div
+        {...restContainerProps}
         ref={ref}
-        className={`relative h-fit ${className}`}
-        style={{
-          perspective: '800px',
-          transformStyle: 'preserve-3d',
-        }}
-        {...containerProps}
+        className={classes}
+        onClick={handleDoFlip}
+        style={{ perspective: '800px', transformStyle: 'preserve-3d' }}
       >
-        <AnimatePresence>
-          {!isRevealed && (
+        <AnimatePresence initial={false}>
+          {!isRevealed ? (
             <motion.div
               key="front"
-              className="h-fit w-full"
-              initial={{ rotateY: 0 }}
+              {...restFrontChildProps}
+              className={frontClasses}
+              initial={{ rotateY: -180 }}
+              animate={{ rotateY: 0 }}
               exit={{ rotateY: -180 }}
+              onAnimationStart={() => setIsSafeToRender(false)}
+              onAnimationComplete={() => setIsSafeToRender(true)}
               style={{
                 width: '100%',
                 height: '100%',
@@ -47,14 +61,16 @@ export const FlipEffect = forwardRef<HTMLDivElement, FlipEffectProps>(
             >
               {frontChild}
             </motion.div>
-          )}
-
-          {isRevealed && (
+          ) : (
             <motion.div
               key="back"
-              className="h-fit w-full"
+              {...restBackChildProps}
+              className={backClasses}
               initial={{ rotateY: 180 }}
               animate={{ rotateY: 0 }}
+              exit={{ rotateY: 180 }}
+              onAnimationStart={() => setIsSafeToRender(false)}
+              onAnimationComplete={() => setIsSafeToRender(true)}
               style={{
                 width: '100%',
                 height: '100%',

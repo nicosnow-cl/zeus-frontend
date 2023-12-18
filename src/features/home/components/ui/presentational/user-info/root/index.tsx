@@ -1,14 +1,10 @@
-import { HTMLMotionProps, motion } from 'framer-motion'
 import clsx from 'clsx'
 
-export type RootProps = HTMLMotionProps<'div'>
+export type RootProps = React.HTMLAttributes<HTMLDivElement>
 
-export default function Root({ children, className, ...restProps }: RootProps) {
-  const classes = clsx('group h-full overflow-hidden', className)
+export default function Root(props: RootProps) {
+  const { className, ...restProps } = props ?? {}
+  const classes = clsx('relative h-full overflow-hidden isolate', className)
 
-  return (
-    <motion.div {...restProps} className={classes}>
-      {children}
-    </motion.div>
-  )
+  return <div {...restProps} className={classes} />
 }
