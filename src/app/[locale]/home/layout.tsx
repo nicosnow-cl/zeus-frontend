@@ -12,6 +12,11 @@ const UsersCardsFiltersForm = withIntlClientProvider(
   'UsersCardsFiltersForm'
 )
 
+const UsersCardsMobileFilters = withIntlClientProvider(
+  UsersCardsMobileFiltersContainer,
+  'UsersCardsMobileFilters'
+)
+
 export type LayoutProps = {
   children: React.ReactNode
 }
@@ -44,12 +49,15 @@ export default function Layout({ children }: LayoutProps) {
         }}
         hero={
           <>
-            <h1 className="gradient-heading">
+            <h1 className="gradient-heading heading-decorator">
               Nuestros usuarios
               <small>Encuentre el mejor servicio de acompañantes</small>
             </h1>
 
-            <UsersCardsMobileFiltersContainer
+            <UsersCardsMobileFilters
+              intlProps={{
+                messages,
+              }}
               containerProps={{
                 className: 'block md:hidden',
               }}
