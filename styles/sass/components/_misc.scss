@@ -1,18 +1,17 @@
 .masonry-highlight:has(> *:hover) > *:not(:hover),
 .masonry-highlight:has(> *:focus-within) > *:not(:focus-within) {
-  scale: 0.975;
+  scale: 0.95;
 }
 
 .masonry-highlight > * {
-  filter: brightness(0.875);
-  transition:
-    scale 0.25s ease,
-    filter 0.25s linear;
+  // filter: brightness(0.875);
+  transition: scale 0.3s ease-in-out;
+  // filter 0.25s linear;
 }
 
 .masonry-highlight > *:hover,
 .masonry-highlight > *:focus-within {
-  filter: brightness(1.05);
+  // filter: brightness(1.05);
 }
 
 .curve {

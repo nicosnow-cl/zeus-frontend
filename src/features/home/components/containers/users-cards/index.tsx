@@ -3,6 +3,7 @@ import { MotionConfig } from 'framer-motion'
 import { MasonryContainer } from '@/common/components/containers/masonry'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { UserCardWithFlipEffect } from '../../ui/presentational/user-card-flip'
+import { UserCard3D } from '../../ui/presentational/user-card-3d'
 
 export type UsersCardsContainerProps = {
   data?: UserCardEntity[]
@@ -30,7 +31,7 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
     >
       <MasonryContainer className="masonry-highlight grid-cols-12 gap-1" role="list">
         {data.map((user, idx) => (
-          <UserCardWithFlipEffect
+          <UserCard3D
             key={idx}
             user={user}
             containerProps={{
