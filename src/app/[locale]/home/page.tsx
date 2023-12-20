@@ -24,8 +24,6 @@ export default async function Home({ searchParams }: { searchParams?: TSearchPar
 
   if (res.status === 'error') throw new Error(res.error)
 
-  console.count('Home')
-
   return (
     <UsersCardsInfiniteScrollContainer
       key={randomUUID()}

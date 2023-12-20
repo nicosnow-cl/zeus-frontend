@@ -1,7 +1,7 @@
 import { useMessages } from 'next-intl'
 import pick from 'lodash/pick'
 
-// import { DarkModeTransitionContainer } from '../dark-mode-transition'
+import { DarkModeTransition } from '../dark-mode-transition'
 import { NavbarContainer as NavbarContainerClient } from '../navbar'
 import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
 
@@ -12,17 +12,19 @@ export type MainContainerProps = {
 }
 
 export function MainContainer({ children }: MainContainerProps) {
-  // const messages = useMessages()
+  const messages = useMessages()
 
   return (
     <>
-      {/* <div className="h-[var(--navbar-full-height)] bg-shade-900">
+      <DarkModeTransition />
+
+      <div className="h-[var(--navbar-full-height)] bg-shade-900">
         <NavbarContainer
           intlProps={{
             messages: pick(messages, 'COMMON.sidebar'),
           }}
         />
-      </div> */}
+      </div>
 
       <main className="flex flex-col gap-y-5">{children}</main>
     </>
