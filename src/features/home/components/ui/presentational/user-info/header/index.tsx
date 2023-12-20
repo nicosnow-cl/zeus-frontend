@@ -1,5 +1,5 @@
 import { Button } from '@/shadcn-components/ui/button'
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 import { Arrow90degRightIcon, ShareFillIcon } from '@/common/icons'
 import { LikesBadge } from '@/common/components/ui/primitives/likes-badge'
@@ -15,7 +15,7 @@ export type HeaderProps = {
 export default function Header({ containerProps, likes, type }: HeaderProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
 
-  const classes = clsx('flex flex-wrap gap-2', className)
+  const classes = twMerge('flex flex-wrap gap-2', className)
 
   return (
     <div {...restContainerProps} className={classes}>

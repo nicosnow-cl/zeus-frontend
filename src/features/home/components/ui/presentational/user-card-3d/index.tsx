@@ -16,7 +16,10 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
   const { className, style, ...restContainerProps } = containerProps ?? {}
   const classes = twMerge(className, 'relative')
 
-  const [isRevealed, setIsRevealed] = useState(false)
+  const [cardState, setCardState] = useState({
+    isRevealed: false,
+    isTransitioning: false,
+  })
 
   const x = useMotionValue(0)
   const y = useMotionValue(0)
@@ -24,8 +27,8 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
   const xSpring = useSpring(x)
   const ySpring = useSpring(y)
 
-  const rotateX = useTransform(ySpring, [-0.5, 0.5], [15, -15])
-  const rotateY = useTransform(xSpring, [-0.5, 0.5], [-15, 15])
+  const rotateX = useTransform(ySpring, [-0.5, 0.5], [-15, 15])
+  const rotateY = useTransform(xSpring, [-0.5, 0.5], [15, -15])
 
   const handleMouseMove = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const rect = evt.currentTarget.getBoundingClientRect()
@@ -44,10 +47,34 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
   const handleReset = () => {
     x.set(0)
     y.set(0)
+
+    // setCardState({
+    //   isRevealed: false,
+    //   isTransitioning: false,
+    // })
   }
 
   const handleToggleReveal = () => {
-    setIsRevealed((prev) => !prev)
+    if (cardState.isTransitioning) return
+
+    setCardState((prevState) => ({
+      ...prevState,
+      isRevealed: !prevState.isRevealed,
+    }))
+  }
+
+  const handleAnimationStart = () => {
+    setCardState((prevState) => ({
+      ...prevState,
+      isTransitioning: true,
+    }))
+  }
+
+  const handleAnimationComplete = () => {
+    setCardState((prevState) => ({
+      ...prevState,
+      isTransitioning: false,
+    }))
   }
 
   return (
@@ -81,11 +108,11 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
           transform: 'translateZ(30px)',
         }}
       >
-        <AnimatePresence initial={false} mode="popLayout">
-          {!isRevealed && (
+        <AnimatePresence initial={false} mode="wait">
+          {!cardState.isRevealed && (
             <motion.div
               key="first"
-              className="h-full"
+              className="flex h-full flex-col justify-between"
               initial={{
                 x: '-100%',
               }}
@@ -95,32 +122,32 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
               exit={{
                 x: '-100%',
               }}
+              onAnimationStart={handleAnimationStart}
+              onAnimationComplete={handleAnimationComplete}
             >
-              <UserCard.Content>
-                <UserCard.Header
-                  likes={user.likes}
-                  nationality={user.nationality}
-                  type={user.type}
-                  containerProps={{
-                    className: 'p-0',
-                  }}
-                />
+              <UserCard.Header
+                likes={user.likes}
+                nationality={user.nationality}
+                type={user.type}
+                containerProps={{
+                  className: 'p-0',
+                }}
+              />
 
-                <UserCard.Body
-                  age={user.age}
-                  description={user.description}
-                  hasPromo={user.hasPromo}
-                  name={user.name}
-                  price={user.price}
-                  containerProps={{
-                    className: 'rounded-2xl',
-                  }}
-                />
-              </UserCard.Content>
+              <UserCard.Body
+                age={user.age}
+                description={user.description}
+                hasPromo={user.hasPromo}
+                name={user.name}
+                price={user.price}
+                containerProps={{
+                  className: 'rounded-2xl',
+                }}
+              />
             </motion.div>
           )}
 
-          {isRevealed && (
+          {cardState.isRevealed && (
             <motion.div
               key="second"
               className="flex h-full flex-col justify-between gap-3"
@@ -133,6 +160,8 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
               exit={{
                 x: '100%',
               }}
+              onAnimationStart={handleAnimationStart}
+              onAnimationComplete={handleAnimationComplete}
             >
               <UserInfo.Header likes={user.likes} type={user.type} />
 

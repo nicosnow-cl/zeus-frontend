@@ -30,14 +30,14 @@ export function Body({ age, containerProps, description, hasPromo, name, price }
         <PriceBadge hasPromo={hasPromo} price={price} />
       </div>
 
-      <div
+      <p
         className="line-clamp-4 text-sm"
         style={{
           textShadow: '2px 2px 3px rgba(0, 0, 0, 0.15)',
         }}
       >
         {description}
-      </div>
+      </p>
     </div>
   )
 }

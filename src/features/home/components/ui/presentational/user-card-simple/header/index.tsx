@@ -14,17 +14,14 @@ export type HeaderProps = {
 
 export function Header({ containerProps, likes, nationality, type }: HeaderProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
-  const classes = twMerge('flex justify-between gap-2 p-2', className)
+  const classes = twMerge('flex items-center justify-end gap-2 p-2', className)
 
   return (
     <div {...restContainerProps} className={classes}>
-      <UserTypeBadge type={type} small />
+      <UserTypeBadge className="mr-auto" type={type} small />
 
-      <span className="flex items-center gap-1">
-        {nationality && <CountryFlag countryCode={nationality} />}
-
-        <LikesBadge count={likes} small />
-      </span>
+      {nationality && <CountryFlag countryCode={nationality} />}
+      <LikesBadge count={likes} small />
     </div>
   )
 }
