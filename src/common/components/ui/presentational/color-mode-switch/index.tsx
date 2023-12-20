@@ -1,18 +1,19 @@
 'use client'
 
+import { Switch } from '@/shadcn-components/ui/switch'
 import { useEffect, useMemo, useState } from 'react'
 import { useTheme } from 'next-themes'
-import { Switch } from '@/shadcn-components/ui/switch'
 
 import { MoonIcon, SunIcon } from '@/common/icons'
+import { uiActions } from '@/common/store/ui'
 
 export const ColorModeSwitch = () => {
+  const { systemTheme, theme } = useTheme()
   const [checked, setChecked] = useState(false)
-  const { systemTheme, theme, setTheme } = useTheme()
 
   const defaultChecked = useMemo(() => systemTheme === 'dark', [systemTheme])
 
-  const handleToggleTheme = () => (theme === 'dark' ? setTheme('light') : setTheme('dark'))
+  const handleToggleTheme = () => uiActions.toggleTheme(true)
 
   useEffect(() => setChecked(theme === 'dark'), [theme])
 

@@ -1,8 +1,9 @@
 'use client'
 
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useMemo, useState } from 'react'
 import { useTheme } from 'next-themes'
+
+import { uiActions, useUiStore } from '@/common/store/ui'
 
 const variants = {
   initial: {
@@ -17,27 +18,28 @@ const variants = {
 }
 
 export function DarkModeTransition() {
-  const { theme } = useTheme()
-  const [animate, setAnimate] = useState(false)
+  const { theme, setTheme } = useTheme()
+  const { changeTheme } = useUiStore()
 
-  const isDarkMode = useMemo(() => theme === 'dark', [theme])
+  const handleToggleTheme = () => (theme === 'dark' ? setTheme('light') : setTheme('dark'))
 
-  useEffect(() => {
-    setAnimate(true)
-  }, [isDarkMode])
+  const handleAnimationComplete = () => {
+    uiActions.toggleTheme(false)
+    handleToggleTheme()
+  }
 
   return (
-    <AnimatePresence initial={false} mode="wait">
-      {animate && (
+    <AnimatePresence initial={false}>
+      {changeTheme && (
         <motion.div
-          key={`${isDarkMode}`}
-          className="fixed inset-0 z-50 bg-shade-950 dark:bg-shade-100"
+          key="dark-mode-transition"
           animate="animate"
+          className="fixed inset-0 z-50 bg-shade-950"
           exit="exit"
           initial="initial"
+          onAnimationComplete={handleAnimationComplete}
           transition={{ duration: 0.4, ease: 'easeOut' }}
           variants={variants}
-          onAnimationComplete={() => setAnimate(false)}
         />
       )}
     </AnimatePresence>
