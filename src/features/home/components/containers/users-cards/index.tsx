@@ -1,8 +1,10 @@
+'use client'
+
 import { MotionConfig } from 'framer-motion'
 
 import { MasonryContainer } from '@/common/components/containers/masonry'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import { UserCardWithFlipEffect } from '../../ui/presentational/user-card-flip'
+// import { UserCardWithFlipEffect } from '../../ui/presentational/user-card-flip'
 import { UserCard3D } from '../../ui/presentational/user-card-3d'
 
 export type UsersCardsContainerProps = {

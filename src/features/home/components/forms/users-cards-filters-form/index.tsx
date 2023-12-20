@@ -11,7 +11,6 @@ import {
   FormMessage,
 } from '@/shadcn-components/ui/form'
 import { Input } from '@/shadcn-components/ui/input'
-import { useEffect } from 'react'
 import { useForm, SubmitHandler } from 'react-hook-form'
 
 import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appearances'
@@ -20,27 +19,31 @@ import { Combobox } from '@/common/components/ui/primitives/combobox'
 import { DEFAULT_VALUES, UsersCardsFilters } from '../../../store/user-cards-filters'
 import { LabeledSlider } from '@/common/components/ui/primitives/labeled-slider'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
-import { useIsFirstRender } from '@/common/hooks/is-first-render'
+import { useEffectOnce } from '@/common/hooks/use-effect-once'
 
 export type UsersCardsFiltersFormProps = {
   containerProps?: Omit<React.ComponentProps<'form'>, 'children'>
   defaultValues?: UsersCardsFilters
   onSubmit?: (data: UsersCardsFilters) => void
+  values?: UsersCardsFilters
 }
 
 export const UsersCardsFiltersForm = ({
   containerProps,
   onSubmit,
+  values,
   defaultValues = { ...DEFAULT_VALUES },
 }: UsersCardsFiltersFormProps) => {
   const form = useForm<UsersCardsFilters>({
     defaultValues,
+    values,
   })
   const appearances = useMasterDataStore((state) => state.appearances)
   const services = useMasterDataStore((state) => state.services)
-  const isFirstRender = useIsFirstRender()
 
-  async function fetchMasterData() {
+  const handleSubmit: SubmitHandler<UsersCardsFilters> = (data) => onSubmit?.(data)
+
+  const fetchMasterData = async () => {
     const res = await Promise.all([actionFetchAppearances(), actionFetchServices()])
 
     if (res[0].status === 'success')
@@ -52,11 +55,9 @@ export const UsersCardsFiltersForm = ({
       masterDataActions.setServices(res[1].data.map(({ name, value }) => ({ label: name, value })))
   }
 
-  const handleSubmit: SubmitHandler<UsersCardsFilters> = (data) => onSubmit?.(data)
-
-  useEffect(() => {
-    if (isFirstRender) fetchMasterData()
-  }, [isFirstRender])
+  useEffectOnce(() => {
+    fetchMasterData()
+  })
 
   return (
     <Form {...form}>

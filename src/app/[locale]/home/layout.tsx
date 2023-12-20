@@ -59,7 +59,7 @@ export default function Layout({ children }: LayoutProps) {
                 messages,
               }}
               containerProps={{
-                className: 'block md:hidden',
+                className: 'md:hidden',
               }}
             />
           </>

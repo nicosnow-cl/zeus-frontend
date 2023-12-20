@@ -1,12 +1,9 @@
-'use client'
-
 import { ReadonlyURLSearchParams, useSearchParams } from 'next/navigation'
 import { useEffect } from 'react'
 import { useRouter } from '@intl/navigation'
 
 import { Routes } from '@config/enums'
 import { searchParamsToUsersFilters } from '@/features/home/utils/params-to-users-filter'
-import { useIsFirstRender } from '@/common/hooks/is-first-render'
 import {
   UsersCardsFilters,
   usersCardsFiltersActions,
@@ -15,25 +12,27 @@ import {
 
 export type WithUsersCardsQueryLogicProps<T> = {
   Component: React.FC<{
-    defaultValues: UsersCardsFilters
+    defaultValues?: UsersCardsFilters
     onSubmit: (data: UsersCardsFilters) => void
+    values?: UsersCardsFilters
   }>
 }
 
-export function WithUsersCardsQueryLogic<T>({ Component }: WithUsersCardsQueryLogicProps<T>) {
+export function withUsersCardsQueryLogic<T>({ Component }: WithUsersCardsQueryLogicProps<T>) {
   return function UsersCardsQueryLogicContainer() {
+    'use client'
+
     const router = useRouter()
     const searchParams = useSearchParams()
-    const isFirstRender = useIsFirstRender()
     const usersFilters = useUsersCardsFiltersStore()
 
-    const handleSetInitialUsersFilters = (params: ReadonlyURLSearchParams) => {
+    const handleUpdateUserFiltersStore = (params: ReadonlyURLSearchParams) => {
       const filters = searchParamsToUsersFilters(params)
 
       usersCardsFiltersActions.update(filters)
     }
 
-    const handleUpdateHomeQuery = async (data: Partial<UsersCardsFilters>) => {
+    const handleUpdateHomeQuery = (data: Partial<UsersCardsFilters>) => {
       const params = new URLSearchParams()
 
       if (data.nameUsername) params.set('name', data.nameUsername)
@@ -49,13 +48,12 @@ export function WithUsersCardsQueryLogic<T>({ Component }: WithUsersCardsQueryLo
 
     const handleSubmit = (data: UsersCardsFilters) => {
       handleUpdateHomeQuery(data)
-      usersCardsFiltersActions.update(data)
     }
 
     useEffect(() => {
-      if (isFirstRender) handleSetInitialUsersFilters(searchParams)
-    }, [isFirstRender, searchParams])
+      handleUpdateUserFiltersStore(searchParams)
+    }, [searchParams])
 
-    return <Component defaultValues={usersFilters} onSubmit={handleSubmit} />
+    return <Component values={usersFilters} onSubmit={handleSubmit} />
   }
 }

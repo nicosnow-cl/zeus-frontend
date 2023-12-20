@@ -1,5 +1,4 @@
-'use client'
-
+import { DialogProps } from '@radix-ui/react-dialog'
 import {
   Sheet,
   SheetContent,
@@ -8,10 +7,16 @@ import {
   SheetTitle,
   SheetTrigger,
 } from '@/shadcn-components/ui/sheet'
-import { DialogProps } from '@radix-ui/react-dialog'
 
-import { UsersCardsFiltersFormProps } from '../../../forms/users-cards-filters-form'
-import { UsersCardsFiltersFormQueryLogic } from '../../../containers/users-cards-filters-form-query-logic'
+import {
+  UsersCardsFiltersForm,
+  UsersCardsFiltersFormProps,
+} from '../../../forms/users-cards-filters-form'
+import { withUsersCardsQueryLogic } from '@/features/home/hocs/with-users-cards-query-logic'
+
+export const UsersCardsFiltersFormWithQueryLogic = withUsersCardsQueryLogic({
+  Component: UsersCardsFiltersForm,
+})
 
 export type UsersCardsFiltersSheetProps = DialogProps &
   UsersCardsFiltersFormProps & {
@@ -40,7 +45,7 @@ export const UsersCardsFiltersSheet = ({
           <SheetDescription>Ajuste los resultados de acuerdo a sus preferencias</SheetDescription>
         </SheetHeader>
 
-        <UsersCardsFiltersFormQueryLogic />
+        <UsersCardsFiltersFormWithQueryLogic />
       </SheetContent>
     </Sheet>
   )

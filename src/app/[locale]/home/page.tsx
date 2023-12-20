@@ -3,6 +3,8 @@ import { randomUUID } from 'crypto'
 
 import { fetchUsers } from '@/features/home/actions/users/fetch-users'
 import { TSearchParams } from '@/common/types/misc/search-params.type'
+import { withInfiniteScrollFetchData } from '@/features/home/hocs/with-infinite-scroll-container'
+import { UsersCardsContainer } from '@/features/home/components/containers/users-cards'
 import { UsersCardsInfiniteScrollContainer } from '@/features/home/components/containers/users-cards-infinite-scroll'
 
 export const metadata: Metadata = {
@@ -21,6 +23,8 @@ export default async function Home({ searchParams }: { searchParams?: TSearchPar
   const res = await fetchUsers(searchParams)
 
   if (res.status === 'error') throw new Error(res.error)
+
+  console.count('Home')
 
   return (
     <UsersCardsInfiniteScrollContainer
