@@ -12,17 +12,17 @@ export type MainContainerProps = {
 }
 
 export function MainContainer({ children }: MainContainerProps) {
-  const messages = useMessages()
+  // const messages = useMessages()
 
   return (
     <>
-      <div className="h-[var(--navbar-full-height)] bg-shade-900">
+      {/* <div className="h-[var(--navbar-full-height)] bg-shade-900">
         <NavbarContainer
           intlProps={{
             messages: pick(messages, 'COMMON.sidebar'),
           }}
         />
-      </div>
+      </div> */}
 
       <main className="flex flex-col gap-y-5">{children}</main>
     </>

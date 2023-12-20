@@ -1,4 +1,4 @@
-import { Badge } from '@/shadcn-components/ui/badge'
+import { Badge } from '../../Badge'
 
 export type ValueBadgeProps = {
   badgeProps?: Omit<React.ComponentProps<typeof Badge>, 'children'>
@@ -11,10 +11,13 @@ export const ValueBadge = ({ badgeProps, label }: ValueBadgeProps) => {
   return (
     <Badge
       {...badgeProps}
-      className="cursor-pointer"
+      className="cursor-pointer bg-gray-950 p-1"
       style={{
-        fontSize: '10px',
+        fontSize: '9px',
+        lineHeight: '12px',
       }}
+      color="gray"
+      small
     >
       {!needSplitLabel ? label : `${label.slice(0, 13)}...`}
     </Badge>

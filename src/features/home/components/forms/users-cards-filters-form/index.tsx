@@ -12,6 +12,7 @@ import {
 } from '@/shadcn-components/ui/form'
 import { Input } from '@/shadcn-components/ui/input'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { throttle } from 'lodash'
 
 import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appearances'
 import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
@@ -20,6 +21,7 @@ import { DEFAULT_VALUES, UsersCardsFilters } from '../../../store/user-cards-fil
 import { LabeledSlider } from '@/common/components/ui/primitives/labeled-slider'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
 import { useEffectOnce } from '@/common/hooks/use-effect-once'
+import { useCallback } from 'react'
 
 export type UsersCardsFiltersFormProps = {
   containerProps?: Omit<React.ComponentProps<'form'>, 'children'>
@@ -43,17 +45,23 @@ export const UsersCardsFiltersForm = ({
 
   const handleSubmit: SubmitHandler<UsersCardsFilters> = (data) => onSubmit?.(data)
 
-  const fetchMasterData = async () => {
-    const res = await Promise.all([actionFetchAppearances(), actionFetchServices()])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const fetchMasterData = useCallback(
+    throttle(async () => {
+      const res = await Promise.all([actionFetchAppearances(), actionFetchServices()])
 
-    if (res[0].status === 'success')
-      masterDataActions.setAppearances(
-        res[0].data.map(({ name, value }) => ({ label: name, value }))
-      )
+      if (res[0].status === 'success')
+        masterDataActions.setAppearances(
+          res[0].data.map(({ name, value }) => ({ label: name, value }))
+        )
 
-    if (res[1].status === 'success')
-      masterDataActions.setServices(res[1].data.map(({ name, value }) => ({ label: name, value })))
-  }
+      if (res[1].status === 'success')
+        masterDataActions.setServices(
+          res[1].data.map(({ name, value }) => ({ label: name, value }))
+        )
+    }, 100),
+    []
+  )
 
   useEffectOnce(() => {
     fetchMasterData()

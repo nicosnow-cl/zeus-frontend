@@ -81,16 +81,10 @@ export function Combobox({
     return (
       <>
         {value.slice(0, 5).map((option, idx) => (
-          <ValueBadge
-            key={idx}
-            label={option}
-            badgeProps={{
-              color: 'crimson',
-            }}
-          />
+          <ValueBadge key={idx} label={option} />
         ))}
 
-        {valueLength > 5 && <Badge className="cursor-pointer">+{valueLength - 5}</Badge>}
+        {valueLength > 5 && <ValueBadge label={`+${valueLength - 5}`} />}
       </>
     )
   }

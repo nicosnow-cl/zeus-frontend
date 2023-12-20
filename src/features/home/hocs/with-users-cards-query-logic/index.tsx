@@ -20,8 +20,6 @@ export type WithUsersCardsQueryLogicProps<T> = {
 
 export function withUsersCardsQueryLogic<T>({ Component }: WithUsersCardsQueryLogicProps<T>) {
   return function UsersCardsQueryLogicContainer() {
-    'use client'
-
     const router = useRouter()
     const searchParams = useSearchParams()
     const usersFilters = useUsersCardsFiltersStore()
