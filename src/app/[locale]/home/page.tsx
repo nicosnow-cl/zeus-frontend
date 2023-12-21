@@ -3,8 +3,6 @@ import { randomUUID } from 'crypto'
 
 import { fetchUsers } from '@/features/home/actions/users/fetch-users'
 import { TSearchParams } from '@/common/types/misc/search-params.type'
-import { withInfiniteScrollFetchData } from '@/features/home/hocs/with-infinite-scroll-container'
-import { UsersCardsContainer } from '@/features/home/components/containers/users-cards'
 import { UsersCardsInfiniteScrollContainer } from '@/features/home/components/containers/users-cards-infinite-scroll'
 
 export const metadata: Metadata = {

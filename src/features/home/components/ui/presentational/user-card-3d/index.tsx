@@ -6,6 +6,7 @@ import * as Separator from '@radix-ui/react-separator'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import * as UserCard from '../user-card-simple'
 import * as UserInfo from '../user-info'
+import { PriceBadge } from '@/common/components/ui/presentational/price-badge'
 
 export type UserCard3DProps = {
   containerProps?: React.ComponentProps<typeof motion.div>
@@ -14,7 +15,7 @@ export type UserCard3DProps = {
 
 export function UserCard3D({ containerProps, user }: UserCard3DProps) {
   const { className, style, ...restContainerProps } = containerProps ?? {}
-  const classes = twMerge(className, 'relative')
+  const classes = twMerge(className, 'group relative')
 
   const [cardState, setCardState] = useState({
     isRevealed: false,
@@ -91,6 +92,13 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
       onMouseLeave={handleReset}
       onClick={handleToggleReveal}
     >
+      <div
+        className="absolute inset-0 rounded-2xl opacity-0 shadow-md shadow-gray-950/40 transition-opacity duration-300 group-hover:opacity-100"
+        style={{
+          transformStyle: 'preserve-3d',
+        }}
+      />
+
       <UserCard.Media
         avatar={user.avatar}
         containerProps={{
