@@ -1,6 +1,7 @@
 'use client'
 
 import { Switch } from '@/shadcn-components/ui/switch'
+import { throttle } from 'lodash'
 import { useEffect, useMemo, useState } from 'react'
 import { useTheme } from 'next-themes'
 
@@ -13,7 +14,7 @@ export const ColorModeSwitch = () => {
 
   const defaultChecked = useMemo(() => systemTheme === 'dark', [systemTheme])
 
-  const handleToggleTheme = () => uiActions.toggleTheme(true)
+  const handleToggleTheme = throttle(() => uiActions.toggleTheme(true), 0.4)
 
   useEffect(() => setChecked(theme === 'dark'), [theme])
 

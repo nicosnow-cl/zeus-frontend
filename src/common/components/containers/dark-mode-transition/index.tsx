@@ -21,11 +21,13 @@ export function DarkModeTransition() {
   const { theme, setTheme } = useTheme()
   const { changeTheme } = useUiStore()
 
-  const handleToggleTheme = () => (theme === 'dark' ? setTheme('light') : setTheme('dark'))
+  const isDarkTheme = theme === 'dark'
 
   const handleAnimationComplete = () => {
     uiActions.toggleTheme(false)
-    handleToggleTheme()
+
+    if (isDarkTheme) setTheme('light')
+    else setTheme('dark')
   }
 
   return (
@@ -34,7 +36,7 @@ export function DarkModeTransition() {
         <motion.div
           key="dark-mode-transition"
           animate="animate"
-          className="fixed inset-0 z-50 bg-shade-950"
+          className={`fixed inset-0 z-50 ${isDarkTheme ? 'bg-shade-100' : 'bg-shade-950'}`}
           exit="exit"
           initial="initial"
           onAnimationComplete={handleAnimationComplete}
