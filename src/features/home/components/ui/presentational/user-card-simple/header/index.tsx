@@ -1,27 +1,40 @@
+import { forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 import { CountryFlag } from '@/common/components/ui/presentational/country-flag'
 import { LikesBadge } from '@/common/components/ui/primitives/likes-badge/index'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { UserTypeBadge } from '../../user-type-badge'
+import { PriceBadge } from '@/common/components/ui/presentational/price-badge'
 
 export type HeaderProps = {
   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
+  hasPromo?: UserCardEntity['hasPromo']
   likes?: UserCardEntity['likes']
   nationality?: UserCardEntity['nationality']
+  price?: UserCardEntity['price']
+  small?: boolean
   type: UserCardEntity['type']
 }
 
-export function Header({ containerProps, likes, nationality, type }: HeaderProps) {
-  const { className, ...restContainerProps } = containerProps ?? {}
-  const classes = twMerge('flex items-center justify-end gap-2 p-2', className)
+export const Header = forwardRef<HTMLDivElement, HeaderProps>(
+  ({ containerProps, hasPromo, likes, nationality, price, small, type }, ref) => {
+    const { className, ...restContainerProps } = containerProps ?? {}
+    const classes = twMerge('flex items-center justify-between gap-2 p-2', className)
 
-  return (
-    <div {...restContainerProps} className={classes}>
-      <UserTypeBadge className="mr-auto" type={type} small />
+    return (
+      <div {...restContainerProps} ref={ref} className={classes}>
+        <UserTypeBadge type={type} small={small} />
 
-      {nationality && <CountryFlag countryCode={nationality} />}
-      <LikesBadge count={likes} small />
-    </div>
-  )
-}
+        <div className="flex items-center gap-2">
+          {nationality && <CountryFlag countryCode={nationality} />}
+          {price && <PriceBadge hasPromo={hasPromo} price={price} />}
+        </div>
+
+        <LikesBadge count={likes} small={small} />
+      </div>
+    )
+  }
+)
+
+Header.displayName = 'UserCard.Header'

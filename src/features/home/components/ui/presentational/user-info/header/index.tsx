@@ -1,7 +1,5 @@
-import { Button } from '@/shadcn-components/ui/button'
 import { twMerge } from 'tailwind-merge'
 
-import { Arrow90degRightIcon, ShareFillIcon } from '@/common/icons'
 import { LikesBadge } from '@/common/components/ui/primitives/likes-badge'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import { UserTypeBadge } from '../../user-type-badge'
@@ -9,32 +7,20 @@ import { UserTypeBadge } from '../../user-type-badge'
 export type HeaderProps = {
   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
   likes?: UserCardEntity['likes']
+  small?: boolean
   type: UserCardEntity['type']
 }
 
-export default function Header({ containerProps, likes, type }: HeaderProps) {
+export function Header({ containerProps, likes, type, small = true }: HeaderProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
 
-  const classes = twMerge('flex flex-wrap gap-2', className)
+  const classes = twMerge('flex items-center justify-between gap-2', className)
 
   return (
     <div {...restContainerProps} className={classes}>
-      <div className="flex grow items-center justify-between gap-1">
-        <UserTypeBadge type={type} />
+      <UserTypeBadge type={type} small={small} />
 
-        <LikesBadge count={likes} />
-      </div>
-
-      <div className="flex grow items-center justify-center gap-1">
-        <Button onFocus={(evt) => evt.stopPropagation()}>
-          <ShareFillIcon />
-        </Button>
-
-        <Button size="lg" onFocus={(evt) => evt.stopPropagation()}>
-          Ver perfil
-          <Arrow90degRightIcon className="ml-2" />
-        </Button>
-      </div>
+      <LikesBadge count={likes} small={small} />
     </div>
   )
 }

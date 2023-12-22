@@ -6,7 +6,6 @@ import * as Separator from '@radix-ui/react-separator'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import * as UserCard from '../user-card-simple'
 import * as UserInfo from '../user-info'
-import { PriceBadge } from '@/common/components/ui/presentational/price-badge'
 
 export type UserCard3DProps = {
   containerProps?: React.ComponentProps<typeof motion.div>
@@ -93,7 +92,7 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
       onClick={handleToggleReveal}
     >
       <div
-        className="absolute inset-0 rounded-2xl opacity-0 shadow-md shadow-gray-950/40 transition-opacity duration-300 group-hover:opacity-100"
+        className="absolute inset-0 rounded-2xl opacity-0 shadow-md transition-opacity duration-300 group-hover:opacity-100"
         style={{
           transformStyle: 'preserve-3d',
         }}
@@ -116,11 +115,23 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
           transform: 'translateZ(30px)',
         }}
       >
+        <UserCard.Header
+          likes={user.likes}
+          nationality={user.nationality}
+          type={user.type}
+          price={user.price}
+          hasPromo={user.hasPromo}
+          small={!cardState.isRevealed}
+          containerProps={{
+            className: 'p-0',
+          }}
+        />
+
         <AnimatePresence initial={false} mode="wait">
           {!cardState.isRevealed && (
             <motion.div
               key="first"
-              className="flex h-full flex-col justify-between"
+              className="absolute bottom-0"
               initial={{
                 x: '-100%',
               }}
@@ -133,15 +144,6 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
               onAnimationStart={handleAnimationStart}
               onAnimationComplete={handleAnimationComplete}
             >
-              <UserCard.Header
-                likes={user.likes}
-                nationality={user.nationality}
-                type={user.type}
-                containerProps={{
-                  className: 'p-0',
-                }}
-              />
-
               <UserCard.Body
                 age={user.age}
                 description={user.description}
@@ -149,7 +151,7 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
                 name={user.name}
                 price={user.price}
                 containerProps={{
-                  className: 'rounded-2xl',
+                  className: 'rounded-b-2xl',
                 }}
               />
             </motion.div>
@@ -158,7 +160,7 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
           {cardState.isRevealed && (
             <motion.div
               key="second"
-              className="flex h-full flex-col justify-between gap-3"
+              className="absolute bottom-0"
               initial={{
                 x: '100%',
               }}
@@ -171,9 +173,7 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
               onAnimationStart={handleAnimationStart}
               onAnimationComplete={handleAnimationComplete}
             >
-              <UserInfo.Header likes={user.likes} type={user.type} />
-
-              <div className="flex flex-col gap-2 rounded-xl border border-gray-600/50 bg-gray-950/60 px-2 py-3 text-sm text-shade-50 ">
+              <div className="mb-2 flex flex-col gap-2 rounded-xl border border-gray-600/50 bg-gray-950/60 px-2 py-3 text-sm text-shade-50">
                 <UserInfo.Body
                   age={user.age}
                   avatar={user.avatar}
@@ -187,6 +187,8 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
 
                 <UserInfo.Footer rrss={user.rrss} services={user.services} type={user.type} />
               </div>
+
+              <UserInfo.Actions />
             </motion.div>
           )}
         </AnimatePresence>

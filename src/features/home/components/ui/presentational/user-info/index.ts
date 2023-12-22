@@ -1,6 +1,7 @@
 export { default as Root, type RootProps } from './root'
 export { Media } from './media'
 export { Content, type ContentProps } from './content'
-export { default as Header, type HeaderProps } from './header'
+export { Header, type HeaderProps } from './header'
 export { default as Body, type BodyProps } from './body'
 export { Footer, type FooterProps } from './footer'
+export { Actions, type ActionsProps } from './actions'

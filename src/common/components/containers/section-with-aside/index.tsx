@@ -1,4 +1,4 @@
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 export type SectionWithAsideContainerProps = {
   aside: React.ReactNode
@@ -24,24 +24,21 @@ export const SectionWithAsideContainer: React.FunctionComponent<SectionWithAside
   return (
     <section className="grid-wrapper main-content relative">
       {hero && (
-        <div {...heroRestProps} className={clsx('breakout mb-3', heroClassName)}>
+        <div {...heroRestProps} className={twMerge('breakout mb-6', heroClassName)}>
           {hero}
         </div>
       )}
 
       <div
         {...containerRestProps}
-        className={clsx(
-          'main-with-aside gap-2 rounded-2xl bg-slate-200 p-2 dark:bg-shade-900/25',
-          containerClassName
-        )}
+        className={twMerge('main-with-aside gap-2 rounded-2xl', containerClassName)}
       >
         {children}
 
         <div
           {...asideRestProps}
-          className={clsx(
-            'rounded-2xl bg-slate-100/90 px-2 py-3 shadow-sm dark:bg-shade-950/30',
+          className={twMerge(
+            'rounded-2xl bg-slate-100 px-2 py-3 shadow-sm dark:bg-shade-900',
             asideClassName
           )}
         >
