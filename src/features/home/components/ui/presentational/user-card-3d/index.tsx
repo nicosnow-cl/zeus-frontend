@@ -59,11 +59,6 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
   const handleReset = () => {
     x.set(0)
     y.set(0)
-
-    setCardState({
-      isRevealed: false,
-      isTransitioning: false,
-    })
   }
 
   const handleToggleReveal = () => {
