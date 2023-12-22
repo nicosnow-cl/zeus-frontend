@@ -13,6 +13,7 @@ import * as Separator from '@radix-ui/react-separator'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import * as UserCard from '../user-card-simple'
 import * as UserInfo from '../user-info'
+import { debounce, throttle } from 'lodash'
 
 export type UserCard3DProps = {
   containerProps?: Omit<React.ComponentPropsWithoutRef<typeof motion.div>, 'children'>
@@ -39,7 +40,9 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
   const rotateX = useTransform(ySpring, [-0.5, 0.5], [-15, 15])
   const rotateY = useTransform(xSpring, [-0.5, 0.5], [15, -15])
 
-  const handleMouseMove = (evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleMouseMove = throttle((evt: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (!evt.currentTarget?.getBoundingClientRect()) return
+
     const rect = evt.currentTarget.getBoundingClientRect()
 
     const { top, left, width, height } = rect
@@ -51,7 +54,7 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
 
     x.set(xPercent - 0.5)
     y.set(yPercent - 0.5)
-  }
+  }, 150)
 
   const handleReset = () => {
     x.set(0)
