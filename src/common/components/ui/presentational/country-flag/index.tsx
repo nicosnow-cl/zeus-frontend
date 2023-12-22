@@ -7,9 +7,6 @@ export type CountryFlagProps = {
 }
 
 export function CountryFlag({ containerProps, countryCode }: CountryFlagProps) {
-  const { className, ref, ...restContainerProps } = containerProps ?? {}
-  const classes = clsx('border-2 rounded-full border-shade-100', className)
-
   const validCountryCode = getValidCountryCode(countryCode)
 
   function getValidCountryCode(countryCode: string) {
@@ -40,11 +37,6 @@ export function CountryFlag({ containerProps, countryCode }: CountryFlagProps) {
   }
 
   return validCountryCode ? (
-    <CircleFlag
-      height="20"
-      {...restContainerProps}
-      countryCode={validCountryCode}
-      className={classes}
-    />
+    <CircleFlag height="20" {...containerProps} countryCode={validCountryCode} />
   ) : null
 }

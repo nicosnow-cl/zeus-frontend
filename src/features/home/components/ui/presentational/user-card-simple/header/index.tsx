@@ -20,18 +20,19 @@ export type HeaderProps = {
 export const Header = forwardRef<HTMLDivElement, HeaderProps>(
   ({ containerProps, hasPromo, likes, nationality, price, small, type }, ref) => {
     const { className, ...restContainerProps } = containerProps ?? {}
-    const classes = twMerge('flex items-center justify-between gap-2 p-2', className)
+    const classes = twMerge('flex items-start justify-between gap-2 p-2', className)
 
     return (
       <div {...restContainerProps} ref={ref} className={classes}>
         <UserTypeBadge type={type} small={small} />
 
-        <div className="flex items-center gap-2">
-          {nationality && <CountryFlag countryCode={nationality} />}
+        <div className="flex flex-col items-end gap-2">
           {price && <PriceBadge hasPromo={hasPromo} price={price} />}
-        </div>
 
-        <LikesBadge count={likes} small={small} />
+          <LikesBadge count={likes} small={small} />
+
+          {nationality && <CountryFlag countryCode={nationality} />}
+        </div>
       </div>
     )
   }
