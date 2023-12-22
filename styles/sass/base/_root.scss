@@ -10,6 +10,8 @@
       }
     }
 
+    --bg-body: var(--clr-shade-50);
+
     // Font sizes
     @each $scale, $screen-size in $type-scale {
       $min: map-get($screen-size, 'small');
@@ -29,9 +31,6 @@
     --fw-regular: 300;
     --fw-medium: 500;
     --fw-bold: 700;
-
-    // Body background
-    --bg-body: var(--clr-shade-50);
 
     // Components
     --navbar-top-height: 2.75rem;
