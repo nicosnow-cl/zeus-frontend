@@ -1,7 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import { PriceBadge } from '@/common/components/ui/presentational/price-badge'
 
 export type BodyProps = {
   age?: UserCardEntity['age']
@@ -23,7 +22,7 @@ export function Body({ age, containerProps, description, name }: BodyProps) {
         {name}, {age}
       </h4>
 
-      <p className="line-clamp-4 text-sm">{description}</p>
+      <p className="line-clamp-4">{description}</p>
     </div>
   )
 }

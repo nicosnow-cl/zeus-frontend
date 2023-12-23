@@ -37,7 +37,7 @@ export type BadgeProps = React.ComponentProps<'div'> & {
 
 export function Badge(props: BadgeProps) {
   const { color, small, className, ...restProps } = props
-  const classes = twMerge('badge', !small ? 'text-sm font-semibold' : 'text-xs', className)
+  const classes = twMerge('badge', !small ? 'font-semibold' : 'text-sm', className)
 
   return <div {...restProps} className={classes} data-color={color} />
 }

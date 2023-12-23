@@ -21,7 +21,7 @@ export default function Expanded({
       <UserInfo.Content className="h-full justify-end bg-shade-300/30 dark:bg-shade-950/40">
         <UserInfo.Header likes={likes} type={type} />
 
-        <div className="flex flex-col gap-2 rounded-xl border border-gray-600/50 bg-gray-950/60 px-2 py-3 text-sm text-shade-50 backdrop-blur-sm">
+        <div className="flex flex-col gap-2 rounded-xl border border-gray-600/50 bg-gray-950/60 px-2 py-3 text-shade-50 backdrop-blur-sm">
           <UserInfo.Body
             age={age}
             avatar={avatar}

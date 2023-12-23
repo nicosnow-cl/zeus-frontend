@@ -66,11 +66,12 @@ export default function Layout({ children }: LayoutProps) {
         }
         aside={
           <div className="sticky top-[var(--navbar-full-height)] flex flex-col gap-3">
-            <div>
-              <p className="pl-2 text-lg font-semibold text-gray-950 dark:text-gray-50">Filtros</p>
-              <p className="pl-2 text-sm text-gray-500 dark:text-gray-400">
-                Ajuste los resultados de acuerdo a sus preferencias
-              </p>
+            <div className="pl-2 text-gray-900 dark:text-gray-100">
+              <strong className="text-lg font-semibold text-gray-950 dark:text-gray-50">
+                Filtros
+              </strong>
+              <br />
+              Ajuste los resultados de acuerdo a sus preferencias
             </div>
 
             <UsersCardsFiltersForm

@@ -29,7 +29,7 @@ export function UserCardWithFlipEffect({ containerProps, user }: UserCardWithFli
           <UserInfo.Content className="h-full justify-end bg-shade-300/30 backdrop-blur-sm dark:bg-shade-950/40">
             <UserInfo.Header likes={user.likes} type={user.type} />
 
-            <div className="flex flex-col gap-2 rounded-xl border border-gray-600/50 bg-gray-950/60 px-2 py-3 text-sm text-shade-50 ">
+            <div className="flex flex-col gap-2 rounded-xl border border-gray-600/50 bg-gray-950/60 px-2 py-3 text-shade-50 ">
               <UserInfo.Body
                 age={user.age}
                 avatar={user.avatar}
