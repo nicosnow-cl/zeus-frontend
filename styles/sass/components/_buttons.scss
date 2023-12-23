@@ -1,0 +1,5 @@
+.button-group {
+  & > :not(:first-child) {
+    border-left: 1px solid var(--clr-shade-800);
+  }
+}

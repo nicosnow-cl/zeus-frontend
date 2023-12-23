@@ -11,6 +11,7 @@ import { ContentWithDropdown } from '../../../effects/dropdown-effect'
 import { Routes } from '@config/enums'
 import { Input } from '@/shadcn-components/ui/input'
 import { APP_NAME } from '@config/constants'
+import * as ButtonGroup from '../../../../compounds/button-group'
 
 export type TopBarProps = {
   logo?: React.ReactNode
@@ -139,25 +140,18 @@ export function TopBar({ logo }: TopBarProps) {
           <div className="flex items-center justify-center gap-5">
             {logo}
 
-            <div className="flex gap-5 rounded-md bg-shade-50/20 px-2 py-1.5 backdrop-blur-md">
-              <NextLink
-                className="text-1 flex items-center gap-x-2 text-shade-100"
+            <ButtonGroup.Root>
+              <ButtonGroup.Link
+                label={t('COMMON.sidebar.sign-up')}
                 href={Routes.SignUp}
-              >
-                {t('COMMON.sidebar.sign-up')}
-                {<PatchCheckFillIcon width={14} height={14} />}
-              </NextLink>
-
-              <Separator.Root className="separator-root" orientation="vertical" decorative />
-
-              <NextLink
-                className="text-1 flex items-center gap-x-2 text-shade-100"
+                icon={<PatchCheckFillIcon className="text-base" />}
+              />
+              <ButtonGroup.Link
+                label={t('COMMON.sidebar.sign-in')}
                 href={Routes.SignIn}
-              >
-                {t('COMMON.sidebar.sign-in')}
-                <BoxArrowRightIcon width={14} height={14} />
-              </NextLink>
-            </div>
+                icon={<BoxArrowRightIcon className="text-base" />}
+              />
+            </ButtonGroup.Root>
 
             <div className="hidden gap-5 md:flex">{getLinks()}</div>
 
