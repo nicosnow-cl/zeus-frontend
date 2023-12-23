@@ -1,12 +1,13 @@
+import { APP_NAME } from '@config/constants'
+import { Crumb } from '../types/misc/crumb.type'
 import { HouseFillIcon } from '../icons'
 import { Routes } from '@config/enums'
-import { Crumb } from '../types/misc/crumb.type'
 
 const DEFAULT_CRUMB: Crumb = {
   code: 'root',
   href: Routes.Root,
   icon: <HouseFillIcon />,
-  label: 'afrodita.app',
+  label: APP_NAME,
 }
 
 export const getPathCrumbs = (pathname: string): Crumb[] => {

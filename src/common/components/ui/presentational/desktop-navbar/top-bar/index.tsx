@@ -121,8 +121,8 @@ export function TopBar({ logo }: TopBarProps) {
 
   return (
     <ContentWithDropdown
-      classNameContainer="absolute w-full text-shade-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.shade.950/0.9)] [--bg-to:theme(colors.shade.950)] z-50"
-      classNameContent="min-h-screen md:min-h-[215px]"
+      classNameContainer="grid-wrapper absolute top-0 w-full text-shade-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.shade.950/0.8)] [--bg-to:theme(colors.shade.950)] z-50"
+      classNameContent="min-h-screen md:min-h-0"
       content={getCurrentContent(currentContent)}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}
       variantsContainer={{
@@ -136,10 +136,10 @@ export function TopBar({ logo }: TopBarProps) {
     >
       {({ handleToggle }) => (
         <div className="grid-wrapper h-[var(--navbar-top-height)] w-full bg-transparent text-sm">
-          <div className="flex items-center justify-center gap-7">
+          <div className="flex items-center justify-center gap-5">
             {logo}
 
-            <div className="flex h-[32px] gap-5 rounded-md bg-shade-50/10 px-2 py-1.5 backdrop-blur-md">
+            <div className="flex gap-5 rounded-md bg-shade-50/20 px-2 py-1.5 backdrop-blur-md">
               <NextLink
                 className="text-1 flex items-center gap-x-2 text-shade-100"
                 href={Routes.SignUp}
@@ -165,7 +165,7 @@ export function TopBar({ logo }: TopBarProps) {
               className={`text-1 flex items-center gap-x-3`}
               onClick={(evt) => handleSetSearchContent(evt, handleToggle)}
             >
-              {<SearchIcon width={14} height={14} />}
+              {<SearchIcon className="text-base" />}
             </Button>
           </div>
         </div>

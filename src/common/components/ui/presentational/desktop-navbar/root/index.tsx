@@ -18,7 +18,7 @@ export const Root = (props: RootProps) => {
       transition={{ duration: showNavbar ? 0.2 : 0.1 }}
       {...restProps}
     >
-      <div className="relative">{children}</div>
+      {children}
     </motion.nav>
   )
 }

@@ -1,7 +1,8 @@
+import { twMerge } from 'tailwind-merge'
+
 import { ChevronRightIcon } from '@/common/icons'
 import { Crumb } from '../crumb'
 import { Crumb as TCrumb } from '@/common/types/misc/crumb.type'
-import clsx from 'clsx'
 
 export type BreadcrumbsProps = {
   crumbs: TCrumb[]
@@ -10,7 +11,7 @@ export type BreadcrumbsProps = {
 
 export const Breadcrumbs = ({ crumbs, containerProps }: BreadcrumbsProps) => {
   const { className = '' } = containerProps ?? {}
-  const classes = clsx('flex text-sm', className)
+  const classes = twMerge('flex text-sm', className)
 
   return (
     <nav className={classes} aria-label="Breadcrumb">
@@ -20,7 +21,7 @@ export const Breadcrumbs = ({ crumbs, containerProps }: BreadcrumbsProps) => {
             {idx < crumbs.length - 1 ? (
               <>
                 <Crumb {...crumb} isFirst={idx === 0} />
-                <ChevronRightIcon size="12" />
+                <ChevronRightIcon />
               </>
             ) : (
               <p>{crumb.label}</p>

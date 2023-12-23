@@ -10,6 +10,7 @@
       }
     }
 
+    --clr-body: var(--clr-shade-950);
     --bg-body: var(--clr-shade-50);
 
     // Font sizes
@@ -35,7 +36,7 @@
 
     // Components
     --navbar-top-height: 2.75rem;
-    --navbar-bottom-height: 1.625rem;
+    --navbar-bottom-height: 1.75rem;
     --navbar-full-height: calc(var(--navbar-top-height) + var(--navbar-bottom-height));
 
     // Misc
@@ -44,7 +45,8 @@
 
   // Dark mode
   html.dark {
-    // Body background
+    // Colors
+    --clr-body: var(--clr-shade-50);
     --bg-body: var(--clr-shade-950);
 
     // Misc

@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from '@/shadcn-components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,7 +20,7 @@ export const LangModeSwitch = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Globe2Icon className={`text-shade-800`} />
+        <Globe2Icon />
       </DropdownMenuTrigger>
 
       <DropdownMenuContent>
