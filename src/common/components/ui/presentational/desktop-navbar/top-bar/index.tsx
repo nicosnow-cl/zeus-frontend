@@ -1,14 +1,16 @@
 'use client'
 
-import * as Separator from '@radix-ui/react-separator'
+import { Link as NextLink } from '@intl/navigation'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import * as Separator from '@radix-ui/react-separator'
 
-import { BoxArrowRightIcon, PatchCheckFillIcon, SearchIcon } from '@/common/icons'
-import { ContentWithDropdown } from '../../../effects/dropdown-effect'
-import { Link as NextLink } from '@intl/navigation'
-import { Routes } from '@config/enums'
+import { ArrowRightIcon, BoxArrowRightIcon, PatchCheckFillIcon, SearchIcon } from '@/common/icons'
 import { Button } from '@/shadcn-components/ui/button'
+import { ContentWithDropdown } from '../../../effects/dropdown-effect'
+import { Routes } from '@config/enums'
+import { Input } from '@/shadcn-components/ui/input'
+import { APP_NAME } from '@config/constants'
 
 export type TopBarProps = {
   logo?: React.ReactNode
@@ -36,22 +38,79 @@ export function TopBar({ logo }: TopBarProps) {
     evt.preventDefault()
     evt.stopPropagation()
 
-    setter(false)
+    // setter(false)
+  }
+
+  const getLinks = () => {
+    return (
+      <>
+        <NextLink className="text-1 flex items-center gap-x-2 text-shade-100" href={Routes.Blog}>
+          {t('COMMON.sidebar.blog')}
+        </NextLink>
+
+        <NextLink className="text-1 flex items-center gap-x-2 text-shade-100" href={Routes.About}>
+          {t('COMMON.sidebar.about')}
+        </NextLink>
+
+        <NextLink className="text-1 flex items-center gap-x-2 text-shade-100" href={Routes.Contact}>
+          {t('COMMON.sidebar.contact')}
+        </NextLink>
+      </>
+    )
   }
 
   const getCurrentContent = (type: 'search') => {
     if (type === 'search') {
       return (
-        <div>
-          <h3>Buscar en tumoko.app</h3>
+        <div className="flex flex-col gap-5 p-5">
+          <div className="flex flex-col gap-5 md:hidden">
+            {getLinks()}
 
-          <div>
-            <ul>1</ul>
-            <ul>2</ul>
-            <ul>3</ul>
-            <ul>4</ul>
-            <ul>5</ul>
-            <ul>6</ul>
+            <Separator.Root className="separator-root" orientation="horizontal" decorative />
+          </div>
+
+          <div className="flex items-center gap-3">
+            <SearchIcon size={20} />
+
+            <Input
+              className="border-none py-5 text-2xl shadow-none"
+              type="text"
+              placeholder={`Buscar en ${APP_NAME}...`}
+            />
+          </div>
+
+          <div className="text-sm">
+            <span className="mt-5 text-gray-500 ">Enlaces rápidos...</span>
+
+            <ul className="flex flex-col gap-1">
+              <li>
+                <NextLink
+                  className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
+                  href={Routes.Blog}
+                >
+                  <ArrowRightIcon size={16} />
+                  Blog
+                </NextLink>
+              </li>
+              <li>
+                <NextLink
+                  className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
+                  href={Routes.Blog}
+                >
+                  <ArrowRightIcon size={16} />
+                  Blog
+                </NextLink>
+              </li>
+              <li>
+                <NextLink
+                  className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
+                  href={Routes.Blog}
+                >
+                  <ArrowRightIcon size={16} />
+                  Blog
+                </NextLink>
+              </li>
+            </ul>
           </div>
         </div>
       )
@@ -63,7 +122,7 @@ export function TopBar({ logo }: TopBarProps) {
   return (
     <ContentWithDropdown
       classNameContainer="absolute w-full text-shade-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.shade.950/0.9)] [--bg-to:theme(colors.shade.950)] z-50"
-      classNameContent="min-h-[215px]"
+      classNameContent="min-h-screen md:min-h-[215px]"
       content={getCurrentContent(currentContent)}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}
       variantsContainer={{
@@ -100,26 +159,7 @@ export function TopBar({ logo }: TopBarProps) {
               </NextLink>
             </div>
 
-            <NextLink
-              className="text-1 flex items-center gap-x-2 text-shade-100"
-              href={Routes.Blog}
-            >
-              {t('COMMON.sidebar.blog')}
-            </NextLink>
-
-            <NextLink
-              className="text-1 flex items-center gap-x-2 text-shade-100"
-              href={Routes.About}
-            >
-              {t('COMMON.sidebar.about')}
-            </NextLink>
-
-            <NextLink
-              className="text-1 flex items-center gap-x-2 text-shade-100"
-              href={Routes.Contact}
-            >
-              {t('COMMON.sidebar.contact')}
-            </NextLink>
+            <div className="hidden gap-5 md:flex">{getLinks()}</div>
 
             <Button
               className={`text-1 flex items-center gap-x-3`}

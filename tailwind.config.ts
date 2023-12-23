@@ -27,7 +27,7 @@ const config: Config = {
       },
       fontSize: {
         xs: ['var(--fs-100)', { lineHeight: '1rem' }],
-        sm: ['var(--fs-200)', { lineHeight: '1.25rem' }],
+        sm: ['var(--fs-300)', { lineHeight: '1.25rem' }],
         base: ['var(--fs-300)', { lineHeight: '1.5rem' }],
         lg: ['var(--fs-400)', { lineHeight: '1.75rem' }],
         xl: ['var(--fs-500)', { lineHeight: '1.75rem' }],

@@ -2,6 +2,7 @@ import Icons from './Icons'
 
 export const {
   Arrow90degRightIcon,
+  ArrowRightIcon,
   BoxArrowRightIcon,
   CaretLeftFillIcon,
   CaretRightFillIcon,

@@ -2,6 +2,7 @@
 
 export {
   Arrow90degRight,
+  ArrowRight,
   BoxArrowRight,
   CaretLeftFill,
   CaretRightFill,

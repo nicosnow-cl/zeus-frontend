@@ -1,44 +1,44 @@
 $type-scale: (
-  // (Major second, Perfect fourth)
+  // (Major second, Major third)
   100:
     (
-      small: 0.563rem,
-      big: 0.79rem,
+      small: 0.5rem,
+      big: 0.64rem,
     ),
   200: (
-    small: 0.75rem,
-    big: 0.889rem,
+    small: 0.69rem,
+    big: 0.8rem,
   ),
   300: (
-    small: 1rem,
+    small: 0.889rem,
     big: 1rem,
   ),
   400: (
     small: 1.125rem,
-    big: 1.333rem,
+    big: 1.25rem,
   ),
   500: (
     small: 1.266rem,
-    big: 1.777rem,
+    big: 1.563rem,
   ),
   600: (
     small: 1.424rem,
-    big: 2.369rem,
+    big: 1.953rem,
   ),
   700: (
-    small: 1.602rem,
-    big: 3.157rem,
+    small: 2.441rem,
+    big: 2.441rem,
   ),
   800: (
-    small: 1.802rem,
-    big: 4.209rem,
+    small: 3.052rem,
+    big: 3.052rem,
   ),
   900: (
     small: 2.027rem,
-    big: 5.61rem,
+    big: 3.815rem,
   ),
   950: (
-    small: 2.278rem,
-    big: 7.478rem,
+    small: 2.441rem,
+    big: 4.209rem,
   )
 );

@@ -17,7 +17,7 @@ export const BottomBar = () => {
     <div
       className={`grid-wrapper absolute top-[var(--navbar-top-height)] min-h-[var(--navbar-bottom-height)] w-full bg-shade-200/80 fill-shade-950 text-shade-950 backdrop-blur-md backdrop-saturate-150 dark:bg-shade-300/80`}
     >
-      <div className="breakout flex justify-between py-1">
+      <div className="flex justify-between py-1">
         <Breadcrumbs crumbs={crumbs} />
 
         <span className="flex items-center gap-x-3">
