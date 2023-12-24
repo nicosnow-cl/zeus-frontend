@@ -1,5 +1,19 @@
-.button-group {
-  & > :not(:first-child) {
-    border-left: 1px solid var(--clr-shade-800);
+.btn-group {
+  @apply flex rounded-2xl bg-shade-700/20 dark:bg-shade-300/20;
+
+  & > :first-child {
+    @apply rounded-l-2xl;
   }
+
+  & > :last-child {
+    @apply rounded-r-2xl;
+  }
+
+  & > :not(:first-child) {
+    @apply border-l border-shade-700/50 dark:border-shade-400/50;
+  }
+}
+
+.btn-link {
+  @apply flex items-center gap-x-2 px-3 py-1.5 text-shade-100 transition-[background] duration-150 hover:bg-gray-950/10;
 }

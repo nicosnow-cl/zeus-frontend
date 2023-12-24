@@ -5,12 +5,12 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 import * as Separator from '@radix-ui/react-separator'
 
+import { APP_NAME } from '@config/constants'
 import { ArrowRightIcon, BoxArrowRightIcon, PatchCheckFillIcon, SearchIcon } from '@/common/icons'
 import { Button } from '@/shadcn-components/ui/button'
 import { ContentWithDropdown } from '../../../effects/dropdown-effect'
-import { Routes } from '@config/enums'
 import { Input } from '@/shadcn-components/ui/input'
-import { APP_NAME } from '@config/constants'
+import { Routes } from '@config/enums'
 import * as ButtonGroup from '../../../../compounds/button-group'
 
 export type TopBarProps = {
@@ -42,18 +42,27 @@ export function TopBar({ logo }: TopBarProps) {
     // setter(false)
   }
 
-  const getLinks = () => {
+  const getLinks = (className: string = '') => {
     return (
       <>
-        <NextLink className="text-1 flex items-center gap-x-2 text-shade-100" href={Routes.Blog}>
+        <NextLink
+          className={`flex items-center gap-x-2 text-shade-100 ${className}`}
+          href={Routes.Blog}
+        >
           {t('COMMON.sidebar.blog')}
         </NextLink>
 
-        <NextLink className="text-1 flex items-center gap-x-2 text-shade-100" href={Routes.About}>
+        <NextLink
+          className={`flex items-center gap-x-2 text-shade-100 ${className}`}
+          href={Routes.About}
+        >
           {t('COMMON.sidebar.about')}
         </NextLink>
 
-        <NextLink className="text-1 flex items-center gap-x-2 text-shade-100" href={Routes.Contact}>
+        <NextLink
+          className={`flex items-center gap-x-2 text-shade-100 ${className}`}
+          href={Routes.Contact}
+        >
           {t('COMMON.sidebar.contact')}
         </NextLink>
       </>
@@ -65,7 +74,7 @@ export function TopBar({ logo }: TopBarProps) {
       return (
         <div className="flex flex-col gap-5 p-5">
           <div className="flex flex-col gap-5 md:hidden">
-            {getLinks()}
+            {getLinks('text-lg')}
 
             <Separator.Root className="separator-root" orientation="horizontal" decorative />
           </div>
@@ -156,7 +165,7 @@ export function TopBar({ logo }: TopBarProps) {
             <div className="hidden gap-5 md:flex">{getLinks()}</div>
 
             <Button
-              className={`text-1 flex items-center gap-x-3`}
+              className={`flex items-center gap-x-3`}
               onClick={(evt) => handleSetSearchContent(evt, handleToggle)}
             >
               {<SearchIcon className="text-base" />}

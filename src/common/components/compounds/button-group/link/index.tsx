@@ -12,10 +12,7 @@ export type LinkProps = Omit<
 }
 
 export function Link({ className, href, icon, label, ...restProps }: LinkProps) {
-  const classes = twMerge(
-    'flex items-center gap-x-2 text-shade-100 hover:bg-gray-950/20 p-2 transition-[background]',
-    className
-  )
+  const classes = twMerge('btn-link', className)
 
   return (
     <NextLink {...restProps} className={classes} href={href}>

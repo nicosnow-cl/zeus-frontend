@@ -1,18 +1,18 @@
 'use client'
 
 import { HTMLMotionProps, motion } from 'framer-motion'
+import { twMerge } from 'tailwind-merge'
 
-export type RootProps = HTMLMotionProps<'nav'> & {
-  children: React.ReactNode
+export type RootProps = Omit<HTMLMotionProps<'nav'>, 'ref'> & {
   showNavbar?: boolean
 }
 
-export const Root = (props: RootProps) => {
-  const { children, className = '', showNavbar = true, ...restProps } = props
+export const Root = ({ children, className, showNavbar = true, ...restProps }: RootProps) => {
+  const classes = twMerge('navbar', className)
 
   return (
     <motion.nav
-      className={`max-w-screen fixed z-40 min-h-[var(--navbar-full-height)] w-full bg-transparent ${className}`}
+      className={classes}
       initial={{ opacity: 0 }}
       animate={{ opacity: showNavbar ? 1 : 0 }}
       transition={{ duration: showNavbar ? 0.2 : 0.1 }}

@@ -1,3 +1,7 @@
+.navbar {
+  @apply fixed z-40 min-h-[var(--navbar-full-height)] w-full bg-transparent shadow-md;
+}
+
 .masonry-highlight:has(> *:hover) > *:not(:hover),
 .masonry-highlight:has(> *:focus-within) > *:not(:focus-within) {
   scale: 0.95;

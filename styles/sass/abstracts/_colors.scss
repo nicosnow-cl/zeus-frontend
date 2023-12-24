@@ -78,3 +78,99 @@ $colors: (
     950: hsl(29, 73%, 13%),
   ),
 );
+
+$color-keys: (
+  brand,
+  accent,
+  shade,
+  elite,
+  pro,
+  prime,
+  red,
+  orange,
+  amber,
+  yellow,
+  lime,
+  green,
+  emerald,
+  teal,
+  cyan,
+  sky,
+  blue,
+  indigo,
+  violet,
+  purple,
+  fuchsia,
+  pink,
+  rose
+);
+
+$tw-colors: ();
+
+@each $key in $color-keys {
+  $new-colors: (
+    $key: (
+      light: (
+        border: #{'border-' + $key + '-700'},
+        back-ground: #{'bg-' + $key + '-800/80'},
+        fill: #{'fill-' + $key + '-100'},
+        text: #{'text-' + $key + '-100'},
+      ),
+      dark: (
+        border: #{'border-' + $key + '-500'},
+        back-ground: #{'bg-' + $key + '-600/80'},
+        fill: #{'fill-' + $key + '-50'},
+        text: #{'text-' + $key + '-50'},
+      ),
+    ),
+  );
+
+  $tw-colors: map-merge($tw-colors, $new-colors);
+}
+
+$special-colors: (
+  elite: (
+    light: (
+      border: border-gray-300,
+      back-ground: bg-gray-950/90,
+      fill: fill-gray-100,
+      text: text-gray-100,
+    ),
+    dark: (
+      border: border-gray-400,
+      back-ground: bg-gray-800/90,
+      fill: fill-gray-50,
+      text: text-gray-50,
+    ),
+  ),
+  pro: (
+    light: (
+      border: border-pro-300,
+      back-ground: bg-pro-950/90,
+      fill: fill-pro-200,
+      text: text-pro-200,
+    ),
+    dark: (
+      border: border-pro-400,
+      back-ground: bg-pro-800/90,
+      fill: fill-pro-100,
+      text: text-pro-100,
+    ),
+  ),
+  prime: (
+    light: (
+      border: border-prime-500,
+      back-ground: bg-prime-950/90,
+      fill: fill-prime-200,
+      text: text-prime-200,
+    ),
+    dark: (
+      border: border-prime-400,
+      back-ground: bg-prime-800/90,
+      fill: fill-prime-100,
+      text: text-prime-100,
+    ),
+  ),
+);
+
+$tw-colors: map-merge($tw-colors, $special-colors);
