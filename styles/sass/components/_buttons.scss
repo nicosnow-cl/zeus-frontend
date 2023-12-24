@@ -1,3 +1,108 @@
+@use '../abstracts/mixins' as *;
+
+.btn {
+  @apply rounded-full px-3 py-1.5 backdrop-blur-md;
+
+  @include colored(slate);
+
+  &:hover {
+  }
+
+  &:disabled {
+  }
+
+  &:active {
+  }
+}
+
+.btn[data-color='brand'] {
+  @include colored(brand);
+}
+
+.btn[data-color='accent'] {
+  @include colored(accent);
+}
+
+.btn[data-color='elite'] {
+  @include colored(elite);
+}
+
+.btn[data-color='pro'] {
+  @include colored(pro);
+}
+
+.btn[data-color='prime'] {
+  @include colored(prime);
+}
+
+.btn[data-color='red'] {
+  @include colored(red);
+}
+
+.btn[data-color='orange'] {
+  @include colored(orange);
+}
+
+.btn[data-color='amber'] {
+  @include colored(amber);
+}
+
+.btn[data-color='yellow'] {
+  @include colored(yellow);
+}
+
+.btn[data-color='lime'] {
+  @include colored(lime);
+}
+
+.btn[data-color='green'] {
+  @include colored(green);
+}
+
+.btn[data-color='emerald'] {
+  @include colored(emerald);
+}
+
+.btn[data-color='teal'] {
+  @include colored(teal);
+}
+
+.btn[data-color='cyan'] {
+  @include colored(cyan);
+}
+
+.btn[data-color='sky'] {
+  @include colored(sky);
+}
+
+.btn[data-color='blue'] {
+  @include colored(blue);
+}
+
+.btn[data-color='indigo'] {
+  @include colored(indigo);
+}
+
+.btn[data-color='violet'] {
+  @include colored(violet);
+}
+
+.btn[data-color='purple'] {
+  @include colored(purple);
+}
+
+.btn[data-color='fuchsia'] {
+  @include colored(fuchsia);
+}
+
+.btn[data-color='pink'] {
+  @include colored(pink);
+}
+
+.btn[data-color='rose'] {
+  @include colored(rose);
+}
+
 .btn-group {
   @apply flex rounded-2xl bg-shade-700/20 dark:bg-shade-300/20;
 

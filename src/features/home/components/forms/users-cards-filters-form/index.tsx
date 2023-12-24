@@ -1,6 +1,5 @@
 'use client'
 
-import { Button } from '@/shadcn-components/ui/button'
 import { Checkbox } from '@/shadcn-components/ui/checkbox'
 import {
   Form,
@@ -22,6 +21,7 @@ import { LabeledSlider } from '@/common/components/ui/primitives/labeled-slider'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
 import { useEffectOnce } from '@/common/hooks/use-effect-once'
 import { useCallback } from 'react'
+import { Button } from '@/common/components/primitives/button'
 
 export type UsersCardsFiltersFormProps = {
   containerProps?: Omit<React.ComponentProps<'form'>, 'children'>

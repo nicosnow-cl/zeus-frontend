@@ -50,7 +50,9 @@
     $fill: map-get($theme, fill);
     $text: map-get($theme, text);
 
-    @apply #{$border $background $fill $text};
+    @apply #{$border $background/80 $fill $text};
+    --clr-bg: #{$background};
+    --clr-text: #{$text};
 
     html.dark & {
       $theme: map-get($colorValues, dark);
@@ -60,13 +62,35 @@
       $fill: map-get($theme, fill);
       $text: map-get($theme, text);
 
-      @apply #{$border $background $fill $text};
+      @apply #{$border $background/80 $fill $text};
+      --clr-bg: #{$background};
+      --clr-text: #{$text};
     }
   } @else {
-    @apply border-slate-700 bg-slate-800/80 fill-slate-100 text-slate-100;
+    $colorValues: map-get($tw-colors, shade);
+
+    $theme: map-get($colorValues, light);
+
+    $border: map-get($theme, border);
+    $background: map-get($theme, back-ground);
+    $fill: map-get($theme, fill);
+    $text: map-get($theme, text);
+
+    @apply #{$border $background/80 $fill $text};
+    --clr-bg: #{$background};
+    --clr-text: #{$text};
 
     html.dark & {
-      @apply border-slate-500 bg-slate-600/80 fill-slate-50 text-slate-50;
+      $theme: map-get($colorValues, dark);
+
+      $border: map-get($theme, border);
+      $background: map-get($theme, back-ground);
+      $fill: map-get($theme, fill);
+      $text: map-get($theme, text);
+
+      @apply #{$border $background/80 $fill $text};
+      --clr-bg: #{$background};
+      --clr-text: #{$text};
     }
   }
 }

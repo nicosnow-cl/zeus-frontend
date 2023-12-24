@@ -112,13 +112,13 @@ $tw-colors: ();
     $key: (
       light: (
         border: #{'border-' + $key + '-700'},
-        back-ground: #{'bg-' + $key + '-800/80'},
+        back-ground: #{'bg-' + $key + '-800'},
         fill: #{'fill-' + $key + '-100'},
         text: #{'text-' + $key + '-100'},
       ),
       dark: (
         border: #{'border-' + $key + '-500'},
-        back-ground: #{'bg-' + $key + '-600/80'},
+        back-ground: #{'bg-' + $key + '-600'},
         fill: #{'fill-' + $key + '-50'},
         text: #{'text-' + $key + '-50'},
       ),
@@ -132,13 +132,13 @@ $special-colors: (
   elite: (
     light: (
       border: border-gray-300,
-      back-ground: bg-gray-950/90,
+      back-ground: bg-gray-950,
       fill: fill-gray-100,
       text: text-gray-100,
     ),
     dark: (
       border: border-gray-400,
-      back-ground: bg-gray-800/90,
+      back-ground: bg-gray-800,
       fill: fill-gray-50,
       text: text-gray-50,
     ),
@@ -146,13 +146,13 @@ $special-colors: (
   pro: (
     light: (
       border: border-pro-300,
-      back-ground: bg-pro-950/90,
+      back-ground: bg-pro-950,
       fill: fill-pro-200,
       text: text-pro-200,
     ),
     dark: (
       border: border-pro-400,
-      back-ground: bg-pro-800/90,
+      back-ground: bg-pro-800,
       fill: fill-pro-100,
       text: text-pro-100,
     ),
@@ -160,13 +160,13 @@ $special-colors: (
   prime: (
     light: (
       border: border-prime-500,
-      back-ground: bg-prime-950/90,
+      back-ground: bg-prime-950,
       fill: fill-prime-200,
       text: text-prime-200,
     ),
     dark: (
       border: border-prime-400,
-      back-ground: bg-prime-800/90,
+      back-ground: bg-prime-800,
       fill: fill-prime-100,
       text: text-prime-100,
     ),

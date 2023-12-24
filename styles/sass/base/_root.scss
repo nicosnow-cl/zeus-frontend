@@ -32,7 +32,7 @@
     // Font weights
     --fw-light: 200;
     --fw-regular: 300;
-    --fw-medium: 500;
+    --fw-medium: 400;
     --fw-bold: 700;
 
     // Components
@@ -42,20 +42,16 @@
 
     // Misc
     --brand-gradient: linear-gradient(to right, var(--clr-shade-900) 0%, var(--clr-shade-100) 100%);
+  }
 
-    // Dark mode
-    html.dark {
-      // Colors
-      --clr-body: var(--clr-shade-50);
-      --clr-link: var(--clr-brand-800);
-      --bg-body: var(--clr-shade-950);
+  // Dark mode
+  html.dark {
+    // Colors
+    --clr-body: var(--clr-shade-50);
+    --clr-link: var(--clr-brand-800);
+    --bg-body: var(--clr-shade-950);
 
-      // Misc
-      --brand-gradient: linear-gradient(
-        to right,
-        var(--clr-shade-50) 0%,
-        var(--clr-shade-700) 100%
-      );
-    }
+    // Misc
+    --brand-gradient: linear-gradient(to right, var(--clr-shade-50) 0%, var(--clr-shade-700) 100%);
   }
 }
