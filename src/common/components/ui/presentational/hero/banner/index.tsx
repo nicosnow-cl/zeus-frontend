@@ -1,25 +1,20 @@
+import { twMerge } from 'tailwind-merge'
 import Image, { ImageProps } from 'next/image'
 
 export type BannerProps = {
-  containerProps?: Omit<React.ComponentProps<'div'>, 'children'>
+  containerProps?: Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>
   imageProps: Partial<ImageProps> & { src: string }
 }
 
-export const Banner = ({ containerProps, imageProps }: BannerProps) => {
-  const { alt = 'a beautiful hero image', className = '', ...restImgProps } = imageProps
+export function Banner({ containerProps, imageProps }: BannerProps) {
+  const { className, ...restContainerProps } = containerProps || {}
+  const { alt = 'a beautiful hero image', ...restImgProps } = imageProps || {}
+
+  const classesContainer = twMerge('hero-banner', className)
 
   return (
-    <div
-      className={`full-width relative bg-shade-950 ${containerProps?.className ?? ''}`}
-      {...containerProps}
-    >
-      <Image
-        alt={alt}
-        fill
-        {...restImgProps}
-        className={`full-width hero-banner ${className}`}
-        priority
-      />
+    <div {...restContainerProps} className={classesContainer}>
+      <Image {...restImgProps} alt={alt} fill priority />
     </div>
   )
 }

@@ -1,11 +1,11 @@
 import { useMessages } from 'next-intl'
 
-import * as Hero from '@/common/components/ui/presentational/hero'
-import { ContainerDecorativeCurve } from '@/common/components/ui/presentational/container-decorative-curve'
+import { DecorativeCurve } from '@/common/components/ui/presentational/decorative-curve'
 import { SectionWithAsideContainer } from '@/common/components/containers/section-with-aside'
 import { UsersCardsFiltersFormQueryLogic } from '@/features/home/components/containers/users-cards-filters-form-query-logic'
 import { UsersCardsMobileFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
 import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
+import * as Hero from '@/common/components/ui/presentational/hero'
 
 const UsersCardsFiltersForm = withIntlClientProvider(
   UsersCardsFiltersFormQueryLogic,
@@ -26,11 +26,15 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <>
-      <Hero.Root>
+      <Hero.Root className="grid-wrapper relative">
         <Hero.Banner
+          containerProps={{
+            className: 'full-width',
+          }}
           imageProps={{
             src: '/images/header2.jpg',
-            alt: 'sexy woman in the beach',
+            alt: 'sexy woman from behind',
+            className: 'full-width',
           }}
         />
 
@@ -40,7 +44,7 @@ export default function Layout({ children }: LayoutProps) {
           Rise.
         </Hero.Title>
 
-        <ContainerDecorativeCurve />
+        <DecorativeCurve className="full-width" />
       </Hero.Root>
 
       <SectionWithAsideContainer

@@ -1,8 +1,13 @@
-export type RootProps = React.HTMLAttributes<HTMLDivElement>
+import { twMerge } from 'tailwind-merge'
 
-export const Root = (props: RootProps) => (
-  <section
-    {...props}
-    className={`grid-wrapper hero relative h-[550px] overflow-hidden ${props?.className ?? ''}`}
-  />
-)
+export type RootProps = React.ComponentPropsWithoutRef<'section'>
+
+export function Root({ children, className, ...restProps }: RootProps) {
+  const classes = twMerge('hero', className)
+
+  return (
+    <section {...restProps} className={classes}>
+      {children}
+    </section>
+  )
+}

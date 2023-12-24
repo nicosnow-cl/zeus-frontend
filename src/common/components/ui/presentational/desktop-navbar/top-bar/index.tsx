@@ -39,7 +39,7 @@ export function TopBar({ logo }: TopBarProps) {
     evt.preventDefault()
     evt.stopPropagation()
 
-    // setter(false)
+    setter(false)
   }
 
   const getLinks = (className: string = '') => {
@@ -131,7 +131,7 @@ export function TopBar({ logo }: TopBarProps) {
 
   return (
     <ContentWithDropdown
-      classNameContainer="grid-wrapper absolute top-0 w-full text-shade-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.shade.950/0.8)] [--bg-to:theme(colors.shade.950)] z-50"
+      classNameContainer="grid-wrapper absolute top-0 w-full text-shade-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.shade.950/0.8)] [--bg-to:theme(colors.shade.950)] z-50 shadow-md"
       classNameContent="min-h-screen md:min-h-0"
       content={getCurrentContent(currentContent)}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}

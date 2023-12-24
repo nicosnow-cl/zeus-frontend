@@ -24,12 +24,12 @@
     background: conic-gradient(
       from var(--gradient-angle),
       var(--clr-brand-600),
-      var(--clr-accent-800)
+      var(--clr-accent-600)
     );
     border-radius: inherit;
     animation: rotation 15s linear infinite;
     filter: blur(2.75rem);
-    opacity: 0.275;
+    opacity: 0.4;
     z-index: -1;
   }
 }

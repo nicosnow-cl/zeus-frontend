@@ -31,6 +31,11 @@ const config: Config = {
         base: ['var(--fs-300)', { lineHeight: '1.5rem' }],
         lg: ['var(--fs-400)', { lineHeight: '1.75rem' }],
         xl: ['var(--fs-500)', { lineHeight: '1.75rem' }],
+        '2xl': ['var(--fs-600)', { lineHeight: '2rem' }],
+        '3xl': ['var(--fs-700)', { lineHeight: '2.25rem' }],
+        '4xl': ['var(--fs-800)', { lineHeight: '2.5rem' }],
+        '5xl': ['var(--fs-900)', { lineHeight: '1' }],
+        '6xl': ['var(--fs-950)', { lineHeight: '1' }],
       },
       colors: {
         brand: {

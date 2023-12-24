@@ -1,10 +1,13 @@
-export type TitleProps = React.ComponentPropsWithoutRef<'h1'>
+import { twMerge } from 'tailwind-merge'
 
-export const Title = (props: TitleProps) => (
-  <h1
-    {...props}
-    className={`absolute right-0 top-7  z-10 text-end text-7xl text-brand-700 ${
-      props?.className ?? ''
-    }`}
-  />
-)
+export type TitleProps = React.ComponentPropsWithoutRef<'p'>
+
+export function Title({ children, className, ...restProps }: TitleProps) {
+  const classes = twMerge('hero-title', className)
+
+  return (
+    <p {...restProps} className={classes}>
+      {children}
+    </p>
+  )
+}
