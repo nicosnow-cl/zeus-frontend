@@ -31,7 +31,7 @@
 }
 
 .btn-group {
-  @apply flex rounded-2xl bg-shade-700/20 dark:bg-shade-300/20;
+  @apply flex rounded-2xl;
 
   & > :first-child {
     @apply rounded-l-2xl;

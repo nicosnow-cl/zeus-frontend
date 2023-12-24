@@ -14,7 +14,7 @@ export const BottomBar = () => {
   const crumbs = useMemo(() => getPathCrumbs(pathname), [pathname])
 
   return (
-    <div className="grid-wrapper absolute bottom-0 w-full bg-shade-100/70 backdrop-blur-md backdrop-saturate-150 dark:bg-shade-900/70">
+    <div className="grid-wrapper glassmorphism absolute bottom-0 w-full border-b border-none">
       <div className="flex justify-between py-1">
         <Breadcrumbs crumbs={crumbs} />
 

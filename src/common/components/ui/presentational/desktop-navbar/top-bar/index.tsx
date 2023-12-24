@@ -131,7 +131,7 @@ export function TopBar({ logo }: TopBarProps) {
 
   return (
     <ContentWithDropdown
-      classNameContainer="grid-wrapper absolute top-0 w-full text-shade-50 backdrop-blur-md backdrop-saturate-150 [--bg-from:theme(colors.shade.950/0.8)] [--bg-to:theme(colors.shade.950)] z-50 shadow-md"
+      classNameContainer="grid-wrapper glassmorphism absolute top-0 w-full [--bg-from:theme(colors.shade.950/0.8)] [--bg-to:theme(colors.shade.950)] z-50 shadow-none border-0 border-b"
       classNameContent="min-h-screen md:min-h-0"
       content={getCurrentContent(currentContent)}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}
@@ -149,7 +149,7 @@ export function TopBar({ logo }: TopBarProps) {
           <div className="flex items-center justify-center gap-5">
             {logo}
 
-            <ButtonGroup.Root>
+            <ButtonGroup.Root className="bg-shade-200/10 dark:bg-shade-300/10">
               <ButtonGroup.Link
                 label={t('COMMON.sidebar.sign-up')}
                 href={Routes.SignUp}

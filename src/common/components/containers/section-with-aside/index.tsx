@@ -37,10 +37,7 @@ export const SectionWithAsideContainer: React.FunctionComponent<SectionWithAside
 
         <div
           {...asideRestProps}
-          className={twMerge(
-            'rounded-2xl bg-slate-100 px-2 py-3 shadow-sm dark:bg-shade-900',
-            asideClassName
-          )}
+          className={twMerge('glassmorphism rounded-2xl px-2 py-3 shadow-md', asideClassName)}
         >
           {aside}
         </div>
