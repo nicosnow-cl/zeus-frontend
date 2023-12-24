@@ -2,8 +2,12 @@ import { twMerge } from 'tailwind-merge'
 
 export type ButtonProps = React.ComponentPropsWithoutRef<'button'>
 
-export function Button({ className, ...restProps }: ButtonProps) {
+export function Button({ className, children, ...restProps }: ButtonProps) {
   const classes = twMerge(className, 'btn')
 
-  return <button {...restProps} className={classes} />
+  return (
+    <button {...restProps} className={classes}>
+      <span>{children}</span>
+    </button>
+  )
 }

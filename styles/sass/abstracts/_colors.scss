@@ -110,17 +110,30 @@ $tw-colors: ();
 @each $key in $color-keys {
   $new-colors: (
     $key: (
-      light: (
-        border: #{'border-' + $key + '-700'},
-        back-ground: #{'bg-' + $key + '-800'},
-        fill: #{'fill-' + $key + '-100'},
-        text: #{'text-' + $key + '-100'},
-      ),
+      // light: (
+      //   border: #{'border-' + $key + '-700'},
+      //   back-ground: #{'bg-' + $key + '-800'},
+      //   fill: #{'fill-' + $key + '-100'},
+      //   text: #{'text-' + $key + '-100'},
+      // ),
+      // dark: (
+      //   border: #{'border-' + $key + '-500'},
+      //   back-ground: #{'bg-' + $key + '-600'},
+      //   fill: #{'fill-' + $key + '-50'},
+      //   text: #{'text-' + $key + '-50'},
+      // ),
+      light:
+        (
+          border: #{'colors.' + $key + '.700'},
+          back-ground: #{'colors.' + $key + '.800'},
+          fill: #{'colors.' + $key + '.100'},
+          text: #{'colors.' + $key + '.100'},
+        ),
       dark: (
-        border: #{'border-' + $key + '-500'},
-        back-ground: #{'bg-' + $key + '-600'},
-        fill: #{'fill-' + $key + '-50'},
-        text: #{'text-' + $key + '-50'},
+        border: #{'colors.' + $key + '.500'},
+        back-ground: #{'colors.' + $key + '.600'},
+        fill: #{'colors.' + $key + '.50'},
+        text: #{'colors.' + $key + '.50'},
       ),
     ),
   );
@@ -131,44 +144,44 @@ $tw-colors: ();
 $special-colors: (
   elite: (
     light: (
-      border: border-gray-300,
-      back-ground: bg-gray-950,
-      fill: fill-gray-100,
-      text: text-gray-100,
+      border: 'colors.elite.300',
+      back-ground: 'colors.elite.950',
+      fill: 'colors.elite.100',
+      text: 'colors.elite.100',
     ),
     dark: (
-      border: border-gray-400,
-      back-ground: bg-gray-800,
-      fill: fill-gray-50,
-      text: text-gray-50,
+      border: 'colors.elite.400',
+      back-ground: 'colors.elite.800',
+      fill: 'colors.elite.50',
+      text: 'colors.elite.50',
     ),
   ),
   pro: (
     light: (
-      border: border-pro-300,
-      back-ground: bg-pro-950,
-      fill: fill-pro-200,
-      text: text-pro-200,
+      border: 'colors.pro.300',
+      back-ground: 'colors.pro.950',
+      fill: 'colors.pro.200',
+      text: 'colors.pro.200',
     ),
     dark: (
-      border: border-pro-400,
-      back-ground: bg-pro-800,
-      fill: fill-pro-100,
-      text: text-pro-100,
+      border: 'colors.pro.400',
+      back-ground: 'colors.pro.800',
+      fill: 'colors.pro.100',
+      text: 'colors.pro.100',
     ),
   ),
   prime: (
     light: (
-      border: border-prime-500,
-      back-ground: bg-prime-950,
-      fill: fill-prime-200,
-      text: text-prime-200,
+      border: 'colors.prime.500',
+      back-ground: 'colors.prime.950',
+      fill: 'colors.prime.200',
+      text: 'colors.prime.200',
     ),
     dark: (
-      border: border-prime-400,
-      back-ground: bg-prime-800,
-      fill: fill-prime-100,
-      text: text-prime-100,
+      border: 'colors.prime.400',
+      back-ground: 'colors.prime.800',
+      fill: 'colors.prime.100',
+      text: 'colors.prime.100',
     ),
   ),
 );

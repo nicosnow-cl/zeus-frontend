@@ -1,0 +1,42 @@
+@use 'colors' as *;
+
+@function get-colors($color: shade) {
+  $color-to-use: null;
+
+  @if map-has-key($tw-colors, $color) {
+    $color-to-use: $color;
+  } @else {
+    $color-to-use: shade;
+  }
+
+  $colorValues: map-get($tw-colors, $color-to-use);
+
+  $theme: map-get($colorValues, light);
+
+  $l-border: map-get($theme, border);
+  $l-bg: map-get($theme, back-ground);
+  $l-fill: map-get($theme, fill);
+  $l-text: map-get($theme, text);
+
+  $theme: map-get($colorValues, dark);
+
+  $d-border: map-get($theme, border);
+  $d-bg: map-get($theme, back-ground);
+  $d-fill: map-get($theme, fill);
+  $d-text: map-get($theme, text);
+
+  @return (
+    light: (
+      border: $l-border,
+      bg: $l-bg,
+      fill: $l-fill,
+      text: $l-text,
+    ),
+    dark: (
+      border: $d-border,
+      bg: $d-bg,
+      fill: $d-fill,
+      text: $d-text,
+    )
+  );
+}

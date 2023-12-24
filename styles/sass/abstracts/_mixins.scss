@@ -1,5 +1,6 @@
-@use 'breakpoints' as *;
 @use 'colors' as *;
+@use 'breakpoints' as *;
+@use 'functions' as *;
 
 @mixin mq($key) {
   $size: map-get($breakpoints, $key);
@@ -40,58 +41,53 @@
 }
 
 @mixin colored($color) {
-  @if map-has-key($tw-colors, $color) {
-    $colorValues: map-get($tw-colors, $color);
+  $colorValues: get-colors($color);
 
-    $theme: map-get($colorValues, light);
+  $theme: map-get($colorValues, light);
 
-    $border: map-get($theme, border);
-    $background: map-get($theme, back-ground);
-    $fill: map-get($theme, fill);
-    $text: map-get($theme, text);
+  border-color: theme(map-get($theme, border));
+  background-color: theme(map-get($theme, bg) / 80%);
+  fill: theme(map-get($theme, fill));
+  color: theme(map-get($theme, text));
 
-    @apply #{$border $background/80 $fill $text};
-    --clr-bg: #{$background};
-    --clr-text: #{$text};
+  html.dark & {
+    $theme: map-get($colorValues, dark);
 
-    html.dark & {
-      $theme: map-get($colorValues, dark);
+    border-color: theme(map-get($theme, border));
+    background-color: theme(map-get($theme, bg) / 70%);
+    fill: theme(map-get($theme, fill));
+    color: theme(map-get($theme, text));
+  }
+}
 
-      $border: map-get($theme, border);
-      $background: map-get($theme, back-ground);
-      $fill: map-get($theme, fill);
-      $text: map-get($theme, text);
-
-      @apply #{$border $background/80 $fill $text};
-      --clr-bg: #{$background};
-      --clr-text: #{$text};
+@mixin generate-all-data-colors() {
+  @each $key in $color-keys {
+    &[data-color='#{$key}'] {
+      @include colored($key);
     }
-  } @else {
-    $colorValues: map-get($tw-colors, shade);
+  }
+}
 
-    $theme: map-get($colorValues, light);
+@mixin button-colored($color) {
+  $colorValues: get-colors($color);
 
-    $border: map-get($theme, border);
-    $background: map-get($theme, back-ground);
-    $fill: map-get($theme, fill);
-    $text: map-get($theme, text);
+  $theme: map-get($colorValues, light);
 
-    @apply #{$border $background/80 $fill $text};
-    --clr-bg: #{$background};
-    --clr-text: #{$text};
+  border-color: theme(map-get($theme, border));
+  background-color: theme(map-get($theme, bg) / 80%);
+  fill: theme(map-get($theme, fill));
+  color: theme(map-get($theme, text));
 
-    html.dark & {
-      $theme: map-get($colorValues, dark);
+  &:hover {
+    background-color: theme(map-get($theme, bg) / 90%);
+  }
 
-      $border: map-get($theme, border);
-      $background: map-get($theme, back-ground);
-      $fill: map-get($theme, fill);
-      $text: map-get($theme, text);
+  &:disabled {
+    background-color: theme(map-get($theme, bg) / 60%);
+  }
 
-      @apply #{$border $background/80 $fill $text};
-      --clr-bg: #{$background};
-      --clr-text: #{$text};
-    }
+  &:active {
+    background-color: theme(map-get($theme, bg) / 100%);
   }
 }
 
