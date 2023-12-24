@@ -124,10 +124,10 @@ $tw-colors: ();
       // ),
       light:
         (
-          border: #{'colors.' + $key + '.700'},
+          border: #{'colors.' + $key + '.500'},
           back-ground: #{'colors.' + $key + '.800'},
-          fill: #{'colors.' + $key + '.100'},
-          text: #{'colors.' + $key + '.100'},
+          fill: #{'colors.' + $key + '.50'},
+          text: #{'colors.' + $key + '.50'},
         ),
       dark: (
         border: #{'colors.' + $key + '.500'},

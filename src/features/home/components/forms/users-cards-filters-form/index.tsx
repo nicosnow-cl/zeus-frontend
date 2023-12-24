@@ -179,6 +179,7 @@ export const UsersCardsFiltersForm = ({
                 ...DEFAULT_VALUES,
               })
             }
+            disabled
           >
             Limpiar
           </Button>

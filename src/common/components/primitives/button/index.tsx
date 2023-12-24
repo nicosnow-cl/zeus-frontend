@@ -7,7 +7,7 @@ export function Button({ className, children, ...restProps }: ButtonProps) {
 
   return (
     <button {...restProps} className={classes}>
-      <span>{children}</span>
+      {children}
     </button>
   )
 }

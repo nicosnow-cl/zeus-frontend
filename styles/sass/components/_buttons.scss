@@ -1,26 +1,32 @@
 @use '../abstracts/mixins' as *;
 
 .btn {
-  @apply relative rounded-full border px-3 py-1.5 backdrop-blur-md;
+  @apply relative overflow-hidden rounded-full border px-3 py-1.5 backdrop-blur-md transition-[background,transform,shadow] duration-200 ease-in-out;
 
   @include button-colored(shade);
 
   &::before {
-    @apply absolute inset-0 opacity-0 shadow-md transition-opacity duration-150;
+    @apply absolute inset-0;
+
     content: '';
-    border-radius: inherit;
+    border-radius: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to left, rgb(var(--clr-shade-50-ch) / 5%), transparent);
+    transform: skewX(45deg) translate(0);
   }
 
-  &:hover {
-    &::before {
-      @apply opacity-100;
-    }
+  &:hover:not(:disabled),
+  &:active:not(:disabled) {
+    @apply -translate-y-[0.1rem] shadow-md;
   }
 
   &:disabled {
-  }
+    @apply cursor-not-allowed;
 
-  &:active {
+    &::before {
+      @apply opacity-0;
+    }
   }
 }
 

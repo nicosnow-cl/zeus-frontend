@@ -73,21 +73,22 @@
 
   $theme: map-get($colorValues, light);
 
-  border-color: theme(map-get($theme, border));
-  background-color: theme(map-get($theme, bg) / 80%);
+  border-color: theme(map-get($theme, border) / 50%);
+  background-color: theme(map-get($theme, bg) / 70%);
   fill: theme(map-get($theme, fill));
   color: theme(map-get($theme, text));
 
-  &:hover {
-    background-color: theme(map-get($theme, bg) / 90%);
+  &:hover:not(:disabled),
+  &:focus:not(:disabled) {
+    background-color: theme(map-get($theme, bg) / 80%);
+  }
+
+  &:active:not(:disabled) {
+    background-color: theme(map-get($theme, bg) / 95%);
   }
 
   &:disabled {
-    background-color: theme(map-get($theme, bg) / 60%);
-  }
-
-  &:active {
-    background-color: theme(map-get($theme, bg) / 100%);
+    opacity: 0.5;
   }
 }
 
