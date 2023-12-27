@@ -23,13 +23,13 @@ export default async function Home({ searchParams }: { searchParams?: TSearchPar
 
   if (res.status === 'error') throw new Error(res.error)
 
-  return <UsersCardsSkeleton skeletonCount={20} />
+  // return <UsersCardsSkeleton skeletonCount={20} />
 
-  // return (
-  //   <UsersCardsInfiniteScrollContainer
-  //     key={randomUUID()}
-  //     initialData={res.data}
-  //     initialTotal={res.metadata.total}
-  //   />
-  // )
+  return (
+    <UsersCardsInfiniteScrollContainer
+      key={randomUUID()}
+      initialData={res.data}
+      initialTotal={res.metadata.total}
+    />
+  )
 }

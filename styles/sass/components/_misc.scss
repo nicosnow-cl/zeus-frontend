@@ -1,3 +1,7 @@
+.body-gradient {
+  background-image: var(--bg-gradient);
+}
+
 .navbar {
   @apply fixed z-40 min-h-[var(--navbar-full-height)] w-full bg-transparent shadow-md;
 }

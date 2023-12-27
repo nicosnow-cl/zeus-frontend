@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 @use '../abstracts' as *;
 
 @layer base {
@@ -16,8 +18,8 @@
 
     // Font sizes
     @each $scale, $screen-size in $type-scale {
-      $min: map-get($screen-size, 'small');
-      $max: map-get($screen-size, 'big');
+      $min: map-get($screen-size, small);
+      $max: map-get($screen-size, big);
 
       --fs-#{$scale}: #{clamp($min, 1vw + (($max - $min) * 2), $max)};
       // --fs-#{$scale}: #{clamp($min, 8vw, $max)};
@@ -41,6 +43,13 @@
     --navbar-full-height: calc(var(--navbar-top-height) + var(--navbar-bottom-height));
 
     // Misc
+    $shades: map-get($colors, shade);
+
+    --bg-gradient: radial-gradient(
+      ellipse farthest-corner at center bottom,
+      #{lighten(map-get($shades, 50), 5%)} 0%,
+      #{darken(map-get($shades, 50), 15%)} 100%
+    );
     --brand-gradient: linear-gradient(to right, var(--clr-shade-900) 0%, var(--clr-shade-100) 100%);
   }
 
@@ -52,6 +61,13 @@
     --bg-body: var(--clr-shade-950);
 
     // Misc
+    $shades: map-get($colors, shade);
+
+    --bg-gradient: radial-gradient(
+      ellipse farthest-corner at center bottom,
+      #{lighten(map-get($shades, 950), 20%)} 0%,
+      #{darken(map-get($shades, 950), 20%)} 100%
+    );
     --brand-gradient: linear-gradient(to right, var(--clr-shade-50) 0%, var(--clr-shade-700) 100%);
   }
 }

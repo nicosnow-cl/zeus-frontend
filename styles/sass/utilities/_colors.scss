@@ -1,3 +1,15 @@
+.bg-dropshadow {
+  --clr-shadow: var(--clr-shade-50);
+
+  -webkit-box-shadow: 0px 5px 100px 90px var(--clr-shadow);
+  -moz-box-shadow: 0px 5px 100px 90px var(--clr-shadow);
+  box-shadow: 0px 5px 100px 90px var(--clr-shadow);
+
+  html.dark & {
+    --clr-shadow: var(--clr-shade-950);
+  }
+}
+
 .glassmorphism {
   @apply border border-shade-300/20 bg-shade-100/70 backdrop-blur-lg dark:border-shade-900/70 dark:bg-shade-500/20;
 }

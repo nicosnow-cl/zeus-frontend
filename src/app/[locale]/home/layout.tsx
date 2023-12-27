@@ -26,7 +26,7 @@ export default function Layout({ children }: LayoutProps) {
 
   return (
     <>
-      <Hero.Root className="grid-wrapper relative">
+      <Hero.Root className="grid-wrapper bg-dropshadow relative">
         <Hero.Banner
           containerProps={{
             className: 'full-width',
