@@ -6,6 +6,7 @@ import { UsersCardsFiltersFormQueryLogic } from '@/features/home/components/cont
 import { UsersCardsMobileFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
 import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
 import * as Hero from '@/common/components/ui/presentational/hero'
+import { BgGradientOne, BgGradientTwo } from '@/common/icons/custom-icons'
 
 const UsersCardsFiltersForm = withIntlClientProvider(
   UsersCardsFiltersFormQueryLogic,
@@ -69,7 +70,7 @@ export default function Layout({ children }: LayoutProps) {
           </>
         }
         aside={
-          <div className="sticky top-[var(--navbar-full-height)] flex flex-col gap-3">
+          <div className="svg-background-1 sticky top-[var(--navbar-full-height)] flex flex-col gap-3">
             <div className="pl-2 text-gray-900 dark:text-gray-100">
               <strong className="text-lg font-semibold text-gray-950 dark:text-gray-50">
                 Filtros
