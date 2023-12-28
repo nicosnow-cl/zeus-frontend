@@ -149,7 +149,7 @@ export function TopBar({ logo }: TopBarProps) {
           <div className="flex items-center justify-center gap-5">
             {logo}
 
-            <ButtonGroup.Root className="bg-shade-200/10 dark:bg-shade-300/10">
+            <ButtonGroup.Root className="bg-shade-950/30 dark:bg-shade-300/10">
               <ButtonGroup.Link
                 label={t('COMMON.sidebar.sign-up')}
                 href={Routes.SignUp}

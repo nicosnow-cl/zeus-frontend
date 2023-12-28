@@ -16,7 +16,7 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { CheckIcon, CheckSquareIcon, ChevronDownIcon, SquareIcon } from '@/common/icons'
-import { TMenuSelectOption } from '@/common/types/misc/select-option'
+import { MenuSelectOption } from '@/common/types/misc/select-option'
 import { ValueBadge } from './value-badge'
 
 export type ComboboxProps = {
@@ -24,7 +24,7 @@ export type ComboboxProps = {
   emptyPlaceholder?: string
   inputPlaceholder?: string
   onChange?: (value: string[]) => void
-  options?: TMenuSelectOption[]
+  options?: MenuSelectOption[]
   triggerPlaceholder?: string
   value?: string[]
 }

@@ -1,4 +1,4 @@
-export type TMenuSelectOption = {
+export type MenuSelectOption = {
   label: string
   value: string | number
 }

@@ -12,16 +12,21 @@ import {
 import { Input } from '@/shadcn-components/ui/input'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { throttle } from 'lodash'
+import { useCallback } from 'react'
 
 import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appearances'
 import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
+import { actionFetchNationalities } from '@/common/actions/master-data/fetch-nationalities'
+import { Button } from '@/common/components/primitives/button'
 import { Combobox } from '@/common/components/ui/primitives/combobox'
 import { DEFAULT_VALUES, UsersCardsFilters } from '../../../store/user-cards-filters'
+import { EscortType } from '@//common/types/entities/misc/escort.type'
 import { LabeledSlider } from '@/common/components/ui/primitives/labeled-slider'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
+import { stringToMenuOption } from '@/common/mappers/string-to-select-option'
 import { useEffectOnce } from '@/common/hooks/use-effect-once'
-import { useCallback } from 'react'
-import { Button } from '@/common/components/primitives/button'
+
+const USER_TYPES: EscortType[] = ['VIP', 'PREMIUM', 'GOLD']
 
 export type UsersCardsFiltersFormProps = {
   containerProps?: Omit<React.ComponentProps<'form'>, 'children'>
@@ -41,6 +46,7 @@ export const UsersCardsFiltersForm = ({
     values,
   })
   const appearances = useMasterDataStore((state) => state.appearances)
+  const nationalities = useMasterDataStore((state) => state.nationalities)
   const services = useMasterDataStore((state) => state.services)
 
   const handleSubmit: SubmitHandler<UsersCardsFilters> = (data) => onSubmit?.(data)
@@ -48,7 +54,11 @@ export const UsersCardsFiltersForm = ({
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchMasterData = useCallback(
     throttle(async () => {
-      const res = await Promise.all([actionFetchAppearances(), actionFetchServices()])
+      const res = await Promise.all([
+        actionFetchAppearances(),
+        actionFetchServices(),
+        actionFetchNationalities(),
+      ])
 
       if (res[0].status === 'success')
         masterDataActions.setAppearances(
@@ -59,6 +69,9 @@ export const UsersCardsFiltersForm = ({
         masterDataActions.setServices(
           res[1].data.map(({ name, value }) => ({ label: name, value }))
         )
+
+      if (res[2].status === 'success')
+        masterDataActions.setNationalities(res[2].data.map(stringToMenuOption))
     }, 100),
     []
   )
@@ -81,6 +94,52 @@ export const UsersCardsFiltersForm = ({
             <FormItem>
               <FormControl>
                 <Input className="rounded-full" placeholder="Nombre / @usuario" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="type"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Combobox
+                  btnClassName="w-full"
+                  onChange={(values) => form.setValue('type', values as EscortType[])}
+                  options={USER_TYPES.map(stringToMenuOption)}
+                  triggerPlaceholder="Categoria"
+                  value={field.value}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <LabeledSlider
+          defaultValue={[18, 99]}
+          onValueCommit={(value) => console.log({ value })}
+          min={18}
+          max={99}
+          step={1}
+        />
+
+        <FormField
+          control={form.control}
+          name="nationalities"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Combobox
+                  btnClassName="w-full"
+                  onChange={(values) => form.setValue('nationalities', values)}
+                  options={nationalities}
+                  triggerPlaceholder="Nacionalidad"
+                  value={field.value}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -125,40 +184,36 @@ export const UsersCardsFiltersForm = ({
           )}
         />
 
-        <div className="gap-4 rounded-md bg-gray-100 p-2 dark:bg-gray-900">
+        <div className="flex gap-4 rounded-md bg-gray-100 p-2 dark:bg-gray-900">
           <FormField
             control={form.control}
-            name="withVideo"
+            name="hasPromo"
             render={({ field }) => (
-              <div className=" flex items-center gap-2 space-y-0">
-                <FormItem>
-                  <FormControl>
-                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                  </FormControl>
-                  <FormLabel>
-                    <p>Con video</p>
-                  </FormLabel>
-                  <FormMessage />
-                </FormItem>
-              </div>
+              <FormItem className=" flex items-center gap-2 space-y-0">
+                <FormControl>
+                  <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                </FormControl>
+                <FormLabel>
+                  <p>En promoción</p>
+                </FormLabel>
+                <FormMessage />
+              </FormItem>
             )}
           />
 
           <FormField
             control={form.control}
-            name="hasPromo"
+            name="withVideo"
             render={({ field }) => (
-              <div className=" flex items-center gap-2 space-y-0">
-                <FormItem>
-                  <FormControl>
-                    <Checkbox checked={field.value} onCheckedChange={field.onChange} />
-                  </FormControl>
-                  <FormLabel>
-                    <p>En promoción</p>
-                  </FormLabel>
-                  <FormMessage />
-                </FormItem>
-              </div>
+              <FormItem className="flex items-center gap-2 space-y-0">
+                <FormControl>
+                  <Checkbox checked={field.value} onCheckedChange={field.onChange} />
+                </FormControl>
+                <FormLabel>
+                  <p>Con video</p>
+                </FormLabel>
+                <FormMessage />
+              </FormItem>
             )}
           />
         </div>
@@ -179,7 +234,6 @@ export const UsersCardsFiltersForm = ({
                 ...DEFAULT_VALUES,
               })
             }
-            disabled
           >
             Limpiar
           </Button>

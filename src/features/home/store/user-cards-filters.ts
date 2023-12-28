@@ -1,12 +1,17 @@
 import { create } from 'zustand'
 
+import { EscortType } from '@/common/types/entities/misc/escort.type'
+
 export type UsersCardsFilters = {
-  nameUsername: string
+  age: [number, number]
   appearance: string[]
-  services: string[]
-  withVideo: boolean
   hasPromo: boolean
+  nameUsername: string
+  nationalities: string[]
   price: [number, number]
+  services: string[]
+  type: EscortType[]
+  withVideo: boolean
 }
 
 export type UsersCardsFiltersActions = {
@@ -14,12 +19,15 @@ export type UsersCardsFiltersActions = {
 }
 
 export const DEFAULT_VALUES: UsersCardsFilters = {
-  nameUsername: '',
+  age: [18, 99],
   appearance: [],
-  services: [],
-  withVideo: false,
   hasPromo: false,
+  nameUsername: '',
+  nationalities: [],
   price: [0, 500000],
+  services: [],
+  type: [],
+  withVideo: false,
 }
 
 export const useUsersCardsFiltersStore = create<UsersCardsFilters>(() => DEFAULT_VALUES)

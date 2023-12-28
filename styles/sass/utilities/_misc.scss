@@ -46,6 +46,7 @@
     background-size: cover; /* Cover the entire container */
     background-position: top; /* Center the image horizontally */
     background-repeat: no-repeat; /* Do not repeat the image */
+    z-index: -1;
   }
 }
 
@@ -61,5 +62,6 @@
     background-size: cover; /* Cover the entire container */
     background-position: top; /* Center the image horizontally */
     background-repeat: no-repeat; /* Do not repeat the image */
+    z-index: -1;
   }
 }
