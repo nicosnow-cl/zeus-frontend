@@ -93,7 +93,11 @@ export const UsersCardsFiltersForm = ({
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input className="rounded-full" placeholder="Nombre / @usuario" {...field} />
+                <Input
+                  className="rounded-full border border-gray-200 bg-shade-50/60 font-normal text-gray-950 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-shade-950/60 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
+                  placeholder="Nombre / @usuario"
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -184,12 +188,12 @@ export const UsersCardsFiltersForm = ({
           )}
         />
 
-        <div className="flex gap-4 rounded-md bg-gray-100 p-2 dark:bg-gray-900">
+        <div className="flex gap-4 rounded-md bg-shade-100 p-2 dark:bg-shade-900">
           <FormField
             control={form.control}
             name="hasPromo"
             render={({ field }) => (
-              <FormItem className=" flex items-center gap-2 space-y-0">
+              <FormItem className="flex items-center gap-2 space-y-0">
                 <FormControl>
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
