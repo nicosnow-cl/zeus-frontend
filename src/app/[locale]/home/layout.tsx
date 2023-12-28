@@ -70,7 +70,7 @@ export default function Layout({ children }: LayoutProps) {
           </>
         }
         aside={
-          <div className="svg-background-1 sticky top-[var(--navbar-full-height)] flex flex-col gap-3">
+          <div className="svg-background-2 sticky top-[var(--navbar-full-height)] flex flex-col gap-3">
             <div className="pl-2 text-gray-900 dark:text-gray-100">
               <strong className="text-lg font-semibold text-gray-950 dark:text-gray-50">
                 Filtros
@@ -87,7 +87,8 @@ export default function Layout({ children }: LayoutProps) {
           </div>
         }
         asideProps={{
-          className: 'hidden md:block min-w-[225px]',
+          className:
+            'hidden md:block min-w-[225px] bg-gradient-to-l from-accent-50/80 dark:from-brand-500/5 dark:to-accent-700/10',
         }}
       >
         {children}

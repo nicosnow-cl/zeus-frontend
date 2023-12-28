@@ -35,15 +35,31 @@
 }
 
 .svg-background-1 {
-  background-image: url('/gradients/bg-gradient-1.svg');
-  background-size: cover; /* Cover the entire container */
-  background-position: top; /* Center the image horizontally */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.4;
+    background-image: url('/gradients/bg-gradient-1.svg');
+    background-size: cover; /* Cover the entire container */
+    background-position: top; /* Center the image horizontally */
+    background-repeat: no-repeat; /* Do not repeat the image */
+  }
 }
 
 .svg-background-2 {
-  background-image: url('/gradients/bg-gradient-2.svg');
-  background-size: cover; /* Cover the entire container */
-  background-position: top; /* Center the image horizontally */
-  background-repeat: no-repeat; /* Do not repeat the image */
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.2;
+    background-image: url('/gradients/bg-gradient-2.svg');
+    background-size: cover; /* Cover the entire container */
+    background-position: top; /* Center the image horizontally */
+    background-repeat: no-repeat; /* Do not repeat the image */
+  }
 }
