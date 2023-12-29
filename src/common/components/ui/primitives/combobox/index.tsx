@@ -73,7 +73,7 @@ export function Combobox({
     if (!isControlled) setInternalValue((prev) => [...prev, newItem])
   }
 
-  const isSelected = (item: string) => value.includes(item)
+  const isSelected = (item: string) => value.includes(item.toLowerCase())
 
   const renderSelectedValues = () => {
     const valueLength = value.length
