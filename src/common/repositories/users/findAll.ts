@@ -61,8 +61,6 @@ export async function findAll({
       }
     }
 
-    console.log({ query, filter })
-
     let skip = 0
     if (page) skip = Number(page) * Number(limit)
 
