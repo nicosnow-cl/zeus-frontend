@@ -1,6 +1,6 @@
 import { ReadonlyURLSearchParams } from 'next/navigation'
 
-import { UsersCardsFilters } from '../store/user-cards-filters'
+import { UsersCardsFilters } from '@/common/repositories/users/findAll'
 
 export const searchParamsToUsersFilters = (
   params: ReadonlyURLSearchParams
@@ -11,14 +11,17 @@ export const searchParamsToUsersFilters = (
     switch (key) {
       case 'appearance':
       case 'services':
+      case 'nationality':
+      case 'type':
         filters[key] = value.split(',')
         break
+
       case 'withVideo':
       case 'hasPromo':
         filters[key] = value === 'true'
         break
       case 'name':
-        filters.nameUsername = value
+        filters[key] = value
         break
       default:
         break

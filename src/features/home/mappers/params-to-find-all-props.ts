@@ -8,8 +8,10 @@ export const searchParamsToFindAllProps = (searchParams?: TSearchParams): FindAl
     name: searchParams?.name,
     appearance: searchParams?.appearance?.split(','),
     services: searchParams?.services?.split(','),
-    hasPromo: searchParams?.promotion === 'true',
-    withVideo: searchParams?.video === 'true',
+    nationality: searchParams?.nationality?.split(','),
+    type: searchParams?.type?.split(','),
+    hasPromo: searchParams?.hasPromo === 'true',
+    withVideo: searchParams?.withVideo === 'true',
   }
 
   return {

@@ -5,14 +5,14 @@ body {
   background-color: var(--bg-body);
 }
 
-a,
-button,
-input {
-  &:focus {
-    outline: 0.2rem solid var(--clr-accent-500);
-    outline-offset: 0.25rem;
-  }
-}
+// a,
+// button,
+// input {
+//   &:focus {
+//     outline: 0.2rem solid var(--clr-accent-500);
+//     outline-offset: 0.25rem;
+//   }
+// }
 
 a {
   transition: color 0.2s ease-in-out;

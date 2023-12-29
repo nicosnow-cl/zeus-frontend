@@ -5,18 +5,23 @@ import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import sleep from '@lib/sleep'
 
-export type FindAllQuery = {
-  name?: string
-  appearance?: string[]
-  services?: string[]
-  hasPromo?: boolean
-  withVideo?: boolean
+export type UsersCardsFilters = {
+  age: [number, number]
+  appearance: string[]
+  gender: string[]
+  hasPromo: boolean
+  name: string
+  nationality: string[]
+  price: [number, number]
+  services: string[]
+  type: string[]
+  withVideo: boolean
 }
 
 export type FindAllProps = {
   page?: number | string
   limit?: number | string
-  query?: FindAllQuery
+  query?: Partial<UsersCardsFilters>
 }
 
 export async function findAll({
@@ -30,18 +35,33 @@ export async function findAll({
     const collection = db.collection<UserCardEntity>('cards')
 
     const filter: Filter<UserCardEntity> = {}
-    if (query) {
-      const { name, appearance, hasPromo, services, withVideo } = query
 
-      if (name) filter.name = { $regex: name, $options: 'i' }
-      if (appearance?.length)
-        filter.appearance = { $in: appearance.map((value) => new RegExp(value, 'i')) }
-      if (services?.length)
-        filter.services = { $in: services.map((value) => new RegExp(value, 'i')) }
-      if (hasPromo) filter.hasPromo = true
-      if (withVideo) filter.videos = { $exists: true, $not: { $size: 0 } }
-      // if (type) query.type = type;
+    if (query) {
+      for (const [key, value] of Object.entries(query)) {
+        switch (key) {
+          case 'appearance':
+          case 'services':
+          case 'nationality':
+          case 'type':
+            filter[key] = { $in: (value as string[]).map((value) => new RegExp(value, 'i')) }
+            break
+
+          case 'withVideo':
+            filter[key] = { $exists: true, $not: { $size: 0 } }
+            break
+          case 'hasPromo':
+            filter[key] = true
+            break
+          case 'name':
+            filter[key] = { $regex: value as string, $options: 'i' }
+            break
+          default:
+            break
+        }
+      }
     }
+
+    console.log({ query, filter })
 
     let skip = 0
     if (page) skip = Number(page) * Number(limit)

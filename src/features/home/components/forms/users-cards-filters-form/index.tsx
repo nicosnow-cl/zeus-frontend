@@ -15,16 +15,17 @@ import { throttle } from 'lodash'
 import { useCallback } from 'react'
 
 import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appearances'
-import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
 import { actionFetchNationalities } from '@/common/actions/master-data/fetch-nationalities'
+import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
 import { Button } from '@/common/components/primitives/button'
 import { Combobox } from '@/common/components/ui/primitives/combobox'
-import { DEFAULT_VALUES, UsersCardsFilters } from '../../../store/user-cards-filters'
+import { DEFAULT_VALUES } from '../../../store/user-cards-filters'
 import { EscortType } from '@//common/types/entities/misc/escort.type'
 import { LabeledSlider } from '@/common/components/ui/primitives/labeled-slider'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
 import { stringToMenuOption } from '@/common/mappers/string-to-select-option'
 import { useEffectOnce } from '@/common/hooks/use-effect-once'
+import { UsersCardsFilters } from '@/common/repositories/users/findAll'
 
 const USER_TYPES: EscortType[] = ['VIP', 'PREMIUM', 'GOLD']
 
@@ -89,7 +90,7 @@ export const UsersCardsFiltersForm = ({
       >
         <FormField
           control={form.control}
-          name="nameUsername"
+          name="name"
           render={({ field }) => (
             <FormItem>
               <FormControl>
@@ -133,13 +134,13 @@ export const UsersCardsFiltersForm = ({
 
         <FormField
           control={form.control}
-          name="nationalities"
+          name="nationality"
           render={({ field }) => (
             <FormItem>
               <FormControl>
                 <Combobox
                   btnClassName="w-full"
-                  onChange={(values) => form.setValue('nationalities', values)}
+                  onChange={(values) => form.setValue('nationality', values)}
                   options={nationalities}
                   triggerPlaceholder="Nacionalidad"
                   value={field.value}
@@ -231,6 +232,8 @@ export const UsersCardsFiltersForm = ({
         />
 
         <div className="flex justify-between">
+          <Button type="submit">Aplicar cambios</Button>
+
           <Button
             type="reset"
             onClick={() =>
@@ -241,7 +244,6 @@ export const UsersCardsFiltersForm = ({
           >
             Limpiar
           </Button>
-          <Button type="submit">Aplicar cambios</Button>
         </div>
       </form>
     </Form>

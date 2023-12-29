@@ -1,18 +1,6 @@
 import { create } from 'zustand'
 
-import { EscortType } from '@/common/types/entities/misc/escort.type'
-
-export type UsersCardsFilters = {
-  age: [number, number]
-  appearance: string[]
-  hasPromo: boolean
-  nameUsername: string
-  nationalities: string[]
-  price: [number, number]
-  services: string[]
-  type: EscortType[]
-  withVideo: boolean
-}
+import { UsersCardsFilters } from '@/common/repositories/users/findAll'
 
 export type UsersCardsFiltersActions = {
   update: (newValue: Partial<UsersCardsFilters>) => void
@@ -21,9 +9,10 @@ export type UsersCardsFiltersActions = {
 export const DEFAULT_VALUES: UsersCardsFilters = {
   age: [18, 99],
   appearance: [],
+  gender: [],
   hasPromo: false,
-  nameUsername: '',
-  nationalities: [],
+  name: '',
+  nationality: [],
   price: [0, 500000],
   services: [],
   type: [],
