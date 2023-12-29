@@ -40,7 +40,7 @@ export function withUsersCardsQueryLogic<T>({ Component }: WithUsersCardsQueryLo
       if (data.name) params.set('name', data.name)
       if (data.nationality?.length) params.set('nationality', data.nationality.join(','))
       if (data.services?.length) params.set('services', data.services.join(','))
-      if (data.type) params.set('type', data.type.join(','))
+      if (data.type?.length) params.set('type', data.type.join(','))
       if (data.withVideo) params.set('withVideo', 'true')
 
       const url = `${Routes.Home}?${params.toString()}`
