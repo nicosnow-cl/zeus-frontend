@@ -1,4 +1,3 @@
-import { Badge } from '@/shadcn-components/ui/badge'
 import { Slider } from '@/shadcn-components/ui/slider'
 import { SliderProps } from '@radix-ui/react-slider'
 import { useMemo, useState } from 'react'
@@ -24,11 +23,6 @@ export const LabeledSlider = ({
 
   const value = isControlled ? externalValue : internalValue
 
-  const [minPercent, maxPercent] = useMemo(
-    () => [((value[0] - min) / max) * 100, (value[1] / max) * 100],
-    [max, min, value]
-  )
-
   const handleValueChange = (value: number[]) => {
     if (value[0] >= value[1]) return
 
@@ -44,16 +38,11 @@ export const LabeledSlider = ({
   }
 
   return (
-    <div
-      className="rounded-md [--bg-from:theme(colors.mint.2)] [--bg-to:theme(colors.bronze.2)] dark:[--bg-from:theme(colors.mint.1)] dark:[--bg-to:theme(colors.bronze.1)]"
-      style={{
-        background: `linear-gradient(90deg, var(--bg-from) ${minPercent}%, var(--bg-to) ${maxPercent}%)`,
-      }}
-    >
-      <div className="justify-between">
-        <Badge className="bg-transparent">${value[0]}</Badge>
+    <div className="glassmorphism rounded-md bg-gradient-to-r from-green-500/5 to-red-500/5 dark:from-green-600/20 dark:to-red-600/20">
+      <div className="flex justify-between px-2 py-1">
+        <span>${value[0]}</span>
 
-        <Badge className="bg-transparent">${value[1]}</Badge>
+        <span>${value[1]}</span>
       </div>
 
       <Slider
