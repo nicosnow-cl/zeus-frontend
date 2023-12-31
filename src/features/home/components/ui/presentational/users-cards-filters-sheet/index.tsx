@@ -40,10 +40,14 @@ export const UsersCardsFiltersSheet = ({
   return (
     <Sheet {...restProps} onOpenChange={onOpenChange}>
       <SheetTrigger asChild>{trigger}</SheetTrigger>
-      <SheetContent className={CSS.glassmorphism} side="left">
+      <SheetContent className={CSS.glassmorphism} side="left" withPortal>
         <SheetHeader>
-          <SheetTitle>Filtros</SheetTitle>
-          <SheetDescription>Ajuste los resultados de acuerdo a sus preferencias</SheetDescription>
+          <SheetTitle className="pl-2 text-lg font-semibold text-gray-950 dark:text-gray-50">
+            Filtros
+          </SheetTitle>
+          <SheetDescription className="pl-2 text-gray-900 dark:text-gray-100">
+            Ajuste los resultados de acuerdo a sus preferencias
+          </SheetDescription>
         </SheetHeader>
 
         <UsersCardsFiltersFormWithQueryLogic />
