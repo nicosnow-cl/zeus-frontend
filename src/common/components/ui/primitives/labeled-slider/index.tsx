@@ -38,7 +38,7 @@ export const LabeledSlider = ({
   }
 
   return (
-    <div className="glassmorphism rounded-md bg-gradient-to-r from-green-500/5 to-red-500/5 dark:from-green-600/20 dark:to-red-600/20">
+    <div className="glassmorphism rounded-md bg-gradient-to-l from-shade-400/10 dark:from-shade-950/30">
       <div className="flex justify-between px-2 py-1">
         <span>${value[0]}</span>
 

@@ -124,14 +124,6 @@ export const UsersCardsFiltersForm = ({
           )}
         />
 
-        <LabeledSlider
-          defaultValue={[18, 99]}
-          onValueCommit={(value) => console.log({ value })}
-          min={18}
-          max={99}
-          step={1}
-        />
-
         <FormField
           control={form.control}
           name="nationality"
@@ -189,7 +181,23 @@ export const UsersCardsFiltersForm = ({
           )}
         />
 
-        <div className="flex gap-4 rounded-md bg-shade-100 p-2 dark:bg-shade-900">
+        <LabeledSlider
+          defaultValue={[18, 99]}
+          onValueCommit={(value) => console.log({ value })}
+          min={18}
+          max={99}
+          step={1}
+        />
+
+        <LabeledSlider
+          defaultValue={[50000, 500000]}
+          onValueCommit={(value) => console.log({ value })}
+          min={50000}
+          max={500000}
+          step={10000}
+        />
+
+        <div className="glassmorphism flex gap-4 rounded-md bg-gradient-to-l from-shade-400/10 p-2 dark:from-shade-950/30">
           <FormField
             control={form.control}
             name="hasPromo"
@@ -222,14 +230,6 @@ export const UsersCardsFiltersForm = ({
             )}
           />
         </div>
-
-        <LabeledSlider
-          defaultValue={[50000, 500000]}
-          onValueCommit={(value) => console.log({ value })}
-          min={50000}
-          max={500000}
-          step={10000}
-        />
 
         <div className="flex justify-between">
           <Button type="submit">Aplicar cambios</Button>
