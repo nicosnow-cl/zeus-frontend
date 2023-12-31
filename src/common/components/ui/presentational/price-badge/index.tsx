@@ -1,6 +1,6 @@
 import { twMerge } from 'tailwind-merge'
 
-import { Badge } from '../../primitives/Badge'
+import { Badge } from '../../primitives/badge'
 import { formatNumberToCurrency } from '@lib/format-number-to-currency'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 

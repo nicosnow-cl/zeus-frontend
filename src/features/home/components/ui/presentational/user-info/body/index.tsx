@@ -1,5 +1,5 @@
 import { AvatarWithName } from '@/common/components/ui/presentational/avatar-with-name'
-import { Badge } from '@/common/components/ui/primitives/Badge'
+import { Badge } from '@/common/components/ui/primitives/badge'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
 export type BodyProps = {

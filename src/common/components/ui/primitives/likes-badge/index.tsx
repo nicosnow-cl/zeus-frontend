@@ -1,4 +1,4 @@
-import { Badge } from '../Badge'
+import { Badge } from '../badge'
 import { HeartFillIcon } from '@/common/icons'
 import abbreviateNumber from '@lib/abbreviate-number'
 

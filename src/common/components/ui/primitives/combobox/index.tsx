@@ -1,6 +1,5 @@
 'use client'
 
-import { Badge } from '@/shadcn-components/ui/badge'
 import { Button } from '@/shadcn-components/ui/button'
 import { cn } from '@/shadcn-lib/utils'
 import {
@@ -16,12 +15,16 @@ import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { CheckIcon, CheckSquareIcon, ChevronDownIcon, SquareIcon } from '@/common/icons'
+import { CSS } from '@/common/utils/css-classes'
 import { MenuSelectOption } from '@/common/types/misc/select-option'
+import { twMerge } from 'tailwind-merge'
 import { ValueBadge } from './value-badge'
 
 export type ComboboxProps = {
   btnClassName?: string
+  btnProps?: React.ComponentPropsWithoutRef<typeof Button>
   emptyPlaceholder?: string
+  glassmorphism?: boolean
   inputPlaceholder?: string
   onChange?: (value: string[]) => void
   options?: MenuSelectOption[]
@@ -30,14 +33,22 @@ export type ComboboxProps = {
 }
 
 export function Combobox({
+  btnProps,
   emptyPlaceholder,
+  glassmorphism,
   inputPlaceholder,
   onChange,
+  options = [],
   triggerPlaceholder,
   value: externalValue,
-  btnClassName = '',
-  options = [],
 }: ComboboxProps) {
+  const { className: btnClassName, ...restBtnProps } = btnProps ?? {}
+  const btnClasses = twMerge(
+    'h-auto max-h-[76px] min-h-[38px] w-full justify-between rounded-full bg-shade-50/60 font-normal text-gray-950 dark:bg-shade-950/60 dark:text-gray-100',
+    glassmorphism ? CSS.glassmorphism : '',
+    btnClassName
+  )
+
   const isControlled = typeof externalValue != 'undefined'
 
   const [isOpen, setIsOpen] = useState(false)
@@ -93,8 +104,9 @@ export function Combobox({
     <Popover open={isOpen} onOpenChange={setIsOpen}>
       <PopoverTrigger asChild onClick={(evt) => handleTriggerClick(evt)}>
         <Button
+          {...restBtnProps}
           aria-expanded={isOpen}
-          className={`glassmorphism h-auto max-h-[76px] min-h-[38px] justify-between rounded-full bg-shade-50/60 font-normal text-gray-950 dark:bg-shade-950/60 dark:text-gray-100 ${btnClassName}`}
+          className={btnClasses}
           role="combobox"
           variant="outline"
         >
@@ -108,12 +120,12 @@ export function Combobox({
       </PopoverTrigger>
 
       <PopoverContent
-        className="p-0"
+        className={glassmorphism ? 'border-0 bg-transparent p-0' : 'p-0'}
         style={{
           minWidth: triggerAnchor?.offsetWidth || 'auto',
         }}
       >
-        <Command>
+        <Command className={glassmorphism ? CSS.glassmorphism : ''}>
           <CommandInput placeholder={inputPlaceholder ?? t('input-placeholder')} />
 
           <ScrollArea className="h-[360px]">

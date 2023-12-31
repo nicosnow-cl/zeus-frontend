@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 
-import { Badge } from '@/common/components/ui/primitives/Badge'
+import { Badge } from '@/common/components/ui/primitives/badge'
 import { GemIcon } from '@/common/icons'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 

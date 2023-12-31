@@ -9,7 +9,6 @@ import {
   FormLabel,
   FormMessage,
 } from '@/shadcn-components/ui/form'
-import { Input } from '@/shadcn-components/ui/input'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { throttle } from 'lodash'
 import { useCallback } from 'react'
@@ -26,6 +25,7 @@ import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data
 import { stringToMenuOption } from '@/common/mappers/string-to-select-option'
 import { useEffectOnce } from '@/common/hooks/use-effect-once'
 import { UsersCardsFilters } from '@/common/repositories/users/findAll'
+import { Input } from '@/common/components/ui/primitives/input'
 
 const USER_TYPES: EscortType[] = ['VIP', 'PREMIUM', 'GOLD']
 
@@ -94,11 +94,7 @@ export const UsersCardsFiltersForm = ({
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input
-                  className="rounded-full border border-gray-200 bg-shade-50/60 font-normal text-gray-950 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-shade-950/60 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
-                  placeholder="Nombre / @usuario"
-                  {...field}
-                />
+                <Input placeholder="Nombre / @usuario" glassmorphism {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -117,6 +113,7 @@ export const UsersCardsFiltersForm = ({
                   options={USER_TYPES.map(stringToMenuOption)}
                   triggerPlaceholder="Categoria"
                   value={field.value}
+                  glassmorphism
                 />
               </FormControl>
               <FormMessage />
@@ -136,6 +133,7 @@ export const UsersCardsFiltersForm = ({
                   options={nationalities}
                   triggerPlaceholder="Nacionalidad"
                   value={field.value}
+                  glassmorphism
                 />
               </FormControl>
               <FormMessage />
@@ -155,6 +153,7 @@ export const UsersCardsFiltersForm = ({
                   options={appearances}
                   triggerPlaceholder="Apariencia"
                   value={field.value}
+                  glassmorphism
                 />
               </FormControl>
               <FormMessage />
@@ -174,6 +173,7 @@ export const UsersCardsFiltersForm = ({
                   options={services}
                   triggerPlaceholder="Servicios"
                   value={field.value}
+                  glassmorphism
                 />
               </FormControl>
               <FormMessage />

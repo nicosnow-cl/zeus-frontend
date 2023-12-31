@@ -1,4 +1,4 @@
-import { Badge } from '../../Badge'
+import { Badge } from '../../badge'
 
 export type ValueBadgeProps = {
   badgeProps?: Omit<React.ComponentProps<typeof Badge>, 'children'>
