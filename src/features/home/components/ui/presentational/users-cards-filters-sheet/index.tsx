@@ -13,6 +13,7 @@ import {
   UsersCardsFiltersFormProps,
 } from '../../../forms/users-cards-filters-form'
 import { withUsersCardsQueryLogic } from '@/features/home/hocs/with-users-cards-query-logic'
+import { CSS } from '@/common/utils/css-classes'
 
 export const UsersCardsFiltersFormWithQueryLogic = withUsersCardsQueryLogic({
   Component: UsersCardsFiltersForm,
@@ -39,7 +40,7 @@ export const UsersCardsFiltersSheet = ({
   return (
     <Sheet {...restProps} onOpenChange={onOpenChange}>
       <SheetTrigger asChild>{trigger}</SheetTrigger>
-      <SheetContent side="left">
+      <SheetContent className={CSS.glassmorphism} side="left">
         <SheetHeader>
           <SheetTitle>Filtros</SheetTitle>
           <SheetDescription>Ajuste los resultados de acuerdo a sus preferencias</SheetDescription>
