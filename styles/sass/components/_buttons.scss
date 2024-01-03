@@ -1,51 +1,57 @@
 @use '../abstracts/mixins' as *;
 
-.btn {
-  @apply relative overflow-hidden rounded-full border px-3 py-1.5 backdrop-blur-md transition-[background,transform,shadow] duration-200 ease-in-out;
+@layer components {
+  .btn {
+    @apply relative h-auto overflow-hidden rounded-full border px-3 py-1.5 text-base font-normal transition-[background,transform,shadow] duration-200 ease-in-out;
 
-  @include button-colored(shade);
-
-  &::before {
-    @apply absolute inset-0;
-
-    content: '';
-    border-radius: 0;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(to left, rgb(var(--clr-shade-50-ch) / 7.5%), transparent);
-    transform: skewX(45deg) translate(0);
-  }
-
-  &:hover:not(:disabled),
-  &:active:not(:disabled) {
-    @apply -translate-y-[0.1rem] shadow-md;
-  }
-
-  &:disabled {
-    @apply cursor-not-allowed;
+    @include button-colored(gray);
 
     &::before {
-      @apply opacity-0;
+      @apply absolute inset-0;
+
+      content: '';
+      border-radius: 0;
+      width: 50%;
+      height: 100%;
+      background: linear-gradient(to left, rgb(var(--clr-shade-50-ch) / 7.5%), transparent);
+      transform: skewX(45deg) translate(0);
+    }
+
+    html.dark &::before {
+      background: linear-gradient(to left, rgb(var(--clr-shade-950-ch) / 5%), transparent);
+    }
+
+    &:hover:not(:disabled),
+    &:active:not(:disabled) {
+      @apply -translate-y-[0.1rem] shadow-md;
+    }
+
+    &:disabled {
+      @apply cursor-not-allowed;
+
+      &::before {
+        @apply opacity-0;
+      }
     }
   }
-}
 
-.btn-group {
-  @apply flex rounded-2xl;
+  .btn-group {
+    @apply flex rounded-2xl;
 
-  & > :first-child {
-    @apply rounded-l-2xl;
+    & > :first-child {
+      @apply rounded-l-2xl;
+    }
+
+    & > :last-child {
+      @apply rounded-r-2xl;
+    }
+
+    & > :not(:first-child) {
+      @apply border-l border-shade-700/50 dark:border-shade-400/50;
+    }
   }
 
-  & > :last-child {
-    @apply rounded-r-2xl;
+  .btn-link {
+    @apply flex items-center gap-x-2 px-3 py-1.5 text-shade-100 transition-[background] duration-150 hover:bg-gray-950/10;
   }
-
-  & > :not(:first-child) {
-    @apply border-l border-shade-700/50 dark:border-shade-400/50;
-  }
-}
-
-.btn-link {
-  @apply flex items-center gap-x-2 px-3 py-1.5 text-shade-100 transition-[background] duration-150 hover:bg-gray-950/10;
 }

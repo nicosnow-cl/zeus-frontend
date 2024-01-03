@@ -1,5 +1,6 @@
 export const CSS = {
   Primitives: {
+    button: `relative h-auto overflow-hidden rounded-full border px-3 py-1.5 text-base font-normal transition-[background,transform,shadow] duration-200 ease-in-out`,
     input: `rounded-full border border-gray-200 bg-shade-50/60 font-normal text-gray-950 hover:bg-gray-100 
     hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 
     disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:bg-shade-950/60 dark:text-gray-100 
