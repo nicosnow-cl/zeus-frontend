@@ -8,6 +8,6 @@ export const CSS = {
   },
   Utilities: {
     glassmorphism:
-      'border border-shade-300/20 bg-shade-100/60 backdrop-blur-lg dark:border-shade-900/70 dark:bg-shade-300/20',
+      'border border-shade-300/20 bg-shade-100/60 text-shade-950 backdrop-blur-lg dark:border-shade-900/70 dark:bg-shade-300/20 dark:text-shade-50',
   },
 }

@@ -7,11 +7,11 @@ import * as Separator from '@radix-ui/react-separator'
 
 import { APP_NAME } from '@config/constants'
 import { ArrowRightIcon, BoxArrowRightIcon, PatchCheckFillIcon, SearchIcon } from '@/common/icons'
-import { Button } from '@/shadcn-components/ui/button'
 import { ContentWithDropdown } from '../../../effects/dropdown-effect'
 import { Input } from '@/shadcn-components/ui/input'
 import { Routes } from '@config/enums'
 import * as ButtonGroup from '../../../../compounds/button-group'
+import { ColorButton } from '@/common/components/primitives/color-button'
 
 export type TopBarProps = {
   logo?: React.ReactNode
@@ -164,12 +164,12 @@ export function TopBar({ logo }: TopBarProps) {
 
             <div className="hidden gap-5 md:flex">{getLinks()}</div>
 
-            <Button
-              className={`flex items-center gap-x-3`}
+            <ColorButton
+              color="accent"
               onClick={(evt) => handleSetSearchContent(evt, handleToggle)}
             >
               {<SearchIcon className="text-base" />}
-            </Button>
+            </ColorButton>
           </div>
         </div>
       )}

@@ -1,21 +1,21 @@
 'use client'
 
-import { Button } from '@/shadcn-components/ui/button'
 import { twMerge } from 'tailwind-merge'
 import { useState } from 'react'
 
+import { Button } from '@/common/components/primitives/button'
 import { UsersCardsFiltersSheet } from '../../ui/presentational/users-cards-filters-sheet'
 
 export type UsersCardsMobileFiltersContainerProps = {
   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
 }
 
-export const UsersCardsMobileFiltersContainer = ({
+export function UsersCardsMobileFiltersContainer({
   containerProps,
-}: UsersCardsMobileFiltersContainerProps) => {
+}: UsersCardsMobileFiltersContainerProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
   const classes = twMerge(
-    'flex gap-2 justify-between rounded-full bg-slate-200 p-1 dark:bg-shade-900/25',
+    'flex gap-2 justify-between rounded-full bg-gradient-to-r from-shade-300 p-1',
     className
   )
 

@@ -11,8 +11,8 @@ export type ButtonProps = React.ComponentPropsWithoutRef<typeof ShadcnButton> & 
 
 export function Button({ className, children, glassmorphism, ...restProps }: ButtonProps) {
   const classes = twMerge(
-    Primitives.button,
     'btn',
+    Primitives.button,
     glassmorphism ? Utilities.glassmorphism : '',
     className
   )
