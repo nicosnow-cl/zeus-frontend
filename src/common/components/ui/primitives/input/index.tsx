@@ -3,12 +3,14 @@ import { twMerge } from 'tailwind-merge'
 
 import { CSS } from '@/common/utils/css-classes'
 
+const { Primitives, Utilities } = CSS
+
 export type InputProps = React.ComponentPropsWithoutRef<typeof ShadcnInput> & {
   glassmorphism?: boolean
 }
 
 export function Input({ className, glassmorphism, ...restProps }: InputProps) {
-  const classes = twMerge(CSS.input, glassmorphism ? CSS.glassmorphism : '', className)
+  const classes = twMerge(Primitives.input, glassmorphism ? Utilities.glassmorphism : '', className)
 
   return <ShadcnInput {...restProps} className={classes} />
 }

@@ -20,6 +20,8 @@ import { MenuSelectOption } from '@/common/types/misc/select-option'
 import { twMerge } from 'tailwind-merge'
 import { ValueBadge } from './value-badge'
 
+const { Utilities } = CSS
+
 export type ComboboxProps = {
   btnClassName?: string
   btnProps?: React.ComponentPropsWithoutRef<typeof Button>
@@ -45,7 +47,7 @@ export function Combobox({
   const { className: btnClassName, ...restBtnProps } = btnProps ?? {}
   const btnClasses = twMerge(
     'h-auto max-h-[76px] min-h-[38px] w-full justify-between rounded-full bg-shade-50/60 font-normal text-gray-950 dark:bg-shade-950/60 dark:text-gray-100',
-    glassmorphism ? CSS.glassmorphism : '',
+    glassmorphism ? Utilities.glassmorphism : '',
     btnClassName
   )
 
@@ -59,8 +61,10 @@ export function Combobox({
   const value = isControlled ? externalValue : internalValue
 
   const handleSelectAll = () => {
-    onChange?.(options.map((option) => option.value?.toString()))
-    if (!isControlled) setInternalValue(options.map((option) => option.value?.toString()))
+    const allValues = options.map((option) => option.value?.toString().toLowerCase())
+
+    onChange?.(allValues)
+    if (!isControlled) setInternalValue(allValues)
   }
 
   const handleClear = () => {
@@ -125,7 +129,7 @@ export function Combobox({
           minWidth: triggerAnchor?.offsetWidth || 'auto',
         }}
       >
-        <Command className={glassmorphism ? CSS.glassmorphism : ''}>
+        <Command className={glassmorphism ? Utilities.glassmorphism : ''}>
           <CommandInput placeholder={inputPlaceholder ?? t('input-placeholder')} />
 
           <ScrollArea className="h-[360px]">

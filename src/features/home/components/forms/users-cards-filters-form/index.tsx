@@ -197,7 +197,7 @@ export const UsersCardsFiltersForm = ({
           step={10000}
         />
 
-        <div className="glassmorphism flex gap-4 rounded-md bg-gradient-to-l from-shade-400/10 p-2 dark:from-shade-950/30">
+        <div className="glassmorphism flex gap-4 rounded-md bg-gradient-to-l p-2">
           <FormField
             control={form.control}
             name="hasPromo"

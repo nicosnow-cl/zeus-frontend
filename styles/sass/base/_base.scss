@@ -24,6 +24,12 @@ a {
   }
 
   &:visited {
-    color: var(--clr-accent-600);
+    color: var(--clr-brand-400);
+  }
+
+  html.dark & {
+    &:visited {
+      color: var(--clr-brand-300);
+    }
   }
 }
