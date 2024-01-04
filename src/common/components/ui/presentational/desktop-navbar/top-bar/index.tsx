@@ -11,7 +11,7 @@ import { ContentWithDropdown } from '../../../effects/dropdown-effect'
 import { Input } from '@/shadcn-components/ui/input'
 import { Routes } from '@config/enums'
 import * as ButtonGroup from '../../../../compounds/button-group'
-import { ColorButton } from '@/common/components/primitives/color-button'
+import { Button } from '@/common/components/primitives/button'
 
 export type TopBarProps = {
   logo?: React.ReactNode
@@ -164,12 +164,9 @@ export function TopBar({ logo }: TopBarProps) {
 
             <div className="hidden gap-5 md:flex">{getLinks()}</div>
 
-            <ColorButton
-              color="accent"
-              onClick={(evt) => handleSetSearchContent(evt, handleToggle)}
-            >
+            <Button onClick={(evt) => handleSetSearchContent(evt, handleToggle)} icon>
               {<SearchIcon className="text-base" />}
-            </ColorButton>
+            </Button>
           </div>
         </div>
       )}

@@ -15,7 +15,7 @@ export function UsersCardsMobileFiltersContainer({
 }: UsersCardsMobileFiltersContainerProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
   const classes = twMerge(
-    'flex gap-2 justify-between rounded-full bg-gradient-to-r from-shade-300 p-1',
+    'flex gap-2 justify-between rounded-full bg-gradient-to-r from-shade-200 p-1',
     className
   )
 

@@ -1,25 +1,34 @@
-import { Button as ShadcnButton } from '@/shadcn-components/ui/button'
 import { twMerge } from 'tailwind-merge'
 
 import { CSS } from '@/common/utils/css-classes'
+import { Colors } from '@/common/types/misc/colors.type'
 
-const { Primitives, Utilities } = CSS
+const { Utilities } = CSS
 
-export type ButtonProps = React.ComponentPropsWithoutRef<typeof ShadcnButton> & {
+export type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
+  color?: Colors
   glassmorphism?: boolean
+  icon?: boolean
 }
 
-export function Button({ className, children, glassmorphism, ...restProps }: ButtonProps) {
+export function Button({
+  color,
+  className,
+  children,
+  glassmorphism,
+  icon,
+  ...restProps
+}: ButtonProps) {
   const classes = twMerge(
     'btn',
-    Primitives.button,
     glassmorphism ? Utilities.glassmorphism : '',
+    icon ? 'aspect-square p-2' : '',
     className
   )
 
   return (
-    <ShadcnButton {...restProps} className={classes}>
+    <button {...restProps} className={classes} data-color={color}>
       {children}
-    </ShadcnButton>
+    </button>
   )
 }

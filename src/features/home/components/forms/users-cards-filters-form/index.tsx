@@ -236,6 +236,7 @@ export const UsersCardsFiltersForm = ({
 
           <Button
             type="reset"
+            color="brand"
             onClick={() =>
               form.reset({
                 ...DEFAULT_VALUES,
