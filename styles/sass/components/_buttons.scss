@@ -4,7 +4,7 @@
   .btn {
     @apply relative h-auto overflow-hidden rounded-full border px-3 py-1.5 text-base font-normal transition-[background,transform,shadow] duration-200 ease-in-out;
 
-    @include button-colored(shade);
+    @include button-colored(slate);
     @include generate-all-button-colored();
 
     &::before {

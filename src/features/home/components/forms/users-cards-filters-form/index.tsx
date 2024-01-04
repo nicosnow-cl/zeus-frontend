@@ -20,7 +20,7 @@ import { Button } from '@/common/components/primitives/button'
 import { Combobox } from '@/common/components/ui/primitives/combobox'
 import { DEFAULT_VALUES } from '../../../store/user-cards-filters'
 import { EscortType } from '@//common/types/entities/misc/escort.type'
-import { LabeledSlider } from '@/common/components/ui/primitives/labeled-slider'
+import { LabeledSlider } from '@/common/components/primitives/labeled-slider'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
 import { stringToMenuOption } from '@/common/mappers/string-to-select-option'
 import { useEffectOnce } from '@/common/hooks/use-effect-once'
@@ -195,6 +195,7 @@ export const UsersCardsFiltersForm = ({
           min={50000}
           max={500000}
           step={10000}
+          glassmorphism
         />
 
         <div className="glassmorphism flex gap-4 rounded-md bg-gradient-to-l p-2">
@@ -236,7 +237,6 @@ export const UsersCardsFiltersForm = ({
 
           <Button
             type="reset"
-            color="brand"
             onClick={() =>
               form.reset({
                 ...DEFAULT_VALUES,
