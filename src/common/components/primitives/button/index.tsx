@@ -22,10 +22,10 @@ export function Button({
 }: ButtonProps) {
   const classes = twMerge(
     'btn',
+    variant === 'secondary' && 'secondary',
+    icon && 'icon',
     glassmorphism && 'glassmorphism',
     glow && 'glow',
-    icon && 'aspect-square p-2',
-    variant === 'secondary' && 'secondary',
     className
   )
 

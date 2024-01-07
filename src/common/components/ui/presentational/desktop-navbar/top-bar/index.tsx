@@ -164,7 +164,7 @@ export function TopBar({ logo }: TopBarProps) {
 
             <div className="hidden gap-5 md:flex">{getLinks()}</div>
 
-            <Button onClick={(evt) => handleSetSearchContent(evt, handleToggle)} icon>
+            <Button onClick={(evt) => handleSetSearchContent(evt, handleToggle)} color="shade" icon>
               {<SearchIcon className="text-base" />}
             </Button>
           </div>

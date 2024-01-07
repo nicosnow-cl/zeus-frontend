@@ -3,7 +3,7 @@
 
 @layer components {
   .btn {
-    @apply relative h-auto rounded-full border px-3 py-1.5 text-base font-normal;
+    @apply relative h-auto rounded-full border px-3 py-1.5 text-base font-normal shadow-sm transition-shadow duration-300 ease-in-out;
 
     @include button-colored(slate);
     @include generate-all-button-colored();
@@ -23,6 +23,8 @@
 
     &:hover:not(:disabled),
     &:active:not(:disabled) {
+      @apply shadow-slate-950/20;
+
       background: var(--bg-color-darkness);
       background: radial-gradient(
         100% 100% at 100% 0,
@@ -31,17 +33,15 @@
       );
 
       html.dark & {
+        --bg-color-brightness: color-mix(in srgb, var(--bg-color), white 5%);
+        --bg-color-darkness: color-mix(in srgb, var(--bg-color), black 10%);
+
         background: var(--bg-color-brightness);
         background: radial-gradient(
           100% 100% at 100% 0,
           var(--bg-color-darkness) 0,
           var(--bg-color-brightness) 100%
         );
-      }
-
-      html.dark & {
-        --bg-color-brightness: color-mix(in srgb, var(--bg-color), white 5%);
-        --bg-color-darkness: color-mix(in srgb, var(--bg-color), black 10%);
       }
     }
 
@@ -56,7 +56,7 @@
     }
 
     &.secondary {
-      @apply border-none text-base font-medium shadow-sm shadow-slate-950/20;
+      @apply border-none text-base font-medium;
 
       --secondary-bg-color: var(--text-color);
 
@@ -74,6 +74,18 @@
         &:hover:not(:disabled),
         &:active:not(:disabled) {
           background: var(--secondary-bg-color);
+        }
+      }
+    }
+
+    &.icon {
+      @apply aspect-square p-2;
+
+      &:not(.secondary) {
+        background: var(--bg-color);
+
+        html.dark & {
+          background: var(--bg-color);
         }
       }
     }

@@ -232,14 +232,11 @@ export const UsersCardsFiltersForm = ({
           />
         </div>
 
-        <div className="flex justify-between">
-          <Button type="submit" glow>
-            Aplicar cambios
-          </Button>
+        <div className="flex justify-between gap-1">
+          <Button type="submit">Aplicar cambios</Button>
 
           <Button
             type="reset"
-            glow
             variant="secondary"
             onClick={() =>
               form.reset({
