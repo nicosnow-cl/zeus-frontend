@@ -1,3 +1,33 @@
 export const APP_NAME = 'afrodita.app'
 export const SHOW_THEME_PANEL = false
 export const DEFAULT_LOCALE = 'es'
+export const COLORS = [
+  'brand',
+  'accent',
+  'shade',
+  'elite',
+  'pro',
+  'prime',
+  'red',
+  'orange',
+  'amber',
+  'yellow',
+  'lime',
+  'green',
+  'emerald',
+  'teal',
+  'cyan',
+  'sky',
+  'blue',
+  'indigo',
+  'violet',
+  'purple',
+  'fuchsia',
+  'pink',
+  'rose',
+  'slate',
+  'gray',
+  'zinc',
+  'neutral',
+  'stone',
+]
