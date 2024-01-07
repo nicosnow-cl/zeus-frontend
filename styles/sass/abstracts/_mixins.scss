@@ -73,23 +73,10 @@
 
   $theme: map-get($colorValues, light);
 
-  border-color: theme(map-get($theme, border) / 40%);
-  background-color: theme(map-get($theme, bg));
-  fill: theme(map-get($theme, fill));
-  color: theme(map-get($theme, text));
-
-  &:hover:not(:disabled),
-  &:focus:not(:disabled) {
-    background-color: theme(map-get($theme, bg) / 87.5%);
-  }
-
-  &:active:not(:disabled) {
-    background-color: theme(map-get($theme, bg) / 97.5%);
-  }
-
-  &:disabled {
-    opacity: 0.5;
-  }
+  --background-base-color: #{theme(map-get($theme, bg))};
+  --border-base-color: #{theme(map-get($theme, border) / 10%)};
+  --fill-base-color: #{theme(map-get($theme, fill))};
+  --text-base-color: #{theme(map-get($theme, text))};
 }
 
 @mixin generate-all-button-colored() {

@@ -3,6 +3,12 @@
 @use '../abstracts' as *;
 
 @layer base {
+  @property --gradient-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
   :root {
     // Colors
     @each $color, $shades in $colors {

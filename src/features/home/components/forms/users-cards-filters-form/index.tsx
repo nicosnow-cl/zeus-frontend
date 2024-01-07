@@ -233,10 +233,14 @@ export const UsersCardsFiltersForm = ({
         </div>
 
         <div className="flex justify-between">
-          <Button type="submit">Aplicar cambios</Button>
+          <Button type="submit" glow>
+            Aplicar cambios
+          </Button>
 
           <Button
             type="reset"
+            glow
+            variant="secondary"
             onClick={() =>
               form.reset({
                 ...DEFAULT_VALUES,

@@ -1,10 +1,9 @@
+// (Major second, Major third)
 $type-scale: (
-  // (Major second, Major third)
-  100:
-    (
-      small: 0.578rem,
-      big: 0.67rem,
-    ),
+  100: (
+    small: 0.578rem,
+    big: 0.67rem,
+  ),
   200: (
     small: 0.69rem,
     big: 0.8rem,
@@ -40,5 +39,5 @@ $type-scale: (
   950: (
     small: 2.441rem,
     big: 4.209rem,
-  )
+  ),
 );

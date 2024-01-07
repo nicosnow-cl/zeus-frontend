@@ -1,14 +1,13 @@
 import { twMerge } from 'tailwind-merge'
 
-import { CSS } from '@/common/utils/css-classes'
 import { Colors } from '@/common/types/misc/colors.type'
-
-const { Utilities } = CSS
 
 export type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
   color?: Colors
   glassmorphism?: boolean
+  glow?: boolean
   icon?: boolean
+  variant?: 'primary' | 'secondary'
 }
 
 export function Button({
@@ -16,19 +15,23 @@ export function Button({
   className,
   children,
   glassmorphism,
+  glow,
   icon,
+  variant,
   ...restProps
 }: ButtonProps) {
   const classes = twMerge(
     'btn',
-    glassmorphism ? Utilities.glassmorphism : '',
-    icon ? 'aspect-square p-2' : '',
+    glassmorphism && 'glassmorphism',
+    glow && 'glow',
+    icon && 'aspect-square p-2',
+    variant === 'secondary' && 'secondary',
     className
   )
 
   return (
     <button {...restProps} className={classes} data-color={color}>
-      {children}
+      <div>{children}</div>
     </button>
   )
 }
