@@ -233,7 +233,9 @@ export const UsersCardsFiltersForm = ({
         </div>
 
         <div className="flex justify-between gap-1">
-          <Button type="submit">Aplicar cambios</Button>
+          <Button type="submit" glow>
+            Aplicar cambios
+          </Button>
 
           <Button
             type="reset"

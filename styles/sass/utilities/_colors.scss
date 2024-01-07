@@ -16,13 +16,16 @@
   }
 
   .glow {
+    position: relative;
+
     &::before,
     &::after {
-      @apply absolute transition-opacity duration-300 ease-in-out;
+      @apply transition-opacity duration-300 ease-in-out;
 
       --opacity: 0.2;
 
       content: '';
+      position: absolute;
       border-radius: inherit;
       background: conic-gradient(
         from var(--gradient-angle),

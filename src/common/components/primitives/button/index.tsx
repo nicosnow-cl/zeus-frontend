@@ -7,26 +7,25 @@ export type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
   glassmorphism?: boolean
   glow?: boolean
   icon?: boolean
-  variant?: 'primary' | 'secondary'
+  variant?: 'base' | 'primary' | 'secondary'
 }
 
 export function Button({
-  color,
-  className,
   children,
+  className,
+  color,
   glassmorphism,
   glow,
   icon,
-  variant,
+  variant = 'primary',
   ...restProps
 }: ButtonProps) {
   const classes = twMerge(
     'btn',
-    variant === 'secondary' && 'secondary',
+    variant !== 'base' && variant,
     icon && 'icon',
     glassmorphism && 'glassmorphism',
-    glow && 'glow',
-    className
+    glow && 'glow'
   )
 
   return (

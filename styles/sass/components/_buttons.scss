@@ -3,47 +3,21 @@
 
 @layer components {
   .btn {
-    @apply relative h-auto rounded-full border px-3 py-1.5 text-base font-normal shadow-sm transition-shadow duration-300 ease-in-out;
+    @apply rounded-full border px-3 py-1.5 text-base font-normal shadow-sm transition-shadow duration-300 ease-in-out;
 
     @include button-colored(slate);
     @include generate-all-button-colored();
 
-    --bg-color: var(--background-base-color);
     --text-color: var(--text-base-color);
     --fill-color: var(--fill-base-color);
     --border-color: var(--border-base-color);
+    --bg-color: var(--background-base-color);
 
-    --bg-color-brightness: color-mix(in srgb, var(--bg-color), white 10%);
-    --bg-color-darkness: color-mix(in srgb, var(--bg-color), black 20%);
-
+    /* base styles */
     color: var(--text-color);
     fill: var(--fill-color);
     border-color: var(--border-color);
-    background: var(--bg-color);
-
-    &:hover:not(:disabled),
-    &:active:not(:disabled) {
-      @apply shadow-slate-950/20;
-
-      background: var(--bg-color-darkness);
-      background: radial-gradient(
-        100% 100% at 100% 0,
-        var(--bg-color-brightness) 0,
-        var(--bg-color-darkness) 100%
-      );
-
-      html.dark & {
-        --bg-color-brightness: color-mix(in srgb, var(--bg-color), white 5%);
-        --bg-color-darkness: color-mix(in srgb, var(--bg-color), black 10%);
-
-        background: var(--bg-color-brightness);
-        background: radial-gradient(
-          100% 100% at 100% 0,
-          var(--bg-color-darkness) 0,
-          var(--bg-color-brightness) 100%
-        );
-      }
-    }
+    background: color-mix(in srgb, var(--bg-color), white 15%);
 
     &:active:not(:disabled) > :first-child {
       @apply scale-95 transform;
@@ -53,6 +27,40 @@
       @apply cursor-not-allowed;
 
       opacity: 0.7;
+    }
+
+    &.primary {
+      --bg-color: var(--clr-brand-500);
+
+      --text-color-brightness: color-mix(in srgb, var(--text-color), white 10%);
+      --text-color-darkness: color-mix(in srgb, var(--text-color), black 15%);
+      --bg-color-brightness: color-mix(in srgb, var(--bg-color), white 10%);
+      --bg-color-darkness: color-mix(in srgb, var(--bg-color), black 15%);
+
+      &:hover:not(:disabled),
+      &:active:not(:disabled) {
+        @apply shadow-slate-950/20;
+
+        color: var(--text-color-brightness);
+        background: var(--bg-color-darkness);
+        background: radial-gradient(
+          100% 100% at 100% 0,
+          var(--bg-color-brightness) 0,
+          var(--bg-color-darkness) 100%
+        );
+
+        html.dark & {
+          --bg-color-brightness: color-mix(in srgb, var(--bg-color), white 5%);
+          --bg-color-darkness: color-mix(in srgb, var(--bg-color), black 10%);
+
+          background: var(--bg-color-brightness);
+          background: radial-gradient(
+            100% 100% at 100% 0,
+            var(--bg-color-darkness) 0,
+            var(--bg-color-brightness) 100%
+          );
+        }
+      }
     }
 
     &.secondary {
@@ -78,10 +86,44 @@
       }
     }
 
+    &.glassmorphism {
+      @apply font-medium;
+
+      --glass-color: color-mix(in srgb, var(--text-color), black 80%);
+      --glass-bg-color: color-mix(in srgb, var(--bg-color) 20%, transparent);
+      --glass-border-color: color-mix(in srgb, var(--border-color) 80%, transparent);
+
+      color: var(--glass-color);
+      background: var(--glass-bg-color);
+      border-color: var(--glass-border-color);
+
+      &:hover:not(:disabled),
+      &:active:not(:disabled) {
+        --bg-color-darkness: color-mix(in srgb, var(--glass-bg-color), black 5%);
+
+        background: var(--bg-color-darkness);
+      }
+
+      html.dark & {
+        --glass-bg-color: color-mix(in srgb, var(--bg-color) 30%, transparent);
+        --glass-border-color: color-mix(in srgb, var(--border-color) 90%, transparent);
+
+        background: var(--glass-bg-color);
+        border-color: var(--glass-border-color);
+
+        &:hover:not(:disabled),
+        &:active:not(:disabled) {
+          --bg-color-darkness: color-mix(in srgb, var(--glass-bg-color), white 5%);
+
+          background: var(--bg-color-darkness);
+        }
+      }
+    }
+
     &.icon {
       @apply aspect-square p-2;
 
-      &:not(.secondary) {
+      &:not(.secondary):not(.glassmorphism) {
         background: var(--bg-color);
 
         html.dark & {
