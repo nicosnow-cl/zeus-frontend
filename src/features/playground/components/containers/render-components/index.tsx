@@ -14,6 +14,7 @@ import { Button } from '@/common/components/primitives/button'
 import { Colors } from '@/common/types/misc/colors.type'
 import { Label } from '@radix-ui/react-label'
 import * as Separator from '@radix-ui/react-separator'
+import { LogoIcon } from '@/common/icons'
 
 export const COLORS = [
   'brand',
@@ -54,9 +55,9 @@ export const COMPONENTS = [
       colors: COLORS,
       options: [
         { key: 'variant', type: 'string', values: ['base', 'primary', 'secondary'] },
-        { key: 'glow', type: 'boolean' },
-        { key: 'glassmorphism', type: 'boolean' },
         { key: 'icon', type: 'boolean' },
+        { key: 'glassmorphism', type: 'boolean' },
+        { key: 'glow', type: 'boolean' },
         { key: 'disabled', type: 'boolean' },
       ],
     },
@@ -146,12 +147,12 @@ export function RenderComponentsContainer() {
         return props.colors.map((color, idx) => (
           <div
             key={idx}
-            className="flex flex-col items-center gap-1 rounded-2xl bg-shade-200 p-2 dark:bg-shade-800"
+            className="z-0 flex flex-col items-center gap-1 rounded-2xl bg-shade-200 p-2 dark:bg-shade-800"
           >
             <Label className="text-sm font-semibold uppercase">{color}</Label>
 
             <Component {...componentState} color={color as Colors} type="submit">
-              {props.label}
+              {componentState['icon'] ? <LogoIcon /> : props.label}
             </Component>
           </div>
         ))
@@ -159,8 +160,6 @@ export function RenderComponentsContainer() {
         return null
     }
   }, [selectedComponent, componentState])
-
-  console.log({ componentState })
 
   return (
     <div className="z-0 mt-5 flex flex-col gap-2 rounded-2xl bg-shade-100 p-2 shadow dark:bg-shade-900">

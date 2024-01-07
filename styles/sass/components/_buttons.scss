@@ -8,18 +8,36 @@
     @include button-colored(slate);
     @include generate-all-button-colored();
 
-    --text-color: var(--text-base-color);
-    --fill-color: var(--fill-base-color);
+    --text-color: var(--clr-shade-50);
+    --fill-color: var(--clr-shade-50);
     --border-color: var(--border-base-color);
-    --bg-color: var(--background-base-color);
+    --bg-color: color-mix(in srgb, var(--background-base-color) 50%, black 40%);
+
+    --text-color-hover: color-mix(in srgb, var(--text-color), white 20%);
+    --bg-color-hover: color-mix(in srgb, var(--background-base-color) 70%, black 40%);
 
     /* base styles */
     color: var(--text-color);
     fill: var(--fill-color);
     border-color: var(--border-color);
-    background: color-mix(in srgb, var(--bg-color), white 15%);
+    background: var(--bg-color);
 
-    &:active:not(:disabled) > :first-child {
+    html.dark & {
+      --bg-color: color-mix(in srgb, var(--background-base-color) 80%, white 20%);
+
+      --text-color-hover: color-mix(in srgb, var(--text-color), white 20%);
+      --bg-color-hover: color-mix(in srgb, var(--background-base-color) 90%, white 15%);
+    }
+
+    &:hover:not(:disabled),
+    &:active:not(:disabled) {
+      @apply shadow-slate-950/20;
+
+      color: var(--text-color-hover);
+      background: var(--bg-color-hover);
+    }
+
+    &:active:not(:disabled) > div {
       @apply scale-95 transform;
     }
 
@@ -29,20 +47,18 @@
       opacity: 0.7;
     }
 
+    /* variants */
     &.primary {
-      --bg-color: var(--clr-brand-500);
+      --text-color: var(--text-base-color);
+      --fill-color: var(--fill-base-color);
+      --bg-color: color-mix(in srgb, var(--background-base-color) 80%, black 30%);
 
-      --text-color-brightness: color-mix(in srgb, var(--text-color), white 10%);
-      --text-color-darkness: color-mix(in srgb, var(--text-color), black 15%);
+      --bg-color-hover: color-mix(in srgb, var(--bg-color) 70%, black 40%);
       --bg-color-brightness: color-mix(in srgb, var(--bg-color), white 10%);
-      --bg-color-darkness: color-mix(in srgb, var(--bg-color), black 15%);
+      --bg-color-darkness: color-mix(in srgb, var(--bg-color), black 20%);
 
       &:hover:not(:disabled),
       &:active:not(:disabled) {
-        @apply shadow-slate-950/20;
-
-        color: var(--text-color-brightness);
-        background: var(--bg-color-darkness);
         background: radial-gradient(
           100% 100% at 100% 0,
           var(--bg-color-brightness) 0,
@@ -66,56 +82,64 @@
     &.secondary {
       @apply border-none text-base font-medium;
 
-      --secondary-bg-color: var(--text-color);
+      --text-color: var(--background-base-color);
+      --fill-color: var(--background-base-color);
+      --bg-color: color-mix(in srgb, var(--text-base-color) 30%, white 70%);
 
-      color: var(--bg-color);
-      background: var(--secondary-bg-color);
-
-      &:hover:not(:disabled),
-      &:active:not(:disabled) {
-        background: var(--secondary-bg-color);
-      }
+      --bg-color-hover: color-mix(in srgb, var(--text-base-color) 50%, white 40%);
 
       html.dark & {
-        --secondary-bg-color: color-mix(in srgb, var(--text-color), black 10%);
+        --bg-color: color-mix(in srgb, var(--text-base-color) 40%, white 50%);
 
-        &:hover:not(:disabled),
-        &:active:not(:disabled) {
-          background: var(--secondary-bg-color);
-        }
+        --bg-color-hover: color-mix(in srgb, var(--text-base-color) 40%, white 70%);
       }
     }
 
+    /* custom variants */
     &.glassmorphism {
-      @apply font-medium;
+      @apply font-medium transition-[background,color];
 
-      --glass-color: color-mix(in srgb, var(--text-color), black 80%);
-      --glass-bg-color: color-mix(in srgb, var(--bg-color) 20%, transparent);
-      --glass-border-color: color-mix(in srgb, var(--border-color) 80%, transparent);
+      --text-color-glass: color-mix(in srgb, var(--text-color) 15%, black 100%);
+      --fill-color-glass: color-mix(in srgb, var(--fill-color) 15%, black 100%);
+      --border-color-glass: color-mix(in srgb, var(--border-color) 80%, transparent);
+      --bg-color-glass: color-mix(in srgb, var(--bg-color) 30%, transparent);
 
-      color: var(--glass-color);
-      background: var(--glass-bg-color);
-      border-color: var(--glass-border-color);
+      color: var(--text-color-glass);
+      fill: var(--fill-color-glass);
+      border-color: var(--border-color-glass);
+      background: var(--bg-color-glass);
 
       &:hover:not(:disabled),
       &:active:not(:disabled) {
-        --bg-color-darkness: color-mix(in srgb, var(--glass-bg-color), black 5%);
+        --text-color-glass: color-mix(in srgb, var(--text-color) 100%, white 100%);
+        --fill-color-glass: color-mix(in srgb, var(--fill-color) 100%, white 100%);
+        --bg-color-glass-hover: color-mix(in srgb, var(--bg-color-hover) 30%, transparent);
 
-        background: var(--bg-color-darkness);
+        color: var(--text-color-glass);
+        fill: var(--fill-color-glass);
+        background: var(--bg-color-glass-hover);
       }
 
       html.dark & {
-        --glass-bg-color: color-mix(in srgb, var(--bg-color) 30%, transparent);
-        --glass-border-color: color-mix(in srgb, var(--border-color) 90%, transparent);
+        --text-color-glass: color-mix(in srgb, var(--text-color) 15%, white 100%);
+        --fill-color-glass: color-mix(in srgb, var(--fill-color) 15%, white 100%);
+        --border-color-glass: color-mix(in srgb, var(--border-color) 80%, transparent);
+        --bg-color-glass: color-mix(in srgb, var(--bg-color) 40%, transparent);
 
-        background: var(--glass-bg-color);
-        border-color: var(--glass-border-color);
+        color: var(--text-color-glass);
+        fill: var(--fill-color-glass);
+        border-color: var(--border-color-glass);
+        background: var(--bg-color-glass);
 
         &:hover:not(:disabled),
         &:active:not(:disabled) {
-          --bg-color-darkness: color-mix(in srgb, var(--glass-bg-color), white 5%);
+          --text-color-glass: color-mix(in srgb, var(--text-color) 100%, black 10%);
+          --fill-color-glass: color-mix(in srgb, var(--fill-color) 100%, black 10%);
+          --bg-color-glass-hover: color-mix(in srgb, var(--bg-color-hover) 50%, transparent);
 
-          background: var(--bg-color-darkness);
+          color: var(--text-color-glass);
+          fill: var(--fill-color-glass);
+          background: var(--bg-color-glass-hover);
         }
       }
     }
