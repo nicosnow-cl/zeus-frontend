@@ -1,10 +1,11 @@
 'use client'
 
 import { Link } from '@intl/navigation'
+
 import { LogoIcon } from '@/common/icons'
 import { Routes } from '@config/enums'
 import { useUiStore } from '@/common/store/ui'
-import * as DesktopNavbar from '../../ui/presentational/desktop-navbar'
+import * as DesktopNavbar from '../../presentationals/desktop-navbar'
 
 export const NavbarContainer = () => {
   const showNavbar = useUiStore((state) => state.showNavbar)

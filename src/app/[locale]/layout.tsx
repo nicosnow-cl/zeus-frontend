@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 
 import { fonts } from '@/theme/fonts'
 import { getValidLocale } from '@intl/locale'
-import { GradientBackground } from '@/common/components/ui/effects/gradient-background'
+import { GradientBackground } from '@/common/components/misc/gradient-background'
 import { MainContainer } from '@/common/components/containers/main'
 import { ThemeProvider } from '@/common/components/providers/theme-provider'
 

@@ -3,7 +3,7 @@ import { SliderProps } from '@radix-ui/react-slider'
 import { twMerge } from 'tailwind-merge'
 import { useState } from 'react'
 
-import { Badge } from '../../ui/primitives/badge'
+import { Badge } from '../../primitives/badge'
 
 export type LabeledSliderProps = Omit<SliderProps, 'children' | 'max'> & {
   containerProps?: Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>

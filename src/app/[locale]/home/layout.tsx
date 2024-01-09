@@ -1,12 +1,11 @@
 import { useMessages } from 'next-intl'
 
-import { DecorativeCurve } from '@/common/components/ui/presentational/decorative-curve'
+import { DecorativeCurve } from '@/common/components/presentationals/decorative-curve'
 import { SectionWithAsideContainer } from '@/common/components/containers/section-with-aside'
-import { UsersCardsFiltersFormQueryLogic } from '@/features/home/components/containers/users-cards-filters-form-query-logic'
-import { UsersCardsMobileFiltersContainer } from '@/features/home/components/containers/users-cards-filters'
+import { UsersCardsFiltersFormQueryLogic } from '@/features/home/components/presentationals/users-cards-filters-form-query-logic'
+import { UsersCardsMobileFiltersContainer } from '@/features/home/components/presentationals/users-cards-filters'
 import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
-import * as Hero from '@/common/components/ui/presentational/hero'
-import { BgGradientOne, BgGradientTwo } from '@/common/icons/custom-icons'
+import * as Hero from '@/common/components/presentationals/hero'
 
 const UsersCardsFiltersForm = withIntlClientProvider(
   UsersCardsFiltersFormQueryLogic,

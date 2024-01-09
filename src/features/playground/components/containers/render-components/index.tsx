@@ -4,7 +4,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/shadcn-components/ui
 import { useState } from 'react'
 
 import { Button } from '@/common/components/primitives/button'
-import { ComponentToRender } from '../../presentational/component-to-render'
+import { ComponentToRender } from '../../presentationals/component-to-render'
 import { ComponentToRender as TComponentToRender } from '../../../types/misc/component-to-render.type'
 import { COLORS } from '@config/constants'
 
