@@ -1,22 +1,28 @@
 import { Slider } from '@/shadcn-components/ui/slider'
 import { SliderProps } from '@radix-ui/react-slider'
-import { useMemo, useState } from 'react'
 import { twMerge } from 'tailwind-merge'
+import { useState } from 'react'
+
+import { Badge } from '../../ui/primitives/badge'
 
 export type LabeledSliderProps = Omit<SliderProps, 'children' | 'max'> & {
   containerProps?: Omit<React.ComponentPropsWithoutRef<'div'>, 'children'>
+  decorator?: React.ReactNode
   defaultValue?: [number, number]
   glassmorphism?: boolean
+  label?: string
   max: number
   value?: [number, number]
 }
 
 export const LabeledSlider = ({
   containerProps,
+  decorator,
   defaultValue,
+  label,
+  max,
   onValueChange,
   onValueCommit,
-  max,
   value: externalValue,
   min = 0,
   glassmorphism,
@@ -25,7 +31,7 @@ export const LabeledSlider = ({
   const { className, ...restContainerProps } = containerProps ?? {}
 
   const containerClasses = twMerge(
-    'rounded-md bg-gradient-to-l from-brand-400/10 dark:from-brand-950/30',
+    'rounded-md bg-gradient-to-l from-brand-400/10 dark:from-brand-950/30 relative',
     glassmorphism && 'glassmorphism',
     className
   )
@@ -52,10 +58,25 @@ export const LabeledSlider = ({
 
   return (
     <div {...restContainerProps} className={containerClasses}>
-      <div className="flex justify-between px-2 py-1">
-        <span>${value[0]}</span>
+      {label && (
+        <Badge
+          className="glassmorphism absolute -top-3 left-[0] right-[0] mx-auto w-fit text-base"
+          small
+        >
+          {label}
+        </Badge>
+      )}
 
-        <span>${value[1]}</span>
+      <div className="flex justify-between px-2 py-1">
+        <span>
+          {decorator}
+          {value[0]}
+        </span>
+
+        <span>
+          {decorator}
+          {value[1]}
+        </span>
       </div>
 
       <Slider

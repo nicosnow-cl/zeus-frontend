@@ -181,21 +181,49 @@ export const UsersCardsFiltersForm = ({
           )}
         />
 
-        <LabeledSlider
-          defaultValue={[18, 99]}
-          onValueCommit={(value) => console.log({ value })}
-          min={18}
-          max={99}
-          step={1}
+        <FormField
+          control={form.control}
+          name="age"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <LabeledSlider
+                  defaultValue={[18, 99]}
+                  glassmorphism
+                  label="Edad"
+                  max={99}
+                  min={18}
+                  onValueChange={(value) => field.onChange(value)}
+                  step={1}
+                  value={field.value}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
 
-        <LabeledSlider
-          defaultValue={[50000, 500000]}
-          onValueCommit={(value) => console.log({ value })}
-          min={50000}
-          max={500000}
-          step={10000}
-          glassmorphism
+        <FormField
+          control={form.control}
+          name="price"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <LabeledSlider
+                  decorator="$"
+                  defaultValue={[50000, 500000]}
+                  glassmorphism
+                  label="Tarifa"
+                  max={500000}
+                  min={50000}
+                  onValueChange={(value) => field.onChange(value)}
+                  step={10000}
+                  value={field.value}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
         />
 
         <div className="glassmorphism flex gap-4 rounded-md bg-gradient-to-l p-2">

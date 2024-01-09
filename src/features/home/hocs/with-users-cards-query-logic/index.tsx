@@ -33,10 +33,12 @@ export function withUsersCardsQueryLogic<T>({ Component }: WithUsersCardsQueryLo
     const handleUpdateHomeQuery = (data: Partial<UsersCardsFilters>) => {
       const params = new URLSearchParams()
 
+      if (data.age) params.set('age', data.age.join(','))
       if (data.appearance?.length) params.set('appearance', data.appearance.join(','))
       if (data.hasPromo) params.set('hasPromo', 'true')
       if (data.name) params.set('name', data.name)
       if (data.nationality?.length) params.set('nationality', data.nationality.join(','))
+      if (data.price) params.set('price', data.price.join(','))
       if (data.services?.length) params.set('services', data.services.join(','))
       if (data.type?.length) params.set('type', data.type.join(','))
       if (data.withVideo) params.set('withVideo', 'true')

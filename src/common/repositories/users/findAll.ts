@@ -3,7 +3,6 @@ import { Filter } from 'mongodb'
 import { getConnection } from '@/common/repositories/mongo'
 import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
-import sleep from '@lib/sleep'
 
 export type UsersCardsFilters = {
   age: [number, number]
@@ -39,6 +38,29 @@ export async function findAll({
     if (query) {
       for (const [key, value] of Object.entries(query)) {
         switch (key) {
+          case 'age':
+            filter[key] = { $gte: (value as number[])[0], $lte: (value as number[])[1] }
+            break
+          case 'price':
+            filter['$expr'] = {
+              $or: [
+                {
+                  $and: [
+                    { hasPromo: false },
+                    { $gte: ['$price.normal', (value as number[])[0]] },
+                    { $lte: ['$price.normal', (value as number[])[1]] },
+                  ],
+                },
+                {
+                  $and: [
+                    { hasPromo: true },
+                    { $gte: ['$price.promo', (value as number[])[0]] },
+                    { $lte: ['$price.promo', (value as number[])[1]] },
+                  ],
+                },
+              ],
+            }
+            break
           case 'appearance':
           case 'services':
           case 'nationality':
@@ -85,8 +107,6 @@ export async function findAll({
 
     await closeConnection()
 
-    // await sleep(10000)
-
     return JSON.parse(
       JSON.stringify({
         status: 'success',
@@ -96,6 +116,8 @@ export async function findAll({
     )
   } catch (err: any) {
     console.error(err)
+
+    await closeConnection()
 
     return {
       status: 'error',

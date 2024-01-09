@@ -9,7 +9,7 @@ export type UserCardEntity = {
   _id: string
   type: EscortType
   active: boolean
-  age: number
+  age: number[]
   appearance: string[]
   avatar: Image
   createdAt: string

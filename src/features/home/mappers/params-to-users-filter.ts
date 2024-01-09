@@ -9,6 +9,10 @@ export const searchParamsToUsersFilters = (
 
   for (const [key, value] of params) {
     switch (key) {
+      case 'age':
+      case 'price':
+        filters[key] = value.split(',').map(Number) as [number, number]
+        break
       case 'appearance':
       case 'services':
       case 'nationality':

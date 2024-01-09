@@ -5,12 +5,14 @@ import { TSearchParams } from '@/common/types/misc/search-params.type'
 
 export const searchParamsToFindAllProps = (searchParams?: TSearchParams): FindAllProps => {
   const query = {
-    name: searchParams?.name,
+    age: searchParams?.age?.split(',').map((value) => Number(value)),
     appearance: searchParams?.appearance?.split(','),
-    services: searchParams?.services?.split(','),
-    nationality: searchParams?.nationality?.split(','),
-    type: searchParams?.type?.split(','),
     hasPromo: searchParams?.hasPromo === 'true',
+    name: searchParams?.name,
+    nationality: searchParams?.nationality?.split(','),
+    price: searchParams?.price?.split(',').map((value) => Number(value)),
+    services: searchParams?.services?.split(','),
+    type: searchParams?.type?.split(','),
     withVideo: searchParams?.withVideo === 'true',
   }
 
