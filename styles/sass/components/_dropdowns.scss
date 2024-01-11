@@ -1,0 +1,6 @@
+@layer components {
+  .btn-combobox {
+    @apply h-auto max-h-[76px] min-h-[38px] w-full justify-between rounded-full bg-shade-50/60 text-base font-normal text-gray-950 focus:bg-gray-100 
+    data-[state="open"]:bg-gray-100 dark:bg-shade-950/60 dark:text-gray-100;
+  }
+}

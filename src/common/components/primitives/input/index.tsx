@@ -10,7 +10,11 @@ export type InputProps = React.ComponentPropsWithoutRef<typeof ShadcnInput> & {
 }
 
 export function Input({ className, glassmorphism, ...restProps }: InputProps) {
-  const classes = twMerge(Primitives.input, glassmorphism ? Utilities.glassmorphism : '', className)
+  const classes = twMerge(
+    Primitives.Inputs.input,
+    glassmorphism && Utilities.glassmorphism,
+    className
+  )
 
   return <ShadcnInput {...restProps} className={classes} />
 }

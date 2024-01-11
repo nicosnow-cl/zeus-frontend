@@ -236,9 +236,7 @@ export const UsersCardsFiltersForm = ({
                 <FormControl>
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
-                <FormLabel>
-                  <p>En promoción</p>
-                </FormLabel>
+                <FormLabel>En promoción</FormLabel>
                 <FormMessage />
               </FormItem>
             )}
@@ -248,13 +246,11 @@ export const UsersCardsFiltersForm = ({
             control={form.control}
             name="withVideo"
             render={({ field }) => (
-              <FormItem className="flex items-center gap-2 space-y-0">
+              <FormItem className="flex items-center gap-2 space-y-0 text-base">
                 <FormControl>
                   <Checkbox checked={field.value} onCheckedChange={field.onChange} />
                 </FormControl>
-                <FormLabel>
-                  <p>Con video</p>
-                </FormLabel>
+                <FormLabel>Con video</FormLabel>
                 <FormMessage />
               </FormItem>
             )}

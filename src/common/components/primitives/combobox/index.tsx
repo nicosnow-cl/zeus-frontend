@@ -20,7 +20,7 @@ import { MenuSelectOption } from '@/common/types/misc/select-option'
 import { twMerge } from 'tailwind-merge'
 import { ValueBadge } from './value-badge'
 
-const { Utilities } = CSS
+const { Primitives, Utilities } = CSS
 
 export type ComboboxProps = {
   btnClassName?: string
@@ -46,8 +46,8 @@ export function Combobox({
 }: ComboboxProps) {
   const { className: btnClassName, ...restBtnProps } = btnProps ?? {}
   const btnClasses = twMerge(
-    'h-auto max-h-[76px] min-h-[38px] w-full justify-between rounded-full bg-shade-50/60 font-normal text-gray-950 dark:bg-shade-950/60 dark:text-gray-100',
-    glassmorphism ? Utilities.glassmorphism : '',
+    Primitives.Dropdowns.btnCombobox,
+    glassmorphism && Utilities.glassmorphism,
     btnClassName
   )
 
