@@ -11,7 +11,7 @@ export const CSS = {
     },
     Dropdowns: {
       btnCombobox: `h-auto w-full justify-between rounded-full bg-shade-50/60 text-base font-normal text-gray-950 
-      focus:bg-gray-100 data-[state="open"]:bg-gray-100 dark:bg-shade-950/60 dark:text-gray-100`,
+      focus:bg-gray-100 data-[state="open"]:bg-gray-100 dark:bg-shade-950/60 dark:text-gray-100 dark:focus:bg-gray-800 dark:data-[state="open"]:bg-gray-800`,
     },
   },
   Utilities: {

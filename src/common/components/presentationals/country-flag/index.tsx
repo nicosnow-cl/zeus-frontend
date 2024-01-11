@@ -9,26 +9,28 @@ export function CountryFlag({ containerProps, countryCode }: CountryFlagProps) {
   const validCountryCode = getValidCountryCode(countryCode)
 
   function getValidCountryCode(countryCode: string) {
-    switch (countryCode) {
-      case 'Argentina':
+    const countryName = countryCode?.toLowerCase()
+
+    switch (countryName) {
+      case 'argentina':
         return 'ar'
-      case 'Brasileña':
+      case 'brasileña':
         return 'br'
-      case 'Chilena':
+      case 'chilena':
         return 'cl'
-      case 'Colombiana':
+      case 'colombiana':
         return 'co'
-      case 'Cubana':
+      case 'cubana':
         return 'cu'
-      case 'Paraguaya':
+      case 'paraguaya':
         return 'py'
-      case 'Venezolana':
+      case 'venezolana':
         return 've'
-      case 'Rusa':
+      case 'rusa':
         return 'ru'
-      case 'Española':
+      case 'española':
         return 'es'
-      case 'Ucraniana':
+      case 'ucraniana':
         return 'ua'
       default:
         return ''

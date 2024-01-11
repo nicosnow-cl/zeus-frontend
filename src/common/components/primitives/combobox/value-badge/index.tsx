@@ -1,17 +1,19 @@
+import { twMerge } from 'tailwind-merge'
 import { Badge } from '../../badge'
 
-export type ValueBadgeProps = {
-  badgeProps?: Omit<React.ComponentProps<typeof Badge>, 'children'>
+export type ValueBadgeProps = Omit<React.ComponentProps<typeof Badge>, 'children'> & {
   label: string
 }
 
-export const ValueBadge = ({ badgeProps, label }: ValueBadgeProps) => {
+export const ValueBadge = ({ className, label, ...restProps }: ValueBadgeProps) => {
+  const classes = twMerge('cursor-pointer bg-gray-950 p-1', className)
+
   const needSplitLabel = label.length > 13
 
   return (
     <Badge
-      {...badgeProps}
-      className="cursor-pointer bg-gray-950 p-1"
+      {...restProps}
+      className={classes}
       style={{
         fontSize: '9px',
         lineHeight: '12px',

@@ -17,16 +17,18 @@ import { actionFetchAppearances } from '@/common/actions/master-data/fetch-appea
 import { actionFetchNationalities } from '@/common/actions/master-data/fetch-nationalities'
 import { actionFetchServices } from '@/common/actions/master-data/fetch-services'
 import { Button } from '@/common/components/primitives/button'
-
 import { Combobox } from '@/common/components/primitives/combobox'
 import { DEFAULT_VALUES } from '../../../store/user-cards-filters'
 import { EscortType } from '@//common/types/entities/misc/escort.type'
 import { Input } from '@/common/components/primitives/input'
 import { LabeledSlider } from '@/common/components/primitives/labeled-slider'
 import { masterDataActions, useMasterDataStore } from '@/common/store/mater-data'
+import { MenuSelectOption } from '@/common/types/misc/select-option'
 import { stringToMenuOption } from '@/common/mappers/string-to-select-option'
 import { useEffectOnce } from '@/common/hooks/use-effect-once'
 import { UsersCardsFilters } from '@/common/repositories/users/findAll'
+import { UserTypeBadge } from '../../presentationals/user-type-badge'
+import { CountryFlag } from '@/common/components/presentationals/country-flag'
 
 const USER_TYPES: EscortType[] = ['VIP', 'PREMIUM', 'GOLD']
 
@@ -78,6 +80,45 @@ export const UsersCardsFiltersForm = ({
     []
   )
 
+  const renderTypeOption = (option: MenuSelectOption) => {
+    const { value, label } = option
+
+    return (
+      <>
+        <UserTypeBadge type={value as EscortType} small />
+        <span className="ml-2">{label}</span>
+      </>
+    )
+  }
+
+  const renderNationalityOption = (option: MenuSelectOption) => {
+    const { value, label } = option
+
+    return (
+      <>
+        <CountryFlag countryCode={value as string} />
+        <span className="ml-2">{label}</span>
+      </>
+    )
+  }
+
+  const renderTypeValue = (value: string) => {
+    return (
+      <>
+        <UserTypeBadge type={value?.toUpperCase() as EscortType} small />
+      </>
+    )
+  }
+
+  const renderNationalityValue = (value: string) => {
+    console.log(value)
+    return (
+      <>
+        <CountryFlag countryCode={value} />
+      </>
+    )
+  }
+
   useEffectOnce(() => {
     fetchMasterData()
   })
@@ -112,6 +153,8 @@ export const UsersCardsFiltersForm = ({
                   btnClassName="w-full"
                   onChange={(values) => form.setValue('type', values as EscortType[])}
                   options={USER_TYPES.map(stringToMenuOption)}
+                  renderOption={renderTypeOption}
+                  renderSelectedValue={renderTypeValue}
                   triggerPlaceholder="Categoria"
                   value={field.value}
                   glassmorphism
@@ -132,6 +175,8 @@ export const UsersCardsFiltersForm = ({
                   btnClassName="w-full"
                   onChange={(values) => form.setValue('nationality', values)}
                   options={nationalities}
+                  renderOption={renderNationalityOption}
+                  renderSelectedValue={renderNationalityValue}
                   triggerPlaceholder="Nacionalidad"
                   value={field.value}
                   glassmorphism

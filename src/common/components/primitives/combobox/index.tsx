@@ -30,6 +30,8 @@ export type ComboboxProps = {
   inputPlaceholder?: string
   onChange?: (value: string[]) => void
   options?: MenuSelectOption[]
+  renderOption?: (option: MenuSelectOption) => React.ReactNode
+  renderSelectedValue?: (value: string) => React.ReactNode
   triggerPlaceholder?: string
   value?: string[]
 }
@@ -40,6 +42,8 @@ export function Combobox({
   glassmorphism,
   inputPlaceholder,
   onChange,
+  renderOption,
+  renderSelectedValue,
   options = [],
   triggerPlaceholder,
   value: externalValue,
@@ -95,11 +99,15 @@ export function Combobox({
 
     return (
       <>
-        {value.slice(0, 5).map((option, idx) => (
-          <ValueBadge key={idx} label={option} />
-        ))}
+        {value.slice(0, 5).map((option, idx) => {
+          if (renderSelectedValue) {
+            return renderSelectedValue(option)
+          }
 
-        {valueLength > 5 && <ValueBadge label={`+${valueLength - 5}`} />}
+          return <ValueBadge key={idx} label={option} />
+        })}
+
+        {valueLength > 5 && <ValueBadge className="px-2 py-1" label={`+${valueLength - 5}`} />}
       </>
     )
   }
@@ -158,7 +166,7 @@ export function Combobox({
                       isSelected(option.value.toString()) ? 'opacity-100' : 'opacity-0'
                     )}
                   />
-                  {option.label}
+                  {renderOption ? renderOption(option) : option.label}
                 </CommandItem>
               ))}
             </CommandGroup>
