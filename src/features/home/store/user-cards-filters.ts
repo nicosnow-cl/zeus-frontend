@@ -22,5 +22,6 @@ export const DEFAULT_VALUES: UsersCardsFilters = {
 export const useUsersCardsFiltersStore = create<UsersCardsFilters>(() => DEFAULT_VALUES)
 
 export const usersCardsFiltersActions: UsersCardsFiltersActions = {
-  update: (value: Partial<UsersCardsFilters>) => useUsersCardsFiltersStore.setState(() => value),
+  update: (value: Partial<UsersCardsFilters>) =>
+    useUsersCardsFiltersStore.setState(() => ({ ...DEFAULT_VALUES, ...value })),
 }

@@ -131,10 +131,10 @@ export function UserCard3D({ containerProps, user }: UserCard3DProps) {
               type={user.type}
               price={user.price}
               hasPromo={user.hasPromo}
-              small={!cardState.isRevealed}
               containerProps={{
                 className: 'p-0',
               }}
+              small
             />
 
             <AnimatePresence initial={false} mode="wait">

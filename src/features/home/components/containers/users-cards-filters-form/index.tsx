@@ -80,44 +80,31 @@ export const UsersCardsFiltersForm = ({
     []
   )
 
-  const renderTypeOption = (option: MenuSelectOption) => {
-    const { value, label } = option
+  const renderTypeOption = ({ value, label }: MenuSelectOption) => (
+    <>
+      <UserTypeBadge type={value as EscortType} small />
+      <span className="ml-2">{label}</span>
+    </>
+  )
 
-    return (
-      <>
-        <UserTypeBadge type={value as EscortType} small />
-        <span className="ml-2">{label}</span>
-      </>
-    )
-  }
+  const renderNationalityOption = ({ value, label }: MenuSelectOption) => (
+    <>
+      <CountryFlag countryCode={value as string} />
+      <span className="ml-2">{label}</span>
+    </>
+  )
 
-  const renderNationalityOption = (option: MenuSelectOption) => {
-    const { value, label } = option
+  const renderTypeValue = (value: string) => (
+    <>
+      <UserTypeBadge type={value?.toUpperCase() as EscortType} small />
+    </>
+  )
 
-    return (
-      <>
-        <CountryFlag countryCode={value as string} />
-        <span className="ml-2">{label}</span>
-      </>
-    )
-  }
-
-  const renderTypeValue = (value: string) => {
-    return (
-      <>
-        <UserTypeBadge type={value?.toUpperCase() as EscortType} small />
-      </>
-    )
-  }
-
-  const renderNationalityValue = (value: string) => {
-    console.log(value)
-    return (
-      <>
-        <CountryFlag countryCode={value} />
-      </>
-    )
-  }
+  const renderNationalityValue = (value: string) => (
+    <>
+      <CountryFlag countryCode={value} />
+    </>
+  )
 
   useEffectOnce(() => {
     fetchMasterData()

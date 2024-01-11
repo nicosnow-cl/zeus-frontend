@@ -1,7 +1,7 @@
 .hero {
   @apply relative overflow-hidden;
 
-  height: clamp(20rem, 30vw, 40rem);
+  height: clamp(30rem, 40vw, 50rem);
 
   &::after {
     content: '';

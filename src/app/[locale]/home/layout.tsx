@@ -53,7 +53,7 @@ export default function Layout({ children }: LayoutProps) {
         }}
         hero={
           <>
-            <h1 className="gradient-heading heading-decorator">
+            <h1 className="gradient-heading heading-decorator mb-10">
               Nuestros usuarios
               <small>Encuentre el mejor servicio de acompañantes</small>
             </h1>
