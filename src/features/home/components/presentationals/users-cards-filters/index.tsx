@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 import { Button } from '@/common/components/primitives/button'
 import { UsersCardsFiltersSheet } from '../../presentationals/users-cards-filters-sheet'
+import { SortDownIcon } from '@/common/icons'
 
 export type UsersCardsMobileFiltersContainerProps = {
   containerProps?: Omit<React.HTMLAttributes<HTMLDivElement>, 'children'>
@@ -15,7 +16,7 @@ export function UsersCardsMobileFiltersContainer({
 }: UsersCardsMobileFiltersContainerProps) {
   const { className, ...restContainerProps } = containerProps ?? {}
   const classes = twMerge(
-    'flex gap-2 justify-between rounded-full bg-gradient-to-r from-shade-200 p-1',
+    'flex items-center gap-2 justify-between rounded-full bg-gradient-to-r from-shade-200 p-1',
     className
   )
 
@@ -28,10 +29,12 @@ export function UsersCardsMobileFiltersContainer({
       <UsersCardsFiltersSheet
         onOpenChange={handleOpenSheet}
         open={openSheet}
-        trigger={<Button className="rounded-full">Filtros</Button>}
+        trigger={<Button>Filtros</Button>}
       />
 
-      <Button className="rounded-full">Sort</Button>
+      <Button variant="base" icon>
+        <SortDownIcon />
+      </Button>
     </div>
   )
 }

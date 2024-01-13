@@ -27,6 +27,7 @@ export {
   PersonCircle,
   Search,
   ShareFill,
+  SortDown,
   Square,
   SuitHeartFill,
   Sun,

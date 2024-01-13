@@ -28,6 +28,7 @@ export const {
   PersonCircleIcon,
   SearchIcon,
   ShareFillIcon,
+  SortDownIcon,
   SquareIcon,
   SuitHeartFillIcon,
   SunIcon,
