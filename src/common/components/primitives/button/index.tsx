@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge'
+import { forwardRef } from 'react'
 
 import { Colors } from '@/common/types/misc/colors.type'
 
@@ -7,16 +8,18 @@ export type ButtonProps = React.ComponentPropsWithoutRef<'button'> & {
   glassmorphism?: boolean
   glow?: boolean
   icon?: boolean
+  innerRef?: React.ForwardedRef<HTMLButtonElement>
   variant?: 'base' | 'primary' | 'secondary'
 }
 
-export function Button({
+function Button({
   children,
   className,
   color,
   glassmorphism,
   glow,
   icon,
+  innerRef,
   variant = 'primary',
   ...restProps
 }: ButtonProps) {
@@ -29,8 +32,16 @@ export function Button({
   )
 
   return (
-    <button {...restProps} className={classes} data-color={color}>
+    <button {...restProps} ref={innerRef} className={classes} data-color={color}>
       <div>{children}</div>
     </button>
   )
 }
+
+const ButtonRef = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => (
+  <Button {...props} innerRef={ref} />
+))
+
+ButtonRef.displayName = 'Button'
+
+export { ButtonRef as Button }

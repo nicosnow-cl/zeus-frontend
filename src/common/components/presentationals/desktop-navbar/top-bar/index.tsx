@@ -27,7 +27,7 @@ const ROUTES = [Routes.Blog, Routes.About, Routes.Contact]
 
 export function TopBar({ logo }: TopBarProps) {
   const [currentContent, setCurrentContent] = useState<'search'>('search')
-  const [searchValue, setSearchValue] = useState('Hola mundo')
+  const [searchValue, setSearchValue] = useState('')
   const t = useTranslations()
 
   const handleSearchValueChange = (value: string) => setSearchValue(value)

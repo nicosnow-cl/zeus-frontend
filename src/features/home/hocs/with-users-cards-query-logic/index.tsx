@@ -26,7 +26,6 @@ export function withUsersCardsQueryLogic<T>({ Component }: WithUsersCardsQueryLo
 
     const handleUpdateUserFiltersStore = (params: ReadonlyURLSearchParams) => {
       const filters = searchParamsToUsersFilters(params)
-      console.log({ filters })
       usersCardsFiltersActions.update(filters)
     }
 

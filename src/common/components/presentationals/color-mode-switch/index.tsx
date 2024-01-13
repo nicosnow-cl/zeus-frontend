@@ -9,6 +9,7 @@ import { MoonIcon, SunIcon } from '@/common/icons'
 import { uiActions } from '@/common/store/ui'
 
 export const ColorModeSwitch = () => {
+  const [mounted, setMounted] = useState(false)
   const { systemTheme, theme } = useTheme()
   const [checked, setChecked] = useState(false)
 
@@ -16,7 +17,13 @@ export const ColorModeSwitch = () => {
 
   const handleToggleTheme = throttle(() => uiActions.toggleTheme(true), 0.4)
 
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   useEffect(() => setChecked(theme === 'dark'), [theme])
+
+  if (!mounted) return null
 
   return (
     <div className="flex items-center gap-2">

@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { Input as ShadcnInput } from '@/shadcn-components/ui/input'
 import { twMerge } from 'tailwind-merge'
 
@@ -7,14 +8,23 @@ const { Primitives, Utilities } = CSS
 
 export type InputProps = React.ComponentPropsWithoutRef<typeof ShadcnInput> & {
   glassmorphism?: boolean
+  innerRef?: React.ForwardedRef<HTMLInputElement>
 }
 
-export function Input({ className, glassmorphism, ...restProps }: InputProps) {
+function Input({ className, glassmorphism, innerRef, ...restProps }: InputProps) {
   const classes = twMerge(
     Primitives.Inputs.input,
     glassmorphism && Utilities.glassmorphism,
     className
   )
 
-  return <ShadcnInput {...restProps} className={classes} />
+  return <ShadcnInput {...restProps} ref={innerRef} className={classes} />
 }
+
+const InputRef = forwardRef<HTMLInputElement, InputProps>((props, ref) => (
+  <Input {...props} innerRef={ref} />
+))
+
+InputRef.displayName = 'Input'
+
+export { InputRef as Input }
