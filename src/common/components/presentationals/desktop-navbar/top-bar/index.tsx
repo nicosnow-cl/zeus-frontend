@@ -3,23 +3,34 @@
 import { Link as NextLink } from '@intl/navigation'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
-import * as Separator from '@radix-ui/react-separator'
 
 import { APP_NAME } from '@config/constants'
-import { ArrowRightIcon, BoxArrowRightIcon, PatchCheckFillIcon, SearchIcon } from '@/common/icons'
-import { ContentWithDropdown } from '../../../misc/dropdown-effect'
-import { Input } from '@/shadcn-components/ui/input'
-import { Routes } from '@config/enums'
-import * as ButtonGroup from '../../../compounds/button-group'
+import {
+  ArrowRightIcon,
+  BoxArrowRightIcon,
+  ListIcon,
+  PatchCheckFillIcon,
+  SearchIcon,
+} from '@/common/icons'
 import { Button } from '@/common/components/primitives/button'
+import { ContentWithDropdown } from '../../../misc/dropdown-effect'
+import { InputSearch } from '@/common/components/primitives/input-search'
+import { Routes } from '@config/enums'
+import { Separator } from '@/common/components/primitives/separator'
+import * as ButtonGroup from '../../../compounds/button-group'
 
 export type TopBarProps = {
   logo?: React.ReactNode
 }
 
+const ROUTES = [Routes.Blog, Routes.About, Routes.Contact]
+
 export function TopBar({ logo }: TopBarProps) {
   const [currentContent, setCurrentContent] = useState<'search'>('search')
+  const [searchValue, setSearchValue] = useState('Hola mundo')
   const t = useTranslations()
+
+  const handleSearchValueChange = (value: string) => setSearchValue(value)
 
   const handleSetSearchContent = (
     evt: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -42,32 +53,20 @@ export function TopBar({ logo }: TopBarProps) {
     setter(false)
   }
 
-  const getLinks = (className: string = '') => {
-    return (
-      <>
-        <NextLink
-          className={`flex items-center gap-x-2 text-shade-100 ${className}`}
-          href={Routes.Blog}
-        >
-          {t('COMMON.sidebar.blog')}
-        </NextLink>
+  const getLinks = (className: string = '') =>
+    ROUTES.map((route, idx) => {
+      const tKEY = route.replace('/', '')
 
+      return (
         <NextLink
+          key={idx}
           className={`flex items-center gap-x-2 text-shade-100 ${className}`}
-          href={Routes.About}
+          href={route}
         >
-          {t('COMMON.sidebar.about')}
+          {t(`COMMON.route-names.${tKEY}`)}
         </NextLink>
-
-        <NextLink
-          className={`flex items-center gap-x-2 text-shade-100 ${className}`}
-          href={Routes.Contact}
-        >
-          {t('COMMON.sidebar.contact')}
-        </NextLink>
-      </>
-    )
-  }
+      )
+    })
 
   const getCurrentContent = (type: 'search') => {
     if (type === 'search') {
@@ -76,21 +75,29 @@ export function TopBar({ logo }: TopBarProps) {
           <div className="flex flex-col gap-5 md:hidden">
             {getLinks('text-lg')}
 
-            <Separator.Root className="separator-root" orientation="horizontal" decorative />
+            <Separator orientation="horizontal" decorative />
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 text-shade-100">
             <SearchIcon size={20} />
 
-            <Input
-              className="border-none py-5 text-2xl shadow-none"
-              type="text"
-              placeholder={`Buscar en ${APP_NAME}...`}
+            <InputSearch
+              containerProps={{
+                className: 'w-full',
+              }}
+              inputProps={{
+                className: 'text-2xl',
+                placeholder: t('COMMON.compounds.navbar.input-search.placeholder', {
+                  name: APP_NAME,
+                }),
+              }}
+              value={searchValue}
+              onChange={handleSearchValueChange}
             />
           </div>
 
-          <div className="text-sm">
-            <span className="mt-5 text-gray-500 ">Enlaces rápidos...</span>
+          <div className="text-sm text-gray-500">
+            <span className="mt-5">{t('COMMON.compounds.navbar.quick-links')}</span>
 
             <ul className="flex flex-col gap-1">
               <li>
@@ -131,7 +138,7 @@ export function TopBar({ logo }: TopBarProps) {
 
   return (
     <ContentWithDropdown
-      classNameContainer="grid-wrapper glassmorphism absolute top-0 w-full [--bg-from:theme(colors.shade.950/0.8)] [--bg-to:theme(colors.shade.950)] z-50 shadow-none border-0 border-b"
+      classNameContainer="grid-wrapper glassmorphism absolute top-0 w-full [--bg-from:theme(colors.shade.950/0.8)] [--bg-to:theme(colors.shade.950)] z-50 border-none"
       classNameContent="min-h-screen md:min-h-0"
       content={getCurrentContent(currentContent)}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}
@@ -151,21 +158,22 @@ export function TopBar({ logo }: TopBarProps) {
 
             <ButtonGroup.Root className="bg-shade-950/30 dark:bg-shade-300/10">
               <ButtonGroup.Link
-                label={t('COMMON.sidebar.sign-up')}
+                label={t('COMMON.route-names.sign-up')}
                 href={Routes.SignUp}
-                icon={<PatchCheckFillIcon className="text-base" />}
+                icon={<PatchCheckFillIcon className="hidden text-base sm:block" />}
               />
               <ButtonGroup.Link
-                label={t('COMMON.sidebar.sign-in')}
+                label={t('COMMON.route-names.sign-in')}
                 href={Routes.SignIn}
-                icon={<BoxArrowRightIcon className="text-base" />}
+                icon={<BoxArrowRightIcon className="hidden text-base sm:block" />}
               />
             </ButtonGroup.Root>
 
             <div className="hidden gap-5 md:flex">{getLinks()}</div>
 
             <Button onClick={(evt) => handleSetSearchContent(evt, handleToggle)} color="shade" icon>
-              {<SearchIcon className="text-base" />}
+              {<SearchIcon className="hidden text-base md:block" />}
+              {<ListIcon className="block text-base md:hidden" />}
             </Button>
           </div>
         </div>

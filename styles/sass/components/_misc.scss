@@ -1,45 +1,66 @@
-.body-gradient {
-  background-image: var(--bg-gradient);
-}
+@layer components {
+  .separator-root {
+    background-color: var(--clr-shade-400);
 
-.navbar {
-  @apply fixed z-40 min-h-[var(--navbar-full-height)] w-full bg-transparent shadow-md;
-}
+    &[data-orientation='horizontal'] {
+      height: 1px;
+      width: 100%;
+    }
 
-.masonry-highlight:has(> *:hover) > *:not(:hover),
-.masonry-highlight:has(> *:focus-within) > *:not(:focus-within) {
-  scale: 0.95;
-}
+    &[data-orientation='vertical'] {
+      height: 100%;
+      width: 1px;
+    }
 
-.masonry-highlight > * {
-  // filter: brightness(0.875);
-  transition: scale 0.3s ease-in-out;
-  // filter 0.25s linear;
-}
-
-.masonry-highlight > *:hover,
-.masonry-highlight > *:focus-within {
-  // filter: brightness(1.05);
-}
-
-.curve {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: calc(155% + 1.3px);
-  height: 95px;
-  transform: rotate(180deg);
-
-  & .shape-fill {
-    fill: var(--clr-shade-50);
+    // If it's dark mode
+    html.dark & {
+      background-color: var(--clr-shade-600);
+    }
   }
 
-  html.dark & .shape-fill {
-    fill: var(--clr-shade-950);
+  .body-gradient {
+    background-image: var(--bg-gradient);
   }
 
-  @media (max-width: 1023px) {
-    width: calc(177% + 1.3px);
-    height: 85px;
+  .navbar {
+    @apply fixed z-40 min-h-[var(--navbar-full-height)] w-full bg-transparent shadow-md;
+  }
+
+  .masonry-highlight:has(> *:hover) > *:not(:hover),
+  .masonry-highlight:has(> *:focus-within) > *:not(:focus-within) {
+    scale: 0.95;
+  }
+
+  .masonry-highlight > * {
+    // filter: brightness(0.875);
+    transition: scale 0.3s ease-in-out;
+    // filter 0.25s linear;
+  }
+
+  .masonry-highlight > *:hover,
+  .masonry-highlight > *:focus-within {
+    // filter: brightness(1.05);
+  }
+
+  .curve {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: calc(155% + 1.3px);
+    height: 95px;
+    transform: rotate(180deg);
+
+    & .shape-fill {
+      fill: var(--clr-shade-50);
+    }
+
+    html.dark & .shape-fill {
+      fill: var(--clr-shade-950);
+    }
+
+    @media (max-width: 1023px) {
+      width: calc(177% + 1.3px);
+      height: 85px;
+    }
   }
 }

@@ -1,35 +1,27 @@
 @use '../abstracts/mixins' as m;
 
-body {
-  color: var(--clr-body);
-  background-color: var(--bg-body);
-}
-
-// a,
-// button,
-// input {
-//   &:focus {
-//     outline: 0.2rem solid var(--clr-accent-500);
-//     outline-offset: 0.25rem;
-//   }
-// }
-
-a {
-  transition: color 0.2s ease-in-out;
-
-  &:hover {
-    color: var(--clr-link);
-
-    @include m.underlined($style: dotted);
+@layer base {
+  body {
+    color: var(--clr-body);
+    background-color: var(--bg-body);
   }
 
-  &:visited {
-    color: var(--clr-brand-400);
-  }
+  // a,
+  // button,
+  // input {
+  //   &:focus {
+  //     outline: 0.2rem solid var(--clr-accent-500);
+  //     outline-offset: 0.25rem;
+  //   }
+  // }
 
-  html.dark & {
-    &:visited {
-      color: var(--clr-brand-300);
+  a {
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: var(--clr-link);
+
+      @include m.underlined($style: dotted);
     }
   }
 }

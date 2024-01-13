@@ -21,6 +21,7 @@ export {
   HeartFill,
   HouseFill,
   Instagram,
+  List,
   Moon,
   PatchCheckFill,
   PersonCircle,

@@ -4,6 +4,14 @@
             "es": "Español",
             "en": "English"
         },
+        "route-names": {
+            "home": "Inicio",
+            "sign-in": "Acceso clientes",
+            "sign-up": "Anunciarme",
+            "blog": "Blog",
+            "about": "Sobre nosotros",
+            "contact": "Contacto"
+        },
         "primitives": {
             "multi-combobox": {
                 "placeholder": "Seleccione una opción",
@@ -13,22 +21,13 @@
                 "no-results": "No se encontraron resultados"
             }
         },
-        "navbar": {
-            "announce": "Anunciarme"
-        },
-        "breadcrumb": {
-            "home": "Inicio",
-            "sign-in": "Login",
-            "sign-up": "Registro",
-            "contact": "Contacto"
-        },
-        "sidebar": {
-            "home": "Inicio",
-            "sign-in": "Acceso clientes",
-            "sign-up": "Anunciarme",
-            "blog": "Blog",
-            "about": "Sobre nosotros",
-            "contact": "Contacto"
+        "compounds": {
+            "navbar": {
+                "quick-links": "Enlaces rápidos",
+                "input-search": {
+                    "placeholder": "Buscar en {name}"
+                }
+            }
         }
     }
 }

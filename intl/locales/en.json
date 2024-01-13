@@ -4,31 +4,30 @@
             "es": "Español",
             "en": "English"
         },
-        "primitives": {
-            "multi-combobox": {
-                "placeholder": "Seleccione una opción",
-                "select-all": "Seleccionar todo",
-                "select-none": "Deseleccionar todo",
-                "input-placeholder": "Filtrar...",
-                "no-results": "No se encontraron resultados"
-            }
-        },
-        "navbar": {
-            "announce": "Announce"
-        },
-        "breadcrumb": {
-            "home": "Home",
-            "sign-in": "Sign in",
-            "sign-up": "Sign up",
-            "contact": "Contact"
-        },
-        "sidebar": {
+        "route-names": {
             "home": "Home",
             "sign-in": "Sign in",
             "sign-up": "Sign up",
             "blog": "Blog",
             "about": "About",
             "contact": "Contact"
+        },
+        "primitives": {
+            "multi-combobox": {
+                "placeholder": "Select an option",
+                "select-all": "Select all",
+                "select-none": "Select none",
+                "input-placeholder": "Filter...",
+                "no-results": "No results found"
+            }
+        },
+        "compounds": {
+            "navbar": {
+                "quick-links": "Quick links",
+                "input-search": {
+                    "placeholder": "Search in {name}"
+                }
+            }
         }
     }
 }

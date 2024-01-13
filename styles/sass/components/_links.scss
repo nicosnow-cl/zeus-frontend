@@ -1,0 +1,14 @@
+@layer components {
+  .link {
+    &:visited {
+      color: var(--clr-brand-400);
+    }
+
+    // If it's dark mode
+    html.dark & {
+      &:visited {
+        color: var(--clr-brand-300);
+      }
+    }
+  }
+}

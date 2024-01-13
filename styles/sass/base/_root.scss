@@ -3,13 +3,13 @@
 @use '../abstracts' as *;
 
 @layer base {
-  @property --gradient-angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-  }
-
   :root {
+    @property --gradient-angle {
+      syntax: '<angle>';
+      initial-value: 0deg;
+      inherits: false;
+    }
+
     // Colors
     @each $color, $shades in $colors {
       @each $shade, $value in $shades {
@@ -50,28 +50,29 @@
 
     // Misc
     $shades: map-get($colors, shade);
+    $brand: map-get($colors, brand);
 
     --bg-gradient: radial-gradient(
       ellipse farthest-corner at center bottom,
-      #{lighten(map-get($shades, 50), 10%)} 0%,
+      #{lighten(map-get($brand, 200), 6%)} 0%,
       #{darken(map-get($shades, 50), 15%)} 100%
     );
     --brand-gradient: linear-gradient(to right, var(--clr-shade-900) 0%, var(--clr-shade-100) 100%);
   }
 
-  // Dark mode
+  // If its dark mode
   html.dark {
-    // Colors
     --clr-body: var(--clr-shade-50);
     --clr-link: var(--clr-brand-800);
     --bg-body: var(--clr-shade-950);
 
     // Misc
     $shades: map-get($colors, shade);
+    $accent: map-get($colors, accent);
 
     --bg-gradient: radial-gradient(
       ellipse farthest-corner at center bottom,
-      #{lighten(map-get($shades, 950), 20%)} 0%,
+      #{lighten(map-get($accent, 950), 3%)} 0%,
       #{darken(map-get($shades, 950), 20%)} 100%
     );
     --brand-gradient: linear-gradient(to right, var(--clr-shade-50) 0%, var(--clr-shade-700) 100%);

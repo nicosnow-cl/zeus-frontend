@@ -18,7 +18,7 @@ export function MainContainer({ children }: MainContainerProps) {
       <div className="h-[var(--navbar-full-height)] bg-shade-900">
         <NavbarContainer
           intlProps={{
-            messages: pick(messages, 'COMMON.sidebar'),
+            messages: pick(messages, ['COMMON.route-names', 'COMMON.compounds.navbar']),
           }}
         />
       </div>

@@ -21,6 +21,7 @@ export const {
   HeartFillIcon,
   HouseFillIcon,
   InstagramIcon,
+  ListIcon,
   LogoIcon,
   MoonIcon,
   PatchCheckFillIcon,
