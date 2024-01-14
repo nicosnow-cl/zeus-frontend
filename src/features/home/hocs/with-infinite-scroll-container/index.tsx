@@ -3,13 +3,13 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useInView } from 'framer-motion'
 
-import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
+import { PaginatedResponse } from '@/common/types/misc/paginated-response.type'
 import { TSearchParams } from '@/common/types/misc/search-params.type'
 import { LoadMore } from './load-more'
 
 export type TWithInfiniteScrollFetchDataProps<T> = {
   Component: React.FC<{ data: T[] }>
-  fetchFunction: (searchParams?: TSearchParams) => Promise<TPaginatedResponse<T>>
+  fetchFunction: (searchParams?: TSearchParams) => Promise<PaginatedResponse<T>>
 }
 
 export function withInfiniteScrollFetchData<T>({

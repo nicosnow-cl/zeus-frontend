@@ -24,6 +24,7 @@
         "compounds": {
             "navbar": {
                 "quick-links": "Quick links",
+                "suggested-links": "Suggested links",
                 "input-search": {
                     "placeholder": "Search in {name}"
                 }

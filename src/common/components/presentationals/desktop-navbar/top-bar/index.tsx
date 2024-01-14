@@ -1,9 +1,10 @@
 'use client'
 
 import { Link as NextLink } from '@intl/navigation'
-import { useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useTranslations } from 'next-intl'
 
+import { actionFetchByName } from '@/common/actions/users/fetch-by-name'
 import { APP_NAME } from '@config/constants'
 import {
   ArrowRightIcon,
@@ -17,6 +18,7 @@ import { ContentWithDropdown } from '../../../misc/dropdown-effect'
 import { InputSearch } from '@/common/components/primitives/input-search'
 import { Routes } from '@config/enums'
 import { Separator } from '@/common/components/primitives/separator'
+import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 import * as ButtonGroup from '../../../compounds/button-group'
 
 export type TopBarProps = {
@@ -25,9 +27,9 @@ export type TopBarProps = {
 
 const ROUTES = [Routes.Blog, Routes.About, Routes.Contact]
 
-export function TopBar({ logo }: TopBarProps) {
-  const [currentContent, setCurrentContent] = useState<'search'>('search')
+export function TopBar({ logo }: Readonly<TopBarProps>) {
   const [searchValue, setSearchValue] = useState('')
+  const [suggestions, setSuggestions] = useState<UserCardEntity[]>([])
   const t = useTranslations()
 
   const handleSearchValueChange = (value: string) => setSearchValue(value)
@@ -39,7 +41,6 @@ export function TopBar({ logo }: TopBarProps) {
     evt.preventDefault()
     evt.stopPropagation()
 
-    setCurrentContent('search')
     handler()
   }
 
@@ -68,79 +69,111 @@ export function TopBar({ logo }: TopBarProps) {
       )
     })
 
-  const getCurrentContent = (type: 'search') => {
-    if (type === 'search') {
-      return (
-        <div className="flex flex-col gap-5 p-5">
-          <div className="flex flex-col gap-5 md:hidden">
-            {getLinks('text-lg')}
+  const getCurrentContent = () => {
+    return (
+      <div className="flex flex-col gap-5 p-5">
+        <div className="flex flex-col gap-5 md:hidden">
+          {getLinks('text-lg')}
 
-            <Separator orientation="horizontal" decorative />
-          </div>
+          <Separator orientation="horizontal" decorative />
+        </div>
 
-          <div className="flex items-center gap-3 text-shade-100">
-            <SearchIcon size={20} />
+        <div className="flex items-center gap-3 text-shade-100">
+          <SearchIcon size={20} />
 
-            <InputSearch
-              containerProps={{
-                className: 'w-full',
-              }}
-              inputProps={{
-                className: 'text-2xl',
-                placeholder: t('COMMON.compounds.navbar.input-search.placeholder', {
-                  name: APP_NAME,
-                }),
-              }}
-              value={searchValue}
-              onChange={handleSearchValueChange}
-            />
-          </div>
+          <InputSearch
+            containerProps={{
+              className: 'w-full',
+            }}
+            inputProps={{
+              className: 'text-2xl',
+              placeholder: t('COMMON.compounds.navbar.input-search.placeholder', {
+                name: APP_NAME,
+              }),
+            }}
+            value={searchValue}
+            onChange={handleSearchValueChange}
+          />
+        </div>
 
+        {suggestions.length > 0 && (
           <div className="text-sm text-gray-500">
-            <span className="mt-5">{t('COMMON.compounds.navbar.quick-links')}</span>
+            <span className="mt-5">{t('COMMON.compounds.navbar.suggested-links')}</span>
 
             <ul className="flex flex-col gap-1">
-              <li>
-                <NextLink
-                  className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
-                  href={Routes.Blog}
-                >
-                  <ArrowRightIcon size={16} />
-                  Blog
-                </NextLink>
-              </li>
-              <li>
-                <NextLink
-                  className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
-                  href={Routes.Blog}
-                >
-                  <ArrowRightIcon size={16} />
-                  Blog
-                </NextLink>
-              </li>
-              <li>
-                <NextLink
-                  className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
-                  href={Routes.Blog}
-                >
-                  <ArrowRightIcon size={16} />
-                  Blog
-                </NextLink>
-              </li>
+              {suggestions.map((suggestion, idx) => (
+                <li key={idx}>
+                  <NextLink
+                    className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
+                    href={Routes.Blog}
+                  >
+                    <ArrowRightIcon size={16} />
+                    {suggestion.name}
+                  </NextLink>
+                </li>
+              ))}
             </ul>
           </div>
-        </div>
-      )
-    }
+        )}
 
-    return null
+        <div className="text-sm text-gray-500">
+          <span className="mt-5">{t('COMMON.compounds.navbar.quick-links')}</span>
+
+          <ul className="flex flex-col gap-1">
+            <li>
+              <NextLink
+                className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
+                href={Routes.Blog}
+              >
+                <ArrowRightIcon size={16} />
+                Blog
+              </NextLink>
+            </li>
+            <li>
+              <NextLink
+                className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
+                href={Routes.Blog}
+              >
+                <ArrowRightIcon size={16} />
+                Blog
+              </NextLink>
+            </li>
+            <li>
+              <NextLink
+                className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
+                href={Routes.Blog}
+              >
+                <ArrowRightIcon size={16} />
+                Blog
+              </NextLink>
+            </li>
+          </ul>
+        </div>
+      </div>
+    )
   }
+
+  const fetchMoreData = useCallback(async (name: string) => {
+    // setIsLoading(true)
+
+    const res = await actionFetchByName(name)
+
+    if (res.status === 'error') return
+    else if (res.data) setSuggestions(Array.isArray(res.data) ? res.data : [res.data])
+
+    // setTimeout(() => setIsLoading(false), 250)
+  }, [])
+
+  useEffect(() => {
+    if (!searchValue) setSuggestions([])
+    else fetchMoreData(searchValue)
+  }, [searchValue, fetchMoreData])
 
   return (
     <ContentWithDropdown
       classNameContainer="grid-wrapper glassmorphism absolute top-0 w-full [--bg-from:theme(colors.shade.950/0.8)] [--bg-to:theme(colors.shade.950)] z-50 border-none"
       classNameContent="min-h-screen md:min-h-0"
-      content={getCurrentContent(currentContent)}
+      content={getCurrentContent()}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}
       variantsContainer={{
         closed: {

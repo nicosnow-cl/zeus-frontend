@@ -1,7 +1,7 @@
 import { Filter } from 'mongodb'
 
 import { getConnection } from '@/common/repositories/mongo'
-import { TPaginatedResponse } from '@/common/types/misc/paginated-response.type'
+import { PaginatedResponse } from '@/common/types/misc/paginated-response.type'
 import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
 
 export type UsersCardsFilters = {
@@ -27,7 +27,7 @@ export async function findAll({
   query,
   page = 0,
   limit = 10,
-}: FindAllProps | undefined = {}): Promise<TPaginatedResponse<UserCardEntity>> {
+}: FindAllProps | undefined = {}): Promise<PaginatedResponse<UserCardEntity>> {
   const { db, closeConnection } = await getConnection()
 
   try {

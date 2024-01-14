@@ -1,4 +1,4 @@
-export type TPaginatedMetadata = {
+export type PaginatedMetadata = {
   total: number
   page: number
   limit: number

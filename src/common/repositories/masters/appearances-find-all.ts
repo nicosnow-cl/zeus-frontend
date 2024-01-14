@@ -1,8 +1,8 @@
 import { getConnection } from '@/common/repositories/mongo'
 import { TAppearanceEntity } from '@/common/types/entities/appearance-entity.type'
-import { TResponse } from '@/common/types/misc/response.type'
+import { Response } from '@/common/types/misc/response.type'
 
-export async function appearancesFindAll(): Promise<TResponse<TAppearanceEntity>> {
+export async function appearancesFindAll(): Promise<Response<TAppearanceEntity>> {
   const { db, closeConnection } = await getConnection()
 
   try {

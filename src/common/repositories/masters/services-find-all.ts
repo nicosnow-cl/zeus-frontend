@@ -1,8 +1,8 @@
 import { getConnection } from '@/common/repositories/mongo'
-import { TResponse } from '@/common/types/misc/response.type'
+import { Response } from '@/common/types/misc/response.type'
 import { TServiceEntity } from '@/common/types/entities/service-entity.type'
 
-export async function servicesFindAll(): Promise<TResponse<TServiceEntity>> {
+export async function servicesFindAll(): Promise<Response<TServiceEntity>> {
   const { db, closeConnection } = await getConnection()
 
   try {

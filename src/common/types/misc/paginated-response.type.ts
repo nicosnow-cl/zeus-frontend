@@ -1,14 +1,14 @@
-import { TPaginatedMetadata } from './paginated-metadata.type'
+import { PaginatedMetadata } from './paginated-metadata.type'
 
-export type TSuccessPaginatedResponse<T> = {
+export type SuccessPaginatedResponse<T> = {
   status: 'success'
   data: T[]
-  metadata: TPaginatedMetadata
+  metadata: PaginatedMetadata
 }
 
-export type TErrorPaginatedResponse = {
+export type ErrorPaginatedResponse = {
   status: 'error'
   error: string
 }
 
-export type TPaginatedResponse<T> = TSuccessPaginatedResponse<T> | TErrorPaginatedResponse
+export type PaginatedResponse<T> = SuccessPaginatedResponse<T> | ErrorPaginatedResponse

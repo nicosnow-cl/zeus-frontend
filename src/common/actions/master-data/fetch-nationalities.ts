@@ -1,8 +1,8 @@
 'use server'
 
-import { TResponse } from '../../types/misc/response.type'
+import { Response } from '../../types/misc/response.type'
 
-export const actionFetchNationalities = async (): Promise<TResponse<string>> => {
+export const actionFetchNationalities = async (): Promise<Response<string>> => {
   const nationalities = require('../../../../dummy/nationalities.json')
 
   return {

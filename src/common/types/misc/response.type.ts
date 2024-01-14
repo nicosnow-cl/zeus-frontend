@@ -1,11 +1,11 @@
-export type TSuccessResponse<T> = {
+export type SuccessResponse<T> = {
   status: 'success'
-  data: T[]
+  data: T[] | (T | null)
 }
 
-export type TErrorResponse = {
+export type ErrorResponse = {
   status: 'error'
   error: string
 }
 
-export type TResponse<T> = TSuccessResponse<T> | TErrorResponse
+export type Response<T> = SuccessResponse<T> | ErrorResponse
