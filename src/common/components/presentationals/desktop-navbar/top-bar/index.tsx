@@ -11,6 +11,7 @@ import {
   BoxArrowRightIcon,
   ListIcon,
   PatchCheckFillIcon,
+  PersonFillIcon,
   SearchIcon,
 } from '@/common/icons'
 import { Button } from '@/common/components/primitives/button'
@@ -21,6 +22,7 @@ import { Separator } from '@/common/components/primitives/separator'
 import { useDebounce } from '@/common/hooks/use-debounce'
 import { useQuery } from '@tanstack/react-query'
 import * as ButtonGroup from '../../../compounds/button-group'
+import { UserHoverCard } from '@/features/home/components/presentationals/user-hover-card'
 
 export type TopBarProps = {
   logo?: React.ReactNode
@@ -33,10 +35,10 @@ export function TopBar({ logo }: Readonly<TopBarProps>) {
   const name = useDebounce(searchValue)
   const t = useTranslations()
 
-  const { data } = useQuery({
+  const { data: suggestions } = useQuery({
     queryKey: ['search-suggestions', name],
     queryFn: () => actionFetchByName(name),
-    enabled: name?.length > 0,
+    enabled: name.length > 0,
     select: (data) => (data.status === 'success' ? data.data : []),
   })
 
@@ -104,20 +106,22 @@ export function TopBar({ logo }: Readonly<TopBarProps>) {
           />
         </div>
 
-        {data && data.length > 0 && (
+        {suggestions && suggestions.length > 0 && (
           <div className="text-sm text-gray-500">
             <span className="mt-5">{t('COMMON.compounds.navbar.suggested-links')}</span>
 
             <ul className="flex flex-col gap-1">
-              {data.map((suggestion, idx) => (
+              {suggestions.map((suggestion, idx) => (
                 <li key={idx}>
-                  <NextLink
-                    className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
-                    href={Routes.Blog}
-                  >
-                    <ArrowRightIcon size={16} />
-                    {suggestion.name}
-                  </NextLink>
+                  <UserHoverCard user={suggestion}>
+                    <NextLink
+                      className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
+                      href={Routes.Blog}
+                    >
+                      <PersonFillIcon size={16} />
+                      {suggestion.name}
+                    </NextLink>
+                  </UserHoverCard>
                 </li>
               ))}
             </ul>
@@ -134,7 +138,7 @@ export function TopBar({ logo }: Readonly<TopBarProps>) {
                 href={Routes.Blog}
               >
                 <ArrowRightIcon size={16} />
-                Blog
+                Iniciar sesión
               </NextLink>
             </li>
             <li>
@@ -143,7 +147,7 @@ export function TopBar({ logo }: Readonly<TopBarProps>) {
                 href={Routes.Blog}
               >
                 <ArrowRightIcon size={16} />
-                Blog
+                Registrarse
               </NextLink>
             </li>
             <li>
@@ -152,7 +156,7 @@ export function TopBar({ logo }: Readonly<TopBarProps>) {
                 href={Routes.Blog}
               >
                 <ArrowRightIcon size={16} />
-                Blog
+                Contacto
               </NextLink>
             </li>
           </ul>
@@ -168,12 +172,8 @@ export function TopBar({ logo }: Readonly<TopBarProps>) {
       content={getCurrentContent()}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}
       variantsContainer={{
-        closed: {
-          backgroundColor: 'var(--bg-from)',
-        },
-        open: {
-          backgroundColor: 'var(--bg-to)',
-        },
+        closed: { backgroundColor: 'var(--bg-from)' },
+        open: { backgroundColor: 'var(--bg-to)' },
       }}
     >
       {({ handleToggle }) => (

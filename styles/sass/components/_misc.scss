@@ -1,5 +1,5 @@
 @layer components {
-  .separator-root {
+  .separator {
     background-color: var(--clr-shade-400);
 
     &[data-orientation='horizontal'] {

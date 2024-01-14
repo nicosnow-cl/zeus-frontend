@@ -26,6 +26,7 @@ export const {
   MoonIcon,
   PatchCheckFillIcon,
   PersonCircleIcon,
+  PersonFillIcon,
   SearchIcon,
   ShareFillIcon,
   SortDownIcon,

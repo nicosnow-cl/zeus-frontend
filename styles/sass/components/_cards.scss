@@ -1,31 +1,56 @@
-.user-type-container::before {
-  content: '';
-  inset: 0;
-  position: absolute;
-  width: 0;
-  height: 0;
-  background-color: var(--clr-shade-950);
-  border-radius: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  transition:
-    height 0.25s ease,
-    width 0.25s ease,
-    background-color 0.25s ease;
-  opacity: 0.8;
-  z-index: -1;
-}
+@use '../abstracts/mixins' as *;
 
-.user-type-container:hover::before {
-  background-color: var(--clr-shade-900);
-  width: 10rem;
-  height: 10rem;
-}
+@layer components {
+  .user-type-container::before {
+    content: '';
+    inset: 0;
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-color: var(--clr-shade-950);
+    border-radius: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    transition:
+      height 0.25s ease,
+      width 0.25s ease,
+      background-color 0.25s ease;
+    opacity: 0.8;
+    z-index: -1;
+  }
 
-.user-type-decorator {
-  fill: var(--clr);
-  transition: fill 0.25s ease;
-}
+  .user-type-container:hover::before {
+    background-color: var(--clr-shade-900);
+    width: 10rem;
+    height: 10rem;
+  }
 
-.user-type-decorator:hover {
-  fill: var(--clr-shade-100);
+  .user-type-decorator {
+    fill: var(--clr);
+    transition: fill 0.25s ease;
+  }
+
+  .user-type-decorator:hover {
+    fill: var(--clr-shade-100);
+  }
+
+  .hover-card {
+    @apply min-w-[300px] rounded-xl p-4 shadow;
+
+    @include colored(slate);
+    @include generate-all-data-colors();
+
+    --text-color: var(--text-base-color);
+    --fill-color: var(--fill-base-color);
+    --border-color: transparent;
+    --bg-color: var(--background-base-color);
+
+    color: var(--text-color);
+    fill: var(--fill-color);
+    border-color: var(--border-color);
+    background-color: var(--bg-color);
+
+    .arrow {
+      fill: var(--bg-color);
+    }
+  }
 }

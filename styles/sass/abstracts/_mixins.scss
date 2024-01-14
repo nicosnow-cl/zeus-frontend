@@ -45,18 +45,28 @@
 
   $theme: map-get($colorValues, light);
 
+  color: theme(map-get($theme, text));
+  fill: theme(map-get($theme, fill));
   border-color: theme(map-get($theme, border));
   background-color: theme(map-get($theme, bg) / 80%);
-  fill: theme(map-get($theme, fill));
-  color: theme(map-get($theme, text));
+
+  --text-base-color: #{theme(map-get($theme, text))};
+  --fill-base-color: #{theme(map-get($theme, fill))};
+  --border-base-color: #{theme(map-get($theme, border))};
+  --background-base-color: #{theme(map-get($theme, bg) / 80%)};
 
   html.dark & {
     $theme: map-get($colorValues, dark);
 
+    --text-base-color: #{theme(map-get($theme, text))};
+    --fill-base-color: #{theme(map-get($theme, fill))};
+    --border-base-color: #{theme(map-get($theme, border))};
+    --background-base-color: #{theme(map-get($theme, bg) / 70%)};
+
+    color: theme(map-get($theme, text));
+    fill: theme(map-get($theme, fill));
     border-color: theme(map-get($theme, border));
     background-color: theme(map-get($theme, bg) / 70%);
-    fill: theme(map-get($theme, fill));
-    color: theme(map-get($theme, text));
   }
 }
 

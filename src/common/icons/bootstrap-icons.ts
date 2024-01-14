@@ -25,6 +25,7 @@ export {
   Moon,
   PatchCheckFill,
   PersonCircle,
+  PersonFill,
   Search,
   ShareFill,
   SortDown,
