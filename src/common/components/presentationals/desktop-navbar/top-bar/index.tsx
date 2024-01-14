@@ -1,7 +1,7 @@
 'use client'
 
 import { Link as NextLink } from '@intl/navigation'
-import { useCallback, useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useTranslations } from 'next-intl'
 
 import { actionFetchByName } from '@/common/actions/users/fetch-by-name'
@@ -18,7 +18,8 @@ import { ContentWithDropdown } from '../../../misc/dropdown-effect'
 import { InputSearch } from '@/common/components/primitives/input-search'
 import { Routes } from '@config/enums'
 import { Separator } from '@/common/components/primitives/separator'
-import { UserCardEntity } from '@/common/types/entities/user-card-entity.type'
+import { useDebounce } from '@/common/hooks/use-debounce'
+import { useQuery } from '@tanstack/react-query'
 import * as ButtonGroup from '../../../compounds/button-group'
 
 export type TopBarProps = {
@@ -29,8 +30,15 @@ const ROUTES = [Routes.Blog, Routes.About, Routes.Contact]
 
 export function TopBar({ logo }: Readonly<TopBarProps>) {
   const [searchValue, setSearchValue] = useState('')
-  const [suggestions, setSuggestions] = useState<UserCardEntity[]>([])
+  const name = useDebounce(searchValue)
   const t = useTranslations()
+
+  const { data } = useQuery({
+    queryKey: ['search-suggestions', name],
+    queryFn: () => actionFetchByName(name),
+    enabled: name?.length > 0,
+    select: (data) => (data.status === 'success' ? data.data : []),
+  })
 
   const handleSearchValueChange = (value: string) => setSearchValue(value)
 
@@ -96,12 +104,12 @@ export function TopBar({ logo }: Readonly<TopBarProps>) {
           />
         </div>
 
-        {suggestions.length > 0 && (
+        {data && data.length > 0 && (
           <div className="text-sm text-gray-500">
             <span className="mt-5">{t('COMMON.compounds.navbar.suggested-links')}</span>
 
             <ul className="flex flex-col gap-1">
-              {suggestions.map((suggestion, idx) => (
+              {data.map((suggestion, idx) => (
                 <li key={idx}>
                   <NextLink
                     className="flex items-center gap-3 rounded-md p-2 transition-[background] hover:bg-gray-50/20"
@@ -152,22 +160,6 @@ export function TopBar({ logo }: Readonly<TopBarProps>) {
       </div>
     )
   }
-
-  const fetchMoreData = useCallback(async (name: string) => {
-    // setIsLoading(true)
-
-    const res = await actionFetchByName(name)
-
-    if (res.status === 'error') return
-    else if (res.data) setSuggestions(Array.isArray(res.data) ? res.data : [res.data])
-
-    // setTimeout(() => setIsLoading(false), 250)
-  }, [])
-
-  useEffect(() => {
-    if (!searchValue) setSuggestions([])
-    else fetchMoreData(searchValue)
-  }, [searchValue, fetchMoreData])
 
   return (
     <ContentWithDropdown

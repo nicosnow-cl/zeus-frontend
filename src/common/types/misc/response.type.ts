@@ -1,6 +1,6 @@
 export type SuccessResponse<T> = {
   status: 'success'
-  data: T[] | (T | null)
+  data: T[]
 }
 
 export type ErrorResponse = {
