@@ -4,9 +4,9 @@ import { fonts } from '@/theme/fonts'
 import { getValidLocale } from '@intl/locale'
 import { GradientBackground } from '@/common/components/misc/gradient-background'
 import { MainContainer } from '@/common/components/containers/main'
-import { ThemeProvider } from '@/common/components/providers/theme-provider'
 
 import '@styles/global.scss'
+import { Providers } from '@/common/components/providers'
 
 export type LocaleLayoutProps = {
   children: React.ReactNode
@@ -15,7 +15,10 @@ export type LocaleLayoutProps = {
   }
 }
 
-export default function LocaleLayout({ children, params: { locale } }: LocaleLayoutProps) {
+export default function LocaleLayout({
+  children,
+  params: { locale },
+}: Readonly<LocaleLayoutProps>) {
   const { isValid } = getValidLocale(locale)
 
   if (!isValid) notFound()
@@ -29,9 +32,9 @@ export default function LocaleLayout({ children, params: { locale } }: LocaleLay
       <body>
         <GradientBackground />
 
-        <ThemeProvider>
+        <Providers>
           <MainContainer>{children}</MainContainer>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   )
