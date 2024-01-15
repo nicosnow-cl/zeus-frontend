@@ -1,4 +1,3 @@
-import { DEFAULT_LOCALE } from '@config/constants'
 import { Locale } from '@config/enums'
 
 export const getLocalesValues = (): string[] => Object.values(Locale)

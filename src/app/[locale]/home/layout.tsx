@@ -5,7 +5,7 @@ import { SectionWithAsideContainer } from '@/common/components/containers/sectio
 import { UsersCardsFiltersFormQueryLogic } from '@/features/home/components/presentationals/users-cards-filters-form-query-logic'
 import { UsersCardsMobileFiltersContainer } from '@/features/home/components/presentationals/users-cards-filters'
 import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
-import * as Hero from '@/common/components/presentationals/hero'
+import * as Hero from '@/common/components/compounds/hero'
 
 const UsersCardsFiltersForm = withIntlClientProvider(
   UsersCardsFiltersFormQueryLogic,
