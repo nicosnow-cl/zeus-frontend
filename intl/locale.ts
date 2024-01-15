@@ -3,7 +3,7 @@ import { Locale } from '@config/enums'
 export const getLocalesValues = (): string[] => Object.values(Locale)
 
 export const isValueValidLocale = (locale: string | Locale) => {
-  if (typeof locale !== 'string') false
+  if (typeof locale !== 'string') return false
 
   return getLocalesValues().includes(locale as Locale)
 }
