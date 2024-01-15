@@ -1,29 +1,34 @@
-.hero {
-  @apply relative overflow-hidden;
+@layer components {
+  .hero {
+    @apply relative overflow-hidden;
 
-  height: clamp(30rem, 40vw, 50rem);
+    height: clamp(30rem, 40vw, 50rem);
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 75px;
-    transform: translateY(50%);
-    width: 75px;
-    height: 75px;
-    border-radius: 50% 0;
-    background: linear-gradient(45deg, var(--clr-brand-600), var(--clr-brand-950));
+    &::after {
+      @apply absolute bottom-[75px] h-[75px] w-[75px] translate-y-1/2;
+
+      content: '';
+      border-radius: 50% 0;
+      background: linear-gradient(45deg, var(--clr-brand-600), var(--clr-brand-950));
+    }
+
+    &-banner {
+      @apply relative bg-shade-950;
+
+      & > img {
+        @apply object-cover object-center contrast-125 grayscale md:object-left-top;
+
+        mask: linear-gradient(
+          90deg,
+          theme('colors.black' / 5%),
+          theme('colors.white' / 90%),
+          theme('colors.black' / 5%)
+        );
+      }
+    }
+
+    &-title {
+      @apply absolute right-0 top-12 z-10 text-end font-heading text-6xl font-extrabold text-brand-700;
+    }
   }
-}
-
-.hero-banner {
-  @apply relative bg-shade-950;
-
-  img {
-    @apply object-cover object-left-top contrast-125 grayscale;
-    mask: linear-gradient(90deg, hsl(0 0% 0% / 0) 5%, hsl(0 0% 100% / 0.9), hsl(0 0% 0% / 0) 95%);
-  }
-}
-
-.hero-title {
-  @apply absolute right-0 top-12 z-10 text-end font-heading text-6xl font-extrabold text-brand-700;
 }

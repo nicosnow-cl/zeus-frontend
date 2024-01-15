@@ -30,5 +30,16 @@
                 }
             }
         }
+    },
+    "HOME": {
+        "hero": {
+            "title": "Unleash.\n Improve.\n Rise.",
+            "title-b": "El mejor sitio para encontrar escorts en {city}",
+            "subtitle-b": "Miles de escorts en {city} esperando por ti",
+            "search-b": {
+                "placeholder": "Buscar en {city}",
+                "button": "Buscar"
+            }
+        }
     }
 }

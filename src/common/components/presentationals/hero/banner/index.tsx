@@ -6,8 +6,8 @@ export type BannerProps = {
   imageProps: Partial<ImageProps> & { src: string }
 }
 
-export function Banner({ containerProps, imageProps }: BannerProps) {
-  const { className, ...restContainerProps } = containerProps || {}
+export function Banner({ containerProps, imageProps }: Readonly<BannerProps>) {
+  const { className, ...restContainerProps } = containerProps ?? {}
   const { alt = 'a beautiful hero image', ...restImgProps } = imageProps || {}
 
   const classesContainer = twMerge('hero-banner', className)

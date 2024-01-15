@@ -1,4 +1,4 @@
-import { useMessages } from 'next-intl'
+import { useMessages, useTranslations } from 'next-intl'
 
 import { DecorativeCurve } from '@/common/components/presentationals/decorative-curve'
 import { SectionWithAsideContainer } from '@/common/components/containers/section-with-aside'
@@ -21,8 +21,9 @@ export type LayoutProps = {
   children: React.ReactNode
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children }: Readonly<LayoutProps>) {
   const messages = useMessages()
+  const t = useTranslations('HOME')
 
   return (
     <>
@@ -38,11 +39,7 @@ export default function Layout({ children }: LayoutProps) {
           }}
         />
 
-        <Hero.Title className="animated-gradient">
-          Unleash. <br />
-          Improve. <br />
-          Rise.
-        </Hero.Title>
+        <Hero.Title className="animated-gradient whitespace-pre-line">{t('hero.title')}</Hero.Title>
 
         <DecorativeCurve className="full-width" />
       </Hero.Root>
