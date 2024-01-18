@@ -3,6 +3,7 @@
 import { Link as NextLink } from '@intl/navigation'
 import { useState } from 'react'
 import { useTranslations } from 'next-intl'
+import { twMerge } from 'tailwind-merge'
 
 import { actionFetchByName } from '@/common/actions/users/fetch-by-name'
 import { APP_NAME } from '@config/constants'
@@ -25,12 +26,18 @@ import * as ButtonGroup from '../../../compounds/button-group'
 import { UserHoverCard } from '@/features/home/components/presentationals/user-hover-card'
 
 export type TopBarProps = {
+  framerContaineClassName?: string
   logo?: React.ReactNode
 }
 
 const ROUTES = [Routes.Blog, Routes.About, Routes.Contact]
 
-export function TopBar({ logo }: Readonly<TopBarProps>) {
+export function TopBar({ framerContaineClassName, logo }: Readonly<TopBarProps>) {
+  const framerContainerClasses = twMerge(
+    'grid-wrapper absolute top-0 w-full z-50',
+    framerContaineClassName
+  )
+
   const [searchValue, setSearchValue] = useState('')
   const name = useDebounce(searchValue)
   const t = useTranslations()
@@ -167,7 +174,7 @@ export function TopBar({ logo }: Readonly<TopBarProps>) {
 
   return (
     <ContentWithDropdown
-      classNameContainer="grid-wrapper glassmorphism absolute top-0 w-full [--bg-from:theme(colors.shade.950/0.8)] [--bg-to:theme(colors.shade.950)] z-50 border-none"
+      classNameContainer={framerContainerClasses}
       classNameContent="min-h-screen md:min-h-0"
       content={getCurrentContent()}
       onMouseLeave={(evt, setter) => onMouseLeave(evt, setter)}

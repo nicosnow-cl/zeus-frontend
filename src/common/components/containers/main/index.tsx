@@ -15,13 +15,11 @@ export function MainContainer({ children }: MainContainerProps) {
 
   return (
     <>
-      <div className="h-[var(--navbar-full-height)] bg-shade-900">
-        <NavbarContainer
-          intlProps={{
-            messages: pick(messages, ['COMMON.route-names', 'COMMON.compounds.navbar']),
-          }}
-        />
-      </div>
+      <NavbarContainer
+        intlProps={{
+          messages: pick(messages, ['COMMON.route-names', 'COMMON.compounds.navbar']),
+        }}
+      />
 
       <main className="flex flex-col gap-y-5">{children}</main>
     </>
