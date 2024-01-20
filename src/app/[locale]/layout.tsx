@@ -29,8 +29,8 @@ export default function LocaleLayout({
       className={fonts.map((font) => font.variable).join(' ')}
       suppressHydrationWarning
     >
-      <body>
-        <GradientBackground />
+      <body className="bg-gradient-brand-1">
+        {/* <GradientBackground /> */}
 
         <Providers>
           <MainContainer>{children}</MainContainer>

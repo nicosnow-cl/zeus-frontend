@@ -22,9 +22,9 @@ export function MainContainer({ children }: Readonly<MainContainerProps>) {
         }}
       />
 
-      <main className="flex flex-col gap-y-5">{children}</main>
+      <main className="flex flex-col gap-y-10">{children}</main>
 
-      <Footer className="mt-5" />
+      <Footer />
     </>
   )
 }

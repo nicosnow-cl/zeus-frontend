@@ -1,0 +1,22 @@
+@layer utilities {
+  .bg-gradient-brand-1 {
+    @apply relative;
+
+    &::after {
+      @apply absolute bottom-0 left-0;
+
+      content: '';
+      opacity: 0.3;
+      inset: 0;
+      background-image: url('/backgrounds/ffflux (6).svg');
+      background-size: cover; /* Cover the entire container */
+      background-position: center; /* Center the image horizontally */
+      background-repeat: no-repeat; /* Do not repeat the image */
+      z-index: -1;
+
+      html.dark & {
+        background-image: url('/backgrounds/ffflux (8).svg');
+      }
+    }
+  }
+}

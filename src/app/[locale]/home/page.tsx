@@ -4,6 +4,7 @@ import { randomUUID } from 'crypto'
 import { fetchUsers } from '@/features/home/actions/users/fetch-users'
 import { TSearchParams } from '@/common/types/misc/search-params.type'
 import { UsersCardsInfiniteScrollContainer } from '@/features/home/components/presentationals/users-cards-infinite-scroll'
+import { UsersCardsSkeleton } from '@/features/home/components/presentationals/users-cards-skeleton'
 
 export const metadata: Metadata = {
   title: 'cl.afrodita.app',
@@ -23,10 +24,11 @@ export default async function Home({ searchParams }: { searchParams?: TSearchPar
   if (res.status === 'error') throw new Error(res.error)
 
   return (
-    <UsersCardsInfiniteScrollContainer
-      key={randomUUID()}
-      initialData={res.data}
-      initialTotal={res.metadata.total}
-    />
+    // <UsersCardsInfiniteScrollContainer
+    //   key={randomUUID()}
+    //   initialData={res.data}
+    //   initialTotal={res.metadata.total}
+    // />
+    <UsersCardsSkeleton skeletonCount={20} />
   )
 }
