@@ -1,6 +1,15 @@
-export function Footer() {
+import { twMerge } from 'tailwind-merge'
+
+export type FooterProps = React.ComponentPropsWithoutRef<'footer'>
+
+export function Footer({ className, ...restProps }: Readonly<FooterProps>) {
+  const classes = twMerge(
+    'flex flex-col items-center bg-neutral-200 text-center text-white dark:bg-neutral-600',
+    className
+  )
+
   return (
-    <footer className="flex flex-col items-center bg-neutral-200 text-center text-white dark:bg-neutral-600">
+    <footer {...restProps} className={classes}>
       <div className="container pt-9">
         <div className="mb-9 flex justify-center">
           <a href="#!" className="mr-9 text-neutral-800 dark:text-neutral-200">

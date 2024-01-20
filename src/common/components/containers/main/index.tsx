@@ -1,9 +1,9 @@
 import { useMessages } from 'next-intl'
 import pick from 'lodash/pick'
 
+import { Footer } from '../../layout/footer'
 import { NavbarContainer as NavbarContainerClient } from '../navbar'
 import { withIntlClientProvider } from '@/common/hocs/with-intl-client-provider'
-import { Footer } from '../../layout/footer'
 
 const NavbarContainer = withIntlClientProvider(NavbarContainerClient, 'NavbarContainer')
 
@@ -24,7 +24,7 @@ export function MainContainer({ children }: Readonly<MainContainerProps>) {
 
       <main className="flex flex-col gap-y-5">{children}</main>
 
-      <Footer />
+      <Footer className="mt-5" />
     </>
   )
 }
