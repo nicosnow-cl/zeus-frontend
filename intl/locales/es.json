@@ -29,6 +29,12 @@
                     "placeholder": "Buscar en {name}"
                 }
             }
+        },
+        "forms": {
+            "generic-subtitle": "Ajuste los resultados de acuerdo a sus preferencias"
+        },
+        "words-phrases": {
+            "filters": "Filtros"
         }
     },
     "HOME": {
@@ -40,6 +46,8 @@
                 "placeholder": "Buscar en {city}",
                 "button": "Buscar"
             }
-        }
+        },
+        "title": "Nuestros usuarios",
+        "subtitle": "Encuentre el mejor servicio de acompañantes"
     }
 }

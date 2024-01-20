@@ -29,17 +29,25 @@
                     "placeholder": "Search in {name}"
                 }
             }
+        },
+        "forms": {
+            "generic-subtitle": "Adjust the results according to your preferences"
+        },
+        "words-phrases": {
+            "filters": "Filters"
         }
     },
     "HOME": {
         "hero": {
             "title": "Unleash.\n Improve.\n Rise.",
-            "title-b": "El mejor sitio para encontrar escorts en {city}",
-            "subtitle-b": "Miles de escorts en {city} esperando por ti",
+            "title-b": "The best site to find escorts in {city}",
+            "subtitle-b": "Thousands of escorts in {city} waiting for you",
             "search-b": {
-                "placeholder": "Buscar en {city}",
-                "button": "Buscar"
+                "placeholder": "Search in {city}",
+                "button": "Search"
             }
-        }
+        },
+        "title": "Our Users",
+        "subtitle": "Find the best escort service"
     }
 }

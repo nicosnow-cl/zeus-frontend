@@ -7,6 +7,7 @@ import {
 } from '../../containers/users-cards-filters-form'
 import { withUsersCardsQueryLogic } from '@/features/home/hocs/with-users-cards-query-logic'
 import { CSS } from '@/common/utils/css-classes'
+import { useTranslations } from 'next-intl'
 
 const { Utilities } = CSS
 
@@ -26,6 +27,8 @@ export const UsersCardsFiltersSheet = ({
   trigger = 'Filters',
   ...restProps
 }: UsersCardsFiltersSheetProps) => {
+  const t = useTranslations('COMMON')
+
   const handleSubmit: UsersCardsFiltersFormProps['onSubmit'] = (data) => {
     onOpenChange?.(false)
 
@@ -39,10 +42,10 @@ export const UsersCardsFiltersSheet = ({
         <SheetHeader className="mb-3 text-left">
           <div className="pl-2 text-gray-900 dark:text-gray-100">
             <strong className="text-lg font-semibold text-gray-950 dark:text-gray-50">
-              Filtros
+              {t('words-phrases.filters')}
             </strong>
             <br />
-            Ajuste los resultados de acuerdo a sus preferencias
+            {t('forms.generic-subtitle')}
           </div>
         </SheetHeader>
 

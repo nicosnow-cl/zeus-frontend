@@ -23,7 +23,8 @@ export type LayoutProps = {
 
 export default function Layout({ children }: Readonly<LayoutProps>) {
   const messages = useMessages()
-  const t = useTranslations('HOME')
+  const t = useTranslations('COMMON')
+  const tHome = useTranslations('HOME')
 
   return (
     <>
@@ -39,7 +40,9 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
           }}
         />
 
-        <Hero.Title className="animated-gradient whitespace-pre-line">{t('hero.title')}</Hero.Title>
+        <Hero.Title className="animated-gradient whitespace-pre-line">
+          {tHome('hero.title')}
+        </Hero.Title>
 
         <DecorativeCurve className="full-width" />
       </Hero.Root>
@@ -51,7 +54,8 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
         hero={
           <>
             <h1 className="gradient-heading heading-decorator mb-10">
-              Nuestros usuarios <small>Encuentre el mejor servicio de acompañantes</small>
+              {tHome('title')}
+              <small>{tHome('subtitle')}</small>
             </h1>
 
             <UsersCardsMobileFilters
@@ -68,10 +72,10 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
           <div className="svg-background-2 sticky top-[var(--navbar-full-height)] flex flex-col gap-3">
             <div className="pl-2 text-gray-900 dark:text-gray-100">
               <strong className="text-lg font-semibold text-gray-950 dark:text-gray-50">
-                Filtros
+                {t('words-phrases.filters')}
               </strong>
               <br />
-              Ajuste los resultados de acuerdo a sus preferencias
+              {t('forms.generic-subtitle')}
             </div>
 
             <UsersCardsFiltersForm
@@ -83,7 +87,7 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
         }
         asideProps={{
           className:
-            'hidden md:block min-w-[225px] bg-gradient-to-l from-accent-50/80 dark:from-brand-500/5 dark:to-accent-700/10',
+            'hidden md:block bg-gradient-to-l from-accent-50/80 dark:from-brand-500/5 dark:to-accent-700/10',
         }}
       >
         {children}
