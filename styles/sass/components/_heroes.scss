@@ -5,7 +5,7 @@
     height: clamp(30rem, 40vw, 50rem);
 
     &::after {
-      @apply absolute bottom-[75px] h-[75px] w-[75px] translate-y-1/2;
+      @apply absolute bottom-[50px] h-[75px] w-[75px] translate-y-1/2;
 
       content: '';
       border-radius: 50% 0;

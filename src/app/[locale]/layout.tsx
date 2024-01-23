@@ -2,11 +2,10 @@ import { notFound } from 'next/navigation'
 
 import { fonts } from '@/theme/fonts'
 import { getValidLocale } from '@intl/locale'
-import { GradientBackground } from '@/common/components/misc/gradient-background'
 import { MainContainer } from '@/common/components/containers/main'
+import { Providers } from '@/common/components/providers'
 
 import '@styles/global.scss'
-import { Providers } from '@/common/components/providers'
 
 export type LocaleLayoutProps = {
   children: React.ReactNode
@@ -29,9 +28,7 @@ export default function LocaleLayout({
       className={fonts.map((font) => font.variable).join(' ')}
       suppressHydrationWarning
     >
-      <body className="bg-gradient-brand-1">
-        {/* <GradientBackground /> */}
-
+      <body className="bg-gradient-1">
         <Providers>
           <MainContainer>{children}</MainContainer>
         </Providers>

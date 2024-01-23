@@ -1,5 +1,5 @@
 @layer utilities {
-  .bg-gradient-brand-1 {
+  .bg-gradient-1 {
     @apply relative;
 
     &::after {
@@ -8,14 +8,14 @@
       content: '';
       opacity: 0.3;
       inset: 0;
-      background-image: url('/backgrounds/ffflux (6).svg');
+      background-image: url('/backgrounds/bg-gradient-1-light.svg');
       background-size: cover; /* Cover the entire container */
       background-position: center; /* Center the image horizontally */
       background-repeat: no-repeat; /* Do not repeat the image */
       z-index: -1;
 
       html.dark & {
-        background-image: url('/backgrounds/ffflux (8).svg');
+        background-image: url('/backgrounds/bg-gradient-1-dark.svg');
       }
     }
   }
