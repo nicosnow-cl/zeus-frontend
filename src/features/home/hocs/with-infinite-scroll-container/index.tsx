@@ -64,13 +64,13 @@ export function withInfiniteScrollFetchData<T>({
       <>
         <Component data={data} />
 
-        {/* {data.length < metadata.total && (
+        {data.length < metadata.total && (
           <LoadMore
             ref={loadingMoreRef}
             className="order-last col-span-full grow basis-full"
             isLoading={isLoading}
           />
-        )} */}
+        )}
       </>
     )
   }
