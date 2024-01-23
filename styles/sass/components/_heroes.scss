@@ -1,6 +1,6 @@
 @layer components {
   .hero {
-    @apply relative overflow-hidden;
+    @apply relative overflow-hidden bg-transparent;
 
     height: clamp(30rem, 40vw, 50rem);
 
@@ -14,6 +14,12 @@
 
     &-banner {
       @apply relative bg-shade-950;
+
+      clip-path: var(--polygon-curve-1);
+
+      @screen lg {
+        clip-path: var(--polygon-curve-2);
+      }
 
       & > img {
         @apply object-cover object-center contrast-125 grayscale md:object-left-top;

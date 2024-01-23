@@ -28,7 +28,7 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
 
   return (
     <>
-      <Hero.Root className="grid-wrapper bg-dropshadow relative">
+      <Hero.Root className="grid-wrapper relative">
         <Hero.Banner
           containerProps={{
             className: 'full-width',
@@ -43,8 +43,6 @@ export default function Layout({ children }: Readonly<LayoutProps>) {
         <Hero.Title className="animated-gradient whitespace-pre-line">
           {tHome('hero.title')}
         </Hero.Title>
-
-        <DecorativeCurve className="full-width" />
       </Hero.Root>
 
       <SectionWithAsideContainer
