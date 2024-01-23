@@ -1,53 +1,53 @@
 {
-    "COMMON": {
-        "lang-names": {
-            "es": "Español",
-            "en": "English"
-        },
-        "route-names": {
-            "home": "Home",
-            "sign-in": "Sign in",
-            "sign-up": "Sign up",
-            "blog": "Blog",
-            "about": "About",
-            "contact": "Contact"
-        },
-        "primitives": {
-            "multi-combobox": {
-                "placeholder": "Select an option",
-                "select-all": "Select all",
-                "select-none": "Select none",
-                "input-placeholder": "Filter...",
-                "no-results": "No results found"
-            }
-        },
-        "compounds": {
-            "navbar": {
-                "quick-links": "Quick links",
-                "suggested-links": "Suggested links",
-                "input-search": {
-                    "placeholder": "Search in {name}"
-                }
-            }
-        },
-        "forms": {
-            "generic-subtitle": "Adjust the results according to your preferences"
-        },
-        "words-phrases": {
-            "filters": "Filters"
-        }
+  "COMMON": {
+    "lang-names": {
+      "es": "Español",
+      "en": "English"
     },
-    "HOME": {
-        "hero": {
-            "title": "Unleash.\n Improve.\n Rise.",
-            "title-b": "The best site to find escorts in {city}",
-            "subtitle-b": "Thousands of escorts in {city} waiting for you",
-            "search-b": {
-                "placeholder": "Search in {city}",
-                "button": "Search"
-            }
-        },
-        "title": "Our Users",
-        "subtitle": "Find the best escort service"
+    "route-names": {
+      "home": "Home",
+      "sign-in": "Sign in",
+      "sign-up": "Sign up",
+      "blog": "Blog",
+      "about": "About",
+      "contact": "Contact"
+    },
+    "primitives": {
+      "multi-combobox": {
+        "placeholder": "Select an option",
+        "select-all": "Select all",
+        "select-none": "Select none",
+        "input-placeholder": "Filter...",
+        "no-results": "No results found"
+      }
+    },
+    "compounds": {
+      "navbar": {
+        "quick-links": "Quick links",
+        "suggested-links": "Suggested links",
+        "input-search": {
+          "placeholder": "Search in {name}"
+        }
+      }
+    },
+    "forms": {
+      "generic-subtitle": "Adjust the results according to your preferences"
+    },
+    "words-phrases": {
+      "filters": "Filters"
     }
+  },
+  "HOME": {
+    "hero": {
+      "title": "Unleash.\n Improve.\n Rise.",
+      "title-b": "The best site to find escorts in {city}",
+      "subtitle-b": "Thousands of escorts in {city} waiting for you",
+      "search-b": {
+        "placeholder": "Search in {city}",
+        "button": "Search"
+      }
+    },
+    "title": "Our Users",
+    "subtitle": "Find the best escort service"
+  }
 }

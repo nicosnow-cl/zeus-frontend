@@ -1,53 +1,53 @@
 {
-    "COMMON": {
-        "lang-names": {
-            "es": "Español",
-            "en": "English"
-        },
-        "route-names": {
-            "home": "Inicio",
-            "sign-in": "Acceso clientes",
-            "sign-up": "Anunciarme",
-            "blog": "Blog",
-            "about": "Sobre nosotros",
-            "contact": "Contacto"
-        },
-        "primitives": {
-            "multi-combobox": {
-                "placeholder": "Seleccione una opción",
-                "select-all": "Seleccionar todo",
-                "select-none": "Deseleccionar todo",
-                "input-placeholder": "Filtrar...",
-                "no-results": "No se encontraron resultados"
-            }
-        },
-        "compounds": {
-            "navbar": {
-                "quick-links": "Enlaces rápidos",
-                "suggested-links": "Enlaces sugeridos",
-                "input-search": {
-                    "placeholder": "Buscar en {name}"
-                }
-            }
-        },
-        "forms": {
-            "generic-subtitle": "Ajuste los resultados de acuerdo a sus preferencias"
-        },
-        "words-phrases": {
-            "filters": "Filtros"
-        }
+  "COMMON": {
+    "lang-names": {
+      "es": "Español",
+      "en": "English"
     },
-    "HOME": {
-        "hero": {
-            "title": "Liberate.\n Mejora.\n Asciende.",
-            "title-b": "El mejor sitio para encontrar escorts en {city}",
-            "subtitle-b": "Miles de escorts en {city} esperando por ti",
-            "search-b": {
-                "placeholder": "Buscar en {city}",
-                "button": "Buscar"
-            }
-        },
-        "title": "Nuestros usuarios",
-        "subtitle": "Encuentre el mejor servicio de acompañantes"
+    "route-names": {
+      "home": "Inicio",
+      "sign-in": "Acceso clientes",
+      "sign-up": "Anunciarme",
+      "blog": "Blog",
+      "about": "Sobre nosotros",
+      "contact": "Contacto"
+    },
+    "primitives": {
+      "multi-combobox": {
+        "placeholder": "Seleccione una opción",
+        "select-all": "Seleccionar todo",
+        "select-none": "Deseleccionar todo",
+        "input-placeholder": "Filtrar...",
+        "no-results": "No se encontraron resultados"
+      }
+    },
+    "compounds": {
+      "navbar": {
+        "quick-links": "Enlaces rápidos",
+        "suggested-links": "Enlaces sugeridos",
+        "input-search": {
+          "placeholder": "Buscar en {name}"
+        }
+      }
+    },
+    "forms": {
+      "generic-subtitle": "Ajuste los resultados de acuerdo a sus preferencias"
+    },
+    "words-phrases": {
+      "filters": "Filtros"
     }
+  },
+  "HOME": {
+    "hero": {
+      "title": "Liberate.\n Mejora.\n Asciende.",
+      "title-b": "El mejor sitio para encontrar escorts en {city}",
+      "subtitle-b": "Miles de escorts en {city} esperando por ti",
+      "search-b": {
+        "placeholder": "Buscar en {city}",
+        "button": "Buscar"
+      }
+    },
+    "title": "Nuestros usuarios",
+    "subtitle": "Encuentre el mejor servicio de acompañantes"
+  }
 }

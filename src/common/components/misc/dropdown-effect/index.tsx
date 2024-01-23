@@ -49,7 +49,7 @@ export function ContentWithDropdown({
   variantsContent,
   classNameContainer = '',
   classNameContent = '',
-}: ContentWithDropdownProps) {
+}: Readonly<ContentWithDropdownProps>) {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleToggle = (value?: boolean) =>
