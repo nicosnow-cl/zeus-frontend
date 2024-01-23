@@ -20,9 +20,9 @@ export const UsersCardsSkeleton = ({
 
   const pickRandomClassName = () => {
     const className = [
-      'col-span-4 row-span-4 sm:col-span-2 sm:row-span-3 xl:col-span-2 xl:row-span-4 min-h-[300px] md:min-h-[400px]',
-      'col-span-2 row-span-3 sm:col-span-2 sm:row-span-2 xl:col-span-2 xl:row-span-3 min-h-[300px] md:min-h-[400px]',
-      'col-span-2 row-span-2 sm:col-span-2 sm:row-span-1 xl:col-span-2 xl:row-span-2 min-h-[300px] md:min-h-[400px]',
+      'col-span-12 row-span-6 sm:col-span-6 lg:col-span-4',
+      'col-span-12 row-span-5 sm:col-span-6 lg:col-span-4',
+      'col-span-12 row-span-4 sm:col-span-6 lg:col-span-4',
     ]
 
     return className[Math.floor(Math.random() * className.length)]
@@ -43,9 +43,12 @@ export const UsersCardsSkeleton = ({
   }, [animate, duration, staggerDelay])
 
   return (
-    <MasonryContainer ref={scope} className="relative grow grid-cols-4 gap-1">
+    <MasonryContainer ref={scope} className="masonry-highlight grid-cols-12 gap-1">
       {Array.from({ length: skeletonCount }).map((_, idx) => (
-        <Skeleton key={idx} className={`card-skeleton ${pickRandomClassName()} rounded-2xl`} />
+        <Skeleton
+          key={idx}
+          className={`card-skeleton min-h-[450px] rounded-2xl ${pickRandomClassName()}`}
+        />
       ))}
     </MasonryContainer>
   )

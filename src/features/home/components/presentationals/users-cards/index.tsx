@@ -32,9 +32,9 @@ export const UsersCardsContainer = ({ data = [] }: UsersCardsContainerProps) => 
       }}
     >
       <MasonryContainer className="masonry-highlight grid-cols-12 gap-1" role="list">
-        {data.map((user, idx) => (
+        {data.map((user) => (
           <UserCard3D
-            key={idx}
+            key={user._id}
             user={user}
             containerProps={{
               className: `min-h-[450px] group ${getCardClassName(user.type)}`,
